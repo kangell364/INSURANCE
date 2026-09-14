@@ -1,19 +1,39 @@
 import Link from 'next/link'
 import type { ComponentPropsWithoutRef, ReactNode } from 'react'
 
-export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger'
+export type ButtonVariant =
+  | 'primary'
+  | 'secondary'
+  | 'ghost'
+  | 'danger'
+  | 'accent'
+  | 'inverse'
 export type ButtonSize = 'sm' | 'md' | 'lg'
 
 const BASE =
   'inline-flex items-center justify-center gap-2 rounded-lg font-semibold ' +
   'transition-colors disabled:cursor-not-allowed disabled:opacity-60'
 
+/**
+ * Every colour combination a button can have lives here, as a complete set.
+ *
+ * Do NOT recolour a button by passing conflicting utilities through
+ * `className`. Tailwind emits each utility once, in its own order, so
+ * `className="bg-transparent"` layered over a variant's `bg-white` is decided
+ * by the stylesheet, not by the order of the strings — which silently produced
+ * a white-on-white, invisible button in the hero. Add a variant instead.
+ */
 const VARIANTS: Record<ButtonVariant, string> = {
   primary: 'bg-navy-800 text-white hover:bg-navy-900',
   secondary:
     'border border-navy-200 bg-white text-navy-800 hover:bg-navy-50 hover:border-navy-300',
   ghost: 'text-navy-700 hover:bg-navy-50',
   danger: 'bg-red-600 text-white hover:bg-red-700',
+  // The single high-emphasis call to action, for use on a dark ground.
+  accent: 'bg-accent-500 text-white hover:bg-accent-600',
+  // Outlined, for a secondary action sitting on a dark ground.
+  inverse:
+    'border border-white/30 bg-transparent text-white hover:border-white/50 hover:bg-white/10',
 }
 
 const SIZES: Record<ButtonSize, string> = {

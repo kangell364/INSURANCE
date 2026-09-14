@@ -77,19 +77,10 @@ export default function HomePage() {
               place.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <ButtonLink
-                href="/signup"
-                size="lg"
-                className="bg-accent-500 hover:bg-accent-600 text-white"
-              >
+              <ButtonLink href="/signup" size="lg" variant="accent">
                 Create your account
               </ButtonLink>
-              <ButtonLink
-                href="/courses"
-                size="lg"
-                variant="secondary"
-                className="border-white/25 bg-transparent text-white hover:border-white/40 hover:bg-white/10"
-              >
+              <ButtonLink href="/courses" size="lg" variant="inverse">
                 Browse courses
               </ButtonLink>
             </div>
