@@ -199,7 +199,82 @@ having said nothing.
 
 ---
 
-## 6. What I could not verify
+## 6. What the exam is actually based on — and what you may author from
+
+There is **no official state textbook**. Texas does not publish a book the exam
+is drawn from, and no commercial manual is endorsed. Kaplan's and ExamFX's
+manuals are one vendor's interpretation, nothing more.
+
+What exists instead is a spec plus primary law.
+
+### The authoritative spec
+
+**Pearson VUE publication #124401, *Texas Insurance Content Outlines*** (current
+edition effective December 2025). This is the exam blueprint: the topics, their
+structure, and — importantly — **direct citations to the statute sections each
+Texas-specific item is drawn from** (e.g. Ins. 981.202, 4001.051, 4001.105-.106,
+4003.001; Ins. 5.35 for rates and ratemaking; Texas Labor Code sections for
+workers' compensation).
+
+This is the document `blueprint_topics` should be built from, and the `topics`
+table's `code` column should carry its outline references so every question
+traces back to a line of the official outline.
+
+**Get this before authoring anything.** It is free.
+
+### The two halves of the exam have different sources
+
+**Texas-specific content (~25–30%)** comes from primary law:
+
+- **Texas Insurance Code** — the statute itself
+- **Texas Administrative Code**, Title 28 (TDI rules)
+- **Texas Labor Code** — workers' compensation
+- TDI publications on TWIA, the FAIR Plan and coastal windstorm
+
+All of it is **free, public, and not copyrightable** — statutes are government
+edicts. You can author from the primary text directly. For a platform whose
+whole positioning is "we are the Texas specialists," working from the statute
+rather than from somebody's paraphrase of it is both cheaper and better.
+
+**General insurance content (~70–75%)** is standard industry practice: policy
+structure, named vs. open perils, ACV vs. replacement cost, coinsurance, and the
+standard forms — HO-3, HO-5, HO-6, the Personal Auto Policy, the CGL.
+
+### ⚠️ The one real content risk
+
+**ISO form language is copyrighted** (Insurance Services Office / Verisk).
+The HO-3, PAP and CG 00 01 forms carry explicit copyright notices, and the exam
+tests them because they are the industry standard.
+
+You may freely **teach what the coverage does** — concepts, structure,
+exclusions, how Coverage A differs from Coverage B — because ideas and facts are
+not copyrightable. You may **not** reproduce form text verbatim without a
+licence. This is how every legitimate competitor operates.
+
+Practical rules for authoring:
+
+- Explain and paraphrase coverage; never paste form wording.
+- Do not copy any competitor's manual, question wording or explanations — that
+  *is* copyrightable and is the obvious legal exposure in this business.
+- Cite the statute for Texas-specific claims. It makes the content verifiable,
+  updatable when the law changes, and defensible.
+- Consider whether a licensing arrangement with ISO/Verisk is worth it later if
+  you ever want to show actual form excerpts.
+
+### Why this is an advantage
+
+A competitor's moat is their manual. Yours can be that **every question and
+lesson is traceable to an outline reference and a statute section** — which
+makes the content auditable, makes updates tractable when TDI republishes, and
+means you never have to wonder whether a topic is actually tested.
+
+That is worth building into the schema now: `topics.code` carrying the official
+outline reference, and a `source_citation` on questions. Cheap at Phase 2,
+expensive to retrofit across a thousand questions.
+
+---
+
+## 7. What I could not verify
 
 - **Exact current pricing.** Sources blocked. Check the four vendors directly.
 - **Exam structure.** Sources conflict: one says 150 questions (125 scorable +
