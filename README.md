@@ -415,6 +415,23 @@ npm run build        # production build
 npm run check        # all four, in order
 ```
 
+### Continuous integration
+
+`.github/workflows/texas-exam-prep.yml` runs on every push and pull request
+that touches `texas-exam-prep/` — and only then, so commits to the unrelated
+`medcheck` app at the repository root never trigger it.
+
+Two jobs:
+
+| Job | What it does |
+| --- | ------------ |
+| **Lint, types, tests, build** | `npm ci`, then lint, typecheck, the Vitest suite, and a production build. The build runs with **no** Supabase credentials on purpose: it must succeed without them, and a build that only passed with secrets present would hide the unconfigured-state handling. |
+| **Database schema and RLS policies** | Boots a real PostgreSQL 16 service container, applies the shim and every migration from scratch, and runs the full RLS assertion suite as an unprivileged `authenticated` connection. Plus an explicit guard that `enforce_profile_immutable_columns()` is `SECURITY INVOKER`. |
+
+The second job is the important one. The RLS suite is what proves a student
+cannot read another student's data or promote themselves, and before CI it only
+ran when somebody remembered to run it.
+
 ### Database and RLS verification
 
 Two suites cover the same guarantees; run whichever your environment supports.
