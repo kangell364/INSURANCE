@@ -274,7 +274,78 @@ expensive to retrofit across a thousand questions.
 
 ---
 
-## 7. What I could not verify
+## 7. Market size
+
+Pearson VUE's monthly reports carry candidate **counts**, not just percentages.
+For **General Lines — Property & Casualty (English)**:
+
+| Month | Candidates tested | Passed | Rate |
+| ----- | ----------------- | ------ | ---- |
+| December 2023 | 640 | 391 | 61% |
+| June 2024 | 869 | 520 | 60% |
+| December 2024 | 813 | 485 | 60% |
+| March 2025 | 941 | 560 | 60% |
+| April 2025 | 919 | 528 | 57% |
+| June 2025 | 997 | 593 | 59% |
+| January 2026 | 880 | 533 | 61% |
+
+**Caveat:** the reported rate in each row matches the *first-time* rate quoted
+elsewhere in the same reports (60% vs 36% for repeats), so these counts are
+probably first-time candidates rather than all sittings. The PDFs are blocked
+from here — **open one and confirm** before betting anything on the absolute
+number. The shape of the conclusion does not change either way.
+
+### What that implies
+
+- **~866 candidates per month on average**, range 640–997.
+- **Roughly 10,000 per year** for English-language General Lines P&C alone.
+  Spanish-language sittings add more; the volumes are lower but unquantified
+  here.
+- **The market is growing.** Comparing like months: June 2024 (869) → June 2025
+  (997) is about **+15% year on year**. December is seasonally the low point, so
+  compare same-month figures, not adjacent ones.
+- **~4,000 people fail per year** (≈40% of ~10,000). That is the repeat-taker
+  pool — motivated, and by the pass-rate data, poorly served.
+
+### What it means for revenue
+
+Useful way to think about a target: **what share of the market does it need?**
+
+| Monthly revenue | At $99 | At $149 |
+| --------------- | ------ | ------- |
+| $500 | ~61 customers/yr = **0.6% share** | ~40/yr = **0.4% share** |
+| $2,000 | ~242/yr = **2.4% share** | ~161/yr = **1.6% share** |
+| $5,000 | ~606/yr = **6% share** | ~403/yr = **4% share** |
+
+**$500/month is roughly half a percent of the Texas P&C market.** That is a
+genuinely low bar — you do not need to beat ExamFX, you need to be found by one
+candidate in two hundred. Encouraging.
+
+**$5,000/month means 4–6% share**, which is a different proposition entirely:
+that is real competition against funded incumbents with a decade of SEO.
+
+### Honest read on the size of this
+
+About 10,000 candidates a year, most of whom will not buy anything, in a state
+where preparation is not even mandatory. If you captured an impressive 5% at
+$149 that is roughly **$75,000 a year gross**.
+
+That makes this a solid side business or a small lifestyle business. It is not,
+on Texas P&C alone, a venture-scale market. Two things change that arithmetic:
+
+- **Adding lines.** General Lines Life, Accident & Health is a comparable-sized
+  exam in the same state (58% first-time / 40% repeat), and the platform is
+  already built to be multi-course. Roughly doubles the addressable market for
+  incremental content work.
+- **Adding states.** The architecture is state-agnostic; only content and the
+  blueprint are Texas-specific. That is the growth path if it works.
+
+Neither is a Phase 2 concern. But it is worth knowing the ceiling of the first
+market before deciding how much to invest in it.
+
+---
+
+## 8. What I could not verify
 
 - **Exact current pricing.** Sources blocked. Check the four vendors directly.
 - **Exam structure.** Sources conflict: one says 150 questions (125 scorable +
