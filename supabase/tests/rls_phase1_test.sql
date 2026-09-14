@@ -13,7 +13,7 @@ create extension if not exists pgtap with schema extensions;
 
 begin;
 
-select plan(30);
+select plan(35);
 
 -- ---------------------------------------------------------------------------
 -- Fixtures. Inserting into auth.users fires public.handle_new_user(), so the
@@ -315,6 +315,64 @@ select lives_ok(
 );
 
 reset role;
+
+-- ---------------------------------------------------------------------------
+-- The immutability trigger, tested in isolation.
+--
+-- Every other assertion here is satisfied by the column-level GRANT, which
+-- rejects the statement before execution reaches the trigger. The GRANT is
+-- widened below so the trigger is actually exercised — this is what would have
+-- caught it being a no-op when it was mistakenly declared SECURITY DEFINER.
+-- ---------------------------------------------------------------------------
+select is(
+  (select prosecdef from pg_proc
+    where proname = 'enforce_profile_immutable_columns'),
+  false,
+  '19. The immutability trigger is SECURITY INVOKER, not SECURITY DEFINER'
+);
+
+grant update on table public.profiles to authenticated;
+
+select set_config('request.jwt.claim.sub',
+                  '11111111-1111-1111-1111-111111111111', true);
+select set_config('request.jwt.claims',
+                  '{"sub":"11111111-1111-1111-1111-111111111111","role":"authenticated"}',
+                  true);
+set local role authenticated;
+
+select throws_ok(
+  $$update public.profiles set role = 'admin'
+     where id = '11111111-1111-1111-1111-111111111111'$$,
+  '42501',
+  null,
+  '20. With the column GRANT widened, the trigger still blocks self-promotion'
+);
+
+select throws_ok(
+  $$update public.profiles set email = 'attacker@example.test'
+     where id = '11111111-1111-1111-1111-111111111111'$$,
+  '42501',
+  null,
+  '21. With the column GRANT widened, the trigger still blocks an email change'
+);
+
+select lives_ok(
+  $$update public.profiles set first_name = 'Still Editable'
+     where id = '11111111-1111-1111-1111-111111111111'$$,
+  '22. ...while an ordinary name change still succeeds'
+);
+
+reset role;
+
+select is(
+  (select role::text from public.profiles
+    where id = '11111111-1111-1111-1111-111111111111'),
+  'student',
+  '23. Student A is still a student after all of that'
+);
+
+revoke update on table public.profiles from authenticated;
+grant update (first_name, last_name) on table public.profiles to authenticated;
 
 select * from finish();
 

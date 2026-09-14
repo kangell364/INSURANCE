@@ -392,6 +392,83 @@ select pg_temp.check_denied('17b Not even an admin can write profiles.role via t
 reset role;
 
 -- ===========================================================================
+-- The immutability trigger, tested in isolation.
+--
+-- WHY THIS SECTION EXISTS: every other assertion above is satisfied by the
+-- column-level GRANT, which rejects the statement with 42501 before execution
+-- ever reaches public.enforce_profile_immutable_columns(). That means the
+-- whole suite passed while the trigger was a no-op — it had been declared
+-- SECURITY DEFINER, which rebinds current_user to the function owner
+-- (`postgres`), so its trusted-role allow-list matched on every call and every
+-- check below it was skipped.
+--
+-- To test the trigger we must first remove the guard in front of it. These
+-- assertions widen the GRANT exactly as a careless future migration would,
+-- prove the trigger still refuses, and then put the GRANT back.
+-- ===========================================================================
+grant update on table public.profiles to authenticated;
+
+select set_config('request.jwt.claims',
+  '{"sub":"11111111-1111-1111-1111-111111111111","role":"authenticated"}', true);
+set local role authenticated;
+
+select pg_temp.check_denied(
+  'T1  With the column GRANT widened, the trigger still blocks self-promotion',
+  $$update public.profiles set role = 'admin'
+     where id = '11111111-1111-1111-1111-111111111111'$$
+);
+
+select pg_temp.check_denied(
+  'T2  With the column GRANT widened, the trigger still blocks an email change',
+  $$update public.profiles set email = 'attacker@example.test'
+     where id = '11111111-1111-1111-1111-111111111111'$$
+);
+
+select pg_temp.check_denied(
+  'T3  With the column GRANT widened, the trigger still blocks an id change',
+  $$update public.profiles set id = '99999999-9999-9999-9999-999999999999'
+     where id = '11111111-1111-1111-1111-111111111111'$$
+);
+
+select pg_temp.check_denied(
+  'T4  With the column GRANT widened, created_at is still immutable',
+  $$update public.profiles set created_at = now() - interval '10 years'
+     where id = '11111111-1111-1111-1111-111111111111'$$
+);
+
+select pg_temp.check_ok(
+  'T5  ...while an ordinary name change still succeeds',
+  $$update public.profiles set first_name = 'Still Editable'
+     where id = '11111111-1111-1111-1111-111111111111'$$
+);
+
+reset role;
+
+select pg_temp.check_eq('T6  Student A is still a student after all of that',
+  (select role::text from public.profiles
+    where id = '11111111-1111-1111-1111-111111111111'), 'student');
+
+-- Restore the narrow grant.
+revoke update on table public.profiles from authenticated;
+grant update (first_name, last_name) on table public.profiles to authenticated;
+
+select pg_temp.check_eq(
+  'T7  The narrow column GRANT is back in place',
+  (select count(*)::int from information_schema.column_privileges
+    where table_schema = 'public' and table_name = 'profiles'
+      and column_name = 'role' and grantee = 'authenticated'
+      and privilege_type = 'UPDATE'),
+  0
+);
+
+select pg_temp.check_eq(
+  'T8  The trigger is SECURITY INVOKER, not SECURITY DEFINER',
+  (select prosecdef from pg_proc
+    where proname = 'enforce_profile_immutable_columns'),
+  false
+);
+
+-- ===========================================================================
 -- The privileged server-side role (service-role key / SQL editor)
 -- ===========================================================================
 set local role service_role;

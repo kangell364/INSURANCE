@@ -287,7 +287,14 @@ Four independent layers, in order of what stops an attacker first:
    `BEFORE UPDATE` trigger that rejects changes to `id`, `created_at`, `email`
    and (for non-admins) `role`. RLS alone cannot express this, because an UPDATE
    policy's `WITH CHECK` clause only sees the new row and cannot compare it to
-   the old one. This is a backstop in case a future migration widens the grants.
+   the old one. This is the backstop if a future migration widens the grants.
+
+   It is deliberately **SECURITY INVOKER**. Declaring it `SECURITY DEFINER`
+   rebinds `current_user` to the function's owner (`postgres`), which matches
+   its trusted-role allow-list on every call and silently turns the whole
+   trigger into a no-op — a mistake this project made once and now tests for
+   explicitly (assertions `T1`–`T8`, which widen the column GRANT so that
+   execution actually reaches the trigger).
 3. **The signup trigger.** `handle_new_user()` hard-codes
    `role = 'student'`. It reads only `first_name` and `last_name` out of the
    client-controlled signup metadata, trimmed and length-capped. Metadata

@@ -103,18 +103,39 @@ grant insert, update, delete on table public.enrollments to authenticated;
 -- only the NEW row, so it cannot say "role must equal what it was". A BEFORE
 -- UPDATE trigger sees both OLD and NEW and can.
 -- ---------------------------------------------------------------------------
+--
+-- NOTE: this trigger is deliberately SECURITY INVOKER (the default).
+--
+-- It must NOT be SECURITY DEFINER. PostgreSQL rebinds `current_user` to the
+-- function's OWNER for the duration of a SECURITY DEFINER function, and these
+-- migrations are applied as `postgres`. The allow-list below would therefore
+-- match on every single call — including an update issued from a browser
+-- session running as `authenticated` — and the function would return at the
+-- first branch, silently skipping every check beneath it.
+--
+-- That is not hypothetical: it was the behaviour of the first version of this
+-- function, and it made the whole trigger a no-op. See the regression test in
+-- supabase/tests/local/01_rls_assertions.sql, which widens the column GRANT so
+-- that execution actually reaches this trigger.
+--
+-- As SECURITY INVOKER, `current_user` is the calling role, which is what the
+-- allow-list needs:
+--   * a migration or the SQL editor runs as `postgres`            -> allowed
+--   * PostgREST with the service-role key does SET ROLE service_role -> allowed
+--   * a signed-in user's request does SET ROLE authenticated      -> checked
+--
+-- It needs no elevated privileges of its own: it reads only OLD and NEW, and
+-- the one privileged lookup it makes, public.is_admin(), is separately
+-- SECURITY DEFINER.
+--
 create or replace function public.enforce_profile_immutable_columns()
 returns trigger
 language plpgsql
-security definer
 set search_path = ''
 as $$
 begin
   -- Trusted server-side roles are allowed through so that migrations, the
   -- documented initial-admin promotion, and future back-office jobs work.
-  -- PostgREST executes a service-role request as the `service_role` database
-  -- role, so `current_user` is the accurate test here (`current_setting('role')`
-  -- reports 'none' unless SET ROLE was used explicitly).
   if current_user in (
     'postgres', 'supabase_admin', 'service_role', 'supabase_auth_admin'
   ) then
@@ -136,10 +157,12 @@ begin
       using errcode = '42501';
   end if;
 
-  -- Backstop only: in practice `authenticated` has no UPDATE privilege on
-  -- `role` at all, so this branch is unreachable from the public API. It
-  -- exists so that if a future migration ever widens the column grant, role
-  -- changes still require admin status rather than silently becoming open.
+  -- The second of the two independent guards on `role`. Today the column-level
+  -- GRANT above rejects the statement before execution reaches here, so this
+  -- branch is the one that matters if that GRANT is ever widened — by a Phase 2
+  -- admin feature, or by a migration that re-runs Supabase's default
+  -- `grant all on all tables in schema public`. It is only a real backstop if
+  -- it actually runs, which is why the SECURITY INVOKER note above matters.
   if new.role is distinct from old.role and not public.is_admin() then
     raise exception 'only an administrator may change profiles.role'
       using errcode = '42501';
