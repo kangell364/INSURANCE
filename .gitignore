@@ -1,0 +1,22 @@
+/node_modules
+/.next/
+/out/
+/build
+/coverage
+*.tsbuildinfo
+next-env.d.ts
+.DS_Store
+.vercel
+
+# Environment files — never commit real credentials.
+.env
+.env.local
+.env.*.local
+# ...but .env.example carries no values and must be tracked. The repository
+# root ignores `.env*` wholesale, so it needs an explicit negation here.
+!.env.example
+
+# Supabase CLI local state
+/supabase/.temp
+/supabase/.branches
+tsconfig.tsbuildinfo
