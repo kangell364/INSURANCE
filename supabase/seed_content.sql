@@ -9,6 +9,21 @@ select '34b6c5a1-202f-5d9f-b12a-d98a335b2916', c.id, 'Insurance Fundamentals', 1
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
 on conflict (id) do update set title = excluded.title;
 
+insert into public.modules (id, course_id, title, position, status)
+select 'd6bff6c2-390e-518f-a728-b2a8ee99e87c', c.id, 'Policy Structure and Contract Law', 2, 'active'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set title = excluded.title;
+
+insert into public.modules (id, course_id, title, position, status)
+select '4d5887f6-82b0-535b-bfd5-541974214ccd', c.id, 'Property Coverages', 3, 'active'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set title = excluded.title;
+
+insert into public.modules (id, course_id, title, position, status)
+select '2071512a-2630-55ae-b69b-68d3232b7633', c.id, 'Casualty Coverages', 4, 'active'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set title = excluded.title;
+
 insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
@@ -973,4 +988,4932 @@ select '6cb03304-a5e0-5bd8-95dc-ce7cc45d0458', t.id, t.course_id
   from public.topics t
   join public.courses c on c.id = t.course_id
  where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.V'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select '81867de3-86a9-5968-bbae-bc683f8aa8b6', 'd6bff6c2-390e-518f-a728-b2a8ee99e87c', c.id, 'The Declarations Page',
+       'the-declarations-page', 'What a policy is made of, and why the first page is the one that answers most questions.', 1,
+       'draft', 14
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select '81867de3-86a9-5968-bbae-bc683f8aa8b6', c.id, $lesson$# The page that identifies this policy from every other one
+
+Every policy in property and casualty is assembled from the same four parts.
+Learn the four, and a question about an unfamiliar form becomes a question
+about which part you are being shown.
+
+## The four parts
+
+Remembered as **DICE**:
+
+- **D**eclarations — who, what, where, when, how much
+- **I**nsuring agreement — what the insurer promises
+- **C**onditions — the rules both sides must follow
+- **E**xclusions — what is not covered
+
+Plus **endorsements**, which amend any of the four.
+
+The order matters logically as well as mnemonically. The insuring agreement
+makes a broad promise; the exclusions carve pieces out of it; the conditions
+say what each side must do to keep the promise alive; and the declarations
+attach all of it to one named insured, one property, one period and one set
+of numbers.
+
+## What is on the declarations
+
+**The declarations page is the only part of the policy unique to this
+insured.** Everything else is printed the same for everybody who buys the
+form. The declarations are typed.
+
+They carry:
+
+- **The named insured** and mailing address.
+- **The policy period** — inclusive dates *and times*. Most policies begin
+  and end at 12:01 a.m. standard time at the insured's address, which is why
+  a policy running to "1 June" does not cover a fire at noon on 1 June.
+- **The description of the property or operation** insured — address,
+  construction, occupancy, or for auto, the year, make and vehicle
+  identification number.
+- **The coverages purchased and their limits.**
+- **The deductibles.**
+- **The premium.**
+- **The forms and endorsements attached**, by number. This list is how you
+  prove what the policy actually consists of.
+- **The mortgagee or loss payee**, where one has an interest.
+- **The producer** and the insurer.
+
+A useful way to hold it: **the declarations answer "who, what, where, when
+and how much." The rest of the policy answers "under what circumstances."**
+
+## Where the declarations come from: the application
+
+The declarations are the insurer's restatement of the **application**. The
+application is the insured's request for coverage and the insurer's primary
+source of underwriting information, and the answers in it are
+**representations** — statements believed true when made. Sign it, and it is
+usually made part of the policy by reference.
+
+Two consequences the exam likes:
+
+- **Read the declarations when the policy arrives.** They are the insured's
+  chance to catch an error before a claim does. An address, a limit or a
+  deductible that does not match what was asked for is fixed by endorsement,
+  not by argument at claim time.
+- **A wrong answer on the application follows you onto the declarations.**
+  If the application understated the square footage, the declarations show
+  the wrong value and the coinsurance clause will be measured against the
+  wrong number.
+
+## Endorsements
+
+**An endorsement is a written amendment that adds to, deletes from or
+otherwise changes the policy.** Also called a rider, mostly in life
+insurance. It must be in writing and attached; a producer's promise does not
+amend a policy.
+
+What the exam wants:
+
+- An endorsement **takes precedence over conflicting printed policy
+  language**. It is the more specific and more recent statement of what the
+  parties agreed.
+- Endorsements can **broaden** coverage (adding a peril, scheduling an item),
+  **restrict** it (excluding a hazard the underwriter will not accept), or
+  merely **clarify** it.
+- They usually carry a premium change, and appear on the declarations by
+  form number.
+
+## Binders
+
+**A binder is temporary evidence that coverage is in force**, issued while
+the policy is prepared.
+
+- It may be **oral or written**, though a written one is what anybody sensible
+  uses. Many states, and most insurers' own rules, require written
+  confirmation within a set period.
+- It carries the **same terms as the policy it anticipates** — it is not a
+  separate, thinner contract.
+- It is **temporary**. It ends when the policy is issued, or when the insurer
+  declines and gives notice, or at its own expiry.
+- An agent with **binding authority** can bind the insurer on the spot. A
+  broker generally cannot; a broker represents the buyer.
+
+That last point is the one that gets tested: **a binder issued by an agent
+with binding authority creates coverage even if the insurer would later have
+declined the risk.**
+
+## Certificates of insurance
+
+**A certificate of insurance is evidence that a policy exists** — issued to
+somebody who is *not* the insured and who needs proof: a landlord, a general
+contractor, a lender, a client.
+
+It is not a policy and it is not a binder. **It creates no coverage.** It
+summarises coverages, limits and dates as of the day it was issued, and it
+becomes stale the moment anything changes. A certificate holder who wants
+actual rights under the policy needs to be added as an **additional insured**
+by endorsement — a certificate alone does not do it.
+
+## How this is examined
+
+**"Which part of the policy contains X?"** Limits, dates, named insured,
+deductible, mortgagee → declarations. The promise to pay → insuring
+agreement. Duties after a loss, cancellation, appraisal, other insurance →
+conditions. What is not covered → exclusions.
+
+**Binder questions**, testing that it is temporary, may be oral, and binds
+the insurer to the same terms as the policy.
+
+**Certificate questions**, testing that it confers no coverage on the holder.
+
+**Endorsement precedence** — where an endorsement conflicts with the printed
+form, the endorsement governs.
+
+## Check yourself
+
+1. Which part of the policy names the mortgagee?
+2. A policy period reads "1 March 2026 to 1 March 2027". Is a loss at 3 p.m.
+   on 1 March 2027 covered?
+3. An agent with binding authority binds coverage by phone. The insurer's
+   underwriter would have declined the risk. Is there coverage?
+4. A contractor gives a property owner a certificate of insurance. The
+   contractor's policy is cancelled a week later and a loss occurs. Does the
+   owner have coverage under the certificate?
+5. An endorsement says "windstorm excluded"; the printed form lists windstorm
+   as a covered peril. Which governs?
+
+## Answers
+
+1. The **declarations**.
+2. **No.** Coverage ended at 12:01 a.m. on 1 March 2027. The policy period is
+   inclusive of its start and exclusive of anything after its stated end time.
+3. **Yes.** Binding authority is the authority to obligate the insurer;
+   whether the underwriter would have chosen the risk is a matter between
+   agent and insurer.
+4. **No.** A certificate is evidence of coverage as of its issue date and
+   creates none of its own. The owner needed additional insured status.
+5. The **endorsement**.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select '81867de3-86a9-5968-bbae-bc683f8aa8b6', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.III'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select '2da74bbd-1d0b-54d0-8416-3d7bdc7a7cea', 'd6bff6c2-390e-518f-a728-b2a8ee99e87c', c.id, 'Insuring Agreement, Conditions and Exclusions',
+       'insuring-agreement-conditions-and-exclusions', 'The promise, the rules attached to it, and the reasons an insurer says no.', 2,
+       'draft', 16
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select '2da74bbd-1d0b-54d0-8416-3d7bdc7a7cea', c.id, $lesson$# The promise and everything that qualifies it
+
+The declarations tell you whose policy this is. These three parts tell you
+what it does.
+
+## The insuring agreement
+
+**The insuring agreement is the insurer's promise.** It is usually a short
+paragraph, and it is the broadest statement in the contract — everything
+after it narrows.
+
+It answers three questions: what is covered, against what, and on what
+trigger.
+
+### Named peril and open peril
+
+This is the most-tested distinction in property insurance.
+
+**A named peril policy covers only the perils it lists.** If the cause of
+loss is not on the list, there is no coverage. Fire, lightning, windstorm,
+hail, explosion, riot, aircraft, vehicles, smoke, vandalism, theft.
+
+**An open peril policy covers every cause of loss except those excluded.**
+Also called "all risk" or "special form" — though "all risk" is a misleading
+name, because no policy covers everything. The exclusions define it.
+
+**Where the burden of proof sits is the reason this matters.**
+
+- Under a **named peril** form, **the insured** must show the loss was caused
+  by a listed peril.
+- Under an **open peril** form, **the insurer** must show the loss falls
+  within an exclusion.
+
+That shift is worth more to an insured than the list of perils is, and it is
+the answer to "why does an open peril form cost more?"
+
+### Occurrence and claims-made
+
+In liability insurance the insuring agreement also states a **trigger**.
+
+- An **occurrence** policy responds to injury or damage that **happens during
+  the policy period**, no matter when the claim is made. A 2026 policy still
+  answers a claim brought in 2034 for a 2026 injury.
+- A **claims-made** policy responds to claims **first made during the policy
+  period**, subject to a **retroactive date**. Injury before the retroactive
+  date is not covered no matter when the claim arrives.
+
+Claims-made forms need **tail coverage** — an extended reporting period — when
+the policy ends, or claims arriving after expiry have nothing to attach to.
+
+## Conditions
+
+**Conditions are the rules of the contract** — what each side must do, and
+what happens if they do not. They appear as a numbered list, and a great many
+exam questions live here.
+
+The recurring ones:
+
+- **Duties after a loss** — notice, proof of loss, protecting property,
+  cooperating. Covered in its own lesson.
+- **Cancellation and non-renewal** — who may end the policy, how, and with
+  how much notice.
+- **Other insurance** — how this policy shares with another covering the same
+  loss.
+- **Subrogation** — the insurer's right to step into the insured's shoes and
+  pursue whoever caused the loss.
+- **Appraisal** — how a dispute over the *amount* of a loss is resolved.
+- **Assignment** — the policy may not be transferred to somebody else without
+  the insurer's written consent. Insurance is a **personal contract**: the
+  insurer agreed to cover *this* insured, and selling the building does not
+  sell the policy with it.
+- **Abandonment** — property may not be abandoned to the insurer. The insured
+  cannot dump a damaged item on the insurer's doorstep and demand the limit.
+- **Liberalization** — if the insurer broadens the form during the policy
+  period without extra premium, existing insureds get the broader coverage
+  automatically.
+- **Inspection and audit** — the insurer may inspect the property and examine
+  the books, which matters where premium depends on payroll or sales.
+- **Concealment, misrepresentation or fraud** — the policy is void where the
+  insured has concealed or misrepresented a material fact.
+
+**Conditions are promises, and breaking one can cost the claim.** That is the
+practical difference between a condition and an exclusion: an exclusion says
+the loss was never covered; a breached condition says it was, and the insured
+forfeited it.
+
+## Exclusions
+
+**Exclusions remove coverage the insuring agreement would otherwise have
+given.** They are not arbitrary. Each one exists for a reason, and the exam
+asks about the reason as often as the exclusion.
+
+### Why insurers exclude things
+
+- **The loss is not fortuitous.** Wear and tear, deterioration, rust,
+  inherent vice, mechanical breakdown. These are certainties on a long enough
+  timescale, so they are maintenance, not risk.
+- **The loss is catastrophic.** Flood, earthquake, war, nuclear hazard. The
+  law of large numbers fails where one event hits every policy at once.
+- **Coverage belongs in another policy.** Auto exposures are excluded from
+  homeowners; professional liability from the CGL; workers' compensation from
+  employers' general liability. Excluding here is not refusing to insure — it
+  is directing the risk to the form built for it.
+- **The loss is intentional.** No policy covers damage the insured caused on
+  purpose. This is public policy, not underwriting.
+- **The risk needs separate underwriting or pricing.** Business pursuits in a
+  home, high-value jewellery, aircraft. Often the exclusion can be bought back
+  by endorsement.
+
+### Standard exclusions worth recognising
+
+- **Ordinance or law** — the extra cost of rebuilding to a current building
+  code. The code changed; the policy insured the building as it was.
+- **Earth movement** and **water damage** (surface water, flood, sewer
+  backup) — both usually available by endorsement or separate policy.
+- **Wear and tear, latent defect, inherent vice**.
+- **Intentional loss**.
+- **War**, **nuclear hazard**, **governmental action** (seizure, destruction
+  by order).
+- **Neglect** — failing to save property at and after the loss.
+
+### Limitations are not exclusions
+
+A **limitation** caps coverage rather than removing it. A homeowners policy
+covering theft of jewellery up to $1,500 has not excluded jewellery; it has
+limited it. The fix is different too — a limitation is raised by **scheduling
+the property**, an exclusion is removed by **buying it back**.
+
+## How this is examined
+
+**Named peril versus open peril**, and specifically **who must prove what**.
+
+**"Why is this excluded?"** — match the exclusion to its reason:
+non-fortuitous, catastrophic, covered elsewhere, intentional, separately
+underwritten.
+
+**Occurrence versus claims-made**, usually with a date sequence and a
+retroactive date.
+
+**Conditions as forfeiture** — the insured who waits eight months to report,
+or refuses to submit to examination under oath, or assigns the policy without
+consent.
+
+**Ordinance or law**, which reliably catches people, because the rebuilding
+cost feels like part of the fire loss and is not.
+
+## Check yourself
+
+1. A loss is caused by something not listed as a covered peril, under a named
+   peril form. Who has failed to prove what?
+2. An insured sells an insured building and hands the buyer the policy. Is
+   the buyer covered?
+3. A restaurant's walk-in freezer fails from age and the food spoils. Covered
+   under an open peril form? Why or why not?
+4. A claims-made policy has a retroactive date of 1 January 2024. A claim is
+   made in March 2026 for an injury in 2023. Covered?
+5. A fire destroys 60% of a building. The city requires the remainder be
+   demolished and the replacement built to current code, adding $80,000.
+   Which exclusion is in play?
+
+## Answers
+
+1. **The insured** has failed to prove the loss was caused by a covered
+   peril. Under a named peril form that burden is theirs.
+2. **No.** Insurance is a personal contract and the assignment condition
+   requires the insurer's written consent.
+3. **No.** Mechanical breakdown and wear and tear are excluded — the loss is
+   not fortuitous. Equipment breakdown coverage is the form that answers it.
+4. **No.** The injury predates the retroactive date.
+5. **Ordinance or law.** The policy insured the building that existed, not the
+   one the current code requires.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select '2da74bbd-1d0b-54d0-8416-3d7bdc7a7cea', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.III'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select '2c031b02-af62-5980-b6b9-fbeeece995c1', 'd6bff6c2-390e-518f-a728-b2a8ee99e87c', c.id, 'Who Is an Insured',
+       'who-is-an-insured', 'Named insured, first named insured, additional insured, mortgagee — four different things the exam refuses to let you blur.', 3,
+       'draft', 14
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select '2c031b02-af62-5980-b6b9-fbeeece995c1', c.id, $lesson$# Four kinds of people with rights under one policy
+
+"The insured" is not one category. The exam separates them, and each has a
+different set of rights.
+
+## The named insured
+
+**The named insured is the person or entity listed on the declarations.**
+They own the policy. They have the full set of rights: to receive the
+proceeds, to make changes, to cancel, to receive notices, to pay the premium.
+
+Under most personal forms the definition reaches further than the name
+printed. A homeowners policy typically extends "insured" to **residents of
+the household who are relatives**, and to **other residents under 21 in the
+care of an insured**. A student living away from home who is still a resident
+of the household usually stays covered.
+
+A personal auto policy typically extends to the named insured and **spouse if
+a resident of the same household**, to **family members**, and to **anyone
+using a covered auto with permission** — permissive use being the reason
+lending the car lends the insurance with it.
+
+## The first named insured
+
+Where several names appear, **the first one has duties and rights the others
+do not**. The exam tests this directly, especially in commercial lines.
+
+The first named insured:
+
+- **receives cancellation and non-renewal notices** on behalf of all,
+- **is responsible for the premium**,
+- **may cancel the policy**,
+- **may request changes** to it,
+- **receives any return premium**, and
+- **is responsible for premium audits** where the policy is auditable.
+
+So a notice of cancellation sent to the first named insured is effective
+against every insured on the policy.
+
+## Additional insureds
+
+**An additional insured is somebody added to the policy by endorsement who
+gains coverage for their liability arising out of the named insured's work or
+premises.**
+
+Typical: a general contractor added to a subcontractor's CGL; a landlord
+added to a tenant's policy; a lender added to a commercial policy.
+
+Three points:
+
+- **It takes an endorsement.** A certificate of insurance does not create
+  additional insured status, however often somebody treats it as if it does.
+- **The coverage is limited in scope.** The additional insured is covered for
+  liability connected to the named insured's operations — not for everything
+  they do.
+- **They do not own the policy.** They cannot cancel it or change it, and in
+  most forms they are not entitled to notice of cancellation unless the
+  endorsement says so.
+
+## Mortgagee rights
+
+Where property secures a loan, the lender has an **insurable interest** and
+is named on the declarations as **mortgagee** (in auto and personal property,
+the equivalent is a **loss payee**).
+
+**The standard mortgage clause gives the mortgagee rights independent of the
+insured's conduct.** This is the part that gets examined:
+
+- **Loss payment.** Payment for damage to the building is made to the insured
+  and mortgagee **jointly**, as their interests appear.
+- **The mortgagee is protected from the insured's acts.** If the insured
+  commits an act that voids their own coverage — concealment,
+  misrepresentation, an increase in hazard, even arson — **the mortgagee is
+  still paid**, provided the mortgagee had no part in it. This is the
+  distinguishing feature of a *standard* (or union) mortgage clause.
+- **The mortgagee gets its own notice.** The insurer must notify the
+  mortgagee of cancellation or non-renewal, typically with its own notice
+  period, separate from the insured's.
+- **The mortgagee may pay the premium** and submit its own proof of loss if
+  the insured fails to.
+- **The insurer gains subrogation against the insured.** Where the insurer
+  pays the mortgagee on a claim it would have denied to the insured, it
+  receives the mortgagee's rights against the insured to that extent.
+
+Contrast the **open mortgage clause** (or loss payable clause), which merely
+directs payment to the lender and gives it **no rights beyond the insured's**.
+If the insured's coverage is void, so is the lender's. "Standard protects the
+mortgagee from the insured's acts; open does not" is the whole distinction.
+
+## Loss payees and additional interests
+
+A **loss payee** is named to receive payment for damage to specific property
+in which it has an interest — a finance company on a vehicle, a lessor on
+equipment. Payment rights, not the broader protections of a standard mortgage
+clause.
+
+An **additional interest** or **interested party** is merely notified of
+policy changes; it receives no payment rights at all.
+
+## How this is examined
+
+**First named insured duties** — who gets notice, who pays, who can cancel.
+
+**Standard versus open mortgage clause**, nearly always through a fact
+pattern where the insured did something that voids their coverage and the
+question is whether the lender is paid.
+
+**Additional insured versus certificate holder** — the certificate confers
+nothing.
+
+**Permissive use** in auto: the friend who borrows the car is an insured.
+
+**Resident relatives and students away at school** in homeowners.
+
+## Check yourself
+
+1. A commercial policy names three entities. To whom must the insurer send
+   notice of cancellation?
+2. An insured deliberately burns down a mortgaged building. There is a
+   standard mortgage clause. Is the mortgagee paid?
+3. Same facts, but an open loss payable clause. Is the lender paid?
+4. A subcontractor's certificate of insurance names the general contractor as
+   certificate holder. A claim arises from the sub's work. Is the general
+   contractor an insured?
+5. A neighbour borrows the insured's car with permission and causes an
+   accident. Whose policy responds first?
+
+## Answers
+
+1. The **first named insured** — notice to them is effective for all.
+2. **Yes**, provided the mortgagee had no part in the arson. The insurer then
+   acquires the mortgagee's rights against the insured.
+3. **No.** An open clause gives the lender no rights greater than the
+   insured's, and the insured has none.
+4. **No.** Certificate holder status confers no coverage; an additional
+   insured endorsement was needed.
+5. **The car owner's.** Auto liability follows the car, and a permissive user
+   is an insured under the owner's policy.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select '2c031b02-af62-5980-b6b9-fbeeece995c1', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.III'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select '50ab4b8b-d265-58a3-b2b7-3c9c700dc9f8', 'd6bff6c2-390e-518f-a728-b2a8ee99e87c', c.id, 'Duties After a Loss',
+       'duties-after-a-loss', 'What the insured must do, what the insurer must do, and the difference between notice of claim and proof of loss.', 4,
+       'draft', 14
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select '50ab4b8b-d265-58a3-b2b7-3c9c700dc9f8', c.id, $lesson$# The obligations that survive the loss
+
+A covered loss is not the same as a paid claim. Between the two sits a list of
+duties, and failing one can cost the insured the payment.
+
+## The insured's duties
+
+The list is close to identical across property forms:
+
+1. **Give prompt notice** to the insurer or its agent. In theft, also notify
+   the **police**. In credit card forgery, also notify the **card issuer**.
+2. **Protect the property from further damage.** Make reasonable emergency
+   repairs and keep the receipts — reasonable costs of protecting the property
+   are usually payable.
+3. **Prepare an inventory** of damaged personal property, showing quantity,
+   description, cost and the amount of loss claimed.
+4. **Exhibit the damaged property** as often as reasonably required, and allow
+   the insurer to inspect it.
+5. **Submit a signed, sworn proof of loss**, usually within 60 days of the
+   insurer's request.
+6. **Cooperate** — produce records, answer questions, and **submit to
+   examination under oath** if asked, separately from other insureds.
+7. **Do not admit liability or make voluntary payments** (liability forms).
+   Forward every demand, notice and legal paper to the insurer at once.
+
+**Numbers 2 and 7 are the ones candidates get wrong.** Protecting the property
+is a duty, not a courtesy — the "neglect" exclusion removes coverage for
+damage the insured let happen by failing to act. And admitting fault at the
+scene interferes with the insurer's right to defend.
+
+## Notice of claim versus proof of loss
+
+Two different things, tested as though they are one.
+
+| | Notice of claim | Proof of loss |
+| --- | --- | --- |
+| What | Tells the insurer a loss occurred | States the amount and circumstances |
+| Form | Usually may be oral; written is better | **Signed and sworn**, in writing |
+| When | **Promptly** / as soon as practicable | Usually **within 60 days of the insurer's request** |
+| Purpose | Lets the insurer investigate while evidence is fresh | Lets the insurer verify and quantify |
+
+A proof of loss states the time and cause of loss, the interests of everybody
+in the property, other insurance, changes in title or occupancy, and the
+amount claimed.
+
+## The insurer's obligations
+
+The duties run both ways. An insurer must:
+
+- **Investigate** the claim promptly and reasonably.
+- **Defend** the insured against covered liability claims — including suits
+  that are groundless, false or fraudulent. **The duty to defend is broader
+  than the duty to pay**, and defence costs are generally paid *in addition
+  to* the limit of liability.
+- **Pay covered claims** within the time the policy and state law require.
+- **Give notice** of cancellation or non-renewal as required.
+- **Act in good faith.** An insurer that denies a claim without a reasonable
+  basis exposes itself to more than the policy limit.
+
+The duty to defend **ends when the limit of liability is exhausted** by
+payment of judgments or settlements. That is the practical reason a liability
+limit is worth more than it looks.
+
+## Loss settlement and consent to settle
+
+**Loss settlement provisions say how much is paid** — actual cash value,
+replacement cost, or something else. Where a form pays replacement cost, it
+normally pays **actual cash value first** and the **holdback** (the
+depreciation) only once the repair or replacement is actually complete.
+An insured who never rebuilds gets ACV.
+
+**Consent to settle** is a liability provision. Two versions:
+
+- **The insurer may settle at its discretion.** Standard in most commercial
+  and personal liability forms. The insured has no veto, which can be
+  uncomfortable when a settlement implies fault.
+- **Consent to settle required** — the insurer may not settle without the
+  insured's agreement. Usual in professional liability, where a settlement
+  damages a reputation and may be reportable.
+
+Where consent is required, forms often include a **"hammer clause"**: if the
+insured refuses a settlement the insurer recommends, the insurer's liability
+is capped at what the settlement would have cost, and the insured funds
+anything above it.
+
+## Appraisal
+
+Where the insured and insurer agree the loss is covered but disagree on
+**how much**, the **appraisal** condition resolves it.
+
+Either party may demand it. Each selects a competent, independent appraiser;
+the two appraisers select an **umpire**. An agreement between **any two of
+the three** sets the amount. Each party pays its own appraiser and they share
+the umpire's cost equally.
+
+**Appraisal settles amount, not coverage.** A dispute about whether the peril
+is covered is not an appraisal question, and demanding appraisal does not
+waive the insurer's right to deny the claim on coverage grounds.
+
+## How this is examined
+
+**"What must the insured do after a theft?"** — notify the insurer *and* the
+police.
+
+**Notice versus proof of loss**, usually by asking which must be sworn, or
+which has a 60-day clock.
+
+**Voluntary payments** — the insured who pays the claimant out of pocket and
+asks to be reimbursed.
+
+**Duty to defend is broader than the duty to pay**, and defence costs sit
+outside the limit until the limit is exhausted.
+
+**Appraisal**, testing that it decides amount and not coverage, and that two
+of three agreeing is enough.
+
+**Replacement cost holdback** — the insured who takes the ACV cheque and does
+not rebuild.
+
+## Check yourself
+
+1. An insured's car is stolen. What two notifications are required?
+2. A storm breaks a window. The insured leaves it open for three weeks and
+   rain ruins the floor. Is the floor damage covered?
+3. Is a proof of loss required to be in writing?
+4. A policy has a $500,000 limit. A covered suit costs $120,000 to defend and
+   settles for $500,000. What has the insurer paid in total?
+5. The insured says a fire loss is $90,000; the insurer says $60,000. Both
+   agree fire is covered. What provision applies, and who decides?
+6. A homeowner with replacement cost coverage suffers a $40,000 loss on
+   property with an ACV of $28,000, and does not rebuild. What is paid?
+
+## Answers
+
+1. The **insurer** and the **police**.
+2. **No.** The insured breached the duty to protect the property from further
+   damage; the neglect exclusion applies.
+3. **Yes** — it must be written, signed and sworn.
+4. **$620,000.** Defence costs are paid in addition to the limit.
+5. **Appraisal.** Each side appoints an appraiser, the appraisers choose an
+   umpire, and agreement by any two of the three sets the amount.
+6. **$28,000**, the actual cash value. The replacement cost holdback is
+   payable only once the property is actually repaired or replaced.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select '50ab4b8b-d265-58a3-b2b7-3c9c700dc9f8', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.III'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select '89857f27-1358-579a-b69e-dbca1ba1bf2a', 'd6bff6c2-390e-518f-a728-b2a8ee99e87c', c.id, 'Cancellation and Non-renewal',
+       'cancellation-and-nonrenewal', 'Who may end a policy, how much warning is owed, and how the return premium is worked out.', 5,
+       'draft', 13
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select '89857f27-1358-579a-b69e-dbca1ba1bf2a', c.id, $lesson$# Ending a policy early, and letting one run out
+
+Two different events, with two different sets of rules. The exam checks that
+you know which is which.
+
+- **Cancellation** ends a policy **before** its expiry date.
+- **Non-renewal** lets a policy **reach** its expiry date and decline to offer
+  another term.
+
+## Cancellation by the insured
+
+**The insured may cancel at any time, for any reason.** Notice to the insurer
+is all that is required; no waiting period applies to the insured.
+
+Where several names appear, only the **first named insured** may cancel.
+
+## Cancellation by the insurer
+
+The insurer's freedom is much narrower, and narrows further the longer the
+policy has been in force.
+
+**During the first 60 days** — often called the underwriting or "new business"
+window — an insurer may generally cancel for **any lawful reason**, because it
+is still deciding whether it wanted the risk. Notice is still required.
+
+**After that window**, most forms and most states restrict the insurer to a
+short list of reasons:
+
+- **Non-payment of premium.**
+- **Material misrepresentation or fraud** in obtaining the policy or in
+  presenting a claim.
+- **A substantial change in the risk** that increases the hazard.
+- **Loss of reinsurance** or a similar regulatory ground.
+- **Violation of the policy's terms or of insurance law.**
+
+### Notice periods
+
+The general pattern, which a specific state's law may vary:
+
+- **Non-payment of premium** — a short notice, commonly **10 days**.
+- **Any other reason** — a longer notice, commonly **30 days**.
+- **Non-renewal** — commonly **30 days** before expiry.
+- **The mortgagee** gets its own notice, on its own clock.
+
+> **Texas sets its own numbers.** Chapter 551 of the Texas Insurance Code
+> governs declination, cancellation and non-renewal in Texas, and its periods
+> and permitted reasons are what a Texas exam question is testing. Learn the
+> general pattern here; learn the Texas figures in the Texas statutes module.
+
+Notice must be **in writing**, sent to the first named insured at the address
+shown on the declarations. Mailing is generally sufficient — proof of mailing
+is proof of notice, and the insurer does not have to show the insured read it.
+
+## Return premium: flat, pro rata and short rate
+
+When a policy ends early, unearned premium comes back. **How much depends on
+who cancelled.**
+
+**Flat cancellation** — the policy is cancelled **before it takes effect** or
+before any premium is earned. **The entire premium is returned.**
+
+**Pro rata** — the insured is charged only for the exact time the policy was in
+force. **Used when the insurer cancels**, because the insured did not choose
+to end it and should not be penalised.
+
+> Earned premium = annual premium × (days in force ÷ days in the policy term)
+
+**Short rate** — the insured is charged for the time in force **plus a penalty**
+for the insurer's unrecovered expenses. **Used when the insured cancels.**
+The return is less than pro rata.
+
+The rule to hold: **insurer cancels → pro rata; insured cancels → short rate.**
+The party who caused the early ending bears the cost of it.
+
+### Worked example
+
+An annual policy costs **$1,200** and is cancelled after **90 days** of a
+365-day term.
+
+- **Pro rata** (insurer cancelled): earned = $1,200 × 90/365 = **$295.89**.
+  Return = **$904.11**.
+- **Short rate** (insured cancelled): earned is the pro rata figure *plus* a
+  penalty from the insurer's short-rate table, so the return is **less than
+  $904.11**.
+
+You are unlikely to be asked to compute a short-rate penalty — the table is
+the insurer's. You are very likely to be asked **which method applies**.
+
+## Non-renewal
+
+Non-renewal is not a judgement on the insured in the way cancellation is. The
+policy ran its course; the insurer is declining to offer another.
+
+- **Notice is required** — commonly 30 days before expiry — and must be in
+  writing.
+- **No notice generally means the policy renews**, which is the practical
+  reason insurers take the deadline seriously.
+- Many states require the insurer to **state the reason** on request.
+- A change in terms at renewal — a higher deductible, a new exclusion — often
+  triggers the same notice requirement as a non-renewal, because the insured
+  needs time to shop.
+
+## Related terms
+
+**Declination** is a refusal to issue in the first place. No policy ever
+existed, so cancellation rules do not apply — but the statutes that regulate
+declination often do.
+
+**Rescission** treats the policy as though it never existed, usually for
+material misrepresentation, and returns the premium. It is not cancellation:
+cancellation ends coverage going forward, rescission unwinds it from the
+start.
+
+**Lapse** is the ending of a policy for non-payment without further action.
+
+## How this is examined
+
+**Pro rata versus short rate** — nearly always by asking who cancelled.
+
+**Notice periods**, most often 10 days for non-payment and 30 for other
+reasons.
+
+**Permitted reasons after the underwriting window** — a question offering
+"the insurer no longer likes the risk" as a reason to cancel a three-year-old
+policy is testing whether you know that is not one.
+
+**Cancellation versus non-renewal versus declination.**
+
+**Who may cancel** where several insureds are named.
+
+## Check yourself
+
+1. An insurer cancels a policy at the 200-day mark of an annual term. Pro
+   rata or short rate?
+2. A policy has been in force four years. The insurer wants to cancel because
+   the underwriter has re-evaluated the class of business. Permitted?
+3. An insured cancels an $1,800 annual policy after six months. Will the
+   return premium be more or less than $900?
+4. The insurer decides not to renew but sends no notice. What is the usual
+   consequence?
+5. A policy is cancelled the day before its effective date. What is returned?
+
+## Answers
+
+1. **Pro rata.** The insurer cancelled.
+2. **No.** After the underwriting window the insurer is limited to the
+   permitted grounds; second thoughts about the class is not one.
+3. **Less than $900.** The insured cancelled, so short rate applies and a
+   penalty is deducted from the pro rata return.
+4. **The policy renews.** Failing to give notice within the required period
+   obliges the insurer to offer another term.
+5. **The entire premium** — a flat cancellation.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select '89857f27-1358-579a-b69e-dbca1ba1bf2a', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.VI'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select '52333f53-7203-52c7-90e1-39181aad19a7', 'd6bff6c2-390e-518f-a728-b2a8ee99e87c', c.id, 'Other Insurance, Subrogation and Supplementary Payments',
+       'other-insurance-subrogation-and-supplementary-payments', 'How two policies covering one loss divide it, how the insurer recovers from whoever caused it, and what a liability policy pays on top of the limit.', 6,
+       'draft', 15
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select '52333f53-7203-52c7-90e1-39181aad19a7', c.id, $lesson$# Three conditions that all protect the same principle
+
+Indemnity says an insured is restored, not enriched. Two of these conditions
+enforce it. The third is the exception that proves the rule.
+
+## Other insurance
+
+**When more than one policy covers the same loss, the insured still collects
+only once.** The other insurance condition decides how the insurers divide
+it.
+
+### Pro rata
+
+**Each insurer pays the share its limit bears to the total of all limits.**
+The standard method for property insurance.
+
+> Insurer's share = (its limit ÷ total of all limits) × the loss
+
+Two policies, $300,000 and $100,000, covering a $40,000 loss:
+
+- Total limits = $400,000
+- The $300,000 policy pays 300/400 × $40,000 = **$30,000**
+- The $100,000 policy pays 100/400 × $40,000 = **$10,000**
+
+The insured collects **$40,000** — the loss, not $80,000.
+
+### Contribution by equal shares
+
+**Each insurer pays equal amounts until the loss is paid or its limit is
+exhausted**, after which the rest continue. Common in liability insurance.
+
+A $90,000 loss against limits of $100,000 and $50,000: each pays $45,000.
+Had the loss been $120,000, the smaller policy would stop at $50,000 and the
+larger would pay $70,000.
+
+### Primary and excess
+
+**One policy pays first and the other only after the first is exhausted.**
+Not sharing — a queue.
+
+The exam's standard illustrations:
+
+- **Auto liability follows the car.** The owner's policy is **primary**; the
+  driver's own policy is **excess**.
+- A **homeowners** policy is primary for premises liability; a **personal
+  umbrella** sits excess above it.
+- **Non-owned** auto coverage in a business auto policy is typically excess
+  over the vehicle owner's insurance.
+
+### Excess and escape clauses
+
+An **excess clause** says this policy pays only above other collectible
+insurance. An **escape clause** says it pays nothing at all where other
+insurance exists. Where two policies both claim to be excess, courts usually
+make them share; where an escape clause would leave the insured with nothing,
+it is often disregarded.
+
+## Subrogation
+
+**Subrogation is the insurer's right, after paying a claim, to step into the
+insured's position and pursue whoever caused the loss.**
+
+Three reasons it exists, all worth knowing:
+
+1. **It preserves indemnity.** Without it, an insured could collect from the
+   insurer and then sue the wrongdoer and end up ahead.
+2. **It puts the cost on the party at fault**, not on the insurer's pool of
+   policyholders.
+3. **It holds premiums down**, since recoveries return to the pool.
+
+### The rules
+
+- **The insurer's rights are no better than the insured's.** If the insured
+  had no claim against the third party, neither has the insurer.
+- **The insured must not prejudice the right.** Signing a waiver of recovery
+  *after* a loss can void coverage. Signing one *before* a loss — a hold
+  harmless in a lease or construction contract — is usually permitted, and
+  the exam likes this before-and-after distinction.
+- **The insured must cooperate** in the recovery action.
+- **Recovery order.** The insured is generally made whole first: money
+  recovered goes to the insured's uninsured loss (including the deductible)
+  before the insurer recoups.
+- **No subrogation against your own insured.** An insurer cannot subrogate
+  against a party insured under the same policy.
+
+Subrogation applies to **property and liability** insurance, which are
+contracts of indemnity. It does **not** apply to life insurance or to most
+personal accident coverage, which are valued contracts — there is no
+"wrongdoer to recover from" in the indemnity sense, and no over-recovery to
+prevent.
+
+## Supplementary payments
+
+**Supplementary payments are amounts a liability policy pays in addition to
+its limit of liability.** This is the exception to indemnity's tidiness: the
+insurer pays these because defending the claim is in its own interest.
+
+The list is stable across liability forms:
+
+- **Defence costs** — attorney's fees and the expense of investigating and
+  defending, including claims the insurer believes to be groundless.
+- **The cost of bonds to release attachments**, up to the policy limit.
+- **The premium on appeal bonds** — the insurer pays the premium, not the
+  face amount of the bond.
+- **The premium on bail bonds** arising from a covered accident, subject to a
+  stated maximum (commonly $250 in auto forms).
+- **Reasonable expenses incurred by the insured at the insurer's request**,
+  including lost earnings up to a stated daily amount (commonly $250).
+- **Post-judgment interest** on the entire judgment, and **pre-judgment
+  interest** where awarded.
+- **Court costs** taxed against the insured.
+
+Two things to keep straight:
+
+- **The insurer pays the premium for a bond, not the bond itself.** A
+  question offering "the insurer posts a $100,000 appeal bond" is testing
+  exactly this.
+- **Supplementary payments stop when the limit is exhausted.** Once the
+  insurer has paid its limit in judgments or settlements, the duty to defend
+  ends and so do these.
+
+## How this is examined
+
+**Pro rata calculations** with two limits and one loss — the arithmetic is
+easy; the trap is answering with the total of both payments as though the
+insured collected twice.
+
+**Primary versus excess in auto**, through the borrowed-car fact pattern.
+
+**Waiver of subrogation before versus after a loss.**
+
+**Defence costs outside the limit**, and the moment they stop.
+
+**Bond premium versus bond amount** in supplementary payments.
+
+## Check yourself
+
+1. A $60,000 loss is covered by policies with limits of $200,000 and
+   $100,000, both pro rata. What does each pay, and what does the insured
+   receive?
+2. After a fire caused by a contractor's negligence, the insured signs a
+   release of the contractor and then claims on the policy. What is the
+   likely result?
+3. A friend borrows the insured's car and causes an accident. Which policy is
+   primary?
+4. A liability policy has a $300,000 limit. The insurer spends $75,000
+   defending a suit that settles for $300,000. What is the total outlay, and
+   what happens to a second suit arriving the next week?
+5. An insurer pays a $10,000 claim on which the insured bore a $1,000
+   deductible, then recovers $6,000 from the party at fault. Who gets what?
+
+## Answers
+
+1. The $200,000 policy pays 200/300 × $60,000 = **$40,000**; the $100,000
+   policy pays **$20,000**. The insured receives **$60,000** — the loss.
+2. Coverage is likely **void** for that loss. The insured destroyed the
+   insurer's subrogation right after the loss occurred.
+3. **The car owner's policy** is primary; the driver's own policy is excess.
+4. **$375,000** — defence costs are in addition to the limit. The limit is
+   now exhausted, so the insurer has **no duty to defend** the second suit.
+5. The insured is generally made whole first, so the **$1,000 deductible**
+   comes back to the insured and the insurer keeps **$5,000**.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select '52333f53-7203-52c7-90e1-39181aad19a7', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.VI'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select 'a90c9574-8282-5029-ad55-ef10beb16b2c', 'd6bff6c2-390e-518f-a728-b2a8ee99e87c', c.id, 'Elements of a Contract',
+       'elements-of-a-contract', 'The four things every contract needs, and the six ways an insurance contract is unlike most others.', 7,
+       'draft', 14
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select 'a90c9574-8282-5029-ad55-ef10beb16b2c', c.id, $lesson$# Why a policy is a contract, and what kind
+
+An insurance policy is a legally enforceable agreement. The exam asks two
+separate questions about that: what makes it enforceable at all, and what
+makes it a peculiar sort of contract.
+
+## The four elements
+
+Every contract, insurance or otherwise, requires all four. Miss one and there
+is no contract.
+
+### 1. Offer and acceptance — "agreement"
+
+One party proposes terms; the other accepts them.
+
+**In insurance, the applicant makes the offer.** This catches people out,
+because it feels as though the insurer, with its brochures and rate tables,
+is the one offering. It is not. The applicant offers by submitting a
+completed application **with the initial premium**; the insurer accepts by
+**issuing the policy** — or by **binding coverage**, where the agent has
+binding authority.
+
+A **counter-offer** is a rejection of the original offer plus a new one. If
+the insurer issues a policy on terms different from those applied for — a
+higher premium, an added exclusion — it has made a counter-offer, and the
+applicant is free to decline.
+
+### 2. Consideration
+
+**Each side must give up something of value.**
+
+- **The insured's consideration** is the premium *and* the statements made in
+  the application.
+- **The insurer's consideration** is the promise to pay covered losses.
+
+Note that the insurer's consideration is a *promise*, not money. It is the
+promise that makes the contract binding, which is why an insurer that never
+has a claim has still given full consideration.
+
+### 3. Competent parties
+
+**Both parties must be legally capable of contracting.** Generally this
+excludes minors, persons legally declared incompetent, and those under the
+influence of drugs or alcohol at the time of contracting. The insurer must
+also be competent — that is, **licensed and authorised** to transact
+insurance in the state.
+
+### 4. Legal purpose
+
+**The contract must not be for an illegal purpose or contrary to public
+policy.** Insuring a smuggling operation, or insuring property in which you
+have no insurable interest so that you profit from its destruction, fails
+here. **Insurable interest is the legal purpose requirement doing its work**
+in insurance — without it, the contract is a wager.
+
+Some texts add a fifth, **legal form**, meaning the policy must meet the
+form requirements the state imposes. Where a question offers four elements,
+they are the four above.
+
+## The distinguishing characteristics
+
+An insurance contract has six features that mark it out. These are reliably
+examined, usually by giving a definition and asking for the word.
+
+**Adhesion.** One party writes it; the other takes it or leaves it. The
+insured does not negotiate clause by clause.
+
+> **The consequence is the rule you must know: ambiguity is construed against
+> the drafter.** Where a policy term can reasonably be read two ways, the
+> reading favourable to the insured wins — because the insurer chose the
+> words. This principle, *contra proferentem*, is the single most useful
+> thing to take from this lesson.
+
+**Aleatory.** The exchange of value is **unequal and depends on chance**. An
+insured pays $1,200 and may collect nothing, or may collect $400,000. A
+non-aleatory contract — buying a car — exchanges roughly equal value both
+ways.
+
+**Unilateral.** **Only one party makes a legally enforceable promise.** Once
+the premium is paid, the insured has promised nothing further; the insurer
+alone is bound to perform. The insured who stops paying is not sued for
+breach — the policy simply lapses.
+
+**Conditional.** **Performance depends on conditions being met.** The insurer
+pays only if a covered loss occurs and the insured has met their duties —
+notice, proof of loss, cooperation.
+
+**Personal.** **The contract is with a person, not a thing.** It follows the
+insured, not the property, which is why it may not be assigned without the
+insurer's consent. Selling the building does not sell the policy.
+
+**Utmost good faith** (*uberrimae fidei*). **Both parties rely on the other's
+honesty to a degree ordinary commerce does not require.** The insurer cannot
+inspect every fact about the risk, so it relies on the applicant's disclosure;
+the insured relies on the insurer's promise to pay a claim years away. This is
+the principle beneath representations, warranties and concealment.
+
+A useful check: **A**dhesion, **A**leatory, **U**nilateral, **C**onditional,
+**P**ersonal, **U**tmost good faith.
+
+## Agency: why the agent's knowledge is the insurer's
+
+An agent represents the **insurer**. A broker represents the **insured**.
+That difference decides who is bound by what.
+
+An agent's authority comes in three forms:
+
+- **Express** — what the agency agreement actually says: solicit, bind, issue
+  certain policies, collect premiums.
+- **Implied** — what is reasonably necessary to carry out the express
+  authority, though unstated. Renting an office, advertising.
+- **Apparent** (ostensible) — what a reasonable member of the public would
+  believe the agent has, from the insurer's own conduct. An agent still
+  holding the insurer's signs, forms and rate manuals after termination can
+  bind the insurer to a third party who reasonably relies on them.
+
+Two doctrines follow, and they are examined often:
+
+**Waiver** — the **voluntary surrender of a known right**. An insurer that
+accepts a late premium without objection has waived the timeliness of
+payment for that occasion.
+
+**Estoppel** — a party is **barred from asserting a right** because their own
+earlier conduct led the other to rely on the opposite, to their detriment. An
+adjuster who tells the insured not to bother with a formal proof of loss
+estops the insurer from later denying the claim for want of one.
+
+**Knowledge of the agent is knowledge of the insurer.** Where an applicant
+tells the agent something material and the agent omits it from the
+application, the insurer is generally held to have known it.
+
+## How this is examined
+
+**"Who makes the offer?"** The applicant.
+
+**"What is the insured's consideration?"** The premium *and* the statements in
+the application.
+
+**Matching definitions to the six characteristics**, most often aleatory,
+unilateral and adhesion.
+
+**"Ambiguity is resolved in favour of whom, and why?"** The insured, because
+the policy is a contract of adhesion.
+
+**Apparent authority** through a terminated-agent fact pattern.
+
+**Waiver versus estoppel** — voluntarily giving up a right versus being
+barred from asserting one.
+
+## Check yourself
+
+1. An applicant submits a completed application with the first premium. Who
+   has made the offer, and how does the other party accept?
+2. A policy term is capable of two reasonable readings. Which is applied?
+3. Which characteristic explains why a policy cannot be assigned to the buyer
+   of the insured building?
+4. An insured stops paying premium. Can the insurer sue for breach of
+   contract? Why or why not?
+5. An adjuster tells an insured "don't worry about the proof of loss, we have
+   what we need". The insurer later denies the claim for lack of a proof of
+   loss. What doctrine applies?
+6. An applicant tells the agent about a prior fire loss; the agent leaves it
+   off the application. Is the insurer deemed to know?
+
+## Answers
+
+1. **The applicant** made the offer. The insurer accepts by **issuing the
+   policy**, or by **binding** coverage through an agent with binding
+   authority.
+2. The reading **favourable to the insured** — the contract is one of
+   adhesion and ambiguity is construed against the drafter.
+3. **Personal.** The contract is with the insured, not the property.
+4. **No.** The contract is **unilateral**: only the insurer made an
+   enforceable promise. The policy lapses instead.
+5. **Estoppel.** The insurer's own conduct induced the insured's reliance.
+6. **Yes.** Knowledge of the agent is imputed to the insurer.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select 'a90c9574-8282-5029-ad55-ef10beb16b2c', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.III'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select 'b31412b7-f995-5d58-b589-adb0290d6c73', 'd6bff6c2-390e-518f-a728-b2a8ee99e87c', c.id, 'Representations, Warranties and Concealment',
+       'representations-warranties-and-concealment', 'Four ways an insured can say something wrong, and only some of them cost the policy.', 8,
+       'draft', 13
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select 'b31412b7-f995-5d58-b589-adb0290d6c73', c.id, $lesson$# Saying, not saying, and promising
+
+Utmost good faith is the principle. These four terms are how it is enforced,
+and the exam separates them carefully.
+
+## Representations
+
+**A representation is a statement believed to be true when made.**
+
+Nearly every answer on an application is a representation. The standard is
+honesty and reasonable belief, not certainty — an applicant who says the roof
+is twelve years old and honestly believes it, when it is fourteen, has made a
+representation that turned out inaccurate, not a lie.
+
+**A misrepresentation is a false representation.** On its own it is not
+enough to void a policy. Two more things are needed:
+
+- **It must be material** — significant enough that the insurer would have
+  declined the risk, charged more, or issued different terms had it known the
+  truth. An error in a middle initial is not material. An undisclosed prior
+  arson conviction is.
+- **The insurer must have relied on it** in deciding to issue.
+
+**Material misrepresentation makes a policy voidable at the insurer's
+option**, not automatically void. The insurer may rescind, usually returning
+the premium — or may choose to continue the policy.
+
+## Warranties
+
+**A warranty is a statement guaranteed to be true.** It is a promise, not a
+belief, and it becomes part of the contract.
+
+The standard is absolute. A warranty that turns out untrue is a **breach of
+contract**, and the insurer may void the policy — at least in strict theory —
+**without showing materiality**.
+
+Two kinds:
+
+- **Affirmative warranty** — a statement of fact **at the time the policy is
+  issued**. "A functioning sprinkler system is installed."
+- **Promissory** (continuing) **warranty** — a promise that something **will
+  remain true throughout the policy period**. "The sprinkler system will be
+  maintained in working order."
+
+> **In practice, most states have softened this.** Because the consequences
+> of a strict warranty are so harsh, statute in many states treats an
+> applicant's statements as representations rather than warranties unless the
+> policy says otherwise, and requires materiality before a policy can be
+> avoided. Texas's own rules on this sit in the Texas statutes module; learn
+> the general doctrine here and the state's modification there.
+
+**Warranties are more common in commercial lines than personal lines**, where
+the insurer is relying on the insured to maintain a specific protective
+feature that was priced into the premium.
+
+## Concealment
+
+**Concealment is the deliberate withholding of a material fact the applicant
+knew and was obliged to disclose.**
+
+The distinction from misrepresentation is that concealment is **silence**
+rather than a false statement. The elements:
+
+- The fact was **material**;
+- the applicant **knew** it; and
+- the withholding was **intentional**.
+
+That last element is why concealment is harder to prove than
+misrepresentation and, when proved, treated more seriously. **Material
+concealment makes the policy voidable.**
+
+The boundary the exam probes: **an applicant need not volunteer everything,
+but must answer asked questions honestly and must not hide a known material
+fact.** Failing to mention a hobby nobody asked about is generally not
+concealment. Failing to mention that the building has been condemned is.
+
+## Fraud
+
+**Fraud is an intentional deception to induce another to part with something
+of value.** It requires a knowingly false statement of material fact, made
+with intent to deceive, relied upon, causing loss.
+
+Fraud is the most serious of the four and the only one that is also a
+**crime**. It reaches beyond the application: **claim fraud** — inflating a
+loss, claiming property never owned, staging an accident — is fraud whether
+or not the original application was honest.
+
+**Fraud makes the policy void**, and it is the one ground on which most
+policies remain avoidable no matter how long they have been in force.
+
+## Putting the four side by side
+
+| | What it is | Requires intent? | Effect |
+| --- | --- | --- | --- |
+| **Representation** | A statement believed true | No | None, if honest |
+| **Misrepresentation** | A false representation | No | Voidable **if material and relied on** |
+| **Warranty** | A statement guaranteed true | No | Breach — voidable, in strict theory without materiality |
+| **Concealment** | Silence about a known material fact | **Yes** | Voidable |
+| **Fraud** | Intentional deception for gain | **Yes** | **Void**; also a crime |
+
+Two sentences to carry:
+
+- **Representation = believed true. Warranty = guaranteed true.**
+- **Misrepresentation = saying something false. Concealment = not saying
+  something true.**
+
+## Incontestability, and why property insurance is different
+
+Life and health policies carry an **incontestable clause**: after a stated
+period, usually two years, the insurer may no longer contest the policy for
+misstatements on the application.
+
+**Property and casualty policies generally have no such clause.** They are
+short-term contracts, renewed and re-underwritten each period, so the
+insurer's remedy for a misstatement does not need a deadline. Where a
+question offers "incontestability" as an answer to a P&C fact pattern, that
+is usually the distractor.
+
+## How this is examined
+
+**Representation versus warranty**, by the believed/guaranteed distinction.
+
+**Misrepresentation versus concealment**, by whether the insured spoke or
+stayed silent.
+
+**"Is this material?"** — would the insurer have acted differently had it
+known?
+
+**Void versus voidable.** Fraud voids. Material misrepresentation and
+concealment make the policy voidable *at the insurer's option*, which means
+the insurer may also choose to keep it in force.
+
+**Claim fraud** as distinct from application fraud.
+
+## Check yourself
+
+1. An applicant states the building's roof was replaced in 2019. It was 2017.
+   They genuinely misremembered. What is this, and what is the consequence?
+2. An applicant knows the property has an open code violation and says
+   nothing. No question was asked about it. What is this?
+3. A commercial policy is issued on a warranty that a burglar alarm will be
+   maintained. The insured disconnects it and a fire — unrelated to the alarm
+   — destroys the building. On strict warranty doctrine, what may the insurer
+   do?
+4. An insured inflates a genuine $8,000 theft claim to $20,000. Which of the
+   four is this?
+5. Is a property policy subject to an incontestable clause?
+
+## Answers
+
+1. A **misrepresentation**. Whether the insurer may avoid the policy depends
+   on whether the two-year difference was **material** and relied on — on
+   these facts, probably not.
+2. **Concealment** — a known material fact intentionally withheld.
+3. Strictly, **void the policy for breach of warranty**, without needing to
+   show the breach caused the loss. Many states have modified this by statute
+   to require materiality or a causal connection.
+4. **Fraud** — specifically claim fraud, and a crime as well as a ground to
+   void.
+5. **No.** Incontestability is a life and health provision; P&C policies are
+   re-underwritten each term.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select 'b31412b7-f995-5d58-b589-adb0290d6c73', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.III'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select 'ef483d9c-5d98-5706-a47a-44f107b8b92b', 'd6bff6c2-390e-518f-a728-b2a8ee99e87c', c.id, 'Underwriting Information, the FCRA and Privacy',
+       'underwriting-information-fcra-and-privacy', 'Where an underwriter''s information comes from, and the two federal laws that govern how it is used.', 9,
+       'draft', 13
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select 'ef483d9c-5d98-5706-a47a-44f107b8b92b', c.id, $lesson$# What the underwriter knows, and the rules on knowing it
+
+Underwriting is the selection and pricing of risk. It runs on information,
+and the collection of that information is regulated.
+
+## Sources of underwriting information
+
+**The application.** The primary source, and the one the insured controls.
+Answers are representations.
+
+**The agent's report.** The producer's own observations and recommendation,
+submitted alongside the application. The agent has seen the property and the
+applicant; the underwriter has not.
+
+**Inspection reports.** A physical inspection of the property — construction,
+occupancy, protection, exposure. Standard on commercial risks and on
+higher-value dwellings.
+
+**Consumer reports and investigative consumer reports.** Purchased from a
+consumer reporting agency. The distinction between the two matters and is
+covered below.
+
+**Loss history databases.** Industry-wide claim databases let an underwriter
+see prior claims on the applicant and, in property, on the **address**, which
+is why a claim made by a previous owner can affect a new buyer's premium.
+
+**Motor vehicle records.** Driving history from the state, in auto
+underwriting.
+
+**Credit-based insurance scores**, where state law permits their use.
+
+**Financial statements and payroll or sales records**, in commercial lines,
+both for underwriting and for the premium audit.
+
+**Claim files and the insurer's own experience** with the applicant.
+
+## The Fair Credit Reporting Act
+
+**The FCRA governs the collection and use of consumer report information**,
+including its use in insurance underwriting. Its purpose is accuracy and
+fairness, and it gives the consumer rights against both the insurer and the
+reporting agency.
+
+### The two kinds of report
+
+**A consumer report** contains information on creditworthiness, credit
+standing, character, general reputation or mode of living, drawn from records
+and databases.
+
+**An investigative consumer report** obtains that information through
+**personal interviews** — with neighbours, friends, associates, employers.
+
+The extra step brings an extra duty: **where an investigative consumer report
+may be ordered, the applicant must be told in writing, generally within three
+days of the request**, and told that they may ask for a complete disclosure of
+its nature and scope.
+
+### Adverse action
+
+**If an insurer declines, cancels, non-renews or charges more because of
+information in a consumer report, that is an adverse action**, and the
+insurer must:
+
+- **notify the applicant** that the adverse action was taken,
+- **identify the consumer reporting agency** that supplied the report,
+  including its name, address and telephone number, and
+- **state that the agency did not make the decision** and cannot explain it.
+
+The consumer may then obtain a **free copy** of the report from the agency
+and **dispute anything inaccurate**. The agency must **reinvestigate**,
+generally within 30 days, and correct or delete what it cannot verify. If the
+consumer still disagrees, they may file a **statement of dispute** that
+accompanies the file.
+
+Most adverse information may be reported for **seven years**; a bankruptcy for
+**ten**.
+
+The rule to carry: **the insurer must tell the applicant where the
+information came from, and the agency — not the insurer — must fix it.**
+
+## Privacy: the Gramm-Leach-Bliley Act
+
+**GLBA governs how financial institutions, insurers included, handle
+non-public personal information.** Where the FCRA is about accuracy, GLBA is
+about disclosure and sharing.
+
+Three obligations:
+
+**The privacy notice.** The insurer must give a clear notice of its privacy
+practices **at the time the relationship is established** and **annually**
+thereafter. It must say what is collected, what is disclosed and to whom.
+
+**The opt-out.** Before disclosing non-public personal information to a
+**non-affiliated third party**, the insurer must give the consumer a
+reasonable opportunity to **opt out**. Note the shape of it: **opt-out, not
+opt-in** — sharing is permitted unless the consumer objects.
+
+Exceptions where no opt-out applies: disclosures necessary to service the
+account, process a transaction, or comply with law — including reporting to
+regulators and to claim databases.
+
+**The safeguards rule.** The insurer must maintain administrative, technical
+and physical safeguards protecting the security and confidentiality of
+customer information.
+
+GLBA also addresses **pretexting** — obtaining someone's financial
+information under false pretences — which it prohibits.
+
+### The two distinctions to hold
+
+| | FCRA | GLBA |
+| --- | --- | --- |
+| Concerned with | **Accuracy** of consumer reports and fairness in their use | **Privacy** of non-public personal information |
+| Trigger | Adverse action based on a report | Establishing and maintaining the relationship |
+| Consumer's tool | Free copy, dispute, reinvestigation | Privacy notice and opt-out |
+
+## Other privacy rules worth recognising
+
+**HIPAA** governs protected health information, which reaches P&C where
+medical records are obtained on an injury claim.
+
+**The Do Not Call registry and CAN-SPAM** govern solicitation by telephone
+and email.
+
+**Terrorism and sanctions screening** obliges insurers to check parties
+against government lists before transacting.
+
+## How this is examined
+
+**Consumer report versus investigative consumer report** — the personal
+interview is the whole distinction.
+
+**Adverse action duties** — what the insurer must disclose and to whom the
+consumer complains.
+
+**Who corrects an inaccurate report?** The consumer reporting agency, not the
+insurer.
+
+**Opt-out versus opt-in** under GLBA.
+
+**Matching the law to the purpose** — FCRA for accuracy, GLBA for privacy.
+
+## Check yourself
+
+1. An underwriter orders a report that will involve interviewing the
+   applicant's neighbours. What kind of report is it, and what must the
+   applicant be told?
+2. An insurer charges a higher premium because of a credit-based insurance
+   score. What must it tell the applicant?
+3. The applicant believes the report contains an error. Whom do they contact,
+   and what must that party do?
+4. An insurer wishes to share customer information with an unaffiliated
+   marketing company. What must it do first?
+5. How long may most adverse information remain on a consumer report?
+
+## Answers
+
+1. An **investigative consumer report**. The applicant must be told **in
+   writing, generally within three days** of the request, and told they may
+   request disclosure of its nature and scope.
+2. That an **adverse action** was taken based on a consumer report; the
+   **name, address and telephone number** of the reporting agency; and that
+   the agency did not make the decision and cannot explain it.
+3. The **consumer reporting agency**, which must **reinvestigate** (generally
+   within 30 days) and correct or delete information it cannot verify.
+4. Provide a **privacy notice** and a reasonable **opportunity to opt out**.
+5. **Seven years**; ten for a bankruptcy.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select 'ef483d9c-5d98-5706-a47a-44f107b8b92b', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.III'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select '65f6bec4-114d-558c-9035-89adbd274ada', 'd6bff6c2-390e-518f-a728-b2a8ee99e87c', c.id, 'Territory and the Terrorism Risk Insurance Act',
+       'territory-and-the-terrorism-risk-insurance-act', 'Where a policy works geographically, and the federal backstop that made terrorism insurable again.', 10,
+       'draft', 11
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select '65f6bec4-114d-558c-9035-89adbd274ada', c.id, $lesson$# Two provisions about where and what
+
+Both are small, both appear in the blueprint twice — once under policy
+provisions and contract law, once under casualty policy provisions — and both
+are easy marks if you have read them once.
+
+## Territory
+
+**The territory (or policy territory) provision states where coverage
+applies.** A policy is not worldwide unless it says so.
+
+The usual definition in general liability and auto forms covers:
+
+- **The United States**, including its territories and possessions;
+- **Puerto Rico**; and
+- **Canada**.
+
+That is the core. Forms then extend it in two ways:
+
+- **International waters or airspace**, but only in transit between places in
+  the territory above.
+- **Anywhere in the world** for a narrow set of exposures — typically
+  **products** manufactured or sold in the territory that cause injury
+  elsewhere, and the **independent activities of a person temporarily
+  outside** the territory on the insured's business — **provided the suit is
+  brought within the territory**.
+
+That proviso is the examined point. **A worldwide extension usually still
+requires that the lawsuit be brought in the United States (or Canada).** A
+product made in Texas that injures somebody in Germany is covered if the suit
+is filed in a US court; a German judgment obtained in a German court
+generally is not.
+
+Property forms take a different approach: **coverage attaches to described
+premises**, and property away from the premises is covered only by specific
+extensions or by an inland marine form, which is where property genuinely in
+transit belongs.
+
+In **personal auto**, the territory is the United States, its territories and
+possessions, Puerto Rico and Canada. **Mexico is not included** — a driver
+going to Mexico needs a Mexican policy from a Mexican insurer, because Mexico
+does not recognise foreign auto insurance. This is a favourite question.
+
+## The Terrorism Risk Insurance Act
+
+### Why it exists
+
+Before September 2001, terrorism was not excluded from most commercial
+property and liability policies — it was simply not thought about, and was
+covered by silence. The losses that followed made insurers move to exclude
+it, and reinsurers to withdraw. Commercial property development stalled where
+lenders required terrorism coverage that no longer existed.
+
+**TRIA, enacted in 2002 and extended several times since, is a federal
+backstop: the government shares in insured losses from certified acts of
+terrorism, so that private insurers can afford to offer the coverage.**
+
+It is a **reinsurance programme**, not an insurance policy. Nobody buys a
+policy from TRIA.
+
+### How it works
+
+**Certification.** Losses are covered by the programme only for an act of
+terrorism **certified by the Secretary of the Treasury**, in consultation with
+other federal officials. Certification requires that the act be violent or
+dangerous to human life, property or infrastructure, committed as part of an
+effort to coerce the United States civilian population or influence policy,
+and that aggregate insured losses **exceed a statutory trigger**.
+
+**Mandatory offer.** **An insurer writing commercial property and casualty
+insurance must offer terrorism coverage** on terms not differing materially
+from the rest of the policy. This is the obligation that matters to a
+producer.
+
+**The insured may decline.** Coverage is not compulsory for the buyer.
+Where the insured rejects it, the insurer may attach a terrorism exclusion.
+**The rejection should be in writing**, and the premium for the coverage must
+be **separately stated** so the insured knows what they are accepting or
+declining.
+
+**Loss sharing.** Each insurer retains a deductible calculated as a
+percentage of its own earned premium. Above that, the federal government pays
+a share of losses and the insurer the remainder, subject to an annual
+aggregate cap on the whole programme.
+
+### What it does and does not cover
+
+- It applies to **commercial** lines. Personal lines are outside the
+  programme, although personal policies are generally silent on terrorism and
+  so tend to cover it.
+- **Nuclear, biological, chemical and radiological** losses are generally
+  excluded from the coverage offered, unless the underlying policy covers
+  them.
+- **Domestic as well as foreign** acts have been certifiable since the 2007
+  reauthorisation removed the requirement that the act be committed on behalf
+  of a foreign interest.
+- **Workers' compensation is different.** A workers' compensation insurer
+  **may not exclude terrorism at all**, because state law requires the policy
+  to cover statutory benefits whatever the cause. The insured has no right to
+  decline it there.
+
+That last point is the trap. **Everywhere else the insured may reject
+terrorism coverage; in workers' compensation they may not.**
+
+## How this is examined
+
+**Mexico** in personal auto territory.
+
+**The worldwide products extension**, and the requirement that suit be
+brought within the policy territory.
+
+**The mandatory offer** — the insurer must offer, the insured may decline,
+the premium must be separately stated, the rejection should be written.
+
+**Certification by the Secretary of the Treasury**, not by the insurer or the
+state regulator.
+
+**Workers' compensation cannot exclude terrorism.**
+
+## Check yourself
+
+1. An insured drives from Houston to Monterrey. Does the personal auto policy
+   respond to an accident there?
+2. A product manufactured in the United States injures a consumer in France,
+   who sues in a French court. Is the CGL's worldwide extension likely to
+   respond?
+3. Who certifies an act of terrorism for TRIA purposes?
+4. A commercial insured does not want terrorism coverage. May the insurer
+   simply leave it out of the quote?
+5. May a workers' compensation policy exclude terrorism?
+
+## Answers
+
+1. **No.** Mexico is outside the policy territory; a Mexican policy from a
+   Mexican insurer is required.
+2. **No.** The extension generally requires the **suit to be brought within
+   the policy territory**.
+3. **The Secretary of the Treasury**, in consultation with other federal
+   officials.
+4. **No.** The insurer must **offer** the coverage with the premium
+   separately stated; the insured then declines, preferably in writing.
+5. **No.** Statutory benefits must be paid whatever the cause, so terrorism
+   cannot be excluded from workers' compensation.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select '65f6bec4-114d-558c-9035-89adbd274ada', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.VI'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select '2aa5db82-0689-5f02-8850-03dec995ef82', '4d5887f6-82b0-535b-bfd5-541974214ccd', c.id, 'Homeowners Forms',
+       'homeowners-forms', 'Six forms, six coverages and two sections — and the handful of differences the exam actually tests.', 1,
+       'draft', 18
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select '2aa5db82-0689-5f02-8850-03dec995ef82', c.id, $lesson$# One package, six variations
+
+A homeowners policy is a **package**: property and liability in one contract.
+That is its defining feature, and it is why it replaced the older practice of
+buying a fire policy and a separate liability policy.
+
+Learn the structure once; the six forms are then just differences in who is
+covered and on what peril basis.
+
+## The structure
+
+**Section I — Property**
+
+| | Covers |
+| --- | --- |
+| **Coverage A — Dwelling** | The house, and structures attached to it |
+| **Coverage B — Other Structures** | Detached: garage, shed, fence |
+| **Coverage C — Personal Property** | Contents, anywhere in the world |
+| **Coverage D — Loss of Use** | Additional living expense and fair rental value |
+
+**Section II — Liability**
+
+| | Covers |
+| --- | --- |
+| **Coverage E — Personal Liability** | Bodily injury and property damage the insured is legally liable for |
+| **Coverage F — Medical Payments to Others** | Medical costs for others injured on the premises, **regardless of fault** |
+
+### The relationships between the limits
+
+These are reliably examined, because they are derived rather than chosen:
+
+- **Coverage B is typically 10% of Coverage A.**
+- **Coverage C is typically 50% of Coverage A** (often 40% in some forms).
+- **Coverage D is typically 20–30% of Coverage A**, depending on the form.
+
+Set Coverage A and the rest follow, though each can be increased for extra
+premium.
+
+**Coverage F is a no-fault coverage.** It pays medical expenses of an injured
+guest without any finding of negligence, with a short reporting window —
+typically three years from the accident. It does **not** cover the insured or
+regular residents of the household, which is the point candidates miss: your
+own family's injuries are a health insurance matter.
+
+## The six forms
+
+| Form | Who | Dwelling (A) | Contents (C) |
+| --- | --- | --- | --- |
+| **HO-2** Broad | Owner-occupant | **Named peril** (broad) | **Named peril** |
+| **HO-3** Special | Owner-occupant | **Open peril** | **Named peril** |
+| **HO-4** Contents / tenants | **Renter** | none | **Named peril** |
+| **HO-5** Comprehensive | Owner-occupant | **Open peril** | **Open peril** |
+| **HO-6** Unit-owners | **Condominium owner** | limited (see below) | **Named peril** |
+| **HO-8** Modified | Owner of an older home | **Named peril** | **Named peril** |
+
+**HO-3 is the one most people own**, and its asymmetry is the most-tested fact
+in this lesson: **the dwelling is open peril, the contents are named peril.**
+
+**HO-5 upgrades the contents to open peril** as well. That is the whole
+difference between HO-3 and HO-5.
+
+**HO-4 is the renter's policy** — no Coverage A at all, because the tenant
+does not own the building. It does carry Coverage C, D, E and F.
+
+**HO-6 is the condominium owner's policy.** Coverage A is limited — commonly
+a small default such as $5,000, increasable — because the association's
+master policy covers the building. The unit owner's Coverage A answers for
+what is inside the walls: fixtures, cabinetry, improvements and betterments,
+and whatever the master policy leaves to the unit owner. Read the master
+policy to know which.
+
+**HO-8 exists for older homes whose replacement cost far exceeds their market
+value** — a large Victorian in a low-value neighbourhood, where rebuilding
+would cost several times what the house could be sold for. Insuring it for
+full replacement cost would be unaffordable and would create a moral hazard.
+So **HO-8 settles losses on a modified basis** — repair cost using common
+construction materials and methods, rather than full replacement — and pairs
+that with a narrower named peril list.
+
+## Eligibility
+
+- The insured must be an **owner-occupant** (HO-2, 3, 5, 8), a **tenant**
+  (HO-4), or a **unit owner** (HO-6).
+- Dwellings of up to **four families** are eligible, with the insured
+  occupying one unit; no more than a stated number of roomers or boarders per
+  unit.
+- **Farms are not eligible** — a farmowners policy covers those.
+- **Incidental business occupancies** may be permitted by endorsement; a full
+  business needs a commercial policy.
+
+## Named perils worth knowing
+
+The **basic** group: fire or lightning, windstorm or hail, explosion, riot or
+civil commotion, aircraft, vehicles, smoke, vandalism or malicious mischief,
+theft, volcanic eruption.
+
+The **broad** group adds: falling objects; weight of ice, snow or sleet;
+accidental discharge or overflow of water or steam; sudden and accidental
+tearing apart, cracking, burning or bulging of a heating or
+air-conditioning system; freezing; sudden and accidental damage from
+artificially generated electrical current.
+
+**Open peril forms cover everything not excluded**, which shifts the burden of
+proof onto the insurer.
+
+## Additional coverages
+
+Included without extra premium, usually in modest amounts:
+
+- **Debris removal**, **reasonable repairs**, and **property removed** from
+  danger.
+- **Trees, shrubs and other plants** — a percentage of Coverage A, with a
+  per-item cap and a limited peril list. **Not** windstorm damage to a tree,
+  which is the standard trap.
+- **Fire department service charge.**
+- **Credit card, forgery and counterfeit money**, commonly $500.
+- **Loss assessment** — the unit owner's share of a condominium association
+  assessment.
+- **Collapse**, and **glass breakage**.
+- **Ordinance or law**, at a small percentage of Coverage A.
+
+## Special limits on Coverage C
+
+Certain categories of personal property carry **sub-limits** — not exclusions,
+limits. Typical categories: money and bullion; securities and manuscripts;
+watercraft and trailers; jewellery, watches and furs **for theft**; firearms
+**for theft**; silverware **for theft**.
+
+The fix is to **schedule the property** — list each item with a stated value —
+by endorsement, usually a **scheduled personal property** floater. Scheduling
+also broadens the covered perils and commonly removes the deductible.
+
+**Loss settlement on Coverage C is actual cash value** in most forms.
+**Replacement cost on contents is an endorsement**, and a commonly sold one.
+
+## Coverage D: loss of use
+
+Two distinct parts:
+
+- **Additional living expense** — the *increase* in ordinary living costs
+  while the home is uninhabitable. Not the whole hotel bill: the increase over
+  what the household would have spent anyway.
+- **Fair rental value** — lost rent where part of the home was rented out.
+
+Also payable where a **civil authority prohibits use** of the home because of
+damage to *neighbouring* property by a covered peril, typically for up to two
+weeks.
+
+## Exclusions
+
+Section I excludes, among others: **ordinance or law** (beyond the small
+additional coverage), **earth movement**, **water damage** (flood, surface
+water, sewer backup), **power failure** away from the premises, **neglect**,
+**war**, **nuclear hazard**, **intentional loss**, and **governmental
+action**. Wear and tear, mechanical breakdown, rot, mould, insects and vermin
+are excluded as maintenance rather than risk.
+
+Section II excludes **business pursuits**, **professional services**,
+**motor vehicles** (with narrow exceptions for vehicles not subject to
+registration, such as a ride-on mower on the premises), **aircraft**, larger
+**watercraft**, **intentional injury**, and **workers' compensation**
+obligations.
+
+## How this is examined
+
+**HO-3's asymmetry** — dwelling open peril, contents named peril.
+
+**Which form for which insured** — renter, condominium owner, older home.
+
+**The percentage relationships** between Coverages A, B, C and D.
+
+**Coverage F pays without fault, and not to residents of the household.**
+
+**Special limits** on jewellery, firearms and silverware, and that they are
+limits rather than exclusions.
+
+**Additional living expense is the increase**, not the total.
+
+## Check yourself
+
+1. Under an HO-3, lightning damages the house and a mysterious cause damages
+   the contents. Which loss is easier to establish, and why?
+2. A tenant wants coverage for belongings and liability but not the building.
+   Which form?
+3. Coverage A is $400,000. What are the usual limits for B and C?
+4. A guest slips on the insured's steps and is injured. The insured is not
+   negligent. Is anything payable?
+5. A homeowner's $12,000 diamond ring is stolen. The policy has a $1,500
+   special limit on theft of jewellery. What is the fix, and was the ring
+   excluded?
+6. Why does HO-8 exist?
+
+## Answers
+
+1. **The dwelling loss.** Coverage A is open peril, so the insured need only
+   show a loss occurred; the insurer must prove an exclusion. Coverage C is
+   named peril, so the insured must prove a listed peril caused the contents
+   loss — and "mysterious cause" will not do it.
+2. **HO-4.**
+3. **B = $40,000** (10%), **C = $200,000** (50%).
+4. **Yes** — Coverage F, medical payments to others, pays regardless of
+   fault.
+5. It was **limited**, not excluded — $1,500 is payable. The fix is to
+   **schedule** the ring by endorsement.
+6. Because for older homes replacement cost can far exceed market value,
+   making full replacement cost coverage unaffordable and creating a moral
+   hazard. HO-8 settles on a modified repair-cost basis instead.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select '2aa5db82-0689-5f02-8850-03dec995ef82', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.I'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select 'dda2d47b-e8ee-5b9b-bffb-df02bb0b8812', '4d5887f6-82b0-535b-bfd5-541974214ccd', c.id, 'Dwelling Policies',
+       'dwelling-policies', 'The property-only forms for houses that do not qualify for a homeowners policy.', 2,
+       'draft', 13
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select 'dda2d47b-e8ee-5b9b-bffb-df02bb0b8812', c.id, $lesson$# When a homeowners policy will not do
+
+The dwelling policy is the older, narrower form. Where a homeowners policy is
+a package, **a dwelling policy is property insurance alone** — liability is
+optional and added by endorsement.
+
+## When it is used
+
+- **The dwelling is not owner-occupied** — a rental house, where the owner
+  needs the building covered but not the tenant's belongings.
+- **The dwelling is seasonal or vacant.**
+- **The insured does not qualify** for a homeowners policy — value too low,
+  condition too poor, occupancy of the wrong kind.
+- **The owner wants building coverage only.**
+
+Eligible dwellings are generally one- to four-family, with limits on
+permitted incidental business.
+
+## The coverages
+
+| | Covers |
+| --- | --- |
+| **Coverage A — Dwelling** | The building |
+| **Coverage B — Other Structures** | Detached structures, commonly **10% of A** |
+| **Coverage C — Personal Property** | Contents |
+| **Coverage D — Fair Rental Value** | Lost rent while the dwelling is unfit |
+| **Coverage E — Additional Living Expense** | The increase in living costs |
+
+Two differences from homeowners worth holding:
+
+- **Loss of use is split into two lettered coverages here** (D and E), where
+  homeowners combines them into Coverage D.
+- **Coverage B and C may be used interchangeably in some forms** — a portion
+  of the Coverage C limit can be applied to other structures, and vice versa.
+
+**DP-1 does not include Coverage E at all.** Additional living expense is a
+DP-2 and DP-3 feature.
+
+## The three forms
+
+### DP-1 — Basic
+
+**Named peril**, and the narrowest of the three.
+
+The standard perils are **fire, lightning and internal explosion**, with
+**extended coverage** available — windstorm, hail, explosion, riot, aircraft,
+vehicles, smoke, volcanic eruption — and **vandalism and malicious mischief**
+available on top of that.
+
+Two distinguishing features:
+
+- **Loss settlement is actual cash value.** DP-1 does not offer replacement
+  cost on the dwelling.
+- **Theft is not covered** and generally is not available.
+
+### DP-2 — Broad
+
+**Named peril**, with the broad list — everything in DP-1's extended coverage
+plus falling objects; weight of ice, snow or sleet; accidental discharge of
+water or steam; tearing apart of a heating system; freezing; and accidental
+damage from artificially generated electrical current.
+
+**Loss settlement is replacement cost** on the dwelling, subject to the
+usual insurance-to-value requirement.
+
+Additional living expense and fair rental value are both included.
+
+### DP-3 — Special
+
+**Open peril on the dwelling and other structures; named peril on personal
+property.**
+
+This is the same asymmetry as the HO-3, and for the same reason — and it is
+tested the same way. **Loss settlement is replacement cost** on the building.
+
+| | Dwelling | Contents | Settlement | Theft |
+| --- | --- | --- | --- | --- |
+| **DP-1** | Named (basic) | Named (basic) | **ACV** | No |
+| **DP-2** | Named (broad) | Named (broad) | **Replacement cost** | By endorsement |
+| **DP-3** | **Open peril** | Named (broad) | **Replacement cost** | By endorsement |
+
+## What a dwelling policy does not include
+
+**No liability.** Personal liability and medical payments are added by
+endorsement — which is precisely what a landlord needs, since a tenant
+injured on the property will look to the owner.
+
+**No theft coverage as standard.** Available by endorsement on DP-2 and DP-3;
+not on DP-1.
+
+**No automatic additional coverages of the homeowners kind.** The lists of
+debris removal, trees and shrubs, credit card coverage and so on are thinner
+or absent.
+
+## Endorsements a landlord will want
+
+- **Personal liability** and **medical payments**.
+- **Theft**, where the dwelling is furnished.
+- **Vandalism and malicious mischief** — often excluded once a dwelling has
+  been **vacant beyond 60 days**, which is the vacancy trap below.
+- **Broad theft** or **building items** coverage.
+- **Rental income**, beyond the included fair rental value.
+- **Automatic increase in insurance**, to keep pace with construction costs.
+
+## Vacancy and unoccupancy
+
+The two words are not synonyms, and the exam separates them.
+
+- **Unoccupied** — nobody is living there, but the contents remain. A family
+  on a three-month trip.
+- **Vacant** — **both the people and the contents are gone.** An empty house
+  between tenants.
+
+**Vacancy is the one that restricts coverage.** After a dwelling has been
+vacant beyond a stated period — commonly **60 consecutive days** — several
+perils are typically suspended, including **vandalism and malicious mischief,
+glass breakage, theft, sprinkler leakage** and **water damage**, and some
+forms reduce payment on any remaining covered loss.
+
+The underwriting logic is straightforward: an empty building is a magnet for
+vandalism and a slow burn nobody notices. The insured's fix is to tell the
+insurer and buy a **vacancy permit**.
+
+## How this is examined
+
+**Which form for a rental house**, and that liability must be added.
+
+**DP-1's actual cash value settlement**, contrasted with DP-2 and DP-3's
+replacement cost.
+
+**DP-3's open peril dwelling / named peril contents split.**
+
+**Theft is not standard** on any dwelling form.
+
+**Vacancy versus unoccupancy**, and the 60-day suspension of vandalism and
+related perils.
+
+**Coverage D and E as separate coverages** here, combined in homeowners.
+
+## Check yourself
+
+1. A landlord owns a rented house and wants building coverage plus protection
+   against a tenant's injury claim. What policy and what addition?
+2. Under a DP-1, a covered fire destroys a 30-year-old roof. How is the loss
+   settled?
+3. Which dwelling form matches the HO-3's peril structure?
+4. A house stands empty with all furniture removed for 75 days. Vandals break
+   in and damage it. Likely outcome?
+5. Is theft included in a standard DP-2?
+
+## Answers
+
+1. A **dwelling policy** with a **personal liability** (and medical payments)
+   endorsement.
+2. **Actual cash value** — replacement cost less depreciation. DP-1 offers no
+   replacement cost option.
+3. **DP-3** — open peril on the dwelling, named peril on contents.
+4. **No coverage.** The dwelling is **vacant** (people and contents gone)
+   beyond 60 days, and vandalism is among the perils suspended.
+5. **No.** Theft is added by endorsement on DP-2 and DP-3, and is not
+   available on DP-1.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select 'dda2d47b-e8ee-5b9b-bffb-df02bb0b8812', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.I'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select 'fdcf9975-9bd5-5b6a-8eec-66bbd30eddd0', '4d5887f6-82b0-535b-bfd5-541974214ccd', c.id, 'Commercial Property and the Package Policy',
+       'commercial-property-and-the-package-policy', 'How a commercial package is assembled, the three causes of loss forms, and the income coverages that pay when the building is standing but the business is not.', 3,
+       'draft', 18
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select 'fdcf9975-9bd5-5b6a-8eec-66bbd30eddd0', c.id, $lesson$# Building a commercial policy out of parts
+
+Personal lines sells finished packages. Commercial lines sells components,
+and the producer assembles them.
+
+## The Commercial Package Policy
+
+**A CPP is two or more commercial coverage parts issued under one policy.**
+Its architecture:
+
+1. **Common policy declarations** — insured, term, premium, coverage parts.
+2. **Common policy conditions** — cancellation, changes, inspections,
+   examination of books, transfer of rights. These apply to every part.
+3. **Two or more coverage parts**, each with its own declarations, forms and
+   conditions.
+
+The available parts include **commercial property, general liability,
+commercial auto, crime, inland marine, boiler and machinery (equipment
+breakdown)** and **farm**.
+
+**A single coverage part is a monoline policy; two or more make a package.**
+The package earns a discount and removes the gaps and overlaps that separate
+policies produce.
+
+**Workers' compensation is written separately**, not as a CPP part.
+
+## The commercial property coverage part
+
+Three things must be assembled:
+
+1. **A coverage form** — what property is covered.
+2. **A causes of loss form** — what perils.
+3. **Conditions and any endorsements.**
+
+### The building and personal property coverage form
+
+The workhorse. It insures three categories, each separately scheduled on the
+declarations:
+
+**Building** — the structure, completed additions, fixtures (including
+outdoor fixtures), permanently installed machinery and equipment, and
+materials and supplies used to maintain it.
+
+**Your business personal property** — the insured's own contents at the
+described premises: furniture, stock, machinery, leased property the insured
+is responsible for, and **the insured's use interest in improvements and
+betterments** made to a leased building.
+
+**Personal property of others** — property in the insured's care, custody or
+control. **Payment goes to the owner**, not to the insured.
+
+The **coinsurance** clause applies, usually at 80%, 90% or 100%, and the
+calculation is the one from Module 1.
+
+### Extensions and additional coverages
+
+Typically included: **debris removal** (a percentage of the loss plus the
+deductible, with an additional amount available); **preservation of
+property**; **fire department service charge**; **pollutant clean-up and
+removal**, capped annually; **newly acquired or constructed property** for a
+limited period and amount; **personal effects**; **property off premises**;
+**outdoor property**; and **valuable papers and records** at a limited
+amount.
+
+### Reporting forms and blanket insurance
+
+**Specific insurance** names an amount for one item at one location.
+
+**Blanket insurance** covers **two or more items, or two or more locations,
+under a single limit**. The advantage is flexibility: a shifting inventory
+across three warehouses is fully covered wherever it sits, rather than being
+underinsured at one and over at another. Blanket cover normally requires a
+**statement of values** and a high coinsurance percentage.
+
+**Reporting forms** suit a fluctuating inventory: the insured reports values
+periodically and the premium is adjusted. Under-reporting is penalised at
+claim time in proportion to the shortfall.
+
+**Agreed value** suspends coinsurance where the insurer has accepted a
+statement of values.
+
+## The three causes of loss forms
+
+This is the most-tested part of commercial property.
+
+**Basic** — a named peril list: fire, lightning, explosion, windstorm or
+hail, smoke, aircraft or vehicles, riot or civil commotion, vandalism,
+sprinkler leakage, sinkhole collapse, volcanic action.
+
+**Broad** — everything in Basic **plus** falling objects; weight of snow, ice
+or sleet; and water damage from the accidental discharge of a system. It also
+adds **collapse** as an additional coverage.
+
+**Special** — **open peril**: every cause of loss except those excluded. The
+burden shifts to the insurer. Special also adds coverage for **theft**, which
+Basic and Broad do not include.
+
+> **"Special form" means open peril, not "extra".** A question describing a
+> loss from an unusual, unexcluded cause is testing whether you know Special
+> is the only one of the three that answers it.
+
+An **earthquake** form and a **flood** form exist separately, because neither
+is included in any of the three.
+
+## Business income and extra expense
+
+These are **indirect** or **consequential** loss coverages. Direct damage
+coverage rebuilds the building; these pay for the trading that could not
+happen while it was being rebuilt.
+
+**Business income** (formerly business interruption) pays:
+
+- **the net income the business would have earned**, plus
+- **continuing normal operating expenses**, including payroll where covered.
+
+Three conditions frame it: there must be **direct physical loss** to covered
+property, **by a covered cause of loss**, at the **described premises**,
+causing a **necessary suspension** of operations.
+
+The **period of restoration** begins **72 hours after the physical loss**
+(where a waiting period applies) and ends when the property **should** have
+been repaired with reasonable speed — not when it actually was. An insured
+who takes eight months over a four-month rebuild is paid for four.
+
+**Extra expense** pays the additional costs of **continuing** operations —
+renting temporary premises, hiring equipment, expedited shipping. A business
+that cannot afford to stop, such as a dairy or a newspaper, buys extra
+expense rather than business income; many buy both on a combined form.
+
+Related: **contingent business income** covers loss caused by damage to
+**somebody else's** property — a sole supplier or a dominant customer.
+**Civil authority** coverage pays where access to the premises is prohibited
+by an authority because of damage to nearby property.
+
+## Equipment breakdown
+
+Formerly boiler and machinery. **It covers the sudden and accidental
+breakdown of pressure, mechanical and electrical equipment** — and the
+resulting damage.
+
+It matters because **mechanical breakdown and electrical arcing are excluded
+from every standard property form**, so without this coverage a burst boiler
+or a failed transformer is uninsured. It typically covers the damaged
+equipment, other property damaged by the breakdown, spoilage, expediting
+expenses and business income.
+
+**Inspection is part of the product.** The insurer's engineers inspect
+boilers and pressure vessels, often satisfying the jurisdiction's statutory
+inspection requirement, and the loss-prevention value is a substantial part of
+what the premium buys.
+
+## Builders risk
+
+**Covers a structure under construction**, against loss during the build.
+
+- The limit should equal the **completed value** of the structure.
+- **Materials, supplies and equipment** intended to become part of the
+  building are covered on site, and often in transit and at temporary
+  storage.
+- Insurable interest may belong to the **owner, the contractor, or both**,
+  and the policy is usually written to name all interested parties.
+- **Coverage ends** when the building is accepted, occupied for its intended
+  purpose, or the policy expires — whichever comes first. At that point a
+  standard property policy takes over.
+
+## Cyber first-party coverage
+
+**First-party cyber coverage pays the insured's own losses from a cyber
+event**, as distinct from cyber *liability*, which pays what the insured owes
+others.
+
+What it typically covers: **data restoration** and system repair; **business
+interruption** from a network outage; **cyber extortion** and ransomware
+payments; **breach response costs** — forensics, notification of affected
+individuals, credit monitoring, public relations; and **funds transfer
+fraud**, where an employee is deceived into sending money.
+
+It exists because standard property forms were written around physical damage
+to tangible property, and **electronic data is generally not "tangible
+property"** under them. Many forms now exclude cyber events explicitly, so the
+coverage is bought deliberately or not at all.
+
+## How this is examined
+
+**Basic versus Broad versus Special**, and specifically that **only Special is
+open peril** and **only Special includes theft**.
+
+**Blanket versus specific insurance.**
+
+**Business income versus extra expense** — replacing lost earnings versus
+funding continued operation.
+
+**The period of restoration ends when repairs *should* have been completed.**
+
+**Equipment breakdown fills the mechanical breakdown exclusion.**
+
+**Builders risk is written at completed value** and ends at occupancy.
+
+## Check yourself
+
+1. A commercial policy carries the Broad causes of loss form. Stock is stolen
+   overnight. Covered?
+2. An insured stores inventory across four warehouses, with amounts shifting
+   weekly. Blanket or specific?
+3. A fire closes a restaurant for five months, though competent repairs would
+   have taken three. Business income is $40,000 a month. What is paid,
+   broadly?
+4. A transformer fails and burns out, damaging nearby equipment. Which
+   coverage responds, and why not the property form?
+5. A builders risk policy is written for $2m on a building whose completed
+   value is $2m. Construction finishes and the owner moves in. What happens to
+   the coverage?
+6. A ransomware attack encrypts a firm's records and halts trading for a
+   week. Which coverage responds?
+
+## Answers
+
+1. **No.** Theft is covered only under the **Special** form.
+2. **Blanket**, so the single limit follows the inventory wherever it sits.
+3. Roughly **three months** — about **$120,000**. The period of restoration
+   ends when repairs **should** have been completed with reasonable speed.
+4. **Equipment breakdown.** The standard property forms exclude mechanical
+   breakdown and electrical arcing.
+5. **It ends** on occupancy for the intended purpose; a standard commercial
+   property policy must take over.
+6. **First-party cyber coverage** — data restoration, cyber extortion and
+   network business interruption. Electronic data is generally not tangible
+   property under a standard form.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select 'fdcf9975-9bd5-5b6a-8eec-66bbd30eddd0', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.I'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select 'fb29d783-0b17-5cac-abd6-ab8e2df510b8', '4d5887f6-82b0-535b-bfd5-541974214ccd', c.id, 'Inland Marine',
+       'inland-marine', 'Coverage for property that moves, property that is unusually valuable, and property no standard form handles well.', 4,
+       'draft', 13
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select 'fb29d783-0b17-5cac-abd6-ab8e2df510b8', c.id, $lesson$# Insurance for things that will not stay still
+
+The name is historical and misleading. **Inland marine has almost nothing to
+do with water.**
+
+## Where the name comes from
+
+Marine insurance is the oldest form of insurance, covering cargo at sea. As
+goods moved inland by rail and road, marine underwriters followed the cargo
+off the ship — insuring it over land as well. That extension became **inland**
+marine, and over time it absorbed a much wider category: **property that
+moves, property that is held by somebody other than its owner, and property
+that a standard fire policy cannot value properly.**
+
+**Ocean marine** remains separate, covering hull, cargo, freight and
+protection and indemnity on the water.
+
+## What qualifies
+
+The distinguishing feature of an inland marine risk is one of:
+
+- **The property moves** — goods in transit, a contractor's tools, a
+  salesman's samples.
+- **The property is portable and high value** — jewellery, cameras, musical
+  instruments, fine art.
+- **The property is instrumental to transport or communication** — bridges,
+  tunnels, pipelines, radio towers. These do not move at all, and are insured
+  here because they were historically classed as "instrumentalities of
+  transportation."
+- **The property is in somebody else's care** — a bailee holding customers'
+  goods.
+
+## Why anybody buys it
+
+Four advantages over a standard property form:
+
+- **Coverage is usually open peril** rather than named peril.
+- **Coverage follows the property anywhere**, rather than attaching to
+  described premises.
+- **Valuation can be agreed in advance**, which matters enormously for a
+  painting or an antique whose actual cash value would be argued about for
+  months.
+- **There is normally no coinsurance clause** on scheduled items.
+
+**"Floater"** is the common name, because the coverage floats with the
+property.
+
+## Personal inland marine
+
+### The personal articles floater
+
+**Schedules high-value personal items individually**, each with a stated
+value. The standard categories:
+
+- jewellery
+- furs
+- cameras and photographic equipment
+- musical instruments
+- silverware
+- golfer's equipment
+- fine arts
+- stamp and coin collections
+
+Written as a **scheduled personal property** endorsement to a homeowners
+policy, or as a stand-alone floater.
+
+Why it is bought: the homeowners policy has **special limits** on exactly
+these categories, most of them applying **to theft**. Scheduling removes the
+sub-limit, broadens the perils to open peril, usually **removes the
+deductible**, and pins the value in advance.
+
+Two details that get tested:
+
+- **Fine arts are normally written on a valued basis**, and typically carry a
+  **breakage exclusion** unless it is bought back.
+- **Newly acquired property** of a scheduled class is usually covered
+  automatically for a limited period — commonly 30 days — provided the
+  insurer is notified and premium paid.
+
+### The personal property floater
+
+Covers **all** the insured's personal property on an open peril, worldwide
+basis, rather than a schedule of named items. Less common, and expensive.
+
+## Commercial inland marine
+
+### Nationwide marine definition
+
+Regulators publish a **nationwide marine definition** setting out what may be
+written as inland marine. It exists to stop insurers writing ordinary fire
+business on inland marine forms to escape rate regulation. **Controlled**
+lines are filed classes; **uncontrolled** lines may be written on
+individually negotiated terms.
+
+### The common commercial floaters
+
+**Contractor's equipment floater** — mobile tools, machinery and equipment,
+on site and in transit.
+
+**Installation floater** — materials and equipment from the time they leave
+the supplier until installed and accepted. The contractor's counterpart to
+builders risk.
+
+**Motor truck cargo** — the carrier's liability for goods it is hauling.
+
+**Transportation / trip transit** — goods in transit generally, or one
+specific shipment.
+
+**Bailee's customers** — a dry cleaner, a repair shop, a warehouse. **Covers
+the customers' property in the insured's care, and typically pays whether or
+not the bailee was negligent**, because arguing about fault with a customer
+whose suit you burned is bad business.
+
+**Accounts receivable** — the sums the insured cannot collect because the
+records were destroyed, plus the cost of reconstructing them and the extra
+collection expense.
+
+**Valuable papers and records** — the cost of reconstructing documents,
+manuscripts and records. It pays for **reconstruction**, not for the
+information's abstract worth.
+
+**Electronic data processing** — computer hardware, software and data, on an
+open peril basis, typically including **mechanical breakdown and electrical
+disturbance**, which standard property forms exclude.
+
+**Signs, jewellers block, furriers block, physicians and surgeons
+equipment**, and **theatrical property** are further named classes.
+
+**Instrumentalities of transportation and communication** — bridges, tunnels,
+pipelines, power transmission lines, radio and television towers.
+
+### Bailee terminology
+
+- A **bailee** holds another's property. A **bailor** owns it.
+- A **bailee's customers form** covers the customers' goods regardless of
+  fault.
+- **Legal liability** forms cover only what the bailee is legally responsible
+  for — cheaper, and much less useful when the customer is angry.
+
+## How this is examined
+
+**"Which of these is an inland marine risk?"** — look for movement,
+portability with high value, bailment, or an instrumentality of
+transportation.
+
+**Why schedule jewellery?** — to remove the homeowners special limit, broaden
+to open peril, agree the value and drop the deductible.
+
+**Bailee's customers pays regardless of negligence.**
+
+**Accounts receivable and valuable papers pay for reconstruction**, not for
+the debt or the information as an asset.
+
+**A bridge is inland marine**, which feels wrong until you know the history.
+
+## Check yourself
+
+1. A photographer owns $30,000 of camera equipment used at client sites. What
+   form, and why not the homeowners policy?
+2. A dry cleaner's premises burn, destroying customers' garments. The cleaner
+   was not negligent. Which form pays the customers?
+3. Why does a floater usually have no coinsurance clause?
+4. A contractor's excavator is damaged while being towed between sites. Which
+   floater?
+5. A fire destroys a firm's ledgers and it cannot collect $200,000 of debts.
+   Which coverage, and what does it pay?
+
+## Answers
+
+1. A **personal articles floater** or a commercial camera floater. The
+   homeowners policy limits cameras, covers them on a named peril basis away
+   from home, and would settle on actual cash value.
+2. A **bailee's customers form**, which pays regardless of the bailee's
+   negligence.
+3. Because scheduled items carry **agreed or stated values** — the insurer has
+   already accepted the value, so there is nothing for a coinsurance clause to
+   police.
+4. A **contractor's equipment floater**.
+5. **Accounts receivable** coverage — the uncollectible sums, the cost of
+   reconstructing the records, and the extra collection expense.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select 'fb29d783-0b17-5cac-abd6-ab8e2df510b8', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.I'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select '6d2171b2-6a44-5f41-b8c4-52bd93262d4a', '4d5887f6-82b0-535b-bfd5-541974214ccd', c.id, 'The National Flood Insurance Program',
+       'the-national-flood-insurance-program', 'Why flood is excluded everywhere else, and how the federal programme fills the gap.', 5,
+       'draft', 13
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select '6d2171b2-6a44-5f41-b8c4-52bd93262d4a', c.id, $lesson$# The peril the private market would not write
+
+Flood is excluded from homeowners, dwelling and commercial property forms
+alike. The exclusion is not arbitrary, and understanding why explains
+everything else about the programme.
+
+## Why flood is uninsurable privately
+
+Flood fails the tests of an insurable risk from Module 1:
+
+- **The losses are not independent.** A flood does not damage one house; it
+  damages every house on the flood plain at once. The law of large numbers
+  needs many unrelated exposures, and a flood plain is one exposure with many
+  addresses.
+- **Adverse selection is extreme.** Only people who expect to flood buy flood
+  insurance, so the pool consists almost entirely of bad risks.
+- **The loss is close to predictable** for the highest-risk properties — not
+  a risk so much as a schedule.
+
+So in **1968 Congress created the National Flood Insurance Program**,
+administered by **FEMA**. The federal government takes the risk the private
+market would not.
+
+## How a community participates
+
+**The NFIP is a bargain between the federal government and the community, not
+just with the individual.**
+
+A community must **adopt and enforce flood plain management ordinances** —
+building elevation requirements, construction standards, development
+restrictions — to reduce future flood losses. In exchange, **federally backed
+flood insurance becomes available to property owners in that community**.
+
+**No participating community, no NFIP policy.** An owner in a non-participating
+community must find private coverage or go without.
+
+Two phases:
+
+- **The emergency programme** — an interim phase with **limited amounts** of
+  coverage available while flood mapping is completed.
+- **The regular programme** — full limits, once the community has a flood
+  insurance rate map and has adopted the required ordinances.
+
+## The waiting period
+
+**There is normally a 30-day waiting period** between application and the
+policy taking effect. It is the programme's defence against somebody buying
+cover as the river rises.
+
+The exceptions are worth knowing:
+
+- **No waiting period where flood insurance is required by a lender** in
+  connection with making, increasing, extending or renewing a loan.
+- **A one-day wait** where coverage is bought following a change in the flood
+  map.
+- A shortened wait for property **affected by wildfire on federal land**.
+
+## What a flood is
+
+The programme's definition is specific, and questions are built on it. A
+flood is a **general and temporary condition of partial or complete
+inundation of two or more acres of normally dry land, or of two or more
+properties**, from:
+
+- overflow of inland or tidal waters,
+- unusual and rapid accumulation or runoff of surface water,
+- mudflow, or
+- collapse of land along a body of water from erosion or an unusually severe
+  storm.
+
+Two consequences:
+
+- **Water entering one building alone is generally not a flood** — a burst
+  pipe, a backed-up sewer, a leaking roof. Two acres or two properties is the
+  threshold.
+- **Mudflow counts; landslide generally does not.** Mudflow is liquid mud
+  flowing; a landslide is earth movement, excluded.
+
+## What is covered
+
+Two separate coverages, bought separately:
+
+**Building property** — the structure and its foundation, electrical and
+plumbing, furnaces and water heaters, built-in appliances, permanently
+installed carpet, and detached garages (within a portion of the limit).
+
+**Personal property (contents)** — furniture, clothing, portable appliances,
+washers and dryers, and a limited amount for valuables.
+
+**Contents are not automatically included.** An owner who buys building
+coverage only has no coverage for anything inside. That is a favourite
+question.
+
+### Limits
+
+Under the **regular programme**, the maximum amounts available are:
+
+| | Building | Contents |
+| --- | --- | --- |
+| **Residential** | **$250,000** | **$100,000** |
+| **Non-residential / commercial** | **$500,000** | **$500,000** |
+
+These are **programme maximums**, not appraised values. Anybody needing more
+buys **excess flood** from the private market.
+
+### Loss settlement
+
+- **Replacement cost** is available on a **single-family dwelling that is the
+  insured's principal residence**, insured to at least 80% of replacement
+  cost.
+- **Everything else is actual cash value** — contents always, and buildings
+  that are secondary homes, rentals or commercial.
+
+## What is not covered
+
+- **Contents in a basement**, beyond a very short list of building items.
+  Finished basements are largely uninsurable under the programme.
+- **Additional living expense and loss of use** — the NFIP pays for the
+  property, not for the disruption.
+- **Currency, precious metals and valuable papers.**
+- **Property outside the building** — landscaping, decks, patios, fences,
+  septic systems, swimming pools.
+- **Vehicles**, which belong on an auto policy's other-than-collision
+  coverage.
+- **Business interruption.**
+
+## Zones, maps and requirements
+
+FEMA publishes a **Flood Insurance Rate Map** for each participating
+community, dividing it into **flood zones**.
+
+- **Zones A and V** are **Special Flood Hazard Areas** — the 100-year flood
+  plain, meaning a 1% annual chance of flooding. **V zones are coastal**, with
+  additional wave action.
+- **Zones B, C and X** are moderate or minimal risk, where coverage is
+  cheaper and often bought voluntarily.
+
+**Mandatory purchase:** a building in a Special Flood Hazard Area with a
+**federally backed or federally regulated mortgage** must carry flood
+insurance. This is the single largest driver of NFIP sales.
+
+**Write Your Own.** Private insurers issue and service NFIP policies under
+their own names, with the **federal government carrying the risk**. The
+producer sells what looks like a private policy; the terms, limits and rates
+are the programme's.
+
+## How this is examined
+
+**The 30-day waiting period** and its exceptions.
+
+**The two-acre / two-property definition** of a flood.
+
+**Contents must be bought separately.**
+
+**The $250,000 / $100,000 residential limits.**
+
+**Replacement cost applies only to a principal residence**; everything else is
+ACV.
+
+**Community participation is a precondition.**
+
+**Basements, landscaping and living expense are not covered.**
+
+## Check yourself
+
+1. A homeowner buys an NFIP policy on 1 May. The river floods on 20 May. Is
+   there coverage?
+2. A burst water main floods only the insured's basement. Is this a "flood"
+   under the programme?
+3. An owner buys $250,000 of building coverage. A flood destroys $60,000 of
+   furniture. What is paid?
+4. A rental house owned as an investment suffers flood damage to a 15-year-old
+   roof. Replacement cost or actual cash value?
+5. A community declines to adopt flood plain management ordinances. Can its
+   residents buy NFIP coverage?
+6. What is the maximum building coverage on a commercial property?
+
+## Answers
+
+1. **No** — the 30-day waiting period has not run, and no exception applies.
+2. **No.** A flood requires inundation of **two or more acres or two or more
+   properties**; water in one building from a burst main is not one.
+3. **Nothing.** Contents coverage must be purchased separately.
+4. **Actual cash value.** Replacement cost is limited to a single-family
+   dwelling that is the insured's **principal residence**.
+5. **No.** Community participation is a precondition.
+6. **$500,000**, with a further $500,000 available for contents.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select '6d2171b2-6a44-5f41-b8c4-52bd93262d4a', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.I'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select 'f2a692e9-7a38-5c5c-938c-371af3cfcd0f', '4d5887f6-82b0-535b-bfd5-541974214ccd', c.id, 'Other Property Policies',
+       'other-property-policies', 'Earthquake, mobile homes, watercraft, farmowners and windstorm — five smaller forms the blueprint names explicitly.', 6,
+       'draft', 14
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select 'f2a692e9-7a38-5c5c-938c-371af3cfcd0f', c.id, $lesson$# Five risks the standard forms send elsewhere
+
+The blueprint lists these by name, so they are examined by name. Each exists
+because a standard homeowners or commercial form either excludes the peril or
+cannot handle the property.
+
+## Earthquake
+
+**Earth movement is excluded from every standard property form**, for the same
+reason as flood: the losses are correlated. One earthquake damages every
+building in a region simultaneously.
+
+Coverage is bought back by **endorsement** to a homeowners or commercial
+policy, or written as a **separate policy**.
+
+What to know:
+
+- **The exclusion is broader than "earthquake".** Earth movement includes
+  **landslide, mudslide, subsidence, sinkhole collapse and earth sinking,
+  rising or shifting**. Buying earthquake coverage does not necessarily buy
+  all of these back.
+- **Fire following an earthquake is covered by the standard policy.** The
+  earth movement exclusion is generally written so that **ensuing fire** is
+  not excluded. This is a long-standing rule and a reliable exam point.
+- **The deductible is a percentage**, not a flat sum — commonly **2% to 20%
+  of the coverage limit**, and it is applied to the limit rather than to the
+  loss. On a $400,000 dwelling, a 10% deductible is $40,000 before anything is
+  paid.
+- **Multiple shocks within a stated period** — commonly 72 hours — count as
+  **one occurrence**, so one deductible applies rather than several.
+
+## Mobile homes
+
+A mobile or manufactured home cannot be written on a standard homeowners
+policy: it is built to different standards, depreciates like a vehicle rather
+than appreciating like a house, and can be moved.
+
+**A mobile homeowners policy is a package**, structured like a homeowners
+policy with property and liability sections, but with changes:
+
+- **Loss settlement is normally actual cash value**, reflecting that the unit
+  depreciates. Replacement cost may be available by endorsement on newer
+  units.
+- **Transportation and permission to move** must be arranged. Coverage while
+  the home is being moved is typically added by endorsement, often with a
+  limited amount and a requirement that the insurer be notified beforehand.
+- **Eligibility** usually requires the unit to be of a minimum size, designed
+  for year-round living, and at a fixed location.
+- **Skirting, awnings, carports and attached structures** may need to be
+  listed to be covered.
+
+## Watercraft
+
+Homeowners policies cover **small, low-powered boats** and very little else.
+The typical arrangement covers a boat only up to a modest length and
+horsepower, on a narrow peril basis, with liability excluded for larger or
+faster craft.
+
+Anything beyond that needs a **boatowners or yacht policy**:
+
+- **A boatowners policy** is a package for smaller pleasure craft, covering
+  the hull, motor, trailer and equipment, plus liability and medical payments.
+- **A yacht policy** covers larger vessels and is structured on ocean marine
+  principles: **hull** coverage on the vessel, **protection and indemnity**
+  for liability, plus medical payments and coverage for the boat's trailer
+  and equipment.
+
+Points that are examined:
+
+- **Navigational limits.** The policy specifies the waters in which the
+  vessel is covered, and often a **lay-up period** during which it must be out
+  of the water — coverage is reduced or restricted outside those terms.
+- **Protection and indemnity is the marine world's liability coverage**, and
+  is broader than a general liability form in respect of crew and other
+  maritime exposures.
+- **Ocean marine perils** — the traditional list includes perils of the sea,
+  fire, jettison, piracy and barratry (wrongful acts by the master or crew).
+
+## Farmowners
+
+**A farmowners policy is a package covering both the farm residence and the
+farming operation** — the agricultural equivalent of a homeowners policy, and
+the reason farms are ineligible for a homeowners policy.
+
+It combines, in one contract:
+
+- **The dwelling and its contents**, on much the same basis as a homeowners
+  policy.
+- **Farm structures** — barns, silos, outbuildings, fences, corrals.
+- **Farm personal property** — machinery, equipment, tools, harvested crops,
+  feed, seed, fertiliser, and **livestock**.
+- **Farm liability**, which is broader than personal liability because the
+  farm is a business. It covers the farming operation, and typically **farm
+  employees**, whose injuries would otherwise fall outside a personal policy.
+
+Specific features:
+
+- **Livestock coverage** is usually written on a **named peril** basis and
+  frequently includes perils peculiar to the exposure — **electrocution,
+  attack by dogs or wild animals, accidental shooting, drowning** and **loading
+  and unloading**.
+- **Scheduled versus blanket** treatment of farm personal property works as it
+  does in commercial property: blanket for a shifting inventory of feed and
+  grain, scheduled for named machines.
+- **Crop insurance is separate**, largely federal, and is not part of a
+  farmowners policy.
+- **Mobile agricultural equipment in transit** may need inland marine.
+
+## Windstorm
+
+Wind is a **covered peril** on standard property forms in most of the country.
+In coastal areas it is frequently **excluded or heavily deductible**, because
+the exposure is concentrated: one hurricane damages an entire coastline.
+
+Where the private market withdraws, coverage comes from a **residual market**
+— a state-created insurer of last resort. Two mechanisms appear:
+
+- **A windstorm pool or association**, writing wind and hail coverage in a
+  designated coastal area.
+- **A FAIR Plan** — Fair Access to Insurance Requirements — writing basic
+  property coverage for those unable to obtain it in the voluntary market,
+  usually because of location or property condition rather than the owner's
+  conduct.
+
+Both are funded by **compulsory membership of the insurers writing in the
+state**, which is why they are described as the market insuring itself.
+
+Recurring features:
+
+- **A separate, percentage windstorm or hurricane deductible**, applied to the
+  coverage limit.
+- **A named-storm trigger**, where the percentage deductible applies only to
+  storms the weather service has named.
+- **Insurance-to-value and building-code requirements** as conditions of
+  eligibility.
+- **A waiting period** and a suspension of new business once a storm is
+  approaching.
+
+> **Texas is one of the states where this matters most.** The Texas Windstorm
+> Insurance Association and the Texas FAIR Plan Association are creatures of
+> the Texas Insurance Code, with their own eligibility rules, limits,
+> deductibles and claim deadlines. Those specifics belong to the Texas
+> statutes module and are examined there. What belongs here is the general
+> shape: wind excluded on the coast, a residual market filling the gap, funded
+> by compulsory membership.
+
+## How this is examined
+
+**Fire following an earthquake is covered** by the standard policy.
+
+**Earthquake deductibles are a percentage of the limit**, and multiple shocks
+in 72 hours are one occurrence.
+
+**Mobile homes settle at actual cash value.**
+
+**A farm is ineligible for a homeowners policy**, and why.
+
+**Livestock perils** — electrocution, attack by animals, accidental shooting,
+drowning.
+
+**Residual markets** exist because of correlated catastrophe exposure, and are
+funded by the insurers writing in the state.
+
+## Check yourself
+
+1. An earthquake cracks a gas line and the resulting fire destroys the house.
+   What is covered under a standard homeowners policy without an earthquake
+   endorsement?
+2. A $500,000 dwelling carries earthquake coverage with a 10% deductible. A
+   quake causes $70,000 of damage. What is paid?
+3. Why is a mobile home not written on a homeowners policy?
+4. A farmer keeps a herd of cattle, farms 400 acres and lives in a house on
+   the property. What policy?
+5. Cattle are killed by lightning. Covered under a farmowners policy?
+6. Why is windstorm excluded on the coast when it is covered inland?
+
+## Answers
+
+1. **The fire damage.** Ensuing fire is not excluded by the earth movement
+   exclusion. The shake damage itself is not covered.
+2. **$20,000.** The deductible is 10% of the **limit** — $50,000 — not of the
+   loss.
+3. It is built to different standards, depreciates rather than appreciates,
+   and can be moved. A mobile homeowners policy settles on **actual cash
+   value** and addresses transportation.
+4. A **farmowners** policy — a package covering the residence and the farming
+   operation. A farm is ineligible for homeowners.
+5. **Yes.** Lightning is a standard peril and electrocution is among the
+   perils livestock coverage typically names.
+6. Because the exposure is **correlated** — a single hurricane damages an
+   entire coastline at once, which defeats the law of large numbers. A
+   residual market fills the gap.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select 'f2a692e9-7a38-5c5c-938c-371af3cfcd0f', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.I'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select '28241cd6-2d64-5c0d-8297-9e242c3e931a', '2071512a-2630-55ae-b69b-68d3232b7633', c.id, 'Commercial General Liability',
+       'commercial-general-liability', 'Three coverages, four exposures, six limits — the form most commercial liability questions are built on.', 1,
+       'draft', 18
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select '28241cd6-2d64-5c0d-8297-9e242c3e931a', c.id, $lesson$# The business's liability policy
+
+The CGL covers a business's liability to **third parties** — customers,
+visitors, passers-by, the users of its products. Not its employees (workers'
+compensation), not its vehicles (commercial auto), not its professional
+advice (professional liability).
+
+## The four exposures
+
+Traditionally grouped as **premises and operations**, **products and completed
+operations**, **contractual**, and **personal and advertising injury**. The
+blueprint names the first two explicitly.
+
+**Premises** — somebody is injured on the insured's property. A customer
+slips in a supermarket aisle.
+
+**Operations** — somebody is injured by the insured's work **while it is in
+progress**, whether at the insured's premises or elsewhere. A plumber floods
+a client's kitchen mid-job.
+
+**Products** — injury or damage caused by a product the insured made or sold,
+**after it has left the insured's possession**.
+
+**Completed operations** — injury or damage arising from the insured's work
+**after it is finished** and handed over. A deck collapses two years after the
+builder left.
+
+**Products and completed operations are grouped together** because they share
+a characteristic: the loss happens when the insured is no longer there, often
+long afterwards. They also share **their own separate aggregate limit**.
+
+The dividing line is tested directly: **work in progress is operations;
+work handed over is completed operations.**
+
+## The three coverages
+
+### Coverage A — Bodily Injury and Property Damage Liability
+
+The core. Pays sums the insured becomes **legally obligated to pay as
+damages** because of bodily injury or property damage caused by an
+**occurrence** in the coverage territory.
+
+**An occurrence is an accident, including continuous or repeated exposure to
+substantially the same general harmful conditions.** The word does the work
+of excluding the deliberate: intentional injury is not an occurrence.
+
+**Bodily injury** means bodily injury, sickness or disease, including death.
+**Property damage** means physical injury to tangible property, including loss
+of use, **and** loss of use of tangible property that is not physically
+injured.
+
+#### Occurrence versus claims-made
+
+**An occurrence form** responds to injury or damage **taking place during the
+policy period**, whenever the claim arrives.
+
+**A claims-made form** responds to claims **first made during the policy
+period**, and adds two mechanisms:
+
+- **The retroactive date.** Injury or damage before it is not covered, no
+  matter when claimed. A retroactive date that moves forward on renewal
+  quietly destroys years of coverage — the thing to watch for.
+- **Extended reporting periods.** A **basic** tail is automatic and short; a
+  **supplemental** tail is bought, usually unlimited in time, and must be
+  purchased within a short window after the policy ends.
+
+Claims-made exists for long-tail exposures — where injury may not appear for
+decades — because an insurer cannot price a promise whose claims will arrive
+forty years later.
+
+### Coverage B — Personal and Advertising Injury Liability
+
+Covers injury arising from a list of **offences**, not from an accident. The
+list:
+
+- **false arrest, detention or imprisonment**
+- **malicious prosecution**
+- **wrongful eviction**, wrongful entry, or invasion of the right of private
+  occupancy
+- **slander or libel** — oral or written publication disparaging a person or
+  organisation, or their goods
+- **violation of a person's right of privacy**
+- **use of another's advertising idea**
+- **infringement of copyright, trade dress or slogan** in the insured's
+  advertisement
+
+Two exam points: **these are offences, not occurrences**, so the trigger is
+the committing of the offence; and **patent and trademark infringement are
+generally not covered** — the list names copyright, trade dress and slogan.
+
+### Coverage C — Medical Payments
+
+Pays medical expenses for bodily injury on the insured's premises or arising
+from operations, **regardless of fault**, provided the expenses are incurred
+within a stated period — commonly **three years** — of the accident.
+
+It exists to settle small injuries quickly and goodwill intact, before they
+become liability claims. It **does not apply to the insured, employees, or
+tenants**, and it does not apply where the injured person is covered by
+workers' compensation.
+
+## Supplementary payments
+
+Paid **in addition to the limits**: defence costs, the cost of bonds to
+release attachments, **premiums** on appeal bonds and bail bonds (commonly up
+to $250), reasonable expenses at the insurer's request including lost earnings
+(commonly up to $250 a day), court costs, and **post-judgment interest**.
+
+## Who is an insured
+
+The form defines it by the insured's structure:
+
+- **Sole proprietor** — the individual and their spouse, for the conduct of
+  the business.
+- **Partnership or joint venture** — the partners and their spouses.
+- **Limited liability company** — members and managers.
+- **Corporation** — executive officers, directors and stockholders, acting
+  within their duties.
+- **Employees and volunteer workers**, for acts within the scope of their
+  employment — **but not for bodily injury to a fellow employee**, and not for
+  professional services.
+- **Real estate managers** acting for the insured.
+- **Newly acquired organisations**, automatically, for a limited period —
+  commonly **90 days** or until the policy ends, whichever is first.
+
+**The first named insured** has the distinct duties met in Module 2: it
+receives notices, pays premium, may cancel, and handles the **premium audit**.
+
+**Additional insureds** are added by endorsement, for liability arising out of
+the named insured's work or premises.
+
+## The six limits
+
+The CGL's limit structure is examined more often than anything else in the
+form.
+
+| Limit | What it caps |
+| --- | --- |
+| **Each occurrence** | All damages from one occurrence, under A and C combined |
+| **General aggregate** | Everything paid in the policy period **except** products-completed operations |
+| **Products–completed operations aggregate** | Its own separate annual cap |
+| **Personal and advertising injury** | Per person or organisation, under Coverage B |
+| **Damage to premises rented to you** | Fire (and in later editions, certain other) damage to premises the insured rents |
+| **Medical expense** | Per person, under Coverage C |
+
+The points that get tested:
+
+- **Products-completed operations has its own aggregate**, separate from the
+  general aggregate. Exhausting one does not exhaust the other.
+- **The aggregate is annual.** Once exhausted, the policy is finished for that
+  period even though months remain — and the duty to defend ends with it.
+- **Damage to premises rented to you** is the exception to the property damage
+  exclusion for property in the insured's care: a tenant who burns the
+  landlord's building has this, and nothing else.
+
+## Key exclusions
+
+- **Expected or intended injury.**
+- **Contractual liability** — except for an **insured contract**, a defined
+  list including leases, sidetrack agreements, easements, and the part of any
+  contract assuming another's tort liability. This is a broad exception that
+  effectively restores most commercial hold-harmless agreements.
+- **Workers' compensation and employer's liability** — employees' injuries
+  belong elsewhere.
+- **Pollution**, with narrow exceptions.
+- **Aircraft, auto and watercraft** — but **mobile equipment is covered**.
+- **Damage to your product** and **damage to your work** — the policy covers
+  the harm the product does, not the cost of the defective product itself.
+  This is the **business risk** principle: replacing your own bad work is a
+  cost of doing business, not an insurable accident.
+- **Damage to property in your care, custody or control**, except the rented
+  premises limit.
+- **Recall of products** — the "sistership" exclusion.
+- **Liquor liability**, for those in the business of serving alcohol.
+- **Professional services.**
+
+## Mobile equipment versus auto
+
+**Mobile equipment** — bulldozers, farm machinery, forklifts, vehicles
+maintained solely on the insured's premises, and vehicles whose purpose is to
+carry permanently mounted equipment like drills or cranes — is **covered by
+the CGL**.
+
+**Autos** — vehicles subject to compulsory registration and used on public
+roads — are **excluded** and belong on the commercial auto policy.
+
+The line moves in one notable case: **self-propelled vehicles carrying
+permanently attached equipment are mobile equipment, unless they are subject
+to registration**, in which case they become autos.
+
+## How this is examined
+
+**Operations versus completed operations.**
+
+**The two aggregates**, and that exhausting one does not exhaust the other.
+
+**"Damage to your work" and "damage to your product"** — the product that
+injures somebody is covered; the product itself is not.
+
+**Coverage B's list of offences**, especially that patent and trademark are
+absent.
+
+**Medical payments pays without fault** and not to employees.
+
+**Insured contract** as the exception to the contractual liability exclusion.
+
+**Mobile equipment versus auto.**
+
+## Check yourself
+
+1. A contractor installs a faulty water heater. It leaks two years later,
+   ruining a floor. Which exposure, and is the water heater itself covered?
+2. A CGL has a $1m occurrence limit, $2m general aggregate and $2m
+   products-completed operations aggregate. Premises claims have exhausted the
+   general aggregate in July. A products claim arrives in September. Covered?
+3. A visitor trips in the insured's lobby. The insured is plainly not
+   negligent, but the visitor has a $3,000 hospital bill. Anything payable?
+4. An employee is injured by a colleague's negligence. Does the CGL respond?
+5. A restaurant's advertisement copies a competitor's slogan. Which coverage?
+6. A tenant's negligence causes a fire that damages the landlord's building.
+   Is that covered, given the care, custody or control exclusion?
+
+## Answers
+
+1. **Completed operations** — the work was finished and handed over. The
+   **floor damage is covered**; the **water heater itself is not**, under the
+   damage-to-your-product and damage-to-your-work exclusions.
+2. **Yes.** Products-completed operations has its **own separate aggregate**,
+   untouched by the premises claims.
+3. **Yes** — Coverage C, medical payments, pays regardless of fault, for
+   expenses incurred within the stated period.
+4. **No.** Employee injuries are excluded; workers' compensation and
+   employers' liability respond.
+5. **Coverage B**, personal and advertising injury — infringement of slogan in
+   an advertisement.
+6. **Yes, up to the "damage to premises rented to you" limit**, which is the
+   express exception to that exclusion.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select '28241cd6-2d64-5c0d-8297-9e242c3e931a', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.IV'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select '05b35e14-99ac-5dac-89c9-c53c92c33fc5', '2071512a-2630-55ae-b69b-68d3232b7633', c.id, 'Personal Auto',
+       'personal-auto', 'Four parts, several definitions of "your covered auto", and the uninsured motorist coverage that catches everybody.', 2,
+       'draft', 18
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select '05b35e14-99ac-5dac-89c9-c53c92c33fc5', c.id, $lesson$# The most widely owned policy there is
+
+A personal auto policy is a package of four separately purchased coverages,
+each with its own limit and its own set of insureds.
+
+## The four parts
+
+| Part | Coverage |
+| --- | --- |
+| **A** | **Liability** — bodily injury and property damage to others |
+| **B** | **Medical payments** |
+| **C** | **Uninsured motorists** (and, where written, underinsured) |
+| **D** | **Damage to your auto** — collision and other than collision |
+
+## Part A — Liability
+
+Pays damages the insured is legally responsible for, from an auto accident.
+It includes **defence**, and **defence costs are in addition to the limit**.
+
+### Split limits and combined single limit
+
+**Split limits** are written as three numbers: **bodily injury per person /
+bodily injury per accident / property damage per accident.** Under 100/300/50:
+
+- **$100,000** is the most for any one injured person;
+- **$300,000** is the most for all bodily injury in one accident;
+- **$50,000** is the most for property damage in one accident.
+
+A four-claimant accident with $90,000 of injury each: each claim is within the
+$100,000 per-person limit, but the $360,000 total exceeds the $300,000
+per-accident limit, so **$300,000** is paid.
+
+**A combined single limit** is one figure covering bodily injury and property
+damage in any proportion. A $300,000 CSL can pay $250,000 of injury and
+$50,000 of damage, or any other split. It is more flexible and generally more
+expensive.
+
+### Who is an insured under Part A
+
+- **The named insured and any family member**, for any auto — including cars
+  they do not own.
+- **Any person using "your covered auto"** with permission. This is
+  **permissive use**, and it is why lending the car lends the insurance.
+- **Any person or organisation legally responsible** for an insured's use of a
+  covered auto — a passenger's employer, for example.
+
+### Key exclusions
+
+- **Intentional injury.**
+- **Property owned by or in the insured's care, custody or control** — you
+  cannot use your liability coverage to fix your own garage.
+- **Vehicles with fewer than four wheels**, and vehicles used as a **public or
+  livery conveyance** — the ride-hailing exclusion, now commonly bought back
+  by endorsement.
+- **Employees covered by workers' compensation.**
+- **Using a vehicle without a reasonable belief of being entitled to.**
+- **Vehicles available for regular use** that are not covered autos — the
+  reason a company car you drive daily is not covered by your personal policy.
+- **Business use of vehicles**, other than a private passenger auto, pickup or
+  van.
+
+## Part B — Medical payments
+
+Pays **reasonable and necessary medical and funeral expenses**, for bodily
+injury caused by an accident, **regardless of fault**, incurred within a
+stated period — commonly **three years** — of the accident.
+
+Who is covered:
+
+- **The named insured and family members**, while occupying **any** auto, or
+  as pedestrians struck by a motor vehicle.
+- **Any other person occupying "your covered auto."**
+
+It is a small limit, often $5,000 or $10,000 per person, and it is primary:
+it pays quickly without waiting for a liability determination.
+
+## Part C — Uninsured and underinsured motorists
+
+The coverage the exam loves, because its logic runs backwards from the rest of
+the policy.
+
+**UM pays the insured what the *other* driver's liability policy would have
+paid, had they had one.** The insured must be **legally entitled to recover**
+— the other driver must be at fault. This is the crucial point: **UM is not
+no-fault coverage.** If the insured caused the accident, UM pays nothing.
+
+**Uninsured motorist** applies where the at-fault driver:
+
+- has **no insurance**;
+- is a **hit-and-run** driver who cannot be identified; or
+- has insurance from an insurer that is **insolvent** or **denies coverage**.
+
+**Underinsured motorist** applies where the at-fault driver **has insurance,
+but not enough** to cover the loss. It pays the difference between the other
+driver's limit and the insured's UIM limit.
+
+Two further points:
+
+- **UM bodily injury is standard; UM property damage is not** available in
+  every state, and where it is, often carries a deductible.
+- **Stacking** — combining the UM limits of several vehicles or policies — is
+  permitted in some states and prohibited in others.
+
+> Texas's rules on uninsured and underinsured motorists, and on personal
+> injury protection, sit in Chapter 1952 of the Texas Insurance Code. The
+> general mechanism is here; the Texas requirements, including which coverages
+> must be offered and how they may be rejected, are examined in the Texas
+> statutes module.
+
+**Personal injury protection** is a broader first-party coverage found in
+some states, paying medical expenses, lost wages and replacement services
+regardless of fault — and, unlike UM, without requiring anybody to be at
+fault.
+
+## Part D — Damage to your auto
+
+Physical damage to the vehicle itself, written with a deductible.
+
+**Collision** — impact with another vehicle or object, or the vehicle
+overturning. **Fault is irrelevant.** Hitting a wall is collision; so is
+being hit.
+
+**Other than collision** (comprehensive) — everything else: **fire, theft,
+vandalism, glass breakage, falling objects, explosion, earthquake, windstorm,
+hail, water, flood, riot, contact with a bird or animal, and missiles**.
+
+The classic distinction: **hitting a deer is other than collision; swerving to
+avoid a deer and hitting a tree is collision.**
+
+**Specified (named) perils** is a cheaper third option, covering a named list
+— fire, lightning, theft, windstorm, hail, explosion, earthquake, flood, riot,
+and the like — rather than all non-collision causes.
+
+Also in Part D:
+
+- **Transportation expenses** — a modest daily amount for a rental car
+  following a covered loss, subject to a maximum and, for theft, a waiting
+  period.
+- **Loss to non-owned autos** the insured is driving is covered to the same
+  extent.
+- **Excluded**: wear and tear, mechanical breakdown, road damage to tyres,
+  freezing, electronic equipment not permanently installed, and custom
+  furnishings in a pickup or van unless declared.
+
+**Loss settlement is actual cash value** or the cost of repair, whichever is
+less. **A total loss pays ACV, which is why a new car can be worth
+substantially less than its loan** — the gap that GAP coverage fills.
+
+## Types of auto
+
+The blueprint names these explicitly, and they matter more in commercial auto:
+
+- **Owned** — titled to the insured and listed on the policy.
+- **Non-owned** — not owned by, hired by or borrowed by the insured, but used
+  in the insured's business, typically an employee's own car.
+- **Hired** — leased, rented or borrowed.
+- **Temporary substitute** — used while a covered auto is out of service for
+  breakdown, repair, servicing, loss or destruction. **Covered
+  automatically.**
+- **Newly acquired auto** — covered automatically, usually for **14 or 30
+  days** depending on whether it is an addition or a replacement and on the
+  coverage; the insured must notify the insurer within that window. An
+  **additional** vehicle generally gets broader automatic coverage than a
+  **replacement**, which inherits only the coverage the replaced vehicle had.
+- **Trailers** owned by the insured are usually covered for liability.
+
+## Duties after an accident
+
+Beyond the general duties: **notify the police in a hit-and-run** (UM
+requires it, usually within 24 hours), **submit to physical examination** and
+to **examination under oath**, and **allow inspection of the vehicle before
+repair**.
+
+## How this is examined
+
+**Split limit arithmetic** with several claimants.
+
+**Collision versus other than collision** — the deer.
+
+**UM requires the other driver to be at fault**, and covers hit-and-run and
+insolvent insurers.
+
+**UIM pays the difference**, not the whole loss again.
+
+**Permissive use** — the borrowed car.
+
+**Newly acquired auto** notification periods, and addition versus
+replacement.
+
+**Public or livery conveyance** exclusion for ride-hailing.
+
+## Check yourself
+
+1. Under 250/500/100, three people are injured with claims of $200,000,
+   $200,000 and $150,000. What is paid for bodily injury?
+2. The insured hits a deer. Collision or other than collision?
+3. The insured is at fault in an accident and is badly injured. The other
+   driver is uninsured. Does UM pay the insured's injuries?
+4. An at-fault driver carries $30,000 of bodily injury coverage. The insured's
+   damages are $90,000 and their UIM limit is $100,000. Roughly what does UIM
+   pay?
+5. A friend borrows the insured's car and causes an accident. Whose policy is
+   primary?
+6. The insured's car is totalled. It was bought last year for $38,000, is now
+   worth $26,000, and the loan balance is $31,000. What does Part D pay?
+
+## Answers
+
+1. Each claim is within the $250,000 per-person limit, but they total
+   $550,000 against the $500,000 per-accident limit. **$500,000** is paid.
+2. **Other than collision.** Contact with an animal is a comprehensive loss.
+3. **No.** UM requires the insured to be **legally entitled to recover** from
+   the other driver — the other driver must be at fault.
+4. **$60,000** — the difference between the at-fault driver's $30,000 and the
+   insured's $90,000 of damages, within the $100,000 UIM limit.
+5. **The car owner's.** Liability follows the car; the permissive user is an
+   insured.
+6. **$26,000** less the deductible — actual cash value. The **$5,000 gap** to
+   the loan is the insured's, unless GAP coverage was bought.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select '05b35e14-99ac-5dac-89c9-c53c92c33fc5', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.IV'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select '540f7c2a-82b7-5fd5-bb6b-01c592cdc2dc', '2071512a-2630-55ae-b69b-68d3232b7633', c.id, 'Business Auto',
+       'business-auto', 'The numbered symbols that decide what is covered, plus garagekeepers and drive other car.', 3,
+       'draft', 15
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select '540f7c2a-82b7-5fd5-bb6b-01c592cdc2dc', c.id, $lesson$# Same risks, different machinery
+
+The business auto policy covers the same exposures as a personal auto policy —
+liability, medical payments, uninsured motorists, physical damage — for a
+business. What is different is **how it describes which vehicles are
+covered**, and that mechanism is what gets examined.
+
+## Covered auto designation symbols
+
+Rather than listing vehicles, the declarations put a **number next to each
+coverage**. The number says which class of autos that coverage applies to.
+
+| Symbol | Meaning |
+| --- | --- |
+| **1** | **Any auto** — the broadest available |
+| **2** | Owned autos only |
+| **3** | Owned **private passenger** autos only |
+| **4** | Owned autos **other than** private passenger |
+| **5** | Owned autos subject to **no-fault** laws |
+| **6** | Owned autos subject to **compulsory uninsured motorist** law |
+| **7** | **Specifically described** autos |
+| **8** | **Hired** autos only |
+| **9** | **Non-owned** autos only |
+| **19** | Mobile equipment subject to compulsory or financial responsibility law |
+
+The consequences:
+
+- **Symbol 1 is available only for liability.** It is the broadest, covering
+  owned, hired and non-owned autos alike, including vehicles acquired after
+  the policy began.
+- **Physical damage cannot use symbol 1**, because an insurer will not insure
+  the hull of a vehicle it has never seen. Physical damage uses **2, 3, 4, 7**
+  or a combination.
+- **A business that owns no vehicles but whose staff drive their own** needs
+  **symbols 8 and 9** — hired and non-owned — with no owned-auto coverage at
+  all.
+- **Symbol 7 covers only what is listed**, so a newly purchased vehicle must
+  be reported. Symbols 2, 3 and 4 pick up newly acquired autos automatically.
+
+A question describing a fact pattern and asking "which symbol?" is really
+asking whether the vehicle is owned, hired or non-owned.
+
+## Hired and non-owned
+
+**Hired autos** are leased, rented, hired or borrowed — but **not** vehicles
+borrowed from employees. Coverage is usually **excess** over the owner's own
+insurance, and the premium is based on **cost of hire**.
+
+**Non-owned autos** are vehicles used in the business but not owned, hired or
+borrowed by it — chiefly **employees' own cars** used on company errands. The
+business's liability arises because the employee was acting in the scope of
+employment. Coverage is **excess** over the employee's own policy, which
+remains primary.
+
+**Hired and non-owned liability is the coverage a business with no vehicles
+still needs**, and the one it most often forgets to buy.
+
+## Physical damage
+
+The same three options as personal auto — **collision**, **other than
+collision** (comprehensive), and **specified causes of loss** — plus:
+
+- **Towing and labour** at the place of disablement.
+- **Loss of use** and **rental reimbursement**, by endorsement.
+- **Transportation expenses** following theft.
+
+## Auto dealers and garagekeepers
+
+A vehicle dealer or repair shop has an exposure nobody else does: **it holds
+other people's cars.** Two coverages address it.
+
+**Garage liability** (now within the auto dealers coverage form) covers the
+dealer's liability from **garage operations** — the premises, the operations,
+and the autos.
+
+**Garagekeepers coverage** covers **damage to customers' autos in the
+insured's care, custody or control**. This is the exposure the CGL and the
+business auto policy both exclude, and it is examined regularly.
+
+It is written on one of three bases:
+
+- **Legal liability** — pays only when the insured is **legally liable** for
+  the damage. Cheapest.
+- **Direct primary** — pays for damage to the customer's auto **regardless of
+  fault**, and pays first, before the customer's own insurance.
+- **Direct excess** — pays regardless of fault, but **only after the
+  customer's own insurance** is exhausted.
+
+The distinction to hold: **legal liability requires negligence; the two direct
+forms do not. Primary pays first; excess pays after the customer's policy.**
+
+A dealer also needs **dealer's physical damage** ("false pretense" and similar
+coverages) for its own inventory.
+
+## Drive other car
+
+**Drive Other Car** is an endorsement for an individual — typically an
+executive with a company car and **no personal auto policy of their own.**
+
+The problem it solves: the business auto policy covers them while driving the
+company car, but not while driving a rented car on holiday or borrowing a
+friend's vehicle. Their personal exposure is uninsured because they own no
+personal policy.
+
+**DOC extends the business auto policy's liability, medical payments,
+uninsured motorists and physical damage to the named individual and their
+spouse while using autos they do not own** — other than the company car
+itself, which is already covered.
+
+It is named-individual coverage, added by endorsement for each person.
+
+## Individual named insured
+
+A related endorsement broadens a business auto policy for an **individual**
+named insured — a sole proprietor whose business and personal use are the same
+vehicles — to give something close to personal auto coverage for family
+members and non-owned vehicles.
+
+## Mobile equipment
+
+The same line as in the CGL. **Mobile equipment** — bulldozers, farm
+machinery, forklifts, vehicles maintained solely on premises, vehicles whose
+purpose is to carry permanently mounted equipment — is covered by the **CGL**,
+not the auto policy.
+
+**But:** where such a vehicle is **subject to compulsory or financial
+responsibility law** because it travels on public roads, it becomes an
+**auto** for insurance purposes, which is what **symbol 19** addresses.
+
+## Trucking and motor carriers
+
+Businesses hauling goods for others carry additional requirements:
+
+- **Federal filings** — endorsements guaranteeing public liability limits set
+  by federal regulation for interstate carriers.
+- **Motor truck cargo** — the carrier's liability for goods being hauled,
+  written as inland marine.
+- **Trailer interchange** — physical damage to trailers of others in the
+  insured's possession under an interchange agreement.
+- **Non-trucking liability** ("bobtail") — the owner-operator's liability
+  while the truck is being used **outside** the motor carrier's business.
+
+## How this is examined
+
+**Symbol 1 is liability only**; physical damage cannot use it.
+
+**A business with no owned vehicles** needs hired and non-owned — symbols 8
+and 9.
+
+**Garagekeepers: legal liability versus direct primary versus direct excess.**
+
+**Drive Other Car is for an individual with no personal auto policy.**
+
+**Non-owned coverage is excess** over the employee's own policy.
+
+**Mobile equipment belongs on the CGL** unless registration makes it an auto.
+
+## Check yourself
+
+1. An accounting firm owns no vehicles, but its staff drive their own cars to
+   clients. Which symbols does it need?
+2. A repair shop damages a customer's car while test-driving it. Which
+   coverage, and which basis would pay even if the shop were not negligent?
+3. Why can physical damage not be written under symbol 1?
+4. An executive drives a company car and owns no personal policy. She rents a
+   car on holiday and causes an accident. What was needed?
+5. A forklift is used only inside the insured's warehouse. Which policy covers
+   liability arising from it?
+6. An employee causes an accident driving their own car on a company errand.
+   Which policy is primary?
+
+## Answers
+
+1. **8 and 9** — hired and non-owned autos.
+2. **Garagekeepers**, on a **direct primary** or **direct excess** basis.
+   Legal liability alone would require negligence.
+3. Because symbol 1 means **any auto**, including vehicles the insurer has
+   never seen or rated. An insurer will not cover the hull of an unknown
+   vehicle.
+4. A **Drive Other Car** endorsement on the business auto policy.
+5. **The CGL.** It is mobile equipment, not an auto.
+6. **The employee's own policy.** The business's non-owned coverage is
+   **excess** over it.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select '540f7c2a-82b7-5fd5-bb6b-01c592cdc2dc', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.IV'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select 'e6d0d8ef-84b7-5b74-9c0e-4273d4262777', '2071512a-2630-55ae-b69b-68d3232b7633', c.id, 'Workers'' Compensation and Employers'' Liability',
+       'workers-compensation-and-employers-liability', 'The no-fault bargain, the three parts of the policy, and how the premium is actually calculated.', 4,
+       'draft', 16
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select 'e6d0d8ef-84b7-5b74-9c0e-4273d4262777', c.id, $lesson$# A bargain struck a century ago
+
+Before workers' compensation, an injured employee had to **sue the employer
+and prove negligence** — and faced three defences that usually won:
+
+- **Contributory negligence** — the worker's own carelessness contributed.
+- **Assumption of risk** — the worker knew the job was dangerous and took it
+  anyway.
+- **The fellow servant rule** — the injury was caused by a co-worker, not the
+  employer.
+
+Injured workers rarely recovered, and when they did, employers faced ruinous
+awards.
+
+**Workers' compensation replaced that with a trade.** The employee gives up
+the right to sue and the chance of a large damages award. The employer gives
+up the three defences and accepts liability **without regard to fault**. The
+employee gets certain, prompt, limited benefits; the employer gets
+predictability.
+
+## Exclusive remedy
+
+**The benefits provided by the workers' compensation statute are the
+employee's exclusive remedy against the employer for a work-related injury.**
+
+This single sentence is the most examined fact in the topic. It is why the
+CGL excludes employee injuries, why the employer cannot be sued for pain and
+suffering, and why the arrangement works at all.
+
+The exceptions where an employee may sue outside the system are narrow:
+**intentional injury by the employer**, and in some states injury caused by
+**gross negligence** or by the employer's failure to carry required coverage.
+
+**Third parties are not protected.** An employee injured by a defective
+machine still sues the manufacturer, and the compensation insurer subrogates
+against it.
+
+> **Texas is the notable exception in the United States.** It is the only
+> state that does not compel most private employers to carry workers'
+> compensation. An employer that opts out — a "non-subscriber" — **loses the
+> three common law defences** and can be sued directly. That is Texas-specific
+> and examined in the Texas statutes module; the blueprint explicitly notes
+> that this general section does not deal with state law specifics.
+
+## Who is covered
+
+**An employee** — anybody the employer directs and controls as to the manner
+of the work. The label on the relationship matters less than the control test.
+
+**An independent contractor** is not an employee: they control how the work is
+done, supply their own tools, and serve multiple clients. An employer using
+uninsured subcontractors may nevertheless be treated as their statutory
+employer.
+
+Commonly excluded or optional, varying by state: **domestic servants, casual
+labour, farm workers, sole proprietors, partners, and corporate officers**,
+who may often elect in or out.
+
+Separate **federal systems** cover workers the state acts do not:
+
+- **The Federal Employers' Liability Act (FELA)** — railroad workers. Note
+  that FELA is **not** a no-fault system; it preserves the right to sue but
+  removes the common law defences.
+- **The Longshore and Harbor Workers' Compensation Act** — maritime workers
+  on navigable waters other than seamen.
+- **The Jones Act** — seamen.
+- **The Federal Employees' Compensation Act** — civilian federal employees.
+
+## Compensability: arising out of and in the course of employment
+
+An injury is compensable if it **arises out of** the employment (the work
+caused it) **and occurs in the course of** the employment (during work, at the
+workplace, doing work).
+
+The recurring boundaries:
+
+- **The commute is generally not covered** — the "going and coming" rule. But
+  travel **on the employer's business** is.
+- **A lunch break off premises** is usually outside; on premises, usually
+  inside.
+- **Horseplay** generally takes the injured instigator outside the system; an
+  innocent bystander usually stays inside.
+- **Occupational disease** is covered where it arises from conditions
+  characteristic of the work — repetitive strain, hearing loss, exposure
+  illnesses — even though there is no accident and the onset is gradual.
+
+## The benefits
+
+Set by statute, not by the policy. Four categories:
+
+**Medical** — usually **unlimited**, with no deductible and no dollar cap.
+This surprises candidates and is worth remembering.
+
+**Disability income**, replacing lost wages at a percentage of the worker's
+average weekly wage — commonly around **two-thirds** — subject to state
+maximum and minimum amounts, and usually **after a short waiting period**,
+which is often retroactive if the disability lasts beyond a set duration. Four
+classes:
+
+- **Temporary total** — cannot work at all, but will recover.
+- **Temporary partial** — can work in a reduced capacity, will recover.
+- **Permanent partial** — a lasting impairment; often paid on a **schedule**
+  setting a number of weeks per body part.
+- **Permanent total** — cannot return to any gainful employment.
+
+**Rehabilitation** — medical and vocational, to return the worker to
+employment.
+
+**Death benefits** — burial expenses up to a stated amount, and income
+benefits to surviving dependants.
+
+## The policy's three parts
+
+**Part One — Workers' Compensation.** The insurer pays **whatever the
+statute requires**. There is **no dollar limit**, because the obligation is
+the state's, not the policy's. The states listed in the declarations (Item
+3.A) are where this applies.
+
+**Part Two — Employers' Liability.** Covers the employer's liability for
+work-related injury **that falls outside the compensation statute**. This is
+where the limits live, commonly written as three: **bodily injury by accident
+each accident / bodily injury by disease policy limit / bodily injury by
+disease each employee.**
+
+It answers exposures such as:
+
+- **Third-party-over actions** — the injured employee sues a manufacturer,
+  which then sues the employer for contribution.
+- **Consequential bodily injury** to a family member.
+- **Loss of consortium** claims by a spouse.
+- **Dual capacity** — the employer is sued in a second role, such as the
+  maker of the machine that caused the injury.
+
+**Part Three — Other States Insurance.** Extends Part One to states listed in
+Item 3.C where the insured **may** begin operations during the policy period.
+A state named in **neither** 3.A nor 3.C has no coverage — and adding it after
+an injury is too late. **Monopolistic states cannot be covered here at all**,
+because in those states coverage must be bought from the state fund.
+
+## Premium determination
+
+Examined more often than candidates expect.
+
+> **Premium = (payroll ÷ 100) × rate × experience modification factor**
+
+- **Payroll** is per **$100** of remuneration, by **classification code**. A
+  business with clerical and roofing staff pays very different rates on each.
+- **The rate** reflects the hazard of the classification.
+- **The experience modification factor** compares this employer's actual
+  losses with those expected for its class and size. **Above 1.0 means worse
+  than average and a higher premium; below 1.0 means better and a credit.**
+  This is the mechanism that rewards safety.
+
+Because payroll is not known in advance, the policy is written on an
+**estimated** payroll and a **deposit premium** is paid at inception. At the
+end of the period the insurer conducts a **premium audit** of the actual
+payroll and issues an additional premium or a return. **The insured must
+permit the audit and keep records** — a policy condition.
+
+Larger employers may use **retrospective rating**, where the final premium
+depends on the employer's own losses during the period, within a maximum and
+minimum.
+
+## How an employer obtains coverage
+
+- **The voluntary market** — a standard insurer.
+- **An assigned risk pool or state fund** — for employers the voluntary market
+  will not write.
+- **A monopolistic state fund** — in a handful of states, the only source, and
+  employers' liability must then be bought separately by endorsement to the
+  CGL.
+- **Qualified self-insurance**, for employers with the financial capacity and
+  the regulator's approval.
+
+## How this is examined
+
+**Exclusive remedy**, and the three defences the employer surrendered.
+
+**Medical benefits are unlimited**; disability income is not.
+
+**Part One has no limit; Part Two carries the limits.**
+
+**Other States Insurance** — a state in neither 3.A nor 3.C is uncovered.
+
+**The premium formula**, and what an experience modification above 1.0 means.
+
+**Deposit premium and audit.**
+
+**The going and coming rule.**
+
+## Check yourself
+
+1. An employee is injured by a co-worker's carelessness. Can the employer rely
+   on the fellow servant rule?
+2. An employee is hurt by a defective press. Who may be sued, and by whom?
+3. Is there a dollar limit on medical benefits?
+4. An employer with operations in Oklahoma has only Texas in Item 3.A and
+   nothing in 3.C. An Oklahoma employee is injured. Covered?
+5. An employer's experience modification factor is 1.25. What does that mean
+   for the premium?
+6. An employee slips in the car park on the way home from work. Compensable?
+
+## Answers
+
+1. **No.** The employer surrendered contributory negligence, assumption of
+   risk and the fellow servant rule as part of the bargain, and pays without
+   regard to fault.
+2. The employee may sue **the press manufacturer** (a third party); the
+   **employer may not be sued**, by exclusive remedy. The compensation insurer
+   subrogates against the manufacturer.
+3. **No.** Medical benefits are generally unlimited under the statute.
+4. **No.** A state appearing in neither 3.A nor 3.C has no coverage, and it
+   cannot be added retroactively.
+5. It is **25% worse than expected** for its class, so the premium is
+   increased by 25%.
+6. **Usually yes** — the employer's own car park is generally treated as
+   premises, so the going and coming rule does not bar it.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select 'e6d0d8ef-84b7-5b74-9c0e-4273d4262777', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.IV'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select '4760b3ca-72c7-5e8f-8c13-12aa4084dde5', '2071512a-2630-55ae-b69b-68d3232b7633', c.id, 'Crime',
+       'crime', 'Five crimes the exam insists you distinguish, and the coverage that answers the one that costs most.', 5,
+       'draft', 13
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select '4760b3ca-72c7-5e8f-8c13-12aa4084dde5', c.id, $lesson$# Words that mean the same thing in conversation and different things here
+
+Most of this topic is definitions. The exam tests them relentlessly, because
+in ordinary speech burglary, robbery and theft are interchangeable and in
+insurance they are not.
+
+## The five definitions
+
+**Theft** is the **broadest** term: the unlawful taking of property. Burglary
+and robbery are both kinds of theft.
+
+**Burglary** is **the taking of property from inside premises, by somebody who
+unlawfully entered or left, with visible signs of forced entry or exit.**
+
+Two elements: **forcible entry** and **visible marks**. No marks, no burglary.
+A thief who walks through an unlocked door has not committed burglary for
+insurance purposes, however obviously they have stolen something.
+
+**Robbery** is **taking property from a person, by violence or the threat of
+violence.**
+
+The element is **a person put in fear**. Robbery requires a victim who is
+present and threatened. A pickpocket is not committing robbery, because there
+is no threat.
+
+**Mysterious disappearance** is property that **vanishes with no explanation
+and no evidence of how**. Not a crime so much as a category — property that
+is simply gone.
+
+The practical consequence: **an insured who cannot prove burglary or robbery
+falls back on mysterious disappearance**, and many forms exclude or limit it
+precisely because it cannot be investigated.
+
+**Forgery and alteration** is the **signing of another's name without
+authority**, or the altering of a financial instrument — cheques, drafts,
+promissory notes.
+
+### Holding them apart
+
+| | Where | How | Proof needed |
+| --- | --- | --- | --- |
+| **Burglary** | Inside premises | **Forced entry or exit** | **Visible marks** |
+| **Robbery** | From a **person** | **Force or threat of force** | A person put in fear |
+| **Theft** | Anywhere | Any unlawful taking | Broadest |
+| **Mysterious disappearance** | Anywhere | Unknown | None available |
+
+One sentence that carries all four: **burglary breaks in, robbery threatens a
+person, theft covers both and more, and mysterious disappearance is what is
+left when you cannot say which.**
+
+## Employee dishonesty
+
+**The largest crime exposure most businesses have is not a stranger. It is an
+employee.**
+
+**Employee dishonesty coverage (fidelity)** covers **loss of money,
+securities and other property caused by the dishonest acts of employees** —
+theft, embezzlement, forgery.
+
+What to know:
+
+- **The employee must intend to cause the employer a loss and obtain a
+  financial benefit.** Simple negligence, or a mistake, is not dishonesty.
+- It is written on one of two bases: **per loss**, where the limit applies to
+  each dishonest act or scheme regardless of how many employees were involved,
+  or **per employee**, where it applies separately to each.
+- **Discovery of a dishonest act by an employee ends coverage for that
+  employee immediately**, since the risk is no longer fortuitous.
+- **Coverage is generally excluded for loss proved only by an inventory
+  computation or profit-and-loss comparison.** A shortage on the books is not
+  by itself proof of theft — though such records may support a claim otherwise
+  proved.
+
+## Discovery and loss-sustained forms
+
+The trigger question, and a favourite:
+
+- **A loss-sustained form** covers losses **occurring during the policy
+  period** and discovered during it or within a short period afterwards.
+- **A discovery form** covers losses **discovered during the policy period**,
+  whenever they occurred.
+
+**The discovery form is broader**, because employee dishonesty is typically
+found long after it began — the average embezzlement runs for years before
+anybody notices.
+
+## The crime coverage forms
+
+Commercial crime is assembled from insuring agreements, bought individually:
+
+- **Employee theft** (fidelity).
+- **Forgery or alteration**.
+- **Inside the premises — theft of money and securities**, covering theft,
+  disappearance and destruction.
+- **Inside the premises — robbery or safe burglary of other property.**
+- **Outside the premises**, covering money, securities and property in the
+  care of a **messenger**.
+- **Computer fraud** and **funds transfer fraud**.
+- **Money orders and counterfeit money.**
+
+Two roles the forms define: a **custodian** is the insured, a partner, or an
+employee with care and custody of property inside the premises; a
+**messenger** is one of those people **outside** the premises. A **watchperson**
+is retained specifically to guard the premises, and some coverages require one
+to be on duty.
+
+## What is excluded
+
+- **Acts of the insured** — the owner cannot steal from himself and claim.
+- **Loss proved only by inventory or profit-and-loss computation.**
+- **Accounting or arithmetical errors.**
+- **Trading losses** and **voluntary parting** — property handed over because
+  the insured was tricked into it, which is why social engineering fraud
+  became a separate insuring agreement.
+- **War, nuclear hazard, governmental action.**
+- **Vandalism** damage in some forms, and damage to the premises, unless
+  specifically covered.
+
+## Bonds versus crime insurance
+
+Both address dishonesty, and they are different instruments — covered fully in
+the bonds lesson. In short: **a fidelity bond guarantees the honesty of a
+named person or position**, while **employee dishonesty insurance covers the
+employer's loss** from employees generally.
+
+## How this is examined
+
+**Burglary requires visible marks of forced entry.** This is the single most
+reliable crime question.
+
+**Robbery requires a person threatened.**
+
+**Discovery versus loss-sustained**, and which is broader.
+
+**Employee dishonesty excludes loss proved only by inventory shortage.**
+
+**Coverage for an employee ends on discovery of a dishonest act by them.**
+
+## Check yourself
+
+1. A thief enters through an unlocked window, steals a laptop and leaves no
+   marks. Is this burglary?
+2. A courier carrying the day's takings is threatened with a knife and hands
+   over the bag. Which crime, and which insuring agreement?
+3. A bookkeeper diverts $80,000 over four years. The scheme is discovered in
+   year five, after the policy in force during the theft has expired. Which
+   form responds?
+4. An annual stocktake shows $30,000 of missing inventory and nothing else.
+   Is that a covered employee dishonesty loss?
+5. An employer discovers an employee stole $500 two years ago and keeps them
+   on. The employee steals again. Covered?
+
+## Answers
+
+1. **No.** Burglary requires **visible signs of forced entry or exit**. It is
+   theft, and may be a mysterious disappearance claim depending on the form.
+2. **Robbery** — property taken from a person by threat of violence. The
+   **outside the premises** insuring agreement, the courier being a
+   **messenger**.
+3. **A discovery form**, which covers losses **discovered** during the policy
+   period whenever they occurred. A loss-sustained form would likely not
+   respond.
+4. **No.** Loss proved **only** by inventory computation is excluded.
+5. **No.** Coverage for that employee ended on discovery of the first
+   dishonest act.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select '4760b3ca-72c7-5e8f-8c13-12aa4084dde5', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.IV'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select '9de6577b-bb16-5031-9916-7726f5831b08', '2071512a-2630-55ae-b69b-68d3232b7633', c.id, 'Bonds',
+       'bonds', 'Why a bond has three parties and insurance has two, and what that changes.', 6,
+       'draft', 13
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select '9de6577b-bb16-5031-9916-7726f5831b08', c.id, $lesson$# Not insurance, though it is sold by insurers
+
+A bond and an insurance policy look similar and behave differently. The
+difference is the whole topic.
+
+## Two parties versus three
+
+**An insurance policy has two parties**: the insurer and the insured. The
+insurer accepts a risk and expects some losses; premiums are priced to pay
+them.
+
+**A bond has three**:
+
+- **The principal** — the party whose performance or honesty is guaranteed.
+- **The obligee** — the party protected, who required the bond.
+- **The surety** — the party guaranteeing the principal to the obligee.
+
+**The surety guarantees the principal's performance to the obligee. If the
+principal fails, the surety pays the obligee — and then recovers from the
+principal.**
+
+That last clause is the crux. **A surety expects no losses.** Suretyship is
+underwritten as a credit decision, not a risk decision: the surety is
+satisfied the principal can and will perform, and treats any payment as an
+advance to be repaid.
+
+Two consequences follow directly, and both are examined:
+
+- **The principal must indemnify the surety.** An insured never repays an
+  insurer; a principal always repays a surety.
+- **Bond underwriting examines the principal's character, capacity and
+  capital** — credit, experience, financial statements, work in progress.
+
+## Surety bonds
+
+### Contract bonds
+
+Used in construction, where an owner needs assurance the job will be finished.
+
+- **Bid bond** — guarantees that if the contractor is awarded the job, they
+  will **enter into the contract** at the bid price and furnish the required
+  performance bond. Protects the owner against a contractor who bids low and
+  walks away, leaving the owner with the next-lowest bid.
+- **Performance bond** — guarantees the work will be **completed** per the
+  contract. If the contractor defaults, the surety must complete the job,
+  arrange for its completion, or pay the owner's cost of completing it.
+- **Payment bond** (labour and material) — guarantees that **subcontractors
+  and suppliers are paid**, so they do not file liens against the owner's
+  property.
+- **Maintenance bond** — guarantees the work against **defects** for a stated
+  period after completion.
+- **Supply bond** — guarantees delivery of materials per a supply contract.
+- **Completion bond** — given to a **lender** rather than an owner,
+  guaranteeing the project is finished free of liens.
+
+The bid–performance–payment sequence is the most common exam question in this
+lesson: **the bid bond gets you the contract, the performance bond finishes
+the work, the payment bond pays the subcontractors.**
+
+### Court bonds
+
+- **Judicial bonds** guarantee a party in litigation will meet its
+  obligations: **appeal bonds**, **attachment bonds**, **injunction bonds**,
+  **replevin bonds**.
+- **Fiduciary bonds** guarantee that a person appointed by a court to manage
+  another's affairs — an **executor, administrator, guardian, trustee or
+  receiver** — will do so faithfully.
+- **Bail bonds** guarantee a defendant's appearance in court.
+
+### Public official bonds
+
+Guarantee that an elected or appointed official will **faithfully perform the
+duties of office and account for public funds.**
+
+### Licence and permit bonds
+
+Required by a public authority before a licence issues. They guarantee the
+holder will **comply with the law governing the activity** and compensate
+those harmed by non-compliance. **Insurance producers in many states must
+carry one**, which is the example closest to home.
+
+## Fidelity bonds
+
+**A fidelity bond guarantees the honesty of a person handling money or
+property.** It is the one class of bond closest to insurance, and the exam
+tests the difference from employee dishonesty coverage.
+
+Three forms of coverage:
+
+- **Name schedule** — covers **named individuals**, each with a stated
+  amount. Adding a person requires notifying the surety.
+- **Position schedule** — covers **positions** rather than people, so whoever
+  occupies "head cashier" is covered.
+- **Blanket** — covers **all employees**, without naming anybody.
+
+Blanket forms come in two shapes: **commercial blanket**, where the limit
+applies **per loss** however many employees were involved, and **blanket
+position**, where the limit applies **to each employee**, so a three-employee
+conspiracy has three limits available.
+
+**Blanket position provides more coverage for the same limit** where several
+employees collude, which is the distinction to remember.
+
+## Bonds versus insurance, side by side
+
+| | Insurance | Surety bond |
+| --- | --- | --- |
+| Parties | **Two** | **Three** |
+| Expectation of loss | Losses expected, priced in | **No loss expected** |
+| Repayment | Insured never repays | **Principal must indemnify the surety** |
+| Underwriting | Risk selection | **Credit judgement** |
+| Cancellation | Usually cancellable | Often non-cancellable for the bond's term |
+| Premium | Rate for assumed risk | A **service fee** for the guarantee |
+
+## How this is examined
+
+**The three parties, and who is who** in a fact pattern. The contractor is the
+principal; the project owner is the obligee; the bonding company is the
+surety.
+
+**The principal must reimburse the surety.**
+
+**Bid versus performance versus payment bond.**
+
+**Blanket position versus commercial blanket** where several employees are
+involved.
+
+**A bond is a credit instrument**, not a risk transfer.
+
+## Check yourself
+
+1. A contractor is bonded on a school project. Who is the principal, who the
+   obligee, who the surety?
+2. A contractor abandons a job half-finished. The surety pays the owner
+   $400,000 to complete it. Does the contractor owe anything?
+3. A contractor submits the low bid and then refuses to sign. Which bond, and
+   what does it protect the owner against?
+4. Subcontractors are unpaid and threaten liens on the owner's property. Which
+   bond?
+5. Four employees conspire to steal $200,000. The employer has a $75,000
+   blanket position bond. Roughly what is available?
+6. Why does a surety expect no losses?
+
+## Answers
+
+1. The **contractor** is the principal, the **school district** the obligee,
+   the **bonding company** the surety.
+2. **Yes — the full $400,000.** The principal must indemnify the surety.
+3. The **bid bond**, protecting the owner against the extra cost of going to
+   the next bidder.
+4. The **payment bond** (labour and material).
+5. **$300,000** — blanket position applies the limit **to each employee**, so
+   four employees give four limits.
+6. Because the bond is a **credit judgement**: the surety underwrites the
+   principal's ability and willingness to perform, and any payment is
+   recoverable from the principal.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select '9de6577b-bb16-5031-9916-7726f5831b08', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.IV'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select '858d9378-6837-5721-8736-5adc0bb90504', '2071512a-2630-55ae-b69b-68d3232b7633', c.id, 'Professional Liability',
+       'professional-liability', 'The coverages that answer for advice, expertise and decisions — all excluded from the CGL.', 7,
+       'draft', 15
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select '858d9378-6837-5721-8736-5adc0bb90504', c.id, $lesson$# When the injury is caused by judgement, not by an accident
+
+**The CGL excludes professional services.** It covers accidents — a customer
+slipping, a product failing. It does not cover the consequences of getting
+professional advice wrong, because that is not an accident and cannot be
+priced like one.
+
+Professional liability fills the gap, and it differs from the CGL in three
+structural ways:
+
+- **The trigger is usually claims-made**, not occurrence, because professional
+  claims surface years later.
+- **It commonly covers economic loss**, not just bodily injury and property
+  damage. A negligent audit causes no physical harm at all.
+- **Many forms require the insured's consent to settle**, because a settlement
+  implies professional failure and may be reportable.
+
+## The standard of care
+
+The insured is judged against **what a reasonably prudent member of that
+profession would have done in the same circumstances**. This is a higher and
+more specific standard than the ordinary reasonable-person test of general
+negligence, and it is why the profession's own practices are usually decisive.
+
+## Errors and omissions
+
+**E&O covers financial loss suffered by a client because of the insured's
+negligent act, error or omission in performing professional services.**
+
+The general-purpose form, used for professions whose failures cost money
+rather than health: **insurance agents and brokers**, real estate agents,
+accountants, architects and engineers, consultants, technology providers,
+lawyers (usually "lawyers professional liability").
+
+**An insurance producer's own E&O** is the closest example. The claim that
+brings it: failing to place requested coverage, placing the wrong limit,
+letting a policy lapse, or giving advice on coverage that turns out wrong.
+
+## Medical malpractice
+
+**Covers physicians, surgeons, dentists, nurses and other health care
+providers** for injury arising from professional services.
+
+Two related forms:
+
+- **Professional liability** for the individual practitioner.
+- **Hospital or health care facility professional liability** for the
+  institution, plus a **general liability** part for ordinary premises
+  accidents.
+
+Points that appear:
+
+- **Consent to settle is common**, because settlements are reported to
+  national practitioner databanks and affect licensure.
+- **Tail coverage matters enormously**, because a claim may arise many years
+  after treatment — particularly where a child was the patient, since the
+  limitation period may not begin until they reach majority.
+- **Medical payments under a CGL** is a different thing entirely: it pays a
+  visitor's medical bills without fault and has nothing to do with
+  malpractice.
+
+## Directors and officers
+
+**D&O covers the personal liability of directors and officers for wrongful
+acts in managing the organisation** — breaches of duty, misstatements,
+misleading statements, neglect or errors in their capacity as officers.
+
+Who sues: **shareholders, employees, competitors, customers, regulators**.
+The claims are typically about decisions rather than accidents — a
+misrepresentation in a prospectus, a sale at an inadequate price, a failure to
+supervise.
+
+The three standard insuring agreements:
+
+- **Side A** — pays the **individual directors and officers** where the
+  company cannot or does not indemnify them, such as in insolvency or where
+  indemnification is legally barred.
+- **Side B** — reimburses **the company** for indemnifying its directors and
+  officers.
+- **Side C** — covers **the entity itself** for securities claims.
+
+**Side A is the coverage a director personally cares about**, because it is
+the one that survives the company's failure. That is the examinable point.
+
+## Employment practices liability
+
+**EPLI covers claims by employees and applicants arising from the employment
+relationship**: wrongful termination, discrimination, harassment, retaliation,
+failure to promote, wrongful discipline, defamation in the employment context.
+
+It exists because **the CGL excludes it** and **workers' compensation does not
+reach it** — these are not bodily injuries at work, they are employment
+decisions. It is claims-made, and usually carries a deductible or retention the
+employer bears on every claim, since small claims are frequent.
+
+## Cyber liability and data breach
+
+**The third-party half of cyber**, complementing the first-party coverage in
+the commercial property lesson.
+
+It covers what the insured **owes others** after a cyber event:
+
+- **Liability for a privacy breach** — claims by individuals whose personal
+  data was exposed.
+- **Regulatory defence and penalties**, where the law permits them to be
+  insured.
+- **Network security liability** — where the insured's compromised systems
+  harmed a third party.
+- **Media liability** — defamation or infringement in the insured's online
+  content.
+
+**Funds transfer fraud** and **social engineering** — where an employee is
+deceived into wiring money to a fraudster — sit on the first-party side, and
+are often sub-limited because the exposure is large and the control is human
+rather than technical.
+
+Why cyber is bought separately: standard forms respond to **physical damage to
+tangible property**, and **data is generally not tangible property**. Many
+forms now also carry express cyber exclusions.
+
+## Liquor liability
+
+**Covers those in the business of manufacturing, distributing, selling,
+serving or furnishing alcohol** for liability arising from that activity.
+
+**The CGL excludes it for those in the business.** The exclusion does not
+apply to a host who is not in the alcohol business, so an ordinary company
+holding a party retains **host liquor liability** under its CGL.
+
+The exposure arises from **dram shop laws** — statutes making a server liable
+for injury caused by a patron served while obviously intoxicated, or served
+under age. Where a state has a dram shop act, a restaurant or bar without
+liquor liability coverage is running an uninsured exposure.
+
+The exam wants two things: **the CGL covers host liquor liability but excludes
+those in the alcohol business**, and **dram shop laws are the reason.**
+
+## Claims-made mechanics, once more
+
+Because nearly every form here is claims-made:
+
+- **The retroactive date** bars acts before it, whenever the claim arrives.
+  Watch for a renewal that advances it.
+- **A basic extended reporting period** is automatic and short.
+- **A supplemental extended reporting period** — the "tail" — is purchased,
+  must be bought within a short window after expiry, and is what a
+  professional retiring or changing insurer needs.
+- **Prior acts coverage** on a new policy, with the retroactive date preserved,
+  is the alternative to buying a tail.
+
+## How this is examined
+
+**The CGL excludes professional services** — which is why every one of these
+exists.
+
+**Side A D&O** protects individuals when the company cannot indemnify them.
+
+**Host liquor liability is covered by the CGL; those in the business are
+excluded.**
+
+**Consent to settle** is a professional liability feature.
+
+**Claims-made retroactive dates and tails.**
+
+**EPLI covers employment decisions, which are neither CGL nor workers'
+compensation claims.**
+
+## Check yourself
+
+1. An insurance agent fails to add a newly purchased building to a client's
+   policy and it burns. Which coverage responds?
+2. A company holds a Christmas party; a guest drinks too much and injures
+   somebody driving home. Does the CGL respond?
+3. A corporation becomes insolvent and cannot indemnify its directors, who are
+   personally sued. Which D&O insuring agreement?
+4. An employee sues for wrongful termination. CGL, workers' compensation, or
+   something else?
+5. A surgeon retires. Claims may arise for years. What must be arranged?
+6. A hacker steals customer records and the customers sue. First-party or
+   third-party cyber coverage?
+
+## Answers
+
+1. The agent's **errors and omissions** policy.
+2. **Yes** — the company is not in the alcohol business, so **host liquor
+   liability** remains covered by the CGL.
+3. **Side A**, which pays the individuals directly where the company cannot.
+4. **Employment practices liability.** The CGL excludes it and workers'
+   compensation does not reach employment decisions.
+5. A **supplemental extended reporting period** (tail), bought within the
+   window after the policy ends — or prior acts coverage on a new policy with
+   the retroactive date preserved.
+6. **Third-party** — cyber liability. The customers' claims are what the
+   insured owes others.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select '858d9378-6837-5721-8736-5adc0bb90504', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.IV'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select '88047c29-a279-5436-aa7a-24977ea5abb2', '2071512a-2630-55ae-b69b-68d3232b7633', c.id, 'Umbrella and Excess Liability',
+       'umbrella-and-excess-liability', 'More limit on top of what you have — and, in an umbrella, some coverage the underlying policies never had.', 8,
+       'draft', 12
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select '88047c29-a279-5436-aa7a-24977ea5abb2', c.id, $lesson$# Two things that look the same and are not
+
+Both sit above a primary policy. Only one of them broadens coverage.
+
+## Excess liability
+
+**An excess policy provides additional limits over specified underlying
+policies, following their terms.**
+
+It is described as **"following form"** — it covers what the underlying policy
+covers, no more and no less, and it begins where the underlying limit ends.
+If the primary policy excludes something, so does the excess.
+
+An excess policy buys **height**, not **breadth**.
+
+## Umbrella liability
+
+**An umbrella does three things**, and the third is what distinguishes it:
+
+1. **It provides excess limits** over the underlying policies — like an
+   excess policy.
+2. **It drops down** to replace an underlying policy whose aggregate has been
+   exhausted by other claims.
+3. **It covers some losses the underlying policies exclude**, subject to a
+   **self-insured retention**.
+
+That third function is the examined one. **Where a claim is covered by the
+umbrella but not by any underlying policy, the umbrella pays — after the
+insured bears the self-insured retention.**
+
+### The self-insured retention
+
+**The SIR is the amount the insured pays on a claim the umbrella covers but no
+underlying policy does.** Commonly $10,000 or $25,000.
+
+It is not a deductible in the ordinary sense: **it applies only where there is
+no underlying coverage.** Where an underlying policy does respond, the
+umbrella simply sits above its limit and the SIR is irrelevant.
+
+What an umbrella typically covers beyond the underlying policies: **personal
+injury offences** not in the underlying form, **worldwide coverage**,
+**liability assumed under contract** beyond the underlying's insured contract
+definition, and certain **watercraft and aircraft** exposures.
+
+## Underlying limit requirements
+
+An umbrella requires the insured to **carry and maintain stated underlying
+limits** — commonly $1,000,000 per occurrence on general liability,
+$1,000,000 on auto, and $500,000 or $1,000,000 on employers' liability.
+
+**If the insured lets an underlying policy lapse or carries less than
+required, the umbrella responds as though the required underlying limit were
+in place**, and the insured absorbs the shortfall. That is a reliable exam
+point: the umbrella does not become primary just because the primary vanished.
+
+## Personal umbrella
+
+The personal version sits above homeowners and personal auto, typically
+requiring $300,000 or $500,000 of underlying liability on each.
+
+- **Limits start at $1,000,000** and are bought in millions.
+- It covers **personal injury** offences — libel, slander, false arrest,
+  invasion of privacy — which a homeowners policy typically does not.
+- It **excludes business and professional exposures**, intentional acts, and
+  the insured's own injuries.
+- It is cheap relative to its limit, because the underlying policies absorb
+  the frequent small claims and the umbrella sees only the rare severe one.
+
+## How the layers stack
+
+A commercial programme might read:
+
+| Layer | Limit |
+| --- | --- |
+| **Primary CGL** | $1,000,000 |
+| **Umbrella** | $5,000,000 excess of the primary |
+| **Excess (first layer)** | $10,000,000 excess of $6,000,000 |
+| **Excess (second layer)** | $25,000,000 excess of $16,000,000 |
+
+A $4,000,000 judgment: the CGL pays $1,000,000, the umbrella pays $3,000,000,
+the excess layers pay nothing. Each layer is only reached when everything
+beneath it is exhausted.
+
+## How this is examined
+
+**Umbrella broadens; excess does not.**
+
+**The self-insured retention applies only where no underlying policy
+responds.**
+
+**An insufficient or lapsed underlying policy leaves the insured to fill the
+gap**, not the umbrella.
+
+**Drop-down** where the underlying aggregate is exhausted by other claims.
+
+**Layering arithmetic** with a judgment spread across policies.
+
+## Check yourself
+
+1. A claim is excluded by the CGL but covered by the umbrella. The SIR is
+   $25,000 and the loss is $300,000. What does the umbrella pay?
+2. The same insured's CGL aggregate is exhausted in October by earlier claims.
+   A new covered claim arrives in November. What does the umbrella do?
+3. An umbrella requires $1,000,000 of underlying auto liability. The insured
+   carries $500,000 and has a $3,000,000 loss. What is the insured's share?
+4. Does an excess policy cover a loss the primary excludes?
+5. A personal umbrella insured is sued for slander. The homeowners policy does
+   not cover it. Is the umbrella likely to?
+
+## Answers
+
+1. **$275,000** — the loss less the $25,000 self-insured retention, which
+   applies because no underlying policy responds.
+2. It **drops down** to respond in place of the exhausted underlying
+   aggregate.
+3. **$500,000.** The umbrella responds as though the required $1,000,000 were
+   in place, so the insured absorbs the shortfall between the $500,000
+   actually carried and the $1,000,000 required.
+4. **No.** An excess policy follows form — it adds limit, not breadth.
+5. **Yes.** Umbrellas typically cover personal injury offences such as
+   slander, subject to the self-insured retention.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select '88047c29-a279-5436-aa7a-24977ea5abb2', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.IV'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select 'c7b0a9e9-5837-5a19-a830-e1c77b9bda93', '2071512a-2630-55ae-b69b-68d3232b7633', c.id, 'The Business Owners Policy',
+       'the-business-owners-policy', 'A pre-packaged commercial policy for small businesses — and the eligibility rules that decide who gets one.', 9,
+       'draft', 12
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select 'c7b0a9e9-5837-5a19-a830-e1c77b9bda93', c.id, $lesson$# The homeowners policy of commercial insurance
+
+The commercial package policy in Module 3 is assembled part by part. That
+suits a large or unusual risk and is wasted effort on a dry cleaner.
+
+**A BOP is a pre-packaged policy combining commercial property and general
+liability for small and medium businesses**, with terms already chosen, often
+broader than the equivalent CPP, and cheaper.
+
+It appears in the blueprint twice — under types of policies and again under
+casualty — which tells you it is examined.
+
+## What it contains
+
+**Property**, on an **open peril** basis in the standard form:
+
+- **Buildings**, including additions, fixtures, permanently installed
+  machinery, and outdoor fixtures.
+- **Business personal property**, at the described premises and within a
+  short distance of them.
+- **Business income and extra expense — included, not optional.** This is the
+  headline difference from a CPP, where both must be bought.
+
+**Liability**:
+
+- **Bodily injury and property damage** liability.
+- **Personal and advertising injury.**
+- **Medical payments.**
+
+## What makes it different from a CPP
+
+These are the examined distinctions:
+
+- **Business income and extra expense are built in**, commonly with **no
+  dollar limit and no coinsurance**, payable for a stated maximum period —
+  often **12 months** — after a waiting period.
+- **No coinsurance clause** on the property coverage. Instead the form relies
+  on an **automatic increase** in the building limit and a requirement to
+  insure to full value. This removes the single most common source of
+  underpayment on a small commercial claim.
+- **Replacement cost is the standard** loss settlement basis, with actual cash
+  value available as an option.
+- **Seasonal automatic increase** in business personal property — commonly 25%
+  — covering the stock build-up before a busy season.
+- **Terms are largely fixed.** Less can be negotiated, which is the trade for
+  the price.
+
+Coverages commonly included in modest amounts without extra premium: **debris
+removal, fire department service charge, money and securities, employee
+dishonesty, forgery, glass, outdoor signs, valuable papers, accounts
+receivable, pollutant clean-up**, and **newly acquired property** for a
+limited period.
+
+## Eligibility
+
+The rules are the part most likely to be asked about, because they are what a
+producer applies first.
+
+**Generally eligible**: small **offices**, **retail stores**, **apartment
+buildings**, **wholesalers**, small **processing and service businesses**,
+**restaurants** within limits, and **contractors** within limits — subject to
+insurer-specific caps on:
+
+- **Building size** — commonly up to a stated square footage;
+- **Annual revenue** — a stated maximum; and
+- **Number of storeys**.
+
+**Generally ineligible**:
+
+- **Automobile dealers, repair shops and service stations** — the garage
+  exposure needs its own form.
+- **Banks and financial institutions.**
+- **Insurance agents** — professional exposure.
+- **Bars and taverns**, and many places of amusement.
+- **Manufacturers**, beyond limited light manufacturing.
+- **Condominium associations** above stated sizes, and **one- to four-family
+  dwellings**, which belong on personal lines forms.
+
+A useful way to hold it: **a BOP suits a business whose risk is ordinary and
+whose size is small. Anything with a specialised exposure — vehicles, alcohol,
+professional advice, heavy manufacturing — is sent to a form built for it.**
+
+## What is not in a BOP
+
+Even where a business is eligible, several exposures must be bought
+separately:
+
+- **Workers' compensation** — always a separate policy.
+- **Commercial auto** — the BOP covers no vehicles.
+- **Professional liability.**
+- **Liquor liability**, for those in the business.
+- **Flood and earthquake.**
+- **Employment practices liability** and **cyber**, though both are now
+  commonly available by endorsement.
+
+## How this is examined
+
+**Business income and extra expense are included**, with no coinsurance.
+
+**There is no coinsurance clause** on BOP property.
+
+**Which businesses are ineligible** — auto dealers, banks, bars,
+manufacturers.
+
+**Workers' compensation and commercial auto are never part of a BOP.**
+
+**BOP versus CPP** — a fixed package for a small ordinary risk versus an
+assembled one for a large or unusual risk.
+
+## Check yourself
+
+1. A small accounting practice wants property and liability coverage in one
+   policy. Eligible for a BOP? Is anything missing?
+2. A restaurant's kitchen fire closes it for four months. Does a BOP pay for
+   the lost trading?
+3. A retailer insures a building for $400,000 when it is worth $600,000 and
+   suffers a $100,000 loss. How does the BOP settle it, compared with a CPP at
+   80% coinsurance?
+4. A business buys a BOP and employs six people. What must it still buy?
+5. Why is an auto repair shop ineligible?
+
+## Answers
+
+1. **Eligible for the property and general liability**, yes — but the firm's
+   **professional liability (E&O)** is excluded from a BOP and must be bought
+   separately, along with workers' compensation.
+2. **Yes.** Business income is **included** in a BOP, typically for up to 12
+   months after a waiting period.
+3. The **BOP has no coinsurance clause**, so the loss is paid in full subject
+   to the limit. Under a **CPP at 80% coinsurance**, "should" is $480,000 and
+   "did" is $400,000, so the payment is reduced to about 83% — roughly
+   $83,333 less the deductible.
+4. **Workers' compensation**, and **commercial auto** if any vehicles are
+   used. Neither is ever part of a BOP.
+5. The **garage exposure** — customers' vehicles in its care — needs an auto
+   dealers coverage form with garagekeepers coverage, which a BOP does not
+   provide.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select 'c7b0a9e9-5837-5a19-a830-e1c77b9bda93', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.IV'
 on conflict (lesson_id, topic_id) do nothing;
