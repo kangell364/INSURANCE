@@ -330,6 +330,12 @@ It publishes **question counts, not percentages**, which is why
 rather than stored. Second-hand summaries of this document disagree with each
 other, so transcribe from #124401 itself.
 
+**Texas publishes no pass percentage.** The candidate handbook (#124400)
+reports a *scaled* score, equated across exam forms, with the cut score set by
+the Department of Insurance and not disclosed. The common "70% to pass" is not
+in either primary source. `docs/exam-facts.md` records every verified figure
+and names its source; read it before writing any copy that predicts a pass.
+
 The blueprint taxonomy is **orthogonal to modules**. A module is how we teach;
 a topic is how the state tests. Conflating them makes topic-level scoring
 impossible later — a readiness score could only say "you are weak on chapter

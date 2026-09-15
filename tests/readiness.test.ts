@@ -2,8 +2,6 @@ import { describe, expect, it } from 'vitest'
 import {
   ALMOST_THRESHOLD,
   READY_THRESHOLD,
-  STATE_PASS_MARK,
-  STATE_PASS_MARK_VERIFIED,
   readinessBand,
   readinessScale,
 } from '@/lib/readiness'
@@ -14,18 +12,23 @@ describe('the readiness scale', () => {
     expect(readinessBand(READY_THRESHOLD - 1).band).toBe('almost')
   })
 
-  it('does not state the pass mark as fact until it has been verified', () => {
-    // The dashboard softens its wording while this is false. When somebody
-    // confirms the figure against the Texas Candidate Handbook, flipping this
-    // to true is the whole change — and this test is the reminder that the
-    // flip is a claim about having read a document, not a formality.
-    expect(typeof STATE_PASS_MARK_VERIFIED).toBe('boolean')
+  it('exports no state pass mark, because Texas publishes none', () => {
+    // Publication #124400 reports a SCALED score set by the Department of
+    // Insurance, equated across exam forms. There is no published percentage
+    // for a practice score to be calibrated against, and a constant claiming
+    // otherwise invites code that compares two different things.
+    //
+    // Imported lazily so this test fails loudly if the constant returns.
+    return import('@/lib/readiness').then((mod) => {
+      expect('STATE_PASS_MARK' in mod).toBe(false)
+    })
   })
 
-  it('keeps a margin over the state pass mark', () => {
-    // The point of decision D. If these ever converge, a student who scrapes
-    // our bar has a coin-flip on the day and will blame us for the fee.
-    expect(READY_THRESHOLD).toBeGreaterThan(STATE_PASS_MARK)
+  it('sets the ready threshold well above a coin flip', () => {
+    // The bar is ours, not the state's, but it still has to mean something:
+    // telling somebody they are ready at 55% would be worse than silence.
+    expect(READY_THRESHOLD).toBeGreaterThanOrEqual(75)
+    expect(READY_THRESHOLD).toBeLessThanOrEqual(90)
   })
 
   it('places the bands in the right order', () => {

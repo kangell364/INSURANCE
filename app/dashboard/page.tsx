@@ -3,12 +3,7 @@ import Link from 'next/link'
 import { requireAuth } from '@/lib/auth'
 import { getMyEnrollments } from '@/lib/queries'
 import { displayName } from '@/types'
-import {
-  READY_THRESHOLD,
-  STATE_PASS_MARK,
-  STATE_PASS_MARK_VERIFIED,
-  readinessScale,
-} from '@/lib/readiness'
+import { READY_THRESHOLD, readinessScale } from '@/lib/readiness'
 import { PageHeader } from '@/components/ui/PageHeader'
 import { Card, CardBody, CardHeader } from '@/components/ui/Card'
 import { ButtonLink } from '@/components/ui/Button'
@@ -188,11 +183,10 @@ export default async function DashboardPage() {
               ))}
             </dl>
             <p className="mt-4 text-xs text-slate-500">
-              {STATE_PASS_MARK_VERIFIED
-                ? `The state examination passes at ${STATE_PASS_MARK}%. `
-                : `The state examination is generally reported to pass at around ${STATE_PASS_MARK}%. `}
-              We set the bar higher so that &ldquo;ready&rdquo; means ready on
-              the day.
+              Texas reports a scaled score set by the Department of Insurance,
+              not a percentage, so there is no official figure to match. This
+              scale is ours: {READY_THRESHOLD}% on our material, set high
+              because practice is kinder than a test centre.
             </p>
           </CardBody>
         </Card>

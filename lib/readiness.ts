@@ -35,33 +35,40 @@ export const READY_THRESHOLD = 80
 export const ALMOST_THRESHOLD = 65
 
 /**
- * The mark the state examination itself passes at.
+ * THE STATE DOES NOT PUBLISH A PASS PERCENTAGE.
  *
- * *** UNVERIFIED AGAINST A PRIMARY SOURCE. ***
+ * This replaces a `STATE_PASS_MARK = 70` that this module previously exported
+ * and that the dashboard stated as fact. Pearson VUE publication #124400, the
+ * Texas candidate handbook, says otherwise, and the difference is not a
+ * quibble about a number:
  *
- * 70 is the widely-quoted figure and is very probably right, but it is
- * recalled rather than read: Pearson VUE publication #124401 is content
- * outlines only and says nothing about scoring, and pearsonvue.com and
- * tdi.texas.gov are both unreachable from the build environment. The
- * authority is the Texas Candidate Handbook.
+ *   "The passing score of an examination was set by the Texas Department of
+ *    Insurance (in conjunction with Pearson VUE) after a comprehensive study
+ *    was completed for each examination. Raw scores are converted into scaled
+ *    scores…"
  *
- * This is flagged rather than quietly trusted because the number is SHOWN TO
- * STUDENTS -- the dashboard states it as fact and uses it to justify the 80%
- * threshold. That is exactly the shape of the mistake already made once in
- * this project, where invented blueprint weightings rendered on screen as
- * though they had been checked.
+ * Two things follow. First, no percentage is published anywhere in the
+ * handbook, so "70%" had no source. (The 500 that appears in its worked
+ * example is explicitly hypothetical -- the document says the reported
+ * passing score "is not related to, and has no bearing on, the difficulty of
+ * the examination".)
  *
- * Confirm against the handbook and delete this notice, or correct the value.
+ * Second, and more importantly: a scaled score is not a raw percentage, and
+ * it is EQUATED across exam forms to correct for differences in difficulty.
+ * So there is no state figure for a practice score to be calibrated against,
+ * and a product claiming to predict "you would score above the state's cut"
+ * would be claiming to know something the state does not disclose.
+ *
+ * READY_THRESHOLD is therefore ours alone. It is a bar on OUR material,
+ * chosen with margin because practice conditions are kinder than a test
+ * centre and because the state's cut score is not visible to us. That is a
+ * weaker claim than the one this file used to make, and it is the true one.
+ *
+ * The handbook also confirms the score is computed over the exam AS A WHOLE
+ * rather than per part, so a student cannot fail on the state section alone
+ * while passing overall -- worth knowing before any future per-section
+ * "you are failing this part" messaging is built.
  */
-export const STATE_PASS_MARK = 70
-
-/**
- * Whether STATE_PASS_MARK has been confirmed against the candidate handbook.
- *
- * The UI softens its wording while this is false, so the product never states
- * as fact something nobody has read.
- */
-export const STATE_PASS_MARK_VERIFIED = false
 
 export type ReadinessBand = 'not-ready' | 'almost' | 'ready'
 
