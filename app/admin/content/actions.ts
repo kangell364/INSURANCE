@@ -329,9 +329,15 @@ export async function saveTopicAction(
   const parentTopicId = String(formData.get('parentTopicId') ?? '')
   const code = String(formData.get('code') ?? '')
   const name = String(formData.get('name') ?? '')
+  const questionCount = String(formData.get('questionCount') ?? '')
   const blueprintWeight = String(formData.get('blueprintWeight') ?? '')
 
-  const fieldErrors = validateTopic({ code, name, blueprintWeight })
+  const fieldErrors = validateTopic({
+    code,
+    name,
+    questionCount,
+    blueprintWeight,
+  })
   if (hasErrors(fieldErrors)) {
     return failure('Please correct the highlighted fields.', fieldErrors)
   }
@@ -341,6 +347,7 @@ export async function saveTopicAction(
     code: code.trim(),
     name: name.trim(),
     parent_topic_id: parentTopicId || null,
+    question_count: questionCount.trim() ? Number(questionCount.trim()) : null,
     blueprint_weight: blueprintWeight.trim()
       ? Number(blueprintWeight.trim())
       : null,

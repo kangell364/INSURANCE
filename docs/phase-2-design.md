@@ -172,7 +172,33 @@ topic-level scoring impossible later.
 | `parent_topic_id` | uuid → `topics`, null | one level of nesting is enough        |
 | `code`            | text                | e.g. `P&C.03.02`, unique per course    |
 | `name`            | text                |                                        |
-| `blueprint_weight`| numeric, null       | the published % weighting, if any      |
+| `question_count`  | integer, null       | scored questions the blueprint assigns |
+| `blueprint_weight`| numeric, null       | published % weighting, where given     |
+
+**Counts, not percentages.** This was written assuming blueprints publish
+percentage weightings. The Texas one does not: Pearson VUE publication
+#124401 assigns each section a number of scored questions.
+
+| Section                                              | Questions |
+| ---------------------------------------------------- | --------- |
+| GK.I Types of Policies                               | 22        |
+| GK.II Insurance Terms and Related Concepts           | 15        |
+| GK.III Policy Provisions and Contract Law            | 13        |
+| GK.IV Types of Policies, Bonds, and Related Terms    | 23        |
+| GK.V Insurance Terms and Related Concepts (Casualty) | 15        |
+| GK.VI Policy Provisions (Casualty)                   | 12        |
+| TX.I Texas Statutes and Rules Common to P&C          | 18        |
+| TX.II Texas Statutes and Rules Pertinent to P&C      | 12        |
+| **Total scored**                                     | **130**   |
+
+145 including pretest questions. `question_count` therefore holds the primary
+figure and any percentage is derived: 22 of 130 is 16.923…%, which a
+`numeric(5,2)` cannot round-trip, and the Phase 3 paper generator needs "draw
+22 questions from this topic" rather than a percentage it must multiply and
+round back — where eight roundings can easily miss the exam length.
+
+`blueprint_weight` is kept for blueprints genuinely published as percentages.
+Where both exist the count wins, consistently, in every screen.
 
 `lesson_topics (lesson_id, topic_id)` — many-to-many, so "which lessons should I
 review for my weakest topic?" is answerable. This is what turns a readiness

@@ -47,6 +47,7 @@ export default async function EditTopicPage({
           code: topic.code,
           name: topic.name,
           parentTopicId: topic.parent_topic_id,
+          questionCount: topic.question_count,
           blueprintWeight: topic.blueprint_weight,
         }}
       />

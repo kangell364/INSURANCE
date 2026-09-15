@@ -356,6 +356,7 @@ describe('the lesson editor', () => {
 })
 
 describe('the exam blueprint screen', () => {
+  /** A percentage-weighted topic — the shape used by blueprints that publish %. */
   const topic = (
     id: string,
     code: string,
@@ -367,8 +368,20 @@ describe('the exam blueprint screen', () => {
     parent_topic_id: parent,
     code,
     name: `Topic ${code}`,
+    question_count: null,
     blueprint_weight: weight,
     position: 1,
+  })
+
+  /** A counted topic — the shape Texas actually publishes. */
+  const counted = (
+    id: string,
+    code: string,
+    questionCount: number | null,
+    parent: string | null = null,
+  ) => ({
+    ...topic(id, code, null, parent),
+    question_count: questionCount,
   })
 
   it('warns when the top-level weightings do not total 100%', async () => {
@@ -418,6 +431,50 @@ describe('the exam blueprint screen', () => {
     expect(
       screen.queryByText(/Weightings do not add up/),
     ).not.toBeInTheDocument()
+  })
+
+  it('reports the total when the blueprint gives question counts', async () => {
+    // Texas publishes counts, not percentages. The useful check is the total
+    // against the published exam length, not a sum to 100.
+    getCourseTopicsMock.mockResolvedValue({
+      data: [
+        counted('t1', 'GK.I', 22),
+        counted('t2', 'GK.II', 15),
+        counted('t3', 'TX.I', 18),
+      ],
+      error: null,
+    })
+
+    render(await TopicsPage(params))
+
+    expect(screen.getByText('55 scored questions')).toBeInTheDocument()
+    // The sum-to-100 rule does not apply to a counted blueprint.
+    expect(
+      screen.queryByText(/Weightings do not add up/),
+    ).not.toBeInTheDocument()
+  })
+
+  it('warns when counts and percentages are mixed in one blueprint', async () => {
+    // A readiness score computed across both is comparing different things.
+    getCourseTopicsMock.mockResolvedValue({
+      data: [counted('t1', 'GK.I', 22), topic('t2', 'GK.II', 15)],
+      error: null,
+    })
+
+    render(await TopicsPage(params))
+
+    expect(screen.getByText(/Mixed units in one blueprint/)).toBeInTheDocument()
+  })
+
+  it('derives a percentage from the counts for display', async () => {
+    getCourseTopicsMock.mockResolvedValue({
+      data: [counted('t1', 'GK.I', 22), counted('t2', 'GK.II', 78)],
+      error: null,
+    })
+
+    render(await TopicsPage(params))
+
+    expect(screen.getByText('22 of 100 questions (22%)')).toBeInTheDocument()
   })
 
   it('stays quiet when no topic carries a weighting at all', async () => {

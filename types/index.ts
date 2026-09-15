@@ -138,11 +138,47 @@ export type LessonWithContent = SyllabusLesson & {
 }
 
 /** A blueprint topic with its child topics, for the exam-blueprint view. */
-export type TopicTree = Pick<
+type TopicSummary = Pick<
   Topic,
-  'id' | 'code' | 'name' | 'blueprint_weight' | 'position'
-> & {
-  children: Pick<Topic, 'id' | 'code' | 'name' | 'blueprint_weight' | 'position'>[]
+  'id' | 'code' | 'name' | 'question_count' | 'blueprint_weight' | 'position'
+>
+
+export type TopicTree = TopicSummary & { children: TopicSummary[] }
+
+/**
+ * How much of the exam a topic accounts for, as a sentence.
+ *
+ * The Texas blueprint publishes a NUMBER OF QUESTIONS per section, not a
+ * percentage (Pearson VUE #124401). So the count is the authority wherever it
+ * exists, and the percentage is derived here for readers who think in
+ * percentages -- never stored, because 22 of 130 is 16.923…% and a stored
+ * figure would be a rounded copy of a number we already have exactly.
+ *
+ * `blueprint_weight` is the fallback, for blueprints that genuinely publish
+ * percentages. Returns null when the blueprint says nothing, which is
+ * different from saying zero.
+ */
+export function blueprintShare(
+  topic: Pick<Topic, 'question_count' | 'blueprint_weight'>,
+  totalQuestions: number | null,
+): string | null {
+  if (topic.question_count !== null && topic.question_count > 0) {
+    if (totalQuestions && totalQuestions > 0) {
+      const percent = Math.round((topic.question_count / totalQuestions) * 100)
+      return `${topic.question_count} of ${totalQuestions} questions (${percent}%)`
+    }
+    return `${topic.question_count} questions`
+  }
+  if (topic.blueprint_weight !== null) return `${topic.blueprint_weight}%`
+  return null
+}
+
+/** Total scoreable questions across a set of top-level topics, or null. */
+export function totalBlueprintQuestions(
+  topics: Pick<Topic, 'question_count'>[],
+): number | null {
+  const total = topics.reduce((sum, t) => sum + (t.question_count ?? 0), 0)
+  return total > 0 ? total : null
 }
 
 /** Human-readable study time, e.g. "1 hr 25 min". Null when unknown. */

@@ -251,6 +251,7 @@ export type Database = {
           parent_topic_id: string | null
           code: string
           name: string
+          question_count: number | null
           blueprint_weight: number | null
           position: number
           created_at: string
@@ -262,6 +263,7 @@ export type Database = {
           parent_topic_id?: string | null
           code: string
           name: string
+          question_count?: number | null
           blueprint_weight?: number | null
           position: number
           created_at?: string
@@ -271,6 +273,7 @@ export type Database = {
           parent_topic_id?: string | null
           code?: string
           name?: string
+          question_count?: number | null
           blueprint_weight?: number | null
           position?: number
         }

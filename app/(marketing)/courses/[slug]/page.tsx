@@ -7,7 +7,11 @@ import { ButtonLink } from '@/components/ui/Button'
 import { Alert } from '@/components/ui/Alert'
 import { EmptyState } from '@/components/ui/States'
 import { getCourseOutline, getTopicTree } from '@/lib/queries'
-import { formatStudyTime } from '@/types'
+import {
+  blueprintShare,
+  formatStudyTime,
+  totalBlueprintQuestions,
+} from '@/types'
 
 type Params = { params: Promise<{ slug: string }> }
 
@@ -57,6 +61,7 @@ export default async function CourseDetailPage({ params }: Params) {
   const { course, modules, lessonCount, estimatedMinutes } = outline
   const { data: topics } = await getTopicTree(course.id)
   const studyTime = formatStudyTime(estimatedMinutes)
+  const examQuestions = totalBlueprintQuestions(topics ?? [])
 
   return (
     <div className="container-page py-12 sm:py-16">
@@ -165,9 +170,12 @@ export default async function CourseDetailPage({ params }: Params) {
             What the state exam covers
           </h2>
           <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-600">
-            The topics below follow the published examination blueprint. Where
-            the blueprint states a weighting, it is shown — those percentages
-            are how many of the exam&rsquo;s questions come from each area.
+            The topics below follow the published examination blueprint, which
+            assigns each area a set number of the exam&rsquo;s scored
+            questions.
+            {examQuestions
+              ? ` There are ${examQuestions} scored questions in total.`
+              : ''}
           </p>
           <ul className="mt-4 space-y-4">
             {topics.map((topic) => (
@@ -180,9 +188,9 @@ export default async function CourseDetailPage({ params }: Params) {
                       </span>{' '}
                       {topic.name}
                     </h3>
-                    {topic.blueprint_weight !== null && (
+                    {blueprintShare(topic, examQuestions) && (
                       <span className="text-sm font-medium text-slate-600 tabular-nums">
-                        {topic.blueprint_weight}% of the exam
+                        {blueprintShare(topic, examQuestions)}
                       </span>
                     )}
                   </div>

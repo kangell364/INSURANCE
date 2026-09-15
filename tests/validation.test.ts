@@ -300,7 +300,12 @@ describe('validateLesson', () => {
 })
 
 describe('validateTopic', () => {
-  const valid = { code: 'GL.01', name: 'Fundamentals', blueprintWeight: '15' }
+  const valid = {
+    code: 'GK.I',
+    name: 'Types of Policies',
+    questionCount: '22',
+    blueprintWeight: '',
+  }
 
   it('accepts a well-formed topic', () => {
     expect(validateTopic(valid)).toEqual({})
@@ -321,7 +326,21 @@ describe('validateTopic', () => {
     ).toBeTruthy()
   })
 
-  it('accepts a fractional weight, because published blueprints use them', () => {
+  it('accepts a fractional weight, because some blueprints use them', () => {
     expect(validateTopic({ ...valid, blueprintWeight: '12.5' })).toEqual({})
+  })
+
+  it('accepts a blank question count, for a sub-topic', () => {
+    // The Texas blueprint assigns counts at section level only.
+    expect(validateTopic({ ...valid, questionCount: '' })).toEqual({})
+  })
+
+  it('rejects a question count that is not a whole positive number', () => {
+    for (const questionCount of ['0', '-3', '7.5', 'twenty', '501']) {
+      expect(
+        validateTopic({ ...valid, questionCount }).questionCount,
+        `"${questionCount}" should be rejected`,
+      ).toBeTruthy()
+    }
   })
 })

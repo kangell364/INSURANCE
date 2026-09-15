@@ -8,6 +8,7 @@ import { Card, CardBody } from '@/components/ui/Card'
 import { ButtonLink } from '@/components/ui/Button'
 import { Alert } from '@/components/ui/Alert'
 import { EmptyState } from '@/components/ui/States'
+import { blueprintShare, totalBlueprintQuestions } from '@/types'
 
 export const metadata: Metadata = { title: 'Exam blueprint' }
 
@@ -25,17 +26,29 @@ export default async function TopicsPage({
   const { data: topics, error } = await getCourseTopics(course.course.id)
   const roots = (topics ?? []).filter((t) => t.parent_topic_id === null)
 
-  // Weightings should add up to roughly 100%. Flagging a total that does not
-  // is worth doing: a blueprint transcribed with a missing row still looks
-  // complete, and the error only surfaces much later as a readiness score
-  // that weights the wrong things.
-  const weighted = roots.filter((t) => t.blueprint_weight !== null)
+  // A blueprint transcribed with a row missing still LOOKS complete. The
+  // error only surfaces much later, as a readiness score weighting the wrong
+  // things, so it is worth checking the arithmetic here where it is cheap.
+  //
+  // Two shapes of blueprint, two checks. Texas publishes question COUNTS, so
+  // the meaningful figure is the total and whether it matches the published
+  // exam length. Percentage blueprints must sum to 100.
+  const counted = roots.filter((t) => t.question_count !== null)
+  const totalQuestions = totalBlueprintQuestions(roots)
+
+  const weighted = roots.filter(
+    (t) => t.question_count === null && t.blueprint_weight !== null,
+  )
   const totalWeight = weighted.reduce(
     (sum, t) => sum + Number(t.blueprint_weight ?? 0),
     0,
   )
   const weightLooksWrong =
     weighted.length > 0 && Math.abs(totalWeight - 100) > 0.5
+
+  // Only meaningful once most sections carry a figure; mid-transcription is
+  // not an error to shout about.
+  const mixedUnits = counted.length > 0 && weighted.length > 0
 
   return (
     <>
@@ -51,7 +64,7 @@ export default async function TopicsPage({
       <PageHeader
         eyebrow={course.course.title}
         title="Exam blueprint"
-        description="The state's own topic list. Lessons are tagged against it, and it is what makes a readiness score say which topics to revise."
+        description="The state's own topic list, with the number of scored questions it assigns to each area. Lessons are tagged against it, and it is what makes a readiness score say which topics to revise."
       />
 
       <div className="mb-6">
@@ -67,6 +80,30 @@ export default async function TopicsPage({
         <Alert variant="warning" title="Topics unavailable">
           {error}
         </Alert>
+      )}
+
+      {totalQuestions !== null && (
+        <div className="mb-6">
+          <Alert variant="info" title="Blueprint total">
+            {counted.length} top-level{' '}
+            {counted.length === 1 ? 'section carries' : 'sections carry'} a
+            question count, totalling{' '}
+            <strong>{totalQuestions} scored questions</strong>. Check that
+            against the published outline — for Texas General Lines Property
+            and Casualty it should be 130 (100 general knowledge plus 30 state
+            specific).
+          </Alert>
+        </div>
+      )}
+
+      {mixedUnits && (
+        <div className="mb-6">
+          <Alert variant="warning" title="Mixed units in one blueprint">
+            Some sections give a question count and others a percentage. Pick
+            one: a readiness score computed across both is comparing different
+            things. Where the published outline gives counts, use counts.
+          </Alert>
+        </div>
       )}
 
       {weightLooksWrong && (
@@ -113,9 +150,7 @@ export default async function TopicsPage({
                       </Link>
                     </h2>
                     <span className="text-sm text-slate-600 tabular-nums">
-                      {topic.blueprint_weight !== null
-                        ? `${topic.blueprint_weight}%`
-                        : 'No weighting'}
+                      {blueprintShare(topic, totalQuestions) ?? 'No weighting'}
                     </span>
                   </div>
 

@@ -18,6 +18,7 @@ type TopicFormProps = {
     code: string
     name: string
     parentTopicId: string | null
+    questionCount: number | null
     blueprintWeight: number | null
   }
 }
@@ -64,21 +65,25 @@ export function TopicForm({
               />
             </Field>
 
+            {/* Question count first, and percentage second, because the
+                Texas blueprint publishes counts. Offering the percentage
+                field with equal prominence invites someone to compute one by
+                hand and enter a rounded copy of a number we already have
+                exactly. */}
             <Field
-              label="Weighting (%)"
-              htmlFor="blueprintWeight"
-              error={state.fieldErrors.blueprintWeight}
-              hint="The published percentage of the exam, if the blueprint gives one."
+              label="Scored questions"
+              htmlFor="questionCount"
+              error={state.fieldErrors.questionCount}
+              hint="The number the published outline assigns to this section. Leave blank for a sub-topic."
             >
               <Input
-                id="blueprintWeight"
-                name="blueprintWeight"
+                id="questionCount"
+                name="questionCount"
                 type="number"
-                min={0}
-                max={100}
-                step="0.01"
-                defaultValue={topic?.blueprintWeight ?? ''}
-                invalid={Boolean(state.fieldErrors.blueprintWeight)}
+                min={1}
+                max={500}
+                defaultValue={topic?.questionCount ?? ''}
+                invalid={Boolean(state.fieldErrors.questionCount)}
               />
             </Field>
           </div>
@@ -94,6 +99,24 @@ export function TopicForm({
               name="name"
               defaultValue={topic?.name ?? ''}
               invalid={Boolean(state.fieldErrors.name)}
+            />
+          </Field>
+
+          <Field
+            label="Weighting (%)"
+            htmlFor="blueprintWeight"
+            error={state.fieldErrors.blueprintWeight}
+            hint="Only for blueprints published as percentages rather than question counts. Texas publishes counts, so leave this blank."
+          >
+            <Input
+              id="blueprintWeight"
+              name="blueprintWeight"
+              type="number"
+              min={0}
+              max={100}
+              step="0.01"
+              defaultValue={topic?.blueprintWeight ?? ''}
+              invalid={Boolean(state.fieldErrors.blueprintWeight)}
             />
           </Field>
 

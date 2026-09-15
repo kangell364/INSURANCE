@@ -311,7 +311,7 @@ export async function getTopicTree(
   const supabase = await createClient()
   const { data, error } = await supabase
     .from('topics')
-    .select('id, code, name, blueprint_weight, position, parent_topic_id')
+    .select('id, code, name, question_count, blueprint_weight, position, parent_topic_id')
     .eq('course_id', courseId)
     .order('position', { ascending: true })
 
@@ -328,14 +328,16 @@ export async function getTopicTree(
       id: root.id,
       code: root.code,
       name: root.name,
+      question_count: root.question_count,
       blueprint_weight: root.blueprint_weight,
       position: root.position,
       children: rows
         .filter((row) => row.parent_topic_id === root.id)
-        .map(({ id, code, name, blueprint_weight, position }) => ({
+        .map(({ id, code, name, question_count, blueprint_weight, position }) => ({
           id,
           code,
           name,
+          question_count,
           blueprint_weight,
           position,
         })),
@@ -615,7 +617,14 @@ export async function getLessonForEdit(
 
 export type AdminTopic = Pick<
   Topic,
-  'id' | 'course_id' | 'parent_topic_id' | 'code' | 'name' | 'blueprint_weight' | 'position'
+  | 'id'
+  | 'course_id'
+  | 'parent_topic_id'
+  | 'code'
+  | 'name'
+  | 'question_count'
+  | 'blueprint_weight'
+  | 'position'
 >
 
 /** Every topic for a course, flat and in order, for the topic screens. */
@@ -627,7 +636,7 @@ export async function getCourseTopics(
   const supabase = await createClient()
   const { data, error } = await supabase
     .from('topics')
-    .select('id, course_id, parent_topic_id, code, name, blueprint_weight, position')
+    .select('id, course_id, parent_topic_id, code, name, question_count, blueprint_weight, position')
     .eq('course_id', courseId)
     .order('position', { ascending: true })
 

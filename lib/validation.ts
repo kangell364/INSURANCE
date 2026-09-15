@@ -278,11 +278,12 @@ export function validateLesson(input: {
   return errors
 }
 
-export type TopicFields = 'code' | 'name' | 'blueprintWeight'
+export type TopicFields = 'code' | 'name' | 'questionCount' | 'blueprintWeight'
 
 export function validateTopic(input: {
   code: string
   name: string
+  questionCount: string
   blueprintWeight: string
 }): FieldErrors<TopicFields> {
   const errors: FieldErrors<TopicFields> = {}
@@ -299,6 +300,16 @@ export function validateTopic(input: {
     errors.name = 'Give the topic a name.'
   } else if (name.length > MAX_TITLE_LENGTH) {
     errors.name = `Name must be ${MAX_TITLE_LENGTH} characters or fewer.`
+  }
+
+  const count = input.questionCount.trim()
+  if (count) {
+    const parsed = Number(count)
+    if (!Number.isInteger(parsed) || parsed < 1) {
+      errors.questionCount = 'Enter a whole number of questions, or leave blank.'
+    } else if (parsed > 500) {
+      errors.questionCount = 'That is more questions than any exam section has — check the outline.'
+    }
   }
 
   const weight = input.blueprintWeight.trim()

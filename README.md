@@ -319,6 +319,17 @@ primary key. `supabase/seed.sql` does exactly that.
 
 ### Topics
 
+The examination blueprint is transcribed from Pearson VUE publication
+**#124401**, *Texas Insurance Supplement — Examination Content Outlines*
+(effective 1 September 2026). For General Lines Property & Casualty it is
+**130 scored questions** — 100 general knowledge across six sections, 30 Texas
+statutes across two — and 145 including pretest questions.
+
+It publishes **question counts, not percentages**, which is why
+`topics.question_count` exists and why percentages are derived for display
+rather than stored. Second-hand summaries of this document disagree with each
+other, so transcribe from #124401 itself.
+
 The blueprint taxonomy is **orthogonal to modules**. A module is how we teach;
 a topic is how the state tests. Conflating them makes topic-level scoring
 impossible later — a readiness score could only say "you are weak on chapter
