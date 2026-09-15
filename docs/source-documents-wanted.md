@@ -46,19 +46,13 @@ still worth having, but nothing below blocks drafting.
 
 ### Still outstanding
 
-Tier 2: **462** (Property and Casualty Insurance Guaranty Association) and
-**2151** (Texas Automobile Insurance Plan Association).
+**`docs/statutes-to-download.md`** carries the full list with direct links,
+in priority order, including the chapters from the Transportation, Labor,
+Government, Finance and Business & Commerce Codes, and the Title 28 rules.
 
-Tier 3: **201**, **401**, **404**, **481**, **491**, **521**, **544**, **547**,
-**701**, **801**, **862**, **941**, **982**, **1954** (rideshare) and **2203**
-(medical liability JUA).
-
-From other codes: **Transportation Code 601**, **Government Code 2001.051**,
-and **Labor Code Title 5** chapters **401**, **406** and **408**.
-
-Of these, **462** is the one most likely to be examined directly — the
-guaranty association is a standard licensing-exam topic and there is no
-substitute source for the Texas limits.
+Of the outstanding chapters, **462** is the one most likely to be examined
+directly — the guaranty association is a standard licensing-exam topic and
+there is no substitute source for the Texas limits.
 
 ## Tier 1 — the licensing and conduct core
 
