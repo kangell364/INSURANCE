@@ -19,7 +19,7 @@ Sec. 541.003. UNFAIR METHODS OF COMPETITION AND UNFAIR OR DECEPTIVE ACTS OR PRAC
 Sec. 541.004. VENUE FOR ACTIONS INVOLVING DEPARTMENT OR COMMISSIONER. An action under this chapter in which the department or commissioner is a party must be brought in a district court in Travis County. Added by Acts 2003, 78th Leg., ch. 1274, Sec. 2, eff. April 1, 2005.
 
 Sec. 541.005. APPLICABILITY TO RISK RETENTION OR PURCHASING GROUP.
-(a) risk retention group or purchasing group described by Subchapter B , Chapter 2201 , or Section 2201.251 that is not chartered in this state may not engage in a trade practice in this state that is defined as unlawful under this chapter.
+(a) A risk retention group or purchasing group described by Subchapter B , Chapter 2201 , or Section 2201.251 that is not chartered in this state may not engage in a trade practice in this state that is defined as unlawful under this chapter.
 (b) A risk retention group or purchasing group is subject to this chapter and rules adopted under this chapter. Added by Acts 2003, 78th Leg., ch. 1274, Sec. 2, eff. April 1, 2005. Amended by: Acts 2007, 80th Leg., R.S., Ch. 730 (H.B. 2636 ), Sec. 2D.005, eff. April 1, 2009.
 
 Sec. 541.006. PROHIBITED CONTENT OF CERTAIN INSURANCE POLICIES. Notwithstanding any other provision of this code, it is unlawful for an insurer engaged in the business of life, accident, or health insurance to issue or deliver in this state a policy containing the words "Approved by the Texas Department of Insurance" or words of a similar meaning. Added by Acts 2003, 78th Leg., ch. 1274, Sec. 2, eff. April 1, 2005.
@@ -65,9 +65,9 @@ Sec. 541.082. ADVERTISING AND INTERNET WEBSITES.
 (a) In this section, "insurer" includes: (1) a life insurance company; (2) a health insurance company; (3) an accident insurance company; (4) a general casualty company; (5) a mutual life insurance company or other mutual insurance company; (6) a mutual or natural premium life insurance company; (7) a Lloyd ' s plan; (8) a county mutual insurance company; (9) a farm mutual insurance company; (10) a reciprocal or interinsurance exchange; (11) a fraternal benefit society; (12) a local mutual aid association; (13) a health maintenance organization; (14) a group hospital service corporation; or (15) a multiple employer welfare arrangement that holds a certificate of coverage under Chapter 846 . 9
 (b) A web page of an insurer ' s Internet website must include all appropriate disclosures and information required by applicable rules adopted by the commissioner relating to advertising only if the web page: (1) describes specific policies or coverage available in this state; or (2) includes an opportunity for an individual to apply for coverage or obtain a quote from an insurer for an insurance policy or certificate or an evidence of coverage.
 (c) As may be permitted by commissioner rule, an insurer may comply with Subsection
-(b) by including a link to a web page that includes the information necessary to comply with the applicable rules relating to advertising. AA The link must be prominently placed on the insurer ' s web page.
+(b) by including a link to a web page that includes the information necessary to comply with the applicable rules relating to advertising. The link must be prominently placed on the insurer ' s web page.
 (d) Web pages of an Internet website that do not refer to a specific insurance policy, certificate of coverage, or evidence of coverage or that do not provide an opportunity for an individual to apply for coverage or request a quote from an insurer are considered to be institutional advertisements subject to rules adopted by the commissioner relating to advertising.
-(e) Web pages or navigation aids within an insurer ' s Internet website that provide a link to a web page described by AA Subsection
+(e) Web pages or navigation aids within an insurer ' s Internet website that provide a link to a web page described by Subsection
 (b) but that do not otherwise contain content described in Subsection
 (b) are considered to be institutional advertisements subject to rules adopted by the commissioner relating to advertising. Added by Acts 2007, 80th Leg., R.S., Ch. 475 (H.B. 2251 ), Sec. 1, eff. September 1, 2007.
 
@@ -112,13 +112,13 @@ Sec. 541.108. CEASE AND DESIST ORDER. On determining that a person committed a v
 Sec. 541.109. MODIFICATION OR SETTING ASIDE OF ORDER. On the notice and in the manner the department determines proper, the department may modify or set aside in whole or in part a cease and desist order issued under Section 541.108 at any time before a petition appealing the order is filed in accordance with Subchapter D , Chapter 36 . Added by Acts 2003, 78th Leg., ch. 1274, Sec. 2, eff. April 1, 2005.
 
 Sec. 541.110. ADMINISTRATIVE PENALTY.
-(a) person who violates a cease and desist order issued under Section 541.108 is subject to an administrative penalty under Chapter 84 .
+(a) A person who violates a cease and desist order issued under Section 541.108 is subject to an administrative penalty under Chapter 84 .
 (b) In determining whether a person has violated a cease and desist order, the department shall consider the maintenance of procedures reasonably adapted to ensure compliance with the order.
 (c) An administrative penalty imposed under this section may not exceed: (1) $1,000 for each violation; or (2) $5,000 for all violations.
 (d) An order of the department imposing an administrative penalty under this section applies only to a violation of the cease 14 and desist order committed before the date the order imposing the penalty is issued. Added by Acts 2003, 78th Leg., ch. 1274, Sec. 2, eff. April 1, 2005.
 
 Sec. 541.111. CIVIL PENALTY FOR VIOLATION OF CEASE AND DESIST ORDER.
-(a) person who is found by a court to have violated a cease and desist order issued under Section 541.108 is liable to the state for a penalty. The state may recover the penalty in a civil action.
+(a) A person who is found by a court to have violated a cease and desist order issued under Section 541.108 is liable to the state for a penalty. The state may recover the penalty in a civil action.
 (b) The penalty may not exceed $50 unless the court finds the violation to be wilful, in which case the penalty may not exceed $500. Added by Acts 2003, 78th Leg., ch. 1274, Sec. 2, eff. April 1, 2005.
 
 SUBCHAPTER D. PRIVATE ACTION FOR DAMAGES
@@ -126,7 +126,7 @@ SUBCHAPTER D. PRIVATE ACTION FOR DAMAGES
 Sec. 541.151. PRIVATE ACTION FOR DAMAGES AUTHORIZED. A person who sustains actual damages may bring an action against another person for those damages caused by the other person engaging in an act or practice: (1) defined by Subchapter B to be an unfair method of competition or an unfair or deceptive act or practice in the business of insurance; or (2) specifically enumerated in Section 17.46 (b), Business & Commerce Code, as an unlawful deceptive trade practice if the person bringing the action shows that the person relied on the act or practice to the person ' s detriment. Added by Acts 2003, 78th Leg., ch. 1274, Sec. 2, eff. April 1, 2005.
 
 Sec. 541.152. DAMAGES, ATTORNEY ' S FEES, AND OTHER RELIEF.
-(a) plaintiff who prevails in an action under this subchapter may obtain: (1) the amount of actual damages, plus court costs and reasonable and necessary attorney ' s fees; (2) an order enjoining the act or failure to act complained of; or (3) any other relief the court determines is proper. 15
+(a) A plaintiff who prevails in an action under this subchapter may obtain: (1) the amount of actual damages, plus court costs and reasonable and necessary attorney ' s fees; (2) an order enjoining the act or failure to act complained of; or (3) any other relief the court determines is proper. 15
 (b) Except as provided by Subsection (c), on a finding by the trier of fact that the defendant knowingly committed the act complained of, the trier of fact may award an amount not to exceed three times the amount of actual damages.
 (c) Subsection
 (b) does not apply to an action under this subchapter brought against the Texas Windstorm Insurance Association. Added by Acts 2003, 78th Leg., ch. 1274, Sec. 2, eff. April 1, 2005. Amended by: Acts 2011, 82nd Leg., 1st C.S., Ch. 2 (H.B. 3 ), Sec. 2, eff. September 28, 2011.
@@ -134,12 +134,12 @@ Sec. 541.152. DAMAGES, ATTORNEY ' S FEES, AND OTHER RELIEF.
 Sec. 541.153. FRIVOLOUS ACTION. A court shall award to the defendant court costs and reasonable and necessary attorney ' s fees if the court finds that an action under this subchapter is groundless and brought in bad faith or brought for the purpose of harassment. Added by Acts 2003, 78th Leg., ch. 1274, Sec. 2, eff. April 1, 2005.
 
 Sec. 541.154. PRIOR NOTICE OF ACTION.
-(a) person seeking damages in an action against another person under this subchapter must provide written notice to the other person not later than the 61st day before the date the action is filed.
+(a) A person seeking damages in an action against another person under this subchapter must provide written notice to the other person not later than the 61st day before the date the action is filed.
 (b) The notice must advise the other person of: (1) the specific complaint; and (2) the amount of actual damages and expenses, including attorney ' s fees reasonably incurred in asserting the claim against the other person.
 (c) The notice is not required if giving notice is impracticable because the action: (1) must be filed to prevent the statute of limitations from expiring; or (2) is asserted as a counterclaim. Added by Acts 2003, 78th Leg., ch. 1274, Sec. 2, eff. April 1, 2005.
 
 Sec. 541.155. ABATEMENT.
-(a) person against whom an action under this subchapter is pending who does not receive the 16 notice as required by Section 541.154 may file a plea in abatement not later than the 30th day after the date the person files an original answer in the court in which the action is pending.
+(a) A person against whom an action under this subchapter is pending who does not receive the 16 notice as required by Section 541.154 may file a plea in abatement not later than the 30th day after the date the person files an original answer in the court in which the action is pending.
 (b) The court shall abate the action if, after a hearing, the court finds that the person is entitled to an abatement because the claimant did not provide the notice as required by Section 541.154 .
 (c) An action is automatically abated without a court order beginning on the 11th day after the date a plea in abatement is filed if the plea: (1) is verified and alleges that the person against whom the action is pending did not receive the notice as required by Section 541.154 ; and (2) is not controverted by an affidavit filed by the claimant before the 11th day after the date the plea in abatement is filed.
 (d) An abatement under this section continues until the 60th day after the date notice is provided in compliance with Section 541.154 .
@@ -153,7 +153,7 @@ Sec. 541.156. SETTLEMENT OFFER.
 Sec. 541.157. CONTENTS OF SETTLEMENT OFFER. A settlement offer made by a person against whom a claim under this subchapter is pending must include an offer to pay the following amounts, separately stated: (1) an amount of money or other consideration, reduced to its cash value, as settlement of the claim for damages; and (2) an amount of money to compensate the claimant for the claimant ' s reasonable and necessary attorney ' s fees incurred as of the date of the offer. Added by Acts 2003, 78th Leg., ch. 1274, Sec. 2, eff. April 1, 2005.
 
 Sec. 541.158. REJECTION OF SETTLEMENT OFFER.
-(a) settlement offer is rejected unless both parts of the offer required under Section 541.157 are accepted by the claimant not later than the 30th day after the date the offer is made.
+(a) A settlement offer is rejected unless both parts of the offer required under Section 541.157 are accepted by the claimant not later than the 30th day after the date the offer is made.
 (b) A settlement offer made by a person against whom a claim under this subchapter is pending that complies with this subchapter and is rejected by the claimant may be filed with the court accompanied by an affidavit certifying the offer ' s rejection. Added by Acts 2003, 78th Leg., ch. 1274, Sec. 2, eff. April 1, 2005.
 
 Sec. 541.159. LIMIT ON RECOVERY AFTER SETTLEMENT OFFER.
@@ -167,7 +167,7 @@ Sec. 541.159. LIMIT ON RECOVERY AFTER SETTLEMENT OFFER.
 Sec. 541.160. EFFECT OF SETTLEMENT OFFER. A settlement offer is not an admission of engaging in an act or practice defined by Subchapter B to be an unfair method of competition or an unfair or deceptive act or practice in the business of insurance. Added by Acts 2003, 78th Leg., ch. 1274, Sec. 2, eff. April 1, 2005.
 
 Sec. 541.161. MEDIATION.
-(a) party may, not later than the 90th day after the date a pleading seeking relief under this subchapter is served, file a motion to compel mediation of the dispute in the manner provided by this section.
+(a) A party may, not later than the 90th day after the date a pleading seeking relief under this subchapter is served, file a motion to compel mediation of the dispute in the manner provided by this section.
 (b) The court shall, not later than the 30th day after the date a motion under this section is filed, sign an order setting the time and place of the mediation.
 (c) The court shall appoint a mediator if the parties do not agree on a mediator.
 (d) The mediation must be held not later than the 30th day after the date the order is signed, unless: (1) the parties agree otherwise; or 19 (2) the court determines that additional time not to exceed 30 days is warranted.
@@ -176,7 +176,7 @@ Sec. 541.161. MEDIATION.
 (g) Except as provided by this section, the following apply to the appointment of a mediator and the mediation process provided by this section: (1) Section 154.023 , Civil Practice and Remedies Code; and (2) Subchapters C and D, Chapter 154 , Civil Practice and Remedies Code. Added by Acts 2003, 78th Leg., ch. 1274, Sec. 2, eff. April 1, 2005.
 
 Sec. 541.162. LIMITATIONS PERIOD.
-(a) person must bring an action under this chapter before the second anniversary of the following: (1) the date the unfair method of competition or unfair or deceptive act or practice occurred; or (2) the date the person discovered or, by the exercise of reasonable diligence, should have discovered that the unfair method of competition or unfair or deceptive act or practice occurred.
+(a) A person must bring an action under this chapter before the second anniversary of the following: (1) the date the unfair method of competition or unfair or deceptive act or practice occurred; or (2) the date the person discovered or, by the exercise of reasonable diligence, should have discovered that the unfair method of competition or unfair or deceptive act or practice occurred.
 (b) The limitations period provided by Subsection
 (a) may be extended for 180 days if the person bringing the action proves that the person ' s failure to bring the action within that period was caused by the defendant ' s engaging in conduct solely calculated to induce the person to refrain from or postpone bringing the action. Added by Acts 2003, 78th Leg., ch. 1274, Sec. 2, eff. April 1, 2005.
 
@@ -197,7 +197,7 @@ Sec. 541.204. CIVIL PENALTY. In addition to requesting a temporary or permanent 
 Sec. 541.205. COMPENSATION OR RESTORATION. The court may make an additional order or judgment as necessary to compensate an identifiable person for actual damages or for restoration of money or property that may have been acquired by means of an enjoined act or practice. Added by Acts 2003, 78th Leg., ch. 1274, Sec. 2, eff. April 1, 2005.
 
 Sec. 541.206. CIVIL PENALTY FOR VIOLATION OF INJUNCTION.
-(a) person who violates an injunction issued under this subchapter is liable for and shall pay to the state a civil penalty of not more than $10,000 for each violation.
+(a) A person who violates an injunction issued under this subchapter is liable for and shall pay to the state a civil penalty of not more than $10,000 for each violation.
 (b) The attorney general may, in the name of the state, petition the court for recovery of the civil penalty against the person who violates the injunction.
 (c) The court shall consider the maintenance of procedures reasonably adapted to ensure compliance with the injunction in determining whether a person has violated an injunction.
 (d) The court issuing the injunction retains jurisdiction and the cause is continued for the purpose of assessing a civil penalty under this section. Added by Acts 2003, 78th Leg., ch. 1274, Sec. 2, eff. April 1, 2005.
@@ -257,7 +257,7 @@ Sec. 541.264. DEFENSES. Damages may not be awarded in a class action under this 
 Sec. 541.265. LIMITATIONS PERIOD FOR DAMAGES. In a class action under this subchapter, damages may not include any damages incurred more than two years before the date the action is commenced. Added by Acts 2003, 78th Leg., ch. 1274, Sec. 2, eff. April 1, 2005.
 
 Sec. 541.266. DISPOSITION.
-(a) class action under this subchapter may not be dismissed, settled, or compromised without the approval of the court.
+(a) A class action under this subchapter may not be dismissed, settled, or compromised without the approval of the court.
 (b) Notice of the proposed dismissal, settlement, or compromise shall be given to all members of the class in the manner the court directs. Added by Acts 2003, 78th Leg., ch. 1274, Sec. 2, eff. April 1, 2005.
 
 Sec. 541.267. CONTENTS OF JUDGMENT; NOTICE.
@@ -309,7 +309,7 @@ Sec. 541.401. RULEMAKING AUTHORITY.
 (b) Notwithstanding a previous definition or interpretation of a term used in this chapter contained in or derived from the common law or other statutory law of this state, the commissioner may adopt an express provision necessary to accomplish the purposes of this chapter, including a provision the commissioner considers necessary to: (1) achieve necessary uniformity with the laws of other states or the United States; or (2) conform to the adopted procedures of the National Association of Insurance Commissioners. Added by Acts 2003, 78th Leg., ch. 1274, Sec. 2, eff. April 1, 2005.
 
 Sec. 541.402. PETITION.
-(a) petition may be submitted to the commissioner to adopt, amend, or repeal a rule. The petition must be: (1) signed by 100 interested persons; and (2) supported by evidence that: (A) a particular act or practice has been or could be false, misleading, or deceptive to the insurance buying public; or (B) an act or practice defined by department rule to be false, misleading, or deceptive is not false, misleading, or deceptive.
+(a) A petition may be submitted to the commissioner to adopt, amend, or repeal a rule. The petition must be: (1) signed by 100 interested persons; and (2) supported by evidence that: (A) a particular act or practice has been or could be false, misleading, or deceptive to the insurance buying public; or (B) an act or practice defined by department rule to be false, misleading, or deceptive is not false, misleading, or deceptive.
 (b) Not later than the 30th day after the date the department receives the petition, the department shall: (1) deny the petition as provided by Section 541.403 ; or (2) initiate hearing proceedings under Section 541.404 . 33 Added by Acts 2003, 78th Leg., ch. 1274, Sec. 2, eff. April 1, 2005.
 
 Sec. 541.403. DENIAL OF PETITION.
@@ -317,11 +317,11 @@ Sec. 541.403. DENIAL OF PETITION.
 (b) The department is expressly authorized to deny the petition if the action sought would: (1) destroy uniformity with the laws of other states or the United States; or (2) not conform to the adopted procedures of the National Association of Insurance Commissioners. Added by Acts 2003, 78th Leg., ch. 1274, Sec. 2, eff. April 1, 2005.
 
 Sec. 541.404. HEARING ON PETITION.
-(a) hearing held by the department in response to a petition to adopt, amend, or repeal a rule must be open to the public.
+(a) A hearing held by the department in response to a petition to adopt, amend, or repeal a rule must be open to the public.
 (b) At the hearing, any person may present to the department in writing or orally testimony, data, or other information regarding the act or practice under consideration. Added by Acts 2003, 78th Leg., ch. 1274, Sec. 2, eff. April 1, 2005.
 
 Sec. 541.405. JUDICIAL REVIEW OF DEPARTMENT ACTION.
-(a) person aggrieved by the denial of a petition under Section 541.402 or the adoption, amendment, or repeal of or failure to adopt a rule under this subchapter may file a petition in a district court in Travis County for: (1) a declaratory judgment on the validity or applicability of an adopted, amended, or repealed rule; or (2) review of the denial of a petition under Section 541.402 .
+(a) A person aggrieved by the denial of a petition under Section 541.402 or the adoption, amendment, or repeal of or failure to adopt a rule under this subchapter may file a petition in a district court in Travis County for: (1) a declaratory judgment on the validity or applicability of an adopted, amended, or repealed rule; or (2) review of the denial of a petition under Section 541.402 .
 (b) The commissioner must be made a party to the action.
 (c) An action of the commissioner under this subchapter in adopting, amending, repealing, or failing to adopt a rule or denying a petition may be invalidated only if the court finds that the action: (1) violates a constitutional or state statutory provision; 34 (2) exceeds the commissioner ' s statutory authority; (3) is arbitrary or capricious or characterized by abuse of discretion or unwarranted exercise of discretion; (4) is so vague that it does not establish sufficiently definite standards to which conduct can be conformed; (5) is made following unlawful procedure; or (6) is clearly erroneous in view of the reliable, probative, and substantial evidence in the whole record as submitted.
 (d) The court may issue an injunction in an action under this section. Added by Acts 2003, 78th Leg., ch. 1274, Sec. 2, eff. April 1, 2005.

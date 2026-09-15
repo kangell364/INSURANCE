@@ -29,15 +29,36 @@ offered, one file beats forty.
 
 ## Already obtained
 
-`reference/statutes/` holds chapters **541, 542, 551, 981, 1952, 2211, 4001,
-4003, 4005, 4051** as extracted text — the whole of Tier 1 and most of Tier 2.
+`reference/statutes/` holds **30 chapters** of the Insurance Code as extracted
+text — **30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 81, 82, 83, 84, 85, 86,
+101, 102, 541, 542, 551, 981, 1806, 1952, 2211, 4001, 4003, 4005** and
+**4051** — plus **2210**, which was supplied as text rather than as a site PDF
+and is condensed in `IN.2210-key-provisions.md`.
 
-Two gaps remain, both specific:
+That is the whole of **Tier 1**, most of **Tier 2**, and the enforcement and
+regulator half of **Tier 3**. Both gaps recorded earlier are closed: 2210 is
+in hand, and 1806 confirms that rebating now lives at **§1806.104** (casualty),
+**§1806.053** (auto) and **§1806.153** (fire). See
+`reference/statutes/IN.1806-key-provisions.md`.
 
-- **2210** (Texas Windstorm Insurance Association).
-- **1806**, which is where rebating appears to live now: the blueprint cites
-  TIC 541.056 for it, and that section has been repealed. See
-  `reference/statutes/README.md`.
+**Enough is in hand to write the Texas statutes module.** Everything below is
+still worth having, but nothing below blocks drafting.
+
+### Still outstanding
+
+Tier 2: **462** (Property and Casualty Insurance Guaranty Association) and
+**2151** (Texas Automobile Insurance Plan Association).
+
+Tier 3: **201**, **401**, **404**, **481**, **491**, **521**, **544**, **547**,
+**701**, **801**, **862**, **941**, **982**, **1954** (rideshare) and **2203**
+(medical liability JUA).
+
+From other codes: **Transportation Code 601**, **Government Code 2001.051**,
+and **Labor Code Title 5** chapters **401**, **406** and **408**.
+
+Of these, **462** is the one most likely to be examined directly — the
+guaranty association is a standard licensing-exam topic and there is no
+substitute source for the Texas limits.
 
 ## Tier 1 — the licensing and conduct core
 

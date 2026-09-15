@@ -44,33 +44,54 @@ def text_of(data):
             out.append(b' ')
     return b''.join(out).decode('latin-1')
 
-data = open(sys.argv[1], 'rb').read()
-title = re.search(rb'/Title\s*\(([^)]{0,200})\)', data)
-title = title.group(1).decode('latin-1') if title else 'UNKNOWN CHAPTER'
 
-body = text_of(data)
-# The site's PDF generator renders non-breaking spaces as a literal capital
-# "A". Stripping every standalone A would be a disaster: it would destroy
-# "SUBCHAPTER A.", the "(A)" subsection labels, and ordinary English such as
-# "A person may not engage in...". Only the two positions where the filler
-# actually occurs are targeted.
-body = re.sub(r'Sec\.\s*A+\s*(\d)', r'Sec. \1', body)          # Sec. A 541.001.
-body = re.sub(r'(\d\.)\s*A+\s+([A-Z]{2,})', r'\1 \2', body)    # 541.001. AA PURPOSE
-body = re.sub(r'(\(\w{1,3}\))\s*A+\s+', r'\1 ', body)         # (1) AA "Knowingly"
-body = re.sub(r'\s+', ' ', body)
-# Re-break on the structure a statute actually has: subtitles, subchapters,
-# section numbers, and the (a)/(b) subsections within them.
-body = re.sub(r'\s*(SUBCHAPTER [A-Z]\.)', r'\n\n\1', body)
-body = re.sub(r'\s*(Sec\.\s*\d[\d.]*\.)', r'\n\n\1', body)
-body = re.sub(r'\s+(\([a-z]\))\s+', r'\n\1 ', body)
-body = re.sub(r'\n{3,}', '\n\n', body).strip()
+def clean(body):
+    """Remove the PDF generator's filler glyph and restore statute structure.
 
-print(f'# {title}')
-print()
-print(f'Source: statutes.capitol.texas.gov, retrieved {date.today().isoformat()}.')
-print('Texas statutes are public records. Extracted from the site\'s own PDF;')
-print('verify any section against the source before relying on it in a lesson.')
-print()
-print('---')
-print()
-print(body)
+    Kept as a function with no I/O so scripts/test-extract-statute.py can
+    exercise it directly. The bug this guards against was invisible in the
+    output: the filler rule silently deleted the real word "A" at the start of
+    35 subsections across 9 chapters, turning "A person may not acquire..."
+    into "person may not acquire...". Nothing tested the transform, so nothing
+    caught it.
+    """
+    # The site's PDF generator renders non-breaking spaces as a literal capital
+    # "A". Stripping every standalone A would be a disaster: it would destroy
+    # "SUBCHAPTER A.", the "(A)" subsection labels, "A. M. Best", a financial
+    # strength rating of "A- or better", and ordinary English such as "A person
+    # may not engage in...".
+    #
+    # Across all 23 chapter PDFs obtained from the site, standalone runs of A
+    # occur in exactly two lengths: 1 (1,060 times, nearly all real English)
+    # and 2 (3,712 times, all filler). So the filler is removed by LENGTH, not
+    # by guessing from the surrounding context. The one systematic single-A
+    # filler is between "Sec." and the section number, which is unambiguous
+    # because digits follow.
+    body = re.sub(r'Sec\.\s*A\s*(\d)', r'Sec. \1', body)
+    body = re.sub(r'(?<![A-Za-z(])A{2,}(?![A-Za-z)])', ' ', body)
+    body = re.sub(r'\s+', ' ', body)
+    # Re-break on the structure a statute actually has: subtitles, subchapters,
+    # section numbers, and the (a)/(b) subsections within them.
+    body = re.sub(r'\s*(SUBCHAPTER [A-Z]\.)', r'\n\n\1', body)
+    body = re.sub(r'\s*(Sec\.\s*\d[\d.]*\.)', r'\n\n\1', body)
+    body = re.sub(r'\s+(\([a-z]\))\s+', r'\n\1 ', body)
+    return re.sub(r'\n{3,}', '\n\n', body).strip()
+
+
+def main(path):
+    data = open(path, 'rb').read()
+    title = re.search(rb'/Title\s*\(([^)]{0,200})\)', data)
+    title = title.group(1).decode('latin-1') if title else 'UNKNOWN CHAPTER'
+    print(f'# {title}')
+    print()
+    print(f'Source: statutes.capitol.texas.gov, retrieved {date.today().isoformat()}.')
+    print('Texas statutes are public records. Extracted from the site\'s own PDF;')
+    print('verify any section against the source before relying on it in a lesson.')
+    print()
+    print('---')
+    print()
+    print(clean(text_of(data)))
+
+
+if __name__ == '__main__':
+    main(sys.argv[1])

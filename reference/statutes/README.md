@@ -12,38 +12,87 @@ conversion; re-run it when a chapter is updated.
 
 | Chapter | Subject |
 | ------- | ------- |
-| 541 | Unfair methods of competition and deceptive acts |
+| 30 | General provisions |
+| 31 | Organization of department |
+| 32 | Administrative powers and duties |
+| 33 | Standards of conduct |
+| 34 | Immunity from liability |
+| 35 | Electronic transactions |
+| 36 | Department rules and procedures |
+| 37 | Ratemaking and policy form proceedings |
+| 38 | Data collection and reports |
+| 39 | Public access |
+| 40 | Duties of state office of administrative hearings and commissioner in certain proceedings; rate setting proceedings |
+| 81 | General provisions regarding discipline and enforcement |
+| 82 | Sanctions |
+| 83 | Emergency cease and desist orders |
+| 84 | Administrative penalties |
+| 85 | General criminal enforcement |
+| 86 | Revocation or modification of certificate of authority; authority to bring certain actions |
+| 101 | Unauthorized insurance |
+| 102 | Charitable gift annuities |
+| 541 | Unfair methods of competition and unfair or deceptive acts or practices |
 | 542 | Processing and settlement of claims |
-| 551 | Declination, cancellation and non-renewal |
-| 981 | Surplus lines |
+| 551 | Practices relating to declination, cancellation, and nonrenewal of insurance policies |
+| 981 | Surplus lines insurance |
+| 1806 | Prohibited practices and rebates related to policies |
 | 1952 | Policy provisions and forms for automobile insurance |
 | 2211 | FAIR Plan |
 | 4001 | Agent licensing in general |
-| 4003 | Licence expiration and renewal |
-| 4005 | Conduct, disciplinary actions and sanctions |
+| 4003 | License expiration and renewal |
+| 4005 | Conduct, disciplinary actions, and sanctions |
 | 4051 | Property and casualty agents |
 
-## Still wanted
+Chapter **2210** (Texas Windstorm Insurance Association) was supplied as text
+rather than as a site PDF, so there is no `IN.2210.txt`; its examinable
+provisions are in `IN.2210-key-provisions.md`.
 
-- **2210** — Texas Windstorm Insurance Association. The most distinctively
-  Texan coverage topic and the one national study guides cover worst.
-- **1806** — see the note below; it is where rebating now appears to live.
+This is the whole of the licensing and conduct core, most of the
+Texas-specific programmes, and the enforcement and regulator chapters —
+enough to write the Texas statutes module from source. What is still
+outstanding, and why none of it blocks drafting, is in
+`docs/source-documents-wanted.md`.
+
+## Reading notes
+
+Two chapters are long enough, and shaped awkwardly enough, that the
+examinable material has been pulled out into a companion file rather than
+left to be re-read in full:
+
+- `IN.2210-key-provisions.md` — TWIA. The chapter runs to roughly 140 pages,
+  most of it financing machinery the blueprint does not reach.
+- `IN.1806-key-provisions.md` — rebating. The chapter states the same rule
+  three times, once each for automobile, casualty and fire, under three
+  different section numbers.
 
 ## The blueprint cites a repealed section
 
 Publication #124401, effective 1 September 2026, cites **TIC 541.056** for
-*Rebating*. That section does not exist. Sections 541.056, 541.057 and 541.058
-are absent from the current chapter, and appear nowhere in the source PDF —
-they were repealed, and the blueprint has not caught up.
+*Rebating*. That section does not exist. Chapter 541 runs .051 through .055
+and then jumps to .059; sections 541.056, 541.057 and 541.058 appear nowhere
+in the source PDF. They were repealed, and the blueprint has not caught up.
 
-The blueprint gives a second citation for the same sub-topic, **TIC 1806.104**,
-which is presumably the live one. Chapter 1806 has not been obtained yet, so a
-lesson on rebating cannot be written from source.
+The blueprint's second citation for the same sub-topic, **TIC 1806.104**, is
+correct and current. Rebating is taught from Chapter 1806. See
+`IN.1806-key-provisions.md`.
 
-Two things follow:
+The general lesson stands: **check every citation against the text before
+relying on it.** The blueprint is authoritative about what is EXAMINED; it is
+not a reliable guide to where the law currently sits. This was found in the
+first chapter checked, which is not encouraging about the rest.
 
-1. Do not write the rebating lesson until 1806 is in hand.
-2. **Check every citation against the text before relying on it.** The
-   blueprint is authoritative about what is EXAMINED; it is not a reliable
-   guide to where the law currently sits. This was found in the first chapter
-   checked, which suggests it will not be the only one.
+## A note on the extractor
+
+The site's PDF generator renders non-breaking spaces as a literal capital
+"A". An early version of `extract-statute.py` stripped those by guessing from
+surrounding context, and in doing so silently deleted the real word "A" at
+the start of 35 subsections across 9 chapters — turning "A person may not
+acquire..." into "person may not acquire...", in licensing prohibitions that
+would have been quoted straight into lessons.
+
+It is now removed by length instead. Across all 23 chapter PDFs, standalone
+runs of A occur in exactly two lengths: 1 (1,060 times, nearly all real
+English) and 2 (3,712 times, all filler). The only systematic single-A filler
+is the one between "Sec." and the section number. If a chapter is ever added
+whose text contains a genuine two-letter "AA", that assumption breaks and the
+script needs revisiting.
