@@ -66,9 +66,17 @@ was rather than half-migrated.
 ### If it fails
 
 **Run `supabase/deploy/preflight.sql` first.** It is read-only — it creates
-nothing and changes nothing — and it prints three sections:
+nothing and changes nothing.
 
-1. **Prerequisites.** The eight Phase 1 objects the Phase 2 migrations depend
+> **It returns a single result set on purpose.** The Supabase SQL editor
+> displays only the **last** statement's output, so the first version of this
+> file, which used three separate `select`s, showed only the third — the
+> environment summary, which is the least useful of them. Anything that must
+> be read in that editor has to come back as one query.
+
+The rows come in four groups:
+
+1. **Phase 1 prerequisites.** The eight objects the Phase 2 migrations depend
    on: the types `course_status`, `enrollment_status` and `user_role`, the
    tables `courses`, `profiles` and `enrollments`, and the functions
    `is_admin()` and `set_updated_at()`. Anything marked `>>> MISSING` means
@@ -77,8 +85,11 @@ nothing and changes nothing — and it prints three sections:
 2. **What Phase 2 would create.** Ten objects that should all be `absent`.
    Anything marked `>>> ALREADY EXISTS` means some of Phase 2 is already
    there, so the file cannot run again as-is.
-3. **Versions and identity** — which role you are, and whether the three
-   Supabase API roles exist.
+3. **Verdict.** Two rows that answer the only two questions that matter: is
+   Phase 1 complete, and is Phase 2 already present. **If you read nothing
+   else, read these two.**
+4. **Environment** — which role you are, the database, the PostgreSQL
+   version, and whether the three Supabase API roles exist.
 
 The two things preflight cannot see are worth stating plainly:
 
