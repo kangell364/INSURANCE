@@ -136,8 +136,39 @@ than about the SQL.
 Two files, in this order:
 
 1. **`supabase/seed.sql`** — the course row and the blueprint topic counts.
+   About 10 KB; pastes fine.
 2. **`supabase/seed_content.sql`** — the modules, lessons and lesson bodies,
-   generated from `content/` by the importer.
+   generated from `content/` by the importer. **About 380 KB.**
+
+> ### The content seed is too big to paste
+>
+> 380 KB will not go into the Supabase SQL editor, and this is not a one-off
+> problem: **the file is regenerated and re-applied every time a lesson is
+> reviewed**, so it will be run dozens of times before the course is finished.
+> Pasting it by hand is not a workable process.
+>
+> **Use a direct connection instead.** The connection string is in the Supabase
+> dashboard under Project Settings → Database:
+>
+> ```
+> psql "postgresql://postgres.<ref>:<password>@<host>:5432/postgres" \
+>   -f supabase/seed.sql -f supabase/seed_content.sql
+> ```
+>
+> or, with the Supabase CLI linked to the project:
+>
+> ```
+> supabase db push          # migrations
+> psql "$(supabase db url)" -f supabase/seed.sql -f supabase/seed_content.sql
+> ```
+>
+> **Fallback, if neither tool is available:** `supabase/deploy/content/` holds
+> the same statements as **19 numbered chunks**, largest 25 KB, each wrapped in
+> its own transaction. Run them in order after `seed.sql`. Chunk boundaries
+> fall between lessons, never inside one, and because every insert carries an
+> `on conflict` clause **the chunks are safe to re-run** — unlike the schema
+> steps. Verified: all 19 applied in order give 5 modules, 42 lessons, 42
+> bodies, 42 topic tags, 0 active; re-applying all 19 changes nothing.
 
 **Both are safe to run as many times as you like.** Every insert carries an
 `on conflict` clause, so re-running updates what changed and leaves the rest
