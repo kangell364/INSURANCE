@@ -47,10 +47,19 @@ unharmed. There is a duty and a breach, but no damages, and therefore no claim.
 **Gross negligence** — reckless indifference to others' safety, beyond ordinary
 carelessness. It matters because it can expose a defendant to punitive damages.
 
-**Absolute (strict) liability** — liability without any need to prove fault,
-imposed on inherently dangerous activities: blasting, keeping wild animals,
-some product defects. Workers' compensation is built on a related idea, the
-employer being liable for workplace injury regardless of fault.
+**Strict liability** — liability **without proof of fault**. The claimant need
+not show the defendant was careless, only that the thing caused the harm.
+Product liability is the standard example; keeping a wild animal is another.
+
+**Absolute liability** — liability **that no defence will escape**. Workers'
+compensation is the clearest case: the employer pays for a workplace injury
+regardless of fault, and regardless of the employee's own carelessness.
+Blasting is the classic tort example.
+
+> The blueprint lists **absolute**, **strict** and **vicarious** as three
+> separate items, so this course keeps them apart even though many texts treat
+> the first two as synonyms. The distinction, and why it matters, is in lesson
+> 7.
 
 **Vicarious liability** — responsibility for somebody else's negligence
 because of a relationship. An employer for an employee acting within the scope

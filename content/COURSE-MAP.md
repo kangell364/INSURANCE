@@ -7,7 +7,7 @@ interesting.
 
 | Module | Blueprint | Questions | Lessons | Status |
 | ------ | --------- | --------: | ------: | ------ |
-| 1. Insurance Fundamentals | GK.II, GK.V | 30 | 6 | drafted, **incomplete — see below** |
+| 1. Insurance Fundamentals | GK.II, GK.V | 30 | 7 | drafted |
 | 2. Policy Structure and Contract Law | GK.III, GK.VI | 25 | 10 | drafted |
 | 3. Property Coverages | GK.I | 22 | 6 | drafted |
 | 4. Casualty Coverages | GK.IV | 23 | 9 | drafted |
@@ -21,32 +21,48 @@ Modules 1 and 2 come first because every later module assumes their
 vocabulary. Module 5 is last because it needs the Insurance Code chapters
 listed in `docs/source-documents-wanted.md`.
 
-## Known gap in Module 1
+## A note on how Module 1 was checked
 
 Module 1 was written before the blueprint was read item by item. Checking its
-six lessons against GK.II and GK.V line by line leaves **nine named
-sub-topics with no lesson**:
+six lessons against GK.II and GK.V line by line afterwards found nine named
+sub-topics with no lesson: binder, certificate of insurance, endorsements,
+direct vs indirect loss, vacancy and unoccupancy, blanket vs specific, salvage
+value, absolute liability and deposit premium/audit.
 
-| Blueprint item | Where it stands |
-| -------------- | --------------- |
-| GK.II.S / GK.V.I **Binder** | Now covered in Module 2, lesson 1 |
-| GK.V.N **Certificate of insurance** | Now covered in Module 2, lesson 1 |
-| GK.II.T / GK.V.Q **Endorsements** | Now covered in Module 2, lesson 1 |
-| GK.II.F **Direct vs indirect loss** | Taught in passing in Module 3, lesson 3 |
-| GK.II.P **Vacancy and unoccupancy** | Taught in Module 3, lesson 2 |
-| GK.II.U **Blanket vs specific** | Taught in Module 3, lesson 3 |
-| GK.II.G.5 / GK.V.E.5 **Salvage value** | **Not covered anywhere** |
-| GK.II.Q.1 **Absolute liability** | **Not covered anywhere** |
-| GK.V.M **Deposit premium / audit** | Taught in Module 4, lesson 4 |
+**Lesson 7 was written to close that**, gathering them under the names the
+blueprint uses. Seven of the nine are also taught in later modules where they
+do real work — binders and certificates in Module 2, vacancy and blanket in
+Module 3, premium audit in Module 4 — and lesson 7 cross-references those
+rather than repeating them at length. Salvage value and direct/indirect loss
+are taught in full there, having been taught nowhere before.
 
-Seven of the nine are now taught somewhere, but in a later module and as a
-supporting detail rather than as the term the exam names. **Salvage value and
-absolute liability are not covered at all.**
+One item on that list was recorded wrongly and is corrected here: **absolute
+liability was not missing.** Lesson 6 covered it, but as "Absolute (strict)
+liability" — one term. The blueprint lists **absolute**, **strict** and
+**vicarious** as three separate items, so lesson 6 now separates the first two
+and lesson 7 gives the distinction.
 
-The fix is a seventh Module 1 lesson — provisionally "Terms the Other Lessons
-Assume" — gathering these where a student looking up a blueprint term would
-find them. It is not written, because adding unrequested lessons to a review
-queue is the reviewer's call, not the author's.
+### Where GK.II and GK.V terms are taught outside Module 1
+
+The module boundaries do not map one-to-one onto the blueprint sections, on
+purpose: GK.II/GK.V overlap GK.III/GK.VI, and six terms listed under the
+former have full lessons under the latter. They are recorded here so that a
+future check does not "find" them missing and produce a duplicate lesson.
+
+| Blueprint term | Taught in |
+| -------------- | --------- |
+| GK.II.N **Cancellation**, GK.II.O **Nonrenewal** | Module 2, lesson 5 — and Module 5, lesson 7 for the Texas rules |
+| GK.V.J **Warranties**, GK.V.K **Representations**, GK.V.L **Concealment** | Module 2, lesson 8 |
+| GK.V.S **Fair Credit Reporting Act** | Module 2, lesson 9 |
+
+A mechanical check of all 39 GK.II and GK.V terms against the content tree
+now returns these six and nothing else.
+
+The lesson to draw is about method rather than content. The gap existed
+because the module was written from a plan rather than from the blueprint, and
+it was found by a mechanical check of one against the other. **Modules 2, 3 and
+4 were written the other way round** — blueprint first — which is why Module 3
+has a sixth lesson the original plan did not contain.
 
 ## Module 1 — Insurance Fundamentals (30 questions)
 
@@ -65,6 +81,10 @@ and teaching it twice would waste the student's time.
 5. **Deductibles, Coinsurance and Limits** — the arithmetic questions
 6. **Negligence and Liability** — the four elements, defences, and kinds of
    damages
+7. **Terms the Other Lessons Assume** — direct and indirect loss, salvage
+   value, vacancy and unoccupancy, blanket vs specific, absolute/strict/
+   vicarious liability, binders, certificates, endorsements, deposit premium
+   and audit
 
 ## Module 2 — Policy Structure and Contract Law (25 questions)
 
