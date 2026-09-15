@@ -63,6 +63,43 @@ existing type or table. That is correct behaviour, not a bug — and because the
 file is one transaction, a failure part-way leaves the database exactly as it
 was rather than half-migrated.
 
+### If it fails
+
+**Run `supabase/deploy/preflight.sql` first.** It is read-only — it creates
+nothing and changes nothing — and it prints three sections:
+
+1. **Prerequisites.** The eight Phase 1 objects the Phase 2 migrations depend
+   on: the types `course_status`, `enrollment_status` and `user_role`, the
+   tables `courses`, `profiles` and `enrollments`, and the functions
+   `is_admin()` and `set_updated_at()`. Anything marked `>>> MISSING` means
+   **Phase 1 is not applied**, and that is the failure: the Phase 2 file
+   references all eight by name.
+2. **What Phase 2 would create.** Ten objects that should all be `absent`.
+   Anything marked `>>> ALREADY EXISTS` means some of Phase 2 is already
+   there, so the file cannot run again as-is.
+3. **Versions and identity** — which role you are, and whether the three
+   Supabase API roles exist.
+
+The two things preflight cannot see are worth stating plainly:
+
+- **A failed run leaves nothing behind.** The file is one transaction, so a
+  half-applied schema is not a state you can be in. If preflight says the
+  Phase 2 objects are absent, the failure happened before anything was
+  committed and you can safely try again once the cause is fixed.
+- **A truncated paste is indistinguishable from a broken file.** The file is
+  around 970 lines. If the SQL editor mangled it, the error will point at a
+  statement that looks fine in the repository. **Apply the eight files in
+  `supabase/migrations/20260201*.sql` one at a time, in filename order,
+  instead** — whichever one errors tells you exactly where the problem is,
+  and eight small pastes cannot be truncated the way one large one can.
+
+What has been verified about the file itself: it applies cleanly onto a
+database carrying Phase 1, both as a superuser and as a non-superuser role
+owning the schema (which is what Supabase's `postgres` is on newer projects),
+and injecting a failure before the `commit` leaves zero Phase 2 tables behind.
+So an error is far more likely to be about the state of the target database
+than about the SQL.
+
 ---
 
 ## Step 2 — Load the content
