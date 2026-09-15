@@ -1,0 +1,183 @@
+name: ci
+
+# The whole repository is this application, so there are no path filters:
+# every push and every pull request runs the full suite.
+#
+# Carried over from kangell364/medcheck, where this app lived in a
+# subdirectory beside an unrelated application. That is why commits before the
+# move show a differently named workflow and a working-directory default.
+on:
+  push:
+  pull_request:
+  # Allows a manual run from the Actions tab.
+  workflow_dispatch:
+
+# A new push supersedes an in-flight run for the same ref.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  app:
+    name: Lint, types, tests, build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Type check
+        run: npm run typecheck
+
+      - name: Unit and component tests
+        run: npm test
+
+      # Parses every lesson in content/ and fails on a malformed one: missing
+      # front matter, no body, a module directory without its ordering prefix.
+      # It also prints how many lessons are still UNREVIEWED, which is the
+      # number that should be going down.
+      #
+      # --check writes nothing. Regenerating supabase/seed_content.sql is a
+      # deliberate act by whoever edited the lesson, not a side effect of CI.
+      - name: Validate lesson content
+        run: node scripts/import-content.mjs --check
+
+      # The statute extractor's text cleanup, tested directly. The PDFs from
+      # statutes.capitol.texas.gov render non-breaking spaces as a literal
+      # capital "A", which collides with the article "A" that opens most
+      # subsections in the Insurance Code. An earlier rule deleted 35 of those
+      # articles silently -- the output still read as fluent English, just with
+      # "A person may not acquire..." reduced to "person may not acquire...".
+      # Nothing tested the transform, so nothing caught it.
+      - name: Statute extractor assertions
+        run: python3 scripts/test-extract-statute.py
+
+      # supabase/deploy/phase-2-schema.sql is the concatenated migration file
+      # somebody pastes into the Supabase SQL editor when the CLI is not
+      # available. A generated file that has drifted from its source is worse
+      # than no generated file: it gets pasted into production in the belief
+      # that it matches the migrations. --check writes nothing.
+      - name: Deploy SQL is up to date
+        run: node scripts/build-deploy-sql.mjs --check
+
+      # No Supabase credentials are provided, and none are needed: the build
+      # must succeed without them. `lib/env.ts` reports missing configuration
+      # rather than throwing, and the pages render their "not configured"
+      # state. A build that only passes when secrets are present would hide
+      # exactly that behaviour.
+      - name: Production build
+        run: npm run build
+
+  database:
+    name: Database schema and RLS policies
+    runs-on: ubuntu-latest
+
+    # A real PostgreSQL server. The migrations are applied to it from scratch
+    # and the RLS assertions run as an unprivileged `authenticated` connection,
+    # which is the only way to prove the security policies actually hold.
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: postgres
+          POSTGRES_DB: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 10
+
+    env:
+      PGHOST: localhost
+      PGPORT: '5432'
+      PGUSER: postgres
+      PGPASSWORD: postgres
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install the PostgreSQL client
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes --no-install-recommends postgresql-client
+
+      # Applies the Supabase compatibility shim, then every migration in order,
+      # then the seed, then the assertions. Any failed assertion aborts with a
+      # non-zero exit code.
+      #
+      # This is the check that matters most in this repository: it is what
+      # proves a student cannot read another student's profile or enrollments,
+      # cannot see draft courses, cannot self-enroll, and cannot promote
+      # themselves to admin.
+      - name: Apply migrations and run RLS assertions
+        run: ./scripts/test-rls-local.sh
+
+      # A guard against the specific mistake that made the immutability trigger
+      # a no-op: SECURITY DEFINER rebinds current_user to the function owner,
+      # so a trusted-role allow-list keyed on current_user matches every
+      # caller. The assertions above cover this too; this is a cheap, explicit
+      # second signal that names the failure directly.
+      - name: Assert every function that should be SECURITY INVOKER still is
+        run: |
+          psql -v ON_ERROR_STOP=1 -d postgres \
+            -c "drop database if exists ci_secdef_check;" \
+            -c "create database ci_secdef_check;"
+          psql -q -v ON_ERROR_STOP=1 -d ci_secdef_check \
+            -f supabase/tests/local/00_supabase_shim.sql
+          for migration in supabase/migrations/*.sql; do
+            psql -q -v ON_ERROR_STOP=1 -d ci_secdef_check -f "$migration"
+          done
+
+          # Every function here must run with the CALLER's privileges.
+          #
+          # SECURITY DEFINER is not a stronger setting, it is a different one,
+          # and the project has already been bitten by treating it as a default:
+          # enforce_profile_immutable_columns() was declared DEFINER, which
+          # rebinds current_user to the function owner, so its trusted-role
+          # allow-list matched every caller and every check below it was
+          # skipped. The trigger was a no-op and the whole suite still passed.
+          #
+          # public.is_admin() is the one deliberate SECURITY DEFINER in the
+          # schema — it must be, to break RLS recursion on profiles — and is
+          # therefore absent from this list.
+          invoker_only="enforce_profile_immutable_columns enforce_topic_depth is_enrolled_in_course lesson_is_published"
+          failed=0
+          for fn in $invoker_only; do
+            secdef=$(psql -tA -d ci_secdef_check -c \
+              "select prosecdef from pg_proc where proname = '${fn}';")
+            echo "${fn} prosecdef = '${secdef}'"
+            # An empty result means the function is absent or the query failed —
+            # report that distinctly rather than as a security regression.
+            if [ -z "${secdef}" ]; then
+              echo "::error::Could not read prosecdef for ${fn}. The function is missing, or the migrations did not apply."
+              failed=1
+            elif [ "${secdef}" != "f" ]; then
+              echo "::error::${fn}() must be SECURITY INVOKER. As SECURITY DEFINER, current_user becomes the function owner, so any role check inside it matches every caller and the privileges it borrows are the owner's, not the caller's."
+              failed=1
+            fi
+          done
+
+          # The converse: is_admin() must STAY security definer, or the policies
+          # that call it recurse into the profiles policy that calls it.
+          isadmin=$(psql -tA -d ci_secdef_check -c \
+            "select prosecdef from pg_proc where proname = 'is_admin';")
+          echo "is_admin prosecdef = '${isadmin}'"
+          if [ "${isadmin}" != "t" ]; then
+            echo "::error file=supabase/migrations/20260101000400_authorization_helpers.sql::is_admin() must remain SECURITY DEFINER; as INVOKER the profiles policies recurse."
+            failed=1
+          fi
+
+          exit $failed
