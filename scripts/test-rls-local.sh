@@ -80,6 +80,39 @@ fi
 echo "==> Applying seed data"
 "${PSQL[@]}" -d "${DB_NAME}" -f "${ROOT}/supabase/seed.sql" >/dev/null
 
+# The CONTENT seed as well. This was missing, and the omission mattered:
+# seed_content.sql is generated from content/ by scripts/import-content.mjs
+# and is the file that actually goes into production, yet nothing had ever
+# executed it. A lesson body containing an unescaped quote, a slug colliding
+# with another, or a topic tag pointing at the wrong course would all have
+# been found by whoever pasted it into the Supabase SQL editor.
+echo "==> Applying content seed"
+"${PSQL[@]}" -d "${DB_NAME}" -f "${ROOT}/supabase/seed_content.sql" >/dev/null
+
+# Both seeds must be safe to run twice, because the deployment runbook says
+# so: migrations are applied once, seeds are re-applied whenever content
+# changes. An INSERT without a conflict clause would break that promise
+# quietly, the second run failing on a primary key nobody was watching.
+echo "==> Re-applying both seeds (they must be idempotent)"
+"${PSQL[@]}" -d "${DB_NAME}" -f "${ROOT}/supabase/seed.sql" >/dev/null
+"${PSQL[@]}" -d "${DB_NAME}" -f "${ROOT}/supabase/seed_content.sql" >/dev/null
+
+# Nothing UNREVIEWED may reach production as a published lesson. The importer
+# enforces this when it generates the file; this proves the generated file
+# actually carries the decision through to the database.
+echo "==> Checking no lesson was seeded as active"
+"${PSQL[@]}" -d "${DB_NAME}" -v ON_ERROR_STOP=1 <<'SQL' >/dev/null
+do $$
+declare n integer;
+begin
+  select count(*) into n from public.lessons where status = 'active';
+  if n > 0 then
+    raise exception 'seed_content.sql published % lesson(s); every lesson is UNREVIEWED and must be draft', n;
+  end if;
+  raise notice 'ok    seed: 0 active lessons';
+end $$;
+SQL
+
 echo "==> Dropping database ${DB_NAME}"
 "${PSQL[@]}" -d postgres -c "drop database if exists ${DB_NAME};" >/dev/null
 
