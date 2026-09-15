@@ -27,17 +27,35 @@ on conflict (slug) do nothing;
 -- ---------------------------------------------------------------------------
 -- Blueprint topics.
 --
--- Weightings are illustrative placeholders. Replace them with the figures from
--- the current Texas candidate handbook before publishing — a wrong weighting
--- sends students to study the wrong things, which is the single most damaging
--- error this product can make.
+-- EVERY WEIGHTING HERE IS NULL, DELIBERATELY.
+--
+-- An earlier version of this file carried invented percentages (15.00, 20.00,
+-- 25.00). They were commented as placeholders, but a comment in a seed file is
+-- not what anyone sees: the admin blueprint screen and the public syllabus
+-- page both render a weighting as a plain fact, so "15% of the exam" appeared
+-- on screen as though it had been checked. Nobody reads the SQL to find out
+-- that a number on a page is fiction.
+--
+-- A NULL renders as "No weighting" in the admin screen and is simply omitted
+-- from the public syllabus. That is true, and it leaves the blueprint screen's
+-- "weightings do not add up to 100%" warning free to fire the moment real
+-- figures start going in with one missing.
+--
+-- The real figures come from Pearson VUE publication 124401, "Texas Insurance
+-- Content Outlines", and must be transcribed from that document. A wrong
+-- weighting sends students to study the wrong things, and second-hand
+-- summaries of it disagree with each other -- two searches in September 2026
+-- returned 145 and 150 total questions respectively. Use the primary source.
+--
+-- The topic CODES and NAMES below are likewise a plausible skeleton for
+-- development, not a transcription. Replace them too.
 -- ---------------------------------------------------------------------------
 insert into public.topics
   (id, course_id, parent_topic_id, code, name, blueprint_weight, position)
 values
   ('1a000000-0000-4000-8000-000000000001',
    '0f2b8a14-6d5f-4c2e-9a3b-7c1d8e5f2a60', null,
-   'GL.01', 'Insurance Fundamentals', 15.00, 1),
+   'GL.01', 'Insurance Fundamentals', null, 1),
   ('1a000000-0000-4000-8000-000000000002',
    '0f2b8a14-6d5f-4c2e-9a3b-7c1d8e5f2a60',
    '1a000000-0000-4000-8000-000000000001',
@@ -48,10 +66,10 @@ values
    'GL.01.02', 'Insurable interest and indemnity', null, 2),
   ('1a000000-0000-4000-8000-000000000004',
    '0f2b8a14-6d5f-4c2e-9a3b-7c1d8e5f2a60', null,
-   'GL.02', 'Policy Provisions', 20.00, 2),
+   'GL.02', 'Policy Provisions', null, 2),
   ('1a000000-0000-4000-8000-000000000005',
    '0f2b8a14-6d5f-4c2e-9a3b-7c1d8e5f2a60', null,
-   'GL.03', 'Texas Statutes and Regulations', 25.00, 3)
+   'GL.03', 'Texas Statutes and Regulations', null, 3)
 on conflict (course_id, code) do nothing;
 
 -- ---------------------------------------------------------------------------

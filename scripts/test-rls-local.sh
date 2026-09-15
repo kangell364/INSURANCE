@@ -55,7 +55,7 @@ done
 # This is a minimum, not an expected value, so adding assertions never
 # requires touching it. It trips only when assertions DISAPPEAR, which is
 # exactly the change nobody means to make.
-MIN_ASSERTIONS="${TEP_MIN_ASSERTIONS:-119}"
+MIN_ASSERTIONS="${TEP_MIN_ASSERTIONS:-139}"
 total=0
 
 for suite in "${ROOT}"/supabase/tests/local/*_assertions.sql; do
