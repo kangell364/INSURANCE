@@ -34,8 +34,34 @@ export const READY_THRESHOLD = 80
 /** Below this, a student is not close and should keep studying. */
 export const ALMOST_THRESHOLD = 65
 
-/** The mark the state examination itself passes at, for context only. */
+/**
+ * The mark the state examination itself passes at.
+ *
+ * *** UNVERIFIED AGAINST A PRIMARY SOURCE. ***
+ *
+ * 70 is the widely-quoted figure and is very probably right, but it is
+ * recalled rather than read: Pearson VUE publication #124401 is content
+ * outlines only and says nothing about scoring, and pearsonvue.com and
+ * tdi.texas.gov are both unreachable from the build environment. The
+ * authority is the Texas Candidate Handbook.
+ *
+ * This is flagged rather than quietly trusted because the number is SHOWN TO
+ * STUDENTS -- the dashboard states it as fact and uses it to justify the 80%
+ * threshold. That is exactly the shape of the mistake already made once in
+ * this project, where invented blueprint weightings rendered on screen as
+ * though they had been checked.
+ *
+ * Confirm against the handbook and delete this notice, or correct the value.
+ */
 export const STATE_PASS_MARK = 70
+
+/**
+ * Whether STATE_PASS_MARK has been confirmed against the candidate handbook.
+ *
+ * The UI softens its wording while this is false, so the product never states
+ * as fact something nobody has read.
+ */
+export const STATE_PASS_MARK_VERIFIED = false
 
 export type ReadinessBand = 'not-ready' | 'almost' | 'ready'
 

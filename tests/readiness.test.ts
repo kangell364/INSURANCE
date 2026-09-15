@@ -3,6 +3,7 @@ import {
   ALMOST_THRESHOLD,
   READY_THRESHOLD,
   STATE_PASS_MARK,
+  STATE_PASS_MARK_VERIFIED,
   readinessBand,
   readinessScale,
 } from '@/lib/readiness'
@@ -11,6 +12,14 @@ describe('the readiness scale', () => {
   it('tells a student to book only at or above the threshold', () => {
     expect(readinessBand(READY_THRESHOLD).band).toBe('ready')
     expect(readinessBand(READY_THRESHOLD - 1).band).toBe('almost')
+  })
+
+  it('does not state the pass mark as fact until it has been verified', () => {
+    // The dashboard softens its wording while this is false. When somebody
+    // confirms the figure against the Texas Candidate Handbook, flipping this
+    // to true is the whole change — and this test is the reminder that the
+    // flip is a claim about having read a document, not a formality.
+    expect(typeof STATE_PASS_MARK_VERIFIED).toBe('boolean')
   })
 
   it('keeps a margin over the state pass mark', () => {

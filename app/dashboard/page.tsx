@@ -6,6 +6,7 @@ import { displayName } from '@/types'
 import {
   READY_THRESHOLD,
   STATE_PASS_MARK,
+  STATE_PASS_MARK_VERIFIED,
   readinessScale,
 } from '@/lib/readiness'
 import { PageHeader } from '@/components/ui/PageHeader'
@@ -187,8 +188,11 @@ export default async function DashboardPage() {
               ))}
             </dl>
             <p className="mt-4 text-xs text-slate-500">
-              The state examination passes at {STATE_PASS_MARK}%. We set the
-              bar higher so that &ldquo;ready&rdquo; means ready on the day.
+              {STATE_PASS_MARK_VERIFIED
+                ? `The state examination passes at ${STATE_PASS_MARK}%. `
+                : `The state examination is generally reported to pass at around ${STATE_PASS_MARK}%. `}
+              We set the bar higher so that &ldquo;ready&rdquo; means ready on
+              the day.
             </p>
           </CardBody>
         </Card>
