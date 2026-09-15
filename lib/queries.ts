@@ -17,6 +17,8 @@ import { isSupabaseConfigured } from '@/lib/env'
 import type {
   Course,
   CourseOutline,
+  Lesson,
+  Module,
   EnrollmentWithCourse,
   LessonWithContent,
   SyllabusLesson,
@@ -438,4 +440,219 @@ export async function hasLiveEnrollment(courseId: string): Promise<boolean> {
   }
 
   return data === true
+}
+
+/* ==========================================================================
+   Admin content reads.
+
+   These return DRAFTS as well as published rows. That is not a privilege this
+   file grants: the same query run by a student returns only what the student
+   may see, because every one of these goes through the RLS-governed client.
+   The difference in what comes back is entirely the difference between the
+   two callers' policies.
+   ========================================================================== */
+
+export type AdminLesson = Pick<
+  Lesson,
+  | 'id'
+  | 'title'
+  | 'slug'
+  | 'summary'
+  | 'position'
+  | 'status'
+  | 'estimated_minutes'
+> & { hasBody: boolean }
+
+export type AdminModule = Pick<
+  Module,
+  'id' | 'title' | 'description' | 'position' | 'status'
+> & { lessons: AdminLesson[] }
+
+export type AdminCourseContent = {
+  course: Course
+  modules: AdminModule[]
+}
+
+/**
+ * The whole content tree for one course, drafts included.
+ *
+ * `hasBody` rather than the body itself: the authoring index needs to show
+ * which lessons are still empty, and pulling every lesson body to answer a
+ * yes/no question would move the entire course over the wire to render a
+ * list. The body is fetched only by the editor that is about to show it.
+ */
+export async function getAdminCourseContent(
+  courseSlug: string,
+): Promise<QueryResult<AdminCourseContent | null>> {
+  if (!isSupabaseConfigured()) return { data: null, error: NOT_CONFIGURED }
+
+  const supabase = await createClient()
+
+  const { data: course, error: courseError } = await supabase
+    .from('courses')
+    .select('id, title, slug, description, status, created_at, updated_at')
+    .eq('slug', courseSlug)
+    .maybeSingle()
+
+  if (courseError) {
+    logFailure('admin.courseBySlug', courseError)
+    return { data: null, error: GENERIC_ERROR }
+  }
+  if (!course) return { data: null, error: null }
+
+  const { data: modules, error: modulesError } = await supabase
+    .from('modules')
+    .select(
+      `id, title, description, position, status,
+       lessons ( id, title, slug, summary, position, status, estimated_minutes,
+                 lesson_contents ( lesson_id ) )`,
+    )
+    .eq('course_id', course.id)
+    .order('position', { ascending: true })
+    .order('position', { referencedTable: 'lessons', ascending: true })
+
+  if (modulesError) {
+    logFailure('admin.modulesByCourse', modulesError)
+    return { data: null, error: GENERIC_ERROR }
+  }
+
+  return {
+    data: {
+      course,
+      modules: (modules ?? []).map((moduleRow) => ({
+        id: moduleRow.id,
+        title: moduleRow.title,
+        description: moduleRow.description,
+        position: moduleRow.position,
+        status: moduleRow.status,
+        lessons: (moduleRow.lessons ?? []).map((lesson) => ({
+          id: lesson.id,
+          title: lesson.title,
+          slug: lesson.slug,
+          summary: lesson.summary,
+          position: lesson.position,
+          status: lesson.status,
+          estimated_minutes: lesson.estimated_minutes,
+          // PostgREST returns a one-to-one embed as an object, not an
+          // array, and the generated types reflect that. Both shapes are
+          // handled because the relationship's cardinality is a property of
+          // the schema that a future migration could change.
+          hasBody: Array.isArray(lesson.lesson_contents)
+            ? lesson.lesson_contents.length > 0
+            : Boolean(lesson.lesson_contents),
+        })),
+      })),
+    },
+    error: null,
+  }
+}
+
+export type LessonForEdit = Pick<
+  Lesson,
+  | 'id'
+  | 'module_id'
+  | 'course_id'
+  | 'title'
+  | 'slug'
+  | 'summary'
+  | 'position'
+  | 'status'
+  | 'estimated_minutes'
+> & {
+  body: string
+  moduleTitle: string
+  topicIds: string[]
+}
+
+/** One lesson with its body and topic tags, for the authoring form. */
+export async function getLessonForEdit(
+  lessonId: string,
+): Promise<QueryResult<LessonForEdit | null>> {
+  if (!isSupabaseConfigured()) return { data: null, error: NOT_CONFIGURED }
+
+  const supabase = await createClient()
+  const { data, error } = await supabase
+    .from('lessons')
+    .select(
+      `id, module_id, course_id, title, slug, summary, position, status,
+       estimated_minutes,
+       module:modules!inner ( title ),
+       content:lesson_contents ( body ),
+       lesson_topics ( topic_id )`,
+    )
+    .eq('id', lessonId)
+    .maybeSingle()
+
+  if (error) {
+    logFailure('admin.lessonForEdit', error)
+    return { data: null, error: GENERIC_ERROR }
+  }
+  if (!data) return { data: null, error: null }
+
+  const content = Array.isArray(data.content) ? data.content[0] : data.content
+  const moduleRow = Array.isArray(data.module) ? data.module[0] : data.module
+
+  return {
+    data: {
+      id: data.id,
+      module_id: data.module_id,
+      course_id: data.course_id,
+      title: data.title,
+      slug: data.slug,
+      summary: data.summary,
+      position: data.position,
+      status: data.status,
+      estimated_minutes: data.estimated_minutes,
+      // A lesson with no content row yet is normal: the row is created the
+      // first time a body is saved.
+      body: content?.body ?? '',
+      moduleTitle: moduleRow?.title ?? '',
+      topicIds: (data.lesson_topics ?? []).map((row) => row.topic_id),
+    },
+    error: null,
+  }
+}
+
+export type AdminTopic = Pick<
+  Topic,
+  'id' | 'course_id' | 'parent_topic_id' | 'code' | 'name' | 'blueprint_weight' | 'position'
+>
+
+/** Every topic for a course, flat and in order, for the topic screens. */
+export async function getCourseTopics(
+  courseId: string,
+): Promise<QueryResult<AdminTopic[]>> {
+  if (!isSupabaseConfigured()) return { data: null, error: NOT_CONFIGURED }
+
+  const supabase = await createClient()
+  const { data, error } = await supabase
+    .from('topics')
+    .select('id, course_id, parent_topic_id, code, name, blueprint_weight, position')
+    .eq('course_id', courseId)
+    .order('position', { ascending: true })
+
+  if (error) {
+    logFailure('admin.courseTopics', error)
+    return { data: null, error: GENERIC_ERROR }
+  }
+
+  return { data: data ?? [], error: null }
+}
+
+/** Every course, drafts included, for the admin content index. */
+export async function getAllCourses(): Promise<QueryResult<Course[]>> {
+  if (!isSupabaseConfigured()) return { data: null, error: NOT_CONFIGURED }
+
+  const supabase = await createClient()
+  const { data, error } = await supabase
+    .from('courses')
+    .select('id, title, slug, description, status, created_at, updated_at')
+    .order('title', { ascending: true })
+
+  if (error) {
+    logFailure('admin.allCourses', error)
+    return { data: null, error: GENERIC_ERROR }
+  }
+
+  return { data: data ?? [], error: null }
 }

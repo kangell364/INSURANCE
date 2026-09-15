@@ -170,3 +170,145 @@ export function authErrorMessage(
 
   return fallback
 }
+
+/* ==========================================================================
+   Content authoring.
+
+   Same posture as the rest of this file: these rules are a convenience for
+   the person typing. The database enforces its own — length checks, the slug
+   pattern, position uniqueness, the topic-depth trigger — and rejects
+   anything that gets past here. Nothing below is load-bearing for security.
+   ========================================================================== */
+
+export const MAX_TITLE_LENGTH = 200
+export const MAX_SLUG_LENGTH = 120
+export const MAX_SUMMARY_LENGTH = 300
+export const MAX_TOPIC_CODE_LENGTH = 60
+export const MAX_ESTIMATED_MINUTES = 600
+
+/** Matches the `courses_slug_format` / `lessons_slug_format` check constraints. */
+const SLUG_PATTERN = /^[a-z0-9]+(-[a-z0-9]+)*$/
+
+/**
+ * Derives a URL slug from a title.
+ *
+ * Offered as a default in the authoring forms rather than applied silently:
+ * a slug is part of a public URL, and changing one later breaks every link
+ * and every search result pointing at it. The author should see what they are
+ * committing to.
+ *
+ * Diacritics are decomposed and stripped rather than dropped wholesale, so
+ * "Póliza" becomes "poliza" and not "pliza".
+ */
+export function slugify(input: string): string {
+  return input
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, MAX_SLUG_LENGTH)
+    .replace(/-+$/g, '')
+}
+
+export type ModuleFields = 'title' | 'description'
+
+export function validateModule(input: {
+  title: string
+  description: string
+}): FieldErrors<ModuleFields> {
+  const errors: FieldErrors<ModuleFields> = {}
+  const title = input.title.trim()
+
+  if (!title) {
+    errors.title = 'Give the module a title.'
+  } else if (title.length > MAX_TITLE_LENGTH) {
+    errors.title = `Title must be ${MAX_TITLE_LENGTH} characters or fewer.`
+  }
+
+  if (input.description.trim().length > 1000) {
+    errors.description = 'Description must be 1000 characters or fewer.'
+  }
+
+  return errors
+}
+
+export type LessonFields = 'title' | 'slug' | 'summary' | 'estimatedMinutes'
+
+export function validateLesson(input: {
+  title: string
+  slug: string
+  summary: string
+  estimatedMinutes: string
+}): FieldErrors<LessonFields> {
+  const errors: FieldErrors<LessonFields> = {}
+  const title = input.title.trim()
+  const slug = input.slug.trim()
+
+  if (!title) {
+    errors.title = 'Give the lesson a title.'
+  } else if (title.length > MAX_TITLE_LENGTH) {
+    errors.title = `Title must be ${MAX_TITLE_LENGTH} characters or fewer.`
+  }
+
+  if (!slug) {
+    errors.slug = 'The lesson needs a web address.'
+  } else if (slug.length > MAX_SLUG_LENGTH) {
+    errors.slug = `Web address must be ${MAX_SLUG_LENGTH} characters or fewer.`
+  } else if (!SLUG_PATTERN.test(slug)) {
+    errors.slug =
+      'Use lower-case letters, numbers and hyphens only, for example ' +
+      '"risk-peril-and-hazard".'
+  }
+
+  if (input.summary.trim().length > MAX_SUMMARY_LENGTH) {
+    errors.summary = `Summary must be ${MAX_SUMMARY_LENGTH} characters or fewer.`
+  }
+
+  const minutes = input.estimatedMinutes.trim()
+  if (minutes) {
+    const parsed = Number(minutes)
+    if (!Number.isInteger(parsed) || parsed < 1) {
+      errors.estimatedMinutes = 'Enter a whole number of minutes, or leave blank.'
+    } else if (parsed > MAX_ESTIMATED_MINUTES) {
+      errors.estimatedMinutes = `That is longer than ${MAX_ESTIMATED_MINUTES} minutes — check the figure.`
+    }
+  }
+
+  return errors
+}
+
+export type TopicFields = 'code' | 'name' | 'blueprintWeight'
+
+export function validateTopic(input: {
+  code: string
+  name: string
+  blueprintWeight: string
+}): FieldErrors<TopicFields> {
+  const errors: FieldErrors<TopicFields> = {}
+  const code = input.code.trim()
+  const name = input.name.trim()
+
+  if (!code) {
+    errors.code = 'Give the topic its blueprint code.'
+  } else if (code.length > MAX_TOPIC_CODE_LENGTH) {
+    errors.code = `Code must be ${MAX_TOPIC_CODE_LENGTH} characters or fewer.`
+  }
+
+  if (!name) {
+    errors.name = 'Give the topic a name.'
+  } else if (name.length > MAX_TITLE_LENGTH) {
+    errors.name = `Name must be ${MAX_TITLE_LENGTH} characters or fewer.`
+  }
+
+  const weight = input.blueprintWeight.trim()
+  if (weight) {
+    const parsed = Number(weight)
+    if (!Number.isFinite(parsed) || parsed < 0 || parsed > 100) {
+      errors.blueprintWeight =
+        'Enter the published percentage between 0 and 100, or leave blank.'
+    }
+  }
+
+  return errors
+}

@@ -4,9 +4,13 @@ import {
   authErrorMessage,
   hasErrors,
   isValidEmail,
+  slugify,
+  validateLesson,
   validateLogin,
+  validateModule,
   validateProfile,
   validateSignup,
+  validateTopic,
 } from '@/lib/validation'
 
 const validSignup = {
@@ -174,5 +178,150 @@ describe('authErrorMessage', () => {
 
   it('handles a null error', () => {
     expect(authErrorMessage(null)).toBe('Something went wrong. Please try again.')
+  })
+})
+
+/* ==========================================================================
+   Content authoring validation.
+   ========================================================================== */
+
+describe('slugify', () => {
+  it('lower-cases and hyphenates a title', () => {
+    expect(slugify('Risk, Peril and Hazard')).toBe('risk-peril-and-hazard')
+  })
+
+  it('strips diacritics rather than dropping the letters', () => {
+    // "Póliza" must become "poliza", not "pliza" — dropping the character
+    // silently mangles the word for any Spanish-language content.
+    expect(slugify('Póliza de Seguro')).toBe('poliza-de-seguro')
+    expect(slugify('Año')).toBe('ano')
+  })
+
+  it('collapses runs of punctuation into single hyphens', () => {
+    expect(slugify('What is  a "peril"?!')).toBe('what-is-a-peril')
+  })
+
+  it('never starts or ends with a hyphen', () => {
+    expect(slugify('  --Leading and trailing--  ')).toBe(
+      'leading-and-trailing',
+    )
+    expect(slugify('!!!')).toBe('')
+  })
+
+  it('truncates without leaving a trailing hyphen', () => {
+    // Truncation can land exactly ON the hyphen and leave "...-", which fails
+    // the database slug pattern. The trim must happen AFTER the cut.
+    //
+    // 119 is not arbitrary: it is the one length where the 120-character slice
+    // ends on the separator. An earlier version of this test used 118, where
+    // the cut lands mid-word, so it passed whether or not the trim existed.
+    const slug = slugify('a'.repeat(119) + ' bcd')
+    expect(slug.length).toBeLessThanOrEqual(120)
+    expect(slug.endsWith('-')).toBe(false)
+    expect(slug).toMatch(/^[a-z0-9]+(-[a-z0-9]+)*$/)
+  })
+
+  it('produces something the database slug constraint accepts', () => {
+    const pattern = /^[a-z0-9]+(-[a-z0-9]+)*$/
+    for (const title of [
+      'Risk, Peril & Hazard',
+      "The Insured's Duties After a Loss",
+      'Chapter 4 — Texas Statutes',
+      'HO-3 vs. HO-5',
+    ]) {
+      expect(slugify(title)).toMatch(pattern)
+    }
+  })
+})
+
+describe('validateModule', () => {
+  it('requires a title', () => {
+    expect(validateModule({ title: '   ', description: '' }).title).toBeTruthy()
+  })
+
+  it('accepts a title with no description', () => {
+    expect(validateModule({ title: 'Fundamentals', description: '' })).toEqual({})
+  })
+
+  it('rejects an over-long title', () => {
+    expect(
+      validateModule({ title: 'x'.repeat(201), description: '' }).title,
+    ).toBeTruthy()
+  })
+})
+
+describe('validateLesson', () => {
+  const valid = {
+    title: 'Insurable Interest',
+    slug: 'insurable-interest',
+    summary: 'Who may insure what.',
+    estimatedMinutes: '12',
+  }
+
+  it('accepts a well-formed lesson', () => {
+    expect(validateLesson(valid)).toEqual({})
+  })
+
+  it('requires a title and a slug', () => {
+    expect(validateLesson({ ...valid, title: '' }).title).toBeTruthy()
+    expect(validateLesson({ ...valid, slug: '' }).slug).toBeTruthy()
+  })
+
+  it.each([
+    'Not A Slug',
+    'trailing-',
+    '-leading',
+    'double--hyphen',
+    'has spaces',
+    'UPPER',
+    'punctuation!',
+  ])('rejects the malformed slug %s', (slug) => {
+    expect(validateLesson({ ...valid, slug }).slug).toBeTruthy()
+  })
+
+  it('allows a blank estimate but not a nonsensical one', () => {
+    expect(validateLesson({ ...valid, estimatedMinutes: '' })).toEqual({})
+    expect(
+      validateLesson({ ...valid, estimatedMinutes: '0' }).estimatedMinutes,
+    ).toBeTruthy()
+    expect(
+      validateLesson({ ...valid, estimatedMinutes: '-5' }).estimatedMinutes,
+    ).toBeTruthy()
+    expect(
+      validateLesson({ ...valid, estimatedMinutes: '7.5' }).estimatedMinutes,
+    ).toBeTruthy()
+    expect(
+      validateLesson({ ...valid, estimatedMinutes: 'ten' }).estimatedMinutes,
+    ).toBeTruthy()
+    expect(
+      validateLesson({ ...valid, estimatedMinutes: '9999' }).estimatedMinutes,
+    ).toBeTruthy()
+  })
+})
+
+describe('validateTopic', () => {
+  const valid = { code: 'GL.01', name: 'Fundamentals', blueprintWeight: '15' }
+
+  it('accepts a well-formed topic', () => {
+    expect(validateTopic(valid)).toEqual({})
+  })
+
+  it('requires a code and a name', () => {
+    expect(validateTopic({ ...valid, code: '' }).code).toBeTruthy()
+    expect(validateTopic({ ...valid, name: '' }).name).toBeTruthy()
+  })
+
+  it('allows a blank weight, and rejects one outside 0-100', () => {
+    expect(validateTopic({ ...valid, blueprintWeight: '' })).toEqual({})
+    expect(
+      validateTopic({ ...valid, blueprintWeight: '101' }).blueprintWeight,
+    ).toBeTruthy()
+    expect(
+      validateTopic({ ...valid, blueprintWeight: '-1' }).blueprintWeight,
+    ).toBeTruthy()
+  })
+
+  it('accepts a fractional weight, because published blueprints use them', () => {
+    expect(validateTopic({ ...valid, blueprintWeight: '12.5' })).toEqual({})
   })
 })
