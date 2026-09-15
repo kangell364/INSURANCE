@@ -5,6 +5,7 @@ const FOOTER_SECTIONS = [
     heading: 'Platform',
     links: [
       { href: '/courses', label: 'Courses' },
+      { href: '/texas-exam-day', label: 'Exam day' },
       { href: '/about', label: 'About' },
       { href: '/contact', label: 'Contact' },
     ],

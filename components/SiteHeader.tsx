@@ -8,6 +8,10 @@ import { MobileMenu } from '@/components/MobileMenu'
 
 const PUBLIC_LINKS = [
   { href: '/courses', label: 'Courses' },
+  // Placed in the main nav rather than only the footer: "what happens on exam
+  // day" is a question people search before they are ready to buy anything,
+  // and it is the page most likely to bring a stranger to the site.
+  { href: '/texas-exam-day', label: 'Exam day' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ]
