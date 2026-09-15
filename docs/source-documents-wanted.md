@@ -27,6 +27,18 @@ offered, one file beats forty.
 
 ---
 
+## Already obtained
+
+`reference/statutes/` holds chapters **541, 542, 551, 981, 1952, 2211, 4001,
+4003, 4005, 4051** as extracted text — the whole of Tier 1 and most of Tier 2.
+
+Two gaps remain, both specific:
+
+- **2210** (Texas Windstorm Insurance Association).
+- **1806**, which is where rebating appears to live now: the blueprint cites
+  TIC 541.056 for it, and that section has been repealed. See
+  `reference/statutes/README.md`.
+
 ## Tier 1 — the licensing and conduct core
 
 These carry the largest share of the Texas questions, and they are the
