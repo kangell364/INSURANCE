@@ -21,6 +21,7 @@ const VARIANTS: ButtonVariant[] = [
   'secondary',
   'ghost',
   'danger',
+  'dangerQuiet',
   'accent',
   'inverse',
 ]

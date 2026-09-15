@@ -40,19 +40,8 @@ import {
   type ModuleFields,
   type TopicFields,
 } from '@/lib/validation'
+import type { ActionState } from '@/lib/action-state'
 import type { ContentStatus } from '@/types'
-
-export type ActionState<T extends string = string> = {
-  status: 'idle' | 'success' | 'error'
-  message: string | null
-  fieldErrors: FieldErrors<T>
-}
-
-export const idleState: ActionState = {
-  status: 'idle',
-  message: null,
-  fieldErrors: {},
-}
 
 function failure<T extends string>(
   message: string,

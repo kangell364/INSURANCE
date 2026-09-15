@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { requireAdmin } from '@/lib/auth'
 import { getAdminCounts, getContentCounts } from '@/lib/queries'
 import { fullName } from '@/types'
@@ -15,6 +16,8 @@ type AdminSection = {
   phase: string
   /** Set when some of this section already works and can be visited. */
   status?: 'partial'
+  /** Where the working part of this section lives, when there is one. */
+  href?: string
 }
 
 /**
@@ -28,30 +31,34 @@ const SECTIONS: AdminSection[] = [
   {
     title: 'Courses',
     description:
-      'Create and publish courses, manage the draft / active / archived lifecycle. The schema and its policies exist; the authoring screens do not yet.',
+      'Choose a course to author. Creating a course itself is still done in SQL; everything inside one is editable here.',
     phase: 'Phase 2',
     status: 'partial',
+    href: '/admin/content',
   },
   {
     title: 'Modules',
     description:
-      'Organise each course into modules and control their order within the course. Reordering is supported by the schema through a deferrable position constraint.',
+      'Organise a course into modules, reorder them, and publish or unpublish each one. Unpublishing a module hides its lessons too.',
     phase: 'Phase 2',
     status: 'partial',
+    href: '/admin/content',
   },
   {
     title: 'Lessons',
     description:
-      'Author lesson bodies in Markdown and tag each lesson with the blueprint topics it teaches. Reading works today; authoring is still done in SQL.',
+      'Write lesson bodies in Markdown with a live preview, set reading time, and tag each lesson with the blueprint topics it teaches.',
     phase: 'Phase 2',
     status: 'partial',
+    href: '/admin/content',
   },
   {
     title: 'Exam blueprint',
     description:
-      'Maintain the topic taxonomy and its published weightings, which later drive per-topic scoring and the readiness calculation.',
+      'Maintain the topic taxonomy and its published weightings, which drive per-topic scoring and the readiness calculation.',
     phase: 'Phase 2',
     status: 'partial',
+    href: '/admin/content',
   },
   {
     title: 'Question bank',
@@ -162,12 +169,15 @@ export default async function AdminPage() {
       )}
 
       <div className="mt-6">
-        <Alert variant="info" title="Authoring is still done in SQL">
-          The content schema, its policies and the student-facing reader are
-          built and tested. The authoring screens are not: modules, lessons and
-          topics are currently created with SQL migrations or the Supabase SQL
-          editor. Cards marked <strong>In progress</strong> below are the ones
-          whose data model already exists.
+        <Alert variant="info" title="Start here">
+          <Link
+            href="/admin/content"
+            className="font-medium text-navy-800 underline underline-offset-2"
+          >
+            Course content
+          </Link>{' '}
+          is where modules, lessons and the exam blueprint are edited. Creating
+          a course itself still needs SQL; everything inside one does not.
         </Alert>
       </div>
 
@@ -185,7 +195,18 @@ export default async function AdminPage() {
           <Card key={section.title} as="li">
             <CardBody>
               <div className="flex items-start justify-between gap-3">
-                <h3 className="text-base font-semibold">{section.title}</h3>
+                <h3 className="text-base font-semibold">
+                  {section.href ? (
+                    <Link
+                      href={section.href}
+                      className="text-navy-800 hover:underline"
+                    >
+                      {section.title}
+                    </Link>
+                  ) : (
+                    section.title
+                  )}
+                </h3>
                 <span
                   className={`rounded-full px-2.5 py-1 text-xs font-medium whitespace-nowrap ${
                     section.status === 'partial'

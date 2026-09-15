@@ -39,10 +39,24 @@ Phase 1 delivers:
 - The readiness scale (`lib/readiness.ts`) — the thresholds the eventual
   scoring will use
 
+**Phase 2 step 2 — content authoring** adds admin screens at `/admin/content`:
+
+- A course content tree showing modules and lessons with their draft/published
+  state, which lessons have no body yet, and reorder / publish / delete
+  controls
+- Module and lesson forms, with the slug derived from the title until an
+  author edits it (after which it never moves again, because it is a public
+  URL by then)
+- A Markdown lesson editor with a preview rendered through the **same**
+  component the student sees, so the preview cannot disagree with the page
+- Exam blueprint management, including a warning when the topic weightings do
+  not total 100%
+
 Still **not** included: quizzes, the question bank, the exam simulator,
-scoring, reporting, payments, and the admin authoring UI — content is currently
-created with SQL. Where the UI shows a section for one of those, it is
-explicitly labelled as upcoming rather than populated with invented data.
+scoring, reporting and payments. Creating a *course* is also still a SQL
+operation — everything inside one is editable in the UI. Where the UI shows a
+section for one of those, it is explicitly labelled as upcoming rather than
+populated with invented data.
 
 ### Repository layout note
 

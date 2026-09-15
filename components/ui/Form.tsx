@@ -99,3 +99,43 @@ export function ReadOnlyValue({
 export function FormActions({ children }: { children: ReactNode }) {
   return <div className="flex flex-wrap items-center gap-3">{children}</div>
 }
+
+type TextareaProps = ComponentPropsWithoutRef<'textarea'> & {
+  invalid?: boolean
+}
+
+export function Textarea({
+  invalid,
+  className = '',
+  ...props
+}: TextareaProps) {
+  return (
+    <textarea
+      className={`${INPUT_BASE} ${
+        invalid
+          ? 'border-red-400 focus-visible:outline-red-500'
+          : 'border-slate-300'
+      } ${className}`}
+      aria-invalid={invalid || undefined}
+      {...props}
+    />
+  )
+}
+
+type SelectProps = ComponentPropsWithoutRef<'select'> & {
+  invalid?: boolean
+}
+
+export function Select({ invalid, className = '', ...props }: SelectProps) {
+  return (
+    <select
+      className={`${INPUT_BASE} ${
+        invalid
+          ? 'border-red-400 focus-visible:outline-red-500'
+          : 'border-slate-300'
+      } ${className}`}
+      aria-invalid={invalid || undefined}
+      {...props}
+    />
+  )
+}

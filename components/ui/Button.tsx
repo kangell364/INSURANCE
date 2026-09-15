@@ -6,6 +6,7 @@ export type ButtonVariant =
   | 'secondary'
   | 'ghost'
   | 'danger'
+  | 'dangerQuiet'
   | 'accent'
   | 'inverse'
 export type ButtonSize = 'sm' | 'md' | 'lg'
@@ -28,7 +29,18 @@ const VARIANTS: Record<ButtonVariant, string> = {
   secondary:
     'border border-navy-200 bg-white text-navy-800 hover:bg-navy-50 hover:border-navy-300',
   ghost: 'text-navy-700 hover:bg-navy-50',
+  // Filled red: for the confirming step of a destructive flow, where the
+  // destructive act IS the purpose of the screen.
   danger: 'bg-red-600 text-white hover:bg-red-700',
+  // Outlined red: for a destructive action sitting beside ordinary ones.
+  //
+  // A saturated fill is an attractor — it pulls the eye and, on a crowded
+  // card, the cursor. "Delete module" rendered in filled red next to "Add a
+  // lesson" made the irreversible action the most prominent thing on the
+  // card, which is precisely backwards. This reads clearly as destructive
+  // without competing for the click.
+  dangerQuiet:
+    'border border-red-200 bg-white text-red-700 hover:border-red-300 hover:bg-red-50',
   // The single high-emphasis call to action, for use on a dark ground.
   accent: 'bg-accent-500 text-white hover:bg-accent-600',
   // Outlined, for a secondary action sitting on a dark ground.
