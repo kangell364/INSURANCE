@@ -69,6 +69,18 @@ def clean(body):
     # because digits follow.
     body = re.sub(r'Sec\.\s*A\s*(\d)', r'Sec. \1', body)
     body = re.sub(r'(?<![A-Za-z(])A{2,}(?![A-Za-z)])', ' ', body)
+    # One more single-A position, found by reading the output rather than by
+    # reasoning about it: a lone filler after a section heading, as in
+    # "NONRENEWAL OF POLICIES; NOTICE REQUIRED. A Unless the insurer has
+    # mailed...". It occurs once across all 30 chapters, so the rule is kept
+    # as narrow as the evidence: a standalone "A" is filler only when the next
+    # word is one that CANNOT grammatically follow the indefinite article.
+    # "A REFUSAL", "A MOTOR VEHICLE" and "A person" are all untouched.
+    body = re.sub(
+        r'(?<![A-Za-z])A (?=(?:Unless|Except|Notwithstanding|If|When|Whenever'
+        r'|Repealed|This|That|These|Those|It|The|An|Shall|May|Must|Is|Are'
+        r'|Was|Were)\b)',
+        '', body)
     body = re.sub(r'\s+', ' ', body)
     # Re-break on the structure a statute actually has: subtitles, subchapters,
     # section numbers, and the (a)/(b) subsections within them.

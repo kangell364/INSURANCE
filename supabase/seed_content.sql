@@ -24,6 +24,11 @@ select '2071512a-2630-55ae-b69b-68d3232b7633', c.id, 'Casualty Coverages', 4, 'a
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
 on conflict (id) do update set title = excluded.title;
 
+insert into public.modules (id, course_id, title, position, status)
+select '62edc60d-a12f-5d1f-80b7-2adce32c4394', c.id, 'Texas Statutes and Rules', 5, 'active'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set title = excluded.title;
+
 insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
@@ -5916,4 +5921,2287 @@ select 'c7b0a9e9-5837-5a19-a830-e1c77b9bda93', t.id, t.course_id
   from public.topics t
   join public.courses c on c.id = t.course_id
  where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.IV'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select '91b3d873-84de-514a-9dc7-fa8c3f0093fc', '62edc60d-a12f-5d1f-80b7-2adce32c4394', c.id, 'The Commissioner and the Department',
+       'the-commissioner-and-the-department', 'Who regulates insurance in Texas, where their power comes from, and how a rule differs from a statute.', 1,
+       'draft', 13
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select '91b3d873-84de-514a-9dc7-fa8c3f0093fc', c.id, $lesson$# The regulator
+
+Everything in this module is Texas law. Where the general-knowledge modules
+described how insurance works, this one describes what Texas requires — and
+the answers are numbers and citations rather than principles.
+
+> **Every statement in this module cites the section it came from**, and every
+> citation was checked against the text of the Texas Insurance Code rather
+> than recalled. Where a figure is not cited, it is not in this course.
+
+## Two codes, and the difference between them
+
+**The Texas Insurance Code (TIC)** is statute — law passed by the
+Legislature.
+
+**The Texas Administrative Code (TAC), Title 28** is rules — made by the
+Commissioner under authority the statute grants. A rule has the force of law
+but cannot exceed the statute it rests on.
+
+The exam cites both. When a question says "under Department rules", it means
+the TAC; "under the Insurance Code", the TIC.
+
+## The Department and the Commissioner
+
+**The Texas Department of Insurance (TDI)** administers the Insurance Code.
+**The Commissioner of Insurance** is its chief executive.
+
+**§31.002, "DUTIES OF DEPARTMENT"**, lists five. Verbatim, the department
+shall:
+
+> "(1) regulate the business of insurance in this state; (2) administer the
+> workers' compensation system of this state as provided by Title 5, Labor
+> Code; (3) ensure that this code and other laws regarding insurance and
+> insurance companies are executed; (4) protect and ensure the fair treatment
+> of consumers; and (5) ensure fair competition in the insurance industry in
+> order to foster a competitive market."
+
+Two things follow. **Consumer protection and fair competition are both
+statutory duties** (4) and (5), so the Department is directed to pursue them
+together rather than trade one against the other. And duty (2) is the reason
+Texas workers' compensation appears in an insurance exam at all: **TDI
+administers the workers' compensation system**, under the Labor Code rather
+than the Insurance Code.
+
+**§31.021(a)** — "The commissioner is the department's chief executive and
+administrative officer" and "shall administer and enforce this code, other
+insurance laws of this state, and other laws granting jurisdiction or
+applicable to the department or the commissioner." **§31.021(b)** extends the
+same to Title 5 of the Labor Code.
+
+### Rulemaking
+
+**Chapter 36** is the Commissioner's rulemaking authority. The Commissioner
+may adopt reasonable rules **necessary to effect the purposes** of the code —
+which is the limit as well as the grant. A rule that goes beyond what the
+statute authorises can be challenged.
+
+### Hearings and appeals
+
+**Chapter 40** assigns contested hearings to the **State Office of
+Administrative Hearings (SOAH)**, an agency independent of TDI. The point is
+structural: the regulator that brings the charge does not also decide it.
+
+**Government Code §2001.051** — cited by the blueprint — is the
+Administrative Procedure Act's guarantee of an opportunity for hearing and
+for the presentation of evidence.
+
+Orders are appealed to the courts under **Subchapter D, Chapter 36**.
+
+## Examination and investigation
+
+**Chapter 38** gives the Department its information-gathering powers, and
+**Chapter 401** covers examination of insurers' records. The Commissioner may
+examine the affairs of any person engaged in the business of insurance in
+Texas.
+
+**§541.101** states it for trade practices specifically: the Department **may
+examine and investigate the affairs of a person engaged in the business of
+insurance** in this state to determine whether the person has engaged in a
+prohibited act or practice.
+
+The sequence that follows is the same throughout the code and is worth
+learning once, because several chapters repeat it:
+
+1. **Investigation** — the Department examines.
+2. **Statement of charges and notice of hearing** — **§541.102**.
+3. **Hearing** — **§541.103**, at which the person is entitled to be heard
+   and to present evidence.
+4. **Determination** — **§541.107**, whether the conduct is a violation.
+5. **Order** — **§541.108**, a cease and desist order.
+6. **Penalty** for disobeying it — **§541.110** and **§541.111**.
+7. **Appeal** to the courts.
+
+**Step 3 is the one candidates forget.** Except in the emergency procedure
+covered in the next lesson, **the Department must hold a hearing before it
+sanctions anybody.**
+
+## Public access and confidentiality
+
+**Chapter 39** governs public access to Department information, and
+**§521.003–.004** the Department's handling of complaints and consumer
+information. The general position: the Department's records are public unless
+a statute makes them confidential, and investigation materials generally are
+confidential while an investigation is live.
+
+## How this is examined
+
+**TIC versus TAC** — statute versus rule.
+
+**The Department's five statutory duties** under §31.002, especially that
+consumer protection and fair competition are both named, and that TDI
+administers workers' compensation.
+
+**SOAH hears contested cases**, not the Department itself.
+
+**The order of the enforcement sequence**, and that a hearing precedes a
+sanction.
+
+## Check yourself
+
+1. A question refers to "28 TAC § 21.203". Statute or rule, and who made it?
+2. May the Commissioner adopt a rule imposing a duty the Insurance Code does
+   not authorise?
+3. Which body conducts a contested hearing against a licence holder?
+4. Before the Department issues an ordinary cease and desist order under
+   §541.108, what must happen first?
+5. Name two of the Department's statutory duties under §31.002.
+
+## Answers
+
+1. A **rule**, in the Texas Administrative Code, adopted by the
+   **Commissioner** under authority granted by the Insurance Code.
+2. **No.** Rulemaking under Chapter 36 extends to rules necessary to effect
+   the purposes of the code; it does not create new duties on its own.
+3. The **State Office of Administrative Hearings**, under Chapter 40 — not
+   the Department that brought the charge.
+4. A **hearing**, under §541.102–.103, following investigation, with a
+   determination under §541.107.
+5. Any two of the five: regulate the business of insurance; administer the
+   workers' compensation system under Title 5, Labor Code; ensure the code
+   and other insurance laws are executed; protect and ensure the fair
+   treatment of consumers; ensure fair competition to foster a competitive
+   market.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select '91b3d873-84de-514a-9dc7-fa8c3f0093fc', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'TX.I'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select '01ab26e9-4312-59b9-86ce-36df1d0aa6f1', '62edc60d-a12f-5d1f-80b7-2adce32c4394', c.id, 'Enforcement and Penalties',
+       'enforcement-and-penalties', 'Cease and desist orders, the emergency procedure, administrative penalties and the dollar figures attached to each.', 2,
+       'draft', 15
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select '01ab26e9-4312-59b9-86ce-36df1d0aa6f1', c.id, $lesson$# What the Department can do to you
+
+Four instruments, in rough order of severity: a **cease and desist order**, an
+**administrative penalty**, a **sanction against the licence**, and
+**restitution**. Criminal prosecution sits outside all four.
+
+## Ordinary cease and desist — Chapter 541, Subchapter C
+
+The sequence from the previous lesson, with the figures attached.
+
+**§541.108** — after a hearing and a determination of violation, the
+Department **shall** make written findings and issue a cease and desist order.
+Note "shall": on finding a violation, the order is not discretionary.
+
+**§541.109** — the Department may modify or set aside the order at any time
+before an appeal is filed.
+
+### Penalties for disobeying the order
+
+Two different penalties, for two different forums, and the exam separates
+them:
+
+| | Imposed by | Cap |
+| --- | --- | --- |
+| **Administrative penalty, §541.110** | the Department | **$1,000 per violation**, and **$5,000 for all violations** |
+| **Civil penalty, §541.111** | a court, in an action by the state | **$50**, or **$500 if the court finds the violation wilful** |
+
+Those are small numbers, and they are small on purpose: they punish
+*disobeying the order*, not the underlying conduct. The underlying conduct is
+punished under Chapter 84.
+
+## Administrative penalties — Chapter 84
+
+The general penalty power, and the number most likely to be asked.
+
+**§84.021** — the Commissioner may impose an administrative penalty on a
+person licensed or regulated under the code who violates the code, another
+insurance law, or a rule or order adopted under either.
+
+**§84.022(a)** — **"The penalty for a violation may not exceed $25,000,
+unless a greater or lesser penalty is specified by this code or another
+insurance law of this state."**
+
+**$25,000 per violation is the headline figure**, and the trailing clause is
+what makes §541.110's $1,000 cap possible: a specific provision displaces the
+general one.
+
+**§84.022(b)** lists what the amount is based on — seriousness, the hazard
+created, economic harm to the public interest, history of previous
+violations, the amount necessary to deter, efforts to correct, and **whether
+the violation was intentional**.
+
+### The procedure, with its clocks
+
+- **§84.041(a)** — the Department issues a **report** to the Commissioner
+  stating the facts and recommending a penalty and its amount.
+- **§84.041(b)** — the Department must give the affected person **written
+  notice of the report not later than the 14th day** after it is issued. The
+  notice states the alleged violation, the recommended amount, and the right
+  to a hearing.
+- **§84.042(a)** — **not later than the 20th day after receiving the
+  notice**, the person may in writing accept the determination and penalty,
+  or request a hearing on the violation, the amount, or both.
+- **§84.045** — once the Commissioner's order is final, the person has **30
+  days** to pay the penalty or file a petition for judicial review.
+
+**14, 20, 30** — those three are the likely question.
+
+## Emergency cease and desist — Chapter 83
+
+The exception to "a hearing comes first", and therefore heavily tested.
+
+**§83.051(a)** — the Commissioner **ex parte** may issue an emergency cease
+and desist order. *Ex parte* means without the other side present: **no
+hearing beforehand.**
+
+It is available where the Commissioner believes an authorized person engaging
+in the business of insurance is committing an unfair act or is in a hazardous
+financial condition, **and** the conduct:
+
+- **is fraudulent**;
+- **is hazardous or creates an immediate danger to the public safety**; or
+- **is causing or can reasonably be expected to cause public injury** that is
+  likely to occur at any moment, is incapable of being repaired, and has or is
+  likely to have influence or effect.
+
+It is also available against an **unauthorized person** engaging in the
+business of insurance in violation of Chapter 101.
+
+### The clocks
+
+- **§83.052** — the order is served by **registered or certified mail, return
+  receipt requested**, to the last known address, and requires the person to
+  cease **immediately**.
+- **§83.053(b)** — the person must request a hearing **not later than the 60th
+  day** after being served.
+- **§83.051(b)** — **the order is final on the 61st day** after service unless
+  a hearing is requested.
+- **§83.055** — pending the hearing, **the order stays in effect**. Requesting
+  a hearing does not suspend it.
+
+The shape to remember: **act first, hear later, and the order bites throughout.**
+
+**§83.101–.104** — a person who violates an emergency order faces an
+administrative penalty and may be ordered to make restitution.
+
+## Sanctions against the authorization — Chapter 82
+
+"Authorization" is defined at **§82.001** to include a permit, licence or
+certificate of authority — so this chapter reaches both companies and
+producers.
+
+**§82.051** — **after notice and opportunity for a hearing**, the Commissioner
+may cancel or revoke an authorization.
+
+**§82.052** — instead of, or in addition to, revocation the Commissioner may
+impose other sanctions.
+
+**§82.053** — **restitution**. The Commissioner may order a person to make
+restitution to a party harmed. Restitution is not a penalty: it returns money
+to the person who lost it, and it can be ordered alongside a penalty that goes
+to the state.
+
+**§82.056** — the Commissioner **shall give notice to other states** of an
+action taken. A Texas revocation follows a producer across state lines, which
+is why an administrative action in any state must be reported everywhere the
+producer is licensed.
+
+## Criminal enforcement — Chapter 85
+
+**§85.001** — a person who violates a provision of the code for which no
+other punishment is provided commits an offence.
+
+**§85.052** — a person who commits an offence under the code **may be
+prosecuted under this code or any other law of this state**. The Insurance
+Code's criminal provisions do not displace the Penal Code; theft and fraud
+remain available.
+
+## Putting the numbers together
+
+| Instrument | Citation | Figure |
+| --- | --- | --- |
+| Administrative penalty, general | §84.022(a) | **$25,000** per violation |
+| Violating a §541.108 order, administrative | §541.110(c) | **$1,000** each / **$5,000** all |
+| Violating a §541.108 order, civil | §541.111(b) | **$50**, or **$500** if wilful |
+| Notice of penalty report | §84.041(b) | **14 days** |
+| Response to that notice | §84.042(a) | **20 days** |
+| Pay or appeal after a final order | §84.045 | **30 days** |
+| Request hearing on an emergency order | §83.053(b) | **60 days** |
+| Emergency order becomes final | §83.051(b) | **61st day** |
+
+## How this is examined
+
+**$25,000** as the general administrative penalty cap, and that a specific
+provision can set a different one.
+
+**The emergency order needs no prior hearing**, stays in effect pending the
+hearing, and becomes final on the 61st day.
+
+**Restitution is distinct from a penalty** — one compensates, the other
+punishes.
+
+**Notice to other states** of an administrative action.
+
+## Check yourself
+
+1. May the Commissioner issue an emergency cease and desist order without a
+   hearing?
+2. A producer is served with an emergency order and requests a hearing on day
+   20. May they carry on the conduct until the hearing?
+3. What is the general cap on an administrative penalty, and where does it
+   allow for exceptions?
+4. A person disobeys a cease and desist order issued under §541.108. What is
+   the maximum administrative penalty for all violations?
+5. The Commissioner orders a producer to repay $40,000 taken from clients and
+   separately imposes a penalty. What is the $40,000 called, and who receives
+   it?
+6. A Texas licence is revoked. Does that stay in Texas?
+
+## Answers
+
+1. **Yes** — §83.051(a) authorises it **ex parte**, on the grounds listed
+   there. It is the exception to the hearing-first rule.
+2. **No.** Under §83.055 the order continues in effect pending the hearing.
+3. **$25,000** per violation under §84.022(a), "unless a greater or lesser
+   penalty is specified by this code or another insurance law of this state."
+4. **$5,000** — §541.110(c) caps it at $1,000 per violation and $5,000 for
+   all violations.
+5. **Restitution**, under §82.053. It goes to the **harmed parties**, not to
+   the state.
+6. **No.** Under §82.056 the Commissioner shall notify other states of the
+   action.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select '01ab26e9-4312-59b9-86ce-36df1d0aa6f1', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'TX.I'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select 'f55672f5-bcf6-53e5-90d9-cfcecc6ae951', '62edc60d-a12f-5d1f-80b7-2adce32c4394', c.id, 'Licensing and Appointment',
+       'licensing-and-appointment', 'Who needs a licence, what a temporary one allows, and the rule against getting licensed to insure your own family.', 3,
+       'draft', 15
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select 'f55672f5-bcf6-53e5-90d9-cfcecc6ae951', c.id, $lesson$# Getting and holding the licence
+
+## Licence and appointment are two different things
+
+**§4001.201** — a person who obtains a licence **may not engage in business as
+an agent unless the person has been appointed** to act as an agent by an
+insurer authorised to do business in Texas.
+
+So the licence says the state permits you to sell insurance. **The
+appointment says a particular insurer permits you to sell theirs.** You need
+both, and the exam checks that you know a licence alone is not enough.
+
+**§4001.202(a)** — an agent may represent **more than one insurer**, except
+where the code specifically prohibits it.
+
+**§4001.202(b)** — **not later than the 30th day after the effective date of
+the appointment**, the agent and the insurer must notify the Department of any
+additional appointment, on the prescribed form and with a non-refundable fee
+for each.
+
+## Intent to engage in business for the general public
+
+**§4001.104** is the "controlled business" rule, and it is one of the most
+reliably examined provisions in the Texas section.
+
+**§4001.104(a)** — the Department **may not** issue an agent's licence unless
+it determines that:
+
+1. the applicant **is or intends to be actively engaged in soliciting or
+   writing insurance for the general public**; and
+2. the application **is not made to evade the laws against rebating and
+   discrimination**.
+
+**§4001.104(b)** explains the purpose in terms worth reading directly. The
+subchapter does **not** prohibit an applicant from insuring property they own
+or have an interest in. What it prohibits is licensing somebody
+
+> "to engage in the business of insurance principally to handle business that
+> the applicant controls only through ownership, mortgage, sale, family
+> relationship, or employment."
+
+It also states two aims: **to prohibit coercion of insurance**, and **to
+preserve to each individual the right to choose their own agent or insurer.**
+
+The distinction the exam tests: **insuring your own house is fine. Getting
+licensed so that you can collect the commission on your own house, your
+relatives' houses and your employer's fleet is not.** The test is whether the
+controlled business is the *principal* purpose.
+
+Failing this is also an independent ground for discipline —
+**§4005.101(b)(10)** and **(11)**, below.
+
+## Temporary licences
+
+**§4001.151** — the Department may issue a **temporary agent's licence** to an
+applicant who **is being considered for appointment** by an agent, an insurer
+or an HMO.
+
+The features, each its own likely question:
+
+- **§4001.152 — no written examination is required.** This is the point of a
+  temporary licence: it lets somebody start while they prepare for the exam.
+- **§4001.153(a)** — the Department **shall issue it immediately** on receipt
+  of a properly completed application, the non-refundable filing fee, and a
+  certificate signed by the prospective appointing agent, insurer or HMO.
+- **§4001.153(b)** — it may be denied on any ground for denial or discipline
+  under §4005.101 or Chapter 53, Occupations Code.
+- **§4001.154** — **if the temporary licence has not arrived by the eighth day**
+  after the application, fee and certificate were delivered or mailed, and no
+  denial has been notified, the appointing agent or insurer **may assume the
+  licence will be issued**.
+- **§4001.155 — a temporary licence is valid for 180 days** after issuance.
+- **§4001.156(b)** — it may **not** be issued to somebody who does not intend
+  to apply for a licence to sell to the general public. The same principle as
+  §4001.104.
+
+> **One caution on "not renewable".** The Pearson VUE candidate handbook
+> describes the temporary licence as 180 days and not renewable. The section
+> headed "RESTRICTION ON ISSUANCE OR RENEWAL OF TEMPORARY LICENSE" had
+> **subsection (a) repealed** effective 1 September 2021 (H.B. 2819 and
+> H.B. 4030), leaving only the issuance restriction in (b). **Answer 180 days
+> with confidence; treat "not renewable" as what the handbook says rather
+> than as something this course has confirmed in the current statute.**
+
+### Commissions a temporary licence holder may not take
+
+**§4001.157** closes the obvious loophole — a temporary licence needs no exam,
+so without this it would be a fast route to controlled business.
+
+**§4001.157(a)** — a temporary licence holder **may not obtain a commission on
+a sale to a person who has a family, employment or business relationship with
+them.**
+
+**§4001.157(b)** — neither an agent, insurer nor HMO may knowingly pay, and
+the temporary licence holder may not accept, a commission on a contract
+covering:
+
+1. **the temporary licence holder** themselves;
+2. a person **related by consanguinity or affinity** (blood or marriage);
+3. a person who **is, or has been within the past six months**, their
+   employer; or
+4. certain further related persons.
+
+**The six-month look-back on a former employer** is the detail most likely to
+be asked.
+
+## Duties while licensed
+
+**§4001.252(a)** — an individual licensed as an agent shall notify the
+Department **on a monthly basis** of:
+
+1. **a change of mailing address**;
+2. **a felony conviction**; and
+3. **an administrative action taken against them** by a financial or insurance
+   regulator of Texas, another state, or the United States.
+
+Three things worth noting. The obligation is **monthly**, not immediate. It
+covers **any state's** regulator, not just Texas — which connects directly to
+§82.056, under which Texas notifies other states of its own actions. And a
+**felony conviction** must be reported whether or not it involved insurance.
+
+**§4001.252(b)** — a licensed corporation or partnership must file sworn
+biographical information for its executive officers, directors, unlicensed
+administering partners, controlling shareholders, and the individuals
+controlling any parent entity.
+
+**§4001.255 — an agent shall maintain all insurance records, including
+records relating to customer complaints, separate from the records of any
+other business** the agent is engaged in.
+
+That last one sounds administrative and is not. An agent who also sells real
+estate or prepares taxes must keep the insurance files apart, so that the
+Department can examine them without reaching into an unrelated business — and
+so that premium money is traceable.
+
+## Licence types named by the blueprint
+
+The blueprint lists these under TX.I.C.1. Chapters **4001** and **4051** cover
+agent and agency licensing and property and casualty agents respectively, and
+are the basis of this lesson.
+
+The remaining types — **non-resident** (Ch. 4056), **managing general agent**
+(28 TAC §19.1201–.1206), **surplus lines** (§981.202), **adjuster**
+(Ch. 4101), **risk manager** (Ch. 4153), **limited** (§4051.101) and
+**emergency** (§4051.054) licences — are named here so you know they are
+examined. **Their specifics are not taught in this course yet**, because the
+chapters have not been obtained. See `docs/module-5-source-gaps.md`.
+
+## How this is examined
+
+**A licence is not enough — an appointment is required** before acting.
+
+**30 days** to notify an additional appointment.
+
+**Controlled business**: insuring your own property is permitted; being
+licensed principally to handle controlled business is not.
+
+**Temporary licence: no exam, 180 days, issued immediately, 8-day
+assumption.**
+
+**The six-month former-employer commission bar** on temporary licence
+holders.
+
+**Monthly notification** of address change, felony conviction and
+administrative action.
+
+**Records kept separate** from any other business.
+
+## Check yourself
+
+1. A newly licensed agent has not yet been appointed by any insurer. May they
+   write business?
+2. An agent takes on a second insurer. By when must the Department be told?
+3. An applicant wants a licence mainly to write insurance on buildings they
+   own and on their brother's business. Permitted?
+4. Does a temporary licence holder have to pass the examination first?
+5. A temporary licence holder sells a policy to somebody who employed them
+   four months ago. May they take the commission?
+6. An agent is convicted of a felony unrelated to insurance. Must the
+   Department be told?
+7. An agent also runs a tax practice. What does §4001.255 require?
+
+## Answers
+
+1. **No.** §4001.201 requires an appointment by an authorised insurer before
+   engaging in business as an agent.
+2. **Not later than the 30th day** after the effective date of the
+   appointment — §4001.202(b).
+3. **No.** §4001.104 bars licensing somebody principally to handle business
+   they control through ownership or family relationship. Insuring their own
+   property is fine; being licensed *for* that is not.
+4. **No** — §4001.152 requires no written examination for a temporary
+   licence.
+5. **No.** §4001.157(b)(3) bars a commission where the person is, or has been
+   **within the past six months**, the licence holder's employer.
+6. **Yes** — §4001.252(a)(2), on a monthly basis, whatever the felony was.
+7. That all insurance records, **including customer complaint records**, be
+   kept **separate** from the records of the other business.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select 'f55672f5-bcf6-53e5-90d9-cfcecc6ae951', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'TX.I'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select '15b0bfa2-b658-5f96-932e-319ed4c30f1d', '62edc60d-a12f-5d1f-80b7-2adce32c4394', c.id, 'Licence Renewal and Discipline',
+       'licence-renewal-and-discipline', 'The two-year term, the 90-day and one-year cliffs after expiry, and the eleven grounds for losing a licence.', 4,
+       'draft', 14
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select '15b0bfa2-b658-5f96-932e-319ed4c30f1d', c.id, $lesson$# Keeping the licence, and losing it
+
+## Expiration
+
+**§4003.001(a)** — a licence expires on **the second anniversary** of the date
+it was issued or renewed, for a licence holder that is **not an individual**.
+For an **individual**, expiry is tied to the licence holder's birthday, in an
+even- or odd-numbered year according to when the licence was issued or
+renewed.
+
+Either way the period is **two years**. **§4003.001(b)** lets the
+Commissioner change that by rule to keep Texas licence periods uniform with
+other states.
+
+## Renewing on time
+
+**§4003.004(a)** — renew an **unexpired** licence by filing a completed
+renewal application and paying the renewal fee.
+
+**§4003.004(b)** — **a licence that has been suspended or revoked may not be
+renewed.**
+
+**§4003.006** — once a renewal application has been properly filed, **the
+original licence remains in effect** until the Department issues the renewal,
+or the licence is not renewed for want of continuing education, or the
+Commissioner revokes it. So a producer who applies on time does not go
+unlicensed while the Department processes the paperwork.
+
+## Renewing late — the two cliffs
+
+This is the most tested part of the chapter. **§4003.007** sets three bands.
+
+| Expired for | What is possible | Cost |
+| --- | --- | --- |
+| **90 days or less** | **Renew** normally | Renewal fee **plus one-half** of it |
+| **More than 90 days, less than one year** | **Cannot renew.** May obtain a **new licence without re-examination** | Licence fee **plus one-half** of it |
+| **One year or more** | **Cannot renew.** Must obtain a new licence, **submitting to re-examination** and meeting all original-licence requirements | Original licence process |
+
+Two cliffs, then: **90 days** ends the right to renew, and **one year** ends
+the exemption from re-examination.
+
+The word to watch in a question is **"renew"**. Between 90 days and a year
+the licence cannot be renewed at all — a *new* licence is issued, which
+happens to spare the applicant the exam. Candidates who read that band as
+"renew with a bigger fee" get it wrong.
+
+**§4003.008** — an agent who was licensed in Texas, **moved to another
+state**, and is currently licensed and has been in continual practice there,
+may have an expired Texas licence **renewed without re-examination** on paying
+a fee equal to the licence application fee.
+
+## Continuing education
+
+Continuing education is a condition of renewal — **§4003.006(2)** refers to a
+licence not being renewed under **§4004.055**.
+
+**Chapter 4004 sets the requirement, and this course does not yet teach its
+figures**, because the chapter has not been obtained. See
+`docs/module-5-source-gaps.md`. Do not learn CE hours from this course; get
+them from the statute or from TDI.
+
+## Grounds for denial or discipline
+
+**§4005.101(b)** lists eleven. The Department may deny an application or
+discipline a licence holder — individually or **through an officer, director
+or shareholder** — where the person:
+
+1. has **wilfully violated** an insurance law of this state;
+2. has **intentionally made a material misstatement** in the licence
+   application;
+3. has **obtained or attempted to obtain a licence by fraud or
+   misrepresentation**;
+4. has **misappropriated, converted or illegally withheld money** belonging to
+   an insurer, an HMO, or an insured, enrollee or beneficiary;
+5. has engaged in **fraudulent or dishonest acts or practices**;
+6. has **materially misrepresented the terms or conditions** of a policy or
+   contract;
+7. has made a statement **misrepresenting or making incomplete comparisons**
+   of a contract to induce the owner to forfeit, surrender or lapse it in
+   order to **replace** it — that is, **twisting**;
+8. has been **convicted of a felony**;
+9. has **offered or given a rebate** of premium or commission;
+10. is **not actively engaged in soliciting or writing insurance for the
+    public generally**, as §4001.104(a) requires; or
+11. has obtained or attempted to obtain a licence **primarily to cover
+    themselves or their relatives** rather than to hold themselves out to the
+    general public — controlled business again.
+
+Notice the pattern. Grounds 1–3 are about **how the licence was obtained**,
+4–7 and 9 about **how the producer behaves**, 8 about **character**, and
+10–11 about **controlled business**. Two of the eleven — a third of the
+substance — exist to enforce §4001.104.
+
+Note also the phrase **"individually or through an officer, director, or
+shareholder"**: an agency cannot escape discipline by pointing at the
+individual who did it.
+
+## What the Department may do
+
+**§4005.102** — in addition to any remedy under Chapter 82, the Department
+may:
+
+1. **deny** an application for an original licence;
+2. **suspend, revoke, or deny renewal** of a licence;
+3. **place on probation** a person whose licence has been suspended;
+4. **assess an administrative penalty**;
+5. **reprimand** a licence holder; or
+6. require a licence holder to **qualify or re-qualify** for a product-line
+   certificate under Chapter 4008.
+
+The range matters: **the Department is not limited to revocation.** A
+reprimand, a penalty and probation are all available, which is why a question
+offering "the Commissioner must revoke the licence" is usually wrong.
+
+**§4005.103** — where a suspension is **probated**, the Commissioner may
+require the licence holder to report regularly to the Department, to limit
+their practice to prescribed areas, or to **continue professional education**
+until their skill is satisfactory.
+
+## How this is examined
+
+**Two-year term**, and that a suspended or revoked licence cannot be renewed.
+
+**The 90-day and one-year cliffs**, and that between them the licence is
+*replaced*, not renewed — without an exam.
+
+**One year or more expired means re-examination.**
+
+**The original licence continues** while a timely renewal is pending.
+
+**Twisting** as ground (7), and **felony conviction** as ground (8).
+
+**Probation, reprimand and penalty** exist alongside revocation.
+
+## Check yourself
+
+1. How long does an agent licence run?
+2. An agent's licence expired 60 days ago. What must they do?
+3. An agent's licence expired seven months ago. Can they renew it? Must they
+   re-sit the exam?
+4. An agent's licence expired 14 months ago. What now?
+5. An agent files a timely renewal application and the Department is slow. Is
+   the agent unlicensed in the meantime?
+6. A producer persuades a client to surrender a policy and replace it, using
+   an incomplete comparison. Which ground, and what is the practice called?
+7. May the Commissioner respond to a violation with anything short of
+   revocation?
+
+## Answers
+
+1. **Two years** — §4003.001(a), to the second anniversary for a
+   non-individual, and on a birthday cycle for an individual.
+2. **Renew normally** — within 90 days the licence may still be renewed, on
+   payment of the renewal fee **plus one-half** of it (§4003.007(a)).
+3. **No, they cannot renew.** Between 90 days and one year they may obtain a
+   **new licence without re-examination**, paying the licence fee plus half
+   (§4003.007(b)).
+4. **A new licence with re-examination**, meeting all the requirements for an
+   original licence — §4003.007(c).
+5. **No.** §4003.006 keeps the original licence in effect until the renewal
+   issues.
+6. **§4005.101(b)(7)**, and the practice is **twisting**.
+7. **Yes** — §4005.102 allows denial of renewal, suspension, probation, an
+   administrative penalty, a reprimand, or re-qualification.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select '15b0bfa2-b658-5f96-932e-319ed4c30f1d', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'TX.I'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select '4a2ea53d-58b0-5534-afb5-31d5aca09281', '62edc60d-a12f-5d1f-80b7-2adce32c4394', c.id, 'Unfair and Prohibited Trade Practices',
+       'unfair-and-prohibited-trade-practices', 'Chapter 541''s list of prohibited acts, the private right of action with treble damages, and the one defendant it does not reach.', 5,
+       'draft', 16
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select '4a2ea53d-58b0-5534-afb5-31d5aca09281', c.id, $lesson$# The chapter a producer is disciplined under
+
+**§541.003** states the prohibition in one sentence: **a person may not engage
+in an unfair method of competition or an unfair or deceptive act or practice
+in the business of insurance.** Everything else in the chapter either defines
+what that means or provides a remedy.
+
+**§541.002(2)** defines **"person"** broadly — an individual, corporation,
+association, partnership, reciprocal or interinsurance exchange, Lloyd's plan,
+fraternal benefit society or other legal entity engaged in the business of
+insurance, **"including an agent, broker, or adjuster."** The chapter reaches
+the producer personally, not only the company.
+
+**§541.008** — the chapter **"shall be liberally construed and applied to
+promote the underlying purposes."** Where a provision is capable of two
+readings, the consumer-protective one is intended.
+
+## The prohibited practices — Subchapter B
+
+### §541.051 Misrepresentation regarding a policy or insurer
+
+Covers estimates, illustrations, circulars and statements misrepresenting a
+policy's **terms**, its **benefits or advantages**, or the **dividends** to be
+received; false statements about dividends previously paid; misleading
+representations about an insurer's **financial condition**; a policy **name or
+title** that misrepresents its true nature; and — §541.051(5) —
+misrepresentation to a policyholder **to induce them to lapse, forfeit or
+surrender an existing policy.**
+
+That last one is **twisting**, and it also appears as a ground for discipline
+at §4005.101(b)(7).
+
+### §541.052 False information and advertising
+
+An advertisement, announcement or statement containing an **untrue, deceptive
+or misleading** assertion about the business of insurance.
+
+**§541.052(b)** lists where it applies, and the list was updated in 2007:
+newspaper or magazine, notice or circular or pamphlet or letter or poster,
+radio or television, **through the Internet**, or **"in any other manner."**
+A social media post is covered.
+
+### §541.053 Defamation of an insurer
+
+A statement that is **false, maliciously critical of, or derogatory to the
+financial condition of an insurer** *and* is **calculated to injure** a person
+engaged in the business of insurance.
+
+**Both limbs are required.** A true statement about a weak insurer is not
+defamation under this section; neither is an idle false one made with no
+intent to injure.
+
+### §541.054 Boycott, coercion or intimidation
+
+Committing, **through concerted action or an agreement to commit**, an act of
+boycott, coercion or intimidation **resulting in or tending to result in an
+unreasonable restraint of, or monopoly in, the business of insurance.**
+
+Note **"concerted action or an agreement"** — this is an antitrust provision.
+One person acting alone is generally outside it.
+
+### §541.055 False financial statement
+
+**With intent to deceive**, filing or publishing a false statement of an
+insurer's financial condition; or making a false entry, or wilfully omitting a
+true entry of a material fact, in an insurer's books **with intent to
+deceive** an examiner or a public official.
+
+### §541.059 Deceptive name, word, symbol, device or slogan
+
+Using a business name or slogan **the same as or deceptively similar to** one
+already adopted by an insurance entity.
+
+**§541.059(b)** gives the defence: whoever demonstrates **first continuous
+actual use** has not violated the section.
+
+### §541.060 Unfair settlement practices
+
+The claims-handling list, and the most heavily examined section in the
+chapter. It is an unfair practice to:
+
+1. **misrepresent a material fact or policy provision** relating to coverage;
+2. **fail to attempt in good faith to effectuate a prompt, fair and equitable
+   settlement** of a claim **where liability has become reasonably clear** —
+   including using one clear coverage to pressure settlement of another;
+3. **fail to promptly provide a reasonable explanation** of the basis in the
+   policy for a **denial** or a compromise offer;
+4. **fail within a reasonable time to affirm or deny coverage**, or to submit
+   a **reservation of rights**;
+5. **refuse, fail or unreasonably delay a first-party settlement offer** on
+   the basis that other coverage may be available or that third parties are
+   responsible;
+6. **enforce a full and final release when only a partial payment has been
+   made**, unless the payment settles a doubtful or disputed claim;
+7. **refuse to pay a claim without conducting a reasonable investigation**;
+8. on a **Texas personal automobile policy**, delay or refuse settlement
+   **solely because other insurance of a different kind** is available; or
+9. **require the claimant to produce federal income tax returns** as a
+   condition of settlement — unless a court orders it, the claim involves a
+   **fire loss**, or the claim involves **lost profits or income**.
+
+**"Reasonably clear" in (2) is the operative phrase.** The duty to settle
+promptly attaches once liability is reasonably clear, not once it is proved.
+
+**§541.060(b)** is the limitation to remember: **this subsection does not
+give a cause of action to a third party** asserting a claim against an
+insured covered under a liability policy. A claimant suing the insured cannot
+sue the insured's insurer under §541.060.
+
+### §541.061 Misrepresentation of an insurance policy
+
+Misrepresenting a policy by an **untrue statement of material fact**;
+**failing to state a material fact** necessary to make other statements not
+misleading; making a statement **in a manner that would mislead a reasonably
+prudent person** to a false conclusion; a **material misstatement of law**; or
+**failing to disclose** a matter required by law to be disclosed.
+
+**Silence is covered.** Two of the five limbs are failures to speak, which is
+the distinction from §541.051.
+
+## Rebating and discrimination
+
+The blueprint lists **rebating** and **discrimination** as sub-topics here,
+citing §541.056 and §544.002 respectively.
+
+**§541.056 does not exist.** Chapter 541 runs .051 to .055 and then jumps to
+.059; sections .056, .057 and .058 were repealed. **Rebating is now at
+§1806.104** (casualty), **§1806.053** (automobile) and **§1806.153** (fire),
+and it is taught in Module 2 and in `reference/statutes/IN.1806-key-provisions.md`.
+
+**Chapter 544 has not been obtained**, so the Texas discrimination provisions
+are not taught here. The general prohibition on discriminating among insureds
+of **like hazards** is in §1806.053(1). See `docs/module-5-source-gaps.md`.
+
+## Remedies
+
+### Administrative — Subchapter C
+
+Investigation (**§541.101**), charges and notice of hearing (**§541.102**),
+hearing (**§541.103**), determination (**§541.107**), and a **cease and desist
+order** (**§541.108**), with the penalties covered in the enforcement lesson:
+**$1,000 / $5,000** administrative under §541.110, **$50 / $500 wilful** civil
+under §541.111.
+
+### The private action — Subchapter D
+
+This is what makes Chapter 541 matter commercially.
+
+**§541.151** — **a person who sustains actual damages may bring an action**
+against another person for damages caused by a practice defined in Subchapter
+B, or enumerated as a deceptive trade practice under §17.46(b) of the Business
+& Commerce Code where the plaintiff relied on it to their detriment.
+
+**§541.152(a)** — a prevailing plaintiff may obtain **actual damages, court
+costs and reasonable and necessary attorney's fees**, an **injunction**, or
+any other relief the court thinks proper.
+
+**§541.152(b)** — **on a finding that the defendant acted knowingly, the trier
+of fact may award up to three times actual damages.** Treble damages, and
+**§541.002(1)** defines **"knowingly"** as **actual awareness** of the falsity,
+unfairness or deceptiveness — though "actual awareness may be inferred if
+objective manifestations indicate" it.
+
+**§541.152(c)** — **this does not apply to an action against the Texas
+Windstorm Insurance Association.** TWIA cannot be hit with treble damages.
+
+**§541.153** — a court **shall** award the defendant costs and attorney's fees
+if it finds the action **groundless and brought in bad faith**, or brought for
+harassment.
+
+**§541.154(a)** — written notice must be given to the defendant **not later
+than the 61st day before the date the action is filed**, advising them of the
+specific complaint and the amount of actual damages and expenses, including
+attorney's fees. **§541.154(c)** waives it where notice is impracticable
+because the action must be filed to beat the limitations period, or is
+asserted as a **counterclaim**.
+
+**§541.162 — the limitations period is two years**, running from the date the
+practice occurred or the date the plaintiff discovered it or should have
+discovered it with reasonable diligence — **extendable by 180 days** where the
+defendant's conduct was solely calculated to induce delay.
+
+## How this is examined
+
+**§541.060(2)** — good-faith settlement once liability is **reasonably
+clear**.
+
+**§541.060(b)** — **no third-party cause of action** against the insured's
+liability insurer.
+
+**Treble damages require a "knowing" violation**, and **do not apply to
+TWIA**.
+
+**Two-year limitations, plus 180 days** in the induced-delay case.
+
+**61 days' written notice** before suit.
+
+**Defamation needs both falsity/derogation and intent to injure.**
+
+**Boycott requires concerted action.**
+
+**Tax returns may be demanded only on a court order, a fire loss, or a lost
+profits claim.**
+
+## Check yourself
+
+1. An adjuster tells a claimant the policy excludes their loss when it does
+   not. Which section?
+2. An insurer's liability is clear but it delays settlement to pressure the
+   claimant on an unrelated part of the claim. Which section?
+3. A pedestrian injured by an insured sues the insured's liability insurer
+   under §541.060. Will it succeed?
+4. A jury finds an insurer knowingly committed an unfair practice causing
+   $200,000 of actual damages. What is the maximum award of damages?
+5. Same finding, but the defendant is TWIA. What changes?
+6. An insured discovers in March 2026 an unfair practice that occurred in
+   2021. Is the action time-barred?
+7. An insurer demands a claimant's tax returns to settle a stolen-vehicle
+   claim. Permitted?
+
+## Answers
+
+1. **§541.060(a)(1)** — misrepresenting a material fact or policy provision
+   relating to coverage. Also §541.061.
+2. **§541.060(a)(2)(B)** — using a clear coverage to influence settlement of
+   another portion.
+3. **No.** §541.060(b) expressly denies a cause of action to a third party
+   asserting a claim against an insured under a liability policy.
+4. **$600,000** — up to three times actual damages under §541.152(b), plus
+   costs and attorney's fees.
+5. **No treble damages.** §541.152(c) excludes actions against the Texas
+   Windstorm Insurance Association.
+6. **Not necessarily.** §541.162 runs two years from occurrence **or**
+   discovery, so a March 2026 discovery starts the clock then.
+7. **No.** §541.060(a)(9) permits it only on a court order, for a fire loss,
+   or where the claim involves lost profits or income.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select '4a2ea53d-58b0-5534-afb5-31d5aca09281', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'TX.I'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select '311d33f0-f86e-5150-8a3b-349354cdec63', '62edc60d-a12f-5d1f-80b7-2adce32c4394', c.id, 'Claims Practices and Prompt Payment',
+       'claims-practices-and-prompt-payment', 'Chapter 542''s deadlines — and the 18% penalty that is no longer 18% in every case.', 6,
+       'draft', 15
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select '311d33f0-f86e-5150-8a3b-349354cdec63', c.id, $lesson$# The clocks on a Texas claim
+
+Chapter 542 does two things: Subchapter A prohibits unfair claim settlement
+practices, and **Subchapter B — the Prompt Payment of Claims Act — puts
+deadlines on the insurer and a penalty on missing them.**
+
+**§542.054** — the subchapter **"shall be liberally construed to promote the
+prompt payment of insurance claims."** Ambiguity goes to the claimant.
+
+## What it applies to
+
+**§542.051(2)** — a **"claim"** here is a **first-party claim** under a policy
+covering real or personal property, or a first-party death, disability or
+income claim, that must be paid after an event.
+
+**First-party is the whole scope.** A liability claim brought against the
+insured by somebody else is not covered by these deadlines.
+
+**§542.051(1)** — **"business day"** means a day other than Saturday, Sunday
+or a holiday recognised by the state. Several of the deadlines below are in
+business days and several are not, and the exam exploits the difference.
+
+**§542.052** lists the insurers covered — twenty-one categories including
+stock and mutual companies, Lloyd's plans, reciprocals, county mutuals, farm
+mutuals, risk retention groups, **eligible surplus lines insurers**, and the
+guaranty associations under Chapters 462 and 463.
+
+## The four deadlines
+
+### 1. Acknowledge, investigate, request — §542.055
+
+**Not later than the 15th day** after receiving notice of a claim (**the 30th
+business day** for an eligible surplus lines insurer), the insurer shall:
+
+1. **acknowledge receipt** of the claim;
+2. **commence any investigation**; and
+3. **request from the claimant all items, statements and forms** the insurer
+   reasonably believes at that time will be required.
+
+**§542.055(b)** — additional requests may be made later if the investigation
+makes them necessary.
+
+**§542.055(c)** — if the acknowledgment is **not in writing**, the insurer
+must **record the date, manner and content** of it.
+
+### 2. Accept or reject — §542.056
+
+**Not later than the 15th business day** after receiving **all** items,
+statements and forms required to secure **final proof of loss**, the insurer
+shall notify the claimant **in writing** of acceptance or rejection.
+
+Three variations, each examinable:
+
+- **§542.056(b)** — where the insurer has a **reasonable basis to believe the
+  loss resulted from arson**, the period is **the 30th day** (not business
+  days) after receiving everything.
+- **§542.056(c)** — a **rejection must state the reasons** for it.
+- **§542.056(d)** — if the insurer **cannot** decide within the period, it must
+  **within that same period** notify the claimant of **why it needs more
+  time**, and must then accept or reject **not later than the 45th day** after
+  giving that notice.
+
+### 3. Pay — §542.057
+
+**Not later than the fifth business day** after notifying the claimant that it
+will pay.
+
+- **§542.057(b)** — where payment is conditioned on the claimant performing an
+  act, the five business days run from **performance of the act**.
+- **§542.057(c)** — for an **eligible surplus lines insurer**, **20 business
+  days**.
+
+### 4. The outer limit — §542.058
+
+**§542.058(a)** — if, after receiving all items reasonably requested under
+§542.055, the insurer **delays payment for more than 60 days** (or longer if
+another statute specifies a period), it **shall pay damages under §542.060**.
+
+**§542.058(b)** — this does not apply where arbitration or litigation finds
+the claim **invalid and not payable**.
+
+### The catastrophe extension — §542.059
+
+**§542.059(b)** — in a **weather-related catastrophe or major natural
+disaster, as defined by the commissioner**, the claim-handling deadlines are
+**extended by an additional 15 days**.
+
+**§542.059(a)** — a court may extend the periods for a **guaranty
+association** on a showing of good cause after notice to policyholders.
+
+## The penalty — and the part most study guides get wrong
+
+**§542.060(a)** — an insurer liable for a claim that is not in compliance with
+the subchapter is liable to the policyholder or beneficiary, **in addition to
+the amount of the claim**, for:
+
+- **interest on the amount of the claim at 18 percent a year as damages**; and
+- **reasonable and necessary attorney's fees.**
+
+**§542.060(b)** — where suit is filed, the fees are **taxed as part of the
+costs**.
+
+> **But §542.060(c), added by H.B. 1774 in 2017, sets a different rate.**
+> **"In an action to which Chapter 542A applies"**, the insurer is instead
+> liable for **simple interest at the rate determined on the date of judgment
+> by adding five percent to the interest rate under §304.003, Finance Code** —
+> and that interest **accrues from the date the claim was required to be
+> paid**.
+>
+> **This course does not yet teach which claims Chapter 542A covers**, because
+> that chapter has not been obtained. See `docs/module-5-source-gaps.md`.
+> What you should take from this: **18% is the §542.060(a) answer and the one
+> an exam is most likely to want — but it is no longer the rate in every
+> case**, and material written before 2017 does not know that.
+
+**§542.061** — the remedies here are **in addition to** any other remedy at
+law or common law. A prompt-payment violation and a Chapter 541 unfair
+practice can both be pleaded on the same facts.
+
+## Unfair claim settlement practices — Subchapter A
+
+**§542.003** prohibits unfair claim settlement practices, and
+**§542.002** lists the sixteen kinds of insurer it binds — including hail or
+storm insurance companies, county mutuals, Lloyd's plans, farm mutuals and
+reciprocals.
+
+The conduct largely mirrors **§541.060**, covered in the previous lesson.
+Where a question asks which chapter prohibits an unfair *settlement* practice,
+**both do** — §541.060 and §542.003 — and §541 is the one carrying the private
+action and treble damages.
+
+## Related subchapters
+
+- **Subchapter C** — providing certain claims information on request.
+- **Subchapter D** — notice of settlement of a claim under a **casualty**
+  policy.
+- **Subchapter E** — recovery of the **deductible from third parties** under
+  certain automobile policies.
+- **Subchapter F** — **water damage claims** under residential property
+  policies.
+- **Subchapter G** — the insurer's recovery from an **uninsured third party**
+  under a private passenger automobile policy.
+
+## The deadlines in one table
+
+| Step | Citation | Deadline | Surplus lines |
+| --- | --- | --- | --- |
+| Acknowledge, investigate, request | §542.055(a) | **15th day** | 30th **business** day |
+| Accept or reject | §542.056(a) | **15th business day** after final proof | — |
+| …if arson suspected | §542.056(b) | **30th day** | — |
+| …if more time needed | §542.056(d) | notify within the period, decide by the **45th day** after | — |
+| Pay | §542.057(a) | **5th business day** after notice | **20th business day** |
+| Outer limit before damages | §542.058(a) | **60 days** | — |
+| Catastrophe extension | §542.059(b) | **+15 days** | — |
+| Damages for non-compliance | §542.060(a) | **18% a year** + attorney's fees | — |
+
+## How this is examined
+
+**15 / 15 / 5** — acknowledge, decide, pay. Watch which are **business** days:
+the first is calendar, the second and third are business.
+
+**Arson moves the decision to 30 days**, not business days.
+
+**The 45-day extension requires notice within the original period.**
+
+**60 days is the outer limit** before §542.060 damages attach.
+
+**18% plus attorney's fees**, with the 2017 qualification above.
+
+**First-party claims only.**
+
+## Check yourself
+
+1. An insurer receives notice of a hail claim on 1 June. By when must it
+   acknowledge and begin investigating?
+2. It receives the final proof of loss on 1 July and needs longer. What must
+   it do, and by when must it then decide?
+3. It notifies acceptance on 20 July. By when must it pay?
+4. The insurer suspects arson. How long does it have to accept or reject?
+5. Payment is 90 days late on a $120,000 claim, with no Chapter 542A issue.
+   What does §542.060(a) add?
+6. A pedestrian sues the insured and complains the liability insurer is slow.
+   Does Subchapter B help them?
+
+## Answers
+
+1. **By 16 June** — not later than the **15th day** after receiving notice, it
+   must acknowledge, commence investigation, and request everything it
+   reasonably believes it will need.
+2. **Within the 15 business days** it must notify the claimant of **the
+   reasons it needs more time**; it must then accept or reject **not later
+   than the 45th day** after that notice.
+3. **Within 5 business days** of the notice — §542.057(a).
+4. **The 30th day** after receiving all required items — §542.056(b).
+5. **18% a year interest on the amount of the claim as damages, plus
+   reasonable and necessary attorney's fees** — in addition to the claim
+   itself.
+6. **No.** Subchapter B applies to **first-party** claims. A third party
+   claiming against the insured is outside it.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select '311d33f0-f86e-5150-8a3b-349354cdec63', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'TX.II'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select '6aea89e0-bdfe-572e-9221-7381c152533c', '62edc60d-a12f-5d1f-80b7-2adce32c4394', c.id, 'Declination, Cancellation and Non-renewal',
+       'declination-cancellation-and-nonrenewal', 'Chapter 551''s notice periods, the grounds an insurer is limited to, and the different rules for commercial and personal lines.', 7,
+       'draft', 16
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select '6aea89e0-bdfe-572e-9221-7381c152533c', c.id, $lesson$# When a Texas insurer may walk away
+
+Module 2 gave the general pattern — 10 days for non-payment, 30 for other
+reasons, 30 for non-renewal. **Texas sets its own numbers, and they are not
+those.** Chapter 551 is what a Texas question is testing.
+
+The chapter splits by line of business, and the two halves have different
+rules. Read the question for which one it is.
+
+| | Subchapter B | Subchapter C |
+| --- | --- | --- |
+| Covers | **Liability and commercial property** | **Personal auto, homeowners, farm/ranch owners, standard fire on a dwelling or duplex, and government property/casualty** |
+| Cancellation notice | **10 days** | **10 days** |
+| Non-renewal notice | **60 days** | **60 days** |
+
+## What counts as a cancellation
+
+**§551.103** — for the personal lines subchapter, an insurer has cancelled a
+policy if, **without the insured's consent**, it:
+
+1. **terminates coverage**;
+2. **refuses to provide additional coverage** the insured is entitled to; or
+3. **reduces or restricts coverage by endorsement or other means**.
+
+**Point 3 is the one that catches people.** Quietly narrowing a policy
+mid-term is a cancellation and carries the cancellation rules with it.
+
+**§551.004** — **transferring a policy** to another insurer within the same
+group **is not** a refusal to renew.
+
+## Commercial and liability lines — Subchapter B
+
+### The rule against mid-term cancellation
+
+**§551.052(a)** — an insurer **may not cancel** a liability or commercial
+property policy **that is a renewal or continuation policy**. Once it has been
+renewed once, it is cancellable only on the grounds below.
+
+**§551.052(b)** — during the **initial policy term**, an insurer may not
+cancel **after the 60th day** following issuance. So there is a 60-day
+underwriting window and then the door closes.
+
+### The four grounds that survive
+
+**§551.052(c)** — notwithstanding either rule above, the insurer may cancel
+**at any time** for:
+
+1. **fraud in obtaining coverage**;
+2. **failure to pay premiums when due**;
+3. **an increase in hazard within the control of the insured** that would
+   produce a rate increase; or
+4. **loss of the insurer's reinsurance** covering all or part of the risk.
+
+**§551.052(d)** adds a fifth: where the insurer is placed in **supervision,
+conservatorship or receivership** and the cancellation is approved or directed
+by the supervisor, conservator or receiver.
+
+### Notice
+
+**§551.053 — not later than the 10th day before** the cancellation takes
+effect, written notice must be delivered or mailed **to the first-named
+insured at the address shown on the policy**.
+
+**§551.054(a)–(b)** — non-renewal requires written notice to the first-named
+insured **not later than the 60th day before the policy expires**. And there
+is a consequence for missing it: **if the notice goes out later than that, the
+coverage remains in effect until the 61st day after the notice is delivered or
+mailed.** Late notice does not void the non-renewal; it postpones it.
+
+**§551.054(c)** — earned premium for the extended period is computed **pro
+rata based on the previous year's rate.**
+
+**§551.055** — a notice to a policyholder must **state the reason** for the
+declination, cancellation or non-renewal.
+
+## Personal lines — Subchapter C
+
+**§551.102** lists what this subchapter covers: a **personal automobile**
+policy (other than one written through **TAIPA**), a **homeowners or farm or
+ranch owners** policy, a **standard fire** policy on a one-family dwelling or
+duplex or their contents, and property and casualty coverage for **the state
+and its political subdivisions**.
+
+### When an insurer may cancel
+
+**§551.104(a)** — an insurer may cancel **only as provided by this section**.
+That is the frame: the grounds are a closed list.
+
+**§551.104(b) — any policy**, for:
+
+1. **non-payment** of any portion of the premium when due;
+2. **a fraudulent claim** submitted by the insured; or
+3. the **Department determining** that continuing the policy would violate the
+   code or another insurance law.
+
+**§551.104(c) — any policy other than personal auto**, for an **increase in
+hazard within the insured's control** that would raise the rate.
+
+**§551.104(d) — personal auto only**, where the **driver's licence or vehicle
+registration** of the named insured, or of any operator resident in the same
+household or who customarily drives a covered auto, is **suspended or
+revoked**. But the insurer **may not** cancel on this ground **if the named
+insured consents to an endorsement excluding that person.**
+
+**§551.104(e) — cancellation under (b), (c) or (d) does not take effect until
+the 10th day after the insurer mails notice.**
+
+### The new-business windows
+
+**§551.104(g)** sets three different periods, and the exam separates them:
+
+| Policy | May cancel if in effect less than |
+| --- | --- |
+| Any policy other than personal auto or homeowners | **90 days** |
+| **Personal automobile** | **60 days** |
+| **Homeowners** | **60 days**, and only on the two further conditions below |
+
+For **homeowners** within that 60 days, the insurer must also either:
+
+1. **identify a condition** that creates an increased risk of hazard, **was
+   not disclosed in the application**, and **is not the subject of a prior
+   claim**; or
+2. before the effective date, **not accept** a required **inspection report**
+   completed by an inspector licensed by the Texas Real Estate Commission or
+   otherwise authorised, and **dated not earlier than the 90th day** before
+   the policy's effective date.
+
+**§551.104(h)** — an inspection report is **considered accepted if the insurer
+does not reject it before the 11th day** after receiving it. Silence is
+acceptance.
+
+### The 12-month anniversary rule
+
+**§551.104(f)** — an insurer may cancel a **personal automobile** policy
+effective on **any 12-month anniversary** of the original effective date, if
+it mails written notice **not later than the 60th day before** the
+cancellation takes effect.
+
+This is the escape hatch: outside the 60-day new-business window and the
+listed grounds, a personal auto policy can only be ended at an anniversary, on
+60 days' notice.
+
+### Non-renewal
+
+**§551.105** — **unless the insurer has mailed written notice of non-renewal**
+(or of renewal with a change in coverage under §2002.001) **not later than the
+60th day before the policy expires, the insurer must renew the policy at the
+insured's request.**
+
+The default runs the other way from most states: **silence means renewal.**
+
+**§551.1041** — the Commissioner must adopt rules requiring an insurer that
+cancels comprehensive or collision coverage on a vehicle **subject to a
+purchase money lien** to notify the **lienholder**, if known.
+
+## Reasons, records and consequences
+
+**§551.002** — the Commissioner **shall require** an insurer that declines,
+cancels or refuses to renew to give a **written statement of the reasons**.
+The statement must **fully explain** the adverse decision, **state the precise
+incident, circumstance or risk factors** that violate the insurer's
+guidelines, and **state the source of the information** relied on.
+
+**§551.003 and §551.110** — an insurer, agent or employee is **immune from
+liability** for statements made in good faith in giving those reasons. Without
+it, no insurer would give a candid reason.
+
+**§551.108** — insurers must maintain records.
+
+**§551.111** — **a cancellation made in violation of this subchapter is
+ineffective.** The policy stays in force.
+
+**§551.113** — declination, non-renewal or cancellation is **prohibited** on
+certain grounds relating to the **consideration of consumer information** —
+the Texas counterpart to the FCRA material in Module 2.
+
+**§551.152** — an insurer **may not cancel or refuse to renew** a policy
+because the insured is an **elected official**.
+
+> **Recent amendments.** H.B. 2067 (89th Legislature, 2025) took effect
+> **1 January 2026** and added **§551.007** (a commercial-lines declination
+> notice goes to the applicant's **agent**, who must then disclose it to the
+> applicant), **§551.008** (electronic delivery of these notices) and
+> **§551.0521** (written notice of declination for liability and commercial
+> property). They are in force for an exam taken under the September 2026
+> outline, and material written before 2026 does not contain them.
+
+## How this is examined
+
+**10 days for cancellation, 60 days for non-renewal** — the Texas numbers, not
+the generic 10/30/30.
+
+**Late non-renewal notice extends coverage to the 61st day after it is sent.**
+
+**Silence means renewal** under §551.105.
+
+**The 60/60/90-day new-business windows**, and which line gets which.
+
+**Suspended licence** as a personal auto ground — and the endorsement that
+defeats it.
+
+**A cancellation in violation of the subchapter is ineffective.**
+
+**Reducing coverage by endorsement is a cancellation.**
+
+## Check yourself
+
+1. A commercial property policy is in its first term, issued 100 days ago. The
+   underwriter wants out because the risk looks worse than expected. May the
+   insurer cancel?
+2. Same policy, but the insured has not paid the premium. May the insurer
+   cancel, and with how much notice?
+3. A homeowners insurer mails non-renewal notice 30 days before expiry. What
+   happens?
+4. A personal auto policy has been in force 8 months. The named insured's son,
+   who lives at home, has his licence revoked. What are the insurer's options?
+5. A homeowners policy is 40 days old. The insurer received an inspection
+   report 20 days ago and said nothing. May it now cancel relying on that
+   report?
+6. An insurer cancels a homeowners policy on a ground not listed in §551.104.
+   What is the effect?
+
+## Answers
+
+1. **No.** §551.052(b) bars cancellation after the **60th day** of the initial
+   term, and second thoughts about the risk is not one of the §551.052(c)
+   grounds.
+2. **Yes** — failure to pay premium is a §551.052(c) ground, available at any
+   time, with **10 days'** written notice under §551.053.
+3. Notice was late, so under **§551.054(b)** the coverage **remains in effect
+   until the 61st day after the notice was delivered or mailed**. Earned
+   premium for the extension is pro rata at the previous year's rate.
+4. Cancel under **§551.104(d)**, on **10 days'** notice — **unless the named
+   insured consents to an endorsement terminating coverage for the son**, in
+   which case the insurer may not cancel on that ground.
+5. **No.** Under §551.104(h) the report is **considered accepted** because the
+   insurer did not reject it before the 11th day after receiving it.
+6. **The cancellation is ineffective** — §551.111. The policy remains in
+   force.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select '6aea89e0-bdfe-572e-9221-7381c152533c', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'TX.II'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select 'd2d75fa2-1270-52a0-ae05-a23ebb7d15c9', '62edc60d-a12f-5d1f-80b7-2adce32c4394', c.id, 'Surplus Lines',
+       'surplus-lines', 'Placing business with an insurer Texas has not authorised — the diligent effort, the separate licence, and the warning that must appear on the document.', 8,
+       'draft', 14
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select 'd2d75fa2-1270-52a0-ae05-a23ebb7d15c9', c.id, $lesson$# Buying from an insurer the state has not licensed
+
+Some risks no admitted insurer will write. Surplus lines is the regulated
+route to an unauthorised insurer for those risks — regulated, but much more
+lightly, and the difference is the point of the whole chapter.
+
+## Why the chapter exists
+
+**§981.001(b)** lists six purposes, and reading them tells you what the
+regulator is balancing:
+
+1. requiring standards and reports on placement;
+2. making regulation reasonably complete and effective;
+3. providing **orderly access** to eligible surplus lines insurers;
+4. ensuring **fair and honest markets**;
+5. **protecting the revenues of this state** — the premium tax; and
+6. **protecting authorized insurers from unfair competition by unauthorized
+   insurers.**
+
+Purpose (6) is the one candidates miss. Surplus lines exists to fill a gap,
+**not** to let anybody escape the rules that admitted insurers must meet.
+Everything else in the chapter follows from keeping that gap narrow.
+
+**§981.003** — the chapter applies where the **home state of the insured is
+Texas**.
+
+## The three conditions for a placement
+
+**§981.004(a)** — an eligible surplus lines insurer may provide the coverage
+**only if**:
+
+1. **the full amount of required insurance cannot be obtained, after a
+   diligent effort**, from an insurer **authorized to write and actually
+   writing** that kind and class of insurance in Texas;
+2. **the insurance is placed through a surplus lines agent**; and
+3. the insurer **meets the eligibility requirements** as of the inception date
+   and each annual anniversary.
+
+**§981.004(b)** — the surplus lines insurer may provide coverage **only in the
+amount that exceeds** what is obtainable from authorized insurers. It tops up;
+it does not replace.
+
+### The diligent effort
+
+This is the heart of it, and the most examined phrase in the chapter.
+
+Two qualifiers in condition (1) do real work. The authorized insurer must be
+**authorized to write** that class **and actually writing** it. An insurer
+that holds the authority but has stopped writing the class does not count as
+an available market.
+
+**Declinations from the admitted market are what evidence the diligent
+effort**, and §981.215–.216 require the agent to keep records and report.
+
+### The exempt commercial purchaser exception
+
+**§981.004(c)** — the diligent effort requirement **does not apply** to
+insurance procured for an **exempt commercial purchaser**, provided the agent:
+
+1. **discloses** that comparable insurance may be available from the admitted
+   market, which is subject to **more regulatory oversight**, and that an
+   admitted policy **may provide greater protection**; and
+2. receives the purchaser's **written request** to place it in the surplus
+   lines market anyway.
+
+The logic: a large, sophisticated commercial buyer can weigh the trade-off
+themselves, provided it is spelled out in writing.
+
+## The agent needs a separate licence
+
+**§981.202** — **an agent licensed by Texas may not issue, or cause to be
+issued, a contract with an eligible surplus lines insurer unless the agent
+holds a surplus lines licence issued by the Department.**
+
+A general lines licence is not enough. This is the single most likely
+licensing question on the topic.
+
+## Who qualifies as an eligible surplus lines insurer
+
+**§981.057(a)** — an eligible surplus lines insurer must maintain **capital
+and surplus of at least $15 million**.
+
+**§981.057(b)** — that does not apply to **alien** surplus lines insurers
+listed on the **Quarterly Listing of Alien Insurers** maintained by the NAIC's
+International Insurers Department.
+
+**§981.210** — an agent may not place coverage with an insurer unless it meets
+the chapter's requirements, and **§981.211** obliges the agent to attend to
+the insurer's financial condition.
+
+## What must appear on the document
+
+**§981.101** is where the consumer protection actually lives, and it is
+protection by **warning** rather than by supervision.
+
+**§981.101(b)** — the document must state, **in 11-point type**, that:
+
+- the contract is **with an insurer not licensed to transact insurance in this
+  state**, issued as surplus line coverage;
+- **the Texas Department of Insurance does not audit the finances or review
+  the solvency** of that insurer;
+- **the insurer is not a member of the property and casualty insurance
+  guaranty association** created under Chapter 462; and
+- **Chapter 225 requires payment of a stated percentage tax on gross
+  premium.**
+
+**The guaranty association point is the one to carry.** If a surplus lines
+insurer fails, **there is no guaranty fund behind the policy.** That is the
+real price of the wider market, and it is a reliable exam answer.
+
+**§981.101(c)** — the document must also show the **description and location**
+of the subject insured; the **coverage, conditions and term**; the **premium
+and rate** and the **premium taxes** to be collected from the insured; the
+**name and address** of the insured, the insurer and the agent; and, where
+more than one insurer takes the risk, **each insurer's name and the proportion
+assumed**.
+
+**§981.101(d)** — where a contract covers a risk **located wholly in Texas**
+and contains an **arbitration agreement**, the arbitration must be **conducted
+in Texas and governed by Texas law**, and the contract interpreted under Texas
+law — unless both agree to a different venue after written notice **and the
+insurer gives a premium credit** for the policyholder's resulting costs.
+**§981.101(e)** lets the parties agree otherwise by mutual consent where the
+insured value exceeds **$2 million**. (S.B. 455, effective 1 September 2025.)
+
+**§981.102** — a surplus lines policy form is limited in its use, and
+**§981.103–.104** require the documents, and any revised documents, to be
+**delivered to the insured**.
+
+## Filing and tax
+
+**§981.105(a)** — **not later than the 60th day** after the later of the
+effective date or the issue date of new or renewal surplus lines insurance,
+the responsible agent must **file with the stamping office** a copy of the
+policy, or of the certificate, cover note or confirmation delivered to the
+insured.
+
+**§981.214** — the agent must comply with the **stamping office's plan of
+operation**.
+
+**Chapter 225** imposes the **premium tax on gross premium**, which the agent
+collects from the insured and remits. The rate is stated on the document
+itself under §981.101(b).
+
+**§981.215** — the agent must keep records; **§981.216** requires an annual
+report.
+
+## How this is examined
+
+**The diligent effort** — and that the admitted insurer must be both
+authorized **and actually writing** the class.
+
+**A separate surplus lines licence** is required.
+
+**No guaranty association protection** behind a surplus lines policy.
+
+**$15 million** minimum capital and surplus, with the alien-insurer
+exception.
+
+**60 days** to file with the stamping office.
+
+**The exempt commercial purchaser** may waive the diligent effort, in writing,
+after disclosure.
+
+**Surplus lines covers only the excess** over what the admitted market will
+write.
+
+## Check yourself
+
+1. A general lines agent finds an admitted market will write only $2m of a
+   $5m exposure. What may they place in surplus lines, and what licence do
+   they need?
+2. An admitted insurer holds authority for the class but stopped writing it
+   two years ago. Does it count for the diligent effort?
+3. A surplus lines insurer becomes insolvent. Does the Texas guaranty
+   association pay the claim?
+4. What is the minimum capital and surplus for an eligible surplus lines
+   insurer, and who is exempt?
+5. By when must the agent file the policy with the stamping office?
+6. A large manufacturer wants a surplus lines placement without the agent
+   canvassing the admitted market. Possible?
+
+## Answers
+
+1. Only the **$3m that exceeds** what the admitted market will write —
+   §981.004(b). They need a **surplus lines licence** in addition to their
+   general lines licence — §981.202.
+2. **No.** §981.004(a)(1) requires an insurer **authorized to write and
+   actually writing** that kind and class.
+3. **No.** §981.101(b) requires the document to state that the insurer **is
+   not a member of the guaranty association** created under Chapter 462.
+4. **$15 million** — §981.057(a). **Alien** insurers on the NAIC
+   International Insurers Department's Quarterly Listing are exempt.
+5. **Not later than the 60th day** after the later of the effective or issue
+   date — §981.105(a).
+6. **Yes, if it is an exempt commercial purchaser** — §981.004(c) — after the
+   agent discloses that the admitted market has more oversight and may offer
+   greater protection, and the purchaser **requests the placement in
+   writing**.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select 'd2d75fa2-1270-52a0-ae05-a23ebb7d15c9', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'TX.II'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select '78028eb3-4532-507a-92dd-92c431ad7184', '62edc60d-a12f-5d1f-80b7-2adce32c4394', c.id, 'Texas Auto — Uninsured Motorists and PIP',
+       'texas-auto-um-uim-and-pip', 'Two coverages Texas requires every auto insurer to offer, the written rejection that removes them, and the $2,500 and $250 figures.', 9,
+       'draft', 14
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select '78028eb3-4532-507a-92dd-92c431ad7184', c.id, $lesson$# Two coverages the insurer must offer and the insured may refuse
+
+Texas does not compel a driver to buy uninsured motorist coverage or personal
+injury protection. **It compels the insurer to include them unless the named
+insured rejects them in writing.** That structure — mandatory offer, written
+rejection — is the single most examined thing in Chapter 1952.
+
+## Uninsured and underinsured motorists
+
+### The mandatory offer
+
+**§1952.101(b)** — an insurer **may not deliver or issue for delivery** in
+Texas an automobile liability policy — **including a policy provided through
+the Texas Automobile Insurance Plan Association** — unless it **provides
+uninsured or underinsured motorist coverage in the policy or supplemental to
+it**.
+
+**§1952.101(c)** — the requirement **does not apply if any insured named in
+the policy rejects the coverage in writing.**
+
+Read that carefully. **"Any insured named in the policy"** — one named
+insured's written rejection is enough.
+
+And the rejection carries forward: unless the named insured later **requests
+the coverage in writing**, the insurer need not provide it on a **reinstated
+or renewal** policy where the coverage was rejected on that policy, or on a
+policy previously issued **by the same insurer or an affiliated insurer**.
+
+**Three things must be true for UM to be absent: the rejection was by a named
+insured, it was in writing, and nothing since has requested it back in
+writing.** A question describing an oral rejection, or a rejection by somebody
+who is not a named insured, is testing exactly this.
+
+### What counts as uninsured
+
+**§1952.101(a)** — the coverage protects insureds **legally entitled to
+recover** from owners or operators of uninsured or underinsured vehicles, for
+**bodily injury, sickness, disease or death, or property damage**, in at least
+the limits prescribed by **Chapter 601, Transportation Code**.
+
+**"Legally entitled to recover" is the qualifier from Module 4**: the other
+driver must be at fault. UM is not no-fault coverage.
+
+**§1952.102(a)** — **"uninsured motor vehicle" includes an insured vehicle
+whose liability insurer is unable, because of insolvency, to pay** within its
+limits. An insolvent insurer on the other side turns the claim into a UM
+claim.
+
+**§1952.103** — an **"underinsured motor vehicle"** is one carrying
+collectible liability coverage whose limits were **originally lower than**, or
+**have been reduced by payment of claims arising from the same accident to**,
+an amount less than the insured's own UIM limit.
+
+That second branch matters: a policy with adequate limits can become
+underinsured **during the same accident**, once other claimants have drawn it
+down.
+
+### Limits
+
+**§1952.105(a)** — bodily injury limits must be offered **in the amounts the
+insured desires**, but **not greater than the bodily injury liability limits
+of the insured's own policy.**
+
+**§1952.105(b)** — **property damage UM coverage is subject to a $250
+deductible**, and again may not exceed the policy's own property damage
+liability limits.
+
+**§1952.105(c)** — neither may be offered **in amounts less than those
+prescribed by Chapter 601, Transportation Code.**
+
+**The $250 UM property damage deductible is a reliable exam number.** Note
+that it applies to property damage only — there is no deductible on UM bodily
+injury.
+
+### Aggregate limits
+
+**§1952.104(1)** — whatever the number of insureds, policies, vehicles or
+claims, **the total aggregate limit to any one person for a single occurrence
+may not exceed the policy's stated limit**, and the total to all claimants may
+not exceed the per-occurrence limit.
+
+This is the anti-stacking provision within a single policy.
+
+## Personal injury protection
+
+### What it pays
+
+**§1952.151** — PIP provides payment to **the named insured, members of the
+insured's household, and any authorized operator or passenger of the named
+insured's vehicle, including a guest occupant**, of all reasonable expenses
+that:
+
+1. **arise from an accident**;
+2. **are incurred not later than the third anniversary** of the accident; and
+3. are for **necessary medical, surgical, x-ray or dental services**,
+   including prosthetic devices, and **necessary ambulance, hospital,
+   professional nursing or funeral services**; or, **for an income producer,
+   replacement of lost income**.
+
+Three features distinguish it from the medical payments coverage in Module 4:
+it covers **guest occupants**, it runs for **three years**, and it pays **lost
+income**, not only medical bills.
+
+### The mandatory offer, again
+
+**§1952.152(a)–(b)** uses **exactly the same structure** as UM: the insurer
+must provide PIP in or supplemental to the policy — TAIPA policies included —
+**unless any named insured rejects it in writing**, with the same carry-forward
+to reinstated and renewal policies and the same written-request route back.
+
+### The $2,500 figure
+
+**§1952.153** — the subchapter **does not require** an insurer to provide PIP
+**in an amount exceeding $2,500 for all benefits, in the aggregate, for each
+person.**
+
+Note the shape: **$2,500 is the maximum an insurer can be compelled to
+offer**, not a cap on what may be bought. Higher limits are available; the
+statute simply does not require them.
+
+**§1952.154** — an insurer paying **loss of income** benefits may require
+**reasonable medical proof** of the injury causing the loss.
+
+### No fault, no collateral source, no subrogation
+
+**§1952.155(a)** — PIP benefits are payable **without regard to**:
+
+1. **the fault or non-fault** of the named insured or recipient; and
+2. **any collateral source** of medical, hospital or wage continuation
+   benefits.
+
+So PIP pays even where the insured caused the crash, and pays **on top of**
+health insurance rather than behind it.
+
+**§1952.155(b)** — an insurer paying PIP **has no right of subrogation** and
+no claim against another person or insurer to recover those benefits by reason
+of the other's fault.
+
+**§1952.155(c)** is the exception, and it is a pointed one: the insurer
+**does** have subrogation and a claim against a person causing or contributing
+to the collision **if, on the date of loss, that person had not established
+financial responsibility as required by Chapter 601, Transportation Code.**
+
+**An uninsured driver gets no protection from the no-subrogation rule.** That
+is the clearest single contrast in the subchapter, and a likely question.
+
+## What is not taught here
+
+The blueprint also cites, under TX.II.E:
+
+- **Transportation Code Chapter 601** — financial responsibility and the
+  **required minimum liability limits**. Chapters 1952.101 and 1952.105 both
+  defer to it for the floor, and **this course does not state those figures**
+  because the Transportation Code has not been obtained.
+- **TIC Chapter 2151** — the Texas Automobile Insurance Plan Association, the
+  auto residual market.
+- **TIC Chapter 1954** — transportation network companies (rideshare).
+- **28 TAC §5.204** and **§5.7002** — auto coverage, and renewal, non-renewal
+  and cancellation rules.
+
+See `docs/module-5-source-gaps.md`. **Do not learn the Texas minimum liability
+limits from this course** — get them from Chapter 601.
+
+## How this is examined
+
+**Mandatory offer, rejection in writing by a named insured** — for both UM and
+PIP.
+
+**The rejection carries forward** to renewals and to affiliated insurers until
+the insured asks in writing.
+
+**$250 deductible** on UM **property damage** only.
+
+**$2,500** is the most PIP an insurer must offer, per person, in aggregate.
+
+**PIP pays regardless of fault and regardless of other coverage**, and covers
+guest occupants and lost income, for **three years**.
+
+**No PIP subrogation — except against a driver without financial
+responsibility.**
+
+**An insolvent liability insurer makes the other vehicle "uninsured".**
+
+## Check yourself
+
+1. A Texas insurer issues an auto policy with no UM coverage and no paperwork
+   about it. Is that permitted?
+2. One of two named insureds signs a written UM rejection. Is the coverage
+   removed?
+3. The policy renews the following year. Must the insurer offer UM again?
+4. The insured's UM property damage claim is $4,000. What is paid, before
+   limits?
+5. An insured causes a crash and is injured, and has health insurance. Does
+   PIP pay?
+6. A passenger in the insured's car — a friend, not a household member — is
+   injured. Does PIP cover them?
+7. The at-fault driver had no insurance at all. May the PIP insurer recover
+   what it paid from them?
+8. The at-fault driver's insurer is insolvent. Which coverage responds?
+
+## Answers
+
+1. **No.** §1952.101(b) requires the coverage unless a named insured
+   **rejected it in writing** — the rejection must exist.
+2. **Yes.** §1952.101(c) says the requirement does not apply if **any insured
+   named in the policy** rejects it in writing.
+3. **No** — the rejection carries forward to a reinstated or renewal policy,
+   and to a policy from the same or an affiliated insurer, **unless the named
+   insured requests the coverage in writing.**
+4. **$3,750** — UM property damage is subject to a **$250 deductible** under
+   §1952.105(b).
+5. **Yes.** §1952.155(a) — payable without regard to fault and without regard
+   to any collateral source.
+6. **Yes.** §1952.151 covers **any authorized operator or passenger of the
+   named insured's vehicle, including a guest occupant.**
+7. **Yes.** §1952.155(c) — the no-subrogation rule does **not** protect a
+   person who had not established financial responsibility under Chapter 601.
+8. **Uninsured motorist.** §1952.102(a) treats a vehicle whose liability
+   insurer cannot pay because of insolvency as uninsured.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select '78028eb3-4532-507a-92dd-92c431ad7184', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'TX.II'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select 'f2f83e58-1313-5d36-b18f-242354a7ab5c', '62edc60d-a12f-5d1f-80b7-2adce32c4394', c.id, 'Windstorm and the FAIR Plan',
+       'windstorm-and-the-fair-plan', 'Texas''s two residual property markets — who each one covers, the declination counts, and the limits.', 10,
+       'draft', 16
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select 'f2f83e58-1313-5d36-b18f-242354a7ab5c', c.id, $lesson$# Two markets of last resort, and the line between them
+
+Module 3 gave the general idea: where a catastrophe exposure is concentrated,
+the private market withdraws and a state-created residual market fills the
+gap. Texas has **two**, and the exam's favourite question is which one applies.
+
+**§2211.156 draws the line in a single sentence: the FAIR Plan may not provide
+windstorm and hail coverage for a risk eligible for that coverage under
+Chapter 2210.**
+
+So: **wind and hail on the coast is TWIA. Everything else that the voluntary
+market will not write is the FAIR Plan.** They do not overlap.
+
+| | **TWIA** (Ch. 2210) | **FAIR Plan** (Ch. 2211) |
+| --- | --- | --- |
+| Covers | **Windstorm and hail** | **Residential property**, generally |
+| Where | The **seacoast territory** | **Underserved areas**, designated by rule |
+| Declinations needed | **One** | **Two** |
+| Excluded | — | **Wind/hail eligible under Ch. 2210** |
+
+**One declination versus two** is the contrast most likely to be tested.
+
+## The Texas Windstorm Insurance Association
+
+### What it is
+
+**§2210.001** — TWIA is **"a residual insurer of last resort for windstorm and
+hail insurance in the seacoast territory"**, and **"shall function in such a
+manner as to not be a direct competitor in the private market."**
+
+**§2210.051** — membership is **compulsory**. The association comprises **all**
+property insurers authorised to write property insurance in Texas, and
+membership is **"a condition of the insurer's authority to engage in the
+business of insurance in this state."**
+
+That is how a residual market is funded: the insurers that decline the risk
+collectively carry it.
+
+**§2210.003(4) and (11)** define the **first-tier** and **second-tier coastal
+counties** — fourteen of each — which with parts of Harris County make up the
+catastrophe area.
+
+### Getting a policy
+
+**§2210.202(a)** — eligibility turns on **one declination** from an insurer
+authorised to write, and actually writing, windstorm and hail insurance in the
+seacoast territory. For **renewal**, a declination is required only **every
+three calendar years**.
+
+**§2210.203(a-1)** — for structures built or altered on or after 1 September
+2009 and located in **Flood Zone V**, **flood insurance is required** as a
+condition of the windstorm policy.
+
+**§2210.203(b)–(c)** — a **one-year** policy term, renewable while the property
+remains insurable.
+
+**§2210.203(c-1)** — a renewal payment **grace period of not more than 10
+days**.
+
+**§2210.2032** — TWIA must **accept credit cards** and must **offer
+instalments**.
+
+### What it pays
+
+**§2210.207(c)** — where the amount of insurance equals **80% or more** of the
+full replacement cost, or the policy limit, TWIA pays the **replacement cost**
+of the damaged part.
+
+**§2210.207(d)** — **below 80%**, liability is limited as the section
+provides. This is the insurance-to-value rule familiar from coinsurance in
+Module 1, written into statute.
+
+**§2210.208(a)** — a dwelling policy must cover **wind-driven rain "regardless
+of whether an opening is made by the wind."** That is a deliberate departure
+from the usual property form, which requires an opening, and it is a reliable
+exam point.
+
+**§2210.210** — **wind turbines are not insurable** by the association.
+
+### Maximum limits — §2210.501(b)
+
+| Property | Limit |
+| --- | --- |
+| A **dwelling**, including an individually owned townhouse unit, and its contents | **$350,000** |
+| A building **at least 75% occupied by a governmental entity** | **$2,192,000** |
+| **Individually owned contents** in an apartment, condominium or townhouse unit | **$125,000** |
+| **Any other structure** and its contents | **$1,500,000** |
+
+**§2210.502** — adjusted annually for inflation by reference to the **BOECKH
+Index**, in $1,000 increments. So the figures above move; learn their shape
+and order of magnitude rather than trusting them for ever.
+
+**§2210.259** — a **15% surcharge** applies in the circumstances that section
+describes (**10%** under §2210.258(c)).
+
+### Claims
+
+- **§2210.205(a)(1) and §2210.573(a)** — file a claim **not later than the
+  first anniversary** of the date the damage occurred. **§2210.205(b)** — the
+  commissioner may extend for good cause, **up to 180 days**.
+- **§2210.573(d)** — TWIA must notify the claimant **in writing within 60
+  days** that it accepts in full, accepts in part and denies in part, or
+  denies in full.
+
+### The trap: no Chapter 541 or 542 action against TWIA
+
+**§2210.014 and §2210.572** — **there is no private cause of action under
+Chapter 541 or Chapter 542 against the association.** The statute provides its
+own claim procedure instead.
+
+This connects to **§541.152(c)** from the trade practices lesson: **treble
+damages do not apply to an action against TWIA.** A fact pattern inviting you
+to apply the ordinary bad-faith remedies to a windstorm claim is testing this.
+
+> **The funding structure changed in 2025.** H.B. 3689 (89th Legislature)
+> replaced the Class 1/2/3 public-securities ladder with state-funded
+> financing arrangements. Subchapter B-1 and much of Subchapter M are repealed
+> **effective 1 September 2027**, and several sections carry two texts. Study
+> material written before 2025 describes a structure on its way out. Check
+> which text is current before relying on the funding layers.
+
+## The Texas FAIR Plan Association
+
+**FAIR** = **Fair Access to Insurance Requirements**.
+
+### When it exists
+
+**§2211.051(a)** — the commissioner **may** establish the plan, **after a
+public hearing**, on determining that:
+
+1. residential property insurance **is not reasonably available in the
+   voluntary market** to a substantial number of insurable risks in all or
+   part of the state; **or**
+2. **at least 25 percent** of qualified applicants to the residential property
+   market assistance program **have not been placed with an insurer in the
+   preceding six months.**
+
+**§2211.152** — the commissioner **by rule designates the underserved areas**.
+
+### Who runs it
+
+**§2211.052(b)** — a governing committee of **11 members appointed by the
+commissioner**:
+
+- **five** representing the interests of insurers;
+- **four public members** resident in Texas; and
+- **two general property and casualty agents.**
+
+**§2211.052(c)** — the commissioner or a designated employee serves **ex
+officio**. **§2211.052(e)** — the commissioner may **remove a member without
+cause**.
+
+**§2211.057** — the commissioner supervises the association and the inspection
+bureau, with free access to its books and power to summon and examine
+witnesses.
+
+### Getting a policy
+
+**§2211.151** — the association **shall** make residential property insurance
+available to each applicant **in an underserved area** whose property is
+insurable under reasonable underwriting standards but who, **after diligent
+efforts, is unable to obtain it in the voluntary market, as evidenced by two
+declinations** from insurers authorised to write, and actually writing,
+residential property insurance in Texas.
+
+**Two declinations** — against TWIA's one. And note the same "authorized **and
+actually writing**" qualifier met in surplus lines.
+
+**§2211.1515** (H.B. 998, 2023) extends the plan to **property owners'
+association insurance** in an area the commissioner designates, which must so
+far as practicable be **not more than 10 miles beyond the TWIA catastrophe
+area**. Two declinations again.
+
+**§2211.154–.155** — the inspection bureau **inspects** the property, and
+there is a **reinspection** procedure.
+
+### How the association operates
+
+**§2211.055(a)** — the association may issue policies **in its own name**,
+collect premiums, issue cancellations, and pay commissions, losses, judgments
+and expenses, **acting on behalf of all participating insurers**.
+
+**§2211.055(b)** — this is the provision to remember: **notice, proof of loss
+and legal process must be served on the association**, and **a claim action
+may be brought only against the association**, which is "the proper party for
+all purposes." **§2211.055(c)** requires the policy to say so.
+
+So a FAIR Plan insured does not sue the member insurers behind it. They sue
+the association.
+
+**§2211.054** — the plan of operation must, among other things, **require all
+insurers writing residential property insurance to participate**, provide for
+**immediate binding of eligible risks**, allow **premium instalment plans**,
+establish **maximum limits**, set **agents' commissions**, and provide for
+**assessment of all members** in amounts sufficient to operate the
+association.
+
+**§2211.056** — the association files proposed **rates** with the commissioner,
+who must approve or disapprove **within 60 days**, extendable by **30 days** on
+notice. **§2211.056(b)** — rates must be sufficient to **carry all claims to
+maturity** and meet expenses. **§2211.056(e)** — **no policy may be issued
+until the rates are approved.**
+
+**§2211.002** — **immunity**: no cause of action arises against an insurer, the
+inspection bureau, the association or its agents for acts performed under the
+chapter.
+
+**§2211.059** — on dissolution, the association's assets go as that section
+provides.
+
+## How this is examined
+
+**Which market?** Wind and hail on the coast → **TWIA**. Other residential
+property the market will not write → **FAIR Plan**. §2211.156 forbids overlap.
+
+**One declination for TWIA, two for the FAIR Plan.**
+
+**Wind-driven rain is covered by TWIA regardless of an opening made by the
+wind.**
+
+**The 80% insurance-to-value rule** in §2210.207.
+
+**$350,000** dwelling limit, indexed.
+
+**No Chapter 541 or 542 action, and no treble damages, against TWIA.**
+
+**A FAIR Plan claim is brought only against the association.**
+
+**11-member governing committee**: five insurer, four public, two agents.
+
+## Check yourself
+
+1. A homeowner in Galveston cannot get windstorm coverage. Which association,
+   and how many declinations?
+2. A homeowner in an inland underserved area cannot get any residential
+   property insurance. Which association, and how many declinations?
+3. Could that inland homeowner get wind and hail from the FAIR Plan if their
+   property were in a first-tier coastal county?
+4. Rain is driven into a TWIA-insured dwelling by hurricane winds, without
+   the wind making an opening. Covered?
+5. A TWIA policyholder believes the association handled their claim in bad
+   faith and wants treble damages under Chapter 541. Will that work?
+6. A FAIR Plan insured wants to sue the member insurers who fund the plan. May
+   they?
+7. TWIA damage occurs on 1 March 2026. By when must the claim be filed?
+
+## Answers
+
+1. **TWIA**, on **one** declination — §2210.202(a). For renewal, a declination
+   is needed only every three calendar years.
+2. **The FAIR Plan**, on **two** declinations from insurers authorised to
+   write and actually writing residential property insurance — §2211.151.
+3. **No.** §2211.156 — the FAIR Plan may not provide windstorm and hail
+   coverage for a risk eligible under Chapter 2210.
+4. **Yes.** §2210.208(a) requires cover for wind-driven rain **"regardless of
+   whether an opening is made by the wind."**
+5. **No.** §2210.014 and §2210.572 bar a private action under Chapter 541 or
+   542 against the association, and §541.152(c) excludes TWIA from treble
+   damages.
+6. **No.** §2211.055(b) — an action on the policy may be brought **only
+   against the association**, which is the proper party for all purposes.
+7. **By 1 March 2027** — the first anniversary of the date the damage occurred
+   (§2210.205(a)(1), §2210.573(a)), extendable by the commissioner for good
+   cause up to **180 days**.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select 'f2f83e58-1313-5d36-b18f-242354a7ab5c', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'TX.II'
 on conflict (lesson_id, topic_id) do nothing;

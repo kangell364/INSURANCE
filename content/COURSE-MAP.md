@@ -11,7 +11,7 @@ interesting.
 | 2. Policy Structure and Contract Law | GK.III, GK.VI | 25 | 10 | drafted |
 | 3. Property Coverages | GK.I | 22 | 6 | drafted |
 | 4. Casualty Coverages | GK.IV | 23 | 9 | drafted |
-| 5. Texas Statutes and Rules | TX.I, TX.II | 30 | — | statutes obtained, not yet drafted |
+| 5. Texas Statutes and Rules | TX.I, TX.II | 30 | 10 | drafted from source; **partial — see below** |
 
 Every drafted lesson is `UNREVIEWED`, which the importer writes out as a
 draft whatever its `status` says. Nothing is publishable until a licensed
@@ -19,8 +19,7 @@ producer has read it.
 
 Modules 1 and 2 come first because every later module assumes their
 vocabulary. Module 5 is last because it needs the Insurance Code chapters
-listed in `docs/source-documents-wanted.md`; those are now in
-`reference/statutes/`, so it is unblocked.
+listed in `docs/source-documents-wanted.md`.
 
 ## Known gap in Module 1
 
@@ -135,7 +134,39 @@ once, here, and cross-referenced from Module 3.
 
 ## Module 5 — Texas Statutes and Rules (30 questions)
 
-Outlined once the statutes are available. Structure will follow TX.I
-(regulator, definitions, licensing, marketing practices, agent duties) and
-TX.II (P&C definitions, surplus lines, rate and form approval, homeowners,
-auto, workers' compensation, the Guaranty Association).
+Written from the statutes in `reference/statutes/`, not from memory. Every
+figure in these lessons cites the section it came from, and each citation was
+checked against the text.
+
+1. **The Commissioner and the Department** — TIC 31, 36, 38, 39, 40; TIC vs TAC
+2. **Enforcement and Penalties** — TIC 82, 83, 84, 85, 86; §§541.101–.111
+3. **Licensing and Appointment** — TIC 4001, 4051; controlled business,
+   temporary licences
+4. **Licence Renewal and Discipline** — TIC 4003, 4005; the 90-day and
+   one-year cliffs
+5. **Unfair and Prohibited Trade Practices** — TIC 541, 1806; the private
+   action and treble damages
+6. **Claims Practices and Prompt Payment** — TIC 542; the 15/15/5 deadlines
+7. **Declination, Cancellation and Non-renewal** — TIC 551
+8. **Surplus Lines** — TIC 981
+9. **Texas Auto: Uninsured Motorists and PIP** — TIC 1952
+10. **Windstorm and the FAIR Plan** — TIC 2210, 2211
+
+### This module is incomplete, and deliberately so
+
+**18 of the 40 chapters the TX.I and TX.II outlines cite are in hand.** These
+ten lessons cover an estimated 20 of the 30 Texas questions. The rest is
+**not** drafted, because `content/README.md` forbids writing a statute lesson
+without the statute — a draft written from memory reads fluently and is
+occasionally wrong, which is the worst combination there is.
+
+**Not yet taught, each blocked on a specific chapter:** continuing education
+(TIC 4004), the Guaranty Association (462), financial responsibility and the
+minimum liability limits (Transportation Code 601), Texas workers'
+compensation (Labor Code Title 5), TAIPA (2151), company types and certificate
+of authority (801, 982, 547, 941), non-resident and adjuster licensing (4056,
+4101), fraud (701), discrimination (544), liquidated demand (862), rideshare
+(1954), the medical liability JUA (2203), and the Title 28 TAC rules.
+
+The full list, with what each one blocks and in what order to get them, is in
+**`docs/module-5-source-gaps.md`**.

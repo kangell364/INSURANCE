@@ -92,6 +92,21 @@ check('a section number containing a letter',
       'Ch. 1276, Sec. 10A.228(a), eff. September 1, 2007',
       must_contain=['Sec. 10A.228(a)'])
 
+check('lone filler after a section heading',
+      'Sec. 551.105. NONRENEWAL OF POLICIES; NOTICE REQUIRED. A Unless the '
+      'insurer has mailed written notice',
+      must_contain=['NOTICE REQUIRED. Unless the insurer'],
+      must_not_contain=['REQUIRED. A Unless'])
+
+check('the article before a capitalised noun survives',
+      'Sec. 551.004. TRANSFER NOT CONSIDERED A REFUSAL TO RENEW. For purposes',
+      must_contain=['CONSIDERED A REFUSAL TO RENEW'])
+
+check('the article before a capitalised noun phrase survives',
+      'PROHIBITS USE OF THIS POLICY OR BINDER TO OBTAIN A MOTOR VEHICLE '
+      'INSPECTION CERTIFICATE',
+      must_contain=['OBTAIN A MOTOR VEHICLE INSPECTION'])
+
 # --- structure ----------------------------------------------------------
 
 check('sections are broken onto their own paragraphs',

@@ -92,7 +92,22 @@ would have been quoted straight into lessons.
 
 It is now removed by length instead. Across all 23 chapter PDFs, standalone
 runs of A occur in exactly two lengths: 1 (1,060 times, nearly all real
-English) and 2 (3,712 times, all filler). The only systematic single-A filler
-is the one between "Sec." and the section number. If a chapter is ever added
-whose text contains a genuine two-letter "AA", that assumption breaks and the
-script needs revisiting.
+English) and 2 (3,712 times, all filler). If a chapter is ever added whose
+text contains a genuine two-letter "AA", that assumption breaks and the script
+needs revisiting.
+
+Single-A filler has **two** positions, not one. The first is between "Sec."
+and the section number, which is unambiguous because digits follow. The
+second was missed when this note was first written, and found later by
+reading the output rather than by reasoning about it: a lone filler after a
+section heading, as in
+
+> "Sec. 551.105. NONRENEWAL OF POLICIES; NOTICE REQUIRED. **A** Unless the
+> insurer has mailed written notice..."
+
+It occurs **once** in 30 chapters, so the rule that removes it is as narrow as
+the evidence: a standalone "A" is filler only when the next word is one that
+cannot grammatically follow the indefinite article — "Unless", "Except",
+"Notwithstanding", "The", and so on. "CONSIDERED A REFUSAL", "OBTAIN A MOTOR
+VEHICLE" and "A person" are all left alone, and the test suite pins each of
+them.
