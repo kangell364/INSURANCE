@@ -9,6 +9,8 @@ Nothing here is recalled, inferred, or taken from a third-party summary.
   Pearson VUE, effective 1 September 2026. The blueprint.
 - **#124400** — *Texas Candidate Handbook*, Pearson VUE. Logistics, scoring,
   licensing.
+- **Examination Pass Rates, 08/01/2026 – 08/31/2026**, Pearson VUE for the
+  Texas Department of Insurance. Volumes and pass rates.
 
 Both were supplied as PDFs; `pearsonvue.com` and `tdi.texas.gov` are
 unreachable from the build environment, so they cannot be re-fetched
@@ -108,3 +110,25 @@ failing this part" messaging is built.
 
 These are the bones of an "exam day" page, which is a genuine search-traffic
 opportunity. Write it from this file rather than from memory.
+
+---
+
+## Volumes and pass rates (August 2026)
+
+General Lines — Property & Casualty (English), exam code `InsTX-PC06`:
+
+| Attempt type | Graded | Passed | Pass rate | Failed | Fail rate |
+| ------------ | ------ | ------ | --------- | ------ | --------- |
+| First-time takers | 1,057 | 646 | 61% | 411 | 39% |
+| Repeaters | 765 | 290 | 38% | 475 | 62% |
+| **All sittings** | **1,822** | **936** | **51%** | **886** | **49%** |
+
+Read that second row twice. **Candidates who have already failed once pass at
+38%** — they do markedly *worse* on a retake than a first-timer does on their
+first attempt, and there are 765 of them in a single month.
+
+That is the clearest commercial signal in any of these documents, and the
+market analysis in `docs/competitor-research.md` is built on it.
+
+The Spanish-language form (`InsTX-PC26`) had 21 first-time sittings in the
+same month — under 2% of the English volume.

@@ -288,22 +288,42 @@ For **General Lines — Property & Casualty (English)**:
 | April 2025 | 919 | 528 | 57% |
 | June 2025 | 997 | 593 | 59% |
 | January 2026 | 880 | 533 | 61% |
+| **August 2026** | **1,057** | **646** | **61%** |
 
-**Caveat:** the reported rate in each row matches the *first-time* rate quoted
-elsewhere in the same reports (60% vs 36% for repeats), so these counts are
-probably first-time candidates rather than all sittings. The PDFs are blocked
-from here — **open one and confirm** before betting anything on the absolute
-number. The shape of the conclusion does not change either way.
+### The caveat above is now resolved — and it was hiding a third of the market
 
-### What that implies
+The August 2026 report (`InsTX-PC06`) was opened directly. The counts in this
+table are **first-time takers only**. Repeaters are reported as a separate
+attempt type that earlier rows never included:
 
-- **~866 candidates per month on average**, range 640–997.
-- **Roughly 10,000 per year** for English-language General Lines P&C alone.
-  Spanish-language sittings add more; the volumes are lower but unquantified
-  here.
-- **The market is growing.** Comparing like months: June 2024 (869) → June 2025
-  (997) is about **+15% year on year**. December is seasonally the low point, so
-  compare same-month figures, not adjacent ones.
+| August 2026, General Lines P&C (English) | Graded | Passed | Pass rate | Failed |
+| ----------------------------------------- | ------ | ------ | --------- | ------ |
+| First-time takers | 1,057 | 646 | **61%** | 411 |
+| Repeaters | 765 | 290 | **38%** | 475 |
+| **All sittings** | **1,822** | **936** | **51%** | **886** |
+
+Two things change.
+
+**The market is about 70% larger than this section assumed.** 1,822 sittings a
+month, not ~866. Annualised, roughly **21,900 sittings** and **12,700
+first-time candidates** for English-language General Lines P&C alone.
+
+**The repeat-taker thesis is not a hunch any more.** Repeaters pass at 38%
+against first-timers' 61% — they do *worse*, substantially, on a second
+attempt. And there are a lot of them: 765 repeat sittings in one month, of
+which 475 failed again.
+
+That is the strongest number in this document. People who fail, pay again, sit
+again — and nearly two thirds fail again. Whatever they are doing between
+attempts is not working. A product that tells a candidate *which topics* they
+are weak on, rather than giving them another undifferentiated question bank,
+is aimed squarely at ~5,700 repeat failures a year.
+
+It also sharpens the readiness design (decision C in `phase-2-design.md`).
+Unlimited retakes on a bank a student has already memorised is plausibly part
+of *why* repeat rates are so bad; readiness computed from recent performance
+on unseen questions is the countermeasure.
+
 - **~4,000 people fail per year** (≈40% of ~10,000). That is the repeat-taker
   pool — motivated, and by the pass-rate data, poorly served.
 
