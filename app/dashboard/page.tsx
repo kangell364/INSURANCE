@@ -3,6 +3,11 @@ import Link from 'next/link'
 import { requireAuth } from '@/lib/auth'
 import { getMyEnrollments } from '@/lib/queries'
 import { displayName } from '@/types'
+import {
+  READY_THRESHOLD,
+  STATE_PASS_MARK,
+  readinessScale,
+} from '@/lib/readiness'
 import { PageHeader } from '@/components/ui/PageHeader'
 import { Card, CardBody, CardHeader } from '@/components/ui/Card'
 import { ButtonLink } from '@/components/ui/Button'
@@ -54,7 +59,7 @@ export default async function DashboardPage() {
             <Stat
               label="Readiness"
               value="—"
-              hint="Unlocks after your first scored quiz"
+              hint={`Unlocks after your first scored quiz · ready at ${READY_THRESHOLD}%`}
             />
           </dl>
         </CardBody>
@@ -153,10 +158,40 @@ export default async function DashboardPage() {
           title="Recent activity"
           description="A running log of lessons completed, quizzes taken and scores recorded."
         />
-        <ComingSoon
-          title="Exam readiness"
-          description="A single clear answer to the question that matters: are you ready to book the exam?"
-        />
+        {/* The scale is shown before any score exists on purpose: a student
+            should know what they are aiming at from the first day, not
+            discover the bar the first time they fall short of it. The numbers
+            come from lib/readiness.ts so this card and the eventual
+            calculation cannot disagree. */}
+        <Card>
+          <CardBody>
+            <h2 className="text-base font-semibold">Exam readiness</h2>
+            <p className="mt-1 text-sm text-slate-500">
+              A single clear answer to the question that matters: are you ready
+              to book the exam? Scoring arrives with the practice exams; this
+              is the scale it will use.
+            </p>
+            <dl className="mt-4 space-y-3">
+              {readinessScale().map((band) => (
+                <div key={band.band} className="flex gap-3">
+                  <dt className="w-20 shrink-0 text-sm font-medium text-slate-800 tabular-nums">
+                    {band.from}–{band.to}%
+                  </dt>
+                  <dd className="min-w-0 text-sm text-slate-600">
+                    <span className="font-medium text-slate-800">
+                      {band.label}
+                    </span>
+                    <span className="block text-slate-500">{band.advice}</span>
+                  </dd>
+                </div>
+              ))}
+            </dl>
+            <p className="mt-4 text-xs text-slate-500">
+              The state examination passes at {STATE_PASS_MARK}%. We set the
+              bar higher so that &ldquo;ready&rdquo; means ready on the day.
+            </p>
+          </CardBody>
+        </Card>
       </section>
     </>
   )

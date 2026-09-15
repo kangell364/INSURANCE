@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { render, screen, within } from '@testing-library/react'
 
 /* ==========================================================================
    Server Component rendering.
@@ -14,6 +14,7 @@ const requireAuthMock = vi.hoisted(() => vi.fn())
 const requireAdminMock = vi.hoisted(() => vi.fn())
 const getMyEnrollmentsMock = vi.hoisted(() => vi.fn())
 const getAdminCountsMock = vi.hoisted(() => vi.fn())
+const getContentCountsMock = vi.hoisted(() => vi.fn())
 
 vi.mock('@/lib/auth', () => ({
   requireAuth: requireAuthMock,
@@ -25,7 +26,13 @@ vi.mock('@/lib/auth', () => ({
 vi.mock('@/lib/queries', () => ({
   getMyEnrollments: getMyEnrollmentsMock,
   getAdminCounts: getAdminCountsMock,
+  getContentCounts: getContentCountsMock,
   getActiveCourses: vi.fn(),
+  getCourseOutline: vi.fn(),
+  getLessonWithContent: vi.fn(),
+  getTopicTree: vi.fn(),
+  getMyEnrollmentForCourseSlug: vi.fn(),
+  hasLiveEnrollment: vi.fn(),
 }))
 
 vi.mock('next/navigation', () => ({
@@ -223,6 +230,7 @@ describe('/admin', () => {
   it('re-checks admin status on the page itself, not only in the layout', async () => {
     requireAdminMock.mockResolvedValue(null)
     getAdminCountsMock.mockResolvedValue({ data: null, error: null })
+    getContentCountsMock.mockResolvedValue({ data: null, error: null })
 
     const { container } = render(<div>{await AdminPage()}</div>)
 
@@ -239,6 +247,10 @@ describe('/admin', () => {
       data: { students: 3, courses: 1, enrollments: 2 },
       error: null,
     })
+    getContentCountsMock.mockResolvedValue({
+      data: { modules: 3, lessons: 4, topics: 5 },
+      error: null,
+    })
 
     render(await AdminPage())
 
@@ -246,8 +258,9 @@ describe('/admin', () => {
       'Courses',
       'Modules',
       'Lessons',
+      'Exam blueprint',
       'Question bank',
-      'Exam blueprints',
+      'Practice exam papers',
       'Students',
       'Instructors',
       'Reports',
@@ -258,6 +271,38 @@ describe('/admin', () => {
       ).toBeInTheDocument()
     }
 
-    expect(screen.getAllByText(/^Phase \d$/).length).toBe(9)
+    // Scoped to the list: the explanatory alert above it also contains the
+    // words "In progress", and counting page-wide would silently pass at 5.
+    const tools = within(
+      screen.getByRole('list', { name: 'Management tools' }),
+    )
+    // Four content areas now have a schema behind them and are badged
+    // "In progress"; the remaining six are still labelled with their phase.
+    expect(tools.getAllByText('In progress').length).toBe(4)
+    expect(tools.getAllByText(/^Phase \d$/).length).toBe(6)
+  })
+
+  it('shows the content counts alongside the account counts', async () => {
+    requireAdminMock.mockResolvedValue({
+      ...STUDENT,
+      profile: { ...STUDENT.profile, role: 'admin' as const },
+    })
+    getAdminCountsMock.mockResolvedValue({
+      data: { students: 3, courses: 1, enrollments: 2 },
+      error: null,
+    })
+    getContentCountsMock.mockResolvedValue({
+      data: { modules: 7, lessons: 22, topics: 15 },
+      error: null,
+    })
+
+    render(await AdminPage())
+
+    expect(screen.getByText('7')).toBeInTheDocument()
+    expect(screen.getByText('22')).toBeInTheDocument()
+    expect(screen.getByText('15')).toBeInTheDocument()
+    // Counts include drafts, and the label must say so — an admin comparing
+    // this against the public syllabus would otherwise think rows are missing.
+    expect(screen.getAllByText('Drafts included').length).toBe(2)
   })
 })

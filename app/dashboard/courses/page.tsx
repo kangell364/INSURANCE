@@ -96,10 +96,19 @@ export default async function MyCoursesPage() {
                 </CardBody>
 
                 <CardFooter>
-                  <p className="text-sm text-slate-500">
-                    Lessons and quizzes become available with the course content
-                    release.
-                  </p>
+                  {enrollment.course ? (
+                    <ButtonLink
+                      href={`/dashboard/courses/${enrollment.course.slug}`}
+                      variant="secondary"
+                      size="sm"
+                    >
+                      Open course
+                    </ButtonLink>
+                  ) : (
+                    <p className="text-sm text-slate-500">
+                      This course is not currently available.
+                    </p>
+                  )}
                 </CardFooter>
               </Card>
             )

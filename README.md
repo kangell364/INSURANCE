@@ -11,7 +11,7 @@ simulations, plus the instructor and administrator tooling to run all of it.
 
 ## Current phase
 
-**Phase 1 — application foundation.** This is the only phase implemented.
+**Phase 1 (complete) and Phase 2 step 1 (complete).**
 
 Phase 1 delivers:
 
@@ -24,10 +24,25 @@ Phase 1 delivers:
 - An admin shell with placeholder navigation for later phases
 - Automated database/RLS tests and an application test suite
 
-Phase 1 deliberately does **not** include: course content, modules, lessons,
-quizzes, the question bank, the exam simulator, scoring, reporting, or payments.
-Where the UI shows a section for one of those, it is explicitly labelled as
-upcoming rather than populated with invented data.
+**Phase 2 step 1 — course content** adds:
+
+- `modules`, `lessons`, `lesson_contents`, `topics` and `lesson_topics`, with
+  RLS on every one
+- A **public syllabus**: module and lesson titles are readable by anyone,
+  including search engines, at `/courses/[slug]`
+- **Paid lesson bodies**: `lesson_contents` grants nothing to `anon` and is
+  released by RLS only to a caller holding a live enrollment
+- A lesson reader at `/dashboard/courses/[courseSlug]/[lessonSlug]` with
+  cross-module previous/next navigation
+- A restricted Markdown renderer that cannot emit HTML (see
+  `lib/markdown.ts`)
+- The readiness scale (`lib/readiness.ts`) — the thresholds the eventual
+  scoring will use
+
+Still **not** included: quizzes, the question bank, the exam simulator,
+scoring, reporting, payments, and the admin authoring UI — content is currently
+created with SQL. Where the UI shows a section for one of those, it is
+explicitly labelled as upcoming rather than populated with invented data.
 
 ### Repository layout note
 
@@ -227,9 +242,97 @@ Indexed on `student_id`, `course_id`, and `(student_id, status)`.
 
 ---
 
+## Content schema (Phase 2)
+
+```
+course
+  └── module            ordered within the course
+        └── lesson      ordered within the module  ← PUBLIC metadata
+              └── lesson_contents                  ← PAID body
+
+topic                   the state's exam blueprint, a separate hierarchy
+  └── lesson_topics     many-to-many with lessons
+```
+
+### Why the lesson body is a separate table
+
+A lesson has two halves with different audiences. Its **metadata** — title,
+slug, position, estimated minutes — is the public syllabus: what a prospective
+student reads before paying, and what a search engine indexes. Its **body** is
+the product, and must reach only a student with a live enrollment.
+
+Those two rules cannot both apply to one row. RLS decides which **rows** a
+caller sees; column GRANTs decide which **columns** a **role** may touch.
+Neither expresses "this caller may read these columns of this row but not those
+columns of the same row" — an anonymous visitor and an enrolled student both
+connect as a database role, and the student's privilege is a property of their
+*enrollment*, not of their role. A single `lessons.body` column therefore has
+no correct grant: granting it gives the course away, revoking it hides the
+course from the people who paid.
+
+So the body lives in `public.lesson_contents`, which grants **nothing** to
+`anon` and whose policy requires both publication and a live enrollment. This
+is the same reasoning that will put the answer key in its own table rather than
+in a column of `question_options`.
+
+### Denormalised `course_id`, held true by composite foreign keys
+
+`lessons`, `lesson_contents` and `lesson_topics` each carry `course_id`, which
+looks like a normalisation error. It is not: `modules` and `lessons` each carry
+a `unique (id, course_id)`, and the child tables' foreign keys point at those
+**pairs**. PostgreSQL then refuses any row whose `course_id` disagrees with its
+parent's, and `on update cascade` rewrites children when a module moves.
+
+Two things fall out of this:
+
+- The enrollment check in the hottest RLS policy reads one column instead of
+  joining two tables on every row scanned.
+- A lesson from one course **cannot** be tagged with a topic from another. No
+  trigger to forget, no application check to bypass — no such row satisfies
+  both foreign keys.
+
+### Ordering, and why `position` is deferrable
+
+`modules (course_id, position)` and `lessons (module_id, position)` are unique
+but **deferrable**. Reordering rewrites several rows and necessarily passes
+through a state where two share a position; deferring the check to COMMIT lets
+a reorder be the obvious set of UPDATEs in one transaction instead of a dance
+with sentinel values.
+
+The cost, which is easy to hit: PostgreSQL refuses a deferrable constraint as
+an `ON CONFLICT` arbiter, so an upsert on `modules` must arbitrate on the
+primary key. `supabase/seed.sql` does exactly that.
+
+### Topics
+
+The blueprint taxonomy is **orthogonal to modules**. A module is how we teach;
+a topic is how the state tests. Conflating them makes topic-level scoring
+impossible later — a readiness score could only say "you are weak on chapter
+4", which is a fact about our book rather than about the exam.
+
+Topics nest at most one level, enforced by `enforce_topic_depth()`. Combined
+with the `topics_no_self_parent` check, that makes cycles impossible — which
+matters because the readiness calculation walks the taxonomy, and a cycle would
+be an infinite loop reachable by anyone who can author content.
+
+### Markdown
+
+Lesson bodies are Markdown, parsed by `lib/markdown.ts` into a **typed node
+tree** and rendered as React elements by `components/Markdown.tsx`. The parser
+never produces an HTML string and the render path contains no
+`dangerouslySetInnerHTML`, so author text is escaped by React. Raw HTML in a
+body renders as literal text; link hrefs are checked against a scheme
+allow-list.
+
+This is an allow-list rather than the usual parser-plus-sanitiser deny-list. A
+bug in this parser produces ugly output; a misconfigured sanitiser produces
+cross-site scripting.
+
+---
+
 ## Row-Level Security
 
-RLS is enabled on all three tables **in migrations**. A table with RLS enabled
+RLS is enabled on every table **in migrations**. A table with RLS enabled
 and no matching policy denies everything, which is the correct default.
 
 ### `profiles`
@@ -426,7 +529,7 @@ Two jobs:
 | Job | What it does |
 | --- | ------------ |
 | **Lint, types, tests, build** | `npm ci`, then lint, typecheck, the Vitest suite, and a production build. The build runs with **no** Supabase credentials on purpose: it must succeed without them, and a build that only passed with secrets present would hide the unconfigured-state handling. |
-| **Database schema and RLS policies** | Boots a real PostgreSQL 16 service container, applies the shim and every migration from scratch, and runs the full RLS assertion suite as an unprivileged `authenticated` connection. Plus an explicit guard that `enforce_profile_immutable_columns()` is `SECURITY INVOKER`. |
+| **Database schema and RLS policies** | Boots a real PostgreSQL 16 service container, applies the shim and every migration from scratch, and runs both RLS assertion suites as an unprivileged `authenticated` connection. Plus an explicit guard on the `SECURITY DEFINER` / `INVOKER` mode of every function in the schema. |
 
 The second job is the important one. The RLS suite is what proves a student
 cannot read another student's data or promote themselves, and before CI it only
@@ -452,8 +555,14 @@ The script creates a throwaway database, applies
 `supabase/tests/local/00_supabase_shim.sql` (which recreates just the Supabase
 pieces the migrations depend on — the four roles, `auth.users`, `auth.uid()`,
 and Supabase's default grants), applies every migration in order, then runs
-`supabase/tests/local/01_rls_assertions.sql`. Any failed assertion aborts with a
-non-zero exit code.
+every `*_assertions.sql` suite in `supabase/tests/local/`. Any failed assertion
+aborts with a non-zero exit code.
+
+The suites run against a schema with **no seed data**; each creates the rows it
+needs. That matters because many assertions are counts — "an anonymous visitor
+sees exactly one module" — and a count only means something when the suite owns
+every row in the table. The seed is applied afterwards, purely to prove it
+still loads.
 
 Both suites execute as a real unprivileged `authenticated` connection with a JWT
 subject set, exactly as PostgREST would, and cover:
@@ -474,16 +583,50 @@ plus the signup trigger's behaviour (including that metadata claiming
 constraints, and that `service_role` — and only `service_role` — can promote a
 user.
 
+The content suite (`02_content_rls_assertions.sql`) additionally proves:
+
+11. An anonymous visitor reads the syllabus and is refused `lesson_contents`
+    by the privilege system, before RLS is consulted
+12. A signed-in visitor with no enrollment reads zero lesson bodies
+13. An enrolled student reads exactly the published bodies — not a draft
+    lesson's, not one under a draft module, not one in a draft course
+14. An **expired** or **cancelled** enrollment reads no bodies, while the
+    syllabus stays readable
+15. Unpublishing a module revokes access to its lessons' bodies
+16. A lesson cannot be tagged with another course's topic, and a lesson cannot
+    claim a course its module does not belong to
+17. The topic tree cannot cycle or nest more than one level
+
+### Mutation testing
+
+The assertion suites were checked by breaking the schema on purpose and
+confirming each break was caught — grants widened, policies replaced with
+`using (true)`, RLS disabled, foreign keys and triggers dropped, and the
+entitlement helpers rewritten to ignore expiry.
+
+Two of those breaks were **not** caught on the first attempt, and both fixes
+are worth knowing about:
+
+- Reducing `lesson_is_published()` to check only the lesson's own status passed
+  every end-to-end assertion, because a student calling it reads `lessons`
+  through that table's RLS policy, which had *already* removed lessons under a
+  draft module. The shallow function returned the right answer for the wrong
+  reason. Assertions `I1`–`I5` now test the function directly, as the
+  migration role, where no policy is filtering.
+- A policy rewritten to `using (true)` on `lesson_topics` changed nothing,
+  because the fixtures only tagged a lesson that was supposed to be visible.
+  A visibility test needs at least one row that is supposed to be invisible.
+
 ---
 
 ## Future phases
 
 Not implemented, and not to be started without an explicit decision:
 
-- **Phase 2** — course content schema and authoring: modules, lessons, ordering,
-  and the admin authoring UI
-- **Phase 3** — topics, the tagged question bank with **server-side-only
-  answer keys**, lesson quizzes, exam blueprints
+- **Phase 2** — ~~course content schema~~ (done) and the admin authoring UI,
+  which is the next piece of work
+- **Phase 3** — the tagged question bank with **server-side-only answer
+  keys**, lesson quizzes, exam blueprints
 - **Phase 4** — timed practice exams and state-exam simulations, secure grading,
   topic-level scoring, mastery and readiness tracking, instructor tools
 - **Phase 5** — reporting and analytics, platform settings

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Run the Phase 1 database + RLS assertions against a plain PostgreSQL server.
+# Run the database + RLS assertion suites against a plain PostgreSQL server.
 #
 # Use this when Docker (and therefore `supabase start` / `supabase test db`)
 # is unavailable. It creates a throwaway database, applies the Supabase shim,
@@ -33,14 +33,29 @@ for migration in "${ROOT}"/supabase/migrations/*.sql; do
   "${PSQL[@]}" -d "${DB_NAME}" -f "${migration}" >/dev/null
 done
 
+# Every assertion file in order. 00_ is the Supabase shim, applied above; the
+# rest are suites, each self-contained and each wrapped in its own transaction.
+#
+# The suites run against a schema with NO seed data, and each creates the rows
+# it needs. That matters because several assertions are counts -- "an anonymous
+# visitor sees exactly one module" -- and a count is only meaningful when the
+# suite owns every row in the table. Running these after the seed made adding a
+# sample lesson break the security tests, which trains everyone to edit the
+# assertion instead of asking why it moved.
+#
+# The seed is applied afterwards instead, purely to prove it still loads.
+for suite in "${ROOT}"/supabase/tests/local/*_assertions.sql; do
+  echo "==> Running $(basename "${suite}")"
+  "${PSQL[@]}" -d "${DB_NAME}" -f "${suite}"
+done
+
+# Applied last and only to check it is valid SQL against the current schema.
+# Nothing asserts on it.
 echo "==> Applying seed data"
 "${PSQL[@]}" -d "${DB_NAME}" -f "${ROOT}/supabase/seed.sql" >/dev/null
-
-echo "==> Running RLS assertions"
-"${PSQL[@]}" -d "${DB_NAME}" -f "${ROOT}/supabase/tests/local/01_rls_assertions.sql"
 
 echo "==> Dropping database ${DB_NAME}"
 "${PSQL[@]}" -d postgres -c "drop database if exists ${DB_NAME};" >/dev/null
 
 echo
-echo "All Phase 1 RLS assertions passed."
+echo "All RLS assertions passed."

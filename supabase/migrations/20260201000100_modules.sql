@@ -1,0 +1,71 @@
+-- ===========================================================================
+-- Phase 2 / 02 — modules
+--
+-- A module is an ordered chapter within a course. It is a TEACHING structure:
+-- how the material is sequenced. It is deliberately not the same thing as a
+-- topic, which is how the state EXAMINES the material. See
+-- docs/phase-2-design.md, section 3.
+-- ===========================================================================
+
+create table public.modules (
+  id          uuid primary key default gen_random_uuid(),
+  course_id   uuid not null references public.courses (id) on delete cascade,
+  title       text not null,
+  description text,
+  position    integer not null,
+  status      public.content_status not null default 'draft',
+  created_at  timestamptz not null default now(),
+  updated_at  timestamptz not null default now(),
+
+  constraint modules_title_length check (char_length(title) between 1 and 200),
+  constraint modules_position_positive check (position > 0),
+
+  -- Ordering within a course is unique, but DEFERRABLE.
+  --
+  -- Reordering modules means rewriting several rows' positions, and any
+  -- sequence of individual UPDATEs passes through a state where two rows
+  -- briefly share a position. With an immediate constraint the only ways out
+  -- are a temporary sentinel position (ugly, and leaves debris if the
+  -- transaction dies) or renumbering in an order the caller has to compute.
+  -- Deferring the check to COMMIT lets a reorder be written as the obvious
+  -- set of UPDATEs inside one transaction:
+  --
+  --   begin;
+  --   set constraints public.modules_course_position_key deferred;
+  --   update public.modules set position = 2 where id = '...';
+  --   update public.modules set position = 1 where id = '...';
+  --   commit;
+  --
+  -- INITIALLY IMMEDIATE keeps the default strict, so an ordinary single-row
+  -- insert still fails fast at the statement rather than at COMMIT.
+  --
+  -- THE COST, so it is not rediscovered the hard way: PostgreSQL refuses a
+  -- DEFERRABLE constraint as an ON CONFLICT arbiter. `on conflict
+  -- (course_id, position)` is therefore an error, and an upsert on this table
+  -- must arbitrate on the primary key instead. supabase/seed.sql does exactly
+  -- that, for exactly this reason.
+  constraint modules_course_position_key unique (course_id, position)
+    deferrable initially immediate,
+
+  -- Not redundant with the primary key, despite appearances. This is the
+  -- target of the composite foreign key on public.lessons, which is what
+  -- makes lessons.course_id provably consistent with its module's course
+  -- without a trigger. See the note in the lessons migration.
+  constraint modules_id_course_key unique (id, course_id)
+);
+
+comment on table public.modules is
+  'Ordered chapters within a course. Only status = active modules of an '
+  'active course are readable by non-admins.';
+
+comment on column public.modules.position is
+  'One-based ordering within the course. Unique per course, deferrable so a '
+  'multi-row reorder can be done in a single transaction.';
+
+-- The catalogue and syllabus pages read every module of one course in order.
+create index modules_course_position_idx
+  on public.modules (course_id, position);
+
+create trigger modules_set_updated_at
+  before update on public.modules
+  for each row execute function public.set_updated_at();

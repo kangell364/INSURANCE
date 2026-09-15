@@ -1,6 +1,12 @@
 # Phase 2 — Course content and question bank: design
 
-**Status: proposal. Nothing here is implemented.**
+**Status: partly implemented.** Step 1 of the build order (sections 2 and 3 —
+modules, lessons, topics and their policies) is built, tested and shipped. The
+question bank and assessment sections remain a proposal.
+
+All four open questions are now settled; each is marked **Decision** in place
+below, with the reasoning kept rather than deleted so the next person can see
+what was traded away.
 
 This document exists to settle the shape of the content and assessment schema
 *before* any of it is built, because two decisions in it are expensive to
@@ -122,13 +128,32 @@ rows inside one transaction without tripping the constraint mid-flight.
 | `status`     | `content_status`  |                                         |
 | `estimated_minutes` | integer, null | shown to students planning a session |
 
-**Open question (A):** what format is `body`? Markdown rendered at read time is
-simplest and diffs well in migrations. Portable-text/JSON blocks are richer
-(callouts, tables, embedded question previews) but need an editor. My
-recommendation is **Markdown**, with a small set of custom fenced blocks if
-needed later. Sanitise on render regardless — lesson bodies are authored by
-instructors, not the public, but an instructor account is still not a reason to
-allow arbitrary HTML.
+**Decision (A) — Markdown. IMPLEMENTED.**
+
+The body is Markdown, rendered by `lib/markdown.ts`.
+
+What was built is narrower than "Markdown", and deliberately so. It is a small
+parser that produces a typed node tree — never an HTML string — which
+`components/Markdown.tsx` renders as React elements. Author text therefore
+reaches the page as JSX text children and React escapes it; there is no
+`dangerouslySetInnerHTML` anywhere in the path.
+
+This was chosen over `marked` plus a sanitiser because that pairing is a
+**deny-list**: the parser emits whatever HTML the source contains and a second
+package is configured to strip the dangerous parts. Its safety depends on that
+configuration staying correct across upgrades of two packages. The parser here
+is an **allow-list** — it can only emit the handful of node types it defines —
+so a bug in it produces ugly output rather than executable markup.
+
+The cost is coverage: no tables, no images, no raw HTML (it renders as literal
+text). Tables and images are the two most likely to be wanted for insurance
+content, and both should be added as new node types rather than by swapping in
+a general-purpose parser.
+
+**The body also does not live on `lessons`.** It is in `lesson_contents`, a
+separate table, because lesson metadata is the public syllabus and the body is
+the paid product — and no single row can be both. See the migration
+`20260201000200_lessons.sql` for the full argument.
 
 ---
 
@@ -199,9 +224,18 @@ anything? Two options:
 - **Mutable questions.** Simpler to author; historical scores silently refer to
   text that no longer exists.
 
-My recommendation: **immutable once an attempt references it**, mutable before
-that. It costs one `version` column and a check in the authoring path, and it is
-the difference between a defensible score history and a misleading one.
+**Decision (B) — immutable once answered.** Not yet implemented; it lands with
+the question bank.
+
+A question is freely editable until the first attempt references it. From that
+point an edit creates a new row and archives the old one, and attempts point at
+the exact version answered. It costs one `version` column and a check in the
+authoring path, and it is the difference between a defensible score history and
+a misleading one.
+
+This matters more here than in most products: the thing being sold is a
+prediction about whether someone will pass a real exam. A prediction computed
+from answers to questions that no longer exist is not a prediction.
 
 ---
 
@@ -337,10 +371,25 @@ Saving an in-progress answer can be a plain `INSERT`/`UPDATE` on
 `attempt_responses` under RLS — it needs no elevated privilege, and keeping it
 out of the functions keeps them small.
 
-**Open question (C) — retakes.** Unlimited? Capped per blueprint? Cooling-off
-period? This affects `start_attempt` and whether readiness uses the best, the
-latest, or a rolling average of attempts. It is also a commercial decision, not
-only a technical one.
+**Decision (C) — unlimited retakes; readiness from RECENT performance.**
+Not yet implemented; it lands with attempts.
+
+Attempts are not capped and there is no cooling-off period. Capping retakes
+would penalise the exact behaviour the product exists to encourage, and a
+student who wants to sit twenty practice exams the week before their test is a
+student who is using it correctly.
+
+The cap goes somewhere else instead: **readiness is computed from a rolling
+window of recent attempts, never from a best-ever score.** Those are not
+equivalent. "Highest you ever scored" can be reached by retaking one paper
+until the answers are memorised, at which point the product congratulates a
+student for recall of our question bank rather than command of the material —
+and then they fail a $50 exam having been told they were ready. Recent
+performance, preferably weighted towards questions not seen lately, cannot be
+farmed the same way.
+
+Concretely, `start_attempt` imposes no limit, and the readiness calculation
+takes a window rather than a maximum.
 
 ---
 
@@ -357,9 +406,29 @@ only a technical one.
   recent performance, topic coverage and blueprint weightings. Worth writing
   down and version-stamping, so a student's readiness can be explained.
 
-**Open question (D):** what readiness number does a student have to hit before
-the product says "book the exam"? That is a pedagogical and reputational call,
-and it should be made by whoever owns the content, not inferred from code.
+**Decision (D) — 80%, shown as three bands. IMPLEMENTED** as the constants and
+scale in `lib/readiness.ts`; the calculation that feeds it is still to come.
+
+| Score   | Band          | What the student is told                  |
+| ------- | ------------- | ----------------------------------------- |
+| 0–64%   | Not ready     | Keep working; here are your weakest topics |
+| 65–79%  | Getting there | Close; focus on weak topics, not retakes   |
+| 80–100% | Ready to book | Book the state examination                 |
+
+**Why 80 and not 70.** The state examination passes at 70%. Matching it would
+mean a student who scrapes our bar has roughly even odds on the day, because
+practice conditions are always kinder than a Pearson VUE testing centre — our
+70% is not the state's 70%. Ten points of margin is what makes "you are ready"
+a prediction rather than a hope.
+
+**Why bands and not a number.** A bare percentage invites a student to grind it
+up a point at a time. What they actually need is an answer to "should I book
+yet", plus the list of topics holding them back. The bands give the first; the
+topic breakdown gives the second.
+
+The thresholds live in one module with a `SCALE_VERSION` constant. Any stored
+readiness result must be stamped with that version: a score recorded under one
+scale and displayed under another is a number that means nothing.
 
 ---
 
@@ -367,11 +436,15 @@ and it should be made by whoever owns the content, not inferred from code.
 
 Each step is independently shippable and testable.
 
-1. `modules`, `lessons`, `lesson_topics`, `topics` + RLS + admin read. Course
-   content becomes visible; no assessment yet.
+1. ~~`modules`, `lessons`, `lesson_topics`, `topics` + RLS + admin read. Course
+   content becomes visible; no assessment yet.~~ **DONE.** Six migrations, 62
+   RLS assertions, the public syllabus page, the student course page and the
+   lesson reader. `lesson_contents` was added to the plan during
+   implementation — see decision A.
 2. Lesson authoring UI in the admin shell (replaces the `Courses` / `Modules` /
-   `Lessons` placeholders).
-3. Student lesson navigation and `lesson_completions` — the first real progress.
+   `Lessons` placeholders). **NEXT.** Content is currently authored in SQL.
+3. Student lesson navigation ~~and~~ **(done)** plus `lesson_completions` — the
+   first real progress.
 4. Question bank tables with **zero student grants**, plus the admin authoring
    UI. No delivery path yet, so nothing to leak.
 5. `start_attempt` / `get_attempt_questions` / `submit_attempt`, with RLS tests

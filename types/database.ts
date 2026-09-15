@@ -1,5 +1,5 @@
 /**
- * Database schema types for the Phase 1 tables.
+ * Database schema types for the Phase 1 and Phase 2 tables.
  *
  * This file is hand-written but deliberately mirrors the exact shape that
  * `supabase gen types typescript` produces, so it can be replaced wholesale
@@ -129,6 +129,199 @@ export type Database = {
           },
         ]
       }
+      modules: {
+        Row: {
+          id: string
+          course_id: string
+          title: string
+          description: string | null
+          position: number
+          status: Database['public']['Enums']['content_status']
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          course_id: string
+          title: string
+          description?: string | null
+          position: number
+          status?: Database['public']['Enums']['content_status']
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          title?: string
+          description?: string | null
+          position?: number
+          status?: Database['public']['Enums']['content_status']
+        }
+        Relationships: [
+          {
+            foreignKeyName: 'modules_course_id_fkey'
+            columns: ['course_id']
+            isOneToOne: false
+            referencedRelation: 'courses'
+            referencedColumns: ['id']
+          },
+        ]
+      }
+      lessons: {
+        Row: {
+          id: string
+          module_id: string
+          course_id: string
+          title: string
+          slug: string
+          summary: string | null
+          position: number
+          status: Database['public']['Enums']['content_status']
+          estimated_minutes: number | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          module_id: string
+          /**
+           * Required, and must match the module's own course. The composite
+           * foreign key lessons_module_fkey rejects any other value, so this
+           * is not a field a caller may choose freely.
+           */
+          course_id: string
+          title: string
+          slug: string
+          summary?: string | null
+          position: number
+          status?: Database['public']['Enums']['content_status']
+          estimated_minutes?: number | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          title?: string
+          slug?: string
+          summary?: string | null
+          position?: number
+          status?: Database['public']['Enums']['content_status']
+          estimated_minutes?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: 'lessons_module_fkey'
+            columns: ['module_id', 'course_id']
+            isOneToOne: false
+            referencedRelation: 'modules'
+            referencedColumns: ['id', 'course_id']
+          },
+        ]
+      }
+      lesson_contents: {
+        Row: {
+          lesson_id: string
+          course_id: string
+          body: string
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          lesson_id: string
+          course_id: string
+          body: string
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          body?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: 'lesson_contents_lesson_fkey'
+            columns: ['lesson_id', 'course_id']
+            isOneToOne: true
+            referencedRelation: 'lessons'
+            referencedColumns: ['id', 'course_id']
+          },
+        ]
+      }
+      topics: {
+        Row: {
+          id: string
+          course_id: string
+          parent_topic_id: string | null
+          code: string
+          name: string
+          blueprint_weight: number | null
+          position: number
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          course_id: string
+          parent_topic_id?: string | null
+          code: string
+          name: string
+          blueprint_weight?: number | null
+          position: number
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          parent_topic_id?: string | null
+          code?: string
+          name?: string
+          blueprint_weight?: number | null
+          position?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: 'topics_course_id_fkey'
+            columns: ['course_id']
+            isOneToOne: false
+            referencedRelation: 'courses'
+            referencedColumns: ['id']
+          },
+          {
+            foreignKeyName: 'topics_parent_topic_id_fkey'
+            columns: ['parent_topic_id']
+            isOneToOne: false
+            referencedRelation: 'topics'
+            referencedColumns: ['id']
+          },
+        ]
+      }
+      lesson_topics: {
+        Row: {
+          lesson_id: string
+          topic_id: string
+          course_id: string
+          created_at: string
+        }
+        Insert: {
+          lesson_id: string
+          topic_id: string
+          course_id: string
+          created_at?: string
+        }
+        Update: Record<never, never>
+        Relationships: [
+          {
+            foreignKeyName: 'lesson_topics_lesson_fkey'
+            columns: ['lesson_id', 'course_id']
+            isOneToOne: false
+            referencedRelation: 'lessons'
+            referencedColumns: ['id', 'course_id']
+          },
+          {
+            foreignKeyName: 'lesson_topics_topic_fkey'
+            columns: ['topic_id', 'course_id']
+            isOneToOne: false
+            referencedRelation: 'topics'
+            referencedColumns: ['id', 'course_id']
+          },
+        ]
+      }
     }
     Views: Record<never, never>
     Functions: {
@@ -136,11 +329,20 @@ export type Database = {
         Args: { uid?: string }
         Returns: boolean
       }
+      is_enrolled_in_course: {
+        Args: { p_course_id: string }
+        Returns: boolean
+      }
+      lesson_is_published: {
+        Args: { p_lesson_id: string }
+        Returns: boolean
+      }
     }
     Enums: {
       user_role: 'student' | 'instructor' | 'admin'
       course_status: 'draft' | 'active' | 'archived'
       enrollment_status: 'active' | 'completed' | 'expired' | 'cancelled'
+      content_status: 'draft' | 'active' | 'archived'
     }
     CompositeTypes: Record<never, never>
   }

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { PageHeader } from '@/components/ui/PageHeader'
 import { Card, CardBody, CardFooter } from '@/components/ui/Card'
 import { ButtonLink } from '@/components/ui/Button'
@@ -45,7 +46,17 @@ export default async function CoursesPage() {
           {courses.map((course) => (
             <Card key={course.id} as="li" className="flex flex-col">
               <CardBody className="flex-1">
-                <h2 className="text-lg font-semibold">{course.title}</h2>
+                <h2 className="text-lg font-semibold">
+                  {/* The whole card is a link target via the title, so the
+                      accessible name of the link is the course name rather
+                      than a row of identical "Get started"s. */}
+                  <Link
+                    href={`/courses/${course.slug}`}
+                    className="text-navy-800 hover:text-navy-950 hover:underline"
+                  >
+                    {course.title}
+                  </Link>
+                </h2>
                 {course.description && (
                   <p className="mt-2 text-sm leading-relaxed text-slate-600">
                     {course.description}
@@ -53,8 +64,12 @@ export default async function CoursesPage() {
                 )}
               </CardBody>
               <CardFooter>
-                <ButtonLink href="/signup" variant="secondary" size="sm">
-                  Get started
+                <ButtonLink
+                  href={`/courses/${course.slug}`}
+                  variant="secondary"
+                  size="sm"
+                >
+                  View syllabus
                 </ButtonLink>
               </CardFooter>
             </Card>
