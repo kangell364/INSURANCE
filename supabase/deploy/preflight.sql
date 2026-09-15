@@ -32,7 +32,11 @@ creates(sort_key, kind, name, why) as (values
   (2, 'table', 'lesson_completions',    'created by 20260201000600'),
   (2, 'func',  'is_enrolled_in_course', 'created by 20260201000400'),
   (2, 'func',  'lesson_is_published',   'created by 20260201000400'),
-  (2, 'func',  'enforce_topic_depth',   'created by 20260201000300')
+  (2, 'func',  'enforce_topic_depth',   'created by 20260201000300'),
+  -- Step 8 adds a COLUMN rather than creating a new object, so it was
+  -- invisible to an earlier version of this file: nine of ten could be
+  -- present with no way to tell whether the last step had run.
+  (2, 'col',   'topics.question_count',  'created by 20260201000700 (step 8)')
 ),
 all_objects as (
   select * from required union all select * from creates
@@ -46,6 +50,10 @@ checked as (
                                  where table_schema = 'public' and table_name = o.name)
       when 'func'  then exists (select 1 from pg_proc p join pg_namespace n on n.oid = p.pronamespace
                                  where n.nspname = 'public' and p.proname = o.name)
+      when 'col'   then exists (select 1 from information_schema.columns
+                                 where table_schema = 'public'
+                                   and table_name  = split_part(o.name, '.', 1)
+                                   and column_name = split_part(o.name, '.', 2))
     end as found
   from all_objects o
 )
@@ -86,9 +94,14 @@ select sort_key, section, item, verdict, detail from (
   union all
   select 3, '3. VERDICT'::text, 'Phase 2 already present?'::text,
     case when (select count(*) from checked where sort_key = 2 and found) = 0
-         then 'NO — none of the 10 objects exist, so it is safe to run'
-         else '>>> PARTLY — ' || (select count(*) from checked where sort_key = 2 and found)
-              || ' of 10 already exist' end::text,
+         then 'NO — none of the 11 objects exist, so it is safe to run'
+         else case when (select count(*) from checked where sort_key = 2 and not found) = 0
+                   then 'ALL PRESENT — all 11 objects exist; the schema is complete'
+                   else '>>> PARTLY — ' || (select count(*) from checked where sort_key = 2 and found)
+                        || ' of 11 exist. Missing: '
+                        || (select string_agg(name, ', ' order by name)
+                              from checked where sort_key = 2 and not found)
+              end end::text,
     'a failed run rolls back, so this should normally be zero'::text, 'b'
 
   union all
