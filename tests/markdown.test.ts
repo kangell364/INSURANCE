@@ -57,6 +57,56 @@ describe('block parsing', () => {
     expect(list.items.map(text)).toEqual(['First', 'Second'])
   })
 
+  // The tests above feed the parser lines short enough never to wrap, which
+  // is why they all passed while every wrapped list in every lesson rendered
+  // wrongly. These use realistic lesson text.
+  it('folds a wrapped list item into one item', () => {
+    const list = firstOfType(
+      parseMarkdown(
+        '- Percentage — a proportion of the insured value rather than\n' +
+          '  of the loss. 2% of a $400,000 dwelling is $8,000.',
+      ),
+      'list',
+    )
+    expect(list.items).toHaveLength(1)
+    expect(text(list.items[0])).toBe(
+      'Percentage — a proportion of the insured value rather than of the loss. ' +
+        '2% of a $400,000 dwelling is $8,000.',
+    )
+  })
+
+  it('keeps wrapped ordered items in ONE list so numbering runs 1, 2, 3', () => {
+    const blocks = parseMarkdown(
+      '1. A building worth $800,000 carries 80% coinsurance and a\n' +
+        '   $500,000 limit. What is paid?\n' +
+        '2. A homeowner has a 2% wind deductible on a dwelling insured\n' +
+        '   for $350,000. What is paid?\n' +
+        '3. Third item, one line.',
+    )
+    const lists = blocks.filter((b) => b.type === 'list')
+    expect(lists).toHaveLength(1)
+    expect(lists[0].items).toHaveLength(3)
+    // A wrapped item must not leak out as a paragraph of its own.
+    expect(blocks.filter((b) => b.type === 'paragraph')).toHaveLength(0)
+  })
+
+  it('does not swallow the paragraph that follows a list', () => {
+    const blocks = parseMarkdown('- Fire\n- Theft\n\nThat is the whole list.')
+    expect(firstOfType(blocks, 'list').items).toHaveLength(2)
+    expect(text(firstOfType(blocks, 'paragraph').children)).toBe(
+      'That is the whole list.',
+    )
+  })
+
+  it('starts a new list at an indented marker rather than folding it in', () => {
+    const blocks = parseMarkdown('- Top level\n  - Indented marker')
+    const lists = blocks.filter((b) => b.type === 'list')
+    expect(text(lists[0].items[0])).toBe('Top level')
+    expect(lists.flatMap((l) => l.items.map(text))).not.toContain(
+      'Top level - Indented marker',
+    )
+  })
+
   it('does not merge an unordered list into an ordered one', () => {
     const blocks = parseMarkdown('- A\n- B\n1. C')
     expect(blocks.filter((b) => b.type === 'list')).toHaveLength(2)

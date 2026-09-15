@@ -254,8 +254,37 @@ function parseBlocks(lines: string[], depth: number): Block[] {
       while (i < lines.length) {
         const item = listPattern.exec(lines[i])
         if (!item) break
-        items.push(parseInline(item[1].trim()))
         i += 1
+
+        // Continuation lines. A list item that wraps across several source
+        // lines is ONE item: the later lines are indented and begin no other
+        // block, so they are folded into the item with a space, exactly as a
+        // paragraph's lines are.
+        //
+        // Without this the wrap ended the list. That was not a cosmetic bug.
+        // Every wrapped item became its own single-item list, so an ordered
+        // list of four wrapped questions rendered as four separate lists each
+        // numbered "1.", and each continuation line surfaced as a stray
+        // unindented paragraph. Both were visible on the first lesson put in
+        // front of a browser and neither was visible in the tests, which only
+        // ever fed the parser lines short enough not to wrap.
+        const parts = [item[1].trim()]
+        while (i < lines.length && /^\s+\S/.test(lines[i])) {
+          const rest = lines[i].trim()
+          if (
+            UNORDERED.test(rest) ||
+            ORDERED.test(rest) ||
+            HEADING.test(rest) ||
+            QUOTE.test(rest) ||
+            FENCE.test(rest) ||
+            RULE.test(rest)
+          ) {
+            break
+          }
+          parts.push(rest)
+          i += 1
+        }
+        items.push(parseInline(parts.join(' ')))
       }
       blocks.push({ type: 'list', ordered: listPattern === ORDERED, items })
       continue
