@@ -44,10 +44,36 @@ done
 # assertion instead of asking why it moved.
 #
 # The seed is applied afterwards instead, purely to prove it still loads.
+# A FLOOR on how many assertions must actually report success.
+#
+# Why this exists: every assertion in these suites announces itself with a
+# `raise notice 'ok ...'`, and a passing exit code on its own does not prove
+# they ran -- only that nothing raised. A suite that silently stopped
+# executing, a file that stopped matching the glob, or a transaction that
+# rolled back early would all exit zero while proving nothing.
+#
+# This is a minimum, not an expected value, so adding assertions never
+# requires touching it. It trips only when assertions DISAPPEAR, which is
+# exactly the change nobody means to make.
+MIN_ASSERTIONS="${TEP_MIN_ASSERTIONS:-119}"
+total=0
+
 for suite in "${ROOT}"/supabase/tests/local/*_assertions.sql; do
   echo "==> Running $(basename "${suite}")"
-  "${PSQL[@]}" -d "${DB_NAME}" -f "${suite}"
+  # psql writes `raise notice` to stderr, so it is teed to count the passes
+  # while still being shown.
+  output=$("${PSQL[@]}" -d "${DB_NAME}" -f "${suite}" 2>&1 | tee /dev/stderr)
+  count=$(printf '%s\n' "${output}" | grep -c 'NOTICE:  ok' || true)
+  echo "    ${count} assertions passed"
+  total=$(( total + count ))
 done
+
+echo "==> ${total} assertions passed in total (minimum ${MIN_ASSERTIONS})"
+if [ "${total}" -lt "${MIN_ASSERTIONS}" ]; then
+  echo "ERROR: only ${total} assertions ran, expected at least ${MIN_ASSERTIONS}." >&2
+  echo "Assertions were removed, or a suite stopped executing part way." >&2
+  exit 1
+fi
 
 # Applied last and only to check it is valid SQL against the current schema.
 # Nothing asserts on it.

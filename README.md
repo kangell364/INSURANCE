@@ -558,6 +558,14 @@ and Supabase's default grants), applies every migration in order, then runs
 every `*_assertions.sql` suite in `supabase/tests/local/`. Any failed assertion
 aborts with a non-zero exit code.
 
+The runner also enforces a **floor on the number of assertions that report
+success** (currently 119, overridable with `TEP_MIN_ASSERTIONS`). A green exit
+code proves only that nothing raised — a suite that stopped executing part way,
+or a file that stopped matching the glob, would also exit zero while proving
+nothing. The floor is a minimum rather than an expected value, so adding
+assertions never requires touching it; it trips only when assertions disappear,
+which is the change nobody means to make.
+
 The suites run against a schema with **no seed data**; each creates the rows it
 needs. That matters because many assertions are counts — "an anonymous visitor
 sees exactly one module" — and a count only means something when the suite owns
