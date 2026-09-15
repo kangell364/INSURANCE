@@ -3,6 +3,14 @@
 One Markdown file per lesson, reviewed here and loaded into the database once
 approved. Prose is reviewable in a way SQL is not.
 
+## File naming decides order
+
+Lesson files carry a two-digit prefix — `01-risk-peril-and-hazard.md` — and
+module directories do the same. The importer sorts by path, so without the
+prefix the order is alphabetical, which put coinsurance before the definition
+of risk. The prefix is not part of the slug; the URL comes from front matter
+and is unaffected by renumbering.
+
 ## Front matter
 
 Every file opens with a `---` block carrying `module`, `title`, `slug`,
