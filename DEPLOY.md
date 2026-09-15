@@ -99,10 +99,28 @@ The two things preflight cannot see are worth stating plainly:
   committed and you can safely try again once the cause is fixed.
 - **A truncated paste is indistinguishable from a broken file.** The file is
   around 970 lines. If the SQL editor mangled it, the error will point at a
-  statement that looks fine in the repository. **Apply the eight files in
-  `supabase/migrations/20260201*.sql` one at a time, in filename order,
-  instead** — whichever one errors tells you exactly where the problem is,
-  and eight small pastes cannot be truncated the way one large one can.
+  statement that looks fine in the repository.
+
+**For that case, use `supabase/deploy/steps/` instead** — the same eight
+migrations, one file each, numbered in the order they must run, and **each
+wrapped in its own transaction**:
+
+```
+01-content_types.sql          05-content_grants.sql
+02-modules.sql                06-content_rls.sql
+03-lessons.sql                07-lesson_completions.sql
+04-topics.sql                 08-topic_question_count.sql
+```
+
+The largest is under 8 KB, so none of them can truncate the way one 40 KB
+paste can, and whichever one errors names the migration. Because each is its
+own transaction, a failure leaves **that step** unapplied while the steps
+before it stay — verified by injecting a failure into step 2 and confirming
+`content_status` exists and `modules` does not.
+
+**Run them in order, and do not re-run one that succeeded** — they are not
+idempotent. If you lose track, `preflight.sql` lists which of the ten objects
+exist.
 
 What has been verified about the file itself: it applies cleanly onto a
 database carrying Phase 1, both as a superuser and as a non-superuser role
