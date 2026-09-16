@@ -52,6 +52,13 @@ jobs:
       - name: Validate lesson content
         run: node scripts/import-content.mjs --check
 
+      # The question bank. Refuses a question with no correct option or with
+      # two: the first cannot be scored, and the second has an argument in it.
+      # A wrong answer key marks a correct answer WRONG, which is worse than a
+      # wrong lesson, so this gate is stricter than it looks.
+      - name: Validate question bank
+        run: node scripts/import-questions.mjs --check
+
       # The statute extractor's text cleanup, tested directly. The PDFs from
       # statutes.capitol.texas.gov render non-breaking spaces as a literal
       # capital "A", which collides with the article "A" that opens most

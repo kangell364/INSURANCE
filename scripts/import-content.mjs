@@ -86,6 +86,11 @@ function parseFrontMatter(text) {
 function walk(dir) {
   return readdirSync(dir).flatMap((entry) => {
     const full = join(dir, entry)
+    // content/questions/ is the question bank, which has its own front matter
+    // and its own importer. Without this the lesson importer walks into it and
+    // rejects every file for a missing "module" key -- which is exactly what
+    // happened the moment the question bank was added.
+    if (entry === 'questions' && dirname(full) === CONTENT) return []
     if (statSync(full).isDirectory()) return walk(full)
     return full.endsWith('.md') && !basename(full).startsWith('README') &&
       basename(full) !== 'COURSE-MAP.md'
