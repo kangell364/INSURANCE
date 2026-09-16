@@ -34,19 +34,22 @@ blocks the site — so if one 404s, the fallback is
 <https://statutes.capitol.texas.gov> → pick the code → find the chapter.
 
 
-## Tier 1 — each blocks a whole lesson
+## Tier 1 — DONE (16 September 2026)
+
+All seven arrived and are extracted; the lessons they blocked are written.
+Kept here for the record.
 
 Seven files, five topics. Between them these account for an estimated 8–10 of the 30 Texas questions, and none of the material can be written without them. **If you only do one batch, do this one.**
 
 | ✓ | Chapter | Subject | What it unblocks |
 | - | ------- | ------- | ---------------- |
-| ☐ | [IN 4004](https://statutes.capitol.texas.gov/GetStatute.aspx?Code=IN&Value=4004) | Continuing Education | Whole lesson. CE hours, cycle, carry-over, exemptions. TX.I.C.4. |
-| ☐ | [IN 462](https://statutes.capitol.texas.gov/GetStatute.aspx?Code=IN&Value=462) | Property & Casualty Insurance Guaranty Association | Whole lesson. Covered-claim limits, assessments, exclusions. TX.II.G, its own blueprint line. |
-| ☐ | [TN 601](https://statutes.capitol.texas.gov/GetStatute.aspx?Code=TN&Value=601) | Financial Responsibility (Transportation Code) | The minimum liability limits. TIC 1952.101 and 1952.105 both defer to it, so the course cannot state them without it. TX.II.E.2. |
-| ☐ | [LA 401](https://statutes.capitol.texas.gov/GetStatute.aspx?Code=LA&Value=401) | Workers’ Compensation — Definitions (Labor Code) | TX.II.F.1. |
-| ☐ | [LA 406](https://statutes.capitol.texas.gov/GetStatute.aspx?Code=LA&Value=406) | Workers’ Compensation — Coverage & Employer Election (Labor Code) | The non-subscriber rule, which is the most distinctively Texan thing in the module. TX.II.F.1. |
-| ☐ | [LA 408](https://statutes.capitol.texas.gov/GetStatute.aspx?Code=LA&Value=408) | Workers’ Compensation — Benefits (Labor Code) | Income, medical, death and burial benefits. TX.II.F.2. |
-| ☐ | [IN 2151](https://statutes.capitol.texas.gov/GetStatute.aspx?Code=IN&Value=2151) | Texas Automobile Insurance Plan Association | Whole lesson. The auto residual market. TX.II.E.4. |
+| ✓ | [IN 4004](https://statutes.capitol.texas.gov/GetStatute.aspx?Code=IN&Value=4004) | Continuing Education | Whole lesson. CE hours, cycle, carry-over, exemptions. TX.I.C.4. |
+| ✓ | [IN 462](https://statutes.capitol.texas.gov/GetStatute.aspx?Code=IN&Value=462) | Property & Casualty Insurance Guaranty Association | Whole lesson. Covered-claim limits, assessments, exclusions. TX.II.G, its own blueprint line. |
+| ✓ | [TN 601](https://statutes.capitol.texas.gov/GetStatute.aspx?Code=TN&Value=601) | Financial Responsibility (Transportation Code) | The minimum liability limits. TIC 1952.101 and 1952.105 both defer to it, so the course cannot state them without it. TX.II.E.2. |
+| ✓ | [LA 401](https://statutes.capitol.texas.gov/GetStatute.aspx?Code=LA&Value=401) | Workers’ Compensation — Definitions (Labor Code) | TX.II.F.1. |
+| ✓ | [LA 406](https://statutes.capitol.texas.gov/GetStatute.aspx?Code=LA&Value=406) | Workers’ Compensation — Coverage & Employer Election (Labor Code) | The non-subscriber rule, which is the most distinctively Texan thing in the module. TX.II.F.1. |
+| ✓ | [LA 408](https://statutes.capitol.texas.gov/GetStatute.aspx?Code=LA&Value=408) | Workers’ Compensation — Benefits (Labor Code) | Income, medical, death and burial benefits. TX.II.F.2. |
+| ✓ | [IN 2151](https://statutes.capitol.texas.gov/GetStatute.aspx?Code=IN&Value=2151) | Texas Automobile Insurance Plan Association | Whole lesson. The auto residual market. TX.II.E.4. |
 
 ## Tier 2 — each blocks a section of a lesson that otherwise exists
 

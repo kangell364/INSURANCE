@@ -65,10 +65,11 @@ a fee equal to the licence application fee.
 Continuing education is a condition of renewal — **§4003.006(2)** refers to a
 licence not being renewed under **§4004.055**.
 
-**Chapter 4004 sets the requirement, and this course does not yet teach its
-figures**, because the chapter has not been obtained. See
-`docs/module-5-source-gaps.md`. Do not learn CE hours from this course; get
-them from the statute or from TDI.
+**Chapter 4004 sets the requirement**, and it has its own lesson —
+**Continuing Education** — later in this module. The short version: **24 hours
+per licence period, three of them ethics, at least half in a classroom**, with
+a **20-year** licensure exemption and a **90-day** window after the period
+ends to cure a shortfall (§4004.051–.055).
 
 ## Grounds for denial or discipline
 

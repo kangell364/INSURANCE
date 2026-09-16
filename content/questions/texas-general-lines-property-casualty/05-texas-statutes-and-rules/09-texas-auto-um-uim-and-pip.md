@@ -139,13 +139,13 @@ replacement of lost income**.
 Whatever the number of insureds, policies, vehicles or claims, the total to one
 person for one occurrence is capped at the policy's stated limit.
 
-### Where are the Texas minimum liability limits found?
+### What are the Texas minimum auto liability limits?
 
-- [x] Transportation Code Chapter 601, which this course does not state
-- [ ] Insurance Code §1952.105
-- [ ] Insurance Code Chapter 2151
-- [ ] 28 TAC §5.204
+- [x] $30,000 per person, $60,000 per accident for bodily injury, and $25,000 for property damage
+- [ ] $25,000 per person, $50,000 per accident, and $25,000 for property damage
+- [ ] $30,000 per person, $60,000 per accident, and $30,000 for property damage
+- [ ] $50,000 per person, $100,000 per accident, and $25,000 for property damage
 
-Both §1952.101 and §1952.105 **defer to Chapter 601 for the floor**. This course
-has not obtained the Transportation Code, so get those figures from the statute
-rather than from here.
+**30/60/25**, set by **§601.072(a-1) of the Transportation Code** effective
+1 January 2011. Both §1952.101 and §1952.105 defer to that chapter for the
+floor, so UM and PIP may not be offered below it.

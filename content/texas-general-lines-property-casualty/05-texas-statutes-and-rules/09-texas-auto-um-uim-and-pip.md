@@ -155,22 +155,24 @@ financial responsibility as required by Chapter 601, Transportation Code.**
 **An uninsured driver gets no protection from the no-subrogation rule.** That
 is the clearest single contrast in the subchapter, and a likely question.
 
+## Where the limits come from
+
+**§1952.105(c)** forbids offering UM or PIP below the amounts prescribed by
+**Chapter 601, Transportation Code** — and those are **30/60/25**: $30,000 for
+bodily injury to one person, $60,000 for two or more in one collision, and
+$25,000 for property damage (§601.072(a-1)). **Financial Responsibility and
+TAIPA**, later in this module, covers that chapter and the auto residual
+market that writes drivers the voluntary market rejects.
+
 ## What is not taught here
 
 The blueprint also cites, under TX.II.E:
 
-- **Transportation Code Chapter 601** — financial responsibility and the
-  **required minimum liability limits**. Chapters 1952.101 and 1952.105 both
-  defer to it for the floor, and **this course does not state those figures**
-  because the Transportation Code has not been obtained.
-- **TIC Chapter 2151** — the Texas Automobile Insurance Plan Association, the
-  auto residual market.
 - **TIC Chapter 1954** — transportation network companies (rideshare).
 - **28 TAC §5.204** and **§5.7002** — auto coverage, and renewal, non-renewal
   and cancellation rules.
 
-See `docs/module-5-source-gaps.md`. **Do not learn the Texas minimum liability
-limits from this course** — get them from Chapter 601.
+See `docs/module-5-source-gaps.md`.
 
 ## How this is examined
 

@@ -59,6 +59,17 @@ jobs:
       - name: Validate question bank
         run: node scripts/import-questions.mjs --check
 
+      # Every "§N.N" in a Texas lesson or question, checked against the
+      # chapter text in reference/statutes/. Drafting Chapter 462 I cited the
+      # net worth exclusion as 462.308; it is 462.212, and 462.308 is a
+      # different provision. This catches a citation to a section that does
+      # not exist. It CANNOT catch a citation to the wrong real section --
+      # only --headings and a reader can do that.
+      #
+      # Citations to chapters not yet downloaded are skipped, not failed.
+      - name: Statute citations resolve
+        run: node scripts/check-citations.mjs
+
       # The statute extractor's text cleanup, tested directly. The PDFs from
       # statutes.capitol.texas.gov render non-breaking spaces as a literal
       # capital "A", which collides with the article "A" that opens most

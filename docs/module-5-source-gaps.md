@@ -1,9 +1,21 @@
 # Module 5 — what is still needed, and what it blocks
 
 Derived from the TX.I and TX.II citations in Pearson VUE #124401, checked
-against `reference/statutes/`. **18 of the 40 chapters the Texas sections cite
-are in hand.** This file lists the other 22, what each one blocks, and in what
+against `reference/statutes/`. **25 of the 40 chapters the Texas sections cite
+are in hand.** This file lists the other 15, what each one blocks, and in what
 order they are worth getting.
+
+> **Tier 1 is done.** IN 4004, IN 462, TN 601, LA 401, LA 406, LA 408 and
+> IN 2151 arrived on 16 September 2026 and are extracted. They produced four
+> new lessons -- Continuing Education, the Guaranty Association, Texas
+> Workers' Compensation, and Financial Responsibility and TAIPA -- and closed
+> the two gaps where existing lessons had to say "this course does not state
+> that figure": the CE hours in the renewal lesson and the **30/60/25**
+> minimum liability limits in the UM lesson.
+>
+> Run `node scripts/statutes-status.mjs` for what is still outstanding. What
+> remains is Tier 2 and Tier 3, and Chapter 542A is the one that still
+> qualifies a figure already taught -- the 18% prompt-pay rate.
 
 **Where.** <https://statutes.capitol.texas.gov> → pick the code → the chapter.
 Free, and the site's own PDF is what `scripts/extract-statute.py` expects.

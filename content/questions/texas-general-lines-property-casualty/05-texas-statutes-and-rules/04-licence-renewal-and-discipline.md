@@ -128,13 +128,13 @@ who run it.
 Probation is a working sanction: the producer keeps trading under conditions
 aimed at the deficiency.
 
-### Where are the continuing education requirements set?
+### How many continuing education hours must a general property and casualty licence holder complete each period?
 
-- [x] Chapter 4004, which this course does not yet teach — get the figures from the statute or TDI
-- [ ] Chapter 4003, alongside the renewal provisions
-- [ ] Chapter 4005, alongside the grounds for discipline
-- [ ] 28 TAC Chapter 19
+- [x] 24, of which three must be ethics
+- [ ] 30, of which three must be ethics
+- [ ] 24, of which six must be ethics
+- [ ] 12, with no ethics requirement
 
-CE is a condition of renewal — §4003.006(2) refers to a licence not being renewed
-under §4004.055 — but this course has not obtained Chapter 4004, so **do not
-learn CE hours from it**.
+**§4004.053(a)** sets 24 hours and **§4004.054** the three ethics hours. CE is a
+condition of renewal — §4003.006(2) refers to a licence not being renewed under
+**§4004.055**. The Continuing Education lesson covers the rest.
