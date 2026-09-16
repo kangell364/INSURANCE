@@ -21,12 +21,12 @@ import { createHash } from 'node:crypto'
 import { readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs'
 import { basename, dirname, join, resolve } from 'node:path'
 
+import { classifyReview } from './review-gate.mjs'
+
 const ROOT = resolve(dirname(new URL(import.meta.url).pathname), '..')
 const CONTENT = join(ROOT, 'content', 'questions')
 const OUT = join(ROOT, 'supabase', 'seed_questions.sql')
 const CHECK_ONLY = process.argv.includes('--check')
-
-const REVIEWED_MARKER = 'UNREVIEWED'
 
 function uuidFor(kind, key) {
   const hash = createHash('sha1').update(`${kind}:${key}`).digest('hex')
@@ -59,13 +59,22 @@ function parseFrontMatter(text) {
   return { meta, body: text.slice(end + 5).trim() }
 }
 
+/**
+ * Documentation files sitting alongside content: README.md, REVIEW.md,
+ * COURSE-MAP.md. Lesson and question files are lowercase and start with a
+ * two-digit order, so an ALL-CAPS basename is never content. Naming each one
+ * individually meant every new doc broke the importer until somebody added it
+ * to the list -- REVIEW.md did exactly that.
+ */
+function isDoc(file) {
+  return /^[A-Z][A-Z0-9-]*\.md$/.test(basename(file))
+}
+
 function walk(dir) {
   return readdirSync(dir).flatMap((entry) => {
     const full = join(dir, entry)
     if (statSync(full).isDirectory()) return walk(full)
-    return full.endsWith('.md') && !basename(full).startsWith('README')
-      ? [full]
-      : []
+    return full.endsWith('.md') && !isDoc(full) ? [full] : []
   })
 }
 
@@ -165,6 +174,12 @@ for (const file of walk(CONTENT).sort()) {
   }
   if (problems.length) continue
 
+  const review = classifyReview(meta.review)
+  if (review.problem) {
+    problems.push(`${relative}: ${review.problem}`)
+    continue
+  }
+
   const questions = parseQuestions(body, relative, problems)
   if (questions.length === 0) {
     problems.push(`${relative}: no questions found`)
@@ -176,7 +191,7 @@ for (const file of walk(CONTENT).sort()) {
     courseSlug: meta.course,
     topicCode: meta.topic,
     lessonSlug: meta.lesson || null,
-    reviewed: !meta.review.includes(REVIEWED_MARKER),
+    reviewed: review.reviewed,
     questions,
   })
 }

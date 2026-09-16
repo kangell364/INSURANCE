@@ -30,6 +30,8 @@ import {
 } from 'node:fs'
 import { basename, dirname, join, resolve } from 'node:path'
 
+import { classifyReview } from './review-gate.mjs'
+
 const ROOT = resolve(dirname(new URL(import.meta.url).pathname), '..')
 const CONTENT = join(ROOT, 'content')
 const OUT = join(ROOT, 'supabase', 'seed_content.sql')
@@ -45,7 +47,6 @@ const CHUNKS = join(ROOT, 'supabase', 'deploy', 'content')
 const CHUNK_BYTES = 24 * 1024
 const CHECK_ONLY = process.argv.includes('--check')
 
-const REVIEWED_MARKER = 'UNREVIEWED'
 
 /** A stable uuid derived from a string, so re-running produces the same ids. */
 function uuidFor(kind, key) {
@@ -83,6 +84,17 @@ function parseFrontMatter(text) {
   return { meta, body: text.slice(end + 5).trim() }
 }
 
+/**
+ * Documentation files sitting alongside content: README.md, REVIEW.md,
+ * COURSE-MAP.md. Lesson and question files are lowercase and start with a
+ * two-digit order, so an ALL-CAPS basename is never content. Naming each one
+ * individually meant every new doc broke the importer until somebody added it
+ * to the list -- REVIEW.md did exactly that.
+ */
+function isDoc(file) {
+  return /^[A-Z][A-Z0-9-]*\.md$/.test(basename(file))
+}
+
 function walk(dir) {
   return readdirSync(dir).flatMap((entry) => {
     const full = join(dir, entry)
@@ -92,10 +104,7 @@ function walk(dir) {
     // happened the moment the question bank was added.
     if (entry === 'questions' && dirname(full) === CONTENT) return []
     if (statSync(full).isDirectory()) return walk(full)
-    return full.endsWith('.md') && !basename(full).startsWith('README') &&
-      basename(full) !== 'COURSE-MAP.md'
-      ? [full]
-      : []
+    return full.endsWith('.md') && !isDoc(full) ? [full] : []
   })
 }
 
@@ -138,7 +147,12 @@ for (const file of walk(CONTENT).sort()) {
     })
   }
 
-  const reviewed = !meta.review.includes(REVIEWED_MARKER)
+  const classified = classifyReview(meta.review)
+  if (classified.problem) {
+    problems.push(`${relative}: ${classified.problem}`)
+    continue
+  }
+  const reviewed = classified.reviewed
   lessons.push({
     id: uuidFor('lesson', `${courseSlug}/${meta.slug}`),
     moduleKey,
