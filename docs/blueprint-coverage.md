@@ -49,7 +49,31 @@ HTML that `scripts/extract-statute.py` cannot read.
 | **TX.II.A** | ~~28 TAC §5.5002~~ | **The blueprint's citation is wrong.** That rule is "Inland Marine Insurance — Imports". Where the P&C definitions live is unknown. |
 
 **TX.II.C "Approval of Rates and Forms" cites "TIC 5.35"**, which is not a
-valid Insurance Code section. Unresolved.
+valid Insurance Code section.
+
+## Where the two unresolved lines probably live
+
+28 TAC Chapter 5 is "Property and Casualty Insurance". Its subchapter list,
+read from the Secretary of State portal on 16 September 2026, makes two
+previously unresolved blueprint lines tractable:
+
+- **TX.II.A, property and casualty definitions** — **Subchapter Q, "General
+  Property and Casualty Rules"** is the likely home. The blueprint's §5.5002
+  points into **Subchapter F**, which is "Inland Marine Insurance, Multi-Peril
+  Insurance, and Commercial Lines" — which is why it returned an inland marine
+  rule.
+- **TX.II.C, approval of rates and forms** — **Subchapter M, "Filing
+  Requirements"** and **Subchapter X, "Prior Approval of Rates Under Certain
+  Circumstances"**.
+
+Neither is confirmed; both need the subchapter's rule list read before
+fetching anything.
+
+The same listing shows where the blueprint's other Chapter 5 citations sit:
+**§5.204** in Subchapter A (Automobile Insurance), **§5.7002** in Subchapter H
+(Cancellation, Denial, and Nonrenewal), and the **§5.9340–.9357** rating and
+underwriting run near Subchapter U (Use of Credit Information or Credit
+Scores) and Subchapter V (Territory Rating Requirements).
 
 ## Two errors in the published outline
 
