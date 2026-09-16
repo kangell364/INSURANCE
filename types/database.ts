@@ -325,6 +325,97 @@ export type Database = {
           },
         ]
       }
+      questions: {
+        Row: {
+          id: string
+          course_id: string
+          topic_id: string
+          lesson_id: string | null
+          stem: string
+          explanation: string | null
+          status: Database['public']['Enums']['content_status']
+          mock_only: boolean
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          course_id: string
+          topic_id: string
+          lesson_id?: string | null
+          stem: string
+          explanation?: string | null
+          status?: Database['public']['Enums']['content_status']
+          mock_only?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          topic_id?: string
+          lesson_id?: string | null
+          stem?: string
+          explanation?: string | null
+          status?: Database['public']['Enums']['content_status']
+          mock_only?: boolean
+        }
+        Relationships: []
+      }
+      question_options: {
+        Row: {
+          id: string
+          question_id: string
+          course_id: string
+          body: string
+          position: number
+        }
+        Insert: {
+          id?: string
+          question_id: string
+          course_id: string
+          body: string
+          position: number
+        }
+        Update: { body?: string; position?: number }
+        Relationships: []
+      }
+      attempts: {
+        Row: {
+          id: string
+          student_id: string
+          course_id: string
+          kind: Database['public']['Enums']['attempt_kind']
+          reveal: Database['public']['Enums']['reveal_mode']
+          topic_id: string | null
+          lesson_id: string | null
+          module_id: string | null
+          started_at: string
+          submitted_at: string | null
+          correct_count: number | null
+          question_count: number
+          scale_version: number
+        }
+        Insert: never
+        Update: never
+        Relationships: []
+      }
+      attempt_questions: {
+        Row: {
+          attempt_id: string
+          student_id: string
+          question_id: string
+          position: number
+          selected_option_id: string | null
+          answered_at: string | null
+          is_correct: boolean | null
+        }
+        Insert: never
+        Update: {
+          selected_option_id?: string | null
+          answered_at?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: Record<never, never>
     Functions: {
@@ -340,12 +431,29 @@ export type Database = {
         Args: { p_lesson_id: string }
         Returns: boolean
       }
+      start_attempt: {
+        Args: {
+          p_course_id: string
+          p_kind: Database['public']['Enums']['attempt_kind']
+          p_lesson_id?: string | null
+          p_module_id?: string | null
+          p_topic_id?: string | null
+          p_reveal?: Database['public']['Enums']['reveal_mode'] | null
+        }
+        Returns: string
+      }
+      score_attempt: {
+        Args: { p_attempt_id: string }
+        Returns: { correct_count: number; question_count: number }[]
+      }
     }
     Enums: {
       user_role: 'student' | 'instructor' | 'admin'
       course_status: 'draft' | 'active' | 'archived'
       enrollment_status: 'active' | 'completed' | 'expired' | 'cancelled'
       content_status: 'draft' | 'active' | 'archived'
+      attempt_kind: 'mock' | 'quiz' | 'drill' | 'module'
+      reveal_mode: 'immediate' | 'on_submit'
     }
     CompositeTypes: Record<never, never>
   }

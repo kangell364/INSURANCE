@@ -186,3 +186,11 @@ comment on function public.start_attempt(uuid, public.attempt_kind, uuid, uuid, 
 revoke insert on table public.attempt_questions from authenticated;
 
 drop policy if exists attempt_questions_insert_own on public.attempt_questions;
+
+-- And the same for attempts itself. Leaving it would not be exploitable --
+-- an attempt with no questions scores zero, which hurts the student who made
+-- it -- but a half-closed door invites somebody to assume the other half is
+-- open too. start_attempt() creates the attempt row; nothing else needs to.
+revoke insert on table public.attempts from authenticated;
+
+drop policy if exists attempts_insert_own on public.attempts;
