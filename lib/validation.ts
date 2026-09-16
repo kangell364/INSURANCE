@@ -161,6 +161,31 @@ export function authErrorMessage(
     // shows the neutral "check your email" screen regardless.
     return 'We could not create that account. If you already have one, sign in instead.'
   }
+  // Email delivery failures. Supabase returns these when confirmation or
+  // recovery mail cannot be sent, which on the built-in sender happens as soon
+  // as its small hourly quota is spent.
+  //
+  // These were missing, and their absence cost an evening: a signup that
+  // failed because the confirmation email could not be sent fell through to
+  // "Something went wrong. Please try again." -- which is true, unactionable,
+  // and indistinguishable from a bad API key. The message now names the cause,
+  // because a user who knows it is an email problem can at least stop retrying
+  // the form.
+  if (
+    message.includes('error sending') ||
+    message.includes('confirmation email') ||
+    message.includes('recovery email') ||
+    message.includes('smtp')
+  ) {
+    return 'We could not send the email this needs. This is a problem on our side, not with your details — please try again shortly.'
+  }
+  if (message.includes('signups not allowed') || message.includes('signup is disabled')) {
+    return 'New accounts are not being accepted at the moment.'
+  }
+  if (message.includes('invalid api key') || message.includes('no api key')) {
+    return 'The application is not configured correctly. Please report this.'
+  }
+
   if (message.includes('password')) {
     return `Password must be at least ${MIN_PASSWORD_LENGTH} characters and meet the security requirements.`
   }

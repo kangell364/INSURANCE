@@ -140,6 +140,29 @@ describe('validateProfile', () => {
 })
 
 describe('authErrorMessage', () => {
+  // These four fell through to the generic fallback, which is how a broken
+  // SMTP configuration came to look identical to a bad API key for an
+  // evening. Each one is a real message Supabase returns.
+  it.each([
+    ['Error sending confirmation email', /could not send the email/i],
+    ['Error sending recovery email', /could not send the email/i],
+    ['SMTP connection failed', /could not send the email/i],
+    ['Signups not allowed for this instance', /not being accepted/i],
+    ['Invalid API key', /not configured correctly/i],
+  ])('maps %s to something actionable', (raw, expected) => {
+    const message = authErrorMessage({ message: raw })
+    expect(message).toMatch(expected)
+    expect(message).not.toMatch(/something went wrong/i)
+  })
+
+  // The enumeration rule still holds: nothing above may reveal whether an
+  // account exists.
+  it('still refuses to confirm whether an account exists', () => {
+    expect(authErrorMessage({ message: 'User already registered' })).not.toMatch(
+      /already (has|have) an account/i,
+    )
+  })
+
   it('does not reveal whether an account exists', () => {
     const message = authErrorMessage({ message: 'Invalid login credentials' })
     expect(message).toBe(
