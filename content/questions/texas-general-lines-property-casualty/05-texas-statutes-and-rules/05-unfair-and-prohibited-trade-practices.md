@@ -151,3 +151,36 @@ Twisting appears both as a **prohibited practice** in Chapter 541 and as a
 **§541.056 does not exist** — Chapter 541 runs .051 to .055 and then jumps to
 .059, the intervening sections having been repealed. Rebating is also a ground
 for discipline under §4005.101(b)(9).
+
+### A property and casualty advertisement illustrates the dividends a policyholder "can expect" in future years. Permitted?
+
+- [x] No — 28 TAC §21.115(a) forbids stating or implying that future dividends are guaranteed or certain
+- [ ] Yes, provided the illustration is based on the insurer's actual past dividends
+- [ ] Yes, if the advertisement carries a disclaimer
+- [ ] Yes, for commercial lines but not personal lines
+
+The rule reaches **the word "dividends", similar words, and illustrations** —
+a chart implying certainty is caught as surely as a sentence.
+
+### An insurer returns premium under a nondiscretionary endorsement, under a rating plan the Department approved. Is that a "dividend" for 28 TAC §21.115?
+
+- [x] No — 28 TAC §21.115(b) expressly excludes it
+- [ ] Yes, every return of premium is a dividend
+- [ ] Yes, unless the policyholder waives the payment
+- [ ] Only if the amount exceeds the annual premium
+
+**The line is between the discretionary and the contractual.** A payment
+depending on the insurer's financial performance or earnings is a dividend and
+may never be promised; a return the policy already obliges the insurer to make
+under an approved rating plan is not.
+
+### Which TAC rule covers property and casualty insurance advertising specifically?
+
+- [x] 28 TAC §21.115
+- [ ] 28 TAC §21.113
+- [ ] 28 TAC §21.114
+- [ ] 28 TAC §21.101
+
+28 TAC §21.113 is accident and health and HMO advertising; 28 TAC §21.114 is life and annuity;
+28 TAC §21.101 is the subchapter's purpose. The P&C rule is **28 TAC §21.115**, in Chapter 21,
+Subchapter B, Division 1.

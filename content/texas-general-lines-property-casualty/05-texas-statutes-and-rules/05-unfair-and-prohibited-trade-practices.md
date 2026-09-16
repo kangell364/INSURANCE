@@ -51,6 +51,37 @@ newspaper or magazine, notice or circular or pamphlet or letter or poster,
 radio or television, **through the Internet**, or **"in any other manner."**
 A social media post is covered.
 
+### The advertising rules beneath §541.052
+
+**Chapter 541 says what an advertisement may not do; 28 TAC Chapter 21,
+Subchapter B says it in detail.** The rules run 28 TAC §21.101–.120 and cover the form
+and content of advertisements, identification of the policy and insurer,
+description of benefits, premiums, testimonials, use of statistics,
+disparagement, comparisons and a general prohibition.
+
+**28 TAC §21.115 is the one written for property and casualty**, and it is
+short enough to know outright. It is about a single word.
+
+**28 TAC §21.115(a)** — **no advertisement may use the word "dividends", or similar
+words or illustrations, in a manner that states or implies that future
+dividends are guaranteed or certain to occur.**
+
+**28 TAC §21.115(b)** defines the word broadly and then carves out the case that
+matters: **"dividends" includes every return of premium and payment to
+policyholders on a particular policy that is predicated on the insurer's
+financial performance or earnings** — but it **does not include** a return of
+premium under a **nondiscretionary provision or endorsement** clearly providing
+for payment under a **rating plan approved or promulgated by the Department.**
+
+So the line is between the **discretionary** and the **contractual**. A payment
+that depends on how the insurer performs is a dividend and may never be
+promised. A return of premium the policy already obliges the insurer to make,
+under an approved rating plan, is not a dividend at all and may be described as
+what it is.
+
+**28 TAC §21.111** covers **comparisons**, which is the advertising face of the
+twisting problem at §541.051(5).
+
 ### §541.053 Defamation of an insurer
 
 A statement that is **false, maliciously critical of, or derogatory to the
@@ -216,6 +247,10 @@ TWIA**.
 **Defamation needs both falsity/derogation and intent to injure.**
 
 **Boycott requires concerted action.**
+
+**An advertisement may never state or imply that future dividends are
+guaranteed** — 28 TAC §21.115(a) — and a non-discretionary return of premium
+under an approved rating plan is not a "dividend" for that purpose.
 
 **Tax returns may be demanded only on a court order, a fire loss, or a lost
 profits claim.**

@@ -1,0 +1,30 @@
+# 28 TAC §21.115 — Rules Pertaining Specifically to Property and Casualty Insurance Advertising
+
+Source: Texas Administrative Code as in effect on 16 September 2026, via the
+Texas Secretary of State rules portal. Supplied as text; the TAC is HTML and
+scripts/extract-statute.py cannot read it.
+
+TITLE 28. INSURANCE
+PART 1. TEXAS DEPARTMENT OF INSURANCE
+CHAPTER 21. TRADE PRACTICES
+SUBCHAPTER B. ADVERTISING, CERTAIN TRADE PRACTICES, AND SOLICITATION
+DIVISION 1. INSURANCE ADVERTISING
+
+---
+
+§21.115. Rules Pertaining Specifically to Property and Casualty Insurance
+Advertising.
+
+(a) No advertisement may use the word "dividends" or similar words or
+illustrations in such a manner as to state or to imply that future dividends
+are guaranteed or certain to occur.
+
+(b) The word "dividends" includes every return of premium and payment to
+policyholders on a particular policy that is predicated on the financial
+performance or earnings of the insurer, but does not include the return of
+premium under a nondiscretionary provision or endorsement in a policy clearly
+providing for the payment under a rating plan approved or promulgated by the
+Texas Department of Insurance.
+
+Source Note: The provisions of this §21.115 adopted to be effective February 1,
+1981, 5 TexReg 3336; amended to be effective December 9, 2007, 32 TexReg 8830

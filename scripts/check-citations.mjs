@@ -52,6 +52,16 @@ const HEADINGS = process.argv.includes('--headings')
 const CITATION = /§\s?(\d{2,4}[A-Z]?)\.(\d+(?:-\d+)?)/g
 
 /**
+ * A citation preceded by "TAC" is an Administrative Code RULE, not a statute.
+ * They share the number space -- 28 TAC 21.115 and Insurance Code chapter 21
+ * are unrelated -- so resolving a TAC rule against reference/statutes/ would
+ * be meaningless. TAC rules live in reference/tac/ and are counted separately
+ * rather than reported as "chapter not downloaded", which was the wrong
+ * explanation for why they went unchecked.
+ */
+const TAC_BEFORE = /TAC\s*$/
+
+/**
  * Sections a lesson cites BECAUSE they do not exist. The trade practices
  * lesson tells the student that the blueprint's own citation for rebating is
  * wrong -- Chapter 541 runs .051 to .055 and then jumps to .059 -- so the
@@ -98,6 +108,7 @@ function headingFor(sources, cite) {
 }
 
 const headings = []
+const tac = new Set()
 const bad = []
 const skipped = new Map()
 let checked = 0
@@ -107,8 +118,14 @@ for (const file of TREES.flatMap((t) => walk(t)).sort()) {
   const relative = file.slice(ROOT.length + 1)
   const seen = new Set()
 
-  for (const [, chapter, section] of text.matchAll(CITATION)) {
+  for (const m of text.matchAll(CITATION)) {
+    const [, chapter, section] = m
     const cite = `${chapter}.${section}`
+
+    if (TAC_BEFORE.test(text.slice(Math.max(0, m.index - 12), m.index))) {
+      tac.add(cite)
+      continue
+    }
     if (seen.has(cite)) continue
     seen.add(cite)
 
@@ -134,6 +151,12 @@ for (const file of TREES.flatMap((t) => walk(t)).sort()) {
 }
 
 console.log(`${checked} citation(s) checked against ${files.length} statute file(s).`)
+if (tac.size > 0) {
+  console.log(
+    `${tac.size} TAC rule(s) cited and not checked here (they are rules, not ` +
+      `statutes, and live in reference/tac/): ${[...tac].sort().join(', ')}`,
+  )
+}
 
 if (skipped.size > 0) {
   const total = [...skipped.values()].reduce((a, b) => a + b, 0)
