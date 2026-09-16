@@ -118,11 +118,63 @@ costs**.
 > and that interest **accrues from the date the claim was required to be
 > paid**.
 >
-> **This course does not yet teach which claims Chapter 542A covers**, because
-> that chapter has not been obtained. See `docs/module-5-source-gaps.md`.
-> What you should take from this: **18% is the §542.060(a) answer and the one
-> an exam is most likely to want — but it is no longer the rate in every
-> case**, and material written before 2017 does not know that.
+> **18% remains the §542.060(a) answer and the one an exam is most likely to
+> want. Chapter 542A is when it is not 18%**, and material written before 2017
+> does not know that chapter exists.
+
+### Which claims Chapter 542A covers
+
+**§542A.001(2)** defines the **claim** narrowly, and all three limbs must hold.
+It is a **first-party claim** that:
+
+- is made by an insured under a policy **covering real property or
+  improvements to real property**;
+- **must be paid by the insurer directly to the insured**; and
+- **arises from damage to or loss of covered property caused, wholly or partly,
+  by forces of nature** — the statute lists **earthquake or earth tremor,
+  wildfire, flood, tornado, lightning, hurricane, hail, wind, snowstorm** and
+  **rainstorm**.
+
+So the alternative interest rate is a **weather and forces-of-nature, real
+property** rule. A stolen car, a liability claim or a business interruption
+loss is outside it, and stays at 18 percent.
+
+**§542A.002(a)** — the chapter applies to an action on a claim **against an
+insurer or agent**, including breach of contract, negligence,
+misrepresentation, fraud or breach of a common law duty, and actions brought
+under **Subchapter D of Chapter 541**, **Subchapter B of Chapter 542**, or
+**Subchapter E of Chapter 17, Business & Commerce Code**.
+
+**§542A.002(b)** — it **does not apply to an action against TWIA**, which
+matches §2210.014 and §2210.572 from the windstorm lesson: TWIA sits outside
+these remedies altogether.
+
+**§542A.001(4)** defines **insurer** to exclude TWIA but to include an
+**eligible surplus lines insurer** and the **FAIR Plan Association**, unless a
+claim-related dispute resolution procedure is available under Chapter 2211.
+
+### What else Chapter 542A requires
+
+**§542A.003(a)** — **presuit notice not later than the 61st day before filing**
+an action to which the chapter applies. **§542A.003(b)** — the notice must
+state the acts or omissions giving rise to the claim, **the specific amount
+alleged to be owed**, and the reasonable attorney's fees incurred.
+
+Compare **§541.154**, which also requires 61 days' notice. Where both apply,
+one notice can serve both — **§542A.003(f)** says notice under this chapter
+may be combined with notice required by other law.
+
+**§542A.003(d)** — notice is not required where it is **impracticable**,
+because the limitations period is about to run or the claim is asserted as a
+counterclaim.
+
+**§542A.004** — the insurer may demand an **inspection** of the property.
+**§542A.005** — failure to give the required notice supports **abatement** of
+the action. **§542A.006** — an insurer may **elect to accept legal
+responsibility** for its agent, which then removes the agent from the case.
+**§542A.007** — sets how **attorney's fees** are awarded, on a formula keyed
+to how the amount recovered compares with the amount stated in the presuit
+notice.
 
 **§542.061** — the remedies here are **in addition to** any other remedy at
 law or common law. A prompt-payment violation and a Chapter 541 unfair

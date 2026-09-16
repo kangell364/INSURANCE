@@ -51,22 +51,32 @@ Seven files, five topics. Between them these account for an estimated 8–10 of 
 | ✓ | [LA 408](https://statutes.capitol.texas.gov/GetStatute.aspx?Code=LA&Value=408) | Workers’ Compensation — Benefits (Labor Code) | Income, medical, death and burial benefits. TX.II.F.2. |
 | ✓ | [IN 2151](https://statutes.capitol.texas.gov/GetStatute.aspx?Code=IN&Value=2151) | Texas Automobile Insurance Plan Association | Whole lesson. The auto residual market. TX.II.E.4. |
 
-## Tier 2 — each blocks a section of a lesson that otherwise exists
+## Tier 2 — DONE (16 September 2026)
 
-The four company-type chapters (801, 982, 547, 941) are one lesson between them, so they are best fetched together.
+All ten arrived and are extracted.
+
+> **Two subjects in this table were wrong**, and only downloading the chapters
+> revealed it. **IN 547 is False Advertising by Unauthorized Insurers**, not
+> stock and mutual companies. **IN 4002 is Examination of License Applicants**,
+> not licensing exemptions. Both chapters are useful and are now taught — but
+> **TX.I.B.4 (stock and mutual companies) and TX.I.C.2 (licensing exemptions)
+> are still unsourced**, and which chapter the blueprint actually cites for
+> them is unknown. The blueprint PDF is not in this repository, so the error
+> cannot be traced to either the transcription or the blueprint itself.
+> **Resolve that before treating Module 5 as complete.**
 
 | ✓ | Chapter | Subject | What it unblocks |
 | - | ------- | ------- | ---------------- |
-| ☐ | [IN 801](https://statutes.capitol.texas.gov/GetStatute.aspx?Code=IN&Value=801) | Certificates of Authority | Admitted vs non-admitted. TX.I.B.1 and B.5. |
-| ☐ | [IN 982](https://statutes.capitol.texas.gov/GetStatute.aspx?Code=IN&Value=982) | Foreign, Domestic and Alien Insurers | TX.I.B.3. |
-| ☐ | [IN 547](https://statutes.capitol.texas.gov/GetStatute.aspx?Code=IN&Value=547) | Stock and Mutual Companies | TX.I.B.4. |
-| ☐ | [IN 941](https://statutes.capitol.texas.gov/GetStatute.aspx?Code=IN&Value=941) | Texas Lloyds | TX.I.B.6. |
-| ☐ | [IN 542A](https://statutes.capitol.texas.gov/GetStatute.aspx?Code=IN&Value=542A) | Claims Arising from Forces of Nature | §542.060(c) sets a different interest rate "in an action to which Chapter 542A applies", so the familiar 18% is qualified and the course cannot say how without this. |
-| ☐ | [IN 4056](https://statutes.capitol.texas.gov/GetStatute.aspx?Code=IN&Value=4056) | Non-resident Agents | TX.I.C.1.b. |
-| ☐ | [IN 4002](https://statutes.capitol.texas.gov/GetStatute.aspx?Code=IN&Value=4002) | Licensing Exemptions and Exceptions | TX.I.C.2. |
-| ☐ | [IN 4101](https://statutes.capitol.texas.gov/GetStatute.aspx?Code=IN&Value=4101) | Adjusters | TX.I.C.1.g. |
-| ☐ | [IN 701](https://statutes.capitol.texas.gov/GetStatute.aspx?Code=IN&Value=701) | Insurance Fraud | TX.I.D.1.h. |
-| ☐ | [IN 544](https://statutes.capitol.texas.gov/GetStatute.aspx?Code=IN&Value=544) | Prohibited Discrimination | TX.I.D.1.g. Not taught at all at present. |
+| ✓ | [IN 801](https://statutes.capitol.texas.gov/GetStatute.aspx?Code=IN&Value=801) | Certificates of Authority | Admitted vs non-admitted. TX.I.B.1 and B.5. |
+| ✓ | [IN 982](https://statutes.capitol.texas.gov/GetStatute.aspx?Code=IN&Value=982) | Foreign, Domestic and Alien Insurers | TX.I.B.3. |
+| ✓ | [IN 547](https://statutes.capitol.texas.gov/GetStatute.aspx?Code=IN&Value=547) | **False Advertising by Unauthorized Insurers** — NOT stock and mutual companies; this list had the subject wrong | Trade practices; cited by §4004.105 for adjuster CE |
+| ✓ | [IN 941](https://statutes.capitol.texas.gov/GetStatute.aspx?Code=IN&Value=941) | Texas Lloyds | TX.I.B.6. |
+| ✓ | [IN 542A](https://statutes.capitol.texas.gov/GetStatute.aspx?Code=IN&Value=542A) | Claims Arising from Forces of Nature | §542.060(c) sets a different interest rate "in an action to which Chapter 542A applies", so the familiar 18% is qualified and the course cannot say how without this. |
+| ✓ | [IN 4056](https://statutes.capitol.texas.gov/GetStatute.aspx?Code=IN&Value=4056) | Non-resident Agents | TX.I.C.1.b. |
+| ✓ | [IN 4002](https://statutes.capitol.texas.gov/GetStatute.aspx?Code=IN&Value=4002) | **Examination of License Applicants** — NOT licensing exemptions; this list had the subject wrong | Who must sit the exam, and who is exempt from it. TX.I.C.2. |
+| ✓ | [IN 4101](https://statutes.capitol.texas.gov/GetStatute.aspx?Code=IN&Value=4101) | Adjusters | TX.I.C.1.g. |
+| ✓ | [IN 701](https://statutes.capitol.texas.gov/GetStatute.aspx?Code=IN&Value=701) | Insurance Fraud | TX.I.D.1.h. |
+| ✓ | [IN 544](https://statutes.capitol.texas.gov/GetStatute.aspx?Code=IN&Value=544) | Prohibited Discrimination | TX.I.D.1.g. Not taught at all at present. |
 
 ## Tier 3 — smaller, or peripheral
 

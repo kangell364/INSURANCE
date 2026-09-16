@@ -1,8 +1,8 @@
 # Module 5 — what is still needed, and what it blocks
 
 Derived from the TX.I and TX.II citations in Pearson VUE #124401, checked
-against `reference/statutes/`. **25 of the 40 chapters the Texas sections cite
-are in hand.** This file lists the other 15, what each one blocks, and in what
+against `reference/statutes/`. **35 of the 40 chapters the Texas sections cite
+are in hand.** This file lists the other 5, what each one blocks, and in what
 order they are worth getting.
 
 > **Tier 1 is done.** IN 4004, IN 462, TN 601, LA 401, LA 406, LA 408 and
@@ -13,9 +13,21 @@ order they are worth getting.
 > that figure": the CE hours in the renewal lesson and the **30/60/25**
 > minimum liability limits in the UM lesson.
 >
-> Run `node scripts/statutes-status.mjs` for what is still outstanding. What
-> remains is Tier 2 and Tier 3, and Chapter 542A is the one that still
-> qualifies a figure already taught -- the 18% prompt-pay rate.
+> **Tier 2 is done too** (16 September 2026). It produced three more lessons
+> -- Prohibited Discrimination, Company Types and Certificates of Authority,
+> and Adjusters, Non-residents, Examination and Fraud -- and closed the last
+> caveat on a figure already taught: **Chapter 542A** now says which claims
+> carry the alternative prompt-pay interest rate rather than the 18%.
+>
+> **Two subjects in the download list were wrong**, which only downloading
+> revealed. IN 547 is *False Advertising by Unauthorized Insurers*, not stock
+> and mutual companies; IN 4002 is *Examination of License Applicants*, not
+> licensing exemptions. So **TX.I.B.4 and TX.I.C.2 remain unsourced**, and the
+> right chapters are unknown -- the blueprint PDF is not in this repository,
+> so it cannot be told whether the transcription or the blueprint was at
+> fault. That is now the largest known gap in Module 5.
+>
+> Run `node scripts/statutes-status.mjs` for the rest, which is Tier 3.
 
 **Where.** <https://statutes.capitol.texas.gov> → pick the code → the chapter.
 Free, and the site's own PDF is what `scripts/extract-statute.py` expects.
