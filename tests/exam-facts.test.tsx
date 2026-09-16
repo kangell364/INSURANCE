@@ -28,6 +28,15 @@ const ExamDayPage = (await import('@/app/(marketing)/texas-exam-day/page'))
    ========================================================================== */
 
 describe('the published blueprint', () => {
+  // The handbook prints InsTC-PC06; the pass-rate report and every other code
+  // in both documents use InsTX-. docs/exam-facts.md records the reasoning.
+  // Pinned because the two sources disagreed for weeks and nothing compared
+  // them.
+  it('uses the exam code that the pass-rate report and the code family agree on', () => {
+    expect(EXAM.code).toBe('InsTX-PC06')
+    expect(EXAM.code.startsWith('InsTX-')).toBe(true)
+  })
+
   it('sums to the scored-question total', () => {
     const total = BLUEPRINT.reduce((n, s) => n + s.questions, 0)
     expect(total).toBe(EXAM.scoredQuestions)

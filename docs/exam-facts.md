@@ -22,7 +22,7 @@ automatically. Re-check both when a new edition is published.
 
 | Fact | Value | Source |
 | ---- | ----- | ------ |
-| Exam code | `InsTC-PC06` (English) | #124400 |
+| Exam code | `InsTX-PC06` (English) | #124400, corrected against the pass-rate report — see below |
 | Time allotted | **150 minutes** | #124400 |
 | Examination fee | **$49** | #124400 |
 | Licence application fee | **$50** per licence type | #124400 |
@@ -51,6 +51,25 @@ A Spanish-language form exists at the same duration and fee.
 Seeded in `supabase/seed.sql` and stored as `topics.question_count`.
 
 ---
+
+## A typo in the handbook
+
+**#124400 prints the exam code as `InsTC-PC06`. It is `InsTX-PC06`.**
+
+Two things settle it. The August 2026 pass-rate report lists **nineteen** exam
+codes and **every one** begins `InsTX-` — `InsTX-ALAdj16`, `InsTX-Life01`,
+`InsTX-PCA81`, and `InsTX-PC06` for this exam. And on the handbook's own
+"Available Exams and Fees" page, every other code is `InsTX-`; only this one
+reads `InsTC-`.
+
+So the handbook has a single-character error, and this file had copied it
+while `lib/exam-facts.ts` carried the right value — the two disagreed for
+weeks without anything noticing, because nothing compared them.
+
+Worth stating the general point: **a primary source can still be wrong.** The
+blueprint citing a repealed section (below) and this are the same lesson.
+Where two primary sources disagree, the tiebreak is which one is
+self-consistent.
 
 ## Scoring — read this before building anything that predicts a pass
 
