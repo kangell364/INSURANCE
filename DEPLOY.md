@@ -291,6 +291,38 @@ Four settings, and the first one is the one that goes wrong.
 >
 > Create the project *after* pushing the code, or check this setting first.
 
+### Email delivery — a launch prerequisite
+
+**Custom SMTP must be configured before anyone but you uses this.** Not
+"should": the product does not work without it.
+
+Supabase's built-in email sender exists so you can test signup during
+development. It is rate-limited to a handful of messages an hour and is not
+intended for production. On the built-in sender:
+
+- a new customer's confirmation email may never arrive;
+- nobody who forgets a password can get back in, because
+  `/forgot-password` has nowhere to send;
+- **both failures are silent**, and both land on somebody who has already
+  paid.
+
+This was discovered the obvious way — a password reset request produced no
+email — and it is worth recording that the reset flow was built before anyone
+checked that the thing it depends on actually delivers.
+
+**Where:** Supabase dashboard → Project Settings → Authentication → SMTP
+Settings. It needs a third-party sender: Resend, Postmark, SendGrid and
+Amazon SES are the usual choices, and at this volume they are free or a few
+dollars a month.
+
+**Afterwards, test both paths end to end from a real inbox** — sign up as a
+new user, and reset a password — because a misconfigured sender fails exactly
+as silently as no sender at all.
+
+**To get in meanwhile**, without email: Supabase dashboard → Authentication →
+Users → open the user. An admin can set a password or issue a magic link
+directly from there.
+
 ### Auth redirect URLs
 
 Supabase only redirects back to allow-listed origins, so sign-in fails
