@@ -263,6 +263,11 @@ select pg_temp.check_denied('B10 A student cannot delete a question',
 -- ===========================================================================
 -- C. A STUDENT CANNOT MARK THEIR OWN PAPER
 -- ===========================================================================
+-- The fixture below is SETUP, not a test of who may insert. Students lost
+-- `insert` on attempt_questions when start_attempt() took over paper
+-- assembly (see 20260301000800 and suite 05_), so the rows are created with
+-- the suite's own rights and the student role is resumed for the assertions.
+reset role;
 insert into public.attempts
   (id, student_id, course_id, kind, reveal, question_count)
 values ('da000000-0000-0000-0000-000000000001',
@@ -274,6 +279,8 @@ insert into public.attempt_questions
 values ('da000000-0000-0000-0000-000000000001',
         'a1111111-1111-1111-1111-111111111111',
         'ce000000-0000-0000-0000-000000000001', 1);
+
+set local role authenticated;
 
 select pg_temp.check_eq('C1  is_correct starts NULL — nothing to read mid-attempt',
   (select is_correct from public.attempt_questions
@@ -356,6 +363,7 @@ select pg_temp.check_affects('D6  ...and answers cannot be changed after submiss
 
 -- Unanswered means wrong, not excluded. Otherwise a student answers only what
 -- they are sure of and reports 100%.
+reset role;
 insert into public.attempts
   (id, student_id, course_id, kind, reveal, topic_id, question_count)
 values ('da000000-0000-0000-0000-000000000002',
@@ -367,6 +375,8 @@ insert into public.attempt_questions
 values ('da000000-0000-0000-0000-000000000002',
         'a1111111-1111-1111-1111-111111111111',
         'ce000000-0000-0000-0000-000000000001', 1);
+
+set local role authenticated;
 
 select pg_temp.check_eq('D7  An unanswered question scores as wrong, not skipped',
   (select correct_count from public.score_attempt(
