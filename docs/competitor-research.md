@@ -365,6 +365,71 @@ market before deciding how much to invest in it.
 
 ---
 
+### Every Texas exam, by volume — and the licence we did not pick
+
+The same August 2026 report covers **all nineteen** Texas exam forms, not just
+ours. First-time takers:
+
+| Exam | Sat | Passed | Rate |
+| ---- | ---: | ---: | ---: |
+| **General Lines – Life, Accident & Health** (English) | **2,526** | 1,353 | 54% |
+| **Life Agent** (English) | **1,706** | 779 | 46% |
+| **General Lines – Property & Casualty** (English) — *ours* | **1,057** | 646 | **61%** |
+| **Personal Lines Property & Casualty** (English) | **308** | 185 | 60% |
+| Life Agent (Spanish) | 259 | 62 | 24% |
+| Limited Lines (English) | 137 | 78 | 57% |
+| General Lines – Life, Accident & Health (Spanish) | 121 | 29 | 24% |
+| Surplus Lines (English) | 52 | 40 | 77% |
+| Adjuster – All Lines (English) | 32 | 12 | 38% |
+| General Lines – P&C (Spanish) | 21 | 5 | 24% |
+| Public Insurance Adjuster (English) | 18 | 8 | 44% |
+| Adjuster – Property & Casualty (English) | 17 | 4 | 24% |
+| Limited Lines (Spanish) | 8 | 2 | 25% |
+| Property and Casualty Risk Manager (English) | 6 | 4 | 67% |
+| Adjuster – Workers Compensation (English) | 5 | 4 | 80% |
+| Managing General Agent (English) | 2 | 1 | 50% |
+| Personal Lines P&C (Spanish) | 2 | 1 | 50% |
+| Adjuster – All Lines (Spanish) | 1 | 0 | — |
+| Property and Casualty Risk Manager (Spanish) | 1 | 0 | — |
+| **Total first-time sittings** | **6,279** | | |
+
+**Four exams are 89% of the market.** Below Limited Lines it collapses:
+Managing General Agent had **two** candidates in the month, Risk Manager six,
+Workers Compensation Adjuster five. Those courses would cost what any other
+course costs and sell to nobody. **Covering every exam Texas offers is not a
+strategy, it is a way to spend a year badly.**
+
+#### The finding that should have changed the plan earlier
+
+**The life side is four times larger than P&C.** Life, Accident & Health
+(2,526) plus Life Agent (1,706) is **4,232 first-time sittings a month**
+against General Lines P&C's 1,057.
+
+Picked cold, most people would have chosen P&C — it feels like the bigger
+industry. The volumes say otherwise, and this table was sitting inside a
+document already in the repository, unread, because only the P&C row had ever
+been extracted from it.
+
+Note also that **P&C has the highest pass rate of the big four at 61%**, where
+Life Agent is 46%. Less desperation in our market. The demand is in the 38%
+repeat-taker rate, not in the first-timers.
+
+#### What follows for the roadmap
+
+1. **Finish General Lines P&C.** Prove the platform before widening.
+2. **Personal Lines** — 308 a month, and perhaps **15% more work**: its
+   blueprint is Modules 1 and 2 wholesale, Module 3 without the commercial
+   lesson, two lessons from Module 4, plus its own Texas section. The best
+   return per hour available.
+3. **Life & Health** — the real prize at 2,526 a month, but entirely new
+   content. Decide once the first course has actually sold something.
+4. **Stop.** Everything else is a rounding error.
+
+Spanish forms are worth a line: every one has a pass rate near 24% and volumes
+under 260. The gap is striking and may be an underserved market — but it is a
+translation and localisation project, not a variant, and nothing here says
+whether the low rate is language or cohort.
+
 ## 8. What I could not verify
 
 - **Exact current pricing.** Sources blocked. Check the four vendors directly.
