@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-// @ts-expect-error -- plain .mjs module shared with the importer scripts.
+// Plain .mjs, shared with the importer scripts so the gate cannot drift.
 import { classifyReview } from '../scripts/review-gate.mjs'
 
 /**
