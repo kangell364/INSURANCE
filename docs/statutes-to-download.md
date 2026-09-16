@@ -106,7 +106,7 @@ them directly.
 
 | ✓ | Rule | Subject |
 | - | ---- | ------- |
-| ☐ | **§5.5002** | Property and casualty definitions — **its own blueprint line**, TX.II.A |
+| ✗ | ~~**§5.5002**~~ | **The blueprint's citation for TX.II.A does not land.** 28 TAC §5.5002 is Ch. 5, Subchapter F, Div. 1, "Inland Marine Insurance — Imports" (eff. 07 May 2025), not definitions. Do not fetch it expecting definitions. |
 | ☐ | **§21.201–.205** | Claims practices — the rule layer beneath Chapter 542 |
 | ☐ | **§1.502** | Felony convictions and notification |
 | ☐ | **§5.204** | Auto coverage |
@@ -119,8 +119,10 @@ them directly.
 | ☐ | **§21.4, §21.111, §21.115** | Misrepresentation and advertising |
 | ☐ | **§29.1** | Guaranty association |
 
-**§5.5002 and §21.201–.205 first** — the first has its own blueprint line, the
-second sits under a chapter already taught.
+**§21.201–.205 first** — claims practices, the rule layer beneath Chapter 542,
+which is already taught. TX.II.A cannot be chased until somebody identifies
+the rule that actually holds the property and casualty definitions; the
+blueprint's pointer to §5.5002 is wrong.
 
 The TAC is HTML rather than PDF, so `scripts/extract-statute.py` will not read
 it. Paste the text into chat instead, as you did with Chapter 2210.
