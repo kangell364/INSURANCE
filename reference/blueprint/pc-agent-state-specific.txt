@@ -1,0 +1,80 @@
+# Texas P&C Agent — State Specific Content Outline
+
+Source: Pearson VUE #124401, TEXAS Insurance Supplement — Examination Content
+Outlines, effective 1 September 2026. Extracted from the supplied PDF.
+
+This is the authoritative list of what TX.I and TX.II test, with the statute
+each line cites. Everything in Module 5 should trace to a line here.
+
+---
+
+PROPERTY AND CASUALTY AGENT STATE SPECIFIC CONTENT OUTLINE ( 30 scoreable questions plus 5 pretest questions) All references are to the Texas Insurance Code ( TIC ) or the Texas Administrative Code (TAC), Title 28, unless otherwise noted
+I. TEXAS STATUTES AND RULES COMMON TO PROPERTY AND CASUALTY INSURANCE ................. 18
+A . Commissioner of Insurance
+1. General powers and duties Ref.: TIC 31.001,
+31. 002, 31.021, 32.151, 83.051, 201.004, 404.051 - .053, 481.001 - .009, 491.051 - .052, 541.107 - 108, 542.010, 4001.005, 404.003
+2. Examination of records Ref.: TIC 521.003 - .004, 401.051 - .056
+3. Investigation/Notice of hearing Ref.: TIC 38.001; 521.003 - .004, 541.102 - 103, Govt 2001.051
+4. Penalties Ref.: TIC 82.001 - .056, 4005.102
+5. Cease and desist orders Ref.: TIC 541.108, 542.010, 541.110 - 111, 83.051 - .054
+B . Insurance definitions
+1. Certificate of authority Ref.: TIC 801.051 - .053
+2. Transacting insurance Ref . : TIC 101.051
+3. Foreign, domestic, alien Ref.: TIC 982.001
+4. Stock, mutual Ref.: TIC 547.001, 801.001
+5. Admitted/nonadmitted Ref.: TIC 801.052
+6. Texas Lloyds Ref: TIC 941.051
+C. Licensing requirements
+1. Types
+a. Agent /agency Ref.: TIC 4001.003 , 4001.006, 4001.104 - .106, 4001.051 , 4051.05 1; 28 TAC § 1.502
+b. Nonresident agent Ref.: TIC 4056
+c. Temporary Ref.: TIC 4001.151 - .156
+d. Limited license Ref.: TIC 4051.101
+e. Managing general agent Ref.: TIC 19.1201 - .1206
+f. Surplus lines Ref.: TIC 981.202
+g. Adjuster Ref.: TIC 4101.001 - .005
+h. Risk manager Ref.: TIC 4153.051 ; TAC § 19.1301 - .1320
+i . Emergency Ref.: TIC 4051.054
+2. Exemptions/exceptions Ref .: 4002.003
+3. Appointment Ref.: TIC 4001.201 - .206
+4. Continuing education Ref.: TIC 4004.051 - 055 , 28 TAC § 19.1001 - .1030
+5. Records maintenance Ref.: TIC 4001.255 6 . License application, denial, renewal, expiration Ref .: TIC 4003.001 , 4003.004 , 4003.006 - .007 , 4005.101 - .102, 4005 .105 TAC 19.805 7 . License termination, revocation, suspension Ref.: TIC 4005.101 - .102, 4005.105 8 . Notification to Department of certain information
+a. Change of address Ref.: TIC 4001.252
+b. Felony convictions Ref.: TAC § 1.502
+c. Administrative action taken against a license holder Ref.: TIC 4005.101 - .102
+D. Marketing practices
+1. Unfair/Prohibited trade practices
+a. Claims methods and practices Ref.: TIC 541.101 - .111; 542.001 - .014, .054 - .058; 4005.053, 4005.101; 28 TAC § 21.201 - .205
+b. False advertising Ref.: TAC § 21.11 1 , 21.115
+c. Misrepresentation Ref.: TIC 541.051 - .061, TAC § 21.4
+d. Defamation Ref.: TIC 541.053
+e. Controlled business /Intent to engage Ref.: TIC 4001.104
+f. Rebating Ref.: TIC 541.056 , 1806.104
+g. Discrimination Ref.: TIC 544.002 , 1806.153
+h. Fraud Ref.: TIC 701.001 - .154
+i . Boycott, coercion, intimidation Ref.: TIC 541.054
+2. Rating and underwriting practices Ref: TAC §5.9340 - 9357
+E. Agent duties/responsibilities
+1. Commission sharing Ref.: TIC 4001.157, 4005.053 - .054
+II. TEXAS STATUTES AND RULES PERTINENT TO PR OPERTY AND CASUALTY INSURANCE ................. 12
+A. Property and casualty definitions Ref.: TAC § 5.5002
+B. Surplus lines Ref.: TIC . 981.001 - .004, 981.057; TAC § 15.2 - 15.6
+C. Approval of Rates and Forms Ref: TIC 5.35 TEXAS Insurance Supplement - Examination Content Outlines Effective : September 1, 2026 S 11
+D. Homeowner's Insurance
+1. Declination, cancellation, nonrenewal Ref: TIC 551.001 - .113
+2. Texas FAIR Plan Association Ref.: TIC 2211.051 - .059
+3. Texas Windstorm Insurance Association (TWIA) Ref.: TIC 2210.001 - .084 4 . Loss settlement provisions Ref: TIC § 542.051 - .061; § 542.15 - .154
+5. Liquidated demand Ref: TIC §862.053
+E. Automobile insurance
+1. Provisions
+a. Coverage Ref: Transportation Code: Chapter 601; TAC § 5.204
+b. Uninsured Motorists/Underinsured Motorists Ref.: TIC 1952.101 .110
+c. Personal Injury Protection (PIP) Ref.: TIC 1952.151 .161
+2. Financial responsibility and required minimum liability limits Ref: Transportation Code: § 601.051, 601.053, 601.056 - .057, 601.071 - .072
+3. Renewal, nonrenewal, and cancellation Ref: TIC 551.101 .113, 551.151 - .152; TAC § 5.7002
+4. Texas Automobile Insurance Plan Association Ref: TIC 2151.051 .154
+5. Transportation network compan y (rideshare) Ref: Chap. 1954
+F.
+1. Definitions and coverage Ref: Texas Labor Code Title 5: § 401.011 , § 406.031 - 032, 034 2 . Benefits Ref: Texas Labor Code Title 5: §408.021 .087; 408.150 ; 408.181 .187
+G. Texas Property and Casualty Insurance Guaranty Association Ref: TIC 462.001 .351; TAC § 29.1
+H. Texas Medical Liability Underwriting Association (JUA) Ref: TIC . Chapter 2203 .001 .152 PERSONAL LINES - GENERAL KNOWLEDGE
