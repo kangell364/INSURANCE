@@ -1,4 +1,4 @@
--- Texas Exam Prep — Phase 2, step 3 of 8
+-- Texas Exam Prep — deploy step 03 of 18 (Phase 2)
 --
 -- 20260201000200_lessons.sql
 --

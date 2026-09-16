@@ -22,11 +22,20 @@ where table_schema = 'public'
 order by table_name;
 ```
 
+There are **fourteen** tables when everything is applied:
+
+| Phase | Tables |
+| ----- | ------ |
+| 1 | `profiles`, `courses`, `enrollments` |
+| 2 | `modules`, `lessons`, `lesson_contents`, `topics`, `lesson_topics`, `lesson_completions` |
+| 3 | `questions`, `question_options`, `question_answers`, `attempts`, `attempt_questions` |
+
 | If you see | Then |
 | ---------- | ---- |
-| `profiles`, `courses`, `enrollments` only | Phase 1 is applied. Do **Step 1** below. |
-| ...plus `modules`, `lessons`, `lesson_contents`, `topics` | Phase 2 schema is already applied. Skip to **Step 2**. |
 | Nothing | Apply the Phase 1 migrations first, then Step 1. |
+| Phase 1 only (3 tables) | Do **Step 1**, then **Step 1b**. |
+| Phases 1 and 2 (9 tables) | Phase 2 is applied. Do **Step 1b**. |
+| All fourteen | Schema is complete. Skip to **Step 2**. |
 
 ---
 
@@ -131,14 +140,72 @@ than about the SQL.
 
 ---
 
+## Step 1b — Apply the Phase 3 schema (once)
+
+This creates the assessment tables — `questions`, `question_options`,
+`question_answers`, `attempts`, `attempt_questions` — plus `score_attempt()`
+and `start_attempt()`, which are what make a paper impossible to assemble or
+mark from the browser.
+
+### Option A — the Supabase CLI
+
+`supabase db push` applies every outstanding migration in order, Phase 3
+included. Nothing extra to do.
+
+### Option B — psql
+
+```bash
+psql "<connection string>" -f supabase/deploy/phase-3-schema.sql
+```
+
+### Option C — the SQL editor
+
+Paste **`supabase/deploy/phase-3-schema.sql`**.
+
+> ### This file is NOT one transaction, and Phase 2's is
+>
+> Phase 3 adds a value to the `attempt_kind` enum, and PostgreSQL refuses to
+> use a new enum value in the transaction that added it. The phase therefore
+> cannot be wrapped in a single `begin; ... commit;` the way Phase 2 is, so
+> the generated file uses **one transaction per migration**.
+>
+> The practical difference: a failure part-way through Phase 2 leaves nothing
+> behind, while a failure part-way through Phase 3 leaves **the migrations
+> before it applied**. That is recoverable, but not by re-running the whole
+> file — the applied ones are not idempotent and will fail on an existing
+> type or table.
+>
+> **If it fails, note which migration the error names**, fix the cause, and
+> resume from that one using `supabase/deploy/steps/`. Steps `09`–`18` are
+> Phase 3, one file each, in order.
+
+### How this was found, and why the migrations changed shape
+
+`alter type ... add value` and the constraints that use `'module'` were
+originally a single migration. That worked for a year of local testing
+because the harness ran migrations through `psql -f` with no explicit
+transaction, so every statement committed on its own. It broke the first time
+a migration was wrapped in a transaction — which is the ordinary and correct
+way to run one.
+
+The enum value now lives alone in `20260301000700_attempt_kind_module.sql`.
+**Keep it alone.** A use of `'module'` added to that file reintroduces the
+failure it exists to prevent.
+
+---
+
 ## Step 2 — Load the content
 
-Two files, in this order:
+Three files, in this order:
 
 1. **`supabase/seed.sql`** — the course row and the blueprint topic counts.
    About 10 KB; pastes fine.
 2. **`supabase/seed_content.sql`** — the modules, lessons and lesson bodies,
    generated from `content/` by the importer. **About 380 KB.**
+3. **`supabase/seed_questions.sql`** — the question bank, its options and its
+   answers, generated from `content/questions/` by `import-questions.mjs`.
+   **About 1.3 MB.** Requires Phase 3, and requires psql: there is no chunked
+   fallback for this one, and 1.3 MB will not go into a browser.
 
 > ### The content seed is too big to paste
 >
@@ -152,14 +219,15 @@ Two files, in this order:
 >
 > ```
 > psql "postgresql://postgres.<ref>:<password>@<host>:5432/postgres" \
->   -f supabase/seed.sql -f supabase/seed_content.sql
+>   -f supabase/seed.sql -f supabase/seed_content.sql -f supabase/seed_questions.sql
 > ```
 >
 > or, with the Supabase CLI linked to the project:
 >
 > ```
 > supabase db push          # migrations
-> psql "$(supabase db url)" -f supabase/seed.sql -f supabase/seed_content.sql
+> psql "$(supabase db url)" -f supabase/seed.sql \
+>   -f supabase/seed_content.sql -f supabase/seed_questions.sql
 > ```
 >
 > **Fallback, if neither tool is available:** `supabase/deploy/content/` holds

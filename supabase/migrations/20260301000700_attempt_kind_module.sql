@@ -1,0 +1,24 @@
+-- Add 'module' to attempt_kind. Nothing else.
+--
+-- WHY THIS IS A MIGRATION ON ITS OWN
+--
+-- PostgreSQL refuses to use a new enum value in the transaction that added
+-- it: "unsafe use of new value ... New enum values must be committed before
+-- they can be used." The value and its first use must therefore be in
+-- separate transactions, and the unit of transaction here is the migration.
+--
+-- This was originally one file with the table changes that follow, and it
+-- worked -- but only because every consumer we had ran migrations through
+-- `psql -f` with no explicit transaction, so each statement committed on its
+-- own. It failed the moment the same file was wrapped in `begin; ... commit;`
+-- for the deploy bundle. Anything that runs a migration atomically, which is
+-- the ordinary and correct thing to do, would have hit it: the local test
+-- harness simply never did.
+--
+-- So the split is not a workaround for the bundle. The bundle is what
+-- revealed that the original file was only safe by accident.
+--
+-- Keep this file to the one statement. Adding a use of 'module' below would
+-- reintroduce exactly the failure it exists to prevent.
+
+alter type public.attempt_kind add value if not exists 'module';

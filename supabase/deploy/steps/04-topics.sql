@@ -1,4 +1,4 @@
--- Texas Exam Prep — Phase 2, step 4 of 8
+-- Texas Exam Prep — deploy step 04 of 18 (Phase 2)
 --
 -- 20260201000300_topics.sql
 --

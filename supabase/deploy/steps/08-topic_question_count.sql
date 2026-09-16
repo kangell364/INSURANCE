@@ -1,4 +1,4 @@
--- Texas Exam Prep — Phase 2, step 8 of 8
+-- Texas Exam Prep — deploy step 08 of 18 (Phase 2)
 --
 -- 20260201000700_topic_question_count.sql
 --

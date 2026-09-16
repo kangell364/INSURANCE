@@ -1,4 +1,4 @@
--- Texas Exam Prep — Phase 2, step 7 of 8
+-- Texas Exam Prep — deploy step 07 of 18 (Phase 2)
 --
 -- 20260201000600_lesson_completions.sql
 --

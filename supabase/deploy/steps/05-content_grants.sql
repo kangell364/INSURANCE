@@ -1,4 +1,4 @@
--- Texas Exam Prep — Phase 2, step 5 of 8
+-- Texas Exam Prep — deploy step 05 of 18 (Phase 2)
 --
 -- 20260201000400_content_grants.sql
 --

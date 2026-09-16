@@ -1,4 +1,4 @@
--- Texas Exam Prep — Phase 2, step 1 of 8
+-- Texas Exam Prep — deploy step 01 of 18 (Phase 2)
 --
 -- 20260201000000_content_types.sql
 --
