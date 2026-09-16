@@ -358,3 +358,75 @@ export async function getReadiness(
     error: null,
   }
 }
+
+/** How a submitted paper went, topic by topic. */
+export type TopicResult = {
+  topicId: string
+  code: string
+  name: string
+  correct: number
+  asked: number
+  scorePercent: number
+}
+
+/**
+ * The per-topic breakdown of a submitted paper.
+ *
+ * `score_attempt()` returns totals only — it is deliberately narrow, because
+ * its job is to compare against a table nobody may read. This is the ordinary
+ * query that follows: by the time it runs, `is_correct` has already been
+ * written, and a student reading their own marks back discloses nothing.
+ *
+ * Sorted weakest first. A results screen exists to say what to do next, and
+ * the topic a student did worst on is the answer.
+ */
+export async function getTopicBreakdown(
+  attemptId: string,
+): Promise<QueryResult<TopicResult[]>> {
+  if (!isSupabaseConfigured()) return { data: null, error: NOT_CONFIGURED }
+
+  const supabase = await createClient()
+  const { data, error } = await supabase
+    .from('attempt_questions')
+    .select('is_correct, question:questions ( topic:topics ( id, code, name ) )')
+    .eq('attempt_id', attemptId)
+
+  if (error) {
+    logFailure('breakdown', error)
+    return { data: null, error: GENERIC_ERROR }
+  }
+
+  type Row = {
+    is_correct: boolean | null
+    question: { topic: { id: string; code: string; name: string } | null } | null
+  }
+
+  const byTopic = new Map<string, TopicResult>()
+  for (const row of (data ?? []) as unknown as Row[]) {
+    const topic = row.question?.topic
+    if (!topic) continue
+
+    const entry = byTopic.get(topic.id) ?? {
+      topicId: topic.id,
+      code: topic.code,
+      name: topic.name,
+      correct: 0,
+      asked: 0,
+      scorePercent: 0,
+    }
+    entry.asked += 1
+    if (row.is_correct === true) entry.correct += 1
+    byTopic.set(topic.id, entry)
+  }
+
+  const results = [...byTopic.values()].map((t) => ({
+    ...t,
+    scorePercent: t.asked > 0 ? Math.round((t.correct / t.asked) * 100) : 0,
+  }))
+
+  // Weakest first, then by blueprint code so equal scores keep a stable order
+  // rather than shuffling between renders.
+  results.sort((a, b) => a.scorePercent - b.scorePercent || a.code.localeCompare(b.code))
+
+  return { data: results, error: null }
+}

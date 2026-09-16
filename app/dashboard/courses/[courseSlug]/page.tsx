@@ -13,6 +13,7 @@ import { PageHeader } from '@/components/ui/PageHeader'
 import { Card, CardBody, CardHeader } from '@/components/ui/Card'
 import { ButtonLink } from '@/components/ui/Button'
 import { Alert } from '@/components/ui/Alert'
+import { StartQuizButton } from '@/components/StartQuizButton'
 import { EnrollmentStatusBadge } from '@/components/ui/Badge'
 import { EmptyState } from '@/components/ui/States'
 
@@ -161,6 +162,21 @@ export default async function DashboardCoursePage({ params }: Params) {
                       )
                     })}
                   </ul>
+                )}
+
+                {/* Shown only to someone who can actually read the module, and
+                    only when it has lessons to be tested on. Offering a test
+                    beside a syllabus nobody can open is an invitation to a
+                    dead end. */}
+                {hasLiveAccess && module.lessons.length > 0 && (
+                  <div className="mt-5 border-t border-slate-100 pt-4">
+                    <StartQuizButton
+                      courseId={outline.course.id}
+                      moduleId={module.id}
+                      label={`Test yourself on ${module.title}`}
+                      hint="Thirty questions drawn across this module, marked at the end."
+                    />
+                  </div>
                 )}
               </CardBody>
             </Card>

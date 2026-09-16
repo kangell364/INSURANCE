@@ -13,6 +13,8 @@
 import { useState, useTransition } from 'react'
 import { useRouter } from 'next/navigation'
 import { ExamPaper } from '@/components/ExamPaper'
+import { ExamTimer } from '@/components/ExamTimer'
+import { EXAM } from '@/lib/exam-facts'
 import type { PaperQuestion } from '@/lib/attempts'
 import type { AttemptKind } from '@/types'
 import { answerQuestion, submitExam } from '../actions'
@@ -22,9 +24,16 @@ type Props = {
   kind: AttemptKind
   questions: PaperQuestion[]
   submitted: boolean
+  startedAt: string
 }
 
-export function ExamClient({ attemptId, kind, questions, submitted }: Props) {
+export function ExamClient({
+  attemptId,
+  kind,
+  questions,
+  submitted,
+  startedAt,
+}: Props) {
   const [local, setLocal] = useState(questions)
   const [error, setError] = useState<string | null>(null)
   const [pending, startTransition] = useTransition()
@@ -62,16 +71,31 @@ export function ExamClient({ attemptId, kind, questions, submitted }: Props) {
     })
   }
 
+  // The clock runs on a mock only. A lesson quiz under time pressure would
+  // measure composure rather than comprehension, which is not what it is for.
+  const timed = kind === 'mock' && !submitted
+
   return (
-    <ExamPaper
-      attemptId={attemptId}
-      kind={kind}
-      questions={local}
-      submitted={submitted}
-      onAnswer={onAnswer}
-      onSubmit={onSubmit}
-      saving={pending}
-      error={error}
-    />
+    <div className="space-y-4">
+      {timed && (
+        <div className="flex justify-end">
+          <ExamTimer
+            startedAt={startedAt}
+            limitMinutes={EXAM.minutes}
+            onExpire={onSubmit}
+          />
+        </div>
+      )}
+      <ExamPaper
+        attemptId={attemptId}
+        kind={kind}
+        questions={local}
+        submitted={submitted}
+        onAnswer={onAnswer}
+        onSubmit={onSubmit}
+        saving={pending}
+        error={error}
+      />
+    </div>
   )
 }

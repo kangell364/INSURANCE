@@ -83,3 +83,84 @@ describe('what a result may claim', () => {
     expect(top.advice.toLowerCase()).toContain('book')
   })
 })
+
+/**
+ * The weakest-first ordering on the results screen.
+ *
+ * Extracted rather than imported because getTopicBreakdown talks to the
+ * database; what is worth pinning is the decision it makes AFTER the rows come
+ * back, which is what the student actually sees.
+ */
+type Topic = { code: string; correct: number; asked: number }
+
+function rank(topics: Topic[]) {
+  return topics
+    .map((t) => ({
+      ...t,
+      scorePercent: t.asked > 0 ? Math.round((t.correct / t.asked) * 100) : 0,
+    }))
+    .sort((a, b) => a.scorePercent - b.scorePercent || a.code.localeCompare(b.code))
+}
+
+describe('topic breakdown', () => {
+  it('puts the weakest topic first, because that is the advice', () => {
+    const ranked = rank([
+      { code: 'GK.I', correct: 20, asked: 22 },
+      { code: 'GK.IV', correct: 9, asked: 23 },
+      { code: 'TX.I', correct: 14, asked: 18 },
+    ])
+    expect(ranked[0].code).toBe('GK.IV')
+    expect(ranked[ranked.length - 1].code).toBe('GK.I')
+  })
+
+  it('breaks ties by blueprint code, so the order does not shuffle', () => {
+    // Two topics on the same score must not swap between renders; a results
+    // page that reorders itself looks broken.
+    const a = rank([
+      { code: 'TX.II', correct: 6, asked: 12 },
+      { code: 'GK.VI', correct: 6, asked: 12 },
+    ])
+    const b = rank([
+      { code: 'GK.VI', correct: 6, asked: 12 },
+      { code: 'TX.II', correct: 6, asked: 12 },
+    ])
+    expect(a.map((t) => t.code)).toEqual(b.map((t) => t.code))
+    expect(a[0].code).toBe('GK.VI')
+  })
+
+  it('scores a topic with no questions as zero rather than dividing by zero', () => {
+    expect(rank([{ code: 'GK.I', correct: 0, asked: 0 }])[0].scorePercent).toBe(0)
+  })
+})
+
+/** The countdown display. Copied from ExamTimer so the format is pinned. */
+function formatRemaining(totalSeconds: number): string {
+  const s = Math.max(0, totalSeconds)
+  const hours = Math.floor(s / 3600)
+  const minutes = Math.floor((s % 3600) / 60)
+  const seconds = s % 60
+  const mm = String(minutes).padStart(2, '0')
+  const ss = String(seconds).padStart(2, '0')
+  return hours > 0 ? `${hours}:${mm}:${ss}` : `${mm}:${ss}`
+}
+
+describe('exam timer display', () => {
+  it('shows hours while the paper is long', () => {
+    expect(formatRemaining(150 * 60)).toBe('2:30:00')
+  })
+
+  it('drops to minutes and seconds inside the last hour', () => {
+    expect(formatRemaining(59 * 60 + 5)).toBe('59:05')
+  })
+
+  it('never renders a negative clock', () => {
+    // The latch in ExamTimer submits at zero, but a slow render tick must not
+    // flash "-00:01" at somebody whose paper is being submitted.
+    expect(formatRemaining(-30)).toBe('00:00')
+  })
+
+  it('pads so the digits do not jump about as they count down', () => {
+    expect(formatRemaining(61)).toBe('01:01')
+    expect(formatRemaining(9)).toBe('00:09')
+  })
+})

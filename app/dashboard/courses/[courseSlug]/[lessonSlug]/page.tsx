@@ -13,6 +13,7 @@ import { Markdown } from '@/components/Markdown'
 import { Card, CardBody } from '@/components/ui/Card'
 import { ButtonLink } from '@/components/ui/Button'
 import { Alert } from '@/components/ui/Alert'
+import { StartQuizButton } from '@/components/StartQuizButton'
 
 export const metadata: Metadata = { title: 'Lesson' }
 
@@ -149,6 +150,25 @@ export default async function LessonPage({ params }: Params) {
       <article className="max-w-2xl">
         <Markdown source={lesson.body} />
       </article>
+
+      {/* After the lesson, not before it. A quiz taken first measures what
+          somebody already knew; the point of the testing effect is retrieval
+          AFTER learning. */}
+      <Card className="mt-12">
+        <CardBody>
+          <h2 className="text-base font-semibold text-slate-900">
+            Test yourself on this lesson
+          </h2>
+          <div className="mt-3">
+            <StartQuizButton
+              courseId={lesson.courseId}
+              lessonId={lesson.id}
+              label="Start the quiz"
+              hint="Every question for this lesson, with the answer explained as you go."
+            />
+          </div>
+        </CardBody>
+      </Card>
 
       {position && (position.previous || position.next) && (
         <Card className="mt-12">
