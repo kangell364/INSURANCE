@@ -114,3 +114,44 @@ would believe the agent holds, from the insurer's own conduct. Leaving the
 indicia of agency in place is that conduct. **Express** authority is what the
 agency agreement says; **implied** is what is reasonably necessary to carry it
 out.
+
+### A client agrees to the cover by telephone and asks the agent to sign the application for them. May the agent do it?
+
+- [x] No — signing another's name without authority is forgery, and a ground for discipline
+- [ ] Yes, once the client has given verbal authority
+- [ ] Yes, if the agent notes on the form that they signed for the client
+- [ ] Yes, provided the client countersigns at the next opportunity
+
+**"The client asked me to" is not a defence.** It is also a **fraudulent or
+dishonest act or practice** under **§4005.101(b)(5)**, an independent ground to
+deny, suspend or revoke a licence.
+
+### An applicant lets the agent fill in the form and signs it without reading. Whose statements are they?
+
+- [x] The applicant's — the signature adopts every statement as their representation
+- [ ] The agent's, since the agent wrote them
+- [ ] Nobody's, until the insurer verifies them
+- [ ] The insurer's, once the policy issues
+
+This is what makes the misrepresentation and concealment rules bite. It is also
+why an applicant should read what they sign: the answers become theirs.
+
+### For the purposes of compensation disclosure, who is the "customer" under §4005.004?
+
+- [x] The person signing the application, or the authorised representative of the insured actually negotiating the placement
+- [ ] Any person named as an insured on the policy
+- [ ] The person who pays the premium
+- [ ] The first named insured only
+
+The statute identifies the customer **by the signature**, which is one of
+several places Texas uses a signature to settle who agreed to what.
+
+### What happens to the signed application once the policy issues?
+
+- [x] It is usually attached to and made part of the policy
+- [ ] It is retained only by the agent
+- [ ] It is destroyed once the declarations are prepared
+- [ ] It is filed with the Department
+
+Which is why the **declarations restate it**, and why a discrepancy between what
+was applied for and what was issued is visible to the insured.

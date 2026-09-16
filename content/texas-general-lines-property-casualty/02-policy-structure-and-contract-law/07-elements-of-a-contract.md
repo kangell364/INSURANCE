@@ -109,6 +109,44 @@ the principle beneath representations, warranties and concealment.
 A useful check: **A**dhesion, **A**leatory, **U**nilateral, **C**onditional,
 **P**ersonal, **U**tmost good faith.
 
+## The application, and signing it
+
+The application is where the contract starts, and the blueprint names it in its
+own right. Three things about it are examined.
+
+**The signature is what adopts the statements.** Everything written on the
+application becomes the applicant's **representation** the moment they sign —
+which is what makes Module 2's misrepresentation and concealment rules bite.
+An applicant who lets somebody else fill the form in and signs without reading
+it has still made every statement on it.
+
+**The agent signs as the producer, never as the applicant.** An agent who signs
+an applicant's name — however convenient, however clearly the applicant agreed
+on the phone — has **signed another's name without authority**, which is the
+definition of **forgery** from the crime lesson. It is also a **fraudulent or
+dishonest act or practice** under **§4005.101(b)(5)**, an independent ground to
+deny, suspend or revoke a licence. There is no version of this that is
+harmless, and "the client asked me to" is not a defence.
+
+**The signed application is usually attached to and made part of the policy.**
+That is why the declarations restate it, and why a discrepancy between what was
+applied for and what was issued matters: the insured can see both.
+
+Texas puts the signature to work in several places already met:
+
+- **§4005.004(a)(5)** defines a **"customer"**, for compensation disclosure, as
+  **the person signing the application** for insurance, or the authorised
+  representative of the insured actually negotiating the placement.
+- **§2151.102(b)** requires **the applicant and the servicing agent** to
+  certify, **as part of the application**, that the applicant was rejected by at
+  least two insurers, before TAIPA will assign the risk.
+- **§1952.101(c)** and **§1952.152** let a named insured remove uninsured
+  motorist or personal injury protection coverage **only by rejecting it in
+  writing** — a signature is what makes the rejection exist at all.
+
+The pattern: **where Texas wants certainty about what somebody agreed to, it
+asks for a signature.**
+
 ## Agency: why the agent's knowledge is the insurer's
 
 An agent represents the **insurer**. A broker represents the **insured**.
@@ -157,6 +195,9 @@ the policy is a contract of adhesion.
 
 **Waiver versus estoppel** — voluntarily giving up a right versus being
 barred from asserting one.
+
+**The applicant signs the application; the agent never signs for them.** Doing
+so is forgery, and a ground for discipline under §4005.101(b)(5).
 
 ## Check yourself
 
