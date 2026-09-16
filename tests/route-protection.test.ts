@@ -93,6 +93,21 @@ describe('protected routes', () => {
     )
   })
 
+  // Regression guard. A recovery link signs the visitor in, so if
+  // /reset-password were ever treated like /login the proxy would redirect
+  // every reset email straight to the dashboard and the form would never be
+  // seen. The failure would look like "password reset does nothing".
+  it.each(['/reset-password', '/forgot-password'])(
+    'does not bounce a signed-in visitor away from %s',
+    async (path) => {
+      signedIn()
+
+      const response = await updateSession(request(path))
+
+      expect(response.headers.get('location')).toBeNull()
+    },
+  )
+
   it.each(['/', '/courses', '/about', '/contact', '/login', '/signup'])(
     'lets an anonymous visitor reach the public route %s',
     async (path) => {

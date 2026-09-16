@@ -1,0 +1,62 @@
+-- The answer key.
+--
+-- This is the table the whole Phase 3 design exists to protect. Read
+-- docs/phase-3-design.md before changing anything here.
+--
+-- The rule: NO browser role may read this table, by any route, ever. Not
+-- through a policy, not through a view, not through an embedded PostgREST
+-- resource. The only things that touch it are SECURITY DEFINER functions that
+-- check the caller's identity first.
+
+create table public.question_answers (
+  -- One answer per question, so the question id IS the primary key. A
+  -- separate surrogate key would permit two answer rows for one question,
+  -- which is a state with no correct interpretation.
+  question_id       uuid primary key,
+  course_id         uuid not null references public.courses (id) on delete cascade,
+  correct_option_id uuid not null,
+
+  created_at        timestamptz not null default now(),
+  updated_at        timestamptz not null default now(),
+
+  constraint question_answers_question_fk
+    foreign key (question_id, course_id)
+    references public.questions (id, course_id) on delete cascade,
+
+  -- The correct option must belong to THIS question. Without the composite
+  -- reference, an answer key could point at an option of some other question
+  -- and every attempt at this one would be marked wrong, with nothing in the
+  -- schema objecting.
+  constraint question_answers_option_fk
+    foreign key (correct_option_id, question_id)
+    references public.question_options (id, question_id) on delete cascade
+);
+
+create trigger question_answers_set_updated_at
+  before update on public.question_answers
+  for each row execute function public.set_updated_at();
+
+alter table public.question_answers enable row level security;
+
+-- Belt: no privilege at all for the API roles. A missing grant fails before
+-- RLS is even consulted, so `select * from question_answers` with a browser
+-- token is a permission error rather than an empty result. The difference
+-- matters: an empty result invites someone to go looking for the filter.
+revoke all on table public.question_answers from anon, authenticated;
+
+-- Braces: RLS is on and there is NO policy for anon or authenticated. A table
+-- with RLS enabled and no matching policy denies everything. Either mechanism
+-- alone is sufficient; both are present because this is the one table where
+-- being wrong is unrecoverable -- a leaked answer key cannot be un-leaked.
+--
+-- Note what is NOT here: no `question_answers_select_admin` policy. An admin
+-- who needs to see the key uses the admin tooling, which runs its own checks;
+-- adding a policy here would mean a single mistake in is_admin() exposes the
+-- whole bank. Admin writes go through the importer, which connects as the
+-- migration role.
+
+comment on table public.question_answers is
+  'The answer key. No grant to anon or authenticated, RLS on with no policy '
+  'for them. Reached only by SECURITY DEFINER functions that verify the '
+  'caller owns the attempt being scored. Never expose this through a view, a '
+  'policy, or a PostgREST embed.';

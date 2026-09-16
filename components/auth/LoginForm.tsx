@@ -99,6 +99,17 @@ export function LoginForm() {
         htmlFor="password"
         error={fieldErrors.password}
         required
+        // The reset link belongs beside the field it rescues, not buried at
+        // the foot of the form. Somebody who has just failed to sign in is
+        // looking here.
+        labelAction={
+          <Link
+            href="/forgot-password"
+            className="text-navy-700 text-sm font-medium hover:underline"
+          >
+            Forgot password?
+          </Link>
+        }
       >
         <Input
           id="password"

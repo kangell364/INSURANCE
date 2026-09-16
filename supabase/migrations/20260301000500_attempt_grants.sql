@@ -1,0 +1,88 @@
+-- Grants and policies for attempts.
+--
+-- Attempts are the first Phase 3 rows a student WRITES, so the posture is the
+-- inverse of the question bank: they own their attempts and may create and
+-- answer them, but they may not mark them.
+
+alter table public.attempts          enable row level security;
+alter table public.attempt_questions enable row level security;
+
+revoke all on table public.attempts          from anon, authenticated;
+revoke all on table public.attempt_questions from anon, authenticated;
+
+grant select, insert on table public.attempts to authenticated;
+grant select, insert, update on table public.attempt_questions to authenticated;
+
+-- No UPDATE on attempts, and no DELETE on either.
+--
+-- A student cannot alter an attempt after creating it: not the kind, not the
+-- reveal mode, and above all not correct_count. Scoring happens inside
+-- score_attempt(), which runs as the owner and is therefore unaffected by
+-- these grants. A student who could update attempts could simply write
+-- themselves a perfect score, and readiness would mean nothing.
+--
+-- No DELETE, because "unlimited retakes with readiness from recent
+-- performance" only holds if the record of recent performance cannot be
+-- curated. Deleting the bad attempts and keeping the good ones is the same
+-- as cheating, done slowly.
+
+create policy attempts_select_own
+  on public.attempts for select to authenticated
+  using (student_id = (select auth.uid()));
+
+create policy attempts_insert_own
+  on public.attempts for insert to authenticated
+  with check (
+    student_id = (select auth.uid())
+    and public.is_enrolled_in_course(course_id)
+    -- An attempt cannot be born already scored.
+    and submitted_at is null
+    and correct_count is null
+  );
+
+create policy attempts_select_admin
+  on public.attempts for select to authenticated
+  using (public.is_admin());
+
+-- ---------------------------------------------------------------------------
+
+create policy attempt_questions_select_own
+  on public.attempt_questions for select to authenticated
+  using (student_id = (select auth.uid()));
+
+create policy attempt_questions_insert_own
+  on public.attempt_questions for insert to authenticated
+  with check (
+    student_id = (select auth.uid())
+    -- Cannot be inserted pre-marked.
+    and is_correct is null
+  );
+
+-- A student may record or change their selection while the attempt is open.
+-- They may not touch is_correct: the WITH CHECK requires it to stay null,
+-- and score_attempt() -- running as the owner -- is what fills it in.
+create policy attempt_questions_update_own_unsubmitted
+  on public.attempt_questions for update to authenticated
+  using (
+    student_id = (select auth.uid())
+    and exists (
+      select 1 from public.attempts a
+       where a.id = attempt_questions.attempt_id
+         and a.submitted_at is null
+    )
+  )
+  with check (
+    student_id = (select auth.uid())
+    and is_correct is null
+  );
+
+create policy attempt_questions_select_admin
+  on public.attempt_questions for select to authenticated
+  using (public.is_admin());
+
+comment on policy attempt_questions_update_own_unsubmitted
+  on public.attempt_questions is
+  'Answering and changing an answer, while the attempt is open. The WITH '
+  'CHECK pins is_correct to null so a student cannot mark their own paper; '
+  'score_attempt() writes it with owner rights. The submitted_at test is '
+  'what stops an answer being changed after the score is known.';

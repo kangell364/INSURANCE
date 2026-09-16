@@ -7,6 +7,14 @@ type FieldProps = {
   hint?: ReactNode
   children: ReactNode
   required?: boolean
+  /**
+   * Optional control rendered on the same line as the label, right-aligned —
+   * a "Forgot password?" link beside the password field, for instance. It sits
+   * OUTSIDE the <label> element deliberately: a link inside a label is
+   * activated when the label is clicked, which for a password field means
+   * clicking the word "Password" navigates away.
+   */
+  labelAction?: ReactNode
 }
 
 /**
@@ -20,21 +28,25 @@ export function Field({
   hint,
   children,
   required,
+  labelAction,
 }: FieldProps) {
   return (
     <div>
-      <label
-        htmlFor={htmlFor}
-        className="block text-sm font-medium text-slate-700"
-      >
-        {label}
-        {required && (
-          <span className="text-red-600" aria-hidden="true">
-            {' '}
-            *
-          </span>
-        )}
-      </label>
+      <div className="flex items-baseline justify-between gap-3">
+        <label
+          htmlFor={htmlFor}
+          className="block text-sm font-medium text-slate-700"
+        >
+          {label}
+          {required && (
+            <span className="text-red-600" aria-hidden="true">
+              {' '}
+              *
+            </span>
+          )}
+        </label>
+        {labelAction}
+      </div>
       <div className="mt-1.5">{children}</div>
       {hint && !error && (
         <p id={`${htmlFor}-hint`} className="mt-1.5 text-xs text-slate-500">

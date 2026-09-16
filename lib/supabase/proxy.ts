@@ -6,7 +6,22 @@ import type { Database } from '@/types/database'
 /** Route prefixes that require a signed-in user. */
 const PROTECTED_PREFIXES = ['/dashboard', '/admin']
 
-/** Routes a signed-in user has no reason to see. */
+/**
+ * Routes a signed-in user has no reason to see; they are bounced to the
+ * dashboard.
+ *
+ * `/reset-password` IS NOT AND MUST NOT BE IN THIS LIST, despite looking like
+ * it belongs. A password-recovery link signs the visitor in — that is how
+ * Supabase recovery works, the token is exchanged for a short-lived session
+ * before the page renders — so treating it as an "auth only" route would
+ * redirect every single person who clicks a reset email straight to the
+ * dashboard, without ever showing them the form. The reset would appear to do
+ * nothing, and the cause would be nowhere near the symptom.
+ *
+ * `/forgot-password` is also left out: somebody who is signed in but has
+ * forgotten the password they use elsewhere can still legitimately ask for a
+ * reset link.
+ */
 const AUTH_ONLY_PREFIXES = ['/login', '/signup']
 
 function isMatch(pathname: string, prefixes: string[]): boolean {
