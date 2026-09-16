@@ -263,6 +263,49 @@ query at the top of this file is for.
 
 ## The app deployment
 
+### Vercel project settings
+
+Four settings, and the first one is the one that goes wrong.
+
+| Setting | Value |
+| ------- | ----- |
+| **Framework Preset** | **Next.js** |
+| Root Directory | *(empty — the app is the repository root)* |
+| Build / Output / Install commands | defaults; selecting Next.js sets them |
+| Production Branch | `main` |
+
+> **Framework Preset must be Next.js, and it will not always detect itself.**
+>
+> This project was created on Vercel while the repository still held nothing
+> but a `README.md`. Vercel inspects the repo at creation time, found no
+> `package.json`, recorded **Other**, and kept it. "Other" means *copy the
+> files, there is nothing to build*, with an output directory of `public` if
+> one exists — and this app has a `public/` folder. So every build after the
+> code landed **succeeded**, served the static assets as the whole site, and
+> returned a Vercel 404 on every route.
+>
+> **The tell is the build duration.** A real build of this app takes a minute
+> or two. The broken ones took **20 seconds**, because they were a file copy.
+> If a deployment is Ready in under half a minute, it did not compile
+> anything.
+>
+> Create the project *after* pushing the code, or check this setting first.
+
+### Auth redirect URLs
+
+Supabase only redirects back to allow-listed origins, so sign-in fails
+silently until the deployed address is registered. In the Supabase dashboard,
+**Authentication → URL Configuration**:
+
+- **Site URL** — `https://<your-domain>`
+- **Redirect URLs** — `https://<your-domain>/**`
+
+**Use the project's stable domain** (`<project>-<team>.vercel.app`), not the
+per-deployment URL with a hash in it. The hashed one is frozen to a single
+build; the stable one always points at the newest production deployment.
+
+### The rest
+
 Vercel builds on push. The build must succeed **without** Supabase
 credentials: `lib/env.ts` reports missing configuration rather than throwing,
 and pages render a "not configured" state. A build that only passes when
