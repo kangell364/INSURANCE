@@ -9351,3 +9351,4411 @@ select '6b57c222-b7cb-541a-85b7-bb1ebe5a7f99', c.id, 'e640dab6-3733-5be8-b48d-b7
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
 on conflict (question_id) do update set
   correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '44df8f67-fc9b-550a-b84b-c17a04aa17dd', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'commercial-general-liability'),
+       'A contractor installs a faulty water heater. It leaks two years later, ruining a floor. Which exposure is this?', '**Work in progress is operations; work handed over is completed operations.** Products and completed operations are grouped because the loss happens when the insured is no longer there, often long afterwards — and they share their own separate aggregate limit.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '4fe2ba99-6813-5ab2-8987-2b0556ee9180', '44df8f67-fc9b-550a-b84b-c17a04aa17dd', c.id, 'Completed operations — the work was finished and handed over', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '7a1d2778-ecb7-5fdb-8672-d5a45c8e59a4', '44df8f67-fc9b-550a-b84b-c17a04aa17dd', c.id, 'Operations, because the contractor performed the work', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'bbefa1e7-bcd6-5eae-ae3a-d3bb4449dd7b', '44df8f67-fc9b-550a-b84b-c17a04aa17dd', c.id, 'Premises, because the loss occurred at a location', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'de6fce42-f819-5610-a189-e55c8f441615', '44df8f67-fc9b-550a-b84b-c17a04aa17dd', c.id, 'Contractual, because the work was done under a contract', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '44df8f67-fc9b-550a-b84b-c17a04aa17dd', c.id, '4fe2ba99-6813-5ab2-8987-2b0556ee9180'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'a486b2dc-f314-5a64-852d-8994379339d1', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'commercial-general-liability'),
+       'On those facts, is the water heater itself covered?', '**The policy covers the harm the product does, not the cost of the defective product itself.** That is the business risk principle: replacing your own bad work is a cost of doing business, not an insurable accident. The floor is covered; the heater is not.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'c845b636-1737-54c2-a81a-8c7b0208405e', 'a486b2dc-f314-5a64-852d-8994379339d1', c.id, 'No — damage to your product and damage to your work are excluded', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '85ee7e55-9945-59a5-8969-4289c9598cc4', 'a486b2dc-f314-5a64-852d-8994379339d1', c.id, 'Yes, as property damage caused by an occurrence', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'f9272aae-1641-555a-97fa-6ef9d02e7352', 'a486b2dc-f314-5a64-852d-8994379339d1', c.id, 'Yes, up to the damage to premises rented to you limit', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '137518dc-ee8e-56f6-9911-53f2af202a37', 'a486b2dc-f314-5a64-852d-8994379339d1', c.id, 'Yes, but only after the floor claim is settled', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'a486b2dc-f314-5a64-852d-8994379339d1', c.id, 'c845b636-1737-54c2-a81a-8c7b0208405e'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '6054c4fb-0f39-5f5a-9357-73126ea25d32', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'commercial-general-liability'),
+       'A CGL has a $2m general aggregate, exhausted by premises claims in July, and a $2m products-completed operations aggregate. A products claim arrives in September. Covered?', '**Exhausting one aggregate does not exhaust the other.** The aggregate is annual, and when a relevant one is exhausted the policy is finished for that period even though months remain — and the duty to defend ends with it.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '1dbc4b8c-e362-5aac-99ae-b75b00373ac5', '6054c4fb-0f39-5f5a-9357-73126ea25d32', c.id, 'Yes — products-completed operations has its own separate aggregate', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '7230ad2b-28c1-5c4e-af83-5ea127368576', '6054c4fb-0f39-5f5a-9357-73126ea25d32', c.id, 'No, the aggregate for the policy period is exhausted', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'd7a58c5f-9cff-5095-9ca0-2313cf6fc7d1', '6054c4fb-0f39-5f5a-9357-73126ea25d32', c.id, 'Yes, but only up to the remaining occurrence limit', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '156971a8-1854-52d5-8b09-88519486c801', '6054c4fb-0f39-5f5a-9357-73126ea25d32', c.id, 'Only if the insured buys a reinstatement endorsement', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '6054c4fb-0f39-5f5a-9357-73126ea25d32', c.id, '1dbc4b8c-e362-5aac-99ae-b75b00373ac5'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '5299f499-3969-5a61-8dc3-2b3cba6cab69', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'commercial-general-liability'),
+       'A visitor trips in the insured''s lobby. The insured is plainly not negligent, but the visitor has a $3,000 hospital bill. Anything payable?', 'Coverage C settles small injuries quickly and goodwill intact, before they become liability claims. Expenses must be incurred within a stated period, commonly **three years**. It does **not** apply to the insured, employees or tenants.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '47bf0fd3-a110-52ff-862e-cbfb78e1721d', '5299f499-3969-5a61-8dc3-2b3cba6cab69', c.id, 'Yes — Coverage C medical payments pays regardless of fault', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '5609302c-9c50-52c1-8057-631b87c321ce', '5299f499-3969-5a61-8dc3-2b3cba6cab69', c.id, 'No, liability coverage requires legal liability', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'e637c0ae-a2fd-59fd-89ba-eec1af52eca3', '5299f499-3969-5a61-8dc3-2b3cba6cab69', c.id, 'Yes, but only as a supplementary payment', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '2b99ccc9-cc80-5451-9beb-98bb6433774f', '5299f499-3969-5a61-8dc3-2b3cba6cab69', c.id, 'Only if the visitor signs a release', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '5299f499-3969-5a61-8dc3-2b3cba6cab69', c.id, '47bf0fd3-a110-52ff-862e-cbfb78e1721d'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '9010b786-8594-5777-8a70-7dbd071916a9', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'commercial-general-liability'),
+       'An employee is injured by a colleague''s negligence. Does the CGL respond?', 'Employees and volunteer workers are insureds for acts within the scope of employment, **but not for bodily injury to a fellow employee**.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '8d48e8f9-8b97-5207-a84a-9bfdb9ebb413', '9010b786-8594-5777-8a70-7dbd071916a9', c.id, 'No — employee injuries are excluded; workers'' compensation and employers'' liability respond', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '5cae24b3-dd2a-55be-9ca1-d350f43401a5', '9010b786-8594-5777-8a70-7dbd071916a9', c.id, 'Yes, under Coverage A as an occurrence', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '3df48f63-3723-5139-8632-f4a2442e313d', '9010b786-8594-5777-8a70-7dbd071916a9', c.id, 'Yes, under Coverage C medical payments', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'e0854612-01d5-51d9-973c-ddd00df694ac', '9010b786-8594-5777-8a70-7dbd071916a9', c.id, 'Yes, because the colleague is an insured under the form', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '9010b786-8594-5777-8a70-7dbd071916a9', c.id, '8d48e8f9-8b97-5207-a84a-9bfdb9ebb413'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '4308c93a-9299-5327-9f9f-f62cbac1cfd0', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'commercial-general-liability'),
+       'A restaurant''s advertisement copies a competitor''s slogan. Which coverage?', 'Coverage B''s offences include **infringement of copyright, trade dress or slogan in the insured''s advertisement**. Note what is absent: **patent and trademark infringement are generally not covered.**', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '932a6c82-3217-5403-b01c-4a94ff940e17', '4308c93a-9299-5327-9f9f-f62cbac1cfd0', c.id, 'Coverage B — personal and advertising injury', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '03768070-51b9-511c-bd87-5b780e09f617', '4308c93a-9299-5327-9f9f-f62cbac1cfd0', c.id, 'Coverage A, as property damage to an intangible asset', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '397d4844-c00c-56e9-9b44-73b5722b6061', '4308c93a-9299-5327-9f9f-f62cbac1cfd0', c.id, 'Coverage C', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '8b2a7ed5-07f6-527d-8d44-9747213e0347', '4308c93a-9299-5327-9f9f-f62cbac1cfd0', c.id, 'None; intellectual property claims are excluded entirely', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '4308c93a-9299-5327-9f9f-f62cbac1cfd0', c.id, '932a6c82-3217-5403-b01c-4a94ff940e17'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '7c205e62-98a6-53e5-95dd-56a3b9403cd1', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'commercial-general-liability'),
+       'A tenant''s negligence causes a fire that damages the landlord''s building. Covered, given the care, custody or control exclusion?', '**Damage to premises rented to you is the express exception** to the care, custody or control exclusion. A tenant who burns the landlord''s building has this, and nothing else.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'd87cb4cf-7b41-51bb-a838-b4cf6c2ebf83', '7c205e62-98a6-53e5-95dd-56a3b9403cd1', c.id, 'Yes, up to the damage to premises rented to you limit', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'cf360bbc-b980-567f-8d87-cba73be75f76', '7c205e62-98a6-53e5-95dd-56a3b9403cd1', c.id, 'No, the exclusion is absolute', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '02e66626-9e8e-5eea-b6ba-6c2a7929de8c', '7c205e62-98a6-53e5-95dd-56a3b9403cd1', c.id, 'Yes, up to the general aggregate', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '10f34b1a-1be0-5ff8-8623-d0836868e44b', '7c205e62-98a6-53e5-95dd-56a3b9403cd1', c.id, 'Only if the lease is an insured contract', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '7c205e62-98a6-53e5-95dd-56a3b9403cd1', c.id, 'd87cb4cf-7b41-51bb-a838-b4cf6c2ebf83'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '5b72ef0e-2edf-5778-befe-2715be07740e', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'commercial-general-liability'),
+       'What is an occurrence under Coverage A?', 'The word does the work of **excluding the deliberate**: intentional injury is not an occurrence. Coverage B, by contrast, is triggered by **offences**, not accidents.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'a27fe2e2-7e60-53e0-b226-5d71234b1ffc', '5b72ef0e-2edf-5778-befe-2715be07740e', c.id, 'An accident, including continuous or repeated exposure to substantially the same general harmful conditions', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'ba529e21-e523-54a9-83fa-a89c6ca537f4', '5b72ef0e-2edf-5778-befe-2715be07740e', c.id, 'Any claim first made during the policy period', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '162e5a5c-402e-57e0-ad4a-be257415f298', '5b72ef0e-2edf-5778-befe-2715be07740e', c.id, 'Any act or omission of the insured, intended or not', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'cc4e196c-1f90-5421-85c5-a33625660974', '5b72ef0e-2edf-5778-befe-2715be07740e', c.id, 'A loss exceeding the self-insured retention', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '5b72ef0e-2edf-5778-befe-2715be07740e', c.id, 'a27fe2e2-7e60-53e0-b226-5d71234b1ffc'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '025dde2d-873c-5604-8332-850a020806ba', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'commercial-general-liability'),
+       'A claims-made policy''s retroactive date moves forward on renewal. What is the effect?', 'This is the thing to watch for on a claims-made renewal. **Injury or damage before the retroactive date is not covered, no matter when claimed.**', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'ea8276cc-2346-5a02-bd8c-9c7f3eae0867', '025dde2d-873c-5604-8332-850a020806ba', c.id, 'Years of prior coverage are quietly destroyed — injury before the new date is never covered', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '03829203-c13a-56ba-bed0-e08d2c15b85d', '025dde2d-873c-5604-8332-850a020806ba', c.id, 'Nothing; the retroactive date affects only reporting deadlines', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'abb7e21a-f20b-55d7-bef5-fb624329ce7b', '025dde2d-873c-5604-8332-850a020806ba', c.id, 'Coverage widens, because the reporting window lengthens', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'eceb1288-213c-5a41-91b1-3c951bd7c7f4', '025dde2d-873c-5604-8332-850a020806ba', c.id, 'The extended reporting period becomes automatic', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '025dde2d-873c-5604-8332-850a020806ba', c.id, 'ea8276cc-2346-5a02-bd8c-9c7f3eae0867'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '1baf73ed-aa57-5125-a3a8-85f954216764', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'commercial-general-liability'),
+       'What is the difference between a basic and a supplemental extended reporting period?', 'Tails exist because claims-made forms respond to **claims first made during the policy period** — without a tail, an expired claims-made policy leaves the insured exposed to claims arising from covered work.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '6511cd01-7abd-5032-af4d-edc666d22ae5', '1baf73ed-aa57-5125-a3a8-85f954216764', c.id, 'Basic is automatic and short; supplemental is bought, usually unlimited in time, within a short window after the policy ends', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '56066c61-eb3d-5a55-a22c-ee6ead11a21c', '1baf73ed-aa57-5125-a3a8-85f954216764', c.id, 'Basic is bought; supplemental is automatic', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '963b27c8-d012-54da-9ba2-a6012675c599', '1baf73ed-aa57-5125-a3a8-85f954216764', c.id, 'Basic covers products claims; supplemental covers premises claims', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '08708a25-8860-5a85-9e80-da7a02b71048', '1baf73ed-aa57-5125-a3a8-85f954216764', c.id, 'They differ only in the limit available', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '1baf73ed-aa57-5125-a3a8-85f954216764', c.id, '6511cd01-7abd-5032-af4d-edc666d22ae5'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'e1b34331-907d-5fc4-b6a8-3cfb9a701063', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'commercial-general-liability'),
+       'A forklift used solely on the insured''s premises injures a visiting driver. Which policy responds?', '**Mobile equipment** — bulldozers, farm machinery, forklifts, vehicles maintained solely on the premises, and vehicles carrying permanently mounted equipment like drills or cranes — **is covered by the CGL**. Vehicles subject to compulsory registration and used on public roads are **autos**, and belong on the commercial auto policy.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '20c03b83-9af7-513e-b2b7-684652015e98', 'e1b34331-907d-5fc4-b6a8-3cfb9a701063', c.id, 'The CGL — a forklift is mobile equipment, not an auto', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '70c4f91b-9e7f-58c7-98d3-9a33d71dbb80', 'e1b34331-907d-5fc4-b6a8-3cfb9a701063', c.id, 'The commercial auto policy', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '92944282-adbd-5ab9-80cf-cc58a7e66071', 'e1b34331-907d-5fc4-b6a8-3cfb9a701063', c.id, 'Workers'' compensation', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'cfafeb2f-e643-5955-b805-3f21b15cf20b', 'e1b34331-907d-5fc4-b6a8-3cfb9a701063', c.id, 'Neither; the vehicle exclusion applies', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'e1b34331-907d-5fc4-b6a8-3cfb9a701063', c.id, '20c03b83-9af7-513e-b2b7-684652015e98'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'a9d5de46-6fc1-5a9f-8c5a-bf7fbedfff46', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'commercial-general-liability'),
+       'A construction contract obliges the insured to assume the owner''s tort liability. Does the contractual liability exclusion defeat coverage?', '**Insured contract** is a defined list — leases, sidetrack agreements, easements, and the part of any contract assuming another''s tort liability — broad enough to restore most commercial hold-harmless agreements.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '6cb88e90-0831-5edc-b357-e694adc18d64', 'a9d5de46-6fc1-5a9f-8c5a-bf7fbedfff46', c.id, 'No — an insured contract is the exception, and it covers most commercial hold-harmless agreements', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'c44e129a-191f-5182-8d55-0b2abfd34546', 'a9d5de46-6fc1-5a9f-8c5a-bf7fbedfff46', c.id, 'Yes, all assumed liability is excluded', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '58238060-1c8d-5b6e-bd4a-7d18f8a90437', 'a9d5de46-6fc1-5a9f-8c5a-bf7fbedfff46', c.id, 'Yes, unless the owner is added as an additional insured', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'e37ffa0d-4d4c-5211-bfd0-f8ac850c79ff', 'a9d5de46-6fc1-5a9f-8c5a-bf7fbedfff46', c.id, 'Only if the assumption was oral', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'a9d5de46-6fc1-5a9f-8c5a-bf7fbedfff46', c.id, '6cb88e90-0831-5edc-b357-e694adc18d64'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '57b47100-9936-54e7-ad10-54805a405d30', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'commercial-general-liability'),
+       'The insured acquires a new subsidiary in March and does not report it. Is it an insured?', '**Newly acquired organisations** get a short automatic window, which exists so that an acquisition is not uninsured while the paperwork catches up.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '3cce005b-7175-575f-adbf-1632df1bf881', '57b47100-9936-54e7-ad10-54805a405d30', c.id, 'Yes, automatically for a limited period — commonly 90 days or until the policy ends, whichever is first', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '1be238ca-92d4-5d7c-b6a4-26db57c6ac1a', '57b47100-9936-54e7-ad10-54805a405d30', c.id, 'No, coverage begins only on endorsement', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '1d0d666c-2f78-5e96-a4ac-82c41f66abdb', '57b47100-9936-54e7-ad10-54805a405d30', c.id, 'Yes, for the remainder of the policy period', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '984de9a9-55c5-540b-ad9f-7d7b9897f86f', '57b47100-9936-54e7-ad10-54805a405d30', c.id, 'Yes, permanently, once premium is adjusted at audit', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '57b47100-9936-54e7-ad10-54805a405d30', c.id, '3cce005b-7175-575f-adbf-1632df1bf881'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'b42f50d7-19b6-5211-b9a2-9a7b0d5dede6', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'commercial-general-liability'),
+       'Which of these does the CGL NOT cover?', 'The CGL covers liability to **third parties** — not employees (workers'' compensation), not vehicles (commercial auto), and **not professional services**, which need professional liability.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '34bcb986-d02e-5a8d-b36a-54493e355222', 'b42f50d7-19b6-5211-b9a2-9a7b0d5dede6', c.id, 'The insured''s professional advice to a client', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '28e0e55d-08cf-5ff0-8145-fa7b7b0bea4c', 'b42f50d7-19b6-5211-b9a2-9a7b0d5dede6', c.id, 'A customer''s slip in the insured''s aisle', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '737b7740-ee63-5d95-b42f-2769d12dc812', 'b42f50d7-19b6-5211-b9a2-9a7b0d5dede6', c.id, 'Injury from a product after it left the insured''s possession', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'dd1b5702-0ced-51e1-9cd2-948b4912fd9a', 'b42f50d7-19b6-5211-b9a2-9a7b0d5dede6', c.id, 'Wrongful eviction committed by the insured', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'b42f50d7-19b6-5211-b9a2-9a7b0d5dede6', c.id, '34bcb986-d02e-5a8d-b36a-54493e355222'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '3f26088c-50f7-5ebb-b059-a69804b42507', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'commercial-general-liability'),
+       'Which limit caps all damages from one occurrence under Coverages A and C combined?', 'The **each occurrence** limit caps a single event. The **general aggregate** caps everything in the period except products-completed operations; the **medical expense** limit is per person under Coverage C; **personal and advertising injury** is per person or organisation under Coverage B.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'c8528066-fd38-5629-ad4b-77fa3adfbf94', '3f26088c-50f7-5ebb-b059-a69804b42507', c.id, 'The each occurrence limit', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '07dd6deb-1178-5c26-b549-c817184df74b', '3f26088c-50f7-5ebb-b059-a69804b42507', c.id, 'The general aggregate', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '70bf82b5-b21a-55fd-93d0-08c054a8e946', '3f26088c-50f7-5ebb-b059-a69804b42507', c.id, 'The damage to premises rented to you limit', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'c9ac45d4-8bed-5428-a044-52171a3c2e39', '3f26088c-50f7-5ebb-b059-a69804b42507', c.id, 'The medical expense limit', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '3f26088c-50f7-5ebb-b059-a69804b42507', c.id, 'c8528066-fd38-5629-ad4b-77fa3adfbf94'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '78f40417-d195-5012-b160-cddc7be8e1b5', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'personal-auto'),
+       'Under 250/500/100, three people are injured with bodily injury claims of $200,000, $200,000 and $150,000. What is paid for bodily injury?', 'Each claim is within the **$250,000 per-person** limit, but the $550,000 total exceeds the **$500,000 per-accident** limit. Split limits read **per person / per accident / property damage per accident**.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'f8211c44-4213-525c-b96d-90162238e398', '78f40417-d195-5012-b160-cddc7be8e1b5', c.id, '$500,000', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '8f7d8a6c-4b70-5ad0-87d4-3a1152e2515d', '78f40417-d195-5012-b160-cddc7be8e1b5', c.id, '$550,000', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'b671d0ef-523d-5790-ba62-e2ce788f67ed', '78f40417-d195-5012-b160-cddc7be8e1b5', c.id, '$750,000', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '5c3f9dde-f5fe-54c7-9f55-1605c07b4404', '78f40417-d195-5012-b160-cddc7be8e1b5', c.id, '$250,000', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '78f40417-d195-5012-b160-cddc7be8e1b5', c.id, 'f8211c44-4213-525c-b96d-90162238e398'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '4a7cae3e-1c3d-5318-9e53-c9e29d389627', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'personal-auto'),
+       'The insured hits a deer. Collision or other than collision?', '**Contact with a bird or animal is a comprehensive loss.** The classic counterpart: **swerving to avoid a deer and hitting a tree is collision.**', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'dc4154e2-e3c2-5961-9ff4-a46095aff570', '4a7cae3e-1c3d-5318-9e53-c9e29d389627', c.id, 'Other than collision', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '0b7c3332-388d-56d5-b17e-614e52348023', '4a7cae3e-1c3d-5318-9e53-c9e29d389627', c.id, 'Collision', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '20f462e1-73b5-50b3-92fd-40072a2c3d7a', '4a7cae3e-1c3d-5318-9e53-c9e29d389627', c.id, 'Neither; animal strikes are excluded', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'f4a6482f-a025-5204-87f0-0d80637aa1ce', '4a7cae3e-1c3d-5318-9e53-c9e29d389627', c.id, 'Specified perils only', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '4a7cae3e-1c3d-5318-9e53-c9e29d389627', c.id, 'dc4154e2-e3c2-5961-9ff4-a46095aff570'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '44fff665-65a7-5cd6-bf43-3a2df443a2c2', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'personal-auto'),
+       'The insured is at fault in an accident and is badly injured. The other driver is uninsured. Does UM pay the insured''s injuries?', '**UM is not no-fault coverage.** It pays what the other driver''s liability policy would have paid had they carried one — so the other driver must be at fault. If the insured caused the accident, UM pays nothing.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '2d169b51-b8a4-5e9b-b96d-0d480a7920c6', '44fff665-65a7-5cd6-bf43-3a2df443a2c2', c.id, 'No — UM requires the insured to be legally entitled to recover from the other driver', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '1bfa1961-da0a-5787-8b9e-ceca63060ade', '44fff665-65a7-5cd6-bf43-3a2df443a2c2', c.id, 'Yes, UM is first-party no-fault coverage', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '51f54332-39a6-53dc-aff1-eb9d779e3831', '44fff665-65a7-5cd6-bf43-3a2df443a2c2', c.id, 'Yes, reduced by the insured''s percentage of fault', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'f065f663-c0ca-5cc9-92e3-1ce7d6c950bf', '44fff665-65a7-5cd6-bf43-3a2df443a2c2', c.id, 'Yes, but only up to the medical payments limit', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '44fff665-65a7-5cd6-bf43-3a2df443a2c2', c.id, '2d169b51-b8a4-5e9b-b96d-0d480a7920c6'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'f852c919-8f15-53eb-915a-dc8379492512', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'personal-auto'),
+       'An at-fault driver carries $30,000 of bodily injury coverage. The insured''s damages are $90,000 and their UIM limit is $100,000. Roughly what does UIM pay?', '**UIM pays the difference**, not the whole loss again — the shortfall between the at-fault driver''s limit and the insured''s damages, within the UIM limit.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'a632b27e-18c1-5794-9555-e3e126d97cb5', 'f852c919-8f15-53eb-915a-dc8379492512', c.id, '$60,000', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'f18e28d7-9557-530c-83c3-36f1a4afb7b0', 'f852c919-8f15-53eb-915a-dc8379492512', c.id, '$90,000', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '85bc2801-3f21-52e7-be27-911e5d223dbd', 'f852c919-8f15-53eb-915a-dc8379492512', c.id, '$100,000', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '117a567e-b149-51b0-840d-0c25d7fbfcc5', 'f852c919-8f15-53eb-915a-dc8379492512', c.id, '$30,000', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'f852c919-8f15-53eb-915a-dc8379492512', c.id, 'a632b27e-18c1-5794-9555-e3e126d97cb5'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '1fdde948-444b-5446-9086-e942d9e432bb', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'personal-auto'),
+       'A friend borrows the insured''s car and causes an accident. Whose policy is primary?', '**Liability follows the car.** Part A insures the named insured and family members for any auto, **any person using the covered auto with permission**, and anyone legally responsible for an insured''s use of it.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'e7ea5bc8-add7-5ad8-aa2f-800fdb84f37d', '1fdde948-444b-5446-9086-e942d9e432bb', c.id, 'The car owner''s — the permissive user is an insured', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'c3476380-8b02-5ed6-8bcb-804e1d464f19', '1fdde948-444b-5446-9086-e942d9e432bb', c.id, 'The friend''s own policy', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'ba92f8f6-716f-5e13-adf7-42bae198406f', '1fdde948-444b-5446-9086-e942d9e432bb', c.id, 'Whichever policy has the higher limit', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'da39fe3a-db2a-5f34-971f-416c65543c3f', '1fdde948-444b-5446-9086-e942d9e432bb', c.id, 'Both, by equal shares', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '1fdde948-444b-5446-9086-e942d9e432bb', c.id, 'e7ea5bc8-add7-5ad8-aa2f-800fdb84f37d'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'e3245315-d164-54d3-bd12-e17b8a6b3935', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'personal-auto'),
+       'The insured''s car is totalled. It cost $38,000 last year, is now worth $26,000, and the loan balance is $31,000. What does Part D pay?', 'Loss settlement is **ACV or the cost of repair, whichever is less**. The $5,000 shortfall to the loan is the insured''s, unless **GAP coverage** was bought — which is exactly the gap GAP exists to fill.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '43d2d5c8-05af-5c5a-976c-6162314a6820', 'e3245315-d164-54d3-bd12-e17b8a6b3935', c.id, '$26,000 less the deductible — actual cash value', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '9c56f488-9dd3-5a20-9b32-e8aa7e32dff5', 'e3245315-d164-54d3-bd12-e17b8a6b3935', c.id, '$31,000, the loan balance', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '43725f48-9399-534f-8238-ae9c71ae0a5f', 'e3245315-d164-54d3-bd12-e17b8a6b3935', c.id, '$38,000, the purchase price', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '8f09663c-653d-5461-a4a2-12ae71d028e5', 'e3245315-d164-54d3-bd12-e17b8a6b3935', c.id, '$26,000 with no deductible on a total loss', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'e3245315-d164-54d3-bd12-e17b8a6b3935', c.id, '43d2d5c8-05af-5c5a-976c-6162314a6820'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '679cc347-b947-5712-b23b-c229caa4976e', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'personal-auto'),
+       'Which of these does uninsured motorist coverage NOT respond to?', 'That first situation is **underinsured** motorist coverage. UM reaches the uninsured, the unidentified hit-and-run driver, and the driver whose insurer is insolvent or denies coverage.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'e2234f46-f737-514d-b62b-c32a4b4552ef', '679cc347-b947-5712-b23b-c229caa4976e', c.id, 'An at-fault driver who has insurance but not enough to cover the loss', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '361c95f9-2b3d-56d3-8a1a-11a9d6ff3986', '679cc347-b947-5712-b23b-c229caa4976e', c.id, 'A driver with no insurance at all', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'c044d62f-115d-57c9-8489-de45265c815b', '679cc347-b947-5712-b23b-c229caa4976e', c.id, 'A hit-and-run driver who cannot be identified', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'f1a72d90-a5ff-5253-b988-1ffcc6e8f6e3', '679cc347-b947-5712-b23b-c229caa4976e', c.id, 'A driver whose insurer is insolvent', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '679cc347-b947-5712-b23b-c229caa4976e', c.id, 'e2234f46-f737-514d-b62b-c32a4b4552ef'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'bb7b73e8-486a-5963-b3ed-324de6d21481', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'personal-auto'),
+       'An insured drives a company car daily and it is not listed on the personal auto policy. Is it covered?', 'The **regular use** exclusion is precisely why a daily company car falls outside a personal policy. A **temporary substitute** — used while a covered auto is out of service for breakdown, repair, servicing, loss or destruction — is covered automatically.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '0b3fcbc8-86d8-51ee-b72e-8acb03b463f1', 'bb7b73e8-486a-5963-b3ed-324de6d21481', c.id, 'No — a vehicle available for regular use that is not a covered auto is excluded', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '8fa4da85-f6a9-5441-aaf5-60f9ca4db17e', 'bb7b73e8-486a-5963-b3ed-324de6d21481', c.id, 'Yes, as a non-owned auto', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '51d42d38-56e0-5a1d-8aaa-c5a8c7605834', 'bb7b73e8-486a-5963-b3ed-324de6d21481', c.id, 'Yes, as a temporary substitute auto', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'f57d9dcb-9494-50c2-8573-7893eb1b24aa', 'bb7b73e8-486a-5963-b3ed-324de6d21481', c.id, 'Yes, for liability but not physical damage', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'bb7b73e8-486a-5963-b3ed-324de6d21481', c.id, '0b3fcbc8-86d8-51ee-b72e-8acb03b463f1'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'e8391674-8fe3-5066-a76a-4df169b280ab', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'personal-auto'),
+       'An insured begins driving for a ride-hailing service. What does the unendorsed policy do?', 'The **public or livery conveyance** exclusion is the ride-hailing exclusion. It is now commonly bought back by endorsement, and the driver who assumes it is covered without one has an expensive surprise coming.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '87f4a76d-ef93-5836-947c-626ce0ad105b', 'e8391674-8fe3-5066-a76a-4df169b280ab', c.id, 'Excludes the exposure as a public or livery conveyance', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '8305c7da-c46b-5952-ac51-9a8e5c659cfa', 'e8391674-8fe3-5066-a76a-4df169b280ab', c.id, 'Covers it as ordinary business use of a private passenger auto', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '97725a2f-2cf5-5acd-8f39-4a10f6176d21', 'e8391674-8fe3-5066-a76a-4df169b280ab', c.id, 'Covers it only while no passenger is in the car', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '51c8084a-d2c2-52ce-8d71-e708a87b1b22', 'e8391674-8fe3-5066-a76a-4df169b280ab', c.id, 'Covers liability but excludes physical damage', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'e8391674-8fe3-5066-a76a-4df169b280ab', c.id, '87f4a76d-ef93-5836-947c-626ce0ad105b'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'b746a939-ba9b-5963-a6d0-f0055123fe8e', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'personal-auto'),
+       'Who does Part B medical payments cover?', 'It pays **reasonable and necessary medical and funeral expenses regardless of fault**, within a stated period — commonly three years — and it pays quickly without waiting for a liability determination.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '1f782ee0-7e7a-5daa-9dd1-f6339bb01a1a', 'b746a939-ba9b-5963-a6d0-f0055123fe8e', c.id, 'The named insured and family members in any auto or struck as pedestrians, plus any other occupant of the covered auto', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '97efc9af-1897-582a-9681-7eedc9bc09a5', 'b746a939-ba9b-5963-a6d0-f0055123fe8e', c.id, 'Only the named insured, and only in the covered auto', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'e59e736e-2bc1-5073-8321-be041e6664c0', 'b746a939-ba9b-5963-a6d0-f0055123fe8e', c.id, 'Only passengers, not the driver', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '7674dd63-f5b1-5e67-a9a2-e7a177c71227', 'b746a939-ba9b-5963-a6d0-f0055123fe8e', c.id, 'Anyone injured in the accident, including the other driver', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'b746a939-ba9b-5963-a6d0-f0055123fe8e', c.id, '1f782ee0-7e7a-5daa-9dd1-f6339bb01a1a'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'f086560a-208f-58cb-997e-94c725ea8d27', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'personal-auto'),
+       'What does a $300,000 combined single limit allow that 100/300/50 does not?', 'A CSL is **one figure covering both**, so it can pay $250,000 of injury and $50,000 of damage or any other split. It is more flexible and generally more expensive. Under either structure, **defence costs are in addition to the limit**.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '4ae09304-53f5-5dec-911a-69818eb5e04e', 'f086560a-208f-58cb-997e-94c725ea8d27', c.id, 'Bodily injury and property damage in any proportion up to the single figure', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'c4e748a2-6f16-581c-9e62-cb065361eb81', 'f086560a-208f-58cb-997e-94c725ea8d27', c.id, 'Unlimited property damage coverage', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'f06ea0aa-b7aa-5df0-a8b3-a63b002335d5', 'f086560a-208f-58cb-997e-94c725ea8d27', c.id, 'A separate limit for each injured person', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'c5f4786e-3848-514f-af20-df70c4497214', 'f086560a-208f-58cb-997e-94c725ea8d27', c.id, 'Defence costs inside the limit rather than in addition', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'f086560a-208f-58cb-997e-94c725ea8d27', c.id, '4ae09304-53f5-5dec-911a-69818eb5e04e'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '0894a131-a96f-5de4-a0a7-d4314d29ae15', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'personal-auto'),
+       'An insured buys an additional car and has an accident before telling the insurer. Is it covered?', '**An additional vehicle generally gets broader automatic coverage than a replacement**, which inherits only the coverage the replaced vehicle had.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '03ee630d-465c-5a32-b6ec-ca8504ca6fa9', '0894a131-a96f-5de4-a0a7-d4314d29ae15', c.id, 'Yes, automatically for a limited period — commonly 14 or 30 days — with notice required within that window', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'fc028e98-866a-5d01-a8db-af98def0b914', '0894a131-a96f-5de4-a0a7-d4314d29ae15', c.id, 'No, coverage begins only when the vehicle is added', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '4beb571c-20fe-5914-bf87-5c9e7daa392e', '0894a131-a96f-5de4-a0a7-d4314d29ae15', c.id, 'Yes, permanently, once the premium is adjusted', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '42e3f621-d936-51a7-b444-530a94e4ea52', '0894a131-a96f-5de4-a0a7-d4314d29ae15', c.id, 'Only for liability, never for physical damage', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '0894a131-a96f-5de4-a0a7-d4314d29ae15', c.id, '03ee630d-465c-5a32-b6ec-ca8504ca6fa9'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '01a98a9a-9e40-5f7d-a18c-1ddb5732d7c3', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'personal-auto'),
+       'Which of these is excluded under Part D?', 'Part D excludes **wear and tear, mechanical breakdown, road damage to tyres, freezing, electronic equipment not permanently installed**, and custom furnishings in a pickup or van unless declared.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '6c59f4b3-de2b-55e4-b754-296c3b0c903e', '01a98a9a-9e40-5f7d-a18c-1ddb5732d7c3', c.id, 'Road damage to tyres and mechanical breakdown', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'f7c4741d-7eb7-5cb3-8f74-5b2045266b56', '01a98a9a-9e40-5f7d-a18c-1ddb5732d7c3', c.id, 'Theft of the vehicle', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '9274a227-eb99-5702-ba51-8726eaf8690b', '01a98a9a-9e40-5f7d-a18c-1ddb5732d7c3', c.id, 'Glass breakage', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '46de158e-b575-5583-a55c-346cf1b4ac4f', '01a98a9a-9e40-5f7d-a18c-1ddb5732d7c3', c.id, 'Flood damage', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '01a98a9a-9e40-5f7d-a18c-1ddb5732d7c3', c.id, '6c59f4b3-de2b-55e4-b754-296c3b0c903e'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '5e0cd9af-f4b2-51a0-b278-6bb1ae6f4e38', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'personal-auto'),
+       'After a hit-and-run, what additional duty does the insured have?', 'UM also brings duties to **submit to physical examination and examination under oath**, and to **allow inspection of the vehicle before repair**.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '8c0e4f3c-2c27-5f8c-b40f-59c5754e5380', '5e0cd9af-f4b2-51a0-b278-6bb1ae6f4e38', c.id, 'Notify the police, usually within 24 hours, as a condition of UM coverage', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '62b33716-805d-52f9-9633-5d67ea4918e6', '5e0cd9af-f4b2-51a0-b278-6bb1ae6f4e38', c.id, 'Obtain a written statement from a witness', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'e98f2758-4cbd-5878-88d0-eddd20afd160', '5e0cd9af-f4b2-51a0-b278-6bb1ae6f4e38', c.id, 'File a proof of loss within 60 days', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '587cf05e-f55c-51f9-9da3-2882603096b5', '5e0cd9af-f4b2-51a0-b278-6bb1ae6f4e38', c.id, 'Notify the state motor vehicle department', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '5e0cd9af-f4b2-51a0-b278-6bb1ae6f4e38', c.id, '8c0e4f3c-2c27-5f8c-b40f-59c5754e5380'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'f6b0a14c-12cf-5352-a3be-926b2d561b27', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'personal-auto'),
+       'What is stacking?', 'Stacking is a state-law question, not a policy-language one — which is why the answer differs from state to state.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '0c08230b-9f7e-5c3a-a87d-73eeed5a94ee', 'f6b0a14c-12cf-5352-a3be-926b2d561b27', c.id, 'Combining the UM limits of several vehicles or policies, permitted in some states and prohibited in others', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'f43b7c23-67c3-5e26-9c02-9712b625171e', 'f6b0a14c-12cf-5352-a3be-926b2d561b27', c.id, 'Applying both collision and other than collision to one loss', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '3ff799b5-1848-5d02-b15e-82a7d42a076d', 'f6b0a14c-12cf-5352-a3be-926b2d561b27', c.id, 'Adding UIM on top of the at-fault driver''s limit', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'd844a3bb-36a3-5fda-bde2-b0d6ba2415bb', 'f6b0a14c-12cf-5352-a3be-926b2d561b27', c.id, 'Layering an umbrella above a personal auto policy', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'f6b0a14c-12cf-5352-a3be-926b2d561b27', c.id, '0c08230b-9f7e-5c3a-a87d-73eeed5a94ee'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'e8a12bdb-0ec9-5141-8815-ea0bf3a4026a', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'business-auto'),
+       'An accounting firm owns no vehicles, but its staff drive their own cars to clients. Which symbols does it need?', '**Hired and non-owned liability is the coverage a business with no vehicles still needs**, and the one it most often forgets to buy.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'bf596427-10da-5fe1-89b6-dbb80ca3cdd4', 'e8a12bdb-0ec9-5141-8815-ea0bf3a4026a', c.id, '8 and 9 — hired and non-owned autos', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '8514e58a-bfcc-5511-a49f-704d05df4eda', 'e8a12bdb-0ec9-5141-8815-ea0bf3a4026a', c.id, '1, any auto', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '0aeefddc-597c-541c-8391-90088a9b58c4', 'e8a12bdb-0ec9-5141-8815-ea0bf3a4026a', c.id, '2 and 7, owned and specifically described autos', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '27cdfbde-1ebe-58dd-9775-27f8831e1eb0', 'e8a12bdb-0ec9-5141-8815-ea0bf3a4026a', c.id, '19, mobile equipment subject to financial responsibility law', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'e8a12bdb-0ec9-5141-8815-ea0bf3a4026a', c.id, 'bf596427-10da-5fe1-89b6-dbb80ca3cdd4'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'bb9db757-1187-598c-82c2-403ac0ce038f', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'business-auto'),
+       'A repair shop damages a customer''s car while test-driving it. Which coverage responds?', '**Damage to customers'' autos in the insured''s care, custody or control** is excluded by both the CGL and the business auto policy. Garagekeepers is the coverage written for it.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '6f0a2437-bf22-5fd5-bb68-1a01688f38bf', 'bb9db757-1187-598c-82c2-403ac0ce038f', c.id, 'Garagekeepers', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'abd95326-879c-52cf-a04d-aec784d50818', 'bb9db757-1187-598c-82c2-403ac0ce038f', c.id, 'The business auto physical damage coverage', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'f3112a8d-449a-58eb-9838-8498e05393f3', 'bb9db757-1187-598c-82c2-403ac0ce038f', c.id, 'The commercial general liability policy', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'c871fe96-9657-5bbe-b8c6-d558b4a1289c', 'bb9db757-1187-598c-82c2-403ac0ce038f', c.id, 'The customer''s own collision coverage only', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'bb9db757-1187-598c-82c2-403ac0ce038f', c.id, '6f0a2437-bf22-5fd5-bb68-1a01688f38bf'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '98563765-2404-53ef-a0e0-fc60b6093bfb', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'business-auto'),
+       'On those facts, which garagekeepers basis pays even if the shop was not negligent and pays before the customer''s own insurer?', '**Legal liability requires negligence; the two direct forms do not. Primary pays first; excess pays only after the customer''s own policy is exhausted.**', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '2aea645f-daf5-55e8-be4e-0dfe6ba4510e', '98563765-2404-53ef-a0e0-fc60b6093bfb', c.id, 'Direct primary', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '19d8cb81-268b-5384-9021-85fe82567f81', '98563765-2404-53ef-a0e0-fc60b6093bfb', c.id, 'Direct excess', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '741cae6e-47e1-536a-bf6c-d7e267167c4e', '98563765-2404-53ef-a0e0-fc60b6093bfb', c.id, 'Legal liability', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'b9995536-2228-500e-a9f2-861e16443a2b', '98563765-2404-53ef-a0e0-fc60b6093bfb', c.id, 'Garage liability', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '98563765-2404-53ef-a0e0-fc60b6093bfb', c.id, '2aea645f-daf5-55e8-be4e-0dfe6ba4510e'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '786022b6-a392-5f5d-b456-56d0f4dc4342', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'business-auto'),
+       'Why can physical damage not be written under symbol 1?', '**Symbol 1 is available only for liability.** Physical damage uses **2, 3, 4, 7** or a combination, because an insurer will not insure the hull of a vehicle it has never seen.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '9c4d073d-7264-5d87-b69d-3122dc74e3b9', '786022b6-a392-5f5d-b456-56d0f4dc4342', c.id, 'Symbol 1 means any auto, including vehicles the insurer has never seen or rated', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'cbfd413b-fbec-5e5f-a634-167e8566a962', '786022b6-a392-5f5d-b456-56d0f4dc4342', c.id, 'Symbol 1 applies only to non-owned autos', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '5e3cf101-b07d-5ad2-a7c0-b3797d2a4f2d', '786022b6-a392-5f5d-b456-56d0f4dc4342', c.id, 'Physical damage requires a compulsory insurance filing', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '0d1ce287-989f-5fc5-b757-d033559b9a4c', '786022b6-a392-5f5d-b456-56d0f4dc4342', c.id, 'Symbol 1 is reserved for motor carriers', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '786022b6-a392-5f5d-b456-56d0f4dc4342', c.id, '9c4d073d-7264-5d87-b69d-3122dc74e3b9'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '39b4a011-9b77-5cfc-82db-30bcd8281218', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'business-auto'),
+       'An executive drives a company car and owns no personal auto policy. She rents a car on holiday and causes an accident. What was needed?', '**DOC extends liability, medical payments, uninsured motorists and physical damage to a named individual and their spouse while using autos they do not own** — other than the company car, which is already covered. It is added by endorsement for each person.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '40d77fb7-baff-575f-8b53-308304bd53f0', '39b4a011-9b77-5cfc-82db-30bcd8281218', c.id, 'A Drive Other Car endorsement on the business auto policy', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'e3297dfd-83cb-5819-83ff-46011fe3ca32', '39b4a011-9b77-5cfc-82db-30bcd8281218', c.id, 'Symbol 9, non-owned autos', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'b4649f30-0047-5187-8f8e-c4ddddc16be8', '39b4a011-9b77-5cfc-82db-30bcd8281218', c.id, 'An individual named insured endorsement', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '738d032f-5c73-5f06-b2c0-f820e8635b7d', '39b4a011-9b77-5cfc-82db-30bcd8281218', c.id, 'Nothing; the business auto policy already covers her', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '39b4a011-9b77-5cfc-82db-30bcd8281218', c.id, '40d77fb7-baff-575f-8b53-308304bd53f0'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '159c9373-7234-5ee8-84ee-e9efe7c9ab7a', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'business-auto'),
+       'A forklift is used only inside the insured''s warehouse. Which policy covers liability arising from it?', '**Symbol 19** addresses the exception: mobile equipment that becomes an auto because it is **subject to compulsory or financial responsibility law** from travelling on public roads.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'c1e99c86-9a7d-5b25-8961-ab9a0f5c1b70', '159c9373-7234-5ee8-84ee-e9efe7c9ab7a', c.id, 'The CGL — it is mobile equipment, not an auto', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '4ec73400-c727-5bd4-976b-ad257f9a9b39', '159c9373-7234-5ee8-84ee-e9efe7c9ab7a', c.id, 'The business auto policy, under symbol 2', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'a98d4256-6043-5ff3-bf23-c82f7cf2ba8b', '159c9373-7234-5ee8-84ee-e9efe7c9ab7a', c.id, 'The business auto policy, under symbol 19', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'eeacd235-0fb3-556d-beea-b73fdfe3e7fb', '159c9373-7234-5ee8-84ee-e9efe7c9ab7a', c.id, 'Workers'' compensation', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '159c9373-7234-5ee8-84ee-e9efe7c9ab7a', c.id, 'c1e99c86-9a7d-5b25-8961-ab9a0f5c1b70'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '8edc976b-80b1-5b7c-b567-a5053ef2a845', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'business-auto'),
+       'An employee causes an accident driving their own car on a company errand. Which policy is primary?', '**Non-owned coverage is excess** over the employee''s own policy, which remains primary. The business''s liability arises because the employee was acting in the scope of employment.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '80fa45c7-0caa-5134-b644-2eb0982009b2', '8edc976b-80b1-5b7c-b567-a5053ef2a845', c.id, 'The employee''s own policy; the business''s non-owned coverage is excess', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '5cc4f82c-3a30-5650-8639-744365522c4b', '8edc976b-80b1-5b7c-b567-a5053ef2a845', c.id, 'The business auto policy, as the errand was in the scope of employment', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '2008e552-3593-511f-bf0a-b5f2794a4684', '8edc976b-80b1-5b7c-b567-a5053ef2a845', c.id, 'Both, shared pro rata', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '8517d097-746b-5e24-abaa-14e49a4ad11b', '8edc976b-80b1-5b7c-b567-a5053ef2a845', c.id, 'Neither; personal policies exclude business use', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '8edc976b-80b1-5b7c-b567-a5053ef2a845', c.id, '80fa45c7-0caa-5134-b644-2eb0982009b2'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '01855cae-a21a-5b94-8329-97658990acfb', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'business-auto'),
+       'Which symbol covers only autos specifically listed on the declarations?', '**Symbol 7 covers only what is listed**, so a newly purchased vehicle must be reported. **Symbols 2, 3 and 4 pick up newly acquired autos automatically.**', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '38193938-928f-5192-9d54-8834ddeb4993', '01855cae-a21a-5b94-8329-97658990acfb', c.id, '7', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '5ec428ae-57d1-5339-b576-e7708d2cb483', '01855cae-a21a-5b94-8329-97658990acfb', c.id, '2', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'a3504e0b-1c59-5d2f-ad30-b1935ba2b4a0', '01855cae-a21a-5b94-8329-97658990acfb', c.id, '3', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '538f798b-e416-5a8f-ae6a-9df79543e707', '01855cae-a21a-5b94-8329-97658990acfb', c.id, '8', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '01855cae-a21a-5b94-8329-97658990acfb', c.id, '38193938-928f-5192-9d54-8834ddeb4993'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '33224700-9eb5-5546-92ae-c2f82dc99efc', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'business-auto'),
+       'Are vehicles borrowed from employees "hired autos"?', 'An employee''s own car used for the business is a **non-owned** auto. Hired auto premium is based on **cost of hire**, and hired coverage is usually excess over the owner''s own insurance.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'c5834dea-e855-59d6-bac6-7160b1d9c87b', '33224700-9eb5-5546-92ae-c2f82dc99efc', c.id, 'No — hired autos are leased, rented, hired or borrowed, but not from employees', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '18e4baed-88a8-5906-a688-ee26073fe5c3', '33224700-9eb5-5546-92ae-c2f82dc99efc', c.id, 'Yes, any borrowed vehicle is a hired auto', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '54f849c3-233d-580b-a25a-e81dc5fe76bf', '33224700-9eb5-5546-92ae-c2f82dc99efc', c.id, 'Yes, if the business pays the employee for use of the vehicle', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '6c96633a-dcff-57a6-8f76-a1a141f5f74d', '33224700-9eb5-5546-92ae-c2f82dc99efc', c.id, 'Only where the borrowing exceeds 30 days', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '33224700-9eb5-5546-92ae-c2f82dc99efc', c.id, 'c5834dea-e855-59d6-bac6-7160b1d9c87b'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '32410e22-2a6b-5cf9-aa85-92bf4d860fdf', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'business-auto'),
+       'An owner-operator uses the truck for personal purposes on a weekend, outside the motor carrier''s business. Which coverage responds?', '**Non-trucking liability** covers the owner-operator''s liability while the truck is used **outside** the motor carrier''s business — exactly the gap the carrier''s own policy leaves.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '509d6ad1-adae-5772-a67a-5e95d8658bb2', '32410e22-2a6b-5cf9-aa85-92bf4d860fdf', c.id, 'Non-trucking liability, sometimes called bobtail', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'fb09f829-eff0-598d-8298-41a952322e93', '32410e22-2a6b-5cf9-aa85-92bf4d860fdf', c.id, 'Motor truck cargo', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '663df100-5f30-500e-9df3-3539c5130a7a', '32410e22-2a6b-5cf9-aa85-92bf4d860fdf', c.id, 'Trailer interchange', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '0324c48e-0f1b-581a-8f6f-866ce0f4a0c7', '32410e22-2a6b-5cf9-aa85-92bf4d860fdf', c.id, 'The federal filing endorsement', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '32410e22-2a6b-5cf9-aa85-92bf4d860fdf', c.id, '509d6ad1-adae-5772-a67a-5e95d8658bb2'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '7d0ebda0-d8a7-575b-9db3-77ac1fd5a7a9', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'business-auto'),
+       'Which coverage addresses physical damage to another party''s trailers held under an interchange agreement?', '**Motor truck cargo** covers the goods being hauled, written as inland marine. **Trailer interchange** covers the trailers themselves.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '7a26df73-b7e2-5921-b010-e5ccc2234362', '7d0ebda0-d8a7-575b-9db3-77ac1fd5a7a9', c.id, 'Trailer interchange', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '2bb1a4f8-de5c-5108-b16c-3baa68f3e703', '7d0ebda0-d8a7-575b-9db3-77ac1fd5a7a9', c.id, 'Motor truck cargo', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '45a1b2e3-edce-58e6-b096-35c8438595cd', '7d0ebda0-d8a7-575b-9db3-77ac1fd5a7a9', c.id, 'Garagekeepers direct excess', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '48fe6725-8159-555c-8915-c2c820ac334d', '7d0ebda0-d8a7-575b-9db3-77ac1fd5a7a9', c.id, 'Hired auto physical damage', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '7d0ebda0-d8a7-575b-9db3-77ac1fd5a7a9', c.id, '7a26df73-b7e2-5921-b010-e5ccc2234362'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '9d589cb7-2c0c-5261-b62a-5083afec833d', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'business-auto'),
+       'A sole proprietor uses the same pickup for the business and for family errands. Which endorsement brings the business auto policy close to personal auto coverage?', 'The **individual named insured** endorsement broadens a business auto policy for an individual whose business and personal use are the same vehicles, reaching family members and non-owned vehicles.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'dff03b77-61a1-59c7-8b59-b40dc55593c1', '9d589cb7-2c0c-5261-b62a-5083afec833d', c.id, 'Individual named insured', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '9260f150-b6c3-597f-a6fb-229b2db737b4', '9d589cb7-2c0c-5261-b62a-5083afec833d', c.id, 'Drive Other Car', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '9aa28589-b6ee-58d3-ada0-fc5811596c0d', '9d589cb7-2c0c-5261-b62a-5083afec833d', c.id, 'Symbol 1 on all coverages', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'ec92b157-656e-524e-bfa5-0553f53e5272', '9d589cb7-2c0c-5261-b62a-5083afec833d', c.id, 'Hired and non-owned liability', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '9d589cb7-2c0c-5261-b62a-5083afec833d', c.id, 'dff03b77-61a1-59c7-8b59-b40dc55593c1'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'f1b0974d-8ff8-5c2b-a9e8-e39f87d54188', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'workers-compensation-and-employers-liability'),
+       'An employee is injured by a co-worker''s carelessness. Can the employer rely on the fellow servant rule?', 'The trade: the employee gives up the right to sue and the chance of a large award; the employer gives up **contributory negligence, assumption of risk and the fellow servant rule** and pays **without regard to fault**.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '0bfc7af1-bd64-5fe7-9a7f-a091da96987c', 'f1b0974d-8ff8-5c2b-a9e8-e39f87d54188', c.id, 'No — the employer surrendered that defence as part of the bargain', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'd76dd416-2204-5a4b-8159-ca2f61d8dfb0', 'f1b0974d-8ff8-5c2b-a9e8-e39f87d54188', c.id, 'Yes, it remains available where the co-worker was solely at fault', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'ed826aaf-e770-5de9-a3c7-32f9db2bd780', 'f1b0974d-8ff8-5c2b-a9e8-e39f87d54188', c.id, 'Yes, but only to reduce benefits proportionally', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'dd9d3951-a206-552d-9b16-7ad29e0f44d2', 'f1b0974d-8ff8-5c2b-a9e8-e39f87d54188', c.id, 'Only where the employer had a written safety policy', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'f1b0974d-8ff8-5c2b-a9e8-e39f87d54188', c.id, '0bfc7af1-bd64-5fe7-9a7f-a091da96987c'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '4855ef90-ddcb-50d0-ad77-433175df2226', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'workers-compensation-and-employers-liability'),
+       'An employee is hurt by a defective press. Who may be sued, and by whom?', '**Third parties are not protected by exclusive remedy.** The employee sues the manufacturer, and the compensation insurer subrogates against it.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '523c5e3b-5317-5cfa-a481-5020d09ffdfd', '4855ef90-ddcb-50d0-ad77-433175df2226', c.id, 'The press manufacturer may be sued by the employee; the employer may not be, by exclusive remedy', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '1b2e2481-0814-5516-b755-d26bd21ec96b', '4855ef90-ddcb-50d0-ad77-433175df2226', c.id, 'Both the manufacturer and the employer may be sued by the employee', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '7d4e8817-6262-59a2-9423-ce7263fbf1d1', '4855ef90-ddcb-50d0-ad77-433175df2226', c.id, 'Only the employer, which then sues the manufacturer', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '79a4f078-5d7e-5a55-91dd-26e46f0f19ac', '4855ef90-ddcb-50d0-ad77-433175df2226', c.id, 'Neither; workers'' compensation bars all litigation', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '4855ef90-ddcb-50d0-ad77-433175df2226', c.id, '523c5e3b-5317-5cfa-a481-5020d09ffdfd'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'faca25dc-e79e-5dde-96eb-69c8ce8be5b8', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'workers-compensation-and-employers-liability'),
+       'Is there a dollar limit on workers'' compensation medical benefits?', 'This surprises candidates and is worth remembering. **Part One has no dollar limit** because the obligation is the statute''s, not the policy''s. Disability income, by contrast, is capped and percentage-based.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '4f35293a-47e0-5b6f-b73f-235c02e65be8', 'faca25dc-e79e-5dde-96eb-69c8ce8be5b8', c.id, 'No — medical benefits are generally unlimited, with no deductible', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '97eb007a-4e12-5e90-88a5-ad0212819348', 'faca25dc-e79e-5dde-96eb-69c8ce8be5b8', c.id, 'Yes, the Part One limit shown on the declarations', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'f8d5a554-4654-51d0-994c-ea719419b0b8', 'faca25dc-e79e-5dde-96eb-69c8ce8be5b8', c.id, 'Yes, a statutory cap that varies by state', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '6c965897-2cbf-5663-abf3-ce10ddbbdb25', 'faca25dc-e79e-5dde-96eb-69c8ce8be5b8', c.id, 'Yes, the Part Two bodily injury by disease limit', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'faca25dc-e79e-5dde-96eb-69c8ce8be5b8', c.id, '4f35293a-47e0-5b6f-b73f-235c02e65be8'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'd102d56a-8abd-5a4b-a0c9-050466d69169', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'workers-compensation-and-employers-liability'),
+       'An employer with operations in Oklahoma has only Texas in Item 3.A and nothing in 3.C. An Oklahoma employee is injured. Covered?', '**Part Three, Other States Insurance**, extends Part One to states listed in Item 3.C where the insured **may** begin operations. **Monopolistic states cannot be covered there at all** — coverage must be bought from the state fund.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '0a5c1883-0efc-54c3-a3d4-3749b03f4dd5', 'd102d56a-8abd-5a4b-a0c9-050466d69169', c.id, 'No — a state in neither 3.A nor 3.C has no coverage, and it cannot be added after the injury', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '9327a568-4e99-5426-aa4e-86bd84667bc8', 'd102d56a-8abd-5a4b-a0c9-050466d69169', c.id, 'Yes, Part Three covers all states automatically', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'be6ddcd5-9aff-5c10-863c-bfa39bd2e945', 'd102d56a-8abd-5a4b-a0c9-050466d69169', c.id, 'Yes, if Oklahoma is added by endorsement within 30 days', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '90571bbf-61e2-5bbd-aa15-837adbe369b9', 'd102d56a-8abd-5a4b-a0c9-050466d69169', c.id, 'Yes, at the Texas benefit level', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'd102d56a-8abd-5a4b-a0c9-050466d69169', c.id, '0a5c1883-0efc-54c3-a3d4-3749b03f4dd5'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '29349ab8-88ff-519b-bfc5-352d8ac95e60', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'workers-compensation-and-employers-liability'),
+       'An employer''s experience modification factor is 1.25. What does that mean?', '**Above 1.0 means worse than average and a higher premium; below 1.0 means better and a credit.** It is the mechanism that rewards safety.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '7cb81948-31fa-5fa2-8dc0-1f77ce325c11', '29349ab8-88ff-519b-bfc5-352d8ac95e60', c.id, 'Losses are 25% worse than expected for its class, so the premium is increased by 25%', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '86ff7806-854b-5e3e-8fff-87300954517e', '29349ab8-88ff-519b-bfc5-352d8ac95e60', c.id, 'The employer receives a 25% credit for good experience', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '4f44e73e-e6f6-5782-b745-c0d9b76b642a', '29349ab8-88ff-519b-bfc5-352d8ac95e60', c.id, 'The payroll estimate must be increased by 25%', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '1306f30a-fbb8-511b-ab22-03eaa38de0b2', '29349ab8-88ff-519b-bfc5-352d8ac95e60', c.id, 'The employer must carry 25% more employers'' liability limit', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '29349ab8-88ff-519b-bfc5-352d8ac95e60', c.id, '7cb81948-31fa-5fa2-8dc0-1f77ce325c11'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '8f3c4e72-1a00-5322-82ae-afa8986375f5', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'workers-compensation-and-employers-liability'),
+       'An employee slips in the employer''s own car park on the way home. Compensable?', '**The commute is generally not covered** — the going and coming rule — but the employer''s own premises, and travel **on the employer''s business**, sit inside the system.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'dc19d9ef-d1d2-5e91-a501-04330c22eabd', '8f3c4e72-1a00-5322-82ae-afa8986375f5', c.id, 'Usually yes — the employer''s car park is generally treated as premises', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'c2b79344-78a5-5da6-8c71-65a2d167b668', '8f3c4e72-1a00-5322-82ae-afa8986375f5', c.id, 'No, the going and coming rule bars all commuting injuries', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'ec6c7384-42eb-5fb3-b752-c2d71d4045d9', '8f3c4e72-1a00-5322-82ae-afa8986375f5', c.id, 'Only if the employee was carrying work materials', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '9594af57-ec27-5be4-9850-6145c319c1df', '8f3c4e72-1a00-5322-82ae-afa8986375f5', c.id, 'Only if the employer owned rather than leased the car park', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '8f3c4e72-1a00-5322-82ae-afa8986375f5', c.id, 'dc19d9ef-d1d2-5e91-a501-04330c22eabd'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '4eb312a2-5153-5056-a6f6-83232c143082', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'workers-compensation-and-employers-liability'),
+       'What is the workers'' compensation premium formula?', 'Payroll is measured per **$100 of remuneration, by classification code** — a business with clerical and roofing staff pays very different rates on each.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '6fe19d64-337c-5131-adc4-01de54920245', '4eb312a2-5153-5056-a6f6-83232c143082', c.id, '(Payroll ÷ 100) × rate × experience modification factor', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '08030a63-cdf8-5388-bb48-acb0ee9f725f', '4eb312a2-5153-5056-a6f6-83232c143082', c.id, 'Payroll × rate ÷ experience modification factor', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'ca2a6d00-098d-554f-857d-ca81b5e182c1', '4eb312a2-5153-5056-a6f6-83232c143082', c.id, '(Revenue ÷ 1,000) × rate × loss ratio', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '0a2b9c63-e372-531e-9a1d-a9a2a778a7b2', '4eb312a2-5153-5056-a6f6-83232c143082', c.id, 'Number of employees × classification rate', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '4eb312a2-5153-5056-a6f6-83232c143082', c.id, '6fe19d64-337c-5131-adc4-01de54920245'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '091db9cb-a888-582d-9798-4f18ead3d193', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'workers-compensation-and-employers-liability'),
+       'Why does a workers'' compensation policy end with a premium audit?', '**The insured must permit the audit and keep records** — it is a policy condition. Larger employers may instead use **retrospective rating**, where the final premium turns on their own losses within a maximum and minimum.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '022efe10-dd7a-56f5-96f8-edc29ca44e70', '091db9cb-a888-582d-9798-4f18ead3d193', c.id, 'Payroll is not known in advance, so the policy is written on estimated payroll with a deposit premium', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '16ba8d98-f2de-5298-8874-e218cc13a3c2', '091db9cb-a888-582d-9798-4f18ead3d193', c.id, 'The insurer must verify the experience modification factor annually', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '7fe5ffb8-22cd-5a96-b618-95cb2c24be56', '091db9cb-a888-582d-9798-4f18ead3d193', c.id, 'State law requires an audit before benefits are paid', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '8f51453b-c89e-5672-92fb-c0da7cbaf2e1', '091db9cb-a888-582d-9798-4f18ead3d193', c.id, 'The audit sets the following year''s classification codes', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '091db9cb-a888-582d-9798-4f18ead3d193', c.id, '022efe10-dd7a-56f5-96f8-edc29ca44e70'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'ec810177-2ab4-550e-aae1-12827a17db1c', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'workers-compensation-and-employers-liability'),
+       'Which part of the policy carries stated limits?', '**Part One has no dollar limit**; Part Two''s limits are commonly written as three: **bodily injury by accident each accident / bodily injury by disease policy limit / bodily injury by disease each employee.**', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '0451153b-0612-5814-8b64-6316326d5251', 'ec810177-2ab4-550e-aae1-12827a17db1c', c.id, 'Part Two, employers'' liability', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '18023512-0e4c-526a-af2d-a594ed80e1a9', 'ec810177-2ab4-550e-aae1-12827a17db1c', c.id, 'Part One, workers'' compensation', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'be06a921-6d51-5753-86c2-86e442746713', 'ec810177-2ab4-550e-aae1-12827a17db1c', c.id, 'Part Three, other states insurance', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'b703b244-c2e5-5980-b6e2-57dfe72fe836', 'ec810177-2ab4-550e-aae1-12827a17db1c', c.id, 'All three carry the same limit', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'ec810177-2ab4-550e-aae1-12827a17db1c', c.id, '0451153b-0612-5814-8b64-6316326d5251'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '7c66b361-3374-5010-b8af-a7252cb3e310', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'workers-compensation-and-employers-liability'),
+       'An injured employee sues a machine manufacturer, which then sues the employer for contribution. Which coverage responds?', 'Part Two answers the exposures that **fall outside the compensation statute**: third-party-over actions, consequential bodily injury to a family member, loss of consortium, and **dual capacity** claims.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'cda77364-bb10-5e42-9dd9-ac085a7c595f', '7c66b361-3374-5010-b8af-a7252cb3e310', c.id, 'Part Two, employers'' liability — a third-party-over action', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'cef4d13d-b3a4-5546-9397-632ed7b8bd97', '7c66b361-3374-5010-b8af-a7252cb3e310', c.id, 'Part One, workers'' compensation', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '53d89209-e384-50c8-ada5-30542f46d247', '7c66b361-3374-5010-b8af-a7252cb3e310', c.id, 'The commercial general liability policy', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'acf1297d-ecaf-539c-8753-1bb7de00c751', '7c66b361-3374-5010-b8af-a7252cb3e310', c.id, 'Neither; exclusive remedy bars the claim', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '7c66b361-3374-5010-b8af-a7252cb3e310', c.id, 'cda77364-bb10-5e42-9dd9-ac085a7c595f'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '7dc6810e-d082-506e-a49b-54ea04396e96', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'workers-compensation-and-employers-liability'),
+       'Is FELA a no-fault system?', '**FELA** covers railroad workers. The other federal systems: **Longshore and Harbor Workers''** for maritime workers other than seamen, **the Jones Act** for seamen, and **FECA** for civilian federal employees.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'be1645ed-4d81-57b6-9480-e420e17a7f8e', '7dc6810e-d082-506e-a49b-54ea04396e96', c.id, 'No — it preserves the right to sue but removes the common law defences', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '937b1907-4a90-5f88-9939-6114e7799fe0', '7dc6810e-d082-506e-a49b-54ea04396e96', c.id, 'Yes, on the same basis as state workers'' compensation', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '3f807c94-e243-592d-9773-7a0cca6bd43b', '7dc6810e-d082-506e-a49b-54ea04396e96', c.id, 'Yes, but only for injuries occurring on navigable waters', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '81594f17-5291-5d6c-a0b5-03b9c8a44ef5', '7dc6810e-d082-506e-a49b-54ea04396e96', c.id, 'No, it requires proof of intentional misconduct', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '7dc6810e-d082-506e-a49b-54ea04396e96', c.id, 'be1645ed-4d81-57b6-9480-e420e17a7f8e'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '3b866d0a-2fe4-51be-8463-944bb51e12a8', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'workers-compensation-and-employers-liability'),
+       'Which test decides whether somebody is an employee rather than an independent contractor?', '**The label on the relationship matters less than the control test.** An independent contractor controls how the work is done, supplies their own tools and serves multiple clients — though an employer using uninsured subcontractors may still be treated as their statutory employer.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '1c18e0a5-e396-52b5-a0c3-f65dbd4f5afa', '3b866d0a-2fe4-51be-8463-944bb51e12a8', c.id, 'Whether the employer directs and controls the manner of the work', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '7fd8ae39-0249-58b3-a2b4-dd80e8997787', '3b866d0a-2fe4-51be-8463-944bb51e12a8', c.id, 'Whether the person is paid hourly rather than by the job', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'f70bdd67-1546-5e6b-8953-146198c30a61', '3b866d0a-2fe4-51be-8463-944bb51e12a8', c.id, 'Whether a written contract describes them as an employee', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'db3e0723-ff6d-5698-99b8-61a349a87148', '3b866d0a-2fe4-51be-8463-944bb51e12a8', c.id, 'Whether they work more than 30 hours a week', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '3b866d0a-2fe4-51be-8463-944bb51e12a8', c.id, '1c18e0a5-e396-52b5-a0c3-f65dbd4f5afa'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'd18a4483-a269-56e9-9bb6-75f995d7ea51', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'workers-compensation-and-employers-liability'),
+       'An occupational hearing loss develops gradually over fifteen years of factory work. Compensable?', 'Compensability requires that the injury **arise out of** the employment and occur **in the course of** it. Repetitive strain, hearing loss and exposure illnesses qualify despite the absence of an accident.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'faf555fc-2c45-5cd6-98db-cc800254df8a', 'd18a4483-a269-56e9-9bb6-75f995d7ea51', c.id, 'Yes — occupational disease is covered where it arises from conditions characteristic of the work', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '85ef1d8f-b550-5d9b-a149-4b4799e8b88e', 'd18a4483-a269-56e9-9bb6-75f995d7ea51', c.id, 'No, there was no accident', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'bac1f3ed-7ada-5548-8be6-e3000d9156c8', 'd18a4483-a269-56e9-9bb6-75f995d7ea51', c.id, 'No, the onset was gradual rather than sudden', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '6a9890f3-ae28-5ef0-9443-e9658deb95f3', 'd18a4483-a269-56e9-9bb6-75f995d7ea51', c.id, 'Only if the employer failed to provide hearing protection', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'd18a4483-a269-56e9-9bb6-75f995d7ea51', c.id, 'faf555fc-2c45-5cd6-98db-cc800254df8a'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'ed224005-08ca-5d66-a663-dce3e3ba5a18', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'workers-compensation-and-employers-liability'),
+       'Which disability class is typically paid on a schedule setting a number of weeks per body part?', '**Temporary total**: cannot work at all but will recover. **Temporary partial**: reduced capacity, will recover. **Permanent partial**: a lasting impairment, often scheduled. **Permanent total**: cannot return to any gainful employment.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '0c0cf8a0-66a4-574b-a791-6a879aed43a4', 'ed224005-08ca-5d66-a663-dce3e3ba5a18', c.id, 'Permanent partial', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '6e68fff9-13af-5085-9c10-05ac66e42329', 'ed224005-08ca-5d66-a663-dce3e3ba5a18', c.id, 'Temporary total', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '66557700-7a7b-56a3-b21f-b79f38196373', 'ed224005-08ca-5d66-a663-dce3e3ba5a18', c.id, 'Temporary partial', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '89ec0dec-e907-5452-8f8d-a1d1fefbe951', 'ed224005-08ca-5d66-a663-dce3e3ba5a18', c.id, 'Permanent total', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'ed224005-08ca-5d66-a663-dce3e3ba5a18', c.id, '0c0cf8a0-66a4-574b-a791-6a879aed43a4'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'ffcdd220-b8eb-5743-88e0-484f578e8632', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'crime'),
+       'A thief enters through an unlocked window, steals a laptop and leaves no marks. Is this burglary?', '**Two elements: forcible entry and visible marks. No marks, no burglary.** It is theft, and may become a mysterious disappearance claim depending on the form.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'df2f985a-cb38-5826-a589-9de9f83fe062', 'ffcdd220-b8eb-5743-88e0-484f578e8632', c.id, 'No — burglary requires visible signs of forced entry or exit', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '14ea6769-bca5-5a9c-89c9-c8abf4340b2f', 'ffcdd220-b8eb-5743-88e0-484f578e8632', c.id, 'Yes, entering to steal is burglary regardless of force', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '3b64fa99-32ba-59db-bd9f-02ff715f9071', 'ffcdd220-b8eb-5743-88e0-484f578e8632', c.id, 'Yes, because the entry was unlawful', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '36ded4ca-048c-5142-a056-661c8128c218', 'ffcdd220-b8eb-5743-88e0-484f578e8632', c.id, 'Only if the premises were closed for business', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'ffcdd220-b8eb-5743-88e0-484f578e8632', c.id, 'df2f985a-cb38-5826-a589-9de9f83fe062'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'dbfe869c-bf1b-5f84-a8d7-d67c102fcbed', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'crime'),
+       'A courier carrying the day''s takings is threatened with a knife and hands over the bag. Which crime, and which insuring agreement?', '**Robbery requires a person put in fear.** A **custodian** has care and custody of property inside the premises; a **messenger** is one of those people outside it.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '94c534b9-0ebc-516e-8237-436c25c246ca', 'dbfe869c-bf1b-5f84-a8d7-d67c102fcbed', c.id, 'Robbery, under the outside the premises agreement — the courier is a messenger', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'c9ba463c-a685-51b0-8275-83826b62ce7d', 'dbfe869c-bf1b-5f84-a8d7-d67c102fcbed', c.id, 'Burglary, under the inside the premises agreement', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '31c1f968-bc0d-5412-8d81-ce393999c9a2', 'dbfe869c-bf1b-5f84-a8d7-d67c102fcbed', c.id, 'Theft, under employee dishonesty', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'b67ef44f-bc07-5ff6-84af-df5ee39a8058', 'dbfe869c-bf1b-5f84-a8d7-d67c102fcbed', c.id, 'Mysterious disappearance', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'dbfe869c-bf1b-5f84-a8d7-d67c102fcbed', c.id, '94c534b9-0ebc-516e-8237-436c25c246ca'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '23c56524-28a7-53c1-9d79-afa359dc04b3', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'crime'),
+       'A bookkeeper diverts $80,000 over four years. The scheme is found in year five, after the policy in force during the theft expired. Which form responds?', '**The discovery form is broader**, because employee dishonesty is typically found long after it began. A **loss-sustained** form covers losses occurring during the period and discovered within it or shortly after.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '9194ff93-3824-5db8-be4d-fbaa3f26618c', '23c56524-28a7-53c1-9d79-afa359dc04b3', c.id, 'A discovery form, which covers losses discovered during the policy period whenever they occurred', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '174af278-2ce5-5b26-aefc-9f546cd71059', '23c56524-28a7-53c1-9d79-afa359dc04b3', c.id, 'A loss-sustained form, since the losses occurred while it was in force', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '3bb7eaf7-31d8-56f6-bae1-dd4dae022582', '23c56524-28a7-53c1-9d79-afa359dc04b3', c.id, 'Neither; the loss is uninsurable once the policy expires', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '13b7f2d6-6d27-5f52-96b4-128736e2ba4a', '23c56524-28a7-53c1-9d79-afa359dc04b3', c.id, 'Both, sharing pro rata', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '23c56524-28a7-53c1-9d79-afa359dc04b3', c.id, '9194ff93-3824-5db8-be4d-fbaa3f26618c'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '609d35f0-04da-5c5d-a75e-20f26d08a492', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'crime'),
+       'An annual stocktake shows $30,000 of missing inventory and nothing else. Is that a covered employee dishonesty loss?', '**A shortage on the books is not by itself proof of theft**, though such records may support a claim otherwise proved.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '229d6dab-9e6c-5be2-869e-03f776520cb5', '609d35f0-04da-5c5d-a75e-20f26d08a492', c.id, 'No — loss proved only by inventory computation is excluded', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'dc9a1911-df49-5669-a84c-a13f9c43a533', '609d35f0-04da-5c5d-a75e-20f26d08a492', c.id, 'Yes, an inventory shortage is direct evidence of theft', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'e91dc573-1b90-5ea5-8a75-eb041ba3327f', '609d35f0-04da-5c5d-a75e-20f26d08a492', c.id, 'Yes, up to half the limit', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'a4ee629f-06fa-588d-9442-73d8bd4937ab', '609d35f0-04da-5c5d-a75e-20f26d08a492', c.id, 'Only if the shortage exceeds 10 percent of inventory', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '609d35f0-04da-5c5d-a75e-20f26d08a492', c.id, '229d6dab-9e6c-5be2-869e-03f776520cb5'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '68c4c157-8164-53e2-a3c9-441a45903316', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'crime'),
+       'An employer discovers an employee stole $500 two years ago and keeps them on. The employee steals again. Covered?', '**Discovery of a dishonest act ends coverage for that employee immediately**, since the risk is no longer fortuitous.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'd3ff0133-3b84-597c-8c27-ee71028bd576', '68c4c157-8164-53e2-a3c9-441a45903316', c.id, 'No — coverage for that employee ended on discovery of the first dishonest act', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '300e526d-3b7a-5890-b091-7aaf5cb0d166', '68c4c157-8164-53e2-a3c9-441a45903316', c.id, 'Yes, each act is a separate occurrence', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'd87fb3d3-8762-54a4-a883-7aa97f3f237a', '68c4c157-8164-53e2-a3c9-441a45903316', c.id, 'Yes, but only above the amount of the first theft', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'aa17dcde-7273-5a22-9138-3af9b5794882', '68c4c157-8164-53e2-a3c9-441a45903316', c.id, 'Yes, if the employer reported the first theft to the insurer', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '68c4c157-8164-53e2-a3c9-441a45903316', c.id, 'd3ff0133-3b84-597c-8c27-ee71028bd576'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '3790741e-95ec-50d4-8e7b-84f2aad19755', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'crime'),
+       'Which term is the broadest?', '**Burglary breaks in, robbery threatens a person, theft covers both and more, and mysterious disappearance is what is left when you cannot say which.**', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '4383e86d-5ff7-55a2-805e-aebf86d78d33', '3790741e-95ec-50d4-8e7b-84f2aad19755', c.id, 'Theft', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '256b1720-8249-5511-a3d0-6294528a8b9e', '3790741e-95ec-50d4-8e7b-84f2aad19755', c.id, 'Burglary', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'e921fa37-876b-50d0-91af-5a6439081432', '3790741e-95ec-50d4-8e7b-84f2aad19755', c.id, 'Robbery', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '0ad8f1ba-df98-588d-917e-6a328d5ee739', '3790741e-95ec-50d4-8e7b-84f2aad19755', c.id, 'Forgery', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '3790741e-95ec-50d4-8e7b-84f2aad19755', c.id, '4383e86d-5ff7-55a2-805e-aebf86d78d33'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'eba3844a-6e30-5022-97aa-72f3118bfc33', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'crime'),
+       'What must an employee intend for employee dishonesty coverage to respond?', '**Simple negligence, or a mistake, is not dishonesty.** The intent to cause loss and gain financially is what makes the act covered.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'df0bde16-2f25-5373-8958-f0bbd19a35f4', 'eba3844a-6e30-5022-97aa-72f3118bfc33', c.id, 'To cause the employer a loss and obtain a financial benefit', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '1717612e-e6e6-5290-82a1-e04798f6e0e3', 'eba3844a-6e30-5022-97aa-72f3118bfc33', c.id, 'Merely to act carelessly with the employer''s property', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '9fbcb049-a9dd-524b-98a6-6bf4a0586ab8', 'eba3844a-6e30-5022-97aa-72f3118bfc33', c.id, 'To conceal a bookkeeping error', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'c49c0ca2-f85c-542f-be04-a67490bf3c46', 'eba3844a-6e30-5022-97aa-72f3118bfc33', c.id, 'To resign after the act', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'eba3844a-6e30-5022-97aa-72f3118bfc33', c.id, 'df0bde16-2f25-5373-8958-f0bbd19a35f4'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '9c75f885-031f-5f24-9101-66573b22fec5', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'crime'),
+       'Four employees each steal under a $50,000 per-employee dishonesty limit. How does a per-loss basis differ?', '**Per employee** applies the limit separately to each; **per loss** applies it once to the act or scheme. Where several employees collude, the difference is large.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '1f322c7c-d0b8-584d-92ef-9a76025d6bf8', '9c75f885-031f-5f24-9101-66573b22fec5', c.id, 'Per loss applies the limit to each dishonest act or scheme regardless of how many employees were involved', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '6d749cbf-d2f3-5f2a-bfaa-731812b7c371', '9c75f885-031f-5f24-9101-66573b22fec5', c.id, 'Per loss multiplies the limit by the number of employees', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '07888dec-2a8b-568b-9106-afc4b032dc54', '9c75f885-031f-5f24-9101-66573b22fec5', c.id, 'Per loss applies only to acts discovered in the same policy period', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '514a3e7c-4e3e-5f39-a409-ac9ed618d413', '9c75f885-031f-5f24-9101-66573b22fec5', c.id, 'There is no practical difference', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '9c75f885-031f-5f24-9101-66573b22fec5', c.id, '1f322c7c-d0b8-584d-92ef-9a76025d6bf8'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '9d698443-23de-5df0-8383-5c9493febab9', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'crime'),
+       'An accountant is tricked by a fraudulent email into wiring $200,000 to a criminal. Which exclusion is the obstacle under a basic crime form?', '**Voluntary parting** — property handed over because the insured was tricked — is why **social engineering fraud** became a separate insuring agreement rather than sitting inside the standard form.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '02c75221-4261-5a60-81cf-ccb4c81887e4', '9d698443-23de-5df0-8383-5c9493febab9', c.id, 'Voluntary parting — the property was handed over', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'f126081b-3931-5af8-a5f4-86bfd637ed49', '9d698443-23de-5df0-8383-5c9493febab9', c.id, 'Acts of the insured', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '7f0725c2-8dbd-5593-b0a7-515f867803f2', '9d698443-23de-5df0-8383-5c9493febab9', c.id, 'Accounting or arithmetical errors', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'c0f1f4e0-4499-516a-92e0-e9b8a2215aec', '9d698443-23de-5df0-8383-5c9493febab9', c.id, 'Trading losses', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '9d698443-23de-5df0-8383-5c9493febab9', c.id, '02c75221-4261-5a60-81cf-ccb4c81887e4'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '8f5367b0-76cc-586b-bf11-2b253cb3df69', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'crime'),
+       'What is a watchperson, in crime coverage terms?', 'A **custodian** has care and custody inside; a **messenger** is outside; a **watchperson** guards, and certain agreements condition coverage on one being on duty.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '1f2d0a2e-3d87-5570-98e6-38116391547a', '8f5367b0-76cc-586b-bf11-2b253cb3df69', c.id, 'Somebody retained specifically to guard the premises, whose presence some coverages require', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '458cad6f-e236-5195-a2ac-8b7852316101', '8f5367b0-76cc-586b-bf11-2b253cb3df69', c.id, 'An employee with care and custody of property inside the premises', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'bd705684-f555-5ff4-9d2a-c00f21e32f32', '8f5367b0-76cc-586b-bf11-2b253cb3df69', c.id, 'An employee carrying property outside the premises', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '002eb258-0956-518f-aa32-bbf98c396470', '8f5367b0-76cc-586b-bf11-2b253cb3df69', c.id, 'An independent security contractor excluded from coverage', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '8f5367b0-76cc-586b-bf11-2b253cb3df69', c.id, '1f2d0a2e-3d87-5570-98e6-38116391547a'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '008d4b85-865b-5fe2-9dbe-2daeaee2bef9', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'crime'),
+       'A pickpocket lifts a wallet from an employee''s jacket without the employee noticing. Robbery?', 'No threat, no robbery. It is theft, and the form the insured holds decides whether anything is payable.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '0a840e41-8633-5435-af0c-38deafa4ead7', '008d4b85-865b-5fe2-9dbe-2daeaee2bef9', c.id, 'No — robbery requires force or the threat of force against a person', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '3866e35b-8302-5006-ba41-4424f1d0abfc', '008d4b85-865b-5fe2-9dbe-2daeaee2bef9', c.id, 'Yes, the property was taken from a person', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'c109d019-f0b8-590f-8665-feae2c8a9ba7', '008d4b85-865b-5fe2-9dbe-2daeaee2bef9', c.id, 'Yes, because the taking was unlawful', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '70c68222-cc6b-53f3-8741-45578311c1f7', '008d4b85-865b-5fe2-9dbe-2daeaee2bef9', c.id, 'Only if the employee later felt threatened', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '008d4b85-865b-5fe2-9dbe-2daeaee2bef9', c.id, '0a840e41-8633-5435-af0c-38deafa4ead7'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '54cee733-8735-55df-9dfa-0038b20e3b92', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'crime'),
+       'What does forgery and alteration coverage reach?', '**Money orders and counterfeit money** is a separate insuring agreement, as are **computer fraud** and **funds transfer fraud**.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '11ce1a5f-3fa2-5451-bc61-74d5977b86e6', '54cee733-8735-55df-9dfa-0038b20e3b92', c.id, 'Signing another''s name without authority, or altering a financial instrument such as a cheque or draft', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'a6adf1cb-3033-5866-9146-388ff4082c2b', '54cee733-8735-55df-9dfa-0038b20e3b92', c.id, 'Any counterfeit currency accepted by the insured', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '02e3aab4-2783-53ec-b416-d608b716a5b2', '54cee733-8735-55df-9dfa-0038b20e3b92', c.id, 'Any fraudulent statement made to obtain property', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '170dd48e-c05f-5a63-8300-bf665a84600f', '54cee733-8735-55df-9dfa-0038b20e3b92', c.id, 'Unauthorised access to the insured''s computer systems', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '54cee733-8735-55df-9dfa-0038b20e3b92', c.id, '11ce1a5f-3fa2-5451-bc61-74d5977b86e6'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'aefe4784-c7b1-52cc-bf81-a1bfd52f87ae', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'bonds'),
+       'A contractor is bonded on a school project. Who is the principal, who the obligee, who the surety?', '**The principal** is whose performance is guaranteed; **the obligee** is the party protected, who required the bond; **the surety** guarantees the principal to the obligee.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'e44b3cfc-e700-5408-a3f5-47feb5fbda52', 'aefe4784-c7b1-52cc-bf81-a1bfd52f87ae', c.id, 'The contractor, the school district, and the bonding company', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'cf735bf2-bb02-5028-ab00-e2eff01dc304', 'aefe4784-c7b1-52cc-bf81-a1bfd52f87ae', c.id, 'The school district, the contractor, and the bonding company', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '3ff4f3a6-baa3-5b83-be68-d306048ab884', 'aefe4784-c7b1-52cc-bf81-a1bfd52f87ae', c.id, 'The bonding company, the contractor, and the school district', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '2ef62264-3fc7-5906-9353-e8cb540f2f54', 'aefe4784-c7b1-52cc-bf81-a1bfd52f87ae', c.id, 'The contractor, the bonding company, and the school district', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'aefe4784-c7b1-52cc-bf81-a1bfd52f87ae', c.id, 'e44b3cfc-e700-5408-a3f5-47feb5fbda52'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '81bde0ea-eadf-5bba-9fc5-df99eccc81b6', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'bonds'),
+       'A contractor abandons a job half-finished. The surety pays the owner $400,000 to complete it. Does the contractor owe anything?', '**An insured never repays an insurer; a principal always repays a surety.** That is why suretyship is underwritten as a credit decision and any payment is treated as an advance.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '78b011cf-c7e0-5299-ab04-95598659ec7f', '81bde0ea-eadf-5bba-9fc5-df99eccc81b6', c.id, 'Yes — the full $400,000; the principal must indemnify the surety', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'c52f8dbb-62aa-5417-be66-53417c931e3e', '81bde0ea-eadf-5bba-9fc5-df99eccc81b6', c.id, 'No, the premium paid for the guarantee', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '8bddf638-009d-5570-be43-82f2460a21ff', '81bde0ea-eadf-5bba-9fc5-df99eccc81b6', c.id, 'Only the amount above the bond penalty', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '47b10a84-53d8-530c-8241-417019836d06', '81bde0ea-eadf-5bba-9fc5-df99eccc81b6', c.id, 'Only if the abandonment was deliberate', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '81bde0ea-eadf-5bba-9fc5-df99eccc81b6', c.id, '78b011cf-c7e0-5299-ab04-95598659ec7f'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '6a83206f-f31c-5c68-a112-e05284cb0832', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'bonds'),
+       'A contractor submits the low bid and then refuses to sign. Which bond, and what does it protect against?', '**The bid bond gets you the contract, the performance bond finishes the work, the payment bond pays the subcontractors.**', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'a05a45ad-67a0-5513-846e-50fe502e3e2c', '6a83206f-f31c-5c68-a112-e05284cb0832', c.id, 'The bid bond, protecting the owner against the extra cost of going to the next bidder', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'efb5dbd7-ab67-5fa2-ae52-45d9c0d2d6b5', '6a83206f-f31c-5c68-a112-e05284cb0832', c.id, 'The performance bond, protecting against non-completion', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '8eb86b4e-9932-5e6d-b4a5-2f553ba48194', '6a83206f-f31c-5c68-a112-e05284cb0832', c.id, 'The payment bond, protecting subcontractors', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'd0b010fb-5a32-556b-b0f7-4c0de5051f4d', '6a83206f-f31c-5c68-a112-e05284cb0832', c.id, 'The maintenance bond, protecting against defects', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '6a83206f-f31c-5c68-a112-e05284cb0832', c.id, 'a05a45ad-67a0-5513-846e-50fe502e3e2c'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'ba0d7d3a-0a6a-5e17-ab51-2c001c1a0765', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'bonds'),
+       'Subcontractors are unpaid and threaten liens on the owner''s property. Which bond?', 'A **completion bond** is given to a **lender** rather than an owner, guaranteeing the project is finished free of liens. A **supply bond** guarantees delivery of materials under a supply contract.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '855fcd72-fc39-5610-bdfd-a6b4d4e17e6c', 'ba0d7d3a-0a6a-5e17-ab51-2c001c1a0765', c.id, 'The payment bond, also called labour and material', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'ca2b0634-dc5b-571f-9021-cfbf4b52a25a', 'ba0d7d3a-0a6a-5e17-ab51-2c001c1a0765', c.id, 'The performance bond', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '1821ec52-7d64-53d2-a885-58244320e968', 'ba0d7d3a-0a6a-5e17-ab51-2c001c1a0765', c.id, 'The completion bond', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'dd78868c-1b6a-569e-af25-22233ece51fc', 'ba0d7d3a-0a6a-5e17-ab51-2c001c1a0765', c.id, 'The supply bond', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'ba0d7d3a-0a6a-5e17-ab51-2c001c1a0765', c.id, '855fcd72-fc39-5610-bdfd-a6b4d4e17e6c'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'ff9cf64d-7ba0-567d-966d-9d5334d3efa8', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'bonds'),
+       'Four employees conspire to steal $200,000. The employer has a $75,000 blanket position bond. Roughly what is available?', '**Blanket position applies the limit to each employee; commercial blanket applies it per loss** however many were involved. Blanket position provides more coverage for the same limit where employees collude.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'a58bc895-d405-5ffa-a031-ea2003ecd3de', 'ff9cf64d-7ba0-567d-966d-9d5334d3efa8', c.id, '$300,000 — the limit applies to each employee', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '645379b2-6299-5719-a57b-161c2424fd5c', 'ff9cf64d-7ba0-567d-966d-9d5334d3efa8', c.id, '$75,000 — one limit for the scheme', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '73ca6d58-5044-58cc-969a-26de042c6c34', 'ff9cf64d-7ba0-567d-966d-9d5334d3efa8', c.id, '$150,000 — two limits', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '17954c7e-74c5-5997-91d4-ce3ed72e0f1f', 'ff9cf64d-7ba0-567d-966d-9d5334d3efa8', c.id, '$200,000 — the amount of the loss, capped at the total limit', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'ff9cf64d-7ba0-567d-966d-9d5334d3efa8', c.id, 'a58bc895-d405-5ffa-a031-ea2003ecd3de'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '881a6416-3d06-5298-aa07-5a73d3c84a9a', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'bonds'),
+       'Why does a surety expect no losses?', '**Bond underwriting examines the principal''s character, capacity and capital** — credit, experience, financial statements, work in progress. It is risk avoidance, not risk assumption.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '003f2dc1-0a4a-5969-baac-76eef0a879f8', '881a6416-3d06-5298-aa07-5a73d3c84a9a', c.id, 'The bond is a credit judgement, and any payment is recoverable from the principal', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '0e11f51a-b880-552e-9e42-554ce38f1b1d', '881a6416-3d06-5298-aa07-5a73d3c84a9a', c.id, 'Bond penalties are set below the expected loss', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '86917c0f-ff57-5c03-9b51-7cd9920f366b', '881a6416-3d06-5298-aa07-5a73d3c84a9a', c.id, 'Surety bonds exclude the most common causes of default', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '32c5dac0-7776-519e-b803-1280b086dfd5', '881a6416-3d06-5298-aa07-5a73d3c84a9a', c.id, 'Obligees must exhaust other remedies first', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '881a6416-3d06-5298-aa07-5a73d3c84a9a', c.id, '003f2dc1-0a4a-5969-baac-76eef0a879f8'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '12ed7c69-f9a3-5508-9502-9c9861bcb513', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'bonds'),
+       'Which fidelity form covers whoever happens to occupy a role, without naming the person?', '**Name schedule** covers named individuals with stated amounts, and adding a person requires notifying the surety. **Position schedule** covers the position. **Blanket** forms cover all employees without naming anybody.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '6fa6d9f1-0a3d-52d1-bbb6-ec434fb6bf06', '12ed7c69-f9a3-5508-9502-9c9861bcb513', c.id, 'Position schedule', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '0205d97f-f388-521b-aa30-5356f8da9131', '12ed7c69-f9a3-5508-9502-9c9861bcb513', c.id, 'Name schedule', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '7ebdfe1c-2303-5fd6-8a36-918a4dc9854d', '12ed7c69-f9a3-5508-9502-9c9861bcb513', c.id, 'Commercial blanket', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '490b69e8-f1bb-53c7-9096-791604c68a4a', '12ed7c69-f9a3-5508-9502-9c9861bcb513', c.id, 'Blanket position', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '12ed7c69-f9a3-5508-9502-9c9861bcb513', c.id, '6fa6d9f1-0a3d-52d1-bbb6-ec434fb6bf06'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '21ec14f5-53a8-5c74-a0f9-1432c0f31cee', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'bonds'),
+       'An executor is appointed to administer an estate. What kind of bond is required?', '**Fiduciary bonds** guarantee that a person appointed by a court to manage another''s affairs — executor, administrator, guardian, trustee or receiver — does so faithfully. **Judicial bonds** guarantee a litigating party''s obligations: appeal, attachment, injunction, replevin.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '167529d4-fe04-5a92-9d9b-7dd143be6dc1', '21ec14f5-53a8-5c74-a0f9-1432c0f31cee', c.id, 'A fiduciary bond', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'abf16ef5-e3ca-5a3a-bf70-638ba3e2a97b', '21ec14f5-53a8-5c74-a0f9-1432c0f31cee', c.id, 'A judicial bond', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '71923122-9e71-557c-9322-14ab9fbe839b', '21ec14f5-53a8-5c74-a0f9-1432c0f31cee', c.id, 'A public official bond', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '211302b8-d8d8-5475-84ec-13194977a81e', '21ec14f5-53a8-5c74-a0f9-1432c0f31cee', c.id, 'A licence and permit bond', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '21ec14f5-53a8-5c74-a0f9-1432c0f31cee', c.id, '167529d4-fe04-5a92-9d9b-7dd143be6dc1'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '738de553-e1e9-5580-bae0-ce51427c3612', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'bonds'),
+       'An insurance producer in many states must carry which kind of bond?', '**Licence and permit bonds** are required by a public authority before a licence issues, guaranteeing compliance with the law governing the activity and compensating those harmed by non-compliance.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '175a41d0-4874-5463-bf82-78c9a2fe6326', '738de553-e1e9-5580-bae0-ce51427c3612', c.id, 'A licence and permit bond', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'c78a4679-d055-54b7-9d8c-4088a6b2efcc', '738de553-e1e9-5580-bae0-ce51427c3612', c.id, 'A fidelity bond', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '6675ad77-ba19-52de-ac22-8ad7706d6da1', '738de553-e1e9-5580-bae0-ce51427c3612', c.id, 'A public official bond', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '53245fdd-a15f-5988-a566-a0125c9dc40d', '738de553-e1e9-5580-bae0-ce51427c3612', c.id, 'A bid bond', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '738de553-e1e9-5580-bae0-ce51427c3612', c.id, '175a41d0-4874-5463-bf82-78c9a2fe6326'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'b1fc4d1d-1158-5fa7-ac50-845556849854', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'bonds'),
+       'How does bond premium differ conceptually from insurance premium?', 'Insurance prices **expected losses** into the rate. A surety prices a **guarantee** it does not expect to fund, and bonds are often non-cancellable for their term where a policy usually is not.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '29cf0f8b-adab-5f2b-873b-8d40fa279e52', 'b1fc4d1d-1158-5fa7-ac50-845556849854', c.id, 'It is a service fee for the guarantee rather than a rate for assumed risk', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '083cec83-db35-53e9-b701-14c3cdb150b4', 'b1fc4d1d-1158-5fa7-ac50-845556849854', c.id, 'It is calculated as a percentage of the obligee''s expected loss', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'a2038f37-9a60-57bc-a92e-45ab9cf6dff0', 'b1fc4d1d-1158-5fa7-ac50-845556849854', c.id, 'It is refundable if the principal performs', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '3cf29342-750d-50f0-b3c2-dac6c9ca03b1', 'b1fc4d1d-1158-5fa7-ac50-845556849854', c.id, 'It is paid by the obligee rather than the principal', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'b1fc4d1d-1158-5fa7-ac50-845556849854', c.id, '29cf0f8b-adab-5f2b-873b-8d40fa279e52'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '1ebab7b1-96e7-57fd-8210-12a6d3938215', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'bonds'),
+       'What does a maintenance bond guarantee?', 'It sits after the performance bond''s job is done, covering the period when defects in completed work come to light.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '08721cec-63be-528d-a04d-a6bac4bdd2dd', '1ebab7b1-96e7-57fd-8210-12a6d3938215', c.id, 'The work against defects for a stated period after completion', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '4697683e-7a1b-552b-929c-187bf18a9d48', '1ebab7b1-96e7-57fd-8210-12a6d3938215', c.id, 'That subcontractors will be paid after the job closes', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '33953399-bfc1-5ec0-a4e5-385885286405', '1ebab7b1-96e7-57fd-8210-12a6d3938215', c.id, 'That the contractor will maintain required insurance during the job', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '4352d353-605f-539a-b038-238cb5f10c5a', '1ebab7b1-96e7-57fd-8210-12a6d3938215', c.id, 'That the owner will maintain the finished structure', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '1ebab7b1-96e7-57fd-8210-12a6d3938215', c.id, '08721cec-63be-528d-a04d-a6bac4bdd2dd'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '198bf6fd-4d15-5995-8dd1-a57f364ac31f', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'bonds'),
+       'What is the difference between a fidelity bond and employee dishonesty insurance?', 'Fidelity is the class of bond closest to insurance, which is exactly why the exam tests the distinction.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '46092e6c-a665-5c0e-852f-6151d5bc10e3', '198bf6fd-4d15-5995-8dd1-a57f364ac31f', c.id, 'A fidelity bond guarantees the honesty of a named person or position; employee dishonesty insurance covers the employer''s loss from employees generally', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '34d35b9b-adf3-550c-a00c-3a4b77acadf7', '198bf6fd-4d15-5995-8dd1-a57f364ac31f', c.id, 'A fidelity bond covers only theft of money; employee dishonesty covers all property', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'b27c5b99-f64b-52b8-b9f3-cc1f3b8ac766', '198bf6fd-4d15-5995-8dd1-a57f364ac31f', c.id, 'A fidelity bond is issued by the state; employee dishonesty is issued by an insurer', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '0caee871-4cb4-5faa-8268-ea0145d44262', '198bf6fd-4d15-5995-8dd1-a57f364ac31f', c.id, 'There is no difference; the terms are interchangeable', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '198bf6fd-4d15-5995-8dd1-a57f364ac31f', c.id, '46092e6c-a665-5c0e-852f-6151d5bc10e3'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '66ac3c08-475c-5d80-a007-2687499a3f79', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'professional-liability'),
+       'An insurance agent fails to add a newly purchased building to a client''s policy and it burns. Which coverage responds?', '**E&O covers financial loss suffered by a client because of the insured''s negligent act, error or omission in performing professional services.** Failing to place requested coverage is the classic producer claim.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '996fab94-d4b6-5901-82f2-9c78c9f14cf3', '66ac3c08-475c-5d80-a007-2687499a3f79', c.id, 'The agent''s errors and omissions policy', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'aeaf035e-6c01-581d-9107-23f5a5f2f1f1', '66ac3c08-475c-5d80-a007-2687499a3f79', c.id, 'The client''s commercial property policy', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'ae015442-f180-51ed-92f9-0b9058ec5198', '66ac3c08-475c-5d80-a007-2687499a3f79', c.id, 'The agent''s commercial general liability policy', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '934f292a-cc02-5215-9de8-fd76669f753d', '66ac3c08-475c-5d80-a007-2687499a3f79', c.id, 'The agent''s employment practices liability policy', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '66ac3c08-475c-5d80-a007-2687499a3f79', c.id, '996fab94-d4b6-5901-82f2-9c78c9f14cf3'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'cd4fcdff-a5a2-5d8e-a99a-121bfc954d4c', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'professional-liability'),
+       'A company holds a Christmas party; a guest drinks too much and injures somebody driving home. Does the CGL respond?', '**The CGL covers host liquor liability but excludes those in the business** of manufacturing, distributing, selling, serving or furnishing alcohol. **Dram shop laws** — making a server liable for injury caused by a patron served while obviously intoxicated or under age — are why that exclusion matters.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '887ce17c-690e-586d-8221-17890604ecb6', 'cd4fcdff-a5a2-5d8e-a99a-121bfc954d4c', c.id, 'Yes — the company is not in the alcohol business, so host liquor liability remains covered', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '406604e2-eefb-57b3-8428-fb6b4d249f76', 'cd4fcdff-a5a2-5d8e-a99a-121bfc954d4c', c.id, 'No, all liquor-related liability is excluded', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'be973154-2b56-5607-bbcb-723b79b9158a', 'cd4fcdff-a5a2-5d8e-a99a-121bfc954d4c', c.id, 'Only if the company holds a liquor licence', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '925ecc76-2b49-5d21-abdc-5bd4eb0bcde8', 'cd4fcdff-a5a2-5d8e-a99a-121bfc954d4c', c.id, 'Only up to the medical payments limit', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'cd4fcdff-a5a2-5d8e-a99a-121bfc954d4c', c.id, '887ce17c-690e-586d-8221-17890604ecb6'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '625ae1ef-7abf-5d76-a8bd-84793edb87f1', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'professional-liability'),
+       'A corporation becomes insolvent and cannot indemnify its directors, who are personally sued. Which D&O insuring agreement responds?', '**Side A pays the individual directors and officers where the company cannot or does not indemnify them.** Side B reimburses the company for indemnifying them; Side C covers the entity for securities claims. **Side A is the coverage a director personally cares about**, because it survives the company''s failure.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'd7adc2ab-31dd-5783-8fcc-9b98e35fce44', '625ae1ef-7abf-5d76-a8bd-84793edb87f1', c.id, 'Side A', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '789f1bd8-9435-5c8e-8b9a-12cab9b119d4', '625ae1ef-7abf-5d76-a8bd-84793edb87f1', c.id, 'Side B', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '58a1e65b-b060-5d13-b9fb-3c6b2a445fc4', '625ae1ef-7abf-5d76-a8bd-84793edb87f1', c.id, 'Side C', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'f75d90ae-d751-54c6-aef7-4ae5bb0d4ff2', '625ae1ef-7abf-5d76-a8bd-84793edb87f1', c.id, 'None; D&O requires a solvent company', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '625ae1ef-7abf-5d76-a8bd-84793edb87f1', c.id, 'd7adc2ab-31dd-5783-8fcc-9b98e35fce44'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '04cebb25-4982-51cb-a359-96591dc01e22', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'professional-liability'),
+       'An employee sues for wrongful termination. CGL, workers'' compensation, or something else?', '**The CGL excludes it and workers'' compensation does not reach it** — these are not bodily injuries at work, they are employment decisions. EPLI is claims-made and usually carries a retention the employer bears on every claim, since small claims are frequent.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '57105401-7b94-559b-b143-3c36a9eaf27b', '04cebb25-4982-51cb-a359-96591dc01e22', c.id, 'Employment practices liability', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '19e02454-abb1-5254-9eed-b8ac3b59f2af', '04cebb25-4982-51cb-a359-96591dc01e22', c.id, 'Commercial general liability, under personal injury', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '30308191-7c08-50e7-ae61-c7ed1d580ef3', '04cebb25-4982-51cb-a359-96591dc01e22', c.id, 'Workers'' compensation Part Two', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '6829a1e1-01ec-59ba-aae6-cb710f065dc0', '04cebb25-4982-51cb-a359-96591dc01e22', c.id, 'Directors and officers, Side C', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '04cebb25-4982-51cb-a359-96591dc01e22', c.id, '57105401-7b94-559b-b143-3c36a9eaf27b'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '5234204e-83d6-5b44-a28e-ce28d42e5c12', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'professional-liability'),
+       'A surgeon retires. Claims may arise for years. What must be arranged?', 'A **basic** tail is automatic and short; the **supplemental** tail is bought and must be purchased within a short window after expiry. Tail coverage matters most where a child was the patient, since the limitation period may not begin until they reach majority.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '37f0b7a6-0b31-550c-9fa4-364018b0245c', '5234204e-83d6-5b44-a28e-ce28d42e5c12', c.id, 'A supplemental extended reporting period, or prior acts coverage on a new policy with the retroactive date preserved', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'a2c8ae4c-ec22-51ff-98c5-567ee9be9999', '5234204e-83d6-5b44-a28e-ce28d42e5c12', c.id, 'Nothing; occurrence coverage responds whenever the claim arrives', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '7086383c-bcd5-521a-8e40-1335a4ee4f0c', '5234204e-83d6-5b44-a28e-ce28d42e5c12', c.id, 'An increase in the per-claim limit before retirement', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'da43a604-354d-570d-b8fd-94f3a8355a77', '5234204e-83d6-5b44-a28e-ce28d42e5c12', c.id, 'Conversion of the policy to an excess form', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '5234204e-83d6-5b44-a28e-ce28d42e5c12', c.id, '37f0b7a6-0b31-550c-9fa4-364018b0245c'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '004a8ae0-377f-52b3-a145-2aa60a831874', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'professional-liability'),
+       'A hacker steals customer records and the customers sue. First-party or third-party cyber coverage?', 'Cyber liability covers **privacy breach claims, regulatory defence and penalties where insurable, network security liability and media liability**. Data restoration and network business interruption sit on the first-party side.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'b401ec3c-5420-5a08-8bee-c01e421b4a90', '004a8ae0-377f-52b3-a145-2aa60a831874', c.id, 'Third-party — cyber liability, which pays what the insured owes others', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'f14b21a2-c676-5604-a75d-2fd8d8a1b136', '004a8ae0-377f-52b3-a145-2aa60a831874', c.id, 'First-party, which pays the insured''s own losses', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '41cea289-32a8-5766-92f5-caf6bf897086', '004a8ae0-377f-52b3-a145-2aa60a831874', c.id, 'Neither; the CGL responds to privacy claims', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'fbff6153-035c-546d-b124-c159d92f2a97', '004a8ae0-377f-52b3-a145-2aa60a831874', c.id, 'Both equally, on a pro rata basis', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '004a8ae0-377f-52b3-a145-2aa60a831874', c.id, 'b401ec3c-5420-5a08-8bee-c01e421b4a90'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '4fec2eca-3509-58de-9421-7ec54c9e61da', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'professional-liability'),
+       'Against what standard is a professional judged?', 'This is **higher and more specific** than the ordinary negligence test, which is why the profession''s own practices are usually decisive.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '8a546bba-0ab5-54d0-a0e6-a5881dccfc0f', '4fec2eca-3509-58de-9421-7ec54c9e61da', c.id, 'What a reasonably prudent member of that profession would have done in the same circumstances', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '6282f4b6-8b79-51e6-86aa-6bbb6010834e', '4fec2eca-3509-58de-9421-7ec54c9e61da', c.id, 'The ordinary reasonable-person standard of general negligence', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'bfe561b4-7292-5189-94cf-25dbe97a31c6', '4fec2eca-3509-58de-9421-7ec54c9e61da', c.id, 'Strict liability, regardless of care taken', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '0d53e668-b014-5aa4-a029-31445cf568a0', '4fec2eca-3509-58de-9421-7ec54c9e61da', c.id, 'The contract''s express terms only', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '4fec2eca-3509-58de-9421-7ec54c9e61da', c.id, '8a546bba-0ab5-54d0-a0e6-a5881dccfc0f'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '8612d055-cd2d-56e6-9e20-79e74aab96bb', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'professional-liability'),
+       'Why is professional liability usually written claims-made rather than occurrence?', 'The other two structural differences from the CGL: professional liability **commonly covers economic loss**, not just bodily injury and property damage, and **many forms require the insured''s consent to settle**.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '2630a6e9-a453-5914-ae4f-870513ab8160', '8612d055-cd2d-56e6-9e20-79e74aab96bb', c.id, 'Professional claims surface years after the work, and an insurer cannot price a promise whose claims arrive decades later', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '6a945c41-a58e-5e47-874a-3a313514e0e0', '8612d055-cd2d-56e6-9e20-79e74aab96bb', c.id, 'Claims-made coverage is required by statute for licensed professionals', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '3b4f85d5-953c-50a2-ae4b-1f5570ff7307', '8612d055-cd2d-56e6-9e20-79e74aab96bb', c.id, 'Occurrence forms cannot cover economic loss', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '16810a3e-34e4-5ff5-b6db-4151e2fc4892', '8612d055-cd2d-56e6-9e20-79e74aab96bb', c.id, 'Claims-made forms carry no retroactive date', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '8612d055-cd2d-56e6-9e20-79e74aab96bb', c.id, '2630a6e9-a453-5914-ae4f-870513ab8160'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '54f9bd29-0dfd-5ef9-aefb-1c936b4fae70', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'professional-liability'),
+       'Why do many medical malpractice forms require consent to settle?', 'A settlement implies professional failure. The parallel provision on such forms is the **hammer clause**, capping the insurer at what a refused settlement would have cost.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '7bb38711-d3bb-5f08-adf4-0bbb0ab69d71', '54f9bd29-0dfd-5ef9-aefb-1c936b4fae70', c.id, 'Settlements are reported to national practitioner databanks and affect licensure', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '6da0fbc6-2ef5-509c-8e02-5ab64e7f6a93', '54f9bd29-0dfd-5ef9-aefb-1c936b4fae70', c.id, 'State law forbids an insurer from settling a malpractice claim', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '57cda53b-fdf9-50d9-a0c1-b16da7a12efa', '54f9bd29-0dfd-5ef9-aefb-1c936b4fae70', c.id, 'The insured must fund any settlement personally', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '399c2235-4a58-51d7-9781-be91e29fc1be', '54f9bd29-0dfd-5ef9-aefb-1c936b4fae70', c.id, 'Consent is required only where the claim exceeds the limit', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '54f9bd29-0dfd-5ef9-aefb-1c936b4fae70', c.id, '7bb38711-d3bb-5f08-adf4-0bbb0ab69d71'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '1d23a054-7ff6-5c87-b0ca-aad1584cf2bd', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'professional-liability'),
+       'An employee is deceived by a fraudulent email into wiring $200,000 to a criminal. Where does that coverage sit?', 'It is sub-limited because **the exposure is large and the control is human rather than technical**.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'e498f893-1b7f-5d7b-a02d-ee5f0766ec00', '1d23a054-7ff6-5c87-b0ca-aad1584cf2bd', c.id, 'On the first-party side, often sub-limited, as social engineering or funds transfer fraud', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '0225e759-1487-503e-aa7c-4135f0245566', '1d23a054-7ff6-5c87-b0ca-aad1584cf2bd', c.id, 'On the third-party side, as network security liability', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'e3ede05c-f17a-502d-924e-93a018536078', '1d23a054-7ff6-5c87-b0ca-aad1584cf2bd', c.id, 'Under media liability', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'a655e4f1-2b7c-5221-a88e-e6efaac5bb71', '1d23a054-7ff6-5c87-b0ca-aad1584cf2bd', c.id, 'Under the CGL''s personal and advertising injury coverage', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '1d23a054-7ff6-5c87-b0ca-aad1584cf2bd', c.id, 'e498f893-1b7f-5d7b-a02d-ee5f0766ec00'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '932ab119-7d2c-5be9-8f15-daa4934ead60', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'professional-liability'),
+       'Why is cyber coverage bought separately rather than relied on under a property or liability form?', 'Many forms now also carry **express cyber exclusions**, so the coverage is bought deliberately or not at all.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'fe8a176a-b12c-53d1-b48b-f4b18ed9f49d', '932ab119-7d2c-5be9-8f15-daa4934ead60', c.id, 'Standard forms respond to physical damage to tangible property, and data is generally not tangible property', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '03103190-3c89-542c-a044-05dd4b83421a', '932ab119-7d2c-5be9-8f15-daa4934ead60', c.id, 'Cyber losses are excluded by federal law from standard forms', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '53ca3a9f-c1f6-5252-a9a2-a75a4ddbd549', '932ab119-7d2c-5be9-8f15-daa4934ead60', c.id, 'Cyber claims always exceed standard policy limits', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'b1e76634-145e-508a-81d5-f5a4be23202b', '932ab119-7d2c-5be9-8f15-daa4934ead60', c.id, 'Standard forms cover cyber but only on a claims-made basis', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '932ab119-7d2c-5be9-8f15-daa4934ead60', c.id, 'fe8a176a-b12c-53d1-b48b-f4b18ed9f49d'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '1f4f8288-f552-56ae-9373-ba410510edbf', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'professional-liability'),
+       'A claims-made professional policy is renewed with the retroactive date advanced by three years. What has happened?', 'The retroactive date **bars acts before it, whenever the claim arrives**. Watch for a renewal that advances it — it is the quietest way to lose years of coverage.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '772fd465-9316-5509-becd-04cea7813ab2', '1f4f8288-f552-56ae-9373-ba410510edbf', c.id, 'Three years of prior acts are now uncovered, whenever a claim arrives', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'b8d25fbf-5032-5135-bcd6-d3047afda49e', '1f4f8288-f552-56ae-9373-ba410510edbf', c.id, 'The reporting window has been extended by three years', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '421932f7-abbe-5f3b-a390-80860aaea75b', '1f4f8288-f552-56ae-9373-ba410510edbf', c.id, 'Nothing; the retroactive date affects only the premium', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '62277881-e3d5-5ec2-a437-b2e7b15d2746', '1f4f8288-f552-56ae-9373-ba410510edbf', c.id, 'Coverage has broadened to include prior acts', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '1f4f8288-f552-56ae-9373-ba410510edbf', c.id, '772fd465-9316-5509-becd-04cea7813ab2'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'eab94b63-18d4-5e90-8607-afc1f1da6142', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'umbrella-and-excess-liability'),
+       'A claim is excluded by the CGL but covered by the umbrella. The SIR is $25,000 and the loss is $300,000. What does the umbrella pay?', '**The self-insured retention is the amount the insured pays on a claim the umbrella covers but no underlying policy does.** Here it applies, so the umbrella pays the balance.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'b784eaab-e30a-5904-9f94-9980addb3b33', 'eab94b63-18d4-5e90-8607-afc1f1da6142', c.id, '$275,000', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '1abd2011-81c8-5c49-9d01-5b4fbf1e1859', 'eab94b63-18d4-5e90-8607-afc1f1da6142', c.id, '$300,000', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'a694c3e8-bc7f-5993-a057-8d8d7b7a36e7', 'eab94b63-18d4-5e90-8607-afc1f1da6142', c.id, '$25,000', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '0415ccc2-ca49-5238-96d3-f13f4eb971b5', 'eab94b63-18d4-5e90-8607-afc1f1da6142', c.id, 'Nothing, because no underlying policy responds', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'eab94b63-18d4-5e90-8607-afc1f1da6142', c.id, 'b784eaab-e30a-5904-9f94-9980addb3b33'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '23d07c55-99a7-5f31-b140-db739941d80d', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'umbrella-and-excess-liability'),
+       'The insured''s CGL aggregate is exhausted in October by earlier claims. A new covered claim arrives in November. What does the umbrella do?', '**Drop-down** is the umbrella''s second function, alongside providing excess limits and covering some losses the underlying policies exclude.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '6dded46f-5d2d-5cc9-94c6-3e6b8523f3d8', '23d07c55-99a7-5f31-b140-db739941d80d', c.id, 'Drops down to respond in place of the exhausted underlying aggregate', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'cf869e32-1ca2-56e2-a74c-7d5859137be2', '23d07c55-99a7-5f31-b140-db739941d80d', c.id, 'Nothing until the policy renews and the aggregate resets', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '97f6a8af-8b43-5a29-b01d-9ad4f862ff90', '23d07c55-99a7-5f31-b140-db739941d80d', c.id, 'Pays only above the original underlying limit', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '80b0ca16-625b-5f14-92b4-e13528d7a3d3', '23d07c55-99a7-5f31-b140-db739941d80d', c.id, 'Applies the self-insured retention and pays the balance', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '23d07c55-99a7-5f31-b140-db739941d80d', c.id, '6dded46f-5d2d-5cc9-94c6-3e6b8523f3d8'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'f7302553-298f-55b4-aef7-d7ea88fa8b52', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'umbrella-and-excess-liability'),
+       'An umbrella requires $1,000,000 of underlying auto liability. The insured carries $500,000 and has a $3,000,000 loss. What is the insured''s share?', '**The umbrella does not become primary just because the primary vanished.** An insured who lets an underlying policy lapse or carries less than required absorbs the shortfall.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'acf12cb6-3cf4-5c24-a5eb-ed123837a01d', 'f7302553-298f-55b4-aef7-d7ea88fa8b52', c.id, '$500,000 — the umbrella responds as though the required underlying limit were in place', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'e9a3fc03-8257-5c69-a525-55c97e23e45a', 'f7302553-298f-55b4-aef7-d7ea88fa8b52', c.id, 'Nothing; the umbrella drops down to fill the gap', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '0e275a5a-d4ff-579b-bd37-fe690538d645', 'f7302553-298f-55b4-aef7-d7ea88fa8b52', c.id, '$1,000,000, the full required underlying limit', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'b244e3e6-a51b-530f-8fbd-75b2d53b4978', 'f7302553-298f-55b4-aef7-d7ea88fa8b52', c.id, '$2,500,000, everything above the carried limit', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'f7302553-298f-55b4-aef7-d7ea88fa8b52', c.id, 'acf12cb6-3cf4-5c24-a5eb-ed123837a01d'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '19ecf5f2-99a1-5974-86df-796cda65c651', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'umbrella-and-excess-liability'),
+       'Does an excess policy cover a loss the primary excludes?', '**An excess policy buys height, not breadth.** If the primary excludes something, so does the excess.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '99ec4e69-66e2-5884-93c7-7a0f2f3a8679', '19ecf5f2-99a1-5974-86df-796cda65c651', c.id, 'No — it follows form, adding limit but not breadth', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '4be21e34-f937-57d4-bb04-50e492451b43', '19ecf5f2-99a1-5974-86df-796cda65c651', c.id, 'Yes, subject to the self-insured retention', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '21ce83ed-3143-52d9-8a55-75fbbb33083e', '19ecf5f2-99a1-5974-86df-796cda65c651', c.id, 'Yes, if the exclusion is not repeated in the excess policy', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'dab24454-1c1e-5ba7-9311-71b571e643f3', '19ecf5f2-99a1-5974-86df-796cda65c651', c.id, 'Only where the primary aggregate is exhausted', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '19ecf5f2-99a1-5974-86df-796cda65c651', c.id, '99ec4e69-66e2-5884-93c7-7a0f2f3a8679'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'fb3f60d9-094f-5b55-bf40-9e504ab08180', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'umbrella-and-excess-liability'),
+       'A personal umbrella insured is sued for slander. The homeowners policy does not cover it. Is the umbrella likely to respond?', 'Personal umbrellas cover **libel, slander, false arrest and invasion of privacy**, which a homeowners policy typically does not.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '58e77ad6-e5ff-52ea-8b9a-3093249cb82a', 'fb3f60d9-094f-5b55-bf40-9e504ab08180', c.id, 'Yes — umbrellas typically cover personal injury offences, subject to the SIR', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'f2bb5a16-52b6-5b2c-9e2e-1d939157d013', 'fb3f60d9-094f-5b55-bf40-9e504ab08180', c.id, 'No, an umbrella cannot be broader than the underlying policy', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '59f2734a-541e-51e2-9616-564bede9227f', 'fb3f60d9-094f-5b55-bf40-9e504ab08180', c.id, 'Only if the homeowners policy carries a personal injury endorsement', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'ae2f46e2-39c2-5e84-99a8-fc5594dfd16c', 'fb3f60d9-094f-5b55-bf40-9e504ab08180', c.id, 'Only for written, not oral, defamation', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'fb3f60d9-094f-5b55-bf40-9e504ab08180', c.id, '58e77ad6-e5ff-52ea-8b9a-3093249cb82a'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '74d927f5-6092-5505-8fb2-87d03450794c', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'umbrella-and-excess-liability'),
+       'A programme has a $1m primary CGL and a $5m umbrella excess of it. A $4m judgment is entered. Who pays what?', '**Each layer is only reached when everything beneath it is exhausted.** Excess layers above the umbrella pay nothing on this judgment.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '2430b9e2-b819-5f21-b560-4500adfcb82c', '74d927f5-6092-5505-8fb2-87d03450794c', c.id, 'The CGL pays $1m and the umbrella pays $3m', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '85c95c40-89b0-5460-855b-9c44ae7701c8', '74d927f5-6092-5505-8fb2-87d03450794c', c.id, 'The umbrella pays $4m and the CGL nothing', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'aefc8307-6528-5295-b215-e2f17d46d005', '74d927f5-6092-5505-8fb2-87d03450794c', c.id, 'The CGL pays $1m and the first excess layer pays $3m', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '688a2a61-8c2e-546d-ba78-2feef78657a9', '74d927f5-6092-5505-8fb2-87d03450794c', c.id, 'Each pays half', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '74d927f5-6092-5505-8fb2-87d03450794c', c.id, '2430b9e2-b819-5f21-b560-4500adfcb82c'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '21007e6f-fcc5-5a23-b940-e1883e9c3bc0', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'umbrella-and-excess-liability'),
+       'What is the single feature that distinguishes an umbrella from an excess policy?', 'Both sit above a primary policy. **Only the umbrella broadens coverage**, and that is the examined distinction.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'f06772a0-2ea2-5446-a607-89e343b3f1a2', '21007e6f-fcc5-5a23-b940-e1883e9c3bc0', c.id, 'It can cover losses the underlying policies exclude', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'a1f2b740-f9be-550a-bddf-0c8ae666afd2', '21007e6f-fcc5-5a23-b940-e1883e9c3bc0', c.id, 'It carries a higher limit', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'defc6c7f-d8af-5e8a-97f2-85c51143d87d', '21007e6f-fcc5-5a23-b940-e1883e9c3bc0', c.id, 'It requires no underlying insurance', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '1e34e87c-01c5-507f-bb71-3d69f22ca566', '21007e6f-fcc5-5a23-b940-e1883e9c3bc0', c.id, 'It is written on an occurrence basis', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '21007e6f-fcc5-5a23-b940-e1883e9c3bc0', c.id, 'f06772a0-2ea2-5446-a607-89e343b3f1a2'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'cce2b56e-e56c-569c-a67b-d7404f0b53e2', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'umbrella-and-excess-liability'),
+       'When is the self-insured retention irrelevant?', '**The SIR applies only where there is no underlying coverage.** It is not a deductible in the ordinary sense.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'b3182823-2a43-53a3-9583-68ebdc5bcb78', 'cce2b56e-e56c-569c-a67b-d7404f0b53e2', c.id, 'Where an underlying policy responds and the umbrella simply sits above its limit', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '59731e29-4d78-5f12-865e-cd5ece059a9c', 'cce2b56e-e56c-569c-a67b-d7404f0b53e2', c.id, 'Where the loss exceeds the umbrella limit', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '255061dd-b247-5797-80e5-1c0674112aae', 'cce2b56e-e56c-569c-a67b-d7404f0b53e2', c.id, 'Where the claim is made after the policy period', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '55e661e6-af95-5623-b00e-9ccb5ce128cd', 'cce2b56e-e56c-569c-a67b-d7404f0b53e2', c.id, 'Where the insured carries more than the required underlying limits', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'cce2b56e-e56c-569c-a67b-d7404f0b53e2', c.id, 'b3182823-2a43-53a3-9583-68ebdc5bcb78'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'f73a223d-f054-58d5-9a06-2d98f37254c5', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'umbrella-and-excess-liability'),
+       'What underlying limits does a personal umbrella typically require?', 'Personal umbrella **limits start at $1,000,000** and are bought in millions. The cover is cheap relative to its limit because the underlying policies absorb the frequent small claims and the umbrella sees only the rare severe one.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '88f37429-ca07-5732-b6fa-d854323401d9', 'f73a223d-f054-58d5-9a06-2d98f37254c5', c.id, 'Around $300,000 or $500,000 of liability on each of homeowners and personal auto', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'd4b1923a-a6f8-5796-ae2b-2aff01b558f7', 'f73a223d-f054-58d5-9a06-2d98f37254c5', c.id, '$1,000,000 on each', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'ce5b9020-f331-50df-9e32-ec6e0b055248', 'f73a223d-f054-58d5-9a06-2d98f37254c5', c.id, 'No underlying coverage at all', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '26ee1306-6d3a-5c90-a2a0-bbddb3ab5537', 'f73a223d-f054-58d5-9a06-2d98f37254c5', c.id, 'Underlying limits equal to the umbrella limit', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'f73a223d-f054-58d5-9a06-2d98f37254c5', c.id, '88f37429-ca07-5732-b6fa-d854323401d9'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '2055993f-fbda-5d9d-b2c0-f908a58a6196', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'umbrella-and-excess-liability'),
+       'Which of these does a personal umbrella typically exclude?', 'Personal umbrellas also exclude **intentional acts** and **the insured''s own injuries**.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '0f45d734-3caa-5b5f-afc9-81851f1ebc33', '2055993f-fbda-5d9d-b2c0-f908a58a6196', c.id, 'Business and professional exposures', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '624964dc-b550-5f90-9a72-5aac967ef732', '2055993f-fbda-5d9d-b2c0-f908a58a6196', c.id, 'Libel and slander', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '059f35af-48a7-5e49-87ef-253f9ec782a1', '2055993f-fbda-5d9d-b2c0-f908a58a6196', c.id, 'Liability arising from the insured''s home', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '6a85e750-5edb-5940-8f6d-b5db2aacfed5', '2055993f-fbda-5d9d-b2c0-f908a58a6196', c.id, 'Liability arising from the insured''s car', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '2055993f-fbda-5d9d-b2c0-f908a58a6196', c.id, '0f45d734-3caa-5b5f-afc9-81851f1ebc33'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'dfe5674a-127f-5645-a6b8-04e5606945e6', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'umbrella-and-excess-liability'),
+       'Beyond higher limits, what does a commercial umbrella typically add?', 'It may also reach certain **watercraft and aircraft** exposures the underlying policies exclude.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '761fc519-afc0-5dc4-bbfa-698be80cdbad', 'dfe5674a-127f-5645-a6b8-04e5606945e6', c.id, 'Personal injury offences not in the underlying form, worldwide coverage, and broader contractual liability', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'ba86c09e-c799-5c21-9216-82038b3b8e7b', 'dfe5674a-127f-5645-a6b8-04e5606945e6', c.id, 'Workers'' compensation benefits above the statutory level', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '5531273a-eba2-5bd3-bbde-d2ce7af77a0e', 'dfe5674a-127f-5645-a6b8-04e5606945e6', c.id, 'Property coverage for the insured''s own buildings', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '7d2f7915-1618-5fcd-87e4-4d23464954a6', 'dfe5674a-127f-5645-a6b8-04e5606945e6', c.id, 'Professional liability for the insured''s advice', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'dfe5674a-127f-5645-a6b8-04e5606945e6', c.id, '761fc519-afc0-5dc4-bbfa-698be80cdbad'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'dbe45588-ea72-50a5-8cb6-2478940de2c7', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'umbrella-and-excess-liability'),
+       'A programme reads: $1m primary, $5m umbrella, then $10m excess of $6m. Where does the first excess layer attach?', 'Layers stack: the primary''s $1m plus the umbrella''s $5m is $6m, which is exactly where the next layer begins.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '8eea38f4-9b37-56b9-86a6-8375760d1a0d', 'dbe45588-ea72-50a5-8cb6-2478940de2c7', c.id, 'At $6m, once the primary and umbrella are both exhausted', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '7fb8f236-a674-53b9-a6c6-a4d5699c6453', 'dbe45588-ea72-50a5-8cb6-2478940de2c7', c.id, 'At $1m, alongside the umbrella', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'daf35b01-4b81-5f68-a3c8-b7b3dd1f4184', 'dbe45588-ea72-50a5-8cb6-2478940de2c7', c.id, 'At $5m, once the umbrella is half exhausted', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '21d20f47-2b00-563a-b587-8233b438a833', 'dbe45588-ea72-50a5-8cb6-2478940de2c7', c.id, 'At $11m, above the umbrella''s own limit', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'dbe45588-ea72-50a5-8cb6-2478940de2c7', c.id, '8eea38f4-9b37-56b9-86a6-8375760d1a0d'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'b80707e8-42da-5bf6-972a-f32095a7d050', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'the-business-owners-policy'),
+       'A small accounting practice wants property and liability coverage in one policy. Eligible for a BOP, and is anything missing?', 'A BOP never includes **professional liability**, **workers'' compensation**, **commercial auto**, **liquor liability**, or **flood and earthquake**.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '77a82943-99d0-5db5-bbfb-c23ff56b19c1', 'b80707e8-42da-5bf6-972a-f32095a7d050', c.id, 'Eligible for the property and general liability, but professional liability and workers'' compensation must be bought separately', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '2f487e2f-37f2-5f28-a81e-5524d1d80e25', 'b80707e8-42da-5bf6-972a-f32095a7d050', c.id, 'Ineligible; accounting practices cannot be written on a BOP', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'ef8fd448-5dc0-575d-8c9d-53909a6bddcb', 'b80707e8-42da-5bf6-972a-f32095a7d050', c.id, 'Eligible, and the BOP covers the firm''s professional exposure too', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '6b21331a-550e-58a0-8f2e-06b414f105c9', 'b80707e8-42da-5bf6-972a-f32095a7d050', c.id, 'Eligible only if the firm owns rather than leases its office', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'b80707e8-42da-5bf6-972a-f32095a7d050', c.id, '77a82943-99d0-5db5-bbfb-c23ff56b19c1'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '8ba2e631-1095-58ab-aec4-18e5b9986238', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'the-business-owners-policy'),
+       'A restaurant''s kitchen fire closes it for four months. Does a BOP pay for the lost trading?', '**Business income and extra expense are built in**, commonly with no dollar limit and no coinsurance. That is the headline difference from a CPP, where both must be bought.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'f95d0350-2aeb-5bb2-b55b-879bcdaa67ab', '8ba2e631-1095-58ab-aec4-18e5b9986238', c.id, 'Yes — business income is included, typically for up to 12 months after a waiting period', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'df64ea9c-2e63-547d-911d-6bc844cc6bc1', '8ba2e631-1095-58ab-aec4-18e5b9986238', c.id, 'No, business income must be added to a BOP by endorsement', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '2ec7e560-2f26-5068-98c3-9807ed36dfea', '8ba2e631-1095-58ab-aec4-18e5b9986238', c.id, 'Only the extra expense of operating elsewhere', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '43412cd3-dc44-5fd6-846f-95ea763cb376', '8ba2e631-1095-58ab-aec4-18e5b9986238', c.id, 'Only if the policy carries a coinsurance percentage of 80 or more', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '8ba2e631-1095-58ab-aec4-18e5b9986238', c.id, 'f95d0350-2aeb-5bb2-b55b-879bcdaa67ab'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'fd764ef0-a9b8-5978-8f97-da1c27db8e41', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'the-business-owners-policy'),
+       'A retailer insures a building for $400,000 when it is worth $600,000 and suffers a $100,000 loss. How does a BOP settle it?', 'The form relies instead on an **automatic increase** in the building limit and a requirement to insure to full value. **This removes the single most common source of underpayment on a small commercial claim.**', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'f8a42f3c-804d-51d5-bf70-5c895b049b8c', 'fd764ef0-a9b8-5978-8f97-da1c27db8e41', c.id, 'In full, subject to the limit — a BOP has no coinsurance clause', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '877b3ec4-2f1e-57f5-b2db-4328be691ac8', 'fd764ef0-a9b8-5978-8f97-da1c27db8e41', c.id, 'Reduced to about 83 percent, as a CPP at 80 percent coinsurance would', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'dd0572cd-6076-5c5c-b078-7fd05bc84708', 'fd764ef0-a9b8-5978-8f97-da1c27db8e41', c.id, 'Reduced to two-thirds, the ratio of carried to actual value', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'b9963363-f808-5609-adbf-5fd5cc7526fd', 'fd764ef0-a9b8-5978-8f97-da1c27db8e41', c.id, 'Not at all, because the building is underinsured', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'fd764ef0-a9b8-5978-8f97-da1c27db8e41', c.id, 'f8a42f3c-804d-51d5-bf70-5c895b049b8c'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'ba5d0b66-76b8-5a73-9bbc-62526ba2d0e3', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'the-business-owners-policy'),
+       'A business buys a BOP and employs six people. What must it still buy?', '**Workers'' compensation is always a separate policy, and the BOP covers no vehicles.**', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'd909b54c-1021-5ad9-8297-603555652282', 'ba5d0b66-76b8-5a73-9bbc-62526ba2d0e3', c.id, 'Workers'' compensation, and commercial auto if any vehicles are used', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '3bf7d08b-c284-5536-8eee-67e93a2ab345', 'ba5d0b66-76b8-5a73-9bbc-62526ba2d0e3', c.id, 'Nothing; a BOP covers employees and vehicles', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'b160894f-a9b6-5c1a-b5d4-5db751d0b5cb', 'ba5d0b66-76b8-5a73-9bbc-62526ba2d0e3', c.id, 'Only employment practices liability', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'f8793259-e2ea-5ced-8f2f-0a0cadf5acb4', 'ba5d0b66-76b8-5a73-9bbc-62526ba2d0e3', c.id, 'Only commercial auto; a BOP includes employers'' liability', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'ba5d0b66-76b8-5a73-9bbc-62526ba2d0e3', c.id, 'd909b54c-1021-5ad9-8297-603555652282'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '1328ed7d-290d-5055-b589-4d330dfea684', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'the-business-owners-policy'),
+       'Why is an auto repair shop ineligible for a BOP?', '**Anything with a specialised exposure — vehicles, alcohol, professional advice, heavy manufacturing — is sent to a form built for it.**', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '5114420d-5b7d-5165-896d-647e74e6e0a6', '1328ed7d-290d-5055-b589-4d330dfea684', c.id, 'The garage exposure — customers'' vehicles in its care — needs an auto dealers form with garagekeepers coverage', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'a1af799a-f396-5b5c-ad2e-f6bc26edb98f', '1328ed7d-290d-5055-b589-4d330dfea684', c.id, 'Repair shops exceed the standard square footage limit', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '59fe8ed8-b90d-568a-ba56-40fd91354484', '1328ed7d-290d-5055-b589-4d330dfea684', c.id, 'Repair shops are classed as light manufacturing', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '1951a1b7-542c-51b0-898d-456d09695d9e', '1328ed7d-290d-5055-b589-4d330dfea684', c.id, 'Repair shops cannot obtain liability coverage at all', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '1328ed7d-290d-5055-b589-4d330dfea684', c.id, '5114420d-5b7d-5165-896d-647e74e6e0a6'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'e1f0540f-c197-5ba1-9fff-375f5c0ae078', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'the-business-owners-policy'),
+       'On what basis does the standard BOP cover property?', '**Replacement cost is the standard** loss settlement basis on a BOP, with actual cash value available as an option.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '82b6566c-f601-58bb-bb95-08d982b4a4cf', 'e1f0540f-c197-5ba1-9fff-375f5c0ae078', c.id, 'Open peril, settled at replacement cost', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '09c70b32-94ec-557e-a57c-5e86382f3895', 'e1f0540f-c197-5ba1-9fff-375f5c0ae078', c.id, 'Named peril, settled at actual cash value', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '4ecd321c-7f3b-52eb-b787-758b14a5823c', 'e1f0540f-c197-5ba1-9fff-375f5c0ae078', c.id, 'Open peril, settled at actual cash value', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '94c139e7-8c65-5c37-a8a0-24a529f15f14', 'e1f0540f-c197-5ba1-9fff-375f5c0ae078', c.id, 'Named peril, settled at replacement cost', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'e1f0540f-c197-5ba1-9fff-375f5c0ae078', c.id, '82b6566c-f601-58bb-bb95-08d982b4a4cf'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '5a38e388-e14f-590e-a96f-dee8615479b8', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'the-business-owners-policy'),
+       'Which of these is generally ineligible for a BOP?', 'Generally ineligible: **automobile dealers, repair shops and service stations; banks and financial institutions; insurance agents; bars and taverns; most manufacturers; and one- to four-family dwellings**, which belong on personal lines forms.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '6a2fe308-badd-5977-bd17-752a06553e3f', '5a38e388-e14f-590e-a96f-dee8615479b8', c.id, 'A bar', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '6ba3aead-7a90-5b62-a2d0-a8e380673d08', '5a38e388-e14f-590e-a96f-dee8615479b8', c.id, 'A small retail store', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'c51097d8-a40a-57ec-b4c5-09d36e986766', '5a38e388-e14f-590e-a96f-dee8615479b8', c.id, 'An apartment building', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'fc449e6e-e86a-579a-b836-0bf903da62e0', '5a38e388-e14f-590e-a96f-dee8615479b8', c.id, 'A wholesaler', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '5a38e388-e14f-590e-a96f-dee8615479b8', c.id, '6a2fe308-badd-5977-bd17-752a06553e3f'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '478385f8-2dda-53a7-8703-4ba171e0f882', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'the-business-owners-policy'),
+       'What does the seasonal automatic increase in a BOP do?', 'It answers the retailer whose inventory triples in November and would otherwise be badly underinsured for two months a year.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'a08a48b2-137d-51a6-8f9a-0acca61e8cdd', '478385f8-2dda-53a7-8703-4ba171e0f882', c.id, 'Raises the business personal property limit, commonly by 25 percent, for the stock build-up before a busy season', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'af559e6d-a57f-588c-ba2a-f5a28e1b7378', '478385f8-2dda-53a7-8703-4ba171e0f882', c.id, 'Increases the building limit annually for inflation', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'af9e430d-5074-583e-b220-a9a6039c30cc', '478385f8-2dda-53a7-8703-4ba171e0f882', c.id, 'Extends business income beyond 12 months during peak trading', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '15d2f5ba-7bd5-5c6c-ab64-41c4ec0c4fcc', '478385f8-2dda-53a7-8703-4ba171e0f882', c.id, 'Waives the deductible during the insured''s busiest quarter', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '478385f8-2dda-53a7-8703-4ba171e0f882', c.id, 'a08a48b2-137d-51a6-8f9a-0acca61e8cdd'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '57bf3746-080f-5ee9-ac5e-2208b2aa8f1e', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'the-business-owners-policy'),
+       'What three limits does an insurer typically cap BOP eligibility with?', 'The caps are insurer-specific, but the three dimensions are consistent, and they are what a producer applies first.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '1ed4f41b-784b-53d5-a4ee-cae035df4cfc', '57bf3746-080f-5ee9-ac5e-2208b2aa8f1e', c.id, 'Building size, annual revenue and number of storeys', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '3bfb1c65-b909-5691-9a35-d3fdb6ed1017', '57bf3746-080f-5ee9-ac5e-2208b2aa8f1e', c.id, 'Number of employees, payroll and years in business', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '1327bd2a-e3fa-536f-966d-80fc9e415805', '57bf3746-080f-5ee9-ac5e-2208b2aa8f1e', c.id, 'Building age, construction type and protection class', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'd37f1ef9-faad-526a-aca8-42bb29cd734a', '57bf3746-080f-5ee9-ac5e-2208b2aa8f1e', c.id, 'Limit purchased, deductible and loss history', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '57bf3746-080f-5ee9-ac5e-2208b2aa8f1e', c.id, '1ed4f41b-784b-53d5-a4ee-cae035df4cfc'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '055fc48e-64d4-52ba-ab69-bfcaf5d7b699', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'the-business-owners-policy'),
+       'Which coverages does a BOP commonly include in modest amounts at no extra premium?', 'It also commonly includes debris removal, fire department service charge, accounts receivable, pollutant clean-up and newly acquired property for a limited period.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '8a5990b4-8467-5c86-8982-39deee062cb3', '055fc48e-64d4-52ba-ab69-bfcaf5d7b699', c.id, 'Employee dishonesty, forgery, money and securities, glass, signs and valuable papers', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'b8358e7a-2d0a-566d-b20e-68790da42a3c', '055fc48e-64d4-52ba-ab69-bfcaf5d7b699', c.id, 'Professional liability and employment practices liability', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'f4b99c4f-5721-5cbc-a9d0-65d3fd380ffe', '055fc48e-64d4-52ba-ab69-bfcaf5d7b699', c.id, 'Flood and earthquake', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'd055eef0-fb29-5de7-9eda-45bea9256c8f', '055fc48e-64d4-52ba-ab69-bfcaf5d7b699', c.id, 'Commercial auto hired and non-owned liability', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '055fc48e-64d4-52ba-ab69-bfcaf5d7b699', c.id, '8a5990b4-8467-5c86-8982-39deee062cb3'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '90891cef-b17a-5b5f-9ece-4a9db3dc8259', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'the-business-owners-policy'),
+       'What is the trade-off a BOP asks the insured to accept?', 'A CPP is assembled part by part, which suits a large or unusual risk and is wasted effort on a dry cleaner.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'fbc66e9b-a05a-5f86-a1a8-ca2c3986e58e', '90891cef-b17a-5b5f-9ece-4a9db3dc8259', c.id, 'Terms are largely fixed and less can be negotiated, in exchange for a lower price and often broader coverage', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'b56420d6-840b-50ba-943a-1892a8cb74f7', '90891cef-b17a-5b5f-9ece-4a9db3dc8259', c.id, 'Higher deductibles in exchange for no coinsurance', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '2c39ee8d-26ba-5e48-8a08-b6d241ef14fe', '90891cef-b17a-5b5f-9ece-4a9db3dc8259', c.id, 'Lower limits in exchange for open peril coverage', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '9cf629a6-5fe8-51a3-92a8-a5bc6b9d7af8', '90891cef-b17a-5b5f-9ece-4a9db3dc8259', c.id, 'Annual audits in exchange for a deposit premium', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '90891cef-b17a-5b5f-9ece-4a9db3dc8259', c.id, 'fbc66e9b-a05a-5f86-a1a8-ca2c3986e58e'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'ff3a4140-b70a-5541-9354-3508ad82afd4', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'the-business-owners-policy'),
+       'Where does business personal property coverage apply under a BOP?', 'The building coverage reaches additions, fixtures, permanently installed machinery and outdoor fixtures at the described premises.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.IV'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '4a61a8a2-ba12-5dd9-9653-d8f83297aff9', 'ff3a4140-b70a-5541-9354-3508ad82afd4', c.id, 'At the described premises and within a short distance of them', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '39c8bb52-8fcf-55ce-8188-c42b96239b59', 'ff3a4140-b70a-5541-9354-3508ad82afd4', c.id, 'Anywhere in the world', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '601aaf48-f9df-5c12-85e8-7763faddd27f', 'ff3a4140-b70a-5541-9354-3508ad82afd4', c.id, 'At the described premises only', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'c7d44f0e-0783-5bc8-8815-d257c31a64b0', 'ff3a4140-b70a-5541-9354-3508ad82afd4', c.id, 'Anywhere in the United States and Canada', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'ff3a4140-b70a-5541-9354-3508ad82afd4', c.id, '4a61a8a2-ba12-5dd9-9653-d8f83297aff9'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
