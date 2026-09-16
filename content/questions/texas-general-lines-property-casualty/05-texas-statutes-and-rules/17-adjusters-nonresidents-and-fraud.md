@@ -131,3 +131,46 @@ state or of the United States**.
 **§4002.002** separately provides a **limited written examination** for a limited
 agent's licence under Chapter 4051 or 4054, and **§4001.152** requires **no written
 examination for a temporary licence** — which is the point of a temporary licence.
+
+### What two things make somebody a "risk manager" under §4153.001?
+
+- [x] Representing to the public that they are one, and examining or evaluating risks for compensation for a person seeking property and casualty coverage
+- [ ] Holding a property and casualty agent licence and advising on coverage
+- [ ] Being employed by an insurer to evaluate risks
+- [ ] Adjusting losses on behalf of an insured
+
+Both limbs matter: **holding out**, and **compensation**. §4153.002 exempts the
+categories it names.
+
+### What does a risk manager need that an adjuster does not?
+
+- [x] A place of business maintained in this state
+- [ ] To be at least 18 years of age
+- [ ] To pass an examination
+- [ ] A licence issued by the Department
+
+**§4153.053(2).** An **adjuster** may reside out of state if their state or
+country permits a Texas resident to adjust there (§4101.053(a)(2)(B)); a **risk
+manager** must keep a place of business in Texas.
+
+### A property and casualty agent dies. What licence lets somebody preserve the agency's assets?
+
+- [x] An emergency licence, issued without examination
+- [ ] A temporary licence, valid 180 days
+- [ ] A non-resident licence
+- [ ] A managing general agent licence
+
+**§4051.054(a)** covers an agent who **dies, becomes disabled, or is found
+insolvent and unable to pay premiums as they fall due.**
+
+### How long is an emergency licence valid?
+
+- [x] 90 days in any 12-month period
+- [ ] 180 days, like a temporary licence
+- [ ] Until the agency's assets are transferred
+- [ ] One year, renewable once
+
+**§4051.054(b).** Both the temporary and the emergency licence are issued
+**without examination** — but a temporary licence lets a new person start while
+preparing for the exam, while an emergency licence **keeps an existing agency's
+book alive**.

@@ -44,6 +44,52 @@ alien together — everything that is not domestic.
 Department **not later than 1 March** each year, and each **authorized alien**
 company must file a financial statement by the same date.
 
+## What "insurer" covers — the company types
+
+**§801.001(2)** gives the taxonomy the blueprint asks for at TX.I.B.4, and it
+is wider than most candidates expect. **"Insurer"** means the issuer of a
+policy issued for a premium, insuring against a loss that may be insured
+against under the law — and the term **includes**:
+
+- a **fraternal benefit society**;
+- a **Lloyd's plan**;
+- a **mutual company of any kind**, including a **statewide mutual assessment
+  association**, a **local mutual aid or burial association**, and a **county
+  or farm mutual** insurance company;
+- a **reciprocal or interinsurance exchange**;
+- a **group hospital service corporation**; and
+- a **health maintenance organization**, among the others that subsection
+  lists.
+
+Two things follow. **A "mutual company of any kind"** sweeps in the county and
+farm mutuals that Chapter 542's and Chapter 2203's lists name separately — so
+when a statute carves out county and farm mutuals, it is carving out a subset
+of this definition. And the **capital stock company**, the ordinary
+shareholder-owned insurer, is the implicit contrast: **a stock company is owned
+by shareholders and earns profit for them; a mutual is owned by its
+policyholders**, who are its members.
+
+**§547.001** adds the other half of the vocabulary, defining **"alien or
+foreign insurer"** as one organised under the laws of a country other than the
+United States **or** a state other than this one — which is the same
+distinction §982.001 draws, from the other direction.
+
+## Transacting insurance
+
+**§101.051(b)** — the acts that **constitute the business of insurance in this
+state**, which is what makes an unauthorised insurer's conduct unlawful. They
+include:
+
+1. **making or proposing to make, as an insurer, an insurance contract**;
+2. **making or proposing to make, as guarantor or surety, a guaranty or
+   suretyship contract** as a vocation rather than incidentally;
+3. **taking or receiving an insurance application**;
+4. **receiving** premium or consideration, and the further acts that
+   subsection lists.
+
+The point for a producer: **"transacting insurance" starts long before a policy
+issues.** Taking an application is enough.
+
 ## Admitted and non-admitted
 
 **An admitted (authorized) insurer holds a certificate of authority from the
@@ -146,7 +192,14 @@ to the Lloyd's plan in every list.
 
 ## How this is examined
 
-**Foreign means another state; alien means another country.**
+**Foreign means another state; alien means another country** — §982.001(2) and
+§547.001 both.
+
+**"Insurer" in §801.001(2) includes a mutual company of any kind**, a Lloyd's
+plan, a reciprocal and a fraternal benefit society. **A stock company is owned
+by shareholders; a mutual by its policyholders.**
+
+**Taking an application is already transacting insurance** — §101.051(b).
 
 **Admitted means holding a certificate of authority** — independent of where
 the insurer was organised.

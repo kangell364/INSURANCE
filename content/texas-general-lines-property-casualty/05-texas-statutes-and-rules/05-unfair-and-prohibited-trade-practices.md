@@ -162,6 +162,13 @@ against another person for damages caused by a practice defined in Subchapter
 B, or enumerated as a deceptive trade practice under §17.46(b) of the Business
 & Commerce Code where the plaintiff relied on it to their detriment.
 
+> **§17.46(b), Business & Commerce Code**, is the DTPA's own list of deceptive
+> trade practices, and §541.151 imports it: a practice enumerated there is
+> actionable under Chapter 541 **where the plaintiff relied on it to their
+> detriment**. The DTPA also runs its own remedies in **Subchapter E of Chapter
+> 17**, which is one of the four bodies of law §4004.105 requires an adjuster's
+> continuing education to cover.
+
 **§541.152(a)** — a prevailing plaintiff may obtain **actual damages, court
 costs and reasonable and necessary attorney's fees**, an **injunction**, or
 any other relief the court thinks proper.

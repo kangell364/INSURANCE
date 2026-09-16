@@ -169,6 +169,48 @@ a rate described by §2151.2041.
 **§2151.2041** — **a filing that exceeds 105 percent of the current average
 rate triggers a hearing.** That threshold is the examinable number.
 
+## Rideshare — Chapter 1954
+
+Module 2's personal auto lesson met the **public or livery conveyance**
+exclusion and called it the ride-hailing exclusion. **Chapter 1954 is what
+Texas requires instead**, and its structure is two-tier.
+
+**§1954.052 — logged on, but not on a ride.** While the driver is logged on to
+the network and available to receive requests but **not engaged in a
+prearranged ride**, the policy must provide:
+
+- **$50,000** bodily injury per person;
+- **$100,000** bodily injury per incident;
+- **$25,000** property damage per incident;
+- **UM/UIM** where §1952.101 requires it; and **PIP** where §1952.152 requires
+  it.
+
+**§1954.053 — engaged in a prearranged ride.** The policy must provide **a
+total aggregate limit of liability of $1 million** for death, bodily injury and
+property damage per incident, plus the same UM/UIM and PIP.
+
+**50/100/25 while waiting; $1 million once the ride begins.** That step up is
+the examinable fact, and both tiers sit far above the 30/60/25 ordinary
+minimum.
+
+Four further provisions:
+
+- **§1954.055** — the transportation network company's coverage **is not
+  contingent on the driver's personal insurer first denying the claim.** The
+  TNC policy cannot hide behind the personal policy.
+- **§1954.056(a)** — insurance satisfying this subchapter **satisfies the
+  Chapter 601 financial responsibility requirement**. **§1954.056(b)** — the
+  driver must **carry proof** of the §1954.052 and §1954.053 coverage.
+- **§1954.152(a)** — this subchapter **does not require a personal automobile
+  policy to cover** a driver while logged on, engaged in a prearranged ride, or
+  otherwise transporting passengers for compensation. That is the statutory
+  form of the livery exclusion. **§1954.152(b)** — an insurer **may** provide
+  that coverage anyway, by policy or endorsement, which is the buy-back a
+  rideshare driver should be asked about.
+- **§1954.151** sets out the **authorized exclusions from coverage**, and
+  **§1954.153–.155** the defence and indemnification of claims, assistance in
+  investigation, and payment of certain claims.
+
 ## How this is examined
 
 **30/60/25** — the single most likely figure in the Texas auto material.
@@ -188,6 +230,10 @@ the FAIR Plan's 11.
 liability.
 
 **A rate filing above 105 percent of the current average** triggers a hearing.
+
+**Rideshare: 50/100/25 while logged on and waiting, $1 million once engaged in
+a prearranged ride** — and the personal auto policy is not required to cover
+either.
 
 ## Check yourself
 

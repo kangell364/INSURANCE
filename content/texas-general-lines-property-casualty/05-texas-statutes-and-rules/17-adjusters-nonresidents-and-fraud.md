@@ -111,6 +111,56 @@ suspended"** qualifier is easy to miss.
 **§4001.152** separately provides that **no written examination is required for
 a temporary licence**, which is the point of a temporary licence.
 
+## Risk managers — Chapter 4153
+
+**§4153.001** — a **"risk manager"** is a person who **represents to the public
+that they are a risk manager** and who, **for compensation, examines or
+evaluates risks for and advises on reducing risks** to a person seeking to
+obtain or renew **property and casualty insurance coverage in this state.**
+
+Both limbs matter: **holding out**, and **compensation**. An employee advising
+their own employer is not doing this for a client, and **§4153.002** exempts
+the categories that section names.
+
+**§4153.051** — a person **may not act as or represent that they are a risk
+manager** unless they meet the chapter's requirements and **hold a licence**
+issued by the Department.
+
+**§4153.053** — to qualify, an applicant must:
+
+1. be **at least 18 years of age**;
+2. **maintain a place of business in this state**;
+3. meet the application requirements;
+4. **take and pass the examination** required by the chapter; and
+5. **pay the examination and licence fees.**
+
+Note the contrast with the adjuster licence. **An adjuster may live out of
+state if their state reciprocates. A risk manager must maintain a place of
+business in Texas.** **§4153.054** governs the examination, **§4153.055**
+exemptions from examination and continuing education, **§4153.058** a
+**reciprocal licence**, and **§4153.059–.060** expiration and renewal.
+
+## The emergency licence — §4051.054
+
+The licensing lesson named this without its detail.
+
+**§4051.054(a)** — where a property and casualty agent **dies, becomes
+disabled, or is found insolvent and unable to pay premiums as they fall due**,
+the Department may issue an **emergency licence** to an applicant for a
+property and casualty agent licence **without examination**, on proof
+satisfactory to the Department that the licence is **necessary to preserve the
+agency assets** of the deceased, disabled or insolvent agent.
+
+**§4051.054(b)** — **an emergency licence is valid for 90 days in any 12-month
+period.**
+
+The distinction from a temporary licence is the purpose. **A temporary licence
+lets a new person start while they prepare for the exam. An emergency licence
+keeps an existing agency's book alive when its agent cannot.** Both are issued
+without examination; only the emergency licence is tied to somebody else's
+death, disability or insolvency, and only it carries the 90-day-in-12-months
+limit.
+
 ## Insurance fraud — Chapter 701
 
 **§701.001(2)** defines a **"fraudulent insurance act"**, and
@@ -164,7 +214,12 @@ standing at home.
 **No examination for a renewal of an unexpired licence, or where the licence
 expired less than a year ago and was not denied, revoked or suspended.**
 
-**No examination for a temporary licence** (§4001.152).
+**No examination for a temporary licence** (§4001.152) **or for an emergency
+licence** (§4051.054(a)) — and an emergency licence runs **90 days in any 12
+months**.
+
+**A risk manager must maintain a place of business in Texas** and must pass an
+examination; an adjuster may be out of state if their state reciprocates.
 
 **Fraud: 30 days, in writing, to the Department's insurance fraud unit, on
 reasonable suspicion.**

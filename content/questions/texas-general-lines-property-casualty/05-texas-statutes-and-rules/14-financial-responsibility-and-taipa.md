@@ -147,3 +147,42 @@ credited.
 - [ ] A photograph of the vehicle and the driver's licence number
 
 **§601.053.** The form is prescribed by the **Texas Department of Insurance**.
+
+### A rideshare driver is logged on and waiting for a request, not yet on a ride. What liability limits must the policy provide?
+
+- [x] $50,000 per person, $100,000 per incident, $25,000 property damage
+- [ ] $30,000 per person, $60,000 per incident, $25,000 property damage
+- [ ] $1 million total aggregate
+- [ ] The same minimums as any private passenger auto
+
+**§1954.052.** Even the waiting tier sits well above the 30/60/25 ordinary
+minimum, plus UM/UIM and PIP where §1952.101 and §1952.152 require them.
+
+### The same driver accepts a request and is engaged in a prearranged ride. What changes?
+
+- [x] A total aggregate limit of $1 million for death, bodily injury and property damage per incident
+- [ ] The limits double to 100/200/50
+- [ ] Nothing; one set of limits covers the whole period logged on
+- [ ] The personal auto policy becomes primary
+
+**§1954.053.** **50/100/25 while waiting; $1 million once the ride begins** — and
+that step up is the examinable fact.
+
+### Must a rideshare driver's personal auto insurer deny the claim before the transportation network company's coverage responds?
+
+- [x] No — §1954.055 says the TNC's coverage is not contingent on that
+- [ ] Yes, the personal policy is always primary
+- [ ] Yes, unless the driver bought a rideshare endorsement
+- [ ] Only where the driver was waiting rather than on a ride
+
+The TNC policy cannot hide behind the personal policy.
+
+### Does Chapter 1954 require a personal auto policy to cover a driver while logged on to the network?
+
+- [x] No, but an insurer may provide that coverage by policy or endorsement if it chooses
+- [ ] Yes, personal policies must cover rideshare use
+- [ ] No, and insurers are forbidden from offering it
+- [ ] Yes, but only while the driver is waiting for a request
+
+**§1954.152** is the statutory form of the livery exclusion, and subsection (b)
+is the buy-back a rideshare driver should be asked about.

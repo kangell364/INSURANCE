@@ -122,6 +122,23 @@ costs**.
 > want. Chapter 542A is when it is not 18%**, and material written before 2017
 > does not know that chapter exists.
 
+**§304.003(c), Finance Code** is the judgment interest rate §542.060(c) builds
+on. The **postjudgment interest rate** is:
+
+1. **the prime rate** published by the Board of Governors of the Federal
+   Reserve System on the date of computation;
+2. **five percent a year** if that prime rate is **less than five percent**; or
+3. **fifteen percent a year** if that prime rate is **more than fifteen
+   percent.**
+
+So it floats with prime between a **5 percent floor and a 15 percent ceiling**.
+**Add five percent to it** and you have the Chapter 542A rate — which therefore
+runs between **10 and 20 percent**, and lands near 18 percent only by
+coincidence.
+
+Because it moves, it is a rate you look up rather than memorise. **18 percent
+stays the answer to give unless the question puts you inside Chapter 542A.**
+
 ### Which claims Chapter 542A covers
 
 **§542A.001(2)** defines the **claim** narrowly, and all three limbs must hold.

@@ -168,7 +168,6 @@ market that writes drivers the voluntary market rejects.
 
 The blueprint also cites, under TX.II.E:
 
-- **TIC Chapter 1954** — transportation network companies (rideshare).
 - **28 TAC §5.204** and **§5.7002** — auto coverage, and renewal, non-renewal
   and cancellation rules.
 
