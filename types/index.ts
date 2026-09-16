@@ -41,6 +41,21 @@ export type Lesson = Tables<'lessons'>
 export type LessonContent = Tables<'lesson_contents'>
 export type Topic = Tables<'topics'>
 export type LessonTopic = Tables<'lesson_topics'>
+export type Question = Tables<'questions'>
+export type QuestionOption = Tables<'question_options'>
+export type Attempt = Tables<'attempts'>
+export type AttemptQuestion = Tables<'attempt_questions'>
+
+/**
+ * The four kinds of paper, and when the answer is shown.
+ *
+ * A mock and a module test are always `on_submit`; the database refuses
+ * anything else with a check constraint, because readiness is computed from
+ * mock attempts and a measurement taken with instant feedback measures
+ * nothing.
+ */
+export type AttemptKind = Enums<'attempt_kind'>
+export type RevealMode = Enums<'reveal_mode'>
 
 /**
  * An enrollment joined to the course it points at — the shape
