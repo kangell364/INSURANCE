@@ -133,3 +133,14 @@ own policy leaves.
 The **individual named insured** endorsement broadens a business auto policy for
 an individual whose business and personal use are the same vehicles, reaching
 family members and non-owned vehicles.
+
+### A business wants its vehicles' downtime covered after a physical damage loss. What is available?
+
+- [x] Loss of use and rental reimbursement, by endorsement
+- [ ] Nothing; commercial auto covers repair cost only
+- [ ] Automatic coverage under the collision limit
+- [ ] Coverage under the CGL's supplementary payments
+
+Business auto physical damage also includes **towing and labour at the place of
+disablement**, and **transportation expenses following theft**. Loss of use and
+rental reimbursement are **endorsements**, not defaults.

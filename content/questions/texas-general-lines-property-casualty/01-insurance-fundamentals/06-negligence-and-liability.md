@@ -112,3 +112,15 @@ nothing.
 **Assumption of risk.** *Res ipsa loquitur* is the opposite — it helps the
 claimant, by letting negligence be inferred from an accident that ordinarily
 does not happen without it.
+
+### A jury awards $40,000 for medical bills and lost wages, and $60,000 for pain and suffering. How is each classified?
+
+- [x] $40,000 special damages and $60,000 general damages — both compensatory
+- [ ] $40,000 compensatory and $60,000 punitive
+- [ ] $40,000 general and $60,000 special
+- [ ] Both are general damages, since one award was made
+
+**Sort by whether a receipt exists.** Special damages are specific, provable and
+economic. General damages are real but not itemisable — pain and suffering, loss
+of consortium, disfigurement. **Punitive damages are a third thing entirely**:
+they punish rather than compensate, and are not awarded to restore a loss.

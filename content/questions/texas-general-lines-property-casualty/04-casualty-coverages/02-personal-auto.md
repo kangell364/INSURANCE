@@ -165,3 +165,14 @@ oath**, and to **allow inspection of the vehicle before repair**.
 
 Stacking is a state-law question, not a policy-language one — which is why the
 answer differs from state to state.
+
+### The insured's car is stolen and they hire a replacement while it is missing. What does Part D provide?
+
+- [x] Transportation expenses — a modest daily amount up to a maximum, and for theft only after a waiting period
+- [ ] The full cost of a rental car for as long as needed
+- [ ] Nothing; transportation costs are the insured's
+- [ ] The actual cash value of the stolen car, paid immediately
+
+The amount is deliberately small — it is a contribution to getting about, not a
+promise of an equivalent car. Coverage applies **following a covered loss**, and
+the theft waiting period exists because most stolen cars are recovered.
