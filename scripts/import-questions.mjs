@@ -27,7 +27,7 @@ import {
 } from 'node:fs'
 import { basename, dirname, join, resolve } from 'node:path'
 
-import { classifyReview } from './review-gate.mjs'
+import { classifyReview, verifyFingerprint } from './review-gate.mjs'
 
 const ROOT = resolve(dirname(new URL(import.meta.url).pathname), '..')
 const CONTENT = join(ROOT, 'content', 'questions')
@@ -164,6 +164,8 @@ function parseQuestions(body, relative, problems) {
 }
 
 const problems = []
+const staleReviews = []
+const unhashedReviews = []
 const files = []
 
 for (const file of walk(CONTENT).sort()) {
@@ -186,6 +188,17 @@ for (const file of walk(CONTENT).sort()) {
     continue
   }
 
+  // Same rule as lessons: a sign-off covers the words that existed when it
+  // was made. A question whose text or answer key changed afterwards is not
+  // reviewed, whatever the line says -- and a changed ANSWER KEY is the exact
+  // failure this whole gate exists to prevent.
+  const fingerprint = verifyFingerprint(review, body)
+  if (review.reviewed && !fingerprint.ok) {
+    staleReviews.push(`${relative}: ${fingerprint.reason}`)
+  } else if (fingerprint.reason) {
+    unhashedReviews.push(`${relative}: ${fingerprint.reason}`)
+  }
+
   const questions = parseQuestions(body, relative, problems)
   if (questions.length === 0) {
     problems.push(`${relative}: no questions found`)
@@ -197,7 +210,7 @@ for (const file of walk(CONTENT).sort()) {
     courseSlug: meta.course,
     topicCode: meta.topic,
     lessonSlug: meta.lesson || null,
-    reviewed: review.reviewed,
+    reviewed: review.reviewed && fingerprint.ok,
     questions,
   })
 }
@@ -246,6 +259,24 @@ if (collisions.length > 0) {
       `Reword or remove one of each pair.`,
   )
   process.exit(1)
+}
+
+if (staleReviews.length > 0) {
+  console.error(
+    `\nSIGNED OFF, THEN EDITED -- held as drafts:\n` +
+      staleReviews.map((p) => `  - ${p}`).join('\n') +
+      `\n\nA changed answer key under somebody else's sign-off is the worst\n` +
+      `thing this gate can miss. Re-read and re-sign:\n` +
+      `  node scripts/review-module.mjs --module NN --reviewer "Name"`,
+  )
+  process.exit(1)
+}
+
+if (unhashedReviews.length > 0) {
+  console.log(
+    `\n${unhashedReviews.length} sign-off(s) carry no content hash, so a later ` +
+      `edit to them cannot be detected.\nRe-sign to add one.`,
+  )
 }
 
 const unreviewed = files.filter((f) => !f.reviewed)

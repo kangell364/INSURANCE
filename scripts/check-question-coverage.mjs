@@ -38,7 +38,7 @@
  *   node scripts/check-question-coverage.mjs --verbose # and list what passed
  *   node scripts/check-question-coverage.mjs --strict  # exit 1 on any miss
  */
-import { readdirSync, readFileSync, existsSync } from 'node:fs'
+import { readdirSync, readFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 
 const ROOT = join(dirname(new URL(import.meta.url).pathname), '..')

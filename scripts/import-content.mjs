@@ -31,7 +31,7 @@ import {
 } from 'node:fs'
 import { basename, dirname, join, resolve } from 'node:path'
 
-import { classifyReview } from './review-gate.mjs'
+import { classifyReview, verifyFingerprint } from './review-gate.mjs'
 
 const ROOT = resolve(dirname(new URL(import.meta.url).pathname), '..')
 const CONTENT = join(ROOT, 'content')
@@ -110,6 +110,8 @@ function walk(dir) {
 }
 
 const problems = []
+const staleReviews = []
+const unhashedReviews = []
 const lessons = []
 const modules = new Map()
 
@@ -153,7 +155,16 @@ for (const file of walk(CONTENT).sort()) {
     problems.push(`${relative}: ${classified.problem}`)
     continue
   }
-  const reviewed = classified.reviewed
+  // A sign-off is taken against the words that existed when it was made. If
+  // the body has changed since, the lesson is held -- the reviewer attested to
+  // something else.
+  const fingerprint = verifyFingerprint(classified, body)
+  const reviewed = classified.reviewed && fingerprint.ok
+  if (classified.reviewed && !fingerprint.ok) {
+    staleReviews.push(`${relative}: ${fingerprint.reason}`)
+  } else if (fingerprint.reason) {
+    unhashedReviews.push(`${relative}: ${fingerprint.reason}`)
+  }
   lessons.push({
     id: uuidFor('lesson', `${courseSlug}/${meta.slug}`),
     moduleKey,
@@ -176,6 +187,24 @@ for (const file of walk(CONTENT).sort()) {
 if (problems.length) {
   console.error('Content problems:\n' + problems.map((p) => `  - ${p}`).join('\n'))
   process.exit(1)
+}
+
+if (staleReviews.length > 0) {
+  console.error(
+    `\nSIGNED OFF, THEN EDITED -- held as drafts:\n` +
+      staleReviews.map((p) => `  - ${p}`).join('\n') +
+      `\n\nSomebody's name is on a version of this file that no longer exists.\n` +
+      `Re-read the lesson and re-sign it:\n` +
+      `  node scripts/review-module.mjs --module NN --reviewer "Name"`,
+  )
+  process.exit(1)
+}
+
+if (unhashedReviews.length > 0) {
+  console.log(
+    `\n${unhashedReviews.length} sign-off(s) carry no content hash, so a later ` +
+      `edit to them cannot be detected.\nRe-sign to add one.`,
+  )
 }
 
 const unreviewed = lessons.filter((l) => !l.reviewed)

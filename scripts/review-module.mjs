@@ -23,7 +23,7 @@
 import { readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs'
 import { dirname, join, resolve } from 'node:path'
 
-import { classifyReview } from './review-gate.mjs'
+import { classifyReview, contentFingerprint } from './review-gate.mjs'
 
 const ROOT = resolve(dirname(new URL(import.meta.url).pathname), '..')
 const CONTENT = join(ROOT, 'content')
@@ -71,7 +71,16 @@ function markdownIn(dir) {
 }
 
 /** Rewrites the `review:` line inside the front matter only. */
-function setReviewLine(file, value) {
+/**
+ * Write the review line, fingerprinting the body as it goes.
+ *
+ * The hash is computed HERE, at the moment of signing, against the body as it
+ * stands. That is the whole point: it records what the reviewer was looking
+ * at. Any later edit changes the body, the hashes disagree, and the importer
+ * holds the file instead of publishing somebody's name over text they never
+ * read.
+ */
+function setReviewLine(file, value, { fingerprint }) {
   const text = readFileSync(file, 'utf8')
   if (!text.startsWith('---\n')) die(`${file}: no front matter`)
   const end = text.indexOf('\n---', 4)
@@ -81,7 +90,12 @@ function setReviewLine(file, value) {
   const tail = text.slice(end)
   if (!/^review:/m.test(head)) die(`${file}: no "review:" line to update`)
 
-  writeFileSync(file, head.replace(/^review:.*$/m, `review: ${value}`) + tail)
+  // The body is everything after the closing fence -- the same span the
+  // importers hash, or the two would never agree.
+  const body = tail.replace(/^\n---[^\n]*\n/, '')
+  const line = fingerprint ? `${value} (content ${contentFingerprint(body)})` : value
+
+  writeFileSync(file, head.replace(/^review:.*$/m, `review: ${line}`) + tail)
 }
 
 // --- status -----------------------------------------------------------------
@@ -166,7 +180,7 @@ if (!undo && !check.reviewed) die(`refusing to write a line the gate rejects: ${
 let count = 0
 for (const target of targets) {
   for (const file of markdownIn(target.dir)) {
-    setReviewLine(file, value)
+    setReviewLine(file, value, { fingerprint: !undo })
     console.log(`  ${target.kind.padEnd(9)} ${file.slice(ROOT.length + 1)}`)
     count += 1
   }
