@@ -7026,6 +7026,50 @@ estate or prepares taxes must keep the insurance files apart, so that the
 Department can examine them without reaching into an unrelated business — and
 so that premium money is traceable.
 
+## What you owe an applicant: the fiduciary duty
+
+**A producer handles money that is not theirs.** Premium collected from an
+applicant belongs to the insurer from the moment it is received — and if the
+policy never issues, it belongs back to the applicant. It is never the
+agency's working capital. Holding somebody else's money for them is a
+**fiduciary** position, and it is the single most common way a licence is
+lost.
+
+> **Not the "fiduciary" of Module 4.** A *fiduciary bond* guarantees that a
+> court-appointed executor, guardian or trustee will act faithfully. That is a
+> bond you sell. **This** is a duty you owe. Same word, and the exam uses both.
+
+**Texas does not use the word in this chapter. It states the duty instead.**
+
+**§4005.101(b)(4)** — the Department may deny an application or discipline a
+licence holder who has **"misappropriated, converted to the applicant's or
+license holder's own use, or illegally withheld money belonging to"** an
+insurer, a health maintenance organization, or **an insured, enrollee, or
+beneficiary**.
+
+Three verbs, and the third is the one that catches honest people.
+**Withholding** is enough — the money need not be spent or stolen. A return
+premium sat on for months is already the ground, and "I always meant to send
+it" is not an answer to it.
+
+**§4005.101(b)(5)** adds **fraudulent or dishonest acts or practices**
+generally, and **§4001.255** — the separate-records rule above — is what makes
+the duty auditable: if insurance money is mixed into another business's books,
+nobody can show it was handled properly.
+
+**The flip side is in Module 2.** Premium paid to an agent within their
+authority is paid to the insurer, whether or not the agent forwards it. The
+insured is protected either way; **the exposure is entirely the agent's**, and
+that asymmetry is the whole reason the duty is enforced by licence.
+
+### Beyond money
+
+The duty is not only about premium. A producer owes an applicant **honest
+representations about coverage** (§4005.101(b)(6) makes materially
+misrepresenting a policy's terms a ground), and owes the confidentiality of
+what an applicant discloses — underwriting information is covered by the
+privacy rules in Module 2, not by discretion.
+
 ## Licence types named by the blueprint
 
 The blueprint lists these under TX.I.C.1. Chapters **4001** and **4051** cover

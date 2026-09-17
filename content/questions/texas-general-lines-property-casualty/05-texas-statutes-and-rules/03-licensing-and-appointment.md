@@ -5,6 +5,39 @@ lesson: licensing-and-appointment
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### An agent owes a client a return premium, does not spend it, but has not forwarded it eight months later. Is that a ground for discipline?
+
+- [x] Yes — §4005.101(b)(4) reaches money illegally *withheld*, not only money taken
+- [ ] No, because the money was never converted to the agent's own use
+- [ ] No, unless the client files a complaint with the Department
+- [ ] Only if the amount exceeds a threshold set by the Department
+
+**The subsection names three things: misappropriated, converted to the
+licence holder's own use, or illegally withheld.** Withholding is enough on
+its own, and it is the one that catches otherwise honest agents.
+
+The money need never be spent. It is not the agent's, and holding it is the
+violation — which is why premium is kept where it can be accounted for, and
+why **§4001.255** requires insurance records separate from any other business
+the agent runs.
+
+### A producer's fiduciary duty to an applicant arises from what?
+
+- [x] Holding money and information that belong to somebody else
+- [ ] A fiduciary bond the producer must purchase before licensing
+- [ ] The appointment filed by the insurer
+- [ ] The agency agreement's express terms
+
+**The duty comes from the position, not from a document.** A producer receives
+premium that belongs to the insurer — or back to the applicant if no policy
+issues — and receives disclosures made in order to obtain coverage. Holding
+either for somebody else is what makes the relationship fiduciary.
+
+**A fiduciary bond is a different thing entirely**: a bond guaranteeing that a
+court-appointed executor, guardian or trustee acts faithfully. That is a
+product you sell; this is a duty you owe. The exam uses both senses of the
+word.
+
 ### A newly licensed agent has not yet been appointed by any insurer. May they write business?
 
 - [x] No — §4001.201 requires an appointment by an authorised insurer first

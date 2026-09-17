@@ -15358,6 +15358,82 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'a2184e4b-0070-50af-8716-c760019c71d0', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'licensing-and-appointment'),
+       'An agent owes a client a return premium, does not spend it, but has not forwarded it eight months later. Is that a ground for discipline?', '**The subsection names three things: misappropriated, converted to the licence holder''s own use, or illegally withheld.** Withholding is enough on its own, and it is the one that catches otherwise honest agents. The money need never be spent. It is not the agent''s, and holding it is the violation — which is why premium is kept where it can be accounted for, and why **§4001.255** requires insurance records separate from any other business the agent runs.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'TX.I'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'd09d3385-ce17-5963-95fd-c945e76ce003', 'a2184e4b-0070-50af-8716-c760019c71d0', c.id, 'Yes — §4005.101(b)(4) reaches money illegally *withheld*, not only money taken', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '7d195cb5-8a67-5ebc-86e0-e80dbc4b2300', 'a2184e4b-0070-50af-8716-c760019c71d0', c.id, 'No, because the money was never converted to the agent''s own use', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '89aca4b2-0d9a-5536-972b-018b03702929', 'a2184e4b-0070-50af-8716-c760019c71d0', c.id, 'No, unless the client files a complaint with the Department', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '0cd90b0a-dea8-565f-a005-cf797dc53f07', 'a2184e4b-0070-50af-8716-c760019c71d0', c.id, 'Only if the amount exceeds a threshold set by the Department', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'a2184e4b-0070-50af-8716-c760019c71d0', c.id, 'd09d3385-ce17-5963-95fd-c945e76ce003'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'e666fd0d-411f-5970-9e2f-ee5b50b6bda1', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'licensing-and-appointment'),
+       'A producer''s fiduciary duty to an applicant arises from what?', '**The duty comes from the position, not from a document.** A producer receives premium that belongs to the insurer — or back to the applicant if no policy issues — and receives disclosures made in order to obtain coverage. Holding either for somebody else is what makes the relationship fiduciary. **A fiduciary bond is a different thing entirely**: a bond guaranteeing that a court-appointed executor, guardian or trustee acts faithfully. That is a product you sell; this is a duty you owe. The exam uses both senses of the word.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'TX.I'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '31acdb3a-db93-53cf-b827-05efb553f826', 'e666fd0d-411f-5970-9e2f-ee5b50b6bda1', c.id, 'Holding money and information that belong to somebody else', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '76c9c806-42bc-514a-a9c4-febf39c3a1e7', 'e666fd0d-411f-5970-9e2f-ee5b50b6bda1', c.id, 'A fiduciary bond the producer must purchase before licensing', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'dc7272f1-e0a5-52be-8246-ebceb5f4ffab', 'e666fd0d-411f-5970-9e2f-ee5b50b6bda1', c.id, 'The appointment filed by the insurer', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '9f47b241-c5d5-5ed9-8b07-c5badd43bf6b', 'e666fd0d-411f-5970-9e2f-ee5b50b6bda1', c.id, 'The agency agreement''s express terms', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'e666fd0d-411f-5970-9e2f-ee5b50b6bda1', c.id, '31acdb3a-db93-53cf-b827-05efb553f826'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select '8724240b-83e2-53fe-852c-dc59fadeea90', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'licensing-and-appointment'),
        'A newly licensed agent has not yet been appointed by any insurer. May they write business?', '**The licence says the state permits you to sell insurance. The appointment says a particular insurer permits you to sell theirs.** You need both.', 'draft'
