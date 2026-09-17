@@ -9088,6 +9088,82 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'd6c90eb6-856a-51f4-a4d8-44490b8367fb', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'commercial-property-and-the-package-policy'),
+       'A warehouse floor is ruined when a forklift battery leaks acid overnight. No exclusion applies. Which causes of loss form responds?', '**Special is open peril: every cause of loss except those excluded.** Basic and Broad are **named peril** — if the cause is not on their list, there is no cover, however ordinary the accident. A leaking battery is nobody''s named peril. It is covered under Special not because anyone anticipated it but because **nothing had to be**: the question under an open peril form is whether the cause is *excluded*, and the burden of showing that sits with the insurer. **"Special" means open peril, not "extra".** That is the whole reason a stem describes an unusual, unexcluded accident.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.I'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'f8e59f86-6f2c-5ce7-9080-9731901a711f', 'd6c90eb6-856a-51f4-a4d8-44490b8367fb', c.id, 'Special only', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '9897024e-b6d9-53f3-a220-a2afa5a9497a', 'd6c90eb6-856a-51f4-a4d8-44490b8367fb', c.id, 'Basic, Broad or Special — all three', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '91063d7d-22a2-5d77-80a6-5aa7baf57f86', 'd6c90eb6-856a-51f4-a4d8-44490b8367fb', c.id, 'Broad and Special', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '70d20e43-5358-5d94-aa5c-c3890fd567a6', 'd6c90eb6-856a-51f4-a4d8-44490b8367fb', c.id, 'None; an unlisted cause is never covered', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'd6c90eb6-856a-51f4-a4d8-44490b8367fb', c.id, 'f8e59f86-6f2c-5ce7-9080-9731901a711f'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'e77da13a-1438-5af3-834d-048371acc42b', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'commercial-property-and-the-package-policy'),
+       'Which of the following is NOT one of the Basic causes of loss?', '**Theft is covered only under Special.** Basic and Broad do not include it at all, which surprises people because theft feels more ordinary than volcanic action — and volcanic action *is* a Basic peril. The Basic list: **fire, lightning, explosion, windstorm or hail, smoke, aircraft or vehicles, riot or civil commotion, vandalism, sprinkler leakage, sinkhole collapse, volcanic action.** **Broad adds** falling objects; the weight of snow, ice or sleet; and water damage from an accidental discharge — plus collapse as an additional coverage. **Neither adds theft.** Earthquake and flood are on separate forms entirely; no one of the three includes them.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.I'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '428aa3b2-d316-520e-90e1-4411ee321429', 'e77da13a-1438-5af3-834d-048371acc42b', c.id, 'Sprinkler leakage', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'f6fcd20c-4cdf-511f-ba6d-fc8ff72e6048', 'e77da13a-1438-5af3-834d-048371acc42b', c.id, 'Riot or civil commotion', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'ce8bc6ad-a244-5bac-b63f-476b4f754132', 'e77da13a-1438-5af3-834d-048371acc42b', c.id, 'Theft', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '137e9653-3cb3-5714-82ba-0ce116a00caa', 'e77da13a-1438-5af3-834d-048371acc42b', c.id, 'Volcanic action', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'e77da13a-1438-5af3-834d-048371acc42b', c.id, 'ce8bc6ad-a244-5bac-b63f-476b4f754132'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select '92ae2b21-1c4e-5176-823e-4b745ac3b0c7', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'commercial-property-and-the-package-policy'),
        'A commercial policy carries the Broad causes of loss form. Stock is stolen overnight. Covered?', '**Only Special includes theft**, and only Special is open peril. Basic and Broad are named peril lists, and theft is on neither.', 'draft'

@@ -5,6 +5,47 @@ lesson: commercial-property-and-the-package-policy
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### A warehouse floor is ruined when a forklift battery leaks acid overnight. No exclusion applies. Which causes of loss form responds?
+
+- [x] Special only
+- [ ] Basic, Broad or Special — all three
+- [ ] Broad and Special
+- [ ] None; an unlisted cause is never covered
+
+**Special is open peril: every cause of loss except those excluded.** Basic and
+Broad are **named peril** — if the cause is not on their list, there is no
+cover, however ordinary the accident.
+
+A leaking battery is nobody's named peril. It is covered under Special not
+because anyone anticipated it but because **nothing had to be**: the question
+under an open peril form is whether the cause is *excluded*, and the burden of
+showing that sits with the insurer.
+
+**"Special" means open peril, not "extra".** That is the whole reason a stem
+describes an unusual, unexcluded accident.
+
+### Which of the following is NOT one of the Basic causes of loss?
+
+- [ ] Sprinkler leakage
+- [ ] Riot or civil commotion
+- [x] Theft
+- [ ] Volcanic action
+
+**Theft is covered only under Special.** Basic and Broad do not include it at
+all, which surprises people because theft feels more ordinary than volcanic
+action — and volcanic action *is* a Basic peril.
+
+The Basic list: **fire, lightning, explosion, windstorm or hail, smoke,
+aircraft or vehicles, riot or civil commotion, vandalism, sprinkler leakage,
+sinkhole collapse, volcanic action.**
+
+**Broad adds** falling objects; the weight of snow, ice or sleet; and water
+damage from an accidental discharge — plus collapse as an additional
+coverage. **Neither adds theft.**
+
+Earthquake and flood are on separate forms entirely; no one of the three
+includes them.
+
 ### A commercial policy carries the Broad causes of loss form. Stock is stolen overnight. Covered?
 
 - [x] No — theft is covered only under the Special form
