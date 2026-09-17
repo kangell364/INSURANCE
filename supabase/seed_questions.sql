@@ -21932,6 +21932,82 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '3b58a3c8-0845-5ac5-9ef5-3f95d173d473', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'company-types-and-authority'),
+       'A policyholder of a mutual insurance company is best described as what?', '**A mutual is owned by its policyholders**, who are its members. Holding the policy is what makes them an owner — that is the whole distinction from a stock company, where a policyholder is only a customer and the owners are shareholders who may hold no policy at all. "Shareholder" is wrong because a mutual has no shares, and its **policy dividend is a return of surplus to people who overpaid**, not a distribution of profit. The last option describes a **reciprocal**, where subscribers insure each other through an attorney in fact.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'TX.I'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'a2371fbf-b7dd-59cf-948c-bdcc8082eb93', '3b58a3c8-0845-5ac5-9ef5-3f95d173d473', c.id, 'An owner of the company, with a vote and a share of surplus', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '8b792cea-c42a-51f4-a1d0-586c12a31906', '3b58a3c8-0845-5ac5-9ef5-3f95d173d473', c.id, 'A customer of the company, like any other policyholder', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '156476d1-0ad6-5608-b80e-df49a4b24014', '3b58a3c8-0845-5ac5-9ef5-3f95d173d473', c.id, 'A shareholder entitled to a share of the company''s profit', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '9140431c-60f8-5e2e-b561-eaebbfa35f39', '3b58a3c8-0845-5ac5-9ef5-3f95d173d473', c.id, 'A subscriber who insures the other policyholders directly', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '3b58a3c8-0845-5ac5-9ef5-3f95d173d473', c.id, 'a2371fbf-b7dd-59cf-948c-bdcc8082eb93'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'fcba2917-3a4c-5ca8-bc36-07c5de7b1a2b', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'company-types-and-authority'),
+       'In a reciprocal or interinsurance exchange, who bears the risk?', '**The subscribers insure each other.** A reciprocal is not a corporation: it is an unincorporated association where every member is both insured and insurer of the others. The **attorney in fact administers** it — acting for the subscribers under a power of attorney — but does not carry the risk. The last option describes a **Lloyd''s plan**, where individual underwriters each back their own share. Texas lists both as insurers in **§801.001(2)**, which is why they are easy to confuse.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'TX.I'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '3b7eb59f-ad85-5757-ba0c-337cdb9218f0', 'fcba2917-3a4c-5ca8-bc36-07c5de7b1a2b', c.id, 'The subscribers, who insure one another', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'ccfb377d-19d4-5e08-af3a-6796e0eab690', 'fcba2917-3a4c-5ca8-bc36-07c5de7b1a2b', c.id, 'The attorney in fact, who assumes it on their behalf', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '91634bd4-ca21-5cfb-ac00-90101dde50d9', 'fcba2917-3a4c-5ca8-bc36-07c5de7b1a2b', c.id, 'Shareholders of the exchange', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '8e647192-38cd-5c7a-b5fa-7f0d8777ac97', 'fcba2917-3a4c-5ca8-bc36-07c5de7b1a2b', c.id, 'Individual underwriters, each for their own share', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'fcba2917-3a4c-5ca8-bc36-07c5de7b1a2b', c.id, '3b7eb59f-ad85-5757-ba0c-337cdb9218f0'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select '06699d05-47bf-51ea-866f-fe8ec13e354e', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'company-types-and-authority'),
        'An insurer organised in Louisiana writes in Texas. Domestic, foreign or alien?', '**Foreign means another state.** The trap is that "foreign" sounds like it should mean overseas; in insurance, overseas is **alien**.', 'draft'

@@ -5,6 +5,39 @@ lesson: company-types-and-authority
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### A policyholder of a mutual insurance company is best described as what?
+
+- [x] An owner of the company, with a vote and a share of surplus
+- [ ] A customer of the company, like any other policyholder
+- [ ] A shareholder entitled to a share of the company's profit
+- [ ] A subscriber who insures the other policyholders directly
+
+**A mutual is owned by its policyholders**, who are its members. Holding the
+policy is what makes them an owner — that is the whole distinction from a
+stock company, where a policyholder is only a customer and the owners are
+shareholders who may hold no policy at all.
+
+"Shareholder" is wrong because a mutual has no shares, and its **policy
+dividend is a return of surplus to people who overpaid**, not a distribution
+of profit. The last option describes a **reciprocal**, where subscribers
+insure each other through an attorney in fact.
+
+### In a reciprocal or interinsurance exchange, who bears the risk?
+
+- [x] The subscribers, who insure one another
+- [ ] The attorney in fact, who assumes it on their behalf
+- [ ] Shareholders of the exchange
+- [ ] Individual underwriters, each for their own share
+
+**The subscribers insure each other.** A reciprocal is not a corporation: it
+is an unincorporated association where every member is both insured and
+insurer of the others. The **attorney in fact administers** it — acting for
+the subscribers under a power of attorney — but does not carry the risk.
+
+The last option describes a **Lloyd's plan**, where individual underwriters
+each back their own share. Texas lists both as insurers in **§801.001(2)**,
+which is why they are easy to confuse.
+
 ### An insurer organised in Louisiana writes in Texas. Domestic, foreign or alien?
 
 - [x] Foreign

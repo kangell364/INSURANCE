@@ -15,8 +15,8 @@ insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
 select '3de21720-971c-500c-a78f-355ca91d23ef', '62edc60d-a12f-5d1f-80b7-2adce32c4394', c.id, 'Company Types and Certificates of Authority',
-       'company-types-and-authority', 'Admitted and non-admitted, domestic foreign and alien, and the Lloyd''s plan that is not Lloyd''s of London.', 16,
-       'draft', 13
+       'company-types-and-authority', 'Who owns an insurer, where it was organised, and whether Texas has authorised it — three independent questions the exam likes to blur.', 16,
+       'draft', 17
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
 on conflict (id) do update set
   title = excluded.title, summary = excluded.summary,
@@ -76,18 +76,92 @@ against under the law — and the term **includes**:
 - a **health maintenance organization**, among the others that subsection
   lists.
 
-Two things follow. **A "mutual company of any kind"** sweeps in the county and
-farm mutuals that Chapter 542's and Chapter 2203's lists name separately — so
-when a statute carves out county and farm mutuals, it is carving out a subset
-of this definition. And the **capital stock company**, the ordinary
-shareholder-owned insurer, is the implicit contrast: **a stock company is owned
-by shareholders and earns profit for them; a mutual is owned by its
-policyholders**, who are its members.
+Note what is *missing* from that list: the ordinary **capital stock company**.
+It is the implicit contrast — the shareholder-owned insurer everything else is
+being distinguished from. The next section takes each type in turn.
 
 **§547.001** adds the other half of the vocabulary, defining **"alien or
 foreign insurer"** as one organised under the laws of a country other than the
 United States **or** a state other than this one — which is the same
 distinction §982.001 draws, from the other direction.
+
+## Who owns the insurer
+
+**§801.001(2)** lists the types. It does not say what distinguishes them, and
+that is what gets asked. One question separates all of them: **who owns the
+company, and who therefore gets the upside?**
+
+### Stock companies
+
+**Owned by shareholders**, who may never hold a policy with it. The company
+exists to earn a profit for them.
+
+**A policyholder is a customer, nothing more.** They buy a contract and that
+is the whole relationship. Dividends go to shareholders, out of profit.
+
+### Mutual companies
+
+**Owned by its policyholders**, who are its **members**. There are no
+shareholders. A mutual exists to provide insurance to its members at cost
+rather than to earn a profit from them.
+
+**This is the distinction behind "policyholder versus policyowner".** In a
+stock company, holding a policy makes you a customer. **In a mutual, holding a
+policy makes you an owner** — with a vote for the board, and a share of any
+surplus.
+
+So a mutual's **policy dividend is a return of surplus to the people who
+overpaid**, not a distribution of profit to investors. That is why it is
+described as a return of premium.
+
+**§801.001(2) includes "a mutual company of any kind"**, and Texas has several:
+statewide mutual assessment associations, local mutual aid and burial
+associations, and **county and farm mutuals**. When a statute carves county and
+farm mutuals out of a requirement — Chapters 542 and 2203 both do — it is
+carving out a subset of this definition.
+
+### Reciprocals and interinsurance exchanges
+
+**The subscribers insure each other.** Not a corporation at all: an
+unincorporated association in which each member is both insured and insurer
+of the others, administered by an **attorney in fact** who acts for all of
+them.
+
+Named as an insurer by **§801.001(2)**, and listed alongside stock and mutual
+companies by **§35.001(2)(E)**, **§541.002(2)**, **§542.052** and
+**§542A.001(4)**.
+
+### Fraternal benefit societies
+
+**A non-profit membership society** that provides insurance to its members and
+their beneficiaries, organised on a lodge or representative basis and existing
+for the benefit of its members rather than for profit. In practice they write
+life and health rather than property and casualty.
+
+Texas names them as insurers in **§801.001(2)**, **§35.001(2)(F)** and
+**§4001.001(6)(H)** — which is why a producer meets the term at all.
+
+> The Texas chapter governing fraternals is not among the chapters in
+> `reference/`, so the structural description above is general industry
+> knowledge rather than a paraphrase of the statute. The Texas *classification*
+> is cited.
+
+### The one-line test
+
+| | Owned by | Policyholder is |
+| --- | --- | --- |
+| **Stock** | Shareholders | A customer |
+| **Mutual** | Its policyholders | An owner and member |
+| **Reciprocal** | The subscribers, mutually | Both insured and insurer |
+| **Fraternal** | Its members | A member of the society |
+| **Lloyd's plan** | Individual underwriters | A customer of the underwriters |
+
+**Only the stock company and the Lloyd's plan have owners who need not be
+insureds.** Everything
+else on that list is owned by the people it covers, which is the pattern worth
+carrying into the exam. The Lloyd's plan is the odd one: its **underwriters**
+are individuals backing the risk with their own liability, not shareholders in
+a company and not members buying at cost — see the Lloyd's section below.
 
 ## Transacting insurance
 
@@ -195,15 +269,6 @@ A Lloyd's plan is a **member of the guaranty association's covered insurer
 list** — §462 and §542.052 both name Lloyd's plans among the insurers they
 reach — and **§542A.001(4)** names a Lloyd's plan among the insurers that
 chapter applies to.
-
-## Reciprocals and exchanges
-
-Not a downloaded chapter, but named repeatedly by chapters that are.
-**§541.002(2)**, **§542.052** and **§542A.001(4)** all list a **reciprocal or
-interinsurance exchange** alongside stock and mutual companies, county
-mutuals, farm mutuals and Lloyd's plans. Recognise the term: **subscribers
-insuring each other through an attorney in fact**, which is why it sits next
-to the Lloyd's plan in every list.
 
 ## How this is examined
 
