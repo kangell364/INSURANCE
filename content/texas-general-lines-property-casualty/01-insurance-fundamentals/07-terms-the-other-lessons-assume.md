@@ -4,7 +4,7 @@ title: Terms the Other Lessons Assume
 slug: terms-the-other-lessons-assume
 blueprint: GK.II
 summary: Eleven terms that do not belong to any one topic — including the party numbering and the reinsurance that four later modules assume you already know.
-estimated_minutes: 22
+estimated_minutes: 25
 status: draft
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
@@ -43,6 +43,34 @@ auto.
 **first-party** — the insurer pays the insured for the insured's own loss.
 Casualty is largely **third-party** — the insurer pays somebody else because
 the insured is liable to them.
+
+### The two kinds of property
+
+**Real property is land and whatever is permanently attached to it** — the
+ground, the building, the fence, the built-in cabinets.
+
+**Personal property is everything else** — movable things. Furniture, stock,
+equipment, clothing. In a policy it is usually called **contents**.
+
+**The test is attachment, not size or value.** A chandelier wired into the
+ceiling is real property; the identical lamp standing on the floor is
+personal. Something that changes from one to the other by being installed is a
+**fixture**, and it stops being the seller's when the building is sold.
+
+> **This is not bookkeeping — two Texas rules turn on it.**
+>
+> **§862.053**, the liquidated demand rule, applies to **real property only**:
+> on a total fire loss the insurer owes the face amount, and the section says
+> outright that it "does not apply to personal property". Contents are settled
+> the ordinary way.
+>
+> **§542.051** defines the claims the prompt-payment deadlines reach partly by
+> reference to policies covering **real property or improvements to real
+> property**.
+>
+> Both are in Module 5. Neither makes sense without this distinction, and
+> a stem describing a burned building and its contents is often testing
+> exactly which half a rule reaches.
 
 ### Where the line blurs, and why that is fine
 

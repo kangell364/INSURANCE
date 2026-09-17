@@ -5,6 +5,40 @@ lesson: terms-the-other-lessons-assume
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### A chandelier is wired into a dining room ceiling. Is it real or personal property?
+
+- [x] Real property, because it is permanently attached
+- [ ] Personal property, because it can be unscrewed
+- [ ] Personal property, because it is not part of the structure
+- [ ] Neither; lighting is a separate class
+
+**The test is attachment, not size or value.** A chandelier wired in is real
+property; the identical lamp standing on the floor is personal.
+
+Something that changes from one to the other by being installed is a
+**fixture** — which is why it stops being the seller's when a building is
+sold, and why an insured who takes the built-in cabinets with them has removed
+part of what the dwelling coverage insured.
+
+### A total fire loss destroys a Texas home and its contents. To which does the liquidated demand rule of §862.053 apply?
+
+- [x] The building only — the section says it does not apply to personal property
+- [ ] Both, since one fire caused the whole loss
+- [ ] The contents only, which are settled at the face amount
+- [ ] Neither; §862.053 applies to commercial property
+
+**§862.053(a) reaches real property only**, and says so expressly: "This
+subsection does not apply to personal property." On a total loss by fire the
+insurer owes the **face amount of the building coverage** without argument
+about actual value.
+
+**The contents are settled the ordinary way** — proved, valued, and paid
+under the policy's normal terms.
+
+So one fire produces two settlements under two different rules, which is
+exactly why the real-versus-personal distinction is worth holding before
+Module 5.
+
 ### What does property insurance cover?
 
 - [x] Loss of or damage to the insured's own property

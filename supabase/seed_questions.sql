@@ -2970,6 +2970,82 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'fecde7b7-0c70-55a5-8a0d-93cd499e5a4b', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'terms-the-other-lessons-assume'),
+       'A chandelier is wired into a dining room ceiling. Is it real or personal property?', '**The test is attachment, not size or value.** A chandelier wired in is real property; the identical lamp standing on the floor is personal. Something that changes from one to the other by being installed is a **fixture** — which is why it stops being the seller''s when a building is sold, and why an insured who takes the built-in cabinets with them has removed part of what the dwelling coverage insured.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.II'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'c5610d8a-829a-5b22-b1ea-196aa67958e5', 'fecde7b7-0c70-55a5-8a0d-93cd499e5a4b', c.id, 'Real property, because it is permanently attached', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '310d1b60-b706-5b20-84d0-403b62eb5f80', 'fecde7b7-0c70-55a5-8a0d-93cd499e5a4b', c.id, 'Personal property, because it can be unscrewed', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '70de8de3-4c1b-568e-8600-a3cc788a74ff', 'fecde7b7-0c70-55a5-8a0d-93cd499e5a4b', c.id, 'Personal property, because it is not part of the structure', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '2319f610-cc25-523f-9091-ecd3ccb819ef', 'fecde7b7-0c70-55a5-8a0d-93cd499e5a4b', c.id, 'Neither; lighting is a separate class', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'fecde7b7-0c70-55a5-8a0d-93cd499e5a4b', c.id, 'c5610d8a-829a-5b22-b1ea-196aa67958e5'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '62605b89-da5c-5fee-8e5e-28aa320e74eb', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'terms-the-other-lessons-assume'),
+       'A total fire loss destroys a Texas home and its contents. To which does the liquidated demand rule of §862.053 apply?', '**§862.053(a) reaches real property only**, and says so expressly: "This subsection does not apply to personal property." On a total loss by fire the insurer owes the **face amount of the building coverage** without argument about actual value. **The contents are settled the ordinary way** — proved, valued, and paid under the policy''s normal terms. So one fire produces two settlements under two different rules, which is exactly why the real-versus-personal distinction is worth holding before Module 5.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.II'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'd1c6c522-3db5-5061-8b0b-996259dbdad8', '62605b89-da5c-5fee-8e5e-28aa320e74eb', c.id, 'The building only — the section says it does not apply to personal property', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '6dc2b293-f79c-510e-86d5-55da9f6bdff1', '62605b89-da5c-5fee-8e5e-28aa320e74eb', c.id, 'Both, since one fire caused the whole loss', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'c9ceb6cd-1a47-53f9-8efd-8e50a1882d37', '62605b89-da5c-5fee-8e5e-28aa320e74eb', c.id, 'The contents only, which are settled at the face amount', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '93261073-2020-5051-919e-e17a1b9cef92', '62605b89-da5c-5fee-8e5e-28aa320e74eb', c.id, 'Neither; §862.053 applies to commercial property', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '62605b89-da5c-5fee-8e5e-28aa320e74eb', c.id, 'd1c6c522-3db5-5061-8b0b-996259dbdad8'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select '22da93f4-e917-5da1-bf6f-d777605873a0', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'terms-the-other-lessons-assume'),
        'What does property insurance cover?', '**Property insurance answers "what did I lose?"** — the house, the building, the stock, the car''s own bodywork. It is **first-party** coverage: the insurer pays the insured for the insured''s own loss. **Casualty answers "what do I owe?"** Legal liability to others, largely **third-party**, plus the lines that grew up beside it — workers'' compensation, crime, surety, and the liability half of auto. Every wrong option here describes casualty from a different angle, which is the distinction the licence is named after.', 'draft'
