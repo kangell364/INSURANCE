@@ -5,6 +5,25 @@ lesson: terms-the-other-lessons-assume
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### A hailstorm smashes the windows of a warehouse and ruins the stock inside. The broken windows and the ruined stock are what kind of loss?
+
+- [x] A direct loss
+- [ ] An indirect loss
+- [ ] A consequential loss
+- [ ] A loss of use
+
+**A direct loss is physical damage to property caused by a peril.** Both the
+windows and the stock were physically damaged by the hail, so both are direct
+— the fact that one is the building and one is its contents changes nothing.
+
+**Indirect loss is the financial consequence of that damage**, and there is
+one here too: whatever the warehouse loses while it cannot operate. That would
+need **business income** coverage. "Consequential loss" is simply another name
+for indirect.
+
+**The test is physical damage, not how many things were hurt.** A peril that
+damages ten items causes ten direct losses, not an indirect one.
+
 ### A fire closes a restaurant, which then earns nothing for five months while it is rebuilt. The lost earnings are what kind of loss?
 
 - [x] An indirect loss

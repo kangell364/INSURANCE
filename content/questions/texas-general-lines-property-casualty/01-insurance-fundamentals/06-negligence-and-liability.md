@@ -5,6 +5,26 @@ lesson: negligence-and-liability
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### What is a tort?
+
+- [x] A civil wrong other than a breach of contract
+- [ ] Any act that causes financial harm to another
+- [ ] A criminal act for which damages may be recovered
+- [ ] A breach of a duty created by a contract
+
+**A tort is a civil wrong other than a breach of contract**, and it is the
+category all liability insurance exists to respond to. Negligence is the
+commonest kind; intentional torts and strict liability are the others.
+
+**The exclusion of contract is the point.** If the duty came from an agreement,
+breaking it is a breach of contract, not a tort — which is why liability
+policies exclude liability assumed under contract unless it falls within an
+**insured contract**.
+
+A tort may also be a crime — an assault is both — but it is the *civil* wrong
+that liability insurance concerns itself with. The state prosecutes the crime;
+the claimant sues for the tort.
+
 ### Which is NOT one of the four elements a claimant must prove in negligence?
 
 - [ ] A duty of care was owed
@@ -13,8 +33,13 @@ review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 - [ ] Damages resulted
 
 Negligence is **carelessness, not intent** — intent would make it an
-intentional tort, which liability policies exclude. The fourth element is
-proximate cause linking the breach to the damages.
+**intentional tort**. The fourth element is proximate cause, linking the
+breach to the damages.
+
+**Do not conclude that liability policies never cover intentional torts.**
+Harm the insured *meant to inflict* is excluded, but the **CGL's Coverage B**
+covers a named list of offences — libel, slander, false arrest, wrongful
+eviction — on purpose. See Module 4.
 
 ### A shopkeeper leaves a spill unmopped for an hour and a customer falls. Which element does the hour establish?
 

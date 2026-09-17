@@ -1144,6 +1144,39 @@ because of a relationship. An employer for an employee acting within the scope
 of employment; a parent for a child in some circumstances. The employer was not
 careless; it is liable because the employee was.
 
+## Torts that are not negligence
+
+**A tort is a civil wrong other than a breach of contract**, and negligence is
+only one kind. Three more turn up.
+
+**Intentional torts** — the act was deliberate. Assault, battery, libel,
+slander, false arrest, wrongful eviction, invasion of privacy.
+
+> **"Liability policies exclude intentional torts" is too simple, and the
+> exception is examined.** The intentional *loss* exclusion stops an insured
+> recovering for harm they meant to cause — that is public policy. But the
+> **CGL's Coverage B, Personal and Advertising Injury, deliberately covers a
+> named list of offences** including libel, slander, false arrest and wrongful
+> eviction, because a business commits these in the ordinary course and the
+> harm is usually not what it intended. See *Commercial General Liability* in
+> Module 4.
+>
+> So: harm the insured **meant to inflict** is excluded; the named Coverage B
+> offences are bought back on purpose.
+
+**Res ipsa loquitur** — *"the thing speaks for itself."* Where an accident is
+of a kind that does not ordinarily happen without negligence, and the thing
+that caused it was in the defendant's exclusive control, **negligence may be
+inferred without direct proof**. A surgical instrument left inside a patient.
+**It helps the claimant** by shifting the burden, which is what makes it the
+opposite of a defence.
+
+**Attractive nuisance** — a condition likely to draw children onto the
+property. Swimming pools, trampolines, construction sites, an abandoned
+refrigerator. **It raises the duty owed to a child trespasser**, who would
+otherwise be owed almost nothing. The occupier must take reasonable steps to
+keep children out or make the thing safe.
+
 ## Defences
 
 These come up as often as the elements.

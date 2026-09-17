@@ -76,6 +76,12 @@ const UNTESTED = new Map([
       'odd one out, and no question can have "explain the coverage" as its answer.',
   ],
   [
+    '07-terms-the-other-lessons-assume.md::personal auto policy',
+    'Extracted from "**A personal auto policy is both.**", which applies the ' +
+      'property/casualty split rather than defining the policy. The auto ' +
+      'policy itself is taught and examined in Module 4.',
+  ],
+  [
     '07-elements-of-a-contract.md::reasonable expectations',
     'Not on either Texas outline. Recorded beside adhesion because it explains ' +
       'the signed rejection of UM coverage in Module 5; testing it would be padding.',

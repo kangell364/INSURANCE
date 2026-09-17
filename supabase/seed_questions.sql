@@ -2932,9 +2932,47 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '6d22c0fa-63ac-59ed-9693-dd716e13e1eb', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'negligence-and-liability'),
+       'What is a tort?', '**A tort is a civil wrong other than a breach of contract**, and it is the category all liability insurance exists to respond to. Negligence is the commonest kind; intentional torts and strict liability are the others. **The exclusion of contract is the point.** If the duty came from an agreement, breaking it is a breach of contract, not a tort — which is why liability policies exclude liability assumed under contract unless it falls within an **insured contract**. A tort may also be a crime — an assault is both — but it is the *civil* wrong that liability insurance concerns itself with. The state prosecutes the crime; the claimant sues for the tort.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.V'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'f94d4dac-ea11-5990-be22-44617ac34245', '6d22c0fa-63ac-59ed-9693-dd716e13e1eb', c.id, 'A civil wrong other than a breach of contract', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '941b6bbf-cec8-5c29-9493-85d783f1a1a2', '6d22c0fa-63ac-59ed-9693-dd716e13e1eb', c.id, 'Any act that causes financial harm to another', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '4e0782ca-72fb-5a85-bbf5-3b746033d04a', '6d22c0fa-63ac-59ed-9693-dd716e13e1eb', c.id, 'A criminal act for which damages may be recovered', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '335585d2-5a24-54ca-a66b-2916f3491fcb', '6d22c0fa-63ac-59ed-9693-dd716e13e1eb', c.id, 'A breach of a duty created by a contract', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '6d22c0fa-63ac-59ed-9693-dd716e13e1eb', c.id, 'f94d4dac-ea11-5990-be22-44617ac34245'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select 'ddfc6e2f-8142-5ab5-93d0-4aacf6b82a66', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'negligence-and-liability'),
-       'Which is NOT one of the four elements a claimant must prove in negligence?', 'Negligence is **carelessness, not intent** — intent would make it an intentional tort, which liability policies exclude. The fourth element is proximate cause linking the breach to the damages.', 'draft'
+       'Which is NOT one of the four elements a claimant must prove in negligence?', 'Negligence is **carelessness, not intent** — intent would make it an **intentional tort**. The fourth element is proximate cause, linking the breach to the damages. **Do not conclude that liability policies never cover intentional torts.** Harm the insured *meant to inflict* is excluded, but the **CGL''s Coverage B** covers a named list of offences — libel, slander, false arrest, wrongful eviction — on purpose. See Module 4.', 'draft'
   from public.courses c
   join public.topics t on t.course_id = c.id and t.code = 'GK.V'
  where c.slug = 'texas-general-lines-property-casualty'
@@ -3344,6 +3382,44 @@ on conflict (id) do update set body = excluded.body;
 
 insert into public.question_answers (question_id, course_id, correct_option_id)
 select '0eaea6a6-e756-524f-8b69-6ee17b2cc5f7', c.id, '202d7b15-3569-5ff3-b52f-4e7ba406d7ea'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '00f2a83c-cdec-52df-9da4-f2d85d77dbd7', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'terms-the-other-lessons-assume'),
+       'A hailstorm smashes the windows of a warehouse and ruins the stock inside. The broken windows and the ruined stock are what kind of loss?', '**A direct loss is physical damage to property caused by a peril.** Both the windows and the stock were physically damaged by the hail, so both are direct — the fact that one is the building and one is its contents changes nothing. **Indirect loss is the financial consequence of that damage**, and there is one here too: whatever the warehouse loses while it cannot operate. That would need **business income** coverage. "Consequential loss" is simply another name for indirect. **The test is physical damage, not how many things were hurt.** A peril that damages ten items causes ten direct losses, not an indirect one.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.II'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '9da70c8b-1063-5445-af03-27dba22a8a6c', '00f2a83c-cdec-52df-9da4-f2d85d77dbd7', c.id, 'A direct loss', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '8dadbaa0-f095-555a-a7cb-9078f7a3b9b8', '00f2a83c-cdec-52df-9da4-f2d85d77dbd7', c.id, 'An indirect loss', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '54f09354-9699-5904-8e92-35ddcc36686d', '00f2a83c-cdec-52df-9da4-f2d85d77dbd7', c.id, 'A consequential loss', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '32a6d9db-eb50-5c7c-ac42-b599b119e91f', '00f2a83c-cdec-52df-9da4-f2d85d77dbd7', c.id, 'A loss of use', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '00f2a83c-cdec-52df-9da4-f2d85d77dbd7', c.id, '9da70c8b-1063-5445-af03-27dba22a8a6c'
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
 on conflict (question_id) do update set
   correct_option_id = excluded.correct_option_id;
