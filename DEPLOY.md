@@ -391,14 +391,29 @@ as silently as no sender at all.
 Users → open the user. An admin can set a password or issue a magic link
 directly from there.
 
+### The deployed address
+
+**https://insurance-loan3.vercel.app**
+
+Recorded here because it is needed in three places -- Supabase's Site URL, its
+redirect allow-list, and any link you hand somebody -- and it was not written
+down anywhere until now.
+
 ### Auth redirect URLs
 
 Supabase only redirects back to allow-listed origins, so sign-in fails
 silently until the deployed address is registered. In the Supabase dashboard,
 **Authentication → URL Configuration**:
 
-- **Site URL** — `https://<your-domain>`
-- **Redirect URLs** — `https://<your-domain>/**`
+- **Site URL** — `https://insurance-loan3.vercel.app`
+- **Redirect URLs** — `https://insurance-loan3.vercel.app/**`
+  and `http://localhost:3000/**` for local development
+
+Both auth flows compute their own return address from
+`window.location.origin` (`components/auth/ForgotPasswordForm.tsx` and
+`SignupForm.tsx`), so whatever origin the user started on is what must be
+allow-listed. A missing entry does not error: the link bounces to the Site
+URL and the user simply never reaches the form.
 
 **Use the project's stable domain** (`<project>-<team>.vercel.app`), not the
 per-deployment URL with a hash in it. The hashed one is frozen to a single
