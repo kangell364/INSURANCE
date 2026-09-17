@@ -5,6 +5,31 @@ lesson: terms-the-other-lessons-assume
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### Which of these is a liability loss?
+
+- [x] An insured's dog gets out and bites a neighbour's child
+- [ ] A home is damaged in a tornado
+- [ ] A farmhouse is destroyed by fire
+- [ ] An insured leaves a car unlocked and a handbag is stolen from it
+
+**Ask whose loss it is.** The dog bite injures somebody else, and the insured
+may be legally responsible for it — that is **liability**, a casualty
+exposure, and it is **third-party**: the insurer pays the neighbour because
+the insured owes them.
+
+**Every other option is the insured's own property.** Tornado damage, fire
+damage and a stolen handbag are all **first-party** losses — the insurer pays
+the insured for what the insured lost.
+
+**The two questions, once more:**
+
+- **Property** — *what did I lose?*
+- **Casualty** — *what do I owe?*
+
+The stolen handbag is the one that tempts people, because a theft feels like
+somebody else's fault. It is still the insured's own property, and whose fault
+it was does not change whose loss it is.
+
 ### A hailstorm smashes the windows of a warehouse and ruins the stock inside. The broken windows and the ruined stock are what kind of loss?
 
 - [x] A direct loss

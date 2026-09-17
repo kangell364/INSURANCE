@@ -3540,6 +3540,44 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'e39cb817-fc3a-5edd-a9b6-90bc43f66026', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'terms-the-other-lessons-assume'),
+       'Which of these is a liability loss?', '**Ask whose loss it is.** The dog bite injures somebody else, and the insured may be legally responsible for it — that is **liability**, a casualty exposure, and it is **third-party**: the insurer pays the neighbour because the insured owes them. **Every other option is the insured''s own property.** Tornado damage, fire damage and a stolen handbag are all **first-party** losses — the insurer pays the insured for what the insured lost. **The two questions, once more:** - **Property** — *what did I lose?* - **Casualty** — *what do I owe?* The stolen handbag is the one that tempts people, because a theft feels like somebody else''s fault. It is still the insured''s own property, and whose fault it was does not change whose loss it is.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.II'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'da7438bb-78d3-579c-9d45-1ba5a5ae844f', 'e39cb817-fc3a-5edd-a9b6-90bc43f66026', c.id, 'An insured''s dog gets out and bites a neighbour''s child', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '36299ae8-211c-54a7-8e8d-30535e122a01', 'e39cb817-fc3a-5edd-a9b6-90bc43f66026', c.id, 'A home is damaged in a tornado', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'afce8397-ad36-5057-9a4e-9644465edda9', 'e39cb817-fc3a-5edd-a9b6-90bc43f66026', c.id, 'A farmhouse is destroyed by fire', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'd6923557-0092-5373-8c8e-3c34a1a58ff1', 'e39cb817-fc3a-5edd-a9b6-90bc43f66026', c.id, 'An insured leaves a car unlocked and a handbag is stolen from it', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'e39cb817-fc3a-5edd-a9b6-90bc43f66026', c.id, 'da7438bb-78d3-579c-9d45-1ba5a5ae844f'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select '00f2a83c-cdec-52df-9da4-f2d85d77dbd7', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'terms-the-other-lessons-assume'),
        'A hailstorm smashes the windows of a warehouse and ruins the stock inside. The broken windows and the ruined stock are what kind of loss?', '**A direct loss is physical damage to property caused by a peril.** Both the windows and the stock were physically damaged by the hail, so both are direct — the fact that one is the building and one is its contents changes nothing. **Indirect loss is the financial consequence of that damage**, and there is one here too: whatever the warehouse loses while it cannot operate. That would need **business income** coverage. "Consequential loss" is simply another name for indirect. **The test is physical damage, not how many things were hurt.** A peril that damages ten items causes ten direct losses, not an indirect one.', 'draft'
