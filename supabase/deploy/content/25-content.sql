@@ -278,6 +278,17 @@ include:
 The point for a producer: **"transacting insurance" starts long before a policy
 issues.** Taking an application is enough.
 
+**§101.102(a)** then prohibits doing any of it **"except as authorized by
+statute."** That last phrase is the whole of the surplus lines system:
+**§101.053(b)(1)** exempts **"the lawful transaction of surplus lines insurance
+under Chapter 981"** from the prohibition entirely.
+
+So **non-admitted does not mean unlawful.** An eligible surplus lines insurer
+is not authorised, and business is placed with it lawfully every day, because
+Chapter 981 is the statute that authorises it. What is unlawful is
+*unauthorized* insurance outside those exceptions — the same insurer, reached
+without Chapter 981's conditions.
+
 ## Admitted and non-admitted
 
 **An admitted (authorized) insurer holds a certificate of authority from the

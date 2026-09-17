@@ -5,6 +5,56 @@ lesson: company-types-and-authority
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### An insurance company organised under the laws of Texas is what, in Texas?
+
+- [x] Domestic
+- [ ] Foreign
+- [ ] Alien
+- [ ] Admitted
+
+**Domestic means organised under the laws of this state.** Texas is its home.
+
+The word is relative to wherever you are standing: **that same company is
+foreign in Oklahoma and foreign in every other state.** Domestic, foreign and
+alien describe a relationship between the insurer and the state asking, not a
+fixed property of the company.
+
+"Admitted" is the wrong axis — it answers whether Texas has authorised the
+company, not where it was organised.
+
+### An insurer organised in Oklahoma holds a Texas certificate of authority. How is it described?
+
+- [x] Foreign and admitted
+- [ ] Foreign and non-admitted
+- [ ] Alien and admitted
+- [ ] Domestic and admitted
+
+**Foreign** because it was organised in another state, and **admitted**
+because it holds the certificate. **The two questions are independent** — one
+is about origin, the other about permission — and most insurers writing in
+Texas are exactly this combination.
+
+Every pairing is possible. A domestic insurer can lose its authority and
+become domestic and non-admitted; an alien insurer can hold a certificate and
+be alien and admitted.
+
+### A Texas agent places a commercial property risk with a non-admitted insurer under Chapter 981. Is that lawful?
+
+- [x] Yes — §101.053(b)(1) exempts the lawful transaction of surplus lines insurance from the unauthorized-insurance prohibition
+- [ ] No — placing business with a non-admitted insurer is always unlawful
+- [ ] Only if the insurer later obtains a certificate of authority
+- [ ] Only for commercial risks; personal lines may never be placed non-admitted
+
+**Non-admitted does not mean unlawful.** §101.102(a) prohibits transacting
+insurance "except as authorized by statute", and **Chapter 981 is that
+statute** — §101.053(b)(1) exempts lawful surplus lines transactions from the
+prohibition outright.
+
+What makes a placement unlawful is doing it **outside** Chapter 981's
+conditions: no diligent effort, an ineligible insurer, no licensed surplus
+lines agent. The same insurer reached the right way is lawful and reached the
+wrong way is not.
+
 ### The Texas FAIR Plan and TWIA are created by the Insurance Code. Who funds them?
 
 - [x] Premium from their policyholders and assessments against member insurers

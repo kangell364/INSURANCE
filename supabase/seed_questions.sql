@@ -21970,6 +21970,120 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '439ee431-88c9-5a64-86f1-2af1329c272c', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'company-types-and-authority'),
+       'An insurance company organised under the laws of Texas is what, in Texas?', '**Domestic means organised under the laws of this state.** Texas is its home. The word is relative to wherever you are standing: **that same company is foreign in Oklahoma and foreign in every other state.** Domestic, foreign and alien describe a relationship between the insurer and the state asking, not a fixed property of the company. "Admitted" is the wrong axis — it answers whether Texas has authorised the company, not where it was organised.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'TX.I'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'ad6d490e-86d7-588d-90c8-50fcf0dfe5a8', '439ee431-88c9-5a64-86f1-2af1329c272c', c.id, 'Domestic', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'a1cd61c7-8087-5e32-99b1-f44d977dfa2a', '439ee431-88c9-5a64-86f1-2af1329c272c', c.id, 'Foreign', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '77985222-d34c-5bfa-b09e-a88282a2981d', '439ee431-88c9-5a64-86f1-2af1329c272c', c.id, 'Alien', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '1a1d7c06-f5ec-5661-b6c5-0ef186838479', '439ee431-88c9-5a64-86f1-2af1329c272c', c.id, 'Admitted', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '439ee431-88c9-5a64-86f1-2af1329c272c', c.id, 'ad6d490e-86d7-588d-90c8-50fcf0dfe5a8'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '9e995475-cb17-598e-914e-e21ee50b3279', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'company-types-and-authority'),
+       'An insurer organised in Oklahoma holds a Texas certificate of authority. How is it described?', '**Foreign** because it was organised in another state, and **admitted** because it holds the certificate. **The two questions are independent** — one is about origin, the other about permission — and most insurers writing in Texas are exactly this combination. Every pairing is possible. A domestic insurer can lose its authority and become domestic and non-admitted; an alien insurer can hold a certificate and be alien and admitted.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'TX.I'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '4cdc1ea2-6501-51cd-9eaf-0a6634fe52c5', '9e995475-cb17-598e-914e-e21ee50b3279', c.id, 'Foreign and admitted', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '8a9501a8-3493-56c9-bbf1-cf30177dbf65', '9e995475-cb17-598e-914e-e21ee50b3279', c.id, 'Foreign and non-admitted', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '3e1872b8-c0d1-5c3f-a16a-fbc3f75f9c66', '9e995475-cb17-598e-914e-e21ee50b3279', c.id, 'Alien and admitted', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '6cc9b6a2-821e-5eae-9854-ab52e83180b6', '9e995475-cb17-598e-914e-e21ee50b3279', c.id, 'Domestic and admitted', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '9e995475-cb17-598e-914e-e21ee50b3279', c.id, '4cdc1ea2-6501-51cd-9eaf-0a6634fe52c5'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '12d31be9-337d-585c-98c9-f2be4a8ebfbb', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'company-types-and-authority'),
+       'A Texas agent places a commercial property risk with a non-admitted insurer under Chapter 981. Is that lawful?', '**Non-admitted does not mean unlawful.** §101.102(a) prohibits transacting insurance "except as authorized by statute", and **Chapter 981 is that statute** — §101.053(b)(1) exempts lawful surplus lines transactions from the prohibition outright. What makes a placement unlawful is doing it **outside** Chapter 981''s conditions: no diligent effort, an ineligible insurer, no licensed surplus lines agent. The same insurer reached the right way is lawful and reached the wrong way is not.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'TX.I'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '3b82e130-b39e-53cb-936f-8b34c7324930', '12d31be9-337d-585c-98c9-f2be4a8ebfbb', c.id, 'Yes — §101.053(b)(1) exempts the lawful transaction of surplus lines insurance from the unauthorized-insurance prohibition', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'c99ad2c6-7c5d-563b-a93c-892722874262', '12d31be9-337d-585c-98c9-f2be4a8ebfbb', c.id, 'No — placing business with a non-admitted insurer is always unlawful', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '63c99540-3630-5370-8a80-e42d0012d3ee', '12d31be9-337d-585c-98c9-f2be4a8ebfbb', c.id, 'Only if the insurer later obtains a certificate of authority', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'ce64b2f7-9acc-5f76-97bd-b1fd43fec4b2', '12d31be9-337d-585c-98c9-f2be4a8ebfbb', c.id, 'Only for commercial risks; personal lines may never be placed non-admitted', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '12d31be9-337d-585c-98c9-f2be4a8ebfbb', c.id, '3b82e130-b39e-53cb-936f-8b34c7324930'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select 'a0f55303-6fc2-59ea-ba7e-eeb8f8ee2ecc', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'company-types-and-authority'),
        'The Texas FAIR Plan and TWIA are created by the Insurance Code. Who funds them?', '**The industry funds the residual market, not the state budget.** Being created by statute is not the same as being paid for by taxpayers. **§2211** assesses members "in the proportion that the insurer''s net direct premiums written in this state" bear to the total, and **§2151** provides for assessment of authorized insurers for TAIPA. An insurer wanting to write in Texas takes on a share of the risks nobody wants to write.', 'draft'
