@@ -5,6 +5,26 @@ lesson: elements-of-a-contract
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### An insurance contract and a wager are both aleatory. What distinguishes them?
+
+- [x] The insured has an insurable interest, so the payment restores a loss rather than creating a gain
+- [ ] Insurance exchanges equal value; a wager does not
+- [ ] Insurance is regulated and a wager is not
+- [ ] A wager is unilateral and insurance is bilateral
+
+**Both are aleatory** — unequal exchange turning on chance is exactly what a
+bet is, and saying insurance is aleatory does not by itself distinguish it
+from gambling.
+
+**Insurable interest does.** The insured already stands to lose if the event
+happens, so the payment puts them back where they were. **The gambler has no
+exposure until they place the bet** — they create the risk in order to profit
+from it, which is the gain indemnity exists to prevent.
+
+The second option is wrong about insurance: an aleatory exchange is by
+definition unequal. Regulation is a consequence of the distinction, not the
+distinction. And a wager is not unilateral — both bettors promise.
+
 ### Which of the following is NOT an element of a legal contract?
 
 - [x] Unilateral

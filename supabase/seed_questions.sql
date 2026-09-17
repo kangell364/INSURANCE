@@ -5554,6 +5554,44 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'a9cf5b80-36de-5075-aa4e-9aeabdb0793b', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'elements-of-a-contract'),
+       'An insurance contract and a wager are both aleatory. What distinguishes them?', '**Both are aleatory** — unequal exchange turning on chance is exactly what a bet is, and saying insurance is aleatory does not by itself distinguish it from gambling. **Insurable interest does.** The insured already stands to lose if the event happens, so the payment puts them back where they were. **The gambler has no exposure until they place the bet** — they create the risk in order to profit from it, which is the gain indemnity exists to prevent. The second option is wrong about insurance: an aleatory exchange is by definition unequal. Regulation is a consequence of the distinction, not the distinction. And a wager is not unilateral — both bettors promise.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.III'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '3a35856c-309c-53d1-904d-c03204995570', 'a9cf5b80-36de-5075-aa4e-9aeabdb0793b', c.id, 'The insured has an insurable interest, so the payment restores a loss rather than creating a gain', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '46aa4398-ae3a-5434-a4ea-0f45b9fd92f2', 'a9cf5b80-36de-5075-aa4e-9aeabdb0793b', c.id, 'Insurance exchanges equal value; a wager does not', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '1b289112-c727-53e5-bcef-5c6c432ea6cf', 'a9cf5b80-36de-5075-aa4e-9aeabdb0793b', c.id, 'Insurance is regulated and a wager is not', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'e8a4a8fb-6d22-5e07-82ad-84f2a5bca3b9', 'a9cf5b80-36de-5075-aa4e-9aeabdb0793b', c.id, 'A wager is unilateral and insurance is bilateral', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'a9cf5b80-36de-5075-aa4e-9aeabdb0793b', c.id, '3a35856c-309c-53d1-904d-c03204995570'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select '24078801-d286-5289-add2-dce465d346d1', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'elements-of-a-contract'),
        'Which of the following is NOT an element of a legal contract?', '**Unilateral is a characteristic, not an element.** The two lists do different jobs and the exam moves between them deliberately. **The elements are what a contract must have to exist at all** — offer and acceptance, consideration, competent parties, legal purpose. Miss one and there is no contract. **The characteristics describe what kind of contract insurance is** once it exists — adhesion, aleatory, unilateral, conditional, personal, utmost good faith. An ordinary contract needs the elements too; only insurance has this particular set of characteristics. **So the test is: would its absence mean no contract, or a different sort of contract?** A contract with no legal purpose does not exist. A contract that is not unilateral exists perfectly well — it is simply bilateral, like most commercial agreements.', 'draft'

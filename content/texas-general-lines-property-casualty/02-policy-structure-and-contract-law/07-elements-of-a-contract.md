@@ -97,6 +97,19 @@ insured pays $1,200 and may collect nothing, or may collect $400,000. A
 non-aleatory contract — buying a car — exchanges roughly equal value both
 ways.
 
+> **So how is that not gambling?** It is the fair question, and the answer is
+> the one element above. **A wager is aleatory too** — unequal exchange
+> turning on chance is exactly what a bet is. What separates them is
+> **insurable interest**: the insured stands to *lose* if the event happens,
+> so the payment restores them rather than enriching them. The gambler has no
+> exposure until they place the bet; they create the risk in order to profit
+> from it.
+>
+> **Insurance and a wager share the characteristic and differ on the
+> element.** That is why a policy without insurable interest is not merely
+> unenforceable but is *called* a wager — see *Insurable Interest and
+> Indemnity* in Module 1.
+
 **Unilateral.** **Only one party makes a legally enforceable promise.** Once
 the premium is paid, the insured has promised nothing further; the insurer
 alone is bound to perform. The insured who stops paying is not sued for
