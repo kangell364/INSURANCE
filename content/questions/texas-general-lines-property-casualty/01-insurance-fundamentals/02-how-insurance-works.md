@@ -5,6 +5,24 @@ lesson: how-insurance-works
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### Four neighbouring farmers agree that if any one of them loses a barn, all four contribute to rebuilding it. Which technique is this?
+
+- [x] Sharing
+- [ ] Transfer
+- [ ] Retention
+- [ ] Reduction
+
+**Sharing spreads a risk across a group**, each carrying part of it. Nobody has
+moved the risk off the group; they have divided it within one.
+
+**Transfer is the near miss.** Transfer moves the risk to somebody else
+entirely — an insurer, or a party accepting it under a hold harmless clause.
+Here the four farmers still bear every loss between them.
+
+This is the principle a **reciprocal** is built on, where subscribers insure
+one another, and it is why a mutual's policyholders are members rather than
+customers.
+
 ### What is the contract or device for transferring risk from a person or business to an insurance company?
 
 - [x] Insurance

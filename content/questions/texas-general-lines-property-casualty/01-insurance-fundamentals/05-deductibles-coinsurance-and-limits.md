@@ -5,6 +5,58 @@ lesson: deductibles-coinsurance-and-limits
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### A $400,000 dwelling carries a 2% windstorm deductible. A storm causes $25,000 of damage. What does the insurer pay?
+
+- [x] $17,000
+- [ ] $24,500
+- [ ] $25,000
+- [ ] $8,000
+
+**A percentage deductible is a proportion of the INSURED VALUE, not of the
+loss.** 2% of $400,000 is **$8,000**, whatever the damage came to. The insured
+absorbs $8,000 and the insurer pays **$17,000**.
+
+**$24,500 is the trap** — 2% of the $25,000 loss. It is the intuitive reading
+and it is wrong, and on a large dwelling with modest damage the difference is
+the whole claim.
+
+This is why a coastal Texas policyholder with a 2% wind deductible on a
+$400,000 home is effectively uninsured for anything under $8,000.
+
+### Which limit describes the most a policy will pay for all losses in the policy period?
+
+- [x] Aggregate
+- [ ] Per occurrence
+- [ ] Combined single limit
+- [ ] Split limit
+
+**The aggregate is the ceiling for the whole period.** Once exhausted, **the
+policy is finished even though the period has not ended** — which is the
+consequence worth carrying, because an insured with an exhausted aggregate and
+four months left has no coverage at all.
+
+**Per occurrence** is the most for any one event, and a policy usually has
+both: each event capped, and the year capped.
+
+### A policy shows a single limit of $500,000 covering bodily injury and property damage together. What is that called?
+
+- [x] A combined single limit
+- [ ] A split limit
+- [ ] An aggregate limit
+- [ ] A per-person limit
+
+**A combined single limit is one figure covering bodily injury and property
+damage together, in any proportion.** A $500,000 CSL can pay $450,000 of
+injury and $50,000 of damage, or the reverse.
+
+**Split limits** are the alternative, written as three numbers — 100/300/50
+meaning $100,000 bodily injury per person, $300,000 bodily injury per
+accident, and $50,000 property damage per accident.
+
+**The CSL is more flexible for the insured**, because nothing is stranded: a
+split limit can leave property damage cover unused while the bodily injury
+limit is exhausted.
+
 ### A building is worth $500,000. The policy carries an 80% coinsurance clause, a $300,000 limit and a $1,000 deductible. Fire causes $100,000 of damage. What does the policy pay?
 
 - [ ] $100,000

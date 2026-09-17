@@ -576,6 +576,44 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'd6da7545-7089-5723-b783-f1cf392bdfb7', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'how-insurance-works'),
+       'Four neighbouring farmers agree that if any one of them loses a barn, all four contribute to rebuilding it. Which technique is this?', '**Sharing spreads a risk across a group**, each carrying part of it. Nobody has moved the risk off the group; they have divided it within one. **Transfer is the near miss.** Transfer moves the risk to somebody else entirely — an insurer, or a party accepting it under a hold harmless clause. Here the four farmers still bear every loss between them. This is the principle a **reciprocal** is built on, where subscribers insure one another, and it is why a mutual''s policyholders are members rather than customers.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.II'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '39ebf1ce-3d7f-5e66-bd40-bbf42eeb8d32', 'd6da7545-7089-5723-b783-f1cf392bdfb7', c.id, 'Sharing', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'd4197534-f5ac-5f85-a93a-d5555388ef7c', 'd6da7545-7089-5723-b783-f1cf392bdfb7', c.id, 'Transfer', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '8f3e99ad-3934-5f62-8798-b058d5e98d4d', 'd6da7545-7089-5723-b783-f1cf392bdfb7', c.id, 'Retention', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'b3597e4d-d269-5e53-a3ce-65c77db7fdac', 'd6da7545-7089-5723-b783-f1cf392bdfb7', c.id, 'Reduction', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'd6da7545-7089-5723-b783-f1cf392bdfb7', c.id, '39ebf1ce-3d7f-5e66-bd40-bbf42eeb8d32'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select '4d35478a-a649-5bbe-b88b-0e7becef2a0e', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'how-insurance-works'),
        'What is the contract or device for transferring risk from a person or business to an insurance company?', '**Insurance is the transfer technique.** The insured hands the financial consequence of a loss to the insurer and pays a small certain amount instead of facing a large uncertain one. The distractors are all real terms from nearby: **adhesion** describes the *kind* of contract insurance is — drafted by one side, taken or left by the other. **The law of large numbers** is what lets the insurer accept the transfer, not the transfer itself. **Agency** is the relationship between the insurer and its producer.', 'draft'
@@ -1602,6 +1640,44 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'c43040d8-e9bf-5e9d-8abc-c550746acf08', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'valuing-a-loss'),
+       'Under a replacement-cost policy the insurer first pays actual cash value. What is the withheld amount called, and when is it released?', '**Recoverable depreciation is the gap between the ACV payment and the replacement cost**, and it is released when the insured actually repairs or replaces. **Under an ACV policy that same gap is non-recoverable** — never paid, because actual cash value is all the policy promised. The word that changes is the policy''s valuation basis, not the arithmetic. This is why a replacement-cost policyholder who takes the first cheque and never rebuilds ends up with ACV: **the second payment is conditional on the work, and doing nothing satisfies no condition.**', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.II'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '2b1eb293-6e32-5f66-8a29-6f3c8758dda1', 'c43040d8-e9bf-5e9d-8abc-c550746acf08', c.id, 'Recoverable depreciation, released once the work is actually done', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'efa08fb7-539f-572e-94e2-3b3da53f6753', 'c43040d8-e9bf-5e9d-8abc-c550746acf08', c.id, 'Non-recoverable depreciation, released at the insurer''s discretion', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '36d015f3-03c0-5fb2-b3ca-d63f984e57f3', 'c43040d8-e9bf-5e9d-8abc-c550746acf08', c.id, 'Salvage value, released when the damaged property is surrendered', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '101a082b-28dc-5b3e-a7dd-7c604f8f5d76', 'c43040d8-e9bf-5e9d-8abc-c550746acf08', c.id, 'A deductible, which is never released', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'c43040d8-e9bf-5e9d-8abc-c550746acf08', c.id, '2b1eb293-6e32-5f66-8a29-6f3c8758dda1'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select '068315b8-a668-5b65-b32a-3ac231b13c20', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'valuing-a-loss'),
        'How is actual cash value most commonly calculated?', '**Replacement cost minus depreciation.** Original purchase price is irrelevant — what matters is what it costs to replace the item today, reduced for the life it has already had.', 'draft'
@@ -1976,6 +2052,120 @@ on conflict (id) do update set body = excluded.body;
 
 insert into public.question_answers (question_id, course_id, correct_option_id)
 select '89b02a18-5924-5037-820e-7784abe509be', c.id, '70b7981a-c8cd-5ece-8eeb-8aa038545c76'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'd9dfd1c1-0f53-59ea-b142-14044ec2a22c', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'deductibles-coinsurance-and-limits'),
+       'A $400,000 dwelling carries a 2% windstorm deductible. A storm causes $25,000 of damage. What does the insurer pay?', '**A percentage deductible is a proportion of the INSURED VALUE, not of the loss.** 2% of $400,000 is **$8,000**, whatever the damage came to. The insured absorbs $8,000 and the insurer pays **$17,000**. **$24,500 is the trap** — 2% of the $25,000 loss. It is the intuitive reading and it is wrong, and on a large dwelling with modest damage the difference is the whole claim. This is why a coastal Texas policyholder with a 2% wind deductible on a $400,000 home is effectively uninsured for anything under $8,000.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.II'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'aea813d9-2d47-5a61-b76a-512e2e1cedc5', 'd9dfd1c1-0f53-59ea-b142-14044ec2a22c', c.id, '$17,000', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'ce13262d-f4b9-5d9f-a09e-915cbc006495', 'd9dfd1c1-0f53-59ea-b142-14044ec2a22c', c.id, '$24,500', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'dbe82408-80b2-5069-8bd9-26369273fc7e', 'd9dfd1c1-0f53-59ea-b142-14044ec2a22c', c.id, '$25,000', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '5b218b6c-2bab-57c7-abe7-dd1d20e2f9f1', 'd9dfd1c1-0f53-59ea-b142-14044ec2a22c', c.id, '$8,000', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'd9dfd1c1-0f53-59ea-b142-14044ec2a22c', c.id, 'aea813d9-2d47-5a61-b76a-512e2e1cedc5'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'f3b2ab23-4d16-558f-ac41-696d29490066', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'deductibles-coinsurance-and-limits'),
+       'Which limit describes the most a policy will pay for all losses in the policy period?', '**The aggregate is the ceiling for the whole period.** Once exhausted, **the policy is finished even though the period has not ended** — which is the consequence worth carrying, because an insured with an exhausted aggregate and four months left has no coverage at all. **Per occurrence** is the most for any one event, and a policy usually has both: each event capped, and the year capped.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.II'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'b0d451e6-3b7a-5347-b156-f2ca2c0620c4', 'f3b2ab23-4d16-558f-ac41-696d29490066', c.id, 'Aggregate', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '510cbcf6-5bf5-55f6-bfdf-fd91c8f3f67a', 'f3b2ab23-4d16-558f-ac41-696d29490066', c.id, 'Per occurrence', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'afa8dae3-dbf1-56b3-9130-30fdecda56db', 'f3b2ab23-4d16-558f-ac41-696d29490066', c.id, 'Combined single limit', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '9f04b0f4-7c3a-545b-9bef-e566ea1a2315', 'f3b2ab23-4d16-558f-ac41-696d29490066', c.id, 'Split limit', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'f3b2ab23-4d16-558f-ac41-696d29490066', c.id, 'b0d451e6-3b7a-5347-b156-f2ca2c0620c4'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'ace50ff0-4fbe-5aba-bc64-ee8f925ea415', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'deductibles-coinsurance-and-limits'),
+       'A policy shows a single limit of $500,000 covering bodily injury and property damage together. What is that called?', '**A combined single limit is one figure covering bodily injury and property damage together, in any proportion.** A $500,000 CSL can pay $450,000 of injury and $50,000 of damage, or the reverse. **Split limits** are the alternative, written as three numbers — 100/300/50 meaning $100,000 bodily injury per person, $300,000 bodily injury per accident, and $50,000 property damage per accident. **The CSL is more flexible for the insured**, because nothing is stranded: a split limit can leave property damage cover unused while the bodily injury limit is exhausted.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.II'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'dcaaa7f6-f2d2-5c96-b8a6-22c767781e55', 'ace50ff0-4fbe-5aba-bc64-ee8f925ea415', c.id, 'A combined single limit', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '917ba18b-94e3-5201-82f9-510a44def9ab', 'ace50ff0-4fbe-5aba-bc64-ee8f925ea415', c.id, 'A split limit', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '6502e982-f054-5ec1-ada2-684a3b435539', 'ace50ff0-4fbe-5aba-bc64-ee8f925ea415', c.id, 'An aggregate limit', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '822ce02f-ffb3-5df9-ab19-ca3b9ddcee80', 'ace50ff0-4fbe-5aba-bc64-ee8f925ea415', c.id, 'A per-person limit', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'ace50ff0-4fbe-5aba-bc64-ee8f925ea415', c.id, 'dcaaa7f6-f2d2-5c96-b8a6-22c767781e55'
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
 on conflict (question_id) do update set
   correct_option_id = excluded.correct_option_id;

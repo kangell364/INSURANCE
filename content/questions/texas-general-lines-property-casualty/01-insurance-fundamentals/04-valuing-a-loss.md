@@ -5,6 +5,25 @@ lesson: valuing-a-loss
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### Under a replacement-cost policy the insurer first pays actual cash value. What is the withheld amount called, and when is it released?
+
+- [x] Recoverable depreciation, released once the work is actually done
+- [ ] Non-recoverable depreciation, released at the insurer's discretion
+- [ ] Salvage value, released when the damaged property is surrendered
+- [ ] A deductible, which is never released
+
+**Recoverable depreciation is the gap between the ACV payment and the
+replacement cost**, and it is released when the insured actually repairs or
+replaces.
+
+**Under an ACV policy that same gap is non-recoverable** — never paid, because
+actual cash value is all the policy promised. The word that changes is the
+policy's valuation basis, not the arithmetic.
+
+This is why a replacement-cost policyholder who takes the first cheque and
+never rebuilds ends up with ACV: **the second payment is conditional on the
+work, and doing nothing satisfies no condition.**
+
 ### How is actual cash value most commonly calculated?
 
 - [x] Replacement cost less depreciation
