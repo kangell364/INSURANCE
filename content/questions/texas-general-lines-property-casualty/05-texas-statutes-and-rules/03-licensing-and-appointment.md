@@ -5,6 +5,43 @@ lesson: licensing-and-appointment
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### All of the following are responsibilities of a producer to an applicant EXCEPT
+
+- [ ] Explaining the coverage
+- [x] Collecting the commission from the applicant
+- [ ] Field underwriting the risk
+- [ ] Reviewing the insured's coverage periodically
+
+**The insurer pays the producer, never the applicant.** Commission comes out
+of the premium the insurer collects, which is why an applicant pays a premium
+and not a premium plus a fee.
+
+That matters beyond bookkeeping: handing any part of the commission back to
+the insured to win the business is **rebating** — prohibited by §1806.104 for
+casualty, §1806.053 for automobile and §1806.153 for fire. A producer who
+cannot collect from the applicant equally cannot pay them.
+
+The other three are real duties. **Field underwriting** is the one people
+overlook: the producer is the only person who stands in front of the risk, and
+the underwriter sees nothing the application does not carry.
+
+### What is field underwriting?
+
+- [x] The producer's first assessment of the risk, through how the application is taken and what they observe
+- [ ] The underwriter's review of an application after it is submitted
+- [ ] An inspection carried out by an independent contractor before binding
+- [ ] Re-rating a policy at renewal based on loss experience
+
+**Field underwriting is the producer's job, not the underwriter's.** Asking the
+application's questions properly, noticing what a desk cannot see, and
+declining to submit business that plainly should not be written.
+
+**An application is only as good as the questions behind it.** A producer who
+lets an applicant gloss over a prior loss has not saved the sale — they have
+created a misrepresentation that may void the policy at the moment the insured
+needs it, and left themselves explaining why the fact never reached the
+insurer.
+
 ### An agent owes a client a return premium, does not spend it, but has not forwarded it eight months later. Is that a ground for discipline?
 
 - [x] Yes — §4005.101(b)(4) reaches money illegally *withheld*, not only money taken

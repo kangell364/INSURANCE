@@ -408,7 +408,18 @@ association of individuals** that writes insurance on the Lloyd's plan.
 under a power of attorney to act for the underwriters** of a Lloyd's plan.
 
 So the shape is: **individual underwriters, each liable for their own share,
-acting through an attorney in fact.** That is the same idea as Lloyd's of
+acting through an attorney in fact.**
+
+> **Is it an insurance company?** Structurally, no — it is an association of
+> individuals who underwrite in their own names and are **individually liable
+> for the contracts they enter**, which is what lets the market take unusual
+> risks that no company's board would approve.
+>
+> **In Texas, though, the code calls it an insurer.** §801.001(2) lists "a
+> Lloyd's plan" among the things "insurer" includes. So a general text saying
+> a Lloyd's association is *not* an insurance company and the Texas statute
+> calling it an insurer are both right, about different questions — one about
+> its structure, the other about which rules bind it. That is the same idea as Lloyd's of
 London — but **a Texas Lloyd's plan is a Texas entity under Chapter 941, not a
 branch of Lloyd's of London.** Confusing the two is the standard error.
 

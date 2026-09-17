@@ -7158,6 +7158,34 @@ authority is paid to the insurer, whether or not the agent forwards it. The
 insured is protected either way; **the exposure is entirely the agent's**, and
 that asymmetry is the whole reason the duty is enforced by licence.
 
+### What the job actually requires
+
+The duty is not only to refrain from things. A producer dealing with an
+applicant is expected to:
+
+- **Explain the coverage** — what it does, what it excludes, and what it
+  costs. §4005.101(b)(6) makes materially misrepresenting a policy's terms a
+  ground for discipline, so this one is enforceable.
+- **Field underwrite.** **Field underwriting is the producer's first look at
+  the risk** — asking the questions on the application properly, noticing what
+  the underwriter cannot see from a desk, and declining to submit business
+  that plainly should not be written. The agent is the only person who stands
+  in front of the risk, and an application is only as good as the questions
+  behind it.
+- **Review the coverage periodically**, because limits that were adequate when
+  written stop being adequate. A building insured to value in 2019 is not
+  insured to value now, and coinsurance turns that into the insured's problem.
+
+**And one thing that is emphatically not on the list: taking money from the
+applicant beyond the premium.**
+
+**The insurer pays the producer. The applicant never does.** Commission comes
+out of the premium the insurer collects, which is why an applicant's cheque is
+the full premium rather than a premium plus a fee — and why giving any part of
+that commission back to the insured to win the business is **rebating**,
+prohibited by **§1806.104** for casualty, **§1806.053** for automobile and
+**§1806.153** for fire.
+
 ### Beyond money
 
 The duty is not only about premium. A producer owes an applicant **honest
@@ -10673,7 +10701,18 @@ association of individuals** that writes insurance on the Lloyd's plan.
 under a power of attorney to act for the underwriters** of a Lloyd's plan.
 
 So the shape is: **individual underwriters, each liable for their own share,
-acting through an attorney in fact.** That is the same idea as Lloyd's of
+acting through an attorney in fact.**
+
+> **Is it an insurance company?** Structurally, no — it is an association of
+> individuals who underwrite in their own names and are **individually liable
+> for the contracts they enter**, which is what lets the market take unusual
+> risks that no company's board would approve.
+>
+> **In Texas, though, the code calls it an insurer.** §801.001(2) lists "a
+> Lloyd's plan" among the things "insurer" includes. So a general text saying
+> a Lloyd's association is *not* an insurance company and the Texas statute
+> calling it an insurer are both right, about different questions — one about
+> its structure, the other about which rules bind it. That is the same idea as Lloyd's of
 London — but **a Texas Lloyd's plan is a Texas entity under Chapter 941, not a
 branch of Lloyd's of London.** Confusing the two is the standard error.
 

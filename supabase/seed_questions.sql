@@ -16042,6 +16042,82 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '8e8426f8-b267-5c33-9e04-6f37372e6574', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'licensing-and-appointment'),
+       'All of the following are responsibilities of a producer to an applicant EXCEPT', '**The insurer pays the producer, never the applicant.** Commission comes out of the premium the insurer collects, which is why an applicant pays a premium and not a premium plus a fee. That matters beyond bookkeeping: handing any part of the commission back to the insured to win the business is **rebating** — prohibited by §1806.104 for casualty, §1806.053 for automobile and §1806.153 for fire. A producer who cannot collect from the applicant equally cannot pay them. The other three are real duties. **Field underwriting** is the one people overlook: the producer is the only person who stands in front of the risk, and the underwriter sees nothing the application does not carry.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'TX.I'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'efcb7e81-93cf-58f1-a3e1-f3475b542442', '8e8426f8-b267-5c33-9e04-6f37372e6574', c.id, 'Explaining the coverage', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '983d012a-c5ec-5ec2-85d0-e56e01c2107a', '8e8426f8-b267-5c33-9e04-6f37372e6574', c.id, 'Collecting the commission from the applicant', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '429c15b3-d169-5f0d-a54e-0f444ee28c91', '8e8426f8-b267-5c33-9e04-6f37372e6574', c.id, 'Field underwriting the risk', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'd97787f4-4c81-561d-8ee5-6ed05d476313', '8e8426f8-b267-5c33-9e04-6f37372e6574', c.id, 'Reviewing the insured''s coverage periodically', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '8e8426f8-b267-5c33-9e04-6f37372e6574', c.id, '983d012a-c5ec-5ec2-85d0-e56e01c2107a'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'c3828b0c-9f7d-5b78-b028-e9378ddc40ad', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'licensing-and-appointment'),
+       'What is field underwriting?', '**Field underwriting is the producer''s job, not the underwriter''s.** Asking the application''s questions properly, noticing what a desk cannot see, and declining to submit business that plainly should not be written. **An application is only as good as the questions behind it.** A producer who lets an applicant gloss over a prior loss has not saved the sale — they have created a misrepresentation that may void the policy at the moment the insured needs it, and left themselves explaining why the fact never reached the insurer.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'TX.I'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '8f723dd9-e391-5bb1-b9ef-da9da988b3e5', 'c3828b0c-9f7d-5b78-b028-e9378ddc40ad', c.id, 'The producer''s first assessment of the risk, through how the application is taken and what they observe', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '4e7e8aea-d98c-5239-aec9-8db57800a283', 'c3828b0c-9f7d-5b78-b028-e9378ddc40ad', c.id, 'The underwriter''s review of an application after it is submitted', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'b5d21993-9ef4-547b-bea8-e340b8c0a94b', 'c3828b0c-9f7d-5b78-b028-e9378ddc40ad', c.id, 'An inspection carried out by an independent contractor before binding', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '1a9fe869-48f5-5ad8-b636-b1fd93a70c9d', 'c3828b0c-9f7d-5b78-b028-e9378ddc40ad', c.id, 'Re-rating a policy at renewal based on loss experience', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'c3828b0c-9f7d-5b78-b028-e9378ddc40ad', c.id, '8f723dd9-e391-5bb1-b9ef-da9da988b3e5'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select 'a2184e4b-0070-50af-8716-c760019c71d0', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'licensing-and-appointment'),
        'An agent owes a client a return premium, does not spend it, but has not forwarded it eight months later. Is that a ground for discipline?', '**The subsection names three things: misappropriated, converted to the licence holder''s own use, or illegally withheld.** Withholding is enough on its own, and it is the one that catches otherwise honest agents. The money need never be spent. It is not the agent''s, and holding it is the violation — which is why premium is kept where it can be accounted for, and why **§4001.255** requires insurance records separate from any other business the agent runs.', 'draft'
