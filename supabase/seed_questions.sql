@@ -1678,6 +1678,44 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'a390d785-3604-5b7a-b054-10ab05192ab4', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'valuing-a-loss'),
+       'One chair from a matched set of six is destroyed. How does the pair and set clause settle it?', '**The pair and set clause pays the difference in value between the set before the loss and the set after.** That is more than the chair''s own value — five chairs are worth less than five sixths of six — and less than the whole set. **One sixth is the trap**, and it is the answer everybody reaches for. It ignores the entire point of the clause: matched property is worth more together than apart, so losing one piece damages the rest. **The insurer is not obliged to treat it as a total loss** of the set or to take the survivors, though it may choose to pay for the whole and claim them. The clause protects both sides — the insured against being paid as though the chair were a standalone item, the insurer against paying for six when one was lost.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.II'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '894dd70c-ef55-5f74-9e8e-7001f4e853db', 'a390d785-3604-5b7a-b054-10ab05192ab4', c.id, 'The difference between the set''s value before the loss and after it', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '85dcfa34-a168-5f3c-a354-5485a691fe75', 'a390d785-3604-5b7a-b054-10ab05192ab4', c.id, 'One sixth of the set''s value', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'ba7697f1-3b29-55e9-8a87-90d28c64face', 'a390d785-3604-5b7a-b054-10ab05192ab4', c.id, 'The full value of the set, with the insurer taking the five survivors', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'eae1753c-a911-51ec-9cea-ade66726948a', 'a390d785-3604-5b7a-b054-10ab05192ab4', c.id, 'Nothing, unless the whole set is destroyed', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'a390d785-3604-5b7a-b054-10ab05192ab4', c.id, '894dd70c-ef55-5f74-9e8e-7001f4e853db'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select '9c2dfde9-e8c6-5695-be51-be51bbd6cf41', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'valuing-a-loss'),
        'A roof costs $18,000 to replace. It has a 15-year life and is 9 years old. The policy is ACV with a $1,000 deductible. What does the insurer pay?', '**Work it in this order, every time:** 1. **Annual depreciation** — $18,000 ÷ 15 years = **$1,200 a year** 2. **Accumulated depreciation** — $1,200 × 9 years = **$10,800** 3. **Actual cash value** — $18,000 − $10,800 = **$7,200** 4. **Less the deductible** — $7,200 − $1,000 = **$6,200** **The deductible comes off LAST, after depreciation.** $7,200 is the answer you get by stopping at step 3 and forgetting the deductible; $11,000 comes from taking the deductible off the replacement cost first and then trying to depreciate. Both are the same mistake — doing the steps out of order.', 'draft'

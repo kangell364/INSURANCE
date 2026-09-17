@@ -5,6 +5,27 @@ lesson: valuing-a-loss
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### One chair from a matched set of six is destroyed. How does the pair and set clause settle it?
+
+- [x] The difference between the set's value before the loss and after it
+- [ ] One sixth of the set's value
+- [ ] The full value of the set, with the insurer taking the five survivors
+- [ ] Nothing, unless the whole set is destroyed
+
+**The pair and set clause pays the difference in value between the set before
+the loss and the set after.** That is more than the chair's own value — five
+chairs are worth less than five sixths of six — and less than the whole set.
+
+**One sixth is the trap**, and it is the answer everybody reaches for. It
+ignores the entire point of the clause: matched property is worth more
+together than apart, so losing one piece damages the rest.
+
+**The insurer is not obliged to treat it as a total loss** of the set or to
+take the survivors, though it may choose to pay for the whole and claim them.
+The clause protects both sides — the insured against being paid as though the
+chair were a standalone item, the insurer against paying for six when one was
+lost.
+
 ### A roof costs $18,000 to replace. It has a 15-year life and is 9 years old. The policy is ACV with a $1,000 deductible. What does the insurer pay?
 
 - [x] $6,200
