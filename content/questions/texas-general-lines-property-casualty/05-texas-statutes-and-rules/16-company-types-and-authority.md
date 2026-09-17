@@ -5,6 +5,41 @@ lesson: company-types-and-authority
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### All of the following statements about a stock insurance company are true EXCEPT
+
+- [ ] It has shareholders
+- [x] It is a participating company
+- [ ] It pays dividends to its stockholders
+- [ ] It is a non-participating company
+
+**A stock company is non-participating.** Its policyholders are customers, not
+owners, so they do not share in surplus. **Participating is the mutual's
+side** — a mutual's policyholders *are* its owners, so surplus returns to them
+as a policy dividend.
+
+Note that two options here say opposite things, and the stem asks which is
+false. **Find the pair that contradicts each other and decide which is true;
+the other is the answer.** That technique works whenever an EXCEPT stem
+contains a contradiction.
+
+The dividends in the third option are real but go to **shareholders**, out of
+profit — nothing to do with any policyholder.
+
+### A mutual insurer returns part of its surplus to policyholders. What is that payment, and is it guaranteed?
+
+- [x] A policy dividend, and no — it depends on the year's results
+- [ ] A policy dividend, and yes — it is fixed in the contract
+- [ ] A shareholder dividend, and no
+- [ ] A premium refund required by statute whenever surplus exists
+
+**A policy dividend is a return of premium to members who overpaid**, not a
+distribution of profit, because a mutual's policyholders own the company.
+
+**It cannot be guaranteed.** It depends on the year's loss and expense
+experience, and **promising one in advance is a misrepresentation** — which
+is how this appears in the unfair trade practices lesson rather than only
+here.
+
 ### Texas requires an insurance company to have permission before it may write business in the state. What is that permission called?
 
 - [x] A certificate of authority

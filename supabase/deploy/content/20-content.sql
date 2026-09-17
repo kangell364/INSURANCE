@@ -391,6 +391,13 @@ Poor's, Moody's and Fitch — publish opinions on an insurer's ability to pay
 claims. A letter grade is not a guarantee and the scales differ between
 agencies, so the rating is evidence rather than an answer.
 
+**What a rating weighs** is the insurer's ability to pay claims: its
+**loss experience** (does underwriting make or lose money), its **investment
+performance**, its **operating expenses**, and the adequacy of its **reserves
+and capital**. **Size is not strength** — the number of policyholders an
+insurer has says nothing about whether it can pay them, and a large insurer
+with poor loss experience is the weaker risk.
+
 **Texas does not tell you to check a particular rating.** It tells you to make
 a reasonable effort and not to place knowingly with an unsound insurer, and a
 current rating is the ordinary way an agent discharges that.

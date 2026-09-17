@@ -17790,6 +17790,44 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '91e6426a-f910-5d6f-b821-c0da681cf86a', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'surplus-lines'),
+       'Insurers may be classified by financial strength. All of the following bear on that EXCEPT', '**Size is not strength.** How many policyholders an insurer has says nothing about whether it can pay them — a large insurer with poor loss experience is the weaker risk, and a small one with disciplined underwriting may be the stronger. The other three are all measures of **whether money comes in faster than it goes out**: underwriting results, what the reserves earn while held, and the cost of running the company. This matters to a surplus lines agent in particular, because **§981.211** requires a reasonable effort to determine an insurer''s financial condition — and a long client list is not that determination.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'TX.II'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '4d17b0e9-3a28-52ba-956d-d27ee7340f37', '91e6426a-f910-5d6f-b821-c0da681cf86a', c.id, 'Loss experience', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '0c4ce2e2-c156-5999-9091-f1c60775f7ed', '91e6426a-f910-5d6f-b821-c0da681cf86a', c.id, 'Number of clients', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'e9520b4d-2535-5dfc-b5a4-aeb1a951950a', '91e6426a-f910-5d6f-b821-c0da681cf86a', c.id, 'Investment performance', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '7379d5da-62c4-57ca-8f2c-19dbf779568a', '91e6426a-f910-5d6f-b821-c0da681cf86a', c.id, 'Operating expenses', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '91e6426a-f910-5d6f-b821-c0da681cf86a', c.id, '0c4ce2e2-c156-5999-9091-f1c60775f7ed'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select 'e8e46a24-eb1f-53ec-be59-cea6eae56ab5', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'surplus-lines'),
        'What does Texas require of a surplus lines agent regarding an insurer''s finances?', '**§981.211** states the duty in exactly those terms: subsection (a) requires a **reasonable effort to determine the financial condition** before placing, and subsection (b) forbids **knowingly placing with a financially unsound insurer.** No particular rating or grade is prescribed. A current rating from A.M. Best or a similar agency is the ordinary way an agent discharges the duty — it is evidence, not the standard itself. The third option is precisely backwards, and the surplus lines document must say so in 11-point type: **the Department does not audit the finances or review the solvency** of a surplus lines insurer, and the policy has **no guaranty association** behind it. That is why the duty falls on the agent.', 'draft'
@@ -22002,6 +22040,82 @@ on conflict (id) do update set body = excluded.body;
 
 insert into public.question_answers (question_id, course_id, correct_option_id)
 select 'b076629b-8c29-5bd2-aea6-01600aecacf4', c.id, '70dd8cd6-c570-52cf-ae29-3b6fc88f8502'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '713084fe-2b17-5637-abb8-612f14b1adf7', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'company-types-and-authority'),
+       'All of the following statements about a stock insurance company are true EXCEPT', '**A stock company is non-participating.** Its policyholders are customers, not owners, so they do not share in surplus. **Participating is the mutual''s side** — a mutual''s policyholders *are* its owners, so surplus returns to them as a policy dividend. Note that two options here say opposite things, and the stem asks which is false. **Find the pair that contradicts each other and decide which is true; the other is the answer.** That technique works whenever an EXCEPT stem contains a contradiction. The dividends in the third option are real but go to **shareholders**, out of profit — nothing to do with any policyholder.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'TX.I'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '6eab8137-7c68-5f4e-85f0-d895c908c429', '713084fe-2b17-5637-abb8-612f14b1adf7', c.id, 'It has shareholders', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'a8c30265-9eba-56ea-bca1-4228a5abd203', '713084fe-2b17-5637-abb8-612f14b1adf7', c.id, 'It is a participating company', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '88d9a1a3-922b-561c-8044-47b68a29ae8f', '713084fe-2b17-5637-abb8-612f14b1adf7', c.id, 'It pays dividends to its stockholders', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'd48c9995-e557-531d-a5f6-ede09e9b8788', '713084fe-2b17-5637-abb8-612f14b1adf7', c.id, 'It is a non-participating company', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '713084fe-2b17-5637-abb8-612f14b1adf7', c.id, 'a8c30265-9eba-56ea-bca1-4228a5abd203'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'f86ca0fa-2457-581e-8595-12d5e16e5594', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'company-types-and-authority'),
+       'A mutual insurer returns part of its surplus to policyholders. What is that payment, and is it guaranteed?', '**A policy dividend is a return of premium to members who overpaid**, not a distribution of profit, because a mutual''s policyholders own the company. **It cannot be guaranteed.** It depends on the year''s loss and expense experience, and **promising one in advance is a misrepresentation** — which is how this appears in the unfair trade practices lesson rather than only here.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'TX.I'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'dfa82636-0108-54b7-b267-8ae277fc7960', 'f86ca0fa-2457-581e-8595-12d5e16e5594', c.id, 'A policy dividend, and no — it depends on the year''s results', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '52081fe9-9899-5382-8f27-544bad698175', 'f86ca0fa-2457-581e-8595-12d5e16e5594', c.id, 'A policy dividend, and yes — it is fixed in the contract', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '04d0c577-09a0-50f1-b336-056d354c9a3d', 'f86ca0fa-2457-581e-8595-12d5e16e5594', c.id, 'A shareholder dividend, and no', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '02b0adc0-b8a0-5835-8ba1-e2e240af0f69', 'f86ca0fa-2457-581e-8595-12d5e16e5594', c.id, 'A premium refund required by statute whenever surplus exists', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'f86ca0fa-2457-581e-8595-12d5e16e5594', c.id, 'dfa82636-0108-54b7-b267-8ae277fc7960'
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
 on conflict (question_id) do update set
   correct_option_id = excluded.correct_option_id;

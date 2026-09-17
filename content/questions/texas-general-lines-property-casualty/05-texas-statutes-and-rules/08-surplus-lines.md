@@ -5,6 +5,26 @@ lesson: surplus-lines
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### Insurers may be classified by financial strength. All of the following bear on that EXCEPT
+
+- [ ] Loss experience
+- [x] Number of clients
+- [ ] Investment performance
+- [ ] Operating expenses
+
+**Size is not strength.** How many policyholders an insurer has says nothing
+about whether it can pay them — a large insurer with poor loss experience is
+the weaker risk, and a small one with disciplined underwriting may be the
+stronger.
+
+The other three are all measures of **whether money comes in faster than it
+goes out**: underwriting results, what the reserves earn while held, and the
+cost of running the company.
+
+This matters to a surplus lines agent in particular, because **§981.211**
+requires a reasonable effort to determine an insurer's financial condition —
+and a long client list is not that determination.
+
 ### What does Texas require of a surplus lines agent regarding an insurer's finances?
 
 - [x] A reasonable effort to determine its financial condition, and no knowing placement with a financially unsound insurer

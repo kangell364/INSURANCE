@@ -161,6 +161,33 @@ associations, and **county and farm mutuals**. When a statute carves county and
 farm mutuals out of a requirement — Chapters 542 and 2203 both do — it is
 carving out a subset of this definition.
 
+### Participating and non-participating
+
+The ownership difference has a name on the policy side, and the exam uses it.
+
+**A participating policy lets the policyholder share in the insurer's divisible
+surplus**, paid out as a **policy dividend**. **A non-participating policy does
+not.**
+
+**Mutual → participating. Stock → non-participating.** That follows from who
+owns the company: a mutual's policyholders *are* the owners, so surplus
+returns to them; a stock company's surplus belongs to shareholders.
+
+Two consequences worth holding:
+
+- **A mutual's policy dividend is a return of premium** — a refund to members
+  who overpaid — rather than a distribution of profit. **A stock company's
+  dividend goes to shareholders**, out of profit, and has nothing to do with
+  any policyholder.
+- **Neither dividend is guaranteed.** A policy dividend depends on the year's
+  results and cannot be promised in advance; promising one is a
+  misrepresentation.
+
+> Strictly, a stock company *may* issue participating policies and a mutual may
+> issue non-participating ones. The exam asks for the general association, and
+> a stem describing a stock company as "participating" is testing whether you
+> know the default.
+
 ### Reciprocals and interinsurance exchanges
 
 **The subscribers insure each other.** Not a corporation at all: an
