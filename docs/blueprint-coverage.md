@@ -45,8 +45,22 @@ more than half again its share.
 Module 5 being heavy is defensible: statutes are specific, numerous, and
 carry figures a candidate has to recall exactly, so more questions per scored
 point is the right shape. Module 3 being light is not defensible on the same
-grounds, and it is the clearest gap the numbers show. **~90 questions would
-bring Module 3 to the exam's own weighting.**
+grounds, and it is the clearest gap the numbers show. **44 questions would
+bring Module 3 to the exam's own weighting** -- (0.169 x 699 - 82) / (1 -
+0.169). An earlier draft of this file said ~90, which was wrong.
+
+It is a gap in depth, not in coverage. All 26 policy types Section I names --
+HO-2 through HO-8, DP-1 through DP-3, CPP, commercial property and its five
+sub-forms, BOP, builders risk, cyber first-party, both floaters, NFIP,
+earthquake, mobile homes, watercraft, farmowners and windstorm -- are taught,
+and all 26 have at least one question. Three looked absent on a first pass and
+none were: the course writes "farmowners" as one word, and abbreviates the
+other two to BOP and NFIP.
+
+**BOP is listed twice in the outline**, at I.C.3 and again at IV.H. Its lesson
+and its 12 questions sit in Module 4, which matches IV.H. Any count that
+splits questions by module will therefore under-state Section I slightly, and
+there is no placement that avoids this.
 
 This is a statement about counts, not about quality. A thin bank on a
 well-taught topic is a different problem from a gap in the teaching, and only
