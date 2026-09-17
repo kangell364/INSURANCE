@@ -1241,6 +1241,18 @@ here because three things that *are* examined make no sense without it:
 - **Residual markets.** TWIA and the FAIR Plan exist because reinsurance for
   coastal wind became unaffordable, not because nobody wanted the premium.
 
+> **Where it sits inside the company.** An insurer of any size has a
+> **reinsurance** function whose job is exactly this — covering the company's
+> own exposure — alongside **underwriting** (which risks to accept and at what
+> price), **claims** (investigating and paying), **actuarial** (the rates and
+> reserves), **loss control** (helping insureds reduce the hazard), and
+> marketing.
+>
+> **Not on the Texas outline**, and no question here turns on it. Worth
+> knowing because a producer deals with underwriting and claims constantly,
+> and because it locates reinsurance as an ordinary function rather than an
+> exotic one.
+
 ## Direct and indirect loss
 
 **A direct loss is physical damage to property caused by a peril.** Fire burns
