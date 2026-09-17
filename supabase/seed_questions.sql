@@ -5516,6 +5516,158 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'f4c87233-3c98-5bb9-97c2-69d7e1ac5924', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'elements-of-a-contract'),
+       'An insurer refuses a claim because the insured never filed the proof of loss the policy requires. Which characteristic is at work?', '**Conditional — performance depends on conditions being met.** The insurer''s promise is real but not unconditional: notice, proof of loss, cooperation and protection of the property are all things the insured must do before the promise falls due. **Unilateral is the near miss.** That describes *who made an enforceable promise* — only the insurer. Conditional describes *what has to happen* before that promise must be performed. A policy is both, and a stem about a duty the insured failed to perform is asking about the second.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.III'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '132fd8df-43c3-5c7c-b0eb-caa506874bb5', 'f4c87233-3c98-5bb9-97c2-69d7e1ac5924', c.id, 'Conditional', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '67ff6c2f-7174-5914-baa2-d43f19fbd055', 'f4c87233-3c98-5bb9-97c2-69d7e1ac5924', c.id, 'Unilateral', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'a0355d23-b428-569a-96be-743c3763be36', 'f4c87233-3c98-5bb9-97c2-69d7e1ac5924', c.id, 'Aleatory', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '046e00ab-a7fd-58ab-96f9-f99caa8a587b', 'f4c87233-3c98-5bb9-97c2-69d7e1ac5924', c.id, 'Adhesion', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'f4c87233-3c98-5bb9-97c2-69d7e1ac5924', c.id, '132fd8df-43c3-5c7c-b0eb-caa506874bb5'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'bb5213e5-036f-5ec0-9e79-a3546d349c4d', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'elements-of-a-contract'),
+       'An applicant does not mention a prior arson conviction, and the insurer does not ask. Which characteristic is engaged?', '**Utmost good faith (*uberrimae fidei*) — each party relies on the other''s honesty**, to a higher standard than an ordinary commercial contract demands. The insurer cannot inspect everything, so it is entitled to full and honest disclosure of what it would want to know. This is the doctrine that makes **concealment** — silence about a material fact — a defence at all. In an ordinary arm''s-length contract, saying nothing is usually safe. In insurance it is not.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.III'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '5871bdbe-7e3b-5425-9245-b6436b0b55ab', 'bb5213e5-036f-5ec0-9e79-a3546d349c4d', c.id, 'Utmost good faith', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '6ddce668-eae6-5e4e-8c98-e7c6dd98efa4', 'bb5213e5-036f-5ec0-9e79-a3546d349c4d', c.id, 'Aleatory', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '5ecd1a36-5b77-53fd-97d9-933eb9d60139', 'bb5213e5-036f-5ec0-9e79-a3546d349c4d', c.id, 'Conditional', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '56ca27e7-6760-574b-80fc-72dd014c85da', 'bb5213e5-036f-5ec0-9e79-a3546d349c4d', c.id, 'Personal', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'bb5213e5-036f-5ec0-9e79-a3546d349c4d', c.id, '5871bdbe-7e3b-5425-9245-b6436b0b55ab'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'c383a651-f1ea-5756-bb5f-8eb07075af02', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'elements-of-a-contract'),
+       'A policy is issued to a 16-year-old. Which element of a valid contract is in question?', '**Competent parties — both sides must be legally capable of contracting.** That generally excludes minors, persons legally declared incompetent, and those under the influence of drugs or alcohol at the time of contracting. **It runs both ways, which is the part people miss.** The *insurer* must be competent too: licensed and authorised to transact insurance in the state. An unauthorised insurer''s contract fails this element as surely as a minor''s does.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.III'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'e50d6d02-673e-52e0-9af5-6ba6c338eb28', 'c383a651-f1ea-5756-bb5f-8eb07075af02', c.id, 'Competent parties', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'f928269c-cce8-582f-81c3-3697055f9ae5', 'c383a651-f1ea-5756-bb5f-8eb07075af02', c.id, 'Legal purpose', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '03ca28c1-4243-587e-85f4-942089f52d75', 'c383a651-f1ea-5756-bb5f-8eb07075af02', c.id, 'Consideration', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'f90eb3af-ddd2-56b0-a7c7-444617311f47', 'c383a651-f1ea-5756-bb5f-8eb07075af02', c.id, 'Offer and acceptance', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'c383a651-f1ea-5756-bb5f-8eb07075af02', c.id, 'e50d6d02-673e-52e0-9af5-6ba6c338eb28'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '0814236c-51a8-56d7-b137-b439ec8255c9', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'elements-of-a-contract'),
+       'Somebody insures a warehouse they have no connection to, hoping it burns. Which element does that fail?', '**Legal purpose — a contract must not be illegal or contrary to public policy.** Without an insurable interest the arrangement is a **wager** on somebody else''s misfortune, and wagering contracts are unenforceable. **This is what insurable interest is doing in contract terms.** It is not a separate rule bolted onto insurance; it is the legal purpose requirement doing its work, and that is why a policy without it is void rather than merely unpaid.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.III'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'fce570d1-71bd-5e2a-a446-a28b5cb3ee48', '0814236c-51a8-56d7-b137-b439ec8255c9', c.id, 'Legal purpose', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '399e26aa-42c4-5038-9be9-68759f1b20f3', '0814236c-51a8-56d7-b137-b439ec8255c9', c.id, 'Competent parties', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'a3f1bf01-7a72-534e-8651-eba70c5c0f49', '0814236c-51a8-56d7-b137-b439ec8255c9', c.id, 'Consideration', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'a4a5ce72-bcf5-50da-800c-f3858556ef70', '0814236c-51a8-56d7-b137-b439ec8255c9', c.id, 'Offer and acceptance', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '0814236c-51a8-56d7-b137-b439ec8255c9', c.id, 'fce570d1-71bd-5e2a-a446-a28b5cb3ee48'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select 'ae4f53cd-4890-5d56-b932-fd3cc2e9cc5b', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'elements-of-a-contract'),
        'An agent hands out business cards carrying the insurer''s logo to prospects at a golf outing. Which authority is that?', '**Implied authority is what is reasonably necessary to carry out the express authority, though the agreement never says it.** An agent authorised to solicit must be able to advertise, rent premises and introduce themselves — nobody writes "may hand out business cards" into an agency agreement, and nobody needs to. **Express** would be a power the agreement actually states. **Apparent** is what a member of the public reasonably believes from the *insurer''s* conduct, which is what makes a terminated agent still holding the insurer''s signs dangerous. Here the agent genuinely holds the authority — the question is only where it came from.', 'draft'

@@ -5,6 +5,71 @@ lesson: elements-of-a-contract
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### An insurer refuses a claim because the insured never filed the proof of loss the policy requires. Which characteristic is at work?
+
+- [x] Conditional
+- [ ] Unilateral
+- [ ] Aleatory
+- [ ] Adhesion
+
+**Conditional — performance depends on conditions being met.** The insurer's
+promise is real but not unconditional: notice, proof of loss, cooperation and
+protection of the property are all things the insured must do before the
+promise falls due.
+
+**Unilateral is the near miss.** That describes *who made an enforceable
+promise* — only the insurer. Conditional describes *what has to happen* before
+that promise must be performed. A policy is both, and a stem about a duty the
+insured failed to perform is asking about the second.
+
+### An applicant does not mention a prior arson conviction, and the insurer does not ask. Which characteristic is engaged?
+
+- [x] Utmost good faith
+- [ ] Aleatory
+- [ ] Conditional
+- [ ] Personal
+
+**Utmost good faith (*uberrimae fidei*) — each party relies on the other's
+honesty**, to a higher standard than an ordinary commercial contract demands.
+The insurer cannot inspect everything, so it is entitled to full and honest
+disclosure of what it would want to know.
+
+This is the doctrine that makes **concealment** — silence about a material
+fact — a defence at all. In an ordinary arm's-length contract, saying nothing
+is usually safe. In insurance it is not.
+
+### A policy is issued to a 16-year-old. Which element of a valid contract is in question?
+
+- [x] Competent parties
+- [ ] Legal purpose
+- [ ] Consideration
+- [ ] Offer and acceptance
+
+**Competent parties — both sides must be legally capable of contracting.**
+That generally excludes minors, persons legally declared incompetent, and
+those under the influence of drugs or alcohol at the time of contracting.
+
+**It runs both ways, which is the part people miss.** The *insurer* must be
+competent too: licensed and authorised to transact insurance in the state. An
+unauthorised insurer's contract fails this element as surely as a minor's
+does.
+
+### Somebody insures a warehouse they have no connection to, hoping it burns. Which element does that fail?
+
+- [x] Legal purpose
+- [ ] Competent parties
+- [ ] Consideration
+- [ ] Offer and acceptance
+
+**Legal purpose — a contract must not be illegal or contrary to public
+policy.** Without an insurable interest the arrangement is a **wager** on
+somebody else's misfortune, and wagering contracts are unenforceable.
+
+**This is what insurable interest is doing in contract terms.** It is not a
+separate rule bolted onto insurance; it is the legal purpose requirement doing
+its work, and that is why a policy without it is void rather than merely
+unpaid.
+
 ### An agent hands out business cards carrying the insurer's logo to prospects at a golf outing. Which authority is that?
 
 - [x] Implied authority
