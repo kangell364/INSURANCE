@@ -5,6 +5,46 @@ lesson: representations-warranties-and-concealment
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### An applicant completes an application with information she believes to be true. What is she making?
+
+- [x] Representations
+- [ ] Warranties
+- [ ] Misrepresentations
+- [ ] Material misrepresentations
+
+**A representation is a statement believed true** — an applicant's honest
+answer, given to the best of their knowledge. That is what an application
+consists of, and it is why an honest mistake is not automatically fatal to
+coverage.
+
+**It only becomes a misrepresentation if it turns out false**, and only
+**material** if the truth would have changed the insurer's decision — to
+decline, to charge more, or to issue different terms. Belief at the time is
+what makes it a representation; accuracy is a separate question.
+
+**Warranties** are the other kind of statement entirely: guaranteed true
+rather than believed true, and used mainly in commercial lines.
+
+### A statement guaranteed to be true is what?
+
+- [x] A warranty
+- [ ] A representation
+- [ ] A material misrepresentation
+- [ ] A concealment
+
+**A warranty is guaranteed true**, which is why breaching one is so much more
+serious than being wrong in a representation: **the insurer need not show the
+breach caused the loss.**
+
+The single sentence that separates the pair: **representation = believed
+true; warranty = guaranteed true.**
+
+That difference in standard explains the difference in consequence. An honest
+applicant who is mistaken has made a representation and may well keep their
+coverage. Somebody who guaranteed a burglar alarm would be maintained and let
+it fail has broken a promise — and the policy can be voided even if the loss
+was a fire.
+
 ### An applicant states the roof was replaced in 2019. It was 2017, and they genuinely misremembered. What is this?
 
 - [x] A misrepresentation, avoidable only if material and relied on

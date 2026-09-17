@@ -6580,6 +6580,82 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'c217b1a8-f1d5-5a32-82d0-ceb556f0644e', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'representations-warranties-and-concealment'),
+       'An applicant completes an application with information she believes to be true. What is she making?', '**A representation is a statement believed true** — an applicant''s honest answer, given to the best of their knowledge. That is what an application consists of, and it is why an honest mistake is not automatically fatal to coverage. **It only becomes a misrepresentation if it turns out false**, and only **material** if the truth would have changed the insurer''s decision — to decline, to charge more, or to issue different terms. Belief at the time is what makes it a representation; accuracy is a separate question. **Warranties** are the other kind of statement entirely: guaranteed true rather than believed true, and used mainly in commercial lines.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.III'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'ff6c42cb-663c-572a-bd54-9097b64ddeaa', 'c217b1a8-f1d5-5a32-82d0-ceb556f0644e', c.id, 'Representations', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '59569319-705f-5f30-846d-8950533f2e15', 'c217b1a8-f1d5-5a32-82d0-ceb556f0644e', c.id, 'Warranties', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '6c47c5e6-319f-5218-a23f-931aa19de125', 'c217b1a8-f1d5-5a32-82d0-ceb556f0644e', c.id, 'Misrepresentations', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '6906b0b3-c6df-5a89-8031-5988e51aa455', 'c217b1a8-f1d5-5a32-82d0-ceb556f0644e', c.id, 'Material misrepresentations', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'c217b1a8-f1d5-5a32-82d0-ceb556f0644e', c.id, 'ff6c42cb-663c-572a-bd54-9097b64ddeaa'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '39da84de-1187-528f-9abe-106557b52254', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'representations-warranties-and-concealment'),
+       'A statement guaranteed to be true is what?', '**A warranty is guaranteed true**, which is why breaching one is so much more serious than being wrong in a representation: **the insurer need not show the breach caused the loss.** The single sentence that separates the pair: **representation = believed true; warranty = guaranteed true.** That difference in standard explains the difference in consequence. An honest applicant who is mistaken has made a representation and may well keep their coverage. Somebody who guaranteed a burglar alarm would be maintained and let it fail has broken a promise — and the policy can be voided even if the loss was a fire.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.III'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '274429db-26d5-5747-ab03-e1166b785ac9', '39da84de-1187-528f-9abe-106557b52254', c.id, 'A warranty', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'ff4c66c7-c3c4-522d-9f67-6758bff761f8', '39da84de-1187-528f-9abe-106557b52254', c.id, 'A representation', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '62bb07b7-065a-5d79-bcbd-1279fbe4afa6', '39da84de-1187-528f-9abe-106557b52254', c.id, 'A material misrepresentation', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '55f4c6ca-5b31-5d0c-9d5c-0e38237a08e9', '39da84de-1187-528f-9abe-106557b52254', c.id, 'A concealment', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '39da84de-1187-528f-9abe-106557b52254', c.id, '274429db-26d5-5747-ab03-e1166b785ac9'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select 'db1e9a6e-0f71-51ca-8e6a-78d2283430b3', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'representations-warranties-and-concealment'),
        'An applicant states the roof was replaced in 2019. It was 2017, and they genuinely misremembered. What is this?', 'A **representation** is a statement believed true when made. A false one is a **misrepresentation**, and on its own it costs nothing: the insurer must also show the falsehood was **material** and that it **relied** on it. A two-year error in a roof date probably is not.', 'draft'
