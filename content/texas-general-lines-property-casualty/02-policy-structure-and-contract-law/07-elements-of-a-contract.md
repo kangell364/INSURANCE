@@ -11,9 +11,19 @@ review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 
 # Why a policy is a contract, and what kind
 
-An insurance policy is a legally enforceable agreement. The exam asks two
-separate questions about that: what makes it enforceable at all, and what
-makes it a peculiar sort of contract.
+**A contract is a legally enforceable agreement between competent parties, in
+which each promises a certain performance in exchange for a certain
+consideration.**
+
+An insurance policy is one. The exam asks two separate questions about that:
+what makes it enforceable at all, and what makes it a peculiar sort of
+contract.
+
+Notice that the definition already contains three of the four elements —
+competent parties, agreement, consideration. **A stem describing "an agreement
+between two competent parties promising performance for consideration" is
+asking for the word *contract*, not for one of its parts**, and offer,
+acceptance and consideration will all be sitting there as distractors.
 
 ## The four elements
 

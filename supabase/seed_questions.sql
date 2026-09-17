@@ -5554,6 +5554,82 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '24078801-d286-5289-add2-dce465d346d1', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'elements-of-a-contract'),
+       'Which of the following is NOT an element of a legal contract?', '**Unilateral is a characteristic, not an element.** The two lists do different jobs and the exam moves between them deliberately. **The elements are what a contract must have to exist at all** — offer and acceptance, consideration, competent parties, legal purpose. Miss one and there is no contract. **The characteristics describe what kind of contract insurance is** once it exists — adhesion, aleatory, unilateral, conditional, personal, utmost good faith. An ordinary contract needs the elements too; only insurance has this particular set of characteristics. **So the test is: would its absence mean no contract, or a different sort of contract?** A contract with no legal purpose does not exist. A contract that is not unilateral exists perfectly well — it is simply bilateral, like most commercial agreements.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.III'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'a167c0d9-ef14-5c3e-a37a-a93c7030ec52', '24078801-d286-5289-add2-dce465d346d1', c.id, 'Unilateral', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '648efd05-d991-5a11-9f82-cf8d488ec437', '24078801-d286-5289-add2-dce465d346d1', c.id, 'Legal purpose', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '6d13a8ff-536a-5b7f-8be0-fdf4160277a3', '24078801-d286-5289-add2-dce465d346d1', c.id, 'Offer', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'd7d1d573-09ec-5566-96ed-b7bcf53a9777', '24078801-d286-5289-add2-dce465d346d1', c.id, 'Acceptance', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '24078801-d286-5289-add2-dce465d346d1', c.id, 'a167c0d9-ef14-5c3e-a37a-a93c7030ec52'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '40f689f1-c25e-5166-869f-a9755823fde6', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'elements-of-a-contract'),
+       'Which term describes a legal agreement between two competent parties that promises a certain performance in exchange for a certain consideration?', '**That is the definition of a contract**, and the definition names three of its own four elements — competent parties, agreement, consideration. **Every wrong option here is a part of the thing being described.** An *offer* is a proposal of terms, an *acceptance* is agreeing to them, and *consideration* is what each side gives up. Put together with competent parties and a legal purpose, they make the contract; none of them is the contract. When a stem recites a definition made of components, check whether it is asking for the whole or the part. **The components will always be on the list.**', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.III'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '9df5f79c-eb62-51bc-927e-e74319fcfde1', '40f689f1-c25e-5166-869f-a9755823fde6', c.id, 'A contract', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '2e2c94a1-be92-564d-b75e-ea8ff350e7e7', '40f689f1-c25e-5166-869f-a9755823fde6', c.id, 'An offer', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '9903c53f-a25c-5118-8f9f-407b19c772ca', '40f689f1-c25e-5166-869f-a9755823fde6', c.id, 'An acceptance', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '3fcae4ed-9c77-500e-9f8a-468b5143e628', '40f689f1-c25e-5166-869f-a9755823fde6', c.id, 'A consideration', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '40f689f1-c25e-5166-869f-a9755823fde6', c.id, '9df5f79c-eb62-51bc-927e-e74319fcfde1'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select 'f4c87233-3c98-5bb9-97c2-69d7e1ac5924', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'elements-of-a-contract'),
        'An insurer refuses a claim because the insured never filed the proof of loss the policy requires. Which characteristic is at work?', '**Conditional — performance depends on conditions being met.** The insurer''s promise is real but not unconditional: notice, proof of loss, cooperation and protection of the property are all things the insured must do before the promise falls due. **Unilateral is the near miss.** That describes *who made an enforceable promise* — only the insurer. Conditional describes *what has to happen* before that promise must be performed. A policy is both, and a stem about a duty the insured failed to perform is asking about the second.', 'draft'

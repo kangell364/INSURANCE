@@ -5,6 +5,50 @@ lesson: elements-of-a-contract
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### Which of the following is NOT an element of a legal contract?
+
+- [x] Unilateral
+- [ ] Legal purpose
+- [ ] Offer
+- [ ] Acceptance
+
+**Unilateral is a characteristic, not an element.** The two lists do different
+jobs and the exam moves between them deliberately.
+
+**The elements are what a contract must have to exist at all** — offer and
+acceptance, consideration, competent parties, legal purpose. Miss one and
+there is no contract.
+
+**The characteristics describe what kind of contract insurance is** once it
+exists — adhesion, aleatory, unilateral, conditional, personal, utmost good
+faith. An ordinary contract needs the elements too; only insurance has this
+particular set of characteristics.
+
+**So the test is: would its absence mean no contract, or a different sort of
+contract?** A contract with no legal purpose does not exist. A contract that
+is not unilateral exists perfectly well — it is simply bilateral, like most
+commercial agreements.
+
+### Which term describes a legal agreement between two competent parties that promises a certain performance in exchange for a certain consideration?
+
+- [x] A contract
+- [ ] An offer
+- [ ] An acceptance
+- [ ] A consideration
+
+**That is the definition of a contract**, and the definition names three of
+its own four elements — competent parties, agreement, consideration.
+
+**Every wrong option here is a part of the thing being described.** An *offer*
+is a proposal of terms, an *acceptance* is agreeing to them, and
+*consideration* is what each side gives up. Put together with competent
+parties and a legal purpose, they make the contract; none of them is the
+contract.
+
+When a stem recites a definition made of components, check whether it is
+asking for the whole or the part. **The components will always be on the
+list.**
+
 ### An insurer refuses a claim because the insured never filed the proof of loss the policy requires. Which characteristic is at work?
 
 - [x] Conditional
