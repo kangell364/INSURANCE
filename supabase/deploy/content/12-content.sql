@@ -14,6 +14,209 @@ begin;
 insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
+select 'fb29d783-0b17-5cac-abd6-ab8e2df510b8', '4d5887f6-82b0-535b-bfd5-541974214ccd', c.id, 'Inland Marine',
+       'inland-marine', 'Coverage for property that moves, property that is unusually valuable, and property no standard form handles well.', 4,
+       'draft', 13
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select 'fb29d783-0b17-5cac-abd6-ab8e2df510b8', c.id, $lesson$# Insurance for things that will not stay still
+
+The name is historical and misleading. **Inland marine has almost nothing to
+do with water.**
+
+## Where the name comes from
+
+Marine insurance is the oldest form of insurance, covering cargo at sea. As
+goods moved inland by rail and road, marine underwriters followed the cargo
+off the ship — insuring it over land as well. That extension became **inland**
+marine, and over time it absorbed a much wider category: **property that
+moves, property that is held by somebody other than its owner, and property
+that a standard fire policy cannot value properly.**
+
+**Ocean marine** remains separate, covering hull, cargo, freight and
+protection and indemnity on the water.
+
+## What qualifies
+
+The distinguishing feature of an inland marine risk is one of:
+
+- **The property moves** — goods in transit, a contractor's tools, a
+  salesman's samples.
+- **The property is portable and high value** — jewellery, cameras, musical
+  instruments, fine art.
+- **The property is instrumental to transport or communication** — bridges,
+  tunnels, pipelines, radio towers. These do not move at all, and are insured
+  here because they were historically classed as "instrumentalities of
+  transportation."
+- **The property is in somebody else's care** — a bailee holding customers'
+  goods.
+
+## Why anybody buys it
+
+Four advantages over a standard property form:
+
+- **Coverage is usually open peril** rather than named peril.
+- **Coverage follows the property anywhere**, rather than attaching to
+  described premises.
+- **Valuation can be agreed in advance**, which matters enormously for a
+  painting or an antique whose actual cash value would be argued about for
+  months.
+- **There is normally no coinsurance clause** on scheduled items.
+
+**"Floater"** is the common name, because the coverage floats with the
+property.
+
+## Personal inland marine
+
+### The personal articles floater
+
+**Schedules high-value personal items individually**, each with a stated
+value. The standard categories:
+
+- jewellery
+- furs
+- cameras and photographic equipment
+- musical instruments
+- silverware
+- golfer's equipment
+- fine arts
+- stamp and coin collections
+
+Written as a **scheduled personal property** endorsement to a homeowners
+policy, or as a stand-alone floater.
+
+Why it is bought: the homeowners policy has **special limits** on exactly
+these categories, most of them applying **to theft**. Scheduling removes the
+sub-limit, broadens the perils to open peril, usually **removes the
+deductible**, and pins the value in advance.
+
+Two details that get tested:
+
+- **Fine arts are normally written on a valued basis**, and typically carry a
+  **breakage exclusion** unless it is bought back.
+- **Newly acquired property** of a scheduled class is usually covered
+  automatically for a limited period — commonly 30 days — provided the
+  insurer is notified and premium paid.
+
+### The personal property floater
+
+Covers **all** the insured's personal property on an open peril, worldwide
+basis, rather than a schedule of named items. Less common, and expensive.
+
+## Commercial inland marine
+
+### Nationwide marine definition
+
+Regulators publish a **nationwide marine definition** setting out what may be
+written as inland marine. It exists to stop insurers writing ordinary fire
+business on inland marine forms to escape rate regulation. **Controlled**
+lines are filed classes; **uncontrolled** lines may be written on
+individually negotiated terms.
+
+### The common commercial floaters
+
+**Contractor's equipment floater** — mobile tools, machinery and equipment,
+on site and in transit.
+
+**Installation floater** — materials and equipment from the time they leave
+the supplier until installed and accepted. The contractor's counterpart to
+builders risk.
+
+**Motor truck cargo** — the carrier's liability for goods it is hauling.
+
+**Transportation / trip transit** — goods in transit generally, or one
+specific shipment.
+
+**Bailee's customers** — a dry cleaner, a repair shop, a warehouse. **Covers
+the customers' property in the insured's care, and typically pays whether or
+not the bailee was negligent**, because arguing about fault with a customer
+whose suit you burned is bad business.
+
+**Accounts receivable** — the sums the insured cannot collect because the
+records were destroyed, plus the cost of reconstructing them and the extra
+collection expense.
+
+**Valuable papers and records** — the cost of reconstructing documents,
+manuscripts and records. It pays for **reconstruction**, not for the
+information's abstract worth.
+
+**Electronic data processing** — computer hardware, software and data, on an
+open peril basis, typically including **mechanical breakdown and electrical
+disturbance**, which standard property forms exclude.
+
+**Signs, jewellers block, furriers block, physicians and surgeons
+equipment**, and **theatrical property** are further named classes.
+
+**Instrumentalities of transportation and communication** — bridges, tunnels,
+pipelines, power transmission lines, radio and television towers.
+
+### Bailee terminology
+
+- A **bailee** holds another's property. A **bailor** owns it.
+- A **bailee's customers form** covers the customers' goods regardless of
+  fault.
+- **Legal liability** forms cover only what the bailee is legally responsible
+  for — cheaper, and much less useful when the customer is angry.
+
+## How this is examined
+
+**"Which of these is an inland marine risk?"** — look for movement,
+portability with high value, bailment, or an instrumentality of
+transportation.
+
+**Why schedule jewellery?** — to remove the homeowners special limit, broaden
+to open peril, agree the value and drop the deductible.
+
+**Bailee's customers pays regardless of negligence.**
+
+**Accounts receivable and valuable papers pay for reconstruction**, not for
+the debt or the information as an asset.
+
+**A bridge is inland marine**, which feels wrong until you know the history.
+
+## Check yourself
+
+1. A photographer owns $30,000 of camera equipment used at client sites. What
+   form, and why not the homeowners policy?
+2. A dry cleaner's premises burn, destroying customers' garments. The cleaner
+   was not negligent. Which form pays the customers?
+3. Why does a floater usually have no coinsurance clause?
+4. A contractor's excavator is damaged while being towed between sites. Which
+   floater?
+5. A fire destroys a firm's ledgers and it cannot collect $200,000 of debts.
+   Which coverage, and what does it pay?
+
+## Answers
+
+1. A **personal articles floater** or a commercial camera floater. The
+   homeowners policy limits cameras, covers them on a named peril basis away
+   from home, and would settle on actual cash value.
+2. A **bailee's customers form**, which pays regardless of the bailee's
+   negligence.
+3. Because scheduled items carry **agreed or stated values** — the insurer has
+   already accepted the value, so there is nothing for a coinsurance clause to
+   police.
+4. A **contractor's equipment floater**.
+5. **Accounts receivable** coverage — the uncollectible sums, the cost of
+   reconstructing the records, and the extra collection expense.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select 'fb29d783-0b17-5cac-abd6-ab8e2df510b8', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.I'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
 select '6d2171b2-6a44-5f41-b8c4-52bd93262d4a', '4d5887f6-82b0-535b-bfd5-541974214ccd', c.id, 'The National Flood Insurance Program',
        'the-national-flood-insurance-program', 'Why flood is excluded everywhere else, and how the federal programme fills the gap.', 5,
        'draft', 13
@@ -216,221 +419,6 @@ on conflict (lesson_id) do update set body = excluded.body;
 
 insert into public.lesson_topics (lesson_id, topic_id, course_id)
 select '6d2171b2-6a44-5f41-b8c4-52bd93262d4a', t.id, t.course_id
-  from public.topics t
-  join public.courses c on c.id = t.course_id
- where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.I'
-on conflict (lesson_id, topic_id) do nothing;
-
-insert into public.lessons
-  (id, module_id, course_id, title, slug, summary, position, status,
-   estimated_minutes)
-select 'f2a692e9-7a38-5c5c-938c-371af3cfcd0f', '4d5887f6-82b0-535b-bfd5-541974214ccd', c.id, 'Other Property Policies',
-       'other-property-policies', 'Earthquake, mobile homes, watercraft, farmowners and windstorm — five smaller forms the blueprint names explicitly.', 6,
-       'draft', 14
-  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
-on conflict (id) do update set
-  title = excluded.title, summary = excluded.summary,
-  position = excluded.position, status = excluded.status,
-  estimated_minutes = excluded.estimated_minutes;
-
-insert into public.lesson_contents (lesson_id, course_id, body)
-select 'f2a692e9-7a38-5c5c-938c-371af3cfcd0f', c.id, $lesson$# Five risks the standard forms send elsewhere
-
-The blueprint lists these by name, so they are examined by name. Each exists
-because a standard homeowners or commercial form either excludes the peril or
-cannot handle the property.
-
-## Earthquake
-
-**Earth movement is excluded from every standard property form**, for the same
-reason as flood: the losses are correlated. One earthquake damages every
-building in a region simultaneously.
-
-Coverage is bought back by **endorsement** to a homeowners or commercial
-policy, or written as a **separate policy**.
-
-What to know:
-
-- **The exclusion is broader than "earthquake".** Earth movement includes
-  **landslide, mudslide, subsidence, sinkhole collapse and earth sinking,
-  rising or shifting**. Buying earthquake coverage does not necessarily buy
-  all of these back.
-- **Fire following an earthquake is covered by the standard policy.** The
-  earth movement exclusion is generally written so that **ensuing fire** is
-  not excluded. This is a long-standing rule and a reliable exam point.
-- **The deductible is a percentage**, not a flat sum — commonly **2% to 20%
-  of the coverage limit**, and it is applied to the limit rather than to the
-  loss. On a $400,000 dwelling, a 10% deductible is $40,000 before anything is
-  paid.
-- **Multiple shocks within a stated period** — commonly 72 hours — count as
-  **one occurrence**, so one deductible applies rather than several.
-
-## Mobile homes
-
-A mobile or manufactured home cannot be written on a standard homeowners
-policy: it is built to different standards, depreciates like a vehicle rather
-than appreciating like a house, and can be moved.
-
-**A mobile homeowners policy is a package**, structured like a homeowners
-policy with property and liability sections, but with changes:
-
-- **Loss settlement is normally actual cash value**, reflecting that the unit
-  depreciates. Replacement cost may be available by endorsement on newer
-  units.
-- **Transportation and permission to move** must be arranged. Coverage while
-  the home is being moved is typically added by endorsement, often with a
-  limited amount and a requirement that the insurer be notified beforehand.
-- **Eligibility** usually requires the unit to be of a minimum size, designed
-  for year-round living, and at a fixed location.
-- **Skirting, awnings, carports and attached structures** may need to be
-  listed to be covered.
-
-## Watercraft
-
-Homeowners policies cover **small, low-powered boats** and very little else.
-The typical arrangement covers a boat only up to a modest length and
-horsepower, on a narrow peril basis, with liability excluded for larger or
-faster craft.
-
-Anything beyond that needs a **boatowners or yacht policy**:
-
-- **A boatowners policy** is a package for smaller pleasure craft, covering
-  the hull, motor, trailer and equipment, plus liability and medical payments.
-- **A yacht policy** covers larger vessels and is structured on ocean marine
-  principles: **hull** coverage on the vessel, **protection and indemnity**
-  for liability, plus medical payments and coverage for the boat's trailer
-  and equipment.
-
-Points that are examined:
-
-- **Navigational limits.** The policy specifies the waters in which the
-  vessel is covered, and often a **lay-up period** during which it must be out
-  of the water — coverage is reduced or restricted outside those terms.
-- **Protection and indemnity is the marine world's liability coverage**, and
-  is broader than a general liability form in respect of crew and other
-  maritime exposures.
-- **Ocean marine perils** — the traditional list includes perils of the sea,
-  fire, jettison, piracy and barratry (wrongful acts by the master or crew).
-
-## Farmowners
-
-**A farmowners policy is a package covering both the farm residence and the
-farming operation** — the agricultural equivalent of a homeowners policy, and
-the reason farms are ineligible for a homeowners policy.
-
-It combines, in one contract:
-
-- **The dwelling and its contents**, on much the same basis as a homeowners
-  policy.
-- **Farm structures** — barns, silos, outbuildings, fences, corrals.
-- **Farm personal property** — machinery, equipment, tools, harvested crops,
-  feed, seed, fertiliser, and **livestock**.
-- **Farm liability**, which is broader than personal liability because the
-  farm is a business. It covers the farming operation, and typically **farm
-  employees**, whose injuries would otherwise fall outside a personal policy.
-
-Specific features:
-
-- **Livestock coverage** is usually written on a **named peril** basis and
-  frequently includes perils peculiar to the exposure — **electrocution,
-  attack by dogs or wild animals, accidental shooting, drowning** and **loading
-  and unloading**.
-- **Scheduled versus blanket** treatment of farm personal property works as it
-  does in commercial property: blanket for a shifting inventory of feed and
-  grain, scheduled for named machines.
-- **Crop insurance is separate**, largely federal, and is not part of a
-  farmowners policy.
-- **Mobile agricultural equipment in transit** may need inland marine.
-
-## Windstorm
-
-Wind is a **covered peril** on standard property forms in most of the country.
-In coastal areas it is frequently **excluded or heavily deductible**, because
-the exposure is concentrated: one hurricane damages an entire coastline.
-
-Where the private market withdraws, coverage comes from a **residual market**
-— a state-created insurer of last resort. Two mechanisms appear:
-
-- **A windstorm pool or association**, writing wind and hail coverage in a
-  designated coastal area.
-- **A FAIR Plan** — Fair Access to Insurance Requirements — writing basic
-  property coverage for those unable to obtain it in the voluntary market,
-  usually because of location or property condition rather than the owner's
-  conduct.
-
-Both are funded by **compulsory membership of the insurers writing in the
-state**, which is why they are described as the market insuring itself.
-
-Recurring features:
-
-- **A separate, percentage windstorm or hurricane deductible**, applied to the
-  coverage limit.
-- **A named-storm trigger**, where the percentage deductible applies only to
-  storms the weather service has named.
-- **Insurance-to-value and building-code requirements** as conditions of
-  eligibility.
-- **A waiting period** and a suspension of new business once a storm is
-  approaching.
-
-> **Texas is one of the states where this matters most.** The Texas Windstorm
-> Insurance Association and the Texas FAIR Plan Association are creatures of
-> the Texas Insurance Code, with their own eligibility rules, limits,
-> deductibles and claim deadlines. Those specifics belong to the Texas
-> statutes module and are examined there. What belongs here is the general
-> shape: wind excluded on the coast, a residual market filling the gap, funded
-> by compulsory membership.
-
-## How this is examined
-
-**Fire following an earthquake is covered** by the standard policy.
-
-**Earthquake deductibles are a percentage of the limit**, and multiple shocks
-in 72 hours are one occurrence.
-
-**Mobile homes settle at actual cash value.**
-
-**A farm is ineligible for a homeowners policy**, and why.
-
-**Livestock perils** — electrocution, attack by animals, accidental shooting,
-drowning.
-
-**Residual markets** exist because of correlated catastrophe exposure, and are
-funded by the insurers writing in the state.
-
-## Check yourself
-
-1. An earthquake cracks a gas line and the resulting fire destroys the house.
-   What is covered under a standard homeowners policy without an earthquake
-   endorsement?
-2. A $500,000 dwelling carries earthquake coverage with a 10% deductible. A
-   quake causes $70,000 of damage. What is paid?
-3. Why is a mobile home not written on a homeowners policy?
-4. A farmer keeps a herd of cattle, farms 400 acres and lives in a house on
-   the property. What policy?
-5. Cattle are killed by lightning. Covered under a farmowners policy?
-6. Why is windstorm excluded on the coast when it is covered inland?
-
-## Answers
-
-1. **The fire damage.** Ensuing fire is not excluded by the earth movement
-   exclusion. The shake damage itself is not covered.
-2. **$20,000.** The deductible is 10% of the **limit** — $50,000 — not of the
-   loss.
-3. It is built to different standards, depreciates rather than appreciates,
-   and can be moved. A mobile homeowners policy settles on **actual cash
-   value** and addresses transportation.
-4. A **farmowners** policy — a package covering the residence and the farming
-   operation. A farm is ineligible for homeowners.
-5. **Yes.** Lightning is a standard peril and electrocution is among the
-   perils livestock coverage typically names.
-6. Because the exposure is **correlated** — a single hurricane damages an
-   entire coastline at once, which defeats the law of large numbers. A
-   residual market fills the gap.$lesson$
-  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
-on conflict (lesson_id) do update set body = excluded.body;
-
-insert into public.lesson_topics (lesson_id, topic_id, course_id)
-select 'f2a692e9-7a38-5c5c-938c-371af3cfcd0f', t.id, t.course_id
   from public.topics t
   join public.courses c on c.id = t.course_id
  where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.I'

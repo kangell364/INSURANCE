@@ -14,6 +14,190 @@ begin;
 insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
+select 'dda2d47b-e8ee-5b9b-bffb-df02bb0b8812', '4d5887f6-82b0-535b-bfd5-541974214ccd', c.id, 'Dwelling Policies',
+       'dwelling-policies', 'The property-only forms for houses that do not qualify for a homeowners policy.', 2,
+       'draft', 13
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select 'dda2d47b-e8ee-5b9b-bffb-df02bb0b8812', c.id, $lesson$# When a homeowners policy will not do
+
+The dwelling policy is the older, narrower form. Where a homeowners policy is
+a package, **a dwelling policy is property insurance alone** — liability is
+optional and added by endorsement.
+
+## When it is used
+
+- **The dwelling is not owner-occupied** — a rental house, where the owner
+  needs the building covered but not the tenant's belongings.
+- **The dwelling is seasonal or vacant.**
+- **The insured does not qualify** for a homeowners policy — value too low,
+  condition too poor, occupancy of the wrong kind.
+- **The owner wants building coverage only.**
+
+Eligible dwellings are generally one- to four-family, with limits on
+permitted incidental business.
+
+## The coverages
+
+| | Covers |
+| --- | --- |
+| **Coverage A — Dwelling** | The building |
+| **Coverage B — Other Structures** | Detached structures, commonly **10% of A** |
+| **Coverage C — Personal Property** | Contents |
+| **Coverage D — Fair Rental Value** | Lost rent while the dwelling is unfit |
+| **Coverage E — Additional Living Expense** | The increase in living costs |
+
+Two differences from homeowners worth holding:
+
+- **Loss of use is split into two lettered coverages here** (D and E), where
+  homeowners combines them into Coverage D.
+- **Coverage B and C may be used interchangeably in some forms** — a portion
+  of the Coverage C limit can be applied to other structures, and vice versa.
+
+**DP-1 does not include Coverage E at all.** Additional living expense is a
+DP-2 and DP-3 feature.
+
+## The three forms
+
+### DP-1 — Basic
+
+**Named peril**, and the narrowest of the three.
+
+The standard perils are **fire, lightning and internal explosion**, with
+**extended coverage** available — windstorm, hail, explosion, riot, aircraft,
+vehicles, smoke, volcanic eruption — and **vandalism and malicious mischief**
+available on top of that.
+
+Two distinguishing features:
+
+- **Loss settlement is actual cash value.** DP-1 does not offer replacement
+  cost on the dwelling.
+- **Theft is not covered** and generally is not available.
+
+### DP-2 — Broad
+
+**Named peril**, with the broad list — everything in DP-1's extended coverage
+plus falling objects; weight of ice, snow or sleet; accidental discharge of
+water or steam; tearing apart of a heating system; freezing; and accidental
+damage from artificially generated electrical current.
+
+**Loss settlement is replacement cost** on the dwelling, subject to the
+usual insurance-to-value requirement.
+
+Additional living expense and fair rental value are both included.
+
+### DP-3 — Special
+
+**Open peril on the dwelling and other structures; named peril on personal
+property.**
+
+This is the same asymmetry as the HO-3, and for the same reason — and it is
+tested the same way. **Loss settlement is replacement cost** on the building.
+
+| | Dwelling | Contents | Settlement | Theft |
+| --- | --- | --- | --- | --- |
+| **DP-1** | Named (basic) | Named (basic) | **ACV** | No |
+| **DP-2** | Named (broad) | Named (broad) | **Replacement cost** | By endorsement |
+| **DP-3** | **Open peril** | Named (broad) | **Replacement cost** | By endorsement |
+
+## What a dwelling policy does not include
+
+**No liability.** Personal liability and medical payments are added by
+endorsement — which is precisely what a landlord needs, since a tenant
+injured on the property will look to the owner.
+
+**No theft coverage as standard.** Available by endorsement on DP-2 and DP-3;
+not on DP-1.
+
+**No automatic additional coverages of the homeowners kind.** The lists of
+debris removal, trees and shrubs, credit card coverage and so on are thinner
+or absent.
+
+## Endorsements a landlord will want
+
+- **Personal liability** and **medical payments**.
+- **Theft**, where the dwelling is furnished.
+- **Vandalism and malicious mischief** — often excluded once a dwelling has
+  been **vacant beyond 60 days**, which is the vacancy trap below.
+- **Broad theft** or **building items** coverage.
+- **Rental income**, beyond the included fair rental value.
+- **Automatic increase in insurance**, to keep pace with construction costs.
+
+## Vacancy and unoccupancy
+
+The two words are not synonyms, and the exam separates them.
+
+- **Unoccupied** — nobody is living there, but the contents remain. A family
+  on a three-month trip.
+- **Vacant** — **both the people and the contents are gone.** An empty house
+  between tenants.
+
+**Vacancy is the one that restricts coverage.** After a dwelling has been
+vacant beyond a stated period — commonly **60 consecutive days** — several
+perils are typically suspended, including **vandalism and malicious mischief,
+glass breakage, theft, sprinkler leakage** and **water damage**, and some
+forms reduce payment on any remaining covered loss.
+
+The underwriting logic is straightforward: an empty building is a magnet for
+vandalism and a slow burn nobody notices. The insured's fix is to tell the
+insurer and buy a **vacancy permit**.
+
+## How this is examined
+
+**Which form for a rental house**, and that liability must be added.
+
+**DP-1's actual cash value settlement**, contrasted with DP-2 and DP-3's
+replacement cost.
+
+**DP-3's open peril dwelling / named peril contents split.**
+
+**Theft is not standard** on any dwelling form.
+
+**Vacancy versus unoccupancy**, and the 60-day suspension of vandalism and
+related perils.
+
+**Coverage D and E as separate coverages** here, combined in homeowners.
+
+## Check yourself
+
+1. A landlord owns a rented house and wants building coverage plus protection
+   against a tenant's injury claim. What policy and what addition?
+2. Under a DP-1, a covered fire destroys a 30-year-old roof. How is the loss
+   settled?
+3. Which dwelling form matches the HO-3's peril structure?
+4. A house stands empty with all furniture removed for 75 days. Vandals break
+   in and damage it. Likely outcome?
+5. Is theft included in a standard DP-2?
+
+## Answers
+
+1. A **dwelling policy** with a **personal liability** (and medical payments)
+   endorsement.
+2. **Actual cash value** — replacement cost less depreciation. DP-1 offers no
+   replacement cost option.
+3. **DP-3** — open peril on the dwelling, named peril on contents.
+4. **No coverage.** The dwelling is **vacant** (people and contents gone)
+   beyond 60 days, and vandalism is among the perils suspended.
+5. **No.** Theft is added by endorsement on DP-2 and DP-3, and is not
+   available on DP-1.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select 'dda2d47b-e8ee-5b9b-bffb-df02bb0b8812', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.I'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
 select 'fdcf9975-9bd5-5b6a-8eec-66bbd30eddd0', '4d5887f6-82b0-535b-bfd5-541974214ccd', c.id, 'Commercial Property and the Package Policy',
        'commercial-property-and-the-package-policy', 'How a commercial package is assembled, the three causes of loss forms, and the income coverages that pay when the building is standing but the business is not.', 3,
        'draft', 18
@@ -257,209 +441,6 @@ on conflict (lesson_id) do update set body = excluded.body;
 
 insert into public.lesson_topics (lesson_id, topic_id, course_id)
 select 'fdcf9975-9bd5-5b6a-8eec-66bbd30eddd0', t.id, t.course_id
-  from public.topics t
-  join public.courses c on c.id = t.course_id
- where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.I'
-on conflict (lesson_id, topic_id) do nothing;
-
-insert into public.lessons
-  (id, module_id, course_id, title, slug, summary, position, status,
-   estimated_minutes)
-select 'fb29d783-0b17-5cac-abd6-ab8e2df510b8', '4d5887f6-82b0-535b-bfd5-541974214ccd', c.id, 'Inland Marine',
-       'inland-marine', 'Coverage for property that moves, property that is unusually valuable, and property no standard form handles well.', 4,
-       'draft', 13
-  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
-on conflict (id) do update set
-  title = excluded.title, summary = excluded.summary,
-  position = excluded.position, status = excluded.status,
-  estimated_minutes = excluded.estimated_minutes;
-
-insert into public.lesson_contents (lesson_id, course_id, body)
-select 'fb29d783-0b17-5cac-abd6-ab8e2df510b8', c.id, $lesson$# Insurance for things that will not stay still
-
-The name is historical and misleading. **Inland marine has almost nothing to
-do with water.**
-
-## Where the name comes from
-
-Marine insurance is the oldest form of insurance, covering cargo at sea. As
-goods moved inland by rail and road, marine underwriters followed the cargo
-off the ship — insuring it over land as well. That extension became **inland**
-marine, and over time it absorbed a much wider category: **property that
-moves, property that is held by somebody other than its owner, and property
-that a standard fire policy cannot value properly.**
-
-**Ocean marine** remains separate, covering hull, cargo, freight and
-protection and indemnity on the water.
-
-## What qualifies
-
-The distinguishing feature of an inland marine risk is one of:
-
-- **The property moves** — goods in transit, a contractor's tools, a
-  salesman's samples.
-- **The property is portable and high value** — jewellery, cameras, musical
-  instruments, fine art.
-- **The property is instrumental to transport or communication** — bridges,
-  tunnels, pipelines, radio towers. These do not move at all, and are insured
-  here because they were historically classed as "instrumentalities of
-  transportation."
-- **The property is in somebody else's care** — a bailee holding customers'
-  goods.
-
-## Why anybody buys it
-
-Four advantages over a standard property form:
-
-- **Coverage is usually open peril** rather than named peril.
-- **Coverage follows the property anywhere**, rather than attaching to
-  described premises.
-- **Valuation can be agreed in advance**, which matters enormously for a
-  painting or an antique whose actual cash value would be argued about for
-  months.
-- **There is normally no coinsurance clause** on scheduled items.
-
-**"Floater"** is the common name, because the coverage floats with the
-property.
-
-## Personal inland marine
-
-### The personal articles floater
-
-**Schedules high-value personal items individually**, each with a stated
-value. The standard categories:
-
-- jewellery
-- furs
-- cameras and photographic equipment
-- musical instruments
-- silverware
-- golfer's equipment
-- fine arts
-- stamp and coin collections
-
-Written as a **scheduled personal property** endorsement to a homeowners
-policy, or as a stand-alone floater.
-
-Why it is bought: the homeowners policy has **special limits** on exactly
-these categories, most of them applying **to theft**. Scheduling removes the
-sub-limit, broadens the perils to open peril, usually **removes the
-deductible**, and pins the value in advance.
-
-Two details that get tested:
-
-- **Fine arts are normally written on a valued basis**, and typically carry a
-  **breakage exclusion** unless it is bought back.
-- **Newly acquired property** of a scheduled class is usually covered
-  automatically for a limited period — commonly 30 days — provided the
-  insurer is notified and premium paid.
-
-### The personal property floater
-
-Covers **all** the insured's personal property on an open peril, worldwide
-basis, rather than a schedule of named items. Less common, and expensive.
-
-## Commercial inland marine
-
-### Nationwide marine definition
-
-Regulators publish a **nationwide marine definition** setting out what may be
-written as inland marine. It exists to stop insurers writing ordinary fire
-business on inland marine forms to escape rate regulation. **Controlled**
-lines are filed classes; **uncontrolled** lines may be written on
-individually negotiated terms.
-
-### The common commercial floaters
-
-**Contractor's equipment floater** — mobile tools, machinery and equipment,
-on site and in transit.
-
-**Installation floater** — materials and equipment from the time they leave
-the supplier until installed and accepted. The contractor's counterpart to
-builders risk.
-
-**Motor truck cargo** — the carrier's liability for goods it is hauling.
-
-**Transportation / trip transit** — goods in transit generally, or one
-specific shipment.
-
-**Bailee's customers** — a dry cleaner, a repair shop, a warehouse. **Covers
-the customers' property in the insured's care, and typically pays whether or
-not the bailee was negligent**, because arguing about fault with a customer
-whose suit you burned is bad business.
-
-**Accounts receivable** — the sums the insured cannot collect because the
-records were destroyed, plus the cost of reconstructing them and the extra
-collection expense.
-
-**Valuable papers and records** — the cost of reconstructing documents,
-manuscripts and records. It pays for **reconstruction**, not for the
-information's abstract worth.
-
-**Electronic data processing** — computer hardware, software and data, on an
-open peril basis, typically including **mechanical breakdown and electrical
-disturbance**, which standard property forms exclude.
-
-**Signs, jewellers block, furriers block, physicians and surgeons
-equipment**, and **theatrical property** are further named classes.
-
-**Instrumentalities of transportation and communication** — bridges, tunnels,
-pipelines, power transmission lines, radio and television towers.
-
-### Bailee terminology
-
-- A **bailee** holds another's property. A **bailor** owns it.
-- A **bailee's customers form** covers the customers' goods regardless of
-  fault.
-- **Legal liability** forms cover only what the bailee is legally responsible
-  for — cheaper, and much less useful when the customer is angry.
-
-## How this is examined
-
-**"Which of these is an inland marine risk?"** — look for movement,
-portability with high value, bailment, or an instrumentality of
-transportation.
-
-**Why schedule jewellery?** — to remove the homeowners special limit, broaden
-to open peril, agree the value and drop the deductible.
-
-**Bailee's customers pays regardless of negligence.**
-
-**Accounts receivable and valuable papers pay for reconstruction**, not for
-the debt or the information as an asset.
-
-**A bridge is inland marine**, which feels wrong until you know the history.
-
-## Check yourself
-
-1. A photographer owns $30,000 of camera equipment used at client sites. What
-   form, and why not the homeowners policy?
-2. A dry cleaner's premises burn, destroying customers' garments. The cleaner
-   was not negligent. Which form pays the customers?
-3. Why does a floater usually have no coinsurance clause?
-4. A contractor's excavator is damaged while being towed between sites. Which
-   floater?
-5. A fire destroys a firm's ledgers and it cannot collect $200,000 of debts.
-   Which coverage, and what does it pay?
-
-## Answers
-
-1. A **personal articles floater** or a commercial camera floater. The
-   homeowners policy limits cameras, covers them on a named peril basis away
-   from home, and would settle on actual cash value.
-2. A **bailee's customers form**, which pays regardless of the bailee's
-   negligence.
-3. Because scheduled items carry **agreed or stated values** — the insurer has
-   already accepted the value, so there is nothing for a coinsurance clause to
-   police.
-4. A **contractor's equipment floater**.
-5. **Accounts receivable** coverage — the uncollectible sums, the cost of
-   reconstructing the records, and the extra collection expense.$lesson$
-  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
-on conflict (lesson_id) do update set body = excluded.body;
-
-insert into public.lesson_topics (lesson_id, topic_id, course_id)
-select 'fb29d783-0b17-5cac-abd6-ab8e2df510b8', t.id, t.course_id
   from public.topics t
   join public.courses c on c.id = t.course_id
  where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.I'

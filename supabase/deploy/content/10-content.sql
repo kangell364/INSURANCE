@@ -14,6 +14,172 @@ begin;
 insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
+select '65f6bec4-114d-558c-9035-89adbd274ada', 'd6bff6c2-390e-518f-a728-b2a8ee99e87c', c.id, 'Territory and the Terrorism Risk Insurance Act',
+       'territory-and-the-terrorism-risk-insurance-act', 'Where a policy works geographically, and the federal backstop that made terrorism insurable again.', 10,
+       'draft', 11
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select '65f6bec4-114d-558c-9035-89adbd274ada', c.id, $lesson$# Two provisions about where and what
+
+Both are small, both appear in the blueprint twice — once under policy
+provisions and contract law, once under casualty policy provisions — and both
+are easy marks if you have read them once.
+
+## Territory
+
+**The territory (or policy territory) provision states where coverage
+applies.** A policy is not worldwide unless it says so.
+
+The usual definition in general liability and auto forms covers:
+
+- **The United States**, including its territories and possessions;
+- **Puerto Rico**; and
+- **Canada**.
+
+That is the core. Forms then extend it in two ways:
+
+- **International waters or airspace**, but only in transit between places in
+  the territory above.
+- **Anywhere in the world** for a narrow set of exposures — typically
+  **products** manufactured or sold in the territory that cause injury
+  elsewhere, and the **independent activities of a person temporarily
+  outside** the territory on the insured's business — **provided the suit is
+  brought within the territory**.
+
+That proviso is the examined point. **A worldwide extension usually still
+requires that the lawsuit be brought in the United States (or Canada).** A
+product made in Texas that injures somebody in Germany is covered if the suit
+is filed in a US court; a German judgment obtained in a German court
+generally is not.
+
+Property forms take a different approach: **coverage attaches to described
+premises**, and property away from the premises is covered only by specific
+extensions or by an inland marine form, which is where property genuinely in
+transit belongs.
+
+In **personal auto**, the territory is the United States, its territories and
+possessions, Puerto Rico and Canada. **Mexico is not included** — a driver
+going to Mexico needs a Mexican policy from a Mexican insurer, because Mexico
+does not recognise foreign auto insurance. This is a favourite question.
+
+## The Terrorism Risk Insurance Act
+
+### Why it exists
+
+Before September 2001, terrorism was not excluded from most commercial
+property and liability policies — it was simply not thought about, and was
+covered by silence. The losses that followed made insurers move to exclude
+it, and reinsurers to withdraw. Commercial property development stalled where
+lenders required terrorism coverage that no longer existed.
+
+**TRIA, enacted in 2002 and extended several times since, is a federal
+backstop: the government shares in insured losses from certified acts of
+terrorism, so that private insurers can afford to offer the coverage.**
+
+It is a **reinsurance programme**, not an insurance policy. Nobody buys a
+policy from TRIA.
+
+### How it works
+
+**Certification.** Losses are covered by the programme only for an act of
+terrorism **certified by the Secretary of the Treasury**, in consultation with
+other federal officials. Certification requires that the act be violent or
+dangerous to human life, property or infrastructure, committed as part of an
+effort to coerce the United States civilian population or influence policy,
+and that aggregate insured losses **exceed a statutory trigger**.
+
+**Mandatory offer.** **An insurer writing commercial property and casualty
+insurance must offer terrorism coverage** on terms not differing materially
+from the rest of the policy. This is the obligation that matters to a
+producer.
+
+**The insured may decline.** Coverage is not compulsory for the buyer.
+Where the insured rejects it, the insurer may attach a terrorism exclusion.
+**The rejection should be in writing**, and the premium for the coverage must
+be **separately stated** so the insured knows what they are accepting or
+declining.
+
+**Loss sharing.** Each insurer retains a deductible calculated as a
+percentage of its own earned premium. Above that, the federal government pays
+a share of losses and the insurer the remainder, subject to an annual
+aggregate cap on the whole programme.
+
+### What it does and does not cover
+
+- It applies to **commercial** lines. Personal lines are outside the
+  programme, although personal policies are generally silent on terrorism and
+  so tend to cover it.
+- **Nuclear, biological, chemical and radiological** losses are generally
+  excluded from the coverage offered, unless the underlying policy covers
+  them.
+- **Domestic as well as foreign** acts have been certifiable since the 2007
+  reauthorisation removed the requirement that the act be committed on behalf
+  of a foreign interest.
+- **Workers' compensation is different.** A workers' compensation insurer
+  **may not exclude terrorism at all**, because state law requires the policy
+  to cover statutory benefits whatever the cause. The insured has no right to
+  decline it there.
+
+That last point is the trap. **Everywhere else the insured may reject
+terrorism coverage; in workers' compensation they may not.**
+
+## How this is examined
+
+**Mexico** in personal auto territory.
+
+**The worldwide products extension**, and the requirement that suit be
+brought within the policy territory.
+
+**The mandatory offer** — the insurer must offer, the insured may decline,
+the premium must be separately stated, the rejection should be written.
+
+**Certification by the Secretary of the Treasury**, not by the insurer or the
+state regulator.
+
+**Workers' compensation cannot exclude terrorism.**
+
+## Check yourself
+
+1. An insured drives from Houston to Monterrey. Does the personal auto policy
+   respond to an accident there?
+2. A product manufactured in the United States injures a consumer in France,
+   who sues in a French court. Is the CGL's worldwide extension likely to
+   respond?
+3. Who certifies an act of terrorism for TRIA purposes?
+4. A commercial insured does not want terrorism coverage. May the insurer
+   simply leave it out of the quote?
+5. May a workers' compensation policy exclude terrorism?
+
+## Answers
+
+1. **No.** Mexico is outside the policy territory; a Mexican policy from a
+   Mexican insurer is required.
+2. **No.** The extension generally requires the **suit to be brought within
+   the policy territory**.
+3. **The Secretary of the Treasury**, in consultation with other federal
+   officials.
+4. **No.** The insurer must **offer** the coverage with the premium
+   separately stated; the insured then declines, preferably in writing.
+5. **No.** Statutory benefits must be paid whatever the cause, so terrorism
+   cannot be excluded from workers' compensation.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select '65f6bec4-114d-558c-9035-89adbd274ada', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.VI'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
 select '2aa5db82-0689-5f02-8850-03dec995ef82', '4d5887f6-82b0-535b-bfd5-541974214ccd', c.id, 'Homeowners Forms',
        'homeowners-forms', 'Six forms, six coverages and two sections — and the handful of differences the exam actually tests.', 1,
        'draft', 18
@@ -236,190 +402,6 @@ on conflict (lesson_id) do update set body = excluded.body;
 
 insert into public.lesson_topics (lesson_id, topic_id, course_id)
 select '2aa5db82-0689-5f02-8850-03dec995ef82', t.id, t.course_id
-  from public.topics t
-  join public.courses c on c.id = t.course_id
- where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.I'
-on conflict (lesson_id, topic_id) do nothing;
-
-insert into public.lessons
-  (id, module_id, course_id, title, slug, summary, position, status,
-   estimated_minutes)
-select 'dda2d47b-e8ee-5b9b-bffb-df02bb0b8812', '4d5887f6-82b0-535b-bfd5-541974214ccd', c.id, 'Dwelling Policies',
-       'dwelling-policies', 'The property-only forms for houses that do not qualify for a homeowners policy.', 2,
-       'draft', 13
-  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
-on conflict (id) do update set
-  title = excluded.title, summary = excluded.summary,
-  position = excluded.position, status = excluded.status,
-  estimated_minutes = excluded.estimated_minutes;
-
-insert into public.lesson_contents (lesson_id, course_id, body)
-select 'dda2d47b-e8ee-5b9b-bffb-df02bb0b8812', c.id, $lesson$# When a homeowners policy will not do
-
-The dwelling policy is the older, narrower form. Where a homeowners policy is
-a package, **a dwelling policy is property insurance alone** — liability is
-optional and added by endorsement.
-
-## When it is used
-
-- **The dwelling is not owner-occupied** — a rental house, where the owner
-  needs the building covered but not the tenant's belongings.
-- **The dwelling is seasonal or vacant.**
-- **The insured does not qualify** for a homeowners policy — value too low,
-  condition too poor, occupancy of the wrong kind.
-- **The owner wants building coverage only.**
-
-Eligible dwellings are generally one- to four-family, with limits on
-permitted incidental business.
-
-## The coverages
-
-| | Covers |
-| --- | --- |
-| **Coverage A — Dwelling** | The building |
-| **Coverage B — Other Structures** | Detached structures, commonly **10% of A** |
-| **Coverage C — Personal Property** | Contents |
-| **Coverage D — Fair Rental Value** | Lost rent while the dwelling is unfit |
-| **Coverage E — Additional Living Expense** | The increase in living costs |
-
-Two differences from homeowners worth holding:
-
-- **Loss of use is split into two lettered coverages here** (D and E), where
-  homeowners combines them into Coverage D.
-- **Coverage B and C may be used interchangeably in some forms** — a portion
-  of the Coverage C limit can be applied to other structures, and vice versa.
-
-**DP-1 does not include Coverage E at all.** Additional living expense is a
-DP-2 and DP-3 feature.
-
-## The three forms
-
-### DP-1 — Basic
-
-**Named peril**, and the narrowest of the three.
-
-The standard perils are **fire, lightning and internal explosion**, with
-**extended coverage** available — windstorm, hail, explosion, riot, aircraft,
-vehicles, smoke, volcanic eruption — and **vandalism and malicious mischief**
-available on top of that.
-
-Two distinguishing features:
-
-- **Loss settlement is actual cash value.** DP-1 does not offer replacement
-  cost on the dwelling.
-- **Theft is not covered** and generally is not available.
-
-### DP-2 — Broad
-
-**Named peril**, with the broad list — everything in DP-1's extended coverage
-plus falling objects; weight of ice, snow or sleet; accidental discharge of
-water or steam; tearing apart of a heating system; freezing; and accidental
-damage from artificially generated electrical current.
-
-**Loss settlement is replacement cost** on the dwelling, subject to the
-usual insurance-to-value requirement.
-
-Additional living expense and fair rental value are both included.
-
-### DP-3 — Special
-
-**Open peril on the dwelling and other structures; named peril on personal
-property.**
-
-This is the same asymmetry as the HO-3, and for the same reason — and it is
-tested the same way. **Loss settlement is replacement cost** on the building.
-
-| | Dwelling | Contents | Settlement | Theft |
-| --- | --- | --- | --- | --- |
-| **DP-1** | Named (basic) | Named (basic) | **ACV** | No |
-| **DP-2** | Named (broad) | Named (broad) | **Replacement cost** | By endorsement |
-| **DP-3** | **Open peril** | Named (broad) | **Replacement cost** | By endorsement |
-
-## What a dwelling policy does not include
-
-**No liability.** Personal liability and medical payments are added by
-endorsement — which is precisely what a landlord needs, since a tenant
-injured on the property will look to the owner.
-
-**No theft coverage as standard.** Available by endorsement on DP-2 and DP-3;
-not on DP-1.
-
-**No automatic additional coverages of the homeowners kind.** The lists of
-debris removal, trees and shrubs, credit card coverage and so on are thinner
-or absent.
-
-## Endorsements a landlord will want
-
-- **Personal liability** and **medical payments**.
-- **Theft**, where the dwelling is furnished.
-- **Vandalism and malicious mischief** — often excluded once a dwelling has
-  been **vacant beyond 60 days**, which is the vacancy trap below.
-- **Broad theft** or **building items** coverage.
-- **Rental income**, beyond the included fair rental value.
-- **Automatic increase in insurance**, to keep pace with construction costs.
-
-## Vacancy and unoccupancy
-
-The two words are not synonyms, and the exam separates them.
-
-- **Unoccupied** — nobody is living there, but the contents remain. A family
-  on a three-month trip.
-- **Vacant** — **both the people and the contents are gone.** An empty house
-  between tenants.
-
-**Vacancy is the one that restricts coverage.** After a dwelling has been
-vacant beyond a stated period — commonly **60 consecutive days** — several
-perils are typically suspended, including **vandalism and malicious mischief,
-glass breakage, theft, sprinkler leakage** and **water damage**, and some
-forms reduce payment on any remaining covered loss.
-
-The underwriting logic is straightforward: an empty building is a magnet for
-vandalism and a slow burn nobody notices. The insured's fix is to tell the
-insurer and buy a **vacancy permit**.
-
-## How this is examined
-
-**Which form for a rental house**, and that liability must be added.
-
-**DP-1's actual cash value settlement**, contrasted with DP-2 and DP-3's
-replacement cost.
-
-**DP-3's open peril dwelling / named peril contents split.**
-
-**Theft is not standard** on any dwelling form.
-
-**Vacancy versus unoccupancy**, and the 60-day suspension of vandalism and
-related perils.
-
-**Coverage D and E as separate coverages** here, combined in homeowners.
-
-## Check yourself
-
-1. A landlord owns a rented house and wants building coverage plus protection
-   against a tenant's injury claim. What policy and what addition?
-2. Under a DP-1, a covered fire destroys a 30-year-old roof. How is the loss
-   settled?
-3. Which dwelling form matches the HO-3's peril structure?
-4. A house stands empty with all furniture removed for 75 days. Vandals break
-   in and damage it. Likely outcome?
-5. Is theft included in a standard DP-2?
-
-## Answers
-
-1. A **dwelling policy** with a **personal liability** (and medical payments)
-   endorsement.
-2. **Actual cash value** — replacement cost less depreciation. DP-1 offers no
-   replacement cost option.
-3. **DP-3** — open peril on the dwelling, named peril on contents.
-4. **No coverage.** The dwelling is **vacant** (people and contents gone)
-   beyond 60 days, and vandalism is among the perils suspended.
-5. **No.** Theft is added by endorsement on DP-2 and DP-3, and is not
-   available on DP-1.$lesson$
-  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
-on conflict (lesson_id) do update set body = excluded.body;
-
-insert into public.lesson_topics (lesson_id, topic_id, course_id)
-select 'dda2d47b-e8ee-5b9b-bffb-df02bb0b8812', t.id, t.course_id
   from public.topics t
   join public.courses c on c.id = t.course_id
  where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.I'

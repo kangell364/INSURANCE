@@ -3020,6 +3020,17 @@ Two sentences to carry:
 - **Misrepresentation = saying something false. Concealment = not saying
   something true.**
 
+**Note where the bottom row goes.** Everything above fraud is a civil matter
+between the insured and the insurer — the policy is voidable, and the remedy
+is that the insurer need not pay. **Fraud leaves that frame entirely.** Texas
+defines a **"fraudulent insurance act"** at **§701.001(2)** and involves
+prosecutors and law enforcement, not just underwriters — see *Adjusters,
+Non-residents and Fraud* in Module 5.
+
+That is why the effect column says **void** rather than voidable: the insurer
+does not get a choice about a contract procured by crime, and the consequence
+does not stop at the claim being denied.
+
 ## Incontestability, and why property insurance is different
 
 Life and health policies carry an **incontestable clause**: after a stated
