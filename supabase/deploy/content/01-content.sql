@@ -284,28 +284,45 @@ The exam expects a list. Different textbooks phrase it differently, but the
 substance is consistent, and each item is really a way of protecting the law
 of large numbers.
 
-**A large number of similar exposure units.** Without them the mathematics
-does not work.
+**A large number of similar exposure units** — *homogeneous*. Without them the
+mathematics does not work.
 
-**The loss must be definite and measurable.** You must be able to say when it
-happened, where, from what cause, and what it cost. "My business felt less
-successful this year" is none of those things.
+**The loss must be definite and measurable** — *measurable*, or *definite*.
+You must be able to say when it happened, where, from what cause, and what it
+cost. "My business felt less successful this year" is none of those things.
 
-**The loss must be accidental** from the insured's standpoint — fortuitous,
-outside their control. This is the same principle that makes speculative risk
-uninsurable, seen from another angle.
+**The loss must be accidental** from the insured's standpoint — *accidental*,
+also called *fortuitous* or *unintentional*. Outside their control. This is
+the same principle that makes speculative risk uninsurable, seen from another
+angle.
 
-**The loss must not be catastrophic to the insurer.** If a single event could
-wipe out every exposure at once, pooling has not spread anything. This is why
-flood and earthquake sit outside standard property policies, and why Texas
-handles windstorm on the coast through a separate association.
+**The loss must not be catastrophic to the insurer** — *non-catastrophic*. If
+a single event could wipe out every exposure at once, pooling has not spread
+anything. This is why flood and earthquake sit outside standard property
+policies, and why Texas handles windstorm on the coast through a separate
+association.
 
-**The chance of loss must be calculable.** You need data, or the price is a
-guess.
+**The chance of loss must be calculable** — *calculable*, or *predictable*.
+You need data, or the price is a guess.
 
-**The premium must be economically feasible.** If the honest premium approaches
-the value of the thing insured, nobody sensible buys it. A policy costing
-$90,000 a year to insure a $100,000 building has no market.
+**The premium must be economically feasible** — *affordable*. If the honest
+premium approaches the value of the thing insured, nobody sensible buys it. A
+policy costing $90,000 a year to insure a $100,000 building has no market.
+
+### Learn the substance, not the count
+
+Some texts list six of these, some five, some seven. An option may appear as
+one word — **calculable, affordable, non-catastrophic, homogeneous,
+accidental, measurable** — or as a whole phrase, and the same idea travels
+under several names: *homogeneous* and *a large number of similar exposure
+units* are one item, not two.
+
+So a question is never really asking you to count. It is asking whether a
+described characteristic belongs, and **the wrong options are usually the
+inversions**: that a loss must be catastrophic, or intentional, or that the
+insured must be able to cause it. Each of those breaks the pooling the whole
+list exists to protect. Test a candidate by asking what it would do to the law
+of large numbers.
 
 ## Adverse selection
 
