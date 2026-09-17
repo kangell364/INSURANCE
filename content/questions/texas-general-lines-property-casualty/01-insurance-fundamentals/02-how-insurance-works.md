@@ -5,6 +5,27 @@ lesson: how-insurance-works
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### All of the following are requirements of an insurable pure risk EXCEPT
+
+- [ ] The premium must be affordable
+- [ ] The chance of loss must be calculable
+- [ ] The loss must be accidental
+- [x] The risk must be catastrophic for the insurer
+
+**Every requirement protects the pooling; this one destroys it.** A risk is
+insurable when a single event *cannot* wipe out many exposures at once — which
+is why flood and earthquake sit outside standard property forms, and why Texas
+handles coastal windstorm through TWIA.
+
+**Non-catastrophic** is the requirement. "Catastrophic" is its inversion, and
+inversion is how this stem is almost always built: the wrong option will be a
+requirement turned inside out — the loss must be *intentional*, the insured
+must be *able to cause* it, the risk must be *catastrophic*.
+
+**So you do not need the list memorised in order.** Ask what each option would
+do to the law of large numbers. Anything that breaks the pool is the answer to
+an EXCEPT question.
+
 ### What does the law of large numbers allow an insurer to do?
 
 - [ ] Guarantee that no individual insured suffers a loss

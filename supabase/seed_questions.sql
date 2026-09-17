@@ -500,6 +500,44 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '8ead0a4e-f66e-5999-a362-bf50fd2433b4', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'how-insurance-works'),
+       'All of the following are requirements of an insurable pure risk EXCEPT', '**Every requirement protects the pooling; this one destroys it.** A risk is insurable when a single event *cannot* wipe out many exposures at once — which is why flood and earthquake sit outside standard property forms, and why Texas handles coastal windstorm through TWIA. **Non-catastrophic** is the requirement. "Catastrophic" is its inversion, and inversion is how this stem is almost always built: the wrong option will be a requirement turned inside out — the loss must be *intentional*, the insured must be *able to cause* it, the risk must be *catastrophic*. **So you do not need the list memorised in order.** Ask what each option would do to the law of large numbers. Anything that breaks the pool is the answer to an EXCEPT question.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.II'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '8658424c-44e9-5158-8e14-2587448e68bc', '8ead0a4e-f66e-5999-a362-bf50fd2433b4', c.id, 'The premium must be affordable', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'b62f02cc-f040-546e-b52b-bf2390520918', '8ead0a4e-f66e-5999-a362-bf50fd2433b4', c.id, 'The chance of loss must be calculable', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '239d5b8e-4522-59b1-a117-75b224a61cde', '8ead0a4e-f66e-5999-a362-bf50fd2433b4', c.id, 'The loss must be accidental', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '6a7d60d5-adae-5c31-98da-91a0b5f3dfdf', '8ead0a4e-f66e-5999-a362-bf50fd2433b4', c.id, 'The risk must be catastrophic for the insurer', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '8ead0a4e-f66e-5999-a362-bf50fd2433b4', c.id, '6a7d60d5-adae-5c31-98da-91a0b5f3dfdf'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select 'c447cca8-8df4-5721-8769-c36832d1a30b', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'how-insurance-works'),
        'What does the law of large numbers allow an insurer to do?', 'It makes the **group** predictable, not the individual. The insurer still cannot say which house will burn — only roughly how many will, which is all that pricing requires.', 'draft'
