@@ -6,6 +6,44 @@
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '45a0a5ca-e2b8-5e6b-9ea1-bed2b23f4eed', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'risk-peril-and-hazard'),
+       'A flood is an example of what?', '**A flood is a peril — a cause of loss.** That a standard property form excludes it does not change what it is; exclusion is a statement about the policy, not about the cause. Flood is usually first met as "the thing that is hard to insure", which makes the exclusion option tempting. Resist it. The exclusion is why flood cover is bought through the **NFIP** rather than a reason to reclassify the peril. A *hazard* would be something increasing the chance of flood loss — building on a floodplain, or a failed levee.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.II'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '3581c509-c836-51e5-8dac-f4f56c1f1b97', '45a0a5ca-e2b8-5e6b-9ea1-bed2b23f4eed', c.id, 'A peril', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '5e7196f3-f43a-5568-bf49-ab5123f0551e', '45a0a5ca-e2b8-5e6b-9ea1-bed2b23f4eed', c.id, 'A hazard', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '2fa0f2fe-5071-5d7e-8c6f-68f1b30ed4d3', '45a0a5ca-e2b8-5e6b-9ea1-bed2b23f4eed', c.id, 'An excluded cause, and therefore not a peril', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '3f0580da-1a78-53e9-8cd1-e28e4e169647', '45a0a5ca-e2b8-5e6b-9ea1-bed2b23f4eed', c.id, 'A morale hazard', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '45a0a5ca-e2b8-5e6b-9ea1-bed2b23f4eed', c.id, '3581c509-c836-51e5-8dac-f4f56c1f1b97'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select '336af6d6-fd7f-5979-9342-cbb24788e5f0', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'risk-peril-and-hazard'),
        'A house burns down after a candle is left unattended near a curtain. What is the peril?', 'The **peril is the cause of loss** — fire. The unattended candle is the **hazard**, the condition that made fire more likely. The destroyed house is the **loss**. Separating those three is most of what this topic tests.', 'draft'

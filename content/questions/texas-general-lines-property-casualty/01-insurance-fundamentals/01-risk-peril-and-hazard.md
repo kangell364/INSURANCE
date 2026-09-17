@@ -5,6 +5,24 @@ lesson: risk-peril-and-hazard
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### A flood is an example of what?
+
+- [x] A peril
+- [ ] A hazard
+- [ ] An excluded cause, and therefore not a peril
+- [ ] A morale hazard
+
+**A flood is a peril — a cause of loss.** That a standard property form
+excludes it does not change what it is; exclusion is a statement about the
+policy, not about the cause.
+
+Flood is usually first met as "the thing that is hard to insure", which makes
+the exclusion option tempting. Resist it. The exclusion is why flood cover is
+bought through the **NFIP** rather than a reason to reclassify the peril.
+
+A *hazard* would be something increasing the chance of flood loss — building
+on a floodplain, or a failed levee.
+
 ### A house burns down after a candle is left unattended near a curtain. What is the peril?
 
 - [ ] The unattended candle

@@ -99,8 +99,9 @@ losses happen *to* people rather than being chosen *by* them.
 
 **A peril is the cause of loss itself.**
 
-Fire. Windstorm. Hail. Theft. Collision. Vandalism. When a policy sets out
-what it covers, it is listing perils, and two structures recur:
+Fire. Windstorm. Hail. Theft. Collision. Vandalism. **Flood. Earthquake.**
+When a policy sets out what it covers, it is listing perils, and two
+structures recur:
 
 - **Named perils.** The policy lists the causes it covers. If a cause is not
   on the list, there is no coverage. The burden sits with the insured to show
@@ -108,6 +109,18 @@ what it covers, it is listing perils, and two structures recur:
 - **Open perils** (you will also see "all risk" or "special form"). Every
   cause is covered *except* those the policy excludes. The burden flips: the
   insurer must show the loss came from an excluded cause.
+
+**A cause of loss does not stop being a peril because a policy excludes it.**
+Flood and earthquake are perils. Standard homeowners and commercial property
+forms exclude them, and that is a statement about the *policy*, not about what
+they are — which is why you buy flood cover through the NFIP and earthquake by
+endorsement or separate policy. The peril was always there; the question is
+only who agreed to pay for it.
+
+This catches people out, because flood is usually met as "the thing that is
+hard to insure". If a stem asks what a flood is, the answer is **a peril**.
+"Excluded cause" describes how a particular form treats it. "Catastrophic
+risk" describes why insurers are wary of it. Neither is what it *is*.
 
 That reversal of burden is the point, and it is tested. Open-perils coverage is
 broader not because the list of covered causes is longer but because the
