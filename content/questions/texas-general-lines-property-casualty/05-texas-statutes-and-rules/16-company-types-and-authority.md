@@ -5,6 +5,26 @@ lesson: company-types-and-authority
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### Texas requires an insurance company to have permission before it may write business in the state. What is that permission called?
+
+- [x] A certificate of authority
+- [ ] A producer's licence
+- [ ] An admittance licence
+- [ ] A certificate of eligibility
+
+**A company is authorised; a person is licensed.** The company's permission is
+a **certificate of authority** under Chapter 801. A **producer's licence**
+under Chapters 4001–4005 is a real document, but it is the *individual's*
+permission to sell — which is exactly why it is the distractor here.
+
+A stem may use "licence" loosely for the company's permission. Read what is
+being permitted, not the word chosen for it: if it is a **company** writing
+insurance, the answer is the certificate of authority.
+
+They also behave differently. **A certificate of authority runs until
+suspended or revoked** (§801.053); an agent's licence expires and must be
+renewed.
+
 ### An insurance company organised under the laws of Texas is what, in Texas?
 
 - [x] Domestic

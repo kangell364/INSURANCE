@@ -21970,6 +21970,44 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'e245380b-5c35-5dba-a982-0d8f34411550', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'company-types-and-authority'),
+       'Texas requires an insurance company to have permission before it may write business in the state. What is that permission called?', '**A company is authorised; a person is licensed.** The company''s permission is a **certificate of authority** under Chapter 801. A **producer''s licence** under Chapters 4001–4005 is a real document, but it is the *individual''s* permission to sell — which is exactly why it is the distractor here. A stem may use "licence" loosely for the company''s permission. Read what is being permitted, not the word chosen for it: if it is a **company** writing insurance, the answer is the certificate of authority. They also behave differently. **A certificate of authority runs until suspended or revoked** (§801.053); an agent''s licence expires and must be renewed.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'TX.I'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'e8a447f0-9cfc-554d-8224-5c1a7931d245', 'e245380b-5c35-5dba-a982-0d8f34411550', c.id, 'A certificate of authority', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '5b02a789-b1e7-51e1-a596-1c6094d83934', 'e245380b-5c35-5dba-a982-0d8f34411550', c.id, 'A producer''s licence', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '61adf3c4-c79b-5c69-a6ab-6faa3bc28d58', 'e245380b-5c35-5dba-a982-0d8f34411550', c.id, 'An admittance licence', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'c57c7d87-18fb-5071-8aad-1267dff7e66a', 'e245380b-5c35-5dba-a982-0d8f34411550', c.id, 'A certificate of eligibility', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'e245380b-5c35-5dba-a982-0d8f34411550', c.id, 'e8a447f0-9cfc-554d-8224-5c1a7931d245'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select '439ee431-88c9-5a64-86f1-2af1329c272c', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'company-types-and-authority'),
        'An insurance company organised under the laws of Texas is what, in Texas?', '**Domestic means organised under the laws of this state.** Texas is its home. The word is relative to wherever you are standing: **that same company is foreign in Oklahoma and foreign in every other state.** Domestic, foreign and alien describe a relationship between the insurer and the state asking, not a fixed property of the company. "Admitted" is the wrong axis — it answers whether Texas has authorised the company, not where it was organised.', 'draft'

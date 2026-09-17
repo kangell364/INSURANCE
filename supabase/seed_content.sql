@@ -10319,6 +10319,23 @@ without Chapter 981's conditions.
 **An admitted (authorized) insurer holds a certificate of authority from the
 Department. A non-admitted (unauthorized) insurer does not.**
 
+> **A company is authorised. A person is licensed.**
+>
+> The **company's** permission to write insurance in Texas is a **certificate
+> of authority**, under Chapter 801. The **individual's** permission to sell
+> it is an **agent's (producer's) licence**, under Chapters 4001–4005. Two
+> different documents, issued under different chapters, for two different
+> things.
+>
+> A stem may still use "licence" loosely — *"states require companies to have
+> a licence to sell insurance; the licence is called…"* — and the answer is
+> **certificate of authority**. "Producer's licence" is the reliable
+> distractor, because it is a real thing, just not the company's.
+>
+> The two behave differently too, which is the follow-up question:
+> **a certificate of authority runs until suspended or revoked; an agent's
+> licence expires and must be renewed.**
+
 **§801.052** — a certificate of authority **authorizes the insurer to engage in
 the business of insurance**, and **must state the specific kinds of insurance
 authorized under it.** An insurer authorised for property is not thereby
