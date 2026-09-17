@@ -149,8 +149,51 @@ asks for a signature.**
 
 ## Agency: why the agent's knowledge is the insurer's
 
-An agent represents the **insurer**. A broker represents the **insured**.
-That difference decides who is bound by what.
+**Agency is a relationship in which one person is authorised to act for
+another.** The one acting is the **agent**; the one on whose behalf they act
+is the **principal**.
+
+**In insurance the insurer is the principal and the producer is the agent.**
+An agent represents the **insurer**. A broker represents the **insured**. That
+difference decides who is bound by what.
+
+> **Two meanings of "principal", and this is not the one from bonds.** In
+> suretyship the principal is the party whose performance is guaranteed — see
+> Module 4. In agency the principal is the party the agent acts *for*. Same
+> word, unrelated relationships, and a stem will not warn you which is meant.
+
+Two consequences run through the rest of this course:
+
+- **The agent's acts within their authority are the insurer's acts.** A
+  contract the agent makes is the principal's contract, and **premium paid to
+  the agent is paid to the insurer** whether or not the agent forwards it. The
+  insured has discharged their obligation.
+- **The principal answers for the agent.** Knowledge the agent has is
+  knowledge the insurer has; statements the agent makes are the insurer's to
+  answer for.
+
+### Texas does not wait for an appointment
+
+At common law an agency rests on the consent of both parties. **Texas goes
+further, and this is examinable.**
+
+**§4001.051(b)** — **"regardless of whether the act is done at the request of
+or by the employment of an insurer"**, a person **is** the agent of the
+insurer for which the act is done, for the purposes of the liabilities, duties
+and penalties of the code, if they do any of nine listed things. Among them:
+**soliciting** insurance for the insurer, **receiving or transmitting an
+application or policy**, **inspecting a risk**, **receiving or collecting
+premium**, and **adjusting or aiding in adjusting a loss** for the insurer.
+
+So in Texas, **agency can arise from conduct**. Somebody who behaves like the
+insurer's agent is treated as one for the code's purposes, whether or not the
+insurer asked them to.
+
+**§4001.051(c)** sets the limit, and it is the half candidates forget: the
+section **"does not authorize an agent to orally, in writing, or otherwise
+alter or waive a term or condition"** of a policy or application. Being the
+insurer's agent binds the insurer to the agent's *acts*. It does not let the
+agent rewrite the contract.
 
 An agent's authority comes in three forms:
 

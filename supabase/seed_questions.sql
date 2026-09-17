@@ -5326,6 +5326,120 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '229a029f-b300-5da4-a492-bb0109c1faa6', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'elements-of-a-contract'),
+       'In an insurance agency relationship, who is the principal?', '**The principal is the party the agent acts for**, and in insurance that is the **insurer**. The producer is the agent; a **broker** represents the insured instead. **Do not import the word from bonds.** In suretyship the *principal* is the party whose performance is guaranteed — a different relationship using the same word, and a stem will not tell you which sense is meant. Ask who is acting for whom.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.III'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'cbd51adf-061a-5d33-9bb8-8bcca545b182', '229a029f-b300-5da4-a492-bb0109c1faa6', c.id, 'The insurer', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '7ceb7d10-d2d9-5736-b811-eb3828c3e6fc', '229a029f-b300-5da4-a492-bb0109c1faa6', c.id, 'The insured', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '8eb069eb-d890-5aeb-a128-aaf1890fc869', '229a029f-b300-5da4-a492-bb0109c1faa6', c.id, 'The agent', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '2bf10e4f-9fa2-5399-a554-dbe54008bfe4', '229a029f-b300-5da4-a492-bb0109c1faa6', c.id, 'The beneficiary', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '229a029f-b300-5da4-a492-bb0109c1faa6', c.id, 'cbd51adf-061a-5d33-9bb8-8bcca545b182'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '3af211ff-3dc3-5cb4-bd5f-e38d00a15b51', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'elements-of-a-contract'),
+       'An insured pays the premium to the agent, who never forwards it to the insurer. Has the insured paid?', '**The agent''s acts within their authority are the insurer''s acts**, and receiving premium is squarely among them. The insured has discharged their obligation; the insurer''s remedy is against its own agent, not its policyholder. Texas reinforces this from the other direction: **§4001.051(b)(6)** makes a person who "receives, collects, or transmits an insurance premium" the agent of the insurer for the code''s purposes.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.III'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '23531580-ae1e-5220-89a3-00c83bde30a4', '3af211ff-3dc3-5cb4-bd5f-e38d00a15b51', c.id, 'Yes — premium paid to an agent acting within their authority is paid to the insurer', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '412eb7e7-7481-5c09-9fa7-e1b8358e7d52', '3af211ff-3dc3-5cb4-bd5f-e38d00a15b51', c.id, 'No — payment is complete only when the insurer receives the money', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'df0d2448-eb46-579b-be3e-9038be88c8ab', '3af211ff-3dc3-5cb4-bd5f-e38d00a15b51', c.id, 'Only if the insured can produce a receipt from the insurer', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '3c6e1618-8189-5b90-a15c-db8f045ff089', '3af211ff-3dc3-5cb4-bd5f-e38d00a15b51', c.id, 'Only if the agent held binding authority', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '3af211ff-3dc3-5cb4-bd5f-e38d00a15b51', c.id, '23531580-ae1e-5220-89a3-00c83bde30a4'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '4efa1a9d-a726-5ba3-bf67-9abbb84efcdf', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'elements-of-a-contract'),
+       'A person solicits insurance for an insurer that never appointed them. Under §4001.051, whose agent are they?', '**§4001.051(b)** is explicit: "regardless of whether the act is done at the request of or by the employment of an insurer", a person **is** the agent of the insurer for which the act is done if they do any of nine listed things — soliciting, transmitting applications, inspecting risks, collecting premium, adjusting losses among them. **In Texas, agency can arise from conduct.** At common law it rests on the consent of both parties; the code does not wait for consent when fixing responsibility. **But §4001.051(c) sets the limit**: the section does not authorise an agent to "alter or waive a term or condition" of a policy. Being the insurer''s agent binds the insurer to the agent''s *acts* — it does not let the agent rewrite the contract.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.III'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '202531f6-8a1e-50f8-9c81-a35e6d000f5c', '4efa1a9d-a726-5ba3-bf67-9abbb84efcdf', c.id, 'The insurer''s, for the purposes of the code''s liabilities and duties', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'fbe3a719-1c4a-5336-9396-cbd50cbead91', '4efa1a9d-a726-5ba3-bf67-9abbb84efcdf', c.id, 'Nobody''s, because agency requires the insurer''s consent', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '1f93ef8d-13d3-5b10-a005-a3fd66d2769f', '4efa1a9d-a726-5ba3-bf67-9abbb84efcdf', c.id, 'The applicant''s, since the insurer did not authorise them', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'dd9d1fb5-8d21-5588-b98f-fca7f5ff0d17', '4efa1a9d-a726-5ba3-bf67-9abbb84efcdf', c.id, 'Their own, as an independent contractor', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '4efa1a9d-a726-5ba3-bf67-9abbb84efcdf', c.id, '202531f6-8a1e-50f8-9c81-a35e6d000f5c'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select '09ae26b3-1379-53ce-a5b1-60d5acefb8ab', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'elements-of-a-contract'),
        'An applicant submits a completed application with the first premium. Who has made the offer?', '**The applicant makes the offer.** The insurer accepts by **issuing the policy**, or by **binding** coverage where the agent holds binding authority. The brochures and rate tables are an invitation to apply, not an offer.', 'draft'

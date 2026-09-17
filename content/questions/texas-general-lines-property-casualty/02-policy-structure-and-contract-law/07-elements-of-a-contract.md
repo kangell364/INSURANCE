@@ -5,6 +5,60 @@ lesson: elements-of-a-contract
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### In an insurance agency relationship, who is the principal?
+
+- [x] The insurer
+- [ ] The insured
+- [ ] The agent
+- [ ] The beneficiary
+
+**The principal is the party the agent acts for**, and in insurance that is
+the **insurer**. The producer is the agent; a **broker** represents the
+insured instead.
+
+**Do not import the word from bonds.** In suretyship the *principal* is the
+party whose performance is guaranteed — a different relationship using the
+same word, and a stem will not tell you which sense is meant. Ask who is
+acting for whom.
+
+### An insured pays the premium to the agent, who never forwards it to the insurer. Has the insured paid?
+
+- [x] Yes — premium paid to an agent acting within their authority is paid to the insurer
+- [ ] No — payment is complete only when the insurer receives the money
+- [ ] Only if the insured can produce a receipt from the insurer
+- [ ] Only if the agent held binding authority
+
+**The agent's acts within their authority are the insurer's acts**, and
+receiving premium is squarely among them. The insured has discharged their
+obligation; the insurer's remedy is against its own agent, not its
+policyholder.
+
+Texas reinforces this from the other direction: **§4001.051(b)(6)** makes a
+person who "receives, collects, or transmits an insurance premium" the agent
+of the insurer for the code's purposes.
+
+### A person solicits insurance for an insurer that never appointed them. Under §4001.051, whose agent are they?
+
+- [x] The insurer's, for the purposes of the code's liabilities and duties
+- [ ] Nobody's, because agency requires the insurer's consent
+- [ ] The applicant's, since the insurer did not authorise them
+- [ ] Their own, as an independent contractor
+
+**§4001.051(b)** is explicit: "regardless of whether the act is done at the
+request of or by the employment of an insurer", a person **is** the agent of
+the insurer for which the act is done if they do any of nine listed things —
+soliciting, transmitting applications, inspecting risks, collecting premium,
+adjusting losses among them.
+
+**In Texas, agency can arise from conduct.** At common law it rests on the
+consent of both parties; the code does not wait for consent when fixing
+responsibility.
+
+**But §4001.051(c) sets the limit**: the section does not authorise an agent
+to "alter or waive a term or condition" of a policy. Being the insurer's agent
+binds the insurer to the agent's *acts* — it does not let the agent rewrite
+the contract.
+
 ### An applicant submits a completed application with the first premium. Who has made the offer?
 
 - [x] The applicant
