@@ -145,6 +145,19 @@ the principle beneath representations, warranties and concealment.
 A useful check: **A**dhesion, **A**leatory, **U**nilateral, **C**onditional,
 **P**ersonal, **U**tmost good faith.
 
+> **Some texts count indemnity as a seventh**, and a stem may well offer it as
+> a characteristic of an insurance contract. **Do not reject it because it is
+> not in the six above.** A contract of indemnity restores the insured to
+> their pre-loss position and no better, which is as much a description of
+> what kind of contract insurance is as *aleatory* or *conditional* — it is
+> simply important enough to get its own treatment, in *Insurable Interest and
+> Indemnity* in Module 1, where the exceptions live too.
+>
+> The blueprint names it as a term in its own right at **GK II.J** and
+> **V.C**, not as an item on a characteristics list. **Learn what it means and
+> what departs from it**, and the framing a particular question uses will not
+> matter.
+
 ## The application, and signing it
 
 The application is where the contract starts, and the blueprint names it in its
