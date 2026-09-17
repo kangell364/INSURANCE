@@ -5,6 +5,37 @@ lesson: company-types-and-authority
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### The Texas FAIR Plan and TWIA are created by the Insurance Code. Who funds them?
+
+- [x] Premium from their policyholders and assessments against member insurers
+- [ ] The state's general revenue
+- [ ] A federal appropriation administered by the Department
+- [ ] Their policyholders alone, with no other source
+
+**The industry funds the residual market, not the state budget.** Being
+created by statute is not the same as being paid for by taxpayers.
+
+**§2211** assesses members "in the proportion that the insurer's net direct
+premiums written in this state" bear to the total, and **§2151** provides for
+assessment of authorized insurers for TAIPA. An insurer wanting to write in
+Texas takes on a share of the risks nobody wants to write.
+
+### A guaranty association differs from an insurer in what way?
+
+- [x] It issues no policies and takes no premium; it pays claims of insurers that have failed
+- [ ] It writes only liability coverage, and only for its members
+- [ ] It insures risks the voluntary market has declined
+- [ ] It is a private insurer owned by its policyholders
+
+**It is not an insurer at all.** No policies, no premium. It pays covered
+claims of an insurer that has already become insolvent, funded by assessing
+the insurers still trading.
+
+The third option describes a **residual market** such as the FAIR Plan or
+TAIPA, which is the usual confusion: both exist because of a market failure,
+but a residual market sells cover *before* a loss and a guaranty association
+pays *after* a company fails.
+
 ### What is the difference between a risk retention group and a risk purchasing group?
 
 - [x] A retention group carries its members' risk; a purchasing group buys coverage from an insurer that carries it

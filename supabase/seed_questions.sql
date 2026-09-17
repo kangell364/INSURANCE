@@ -21932,6 +21932,82 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'a0f55303-6fc2-59ea-ba7e-eeb8f8ee2ecc', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'company-types-and-authority'),
+       'The Texas FAIR Plan and TWIA are created by the Insurance Code. Who funds them?', '**The industry funds the residual market, not the state budget.** Being created by statute is not the same as being paid for by taxpayers. **§2211** assesses members "in the proportion that the insurer''s net direct premiums written in this state" bear to the total, and **§2151** provides for assessment of authorized insurers for TAIPA. An insurer wanting to write in Texas takes on a share of the risks nobody wants to write.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'TX.I'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'e5b0beba-2faf-5e14-b8a4-b6c218d87c6e', 'a0f55303-6fc2-59ea-ba7e-eeb8f8ee2ecc', c.id, 'Premium from their policyholders and assessments against member insurers', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '38110eb2-24db-5192-be1d-f599487f26c6', 'a0f55303-6fc2-59ea-ba7e-eeb8f8ee2ecc', c.id, 'The state''s general revenue', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'e0b6834b-6063-505d-b5d9-0e0ded46333a', 'a0f55303-6fc2-59ea-ba7e-eeb8f8ee2ecc', c.id, 'A federal appropriation administered by the Department', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'f2f81f19-9596-5f35-b4d8-fa52ef14a35e', 'a0f55303-6fc2-59ea-ba7e-eeb8f8ee2ecc', c.id, 'Their policyholders alone, with no other source', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'a0f55303-6fc2-59ea-ba7e-eeb8f8ee2ecc', c.id, 'e5b0beba-2faf-5e14-b8a4-b6c218d87c6e'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '578766be-7eb6-5612-8ca9-4d12ee3f0349', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'company-types-and-authority'),
+       'A guaranty association differs from an insurer in what way?', '**It is not an insurer at all.** No policies, no premium. It pays covered claims of an insurer that has already become insolvent, funded by assessing the insurers still trading. The third option describes a **residual market** such as the FAIR Plan or TAIPA, which is the usual confusion: both exist because of a market failure, but a residual market sells cover *before* a loss and a guaranty association pays *after* a company fails.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'TX.I'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '27308e9f-88e8-508a-a20d-0ec2e2a67c9c', '578766be-7eb6-5612-8ca9-4d12ee3f0349', c.id, 'It issues no policies and takes no premium; it pays claims of insurers that have failed', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '78664f77-f537-5226-89f0-42b6e81bc804', '578766be-7eb6-5612-8ca9-4d12ee3f0349', c.id, 'It writes only liability coverage, and only for its members', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '464c57d3-b8b7-5dcf-97e1-9551d0f26c53', '578766be-7eb6-5612-8ca9-4d12ee3f0349', c.id, 'It insures risks the voluntary market has declined', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '81343010-e0a8-5602-a0a7-555d8ef519b9', '578766be-7eb6-5612-8ca9-4d12ee3f0349', c.id, 'It is a private insurer owned by its policyholders', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '578766be-7eb6-5612-8ca9-4d12ee3f0349', c.id, '27308e9f-88e8-508a-a20d-0ec2e2a67c9c'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select '79a7fb6f-6bd4-56f7-959a-8fe53fc40f97', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'company-types-and-authority'),
        'What is the difference between a risk retention group and a risk purchasing group?', '**The names are the answer.** A retention group **retains** risk — it is an insurer owned by its members, taking premium and funding their losses. A purchasing group **purchases** — it is a buying club whose members obtain coverage on group terms from a real insurer, which carries the risk. That a risk retention group is genuinely an insurer is why **§542.052** lists it among the carriers bound by the Texas prompt-payment deadlines.', 'draft'

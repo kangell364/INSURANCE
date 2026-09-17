@@ -10011,7 +10011,7 @@ insert into public.lessons
    estimated_minutes)
 select '3de21720-971c-500c-a78f-355ca91d23ef', '62edc60d-a12f-5d1f-80b7-2adce32c4394', c.id, 'Company Types and Certificates of Authority',
        'company-types-and-authority', 'Who owns an insurer, where it was organised, and whether Texas has authorised it — three independent questions the exam likes to blur.', 16,
-       'draft', 20
+       'draft', 23
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
 on conflict (id) do update set
   title = excluded.title, summary = excluded.summary,
@@ -10079,6 +10079,47 @@ being distinguished from. The next section takes each type in turn.
 foreign insurer"** as one organised under the laws of a country other than the
 United States **or** a state other than this one — which is the same
 distinction §982.001 draws, from the other direction.
+
+## Private and government insurers
+
+Before the ownership question comes a coarser one: **is this a private insurer
+competing for business, or something the state or federal government created
+because the private market would not write the risk?**
+
+**Private insurers** are everything §801.001(2) lists — stock, mutual,
+reciprocal, Lloyd's plan, fraternal. They choose whom to insure and may
+decline.
+
+**The rest exist because somebody could not buy cover.** You have already met
+all of them; this is the category they share.
+
+| | What it is | Where |
+| --- | --- | --- |
+| **NFIP** | Federal flood insurance, because standard forms exclude flood | Module 3 |
+| **TRIA** | Federal *reinsurance* backstop for terrorism — not a policy | Module 2 |
+| **TWIA** | Coastal windstorm, **§2210** | Module 5 |
+| **Texas FAIR Plan** | Property for those declined in the voluntary market, **§2211** | Module 5 |
+| **TAIPA** | Auto for drivers the voluntary market rejects, **§2151** | Module 5 |
+| **Guaranty associations** | Pay claims of *insolvent* insurers, **§462**, §463 | Module 5 |
+
+**A residual market is the market of last resort**, and eligibility normally
+requires a declination by the voluntary market first. That is the thread
+joining TWIA, the FAIR Plan and TAIPA, and it is why each has an eligibility
+test rather than an open door.
+
+### Two distinctions worth keeping straight
+
+**Created by statute is not the same as funded by taxpayers.** TWIA, the FAIR
+Plan and TAIPA are creatures of the Insurance Code, but they run on premium
+and on **assessments against their member insurers** — §2211 assesses members
+"in the proportion that the insurer's net direct premiums written in this
+state" bear to the total, and §2151 provides for assessment of authorized
+insurers. The industry funds the residual market, not the state budget.
+
+**A guaranty association is not an insurer.** It writes no policies and takes
+no premium. It pays covered claims of an insurer that has already failed,
+funded by assessing the survivors. Listed beside insurers in §542.052 because
+claims reach it, not because it sells anything.
 
 ## Who owns the insurer
 
