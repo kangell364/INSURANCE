@@ -207,3 +207,117 @@ licence to sell to the general public — the same principle as §4001.104.
 Chapters **4001** and **4051** cover agent and agency licensing and property and
 casualty agents. Non-resident is **Ch. 4056**, surplus lines **§981.202**, risk
 manager **Ch. 4153**, limited **§4051.101** and emergency **§4051.054**.
+
+### An agent holds a limited property and casualty licence designated for credit insurance. A client asks her to write a homeowners policy. May she?
+
+- [ ] Yes — a limited licence covers any property and casualty line
+- [x] No — a limited licence writes only the kind of insurance designated on it
+- [ ] Yes, provided the premium is under $50,000 for the year
+- [ ] No, unless the insurer appoints her for that line as well
+
+**§4051.102** — a person holding a limited property and casualty licence
+**may write only the kind of insurance designated on the licence**.
+
+The trap is reading "limited" as "smaller". It is not a general licence with
+a ceiling on it; it is a licence for one named thing. Credit insurance is what
+the licence says, so credit insurance is what she may write, and an
+appointment does not enlarge it.
+
+The $50,000 figure in the fourth option is real but belongs elsewhere:
+**§4051.101(c)** puts a writer of *farm mutual* policies generating less than
+$50,000 in direct premium outside the limited licence requirement altogether.
+It is a threshold for needing the licence, not a ceiling on using it.
+
+### A producer holds a general property and casualty licence. Which is true of the lines a limited licence covers?
+
+- [x] He may write them in addition, without holding a limited licence
+- [ ] He must obtain a limited licence for each such line
+- [ ] He may write them only if the insurer appoints him separately
+- [ ] He is barred from them; the two licences are mutually exclusive
+
+**§4051.052** — a person who holds a general property and casualty licence
+may **in addition** write the kinds of contracts described by §4051.101 and
+Subchapter E.
+
+**General includes limited. Limited includes nothing else.** That direction is
+the whole of it, and it is the thing an exam question about the two licences
+is most likely to test.
+
+### A property and casualty agent dies. Her son applies to keep the agency running while the estate is settled. What licence may the Department issue?
+
+- [ ] A temporary licence, valid 180 days
+- [x] An emergency licence, valid 90 days and renewable once within 12 months
+- [ ] A limited licence, restricted to the lines she wrote
+- [ ] None — the appointments end with the agent
+
+**§4051.054(a)** — where a property and casualty agent **dies, becomes
+disabled, or is found insolvent** and unable to pay premiums as they fall due,
+the Department may issue an **emergency licence without examination**, on proof
+that it is necessary **to preserve the agency assets**.
+
+**§4051.054(b)** — valid **90 days in any 12 consecutive months**, renewable
+by the Department for **one further 90 days** in that period.
+
+The first option is the one to rule out deliberately. A **temporary** licence
+also skips the examination, but it runs **180 days** and answers a different
+emergency: keeping an agency running while somebody qualifies. The emergency
+licence exists because the agent is dead, disabled or insolvent, and its
+purpose is stated in the statute as preserving the **agency assets**.
+
+### A licensed agent pays a neighbour $200 for each customer the neighbour sends who ends up buying a policy. The neighbour is not licensed. Is this permitted?
+
+- [ ] Yes — the neighbour is not selling, only introducing
+- [ ] Yes, provided the $200 comes from the agent and not the insurer
+- [x] No — a referral fee based on the customer's purchase may not be paid to an unlicensed person
+- [ ] No — an agent may never pay anything to an unlicensed person
+
+**§4005.053(c)(2)** — an agent may not give, directly or indirectly, to a
+person who does not hold an agent's licence, a fee or other valuable
+consideration **for referring a customer**, where it is **based on that
+customer's purchase of insurance**.
+
+The words doing the work are **based on that customer's purchase**. What the
+statute reaches is the payment that turns on whether the customer buys, which
+is compensation for a sale made by somebody the state has not licensed to make
+it.
+
+The last option overshoots, which is why it is wrong rather than merely
+imprecise. §4005.053 does not bar every payment to an unlicensed person — it
+bars a commission or valuable consideration **for services performed as an
+agent**, and it bars the purchase-contingent referral fee. An agent may still
+pay a landlord rent and a printer for brochures.
+
+### An agent's licence lapses. An insurer still owes her renewal commission on policies she wrote while licensed. May the insurer pay it?
+
+- [x] Yes — a renewal or deferred commission may be paid although the licence has ended
+- [ ] No — payment to an unlicensed person is prohibited without exception
+- [ ] Only if she reinstates the licence within 90 days
+- [ ] Only with the written consent of the Commissioner
+
+**§4005.053(b)** — subsection (a) does not prevent the payment of a **renewal
+or other deferred commission**, or its acceptance, **solely because the person
+no longer holds a licence**.
+
+The commission was earned by work done while licensed. What §4005.053(a)
+prohibits is being paid for services performed **as an agent** by somebody who
+is not one — not the settling of what was already owed.
+
+### An agent receives commission from the insurer on a commercial policy and also bills the client a $500 service fee for the same placement, disclosing nothing. Which statute does this offend?
+
+- [ ] §4001.157 — commissions a temporary licence holder may not take
+- [x] §4005.054 — receiving an additional fee for services already compensated by commission
+- [ ] §4051.102 — writing a kind of insurance not designated on the licence
+- [ ] §1806.104 — rebating
+
+**§4005.054** — a licence holder who receives a commission or other
+consideration for services as an agent **may not receive an additional fee for
+those services from the same client**, except a fee described by §550.001 or
+§4005.003 **and** disclosed as §4005.003 or §4005.004 requires.
+
+Both halves matter. The statute does not forbid every fee; it forbids the
+undisclosed one, and the one that is not of a kind the Code allows. Here there
+is no disclosure at all, so it fails whichever way the fee is characterised.
+
+**Rebating is the mirror image and a different offence.** Rebating gives the
+client back part of the premium or commission to win the business; this takes
+an extra payment from the client for work the commission already paid for.

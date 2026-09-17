@@ -101,7 +101,7 @@ jobs:
       # Three entries are untaught and named in docs/course-vs-blueprint.md;
       # the ceiling only comes down.
       - name: Every outline entry has a lesson
-        run: node scripts/check-blueprint-coverage.mjs --max 3
+        run: node scripts/check-blueprint-coverage.mjs --max 1
 
       # The statute extractor's text cleanup, tested directly. The PDFs from
       # statutes.capitol.texas.gov render non-breaking spaces as a literal

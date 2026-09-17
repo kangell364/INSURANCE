@@ -79,7 +79,7 @@ provisions and the JUA
 | D.2 | Commercial property floater | 2 | 3 |
 | E | National Flood Insurance Program | 3 | 4 |
 | F.1 | Earthquake | 8 | 7 |
-| F.2 | Mobile homes | 1 | 2 |
+| F.2 | Mobile homes | 2 | 2 |
 | F.3 | Watercraft | 4 | 2 |
 | F.4 | Farm owners | 2 | 2 |
 | F.5 | Windstorm | 14 | 12 |
@@ -218,7 +218,7 @@ provisions and the JUA
 
 | Line | Outline entry | Lessons | Questions |
 | --- | --- | ---: | ---: |
-| A.1 | Commissioner general powers | 13 | 15 |
+| A.1 | Commissioner general powers | 13 | 16 |
 | A.2 | Examination of records | 1 | 1 |
 | A.3 | Investigation / notice of hearing *(no question)* | 2 | 0 |
 | A.4 | Penalties | 10 | 10 |
@@ -232,12 +232,12 @@ provisions and the JUA
 | C.1.a | Agent / agency licence | 5 | 5 |
 | C.1.b | Nonresident agent | 4 | 3 |
 | C.1.c | Temporary licence | 2 | 3 |
-| C.1.d | Limited licence **NOT TAUGHT** | 0 | 1 |
+| C.1.d | Limited licence | 1 | 2 |
 | C.1.e | Managing general agent | 4 | 2 |
 | C.1.f | Surplus lines licence | 9 | 9 |
 | C.1.g | Adjuster | 8 | 6 |
 | C.1.h | Risk manager | 2 | 2 |
-| C.1.i | Emergency licence | 1 | 1 |
+| C.1.i | Emergency licence | 2 | 2 |
 | C.2 | Exemptions / exceptions | 7 | 6 |
 | C.3 | Appointment | 3 | 3 |
 | C.4 | Continuing education | 5 | 3 |
@@ -257,7 +257,7 @@ provisions and the JUA
 | D.1.h | Fraud | 16 | 9 |
 | D.1.i | Boycott, coercion, intimidation | 2 | 2 |
 | D.2 | Rating and underwriting practices **NOT TAUGHT** | 0 | 0 |
-| E.1 | Commission sharing **NOT TAUGHT** | 0 | 0 |
+| E.1 | Commission sharing | 1 | 1 |
 
 ### TX.II
 
@@ -286,13 +286,26 @@ provisions and the JUA
 
 ## What this found
 
-**187 of 190 entries are taught.** Three are not, all in TX.I:
+**189 of 190 entries are taught.** One is not:
 
 | Entry | Outline reference | Status |
 | --- | --- | --- |
-| TX.I.C.1.d | Limited licence — TIC 4051.101 | **Not taught.** Appears once, in a continuing-education question about §4004.053(b) treating limited licences differently. The licence type itself is never introduced. |
-| TX.I.D.2 | Rating and underwriting practices — 28 TAC §5.9340–.9357 | **Not taught.** The rule has never been fetched; see `docs/blueprint-coverage.md`. Credit information and credit scoring appear nowhere in the course. |
-| TX.I.E.1 | Commission sharing — TIC 4001.157, 4005.053–.054 | **Partial.** §4001.157 is taught, in the temporary-licence lesson. Sharing a commission with an unlicensed person under §4005.053–.054 is not. |
+| TX.I.D.2 | Rating and underwriting practices — 28 TAC §5.9340–.9357 | **Not taught, and not writable here.** The rule has never been fetched, the TAC is HTML that `scripts/extract-statute.py` cannot read, and the sandbox cannot reach the site. Credit information and credit scoring appear nowhere in the course. Writing this without the rule in front of us would be inventing Texas law. See `docs/statutes-to-download.md`. |
+
+Three gaps were reported here previously. Two are now written, from the
+chapters already in `reference/statutes/`:
+
+- **TX.I.C.1.d, limited licence** — §4051.101's list of narrow lines,
+  §4051.102 (only the kind designated on the licence) and §4051.052 (a general
+  licence covers the limited lines; the inclusion runs one way). The same
+  chapter also let the **emergency licence** be taught properly at §4051.054
+  rather than merely named.
+- **TX.I.E.1, commission sharing** — §4005.053(a) and the two exceptions that
+  get tested: renewal and deferred commissions surviving the licence at (b),
+  and the referral fee that turns on the customer buying at (c)(2). Plus
+  §4005.054 on charging a second fee for work the commission already paid for.
+
+Six questions were added with them.
 
 **Eight entries are taught but have no question.** Each is a lesson a student
 could read and never be tested on:
@@ -324,8 +337,12 @@ wrong, and all three were failures of my own patterns rather than gaps:
 - **Change of address** — the lesson writes "a change of **mailing** address",
   which is what §4001.252(a) says.
 
-That is the same failure that earlier reported express authority, breach of
-duty, basic form perils, and three of Section I's policy types as missing.
-Seven false gaps in one week, every one of them a wording difference. **A miss
-in this report is a question, not a verdict. Read the lesson before writing
-one.**
+A fourth surfaced when the gaps were fixed: **commission sharing** still read
+as untaught after it had been written, because the lesson heads that section
+"Paying a commission to somebody who is not licensed". The entry is defined by
+its statutes, so the pattern now matches §4005.053 and §4005.054 too.
+
+That is eight false gaps in one week — express authority, breach of duty,
+basic form perils, three Section I policy types, and these. Every one a
+wording difference. **A miss in this report is a question, not a verdict. Read
+the lesson before writing one.**

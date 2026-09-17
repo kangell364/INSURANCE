@@ -111,7 +111,7 @@ them directly.
 | ☐ | **§1.502** | Felony convictions and notification |
 | ☐ | **§5.204** | Auto coverage |
 | ☐ | **§5.7002** | Auto renewal, non-renewal and cancellation |
-| ☐ | **§5.9340–.9357** | Rating and underwriting practices |
+| ☐ | **§5.9340–.9357** | Rating and underwriting practices. **Now the only untaught entry in the entire examination content outline** (TX.I.D.2) — 189 of 190 are taught. Credit information and credit scoring appear nowhere in the course, and cannot be written without this text. 28 TAC Ch. 5 Subchapter U is "Use of Credit Information or Credit Scores". |
 | ☐ | **§15.2–15.6** | Surplus lines |
 | ☐ | **§19.801–.805, §19.1001–.1030** | Licensing and continuing education |
 | ☐ | **§19.1201–.1206** | Managing general agents |

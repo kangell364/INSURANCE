@@ -7503,12 +7503,99 @@ The blueprint lists these under TX.I.C.1. Chapters **4001** and **4051** cover
 agent and agency licensing and property and casualty agents respectively, and
 are the basis of this lesson.
 
-The remaining types — **non-resident** (Ch. 4056), **managing general agent**
-(28 TAC §19.1201–.1206), **surplus lines** (§981.202), **adjuster**
-(Ch. 4101), **risk manager** (Ch. 4153), **limited** (§4051.101) and
-**emergency** (§4051.054) licences — are named here so you know they are
-examined. **Their specifics are not taught in this course yet**, because the
-chapters have not been obtained. See `docs/module-5-source-gaps.md`.
+### The limited property and casualty licence
+
+**§4051.101(a)** — a **limited** property and casualty licence is required of
+an agent who writes only one of a short list of narrow kinds of insurance.
+Among them: **job protection insurance**, insurance on **growing crops**, any
+form authorised under Chapter 911 for a **farm mutual**, **credit insurance**,
+a **prepaid legal services contract**, **industrial fire** policies on
+dwellings and household goods written on a continuous weekly or monthly
+premium plan, and — exclusively — insurance relating to the ownership or use
+of a **motor vehicle** or of a **manufactured home** classified as personal
+property.
+
+**§4051.102 is the point the exam turns on.** A person holding a limited
+licence **may write only the kind of insurance designated on the licence**.
+The licence is not a smaller general licence; it is a licence for one named
+thing.
+
+**§4051.052 runs the other way.** Someone holding a **general** property and
+casualty licence may *in addition* write everything a limited licence covers,
+and the county mutual lines of Subchapter E. **General includes limited.
+Limited does not include anything else.**
+
+**§4051.101(c)** — the requirement does not reach the very small writer.
+A person is outside it who wrote, in the previous calendar year, less than
+**$50,000** in direct premium in farm mutual policies, less than **$20,000**
+in industrial fire, or less than **$40,000** under Chapter 962.
+
+### The emergency licence
+
+**§4051.054(a)** — where a property and casualty agent **dies, becomes
+disabled, or is found insolvent** and unable to pay premiums as they fall due,
+the Department may issue an **emergency licence without examination**. It is
+granted on proof that it is necessary **to preserve the agency assets** of
+that agent — the purpose is the book of business, not the applicant's career.
+
+**§4051.054(b)** — an emergency licence is valid for **90 days in any 12
+consecutive months**, renewable by the Department for **one further 90 days**
+within that same 12-month period.
+
+Set it beside the temporary licence above: both skip the examination, and they
+answer different emergencies. A **temporary** licence runs **180 days** and
+keeps an agency running while a licensed person gets qualified. An
+**emergency** licence runs **90 days, renewable once**, and exists because the
+agent is dead, disabled or insolvent.
+
+### The rest
+
+**Non-resident** (Ch. 4056), **managing general agent** (28 TAC §19.1201–.1206),
+**surplus lines** (§981.202), **adjuster** (Ch. 4101) and **risk manager**
+(Ch. 4153) licences are named here so you know they are examined. The surplus
+lines licence is taught in its own lesson, and the adjuster licence in
+**Adjusters, Nonresidents and Fraud**. The managing general agent and risk
+manager rules live in the Administrative Code, which has not been obtained;
+see `docs/module-5-source-gaps.md`.
+
+## Paying a commission to somebody who is not licensed
+
+A licence controls who may be *paid*, not only who may sell.
+
+**§4005.053(a)** — an insurer or agent **may not pay to any person, directly
+or indirectly, and may not accept from any person**, a commission or other
+valuable consideration for a service performed **as an agent** in this state
+unless that person **holds a licence**. It cuts both ways: taking the money is
+as prohibited as paying it.
+
+**§4005.053(b)** is the exception that catches people out. A **renewal or
+other deferred commission** may still be paid to, and accepted by, somebody
+**solely because they no longer hold a licence**. Commission earned while
+licensed does not evaporate when the licence lapses. What is prohibited is
+being paid for work done *as an agent* while unlicensed.
+
+**§4005.053(c)** — an agent may not give, or offer to give, directly or
+indirectly, to a person who does not hold an agent's licence:
+
+1. a **rebate of premium, a commission, employment, a contract for service, or
+   any other valuable consideration or inducement not specified in the policy**,
+   on account of soliciting or negotiating an insurance contract; or
+2. a **fee or other valuable consideration for referring a customer**, where
+   the fee is **based on that customer's purchase of insurance**.
+
+Read (c)(2) carefully. What the statute prohibits is the referral fee that
+**turns on whether the customer buys**. That is the line: paying for an
+introduction is treated differently from paying for a sale made by somebody
+the state has not licensed to make it.
+
+**§4005.054** — a licensed person who **receives a commission** for services
+as an agent **may not charge that same client an additional fee** for those
+services, unless the fee is one described by §550.001 or §4005.003 **and** is
+disclosed as §4005.003 or §4005.004 requires. You are paid once for the same
+work, by the insurer, unless a statute says otherwise and you disclose it.
+
+This is the same principle as the fiduciary duty above, enforced from the
+other end. **The insurer pays the producer. The client pays premium.**
 
 ## How this is examined
 
@@ -7529,6 +7616,21 @@ holders.
 administrative action.
 
 **Records kept separate** from any other business.
+
+**Limited licence: only the kind designated on it** (§4051.102). **A general
+licence covers the limited lines as well** (§4051.052) — the inclusion runs
+one way.
+
+**Emergency licence: 90 days, renewable once in 12 months, no examination**,
+to preserve the agency assets of an agent who has **died, become disabled or
+been found insolvent** (§4051.054). Not to be confused with the **180-day
+temporary** licence.
+
+**No commission to an unlicensed person for services as an agent**
+(§4005.053(a)) — but **renewal and deferred commissions survive the licence**
+(§4005.053(b)). **No referral fee that turns on the customer buying**
+(§4005.053(c)(2)). **No second fee to a client whose work the commission
+already paid for**, absent a permitted and disclosed one (§4005.054).
 
 ## Check yourself
 

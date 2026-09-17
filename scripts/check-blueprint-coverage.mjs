@@ -242,7 +242,7 @@ const OUTLINE = [
   ['TX.I', 'D.1.h', 'Fraud', /fraud/i],
   ['TX.I', 'D.1.i', 'Boycott, coercion, intimidation', /boycott|coercion|intimidat/i],
   ['TX.I', 'D.2', 'Rating and underwriting practices', /rating and underwriting|credit (information|scor)/i],
-  ['TX.I', 'E.1', 'Commission sharing', /commission shar|sharing (a )?commission/i],
+  ['TX.I', 'E.1', 'Commission sharing', /commission shar|sharing (a )?commission|4005\.05[34]|commission to (somebody|someone|a person) who is not licen/i],
 
   // TX.II. TEXAS STATUTES PERTINENT TO P&C (12)
   ['TX.II', 'A', 'Property and casualty definitions', /definition/i],
