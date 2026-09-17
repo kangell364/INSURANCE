@@ -5,6 +5,84 @@ lesson: negligence-and-liability
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### A driver runs a red light and clips a cyclist, who is treated and released. On the way home the ambulance is struck by a falling tree. What relieves the driver of liability for the tree injuries?
+
+- [x] An intervening cause broke the chain of proximate cause
+- [ ] Comparative negligence
+- [ ] Assumption of risk
+- [ ] Res ipsa loquitur
+
+**Proximate cause requires an unbroken chain**, and something unforeseeable
+that intervenes breaks it. The driver remains liable for the collision
+injuries and not for what the tree did.
+
+**This is the third element failing, not a separate defence.** The claimant
+must still prove duty, breach, **proximate cause** and damages — and where an
+intervening cause cuts the chain, there is simply no negligence as to the
+later harm.
+
+**Foreseeability is the test.** Ordinary medical treatment of the original
+injury is foreseeable and stays on the driver's account, even if it goes
+badly. A tree falling on an ambulance is not.
+
+### A hospital patient wakes from surgery with a surgical clamp left inside them. They cannot say which member of the team was careless. What doctrine helps them?
+
+- [x] Res ipsa loquitur
+- [ ] Assumption of risk
+- [ ] Strict liability
+- [ ] Vicarious liability
+
+***Res ipsa loquitur* — "the thing speaks for itself."** Where an accident is
+of a kind that does not ordinarily happen without negligence, and the thing
+that caused it was in the defendant's exclusive control, **negligence may be
+inferred without direct proof.**
+
+**It helps the claimant, which makes it the opposite of a defence.** It shifts
+the burden to the defendant to explain how this happened without carelessness
+— and "we cannot say which of us did it" is not an explanation.
+
+Strict liability is the near miss and is different: strict liability removes
+the need to prove fault *at all*, in defined categories such as inherently
+dangerous activity. Res ipsa still requires negligence — it just lets the
+circumstances prove it.
+
+### A claimant is injured on 1 March 2023 but does not sue until 2029. The defendant was plainly careless. What defeats the claim?
+
+- [x] The statute of limitations
+- [ ] Assumption of risk
+- [ ] Contributory negligence
+- [ ] An intervening cause
+
+**The statute of limitations is a complete defence regardless of the merits.**
+The claim may be unanswerable and it still fails, because the claimant waited
+too long.
+
+**This is why a liability policy's duties after a loss matter so much to the
+insurer.** Late notice of a claim can cost the insurer the chance to
+investigate while evidence is fresh — and, on the other side, a limitation
+period is one of the few things that ends an insurer's exposure with
+certainty.
+
+### How does gross negligence differ from ordinary negligence?
+
+- [x] It is reckless indifference to the safety of others, beyond mere carelessness
+- [ ] It is negligence causing unusually large damages
+- [ ] It is negligence by a professional rather than a layperson
+- [ ] It is negligence the defendant admits
+
+**Gross negligence is a difference in the defendant's state of mind, not in
+the size of the loss.** Ordinary negligence is failing to act as a reasonable
+person would; gross negligence is a reckless disregard for whether anyone gets
+hurt.
+
+**The consequence is what makes it examinable.** Gross negligence can support
+an award of **punitive damages**, which most liability policies exclude or
+which public policy makes uninsurable — so a finding of gross negligence can
+leave a defendant personally exposed for a sum their policy will not touch.
+
+The second option is the trap: **a huge loss caused by ordinary carelessness
+is still ordinary negligence.**
+
 ### What is a tort?
 
 - [x] A civil wrong other than a breach of contract

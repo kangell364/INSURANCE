@@ -2932,6 +2932,158 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '7ca52d1d-a43d-5255-bb8c-5c8b7dccbf65', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'negligence-and-liability'),
+       'A driver runs a red light and clips a cyclist, who is treated and released. On the way home the ambulance is struck by a falling tree. What relieves the driver of liability for the tree injuries?', '**Proximate cause requires an unbroken chain**, and something unforeseeable that intervenes breaks it. The driver remains liable for the collision injuries and not for what the tree did. **This is the third element failing, not a separate defence.** The claimant must still prove duty, breach, **proximate cause** and damages — and where an intervening cause cuts the chain, there is simply no negligence as to the later harm. **Foreseeability is the test.** Ordinary medical treatment of the original injury is foreseeable and stays on the driver''s account, even if it goes badly. A tree falling on an ambulance is not.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.V'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '4f205f9b-28d6-5c2d-a3f1-ca552b1396ee', '7ca52d1d-a43d-5255-bb8c-5c8b7dccbf65', c.id, 'An intervening cause broke the chain of proximate cause', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'a55c0282-9602-5758-8915-72c574cb5bfb', '7ca52d1d-a43d-5255-bb8c-5c8b7dccbf65', c.id, 'Comparative negligence', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '1e9c8b32-de62-51cd-af94-588ebc2ae898', '7ca52d1d-a43d-5255-bb8c-5c8b7dccbf65', c.id, 'Assumption of risk', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'd8aca03d-e64c-5c6f-857d-4575af23f593', '7ca52d1d-a43d-5255-bb8c-5c8b7dccbf65', c.id, 'Res ipsa loquitur', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '7ca52d1d-a43d-5255-bb8c-5c8b7dccbf65', c.id, '4f205f9b-28d6-5c2d-a3f1-ca552b1396ee'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '556061ef-2790-56e2-be98-caed51247f91', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'negligence-and-liability'),
+       'A hospital patient wakes from surgery with a surgical clamp left inside them. They cannot say which member of the team was careless. What doctrine helps them?', '***Res ipsa loquitur* — "the thing speaks for itself."** Where an accident is of a kind that does not ordinarily happen without negligence, and the thing that caused it was in the defendant''s exclusive control, **negligence may be inferred without direct proof.** **It helps the claimant, which makes it the opposite of a defence.** It shifts the burden to the defendant to explain how this happened without carelessness — and "we cannot say which of us did it" is not an explanation. Strict liability is the near miss and is different: strict liability removes the need to prove fault *at all*, in defined categories such as inherently dangerous activity. Res ipsa still requires negligence — it just lets the circumstances prove it.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.V'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '7c8dd631-704e-59b2-bbd0-2a6290039d2e', '556061ef-2790-56e2-be98-caed51247f91', c.id, 'Res ipsa loquitur', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '125b1238-b64e-59be-875e-52997eba12b9', '556061ef-2790-56e2-be98-caed51247f91', c.id, 'Assumption of risk', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'df3b41cd-83d1-54c9-a02a-9fc6d3e1e97c', '556061ef-2790-56e2-be98-caed51247f91', c.id, 'Strict liability', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'e3285d1b-2f87-5e0d-8048-405a6a798750', '556061ef-2790-56e2-be98-caed51247f91', c.id, 'Vicarious liability', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '556061ef-2790-56e2-be98-caed51247f91', c.id, '7c8dd631-704e-59b2-bbd0-2a6290039d2e'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '72475fe3-9575-5af7-a09d-9baa46e0c3b0', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'negligence-and-liability'),
+       'A claimant is injured on 1 March 2023 but does not sue until 2029. The defendant was plainly careless. What defeats the claim?', '**The statute of limitations is a complete defence regardless of the merits.** The claim may be unanswerable and it still fails, because the claimant waited too long. **This is why a liability policy''s duties after a loss matter so much to the insurer.** Late notice of a claim can cost the insurer the chance to investigate while evidence is fresh — and, on the other side, a limitation period is one of the few things that ends an insurer''s exposure with certainty.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.V'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '907c097a-b3fe-5329-84cb-ddf77f155592', '72475fe3-9575-5af7-a09d-9baa46e0c3b0', c.id, 'The statute of limitations', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '9094dea5-ec5f-5022-bd93-f08e46c42588', '72475fe3-9575-5af7-a09d-9baa46e0c3b0', c.id, 'Assumption of risk', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '1d83c579-71f6-58ce-9954-d5254b290075', '72475fe3-9575-5af7-a09d-9baa46e0c3b0', c.id, 'Contributory negligence', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '5f283b65-3af8-5f3a-8b80-39d1504a85c8', '72475fe3-9575-5af7-a09d-9baa46e0c3b0', c.id, 'An intervening cause', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '72475fe3-9575-5af7-a09d-9baa46e0c3b0', c.id, '907c097a-b3fe-5329-84cb-ddf77f155592'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '3cb42c20-444d-53ad-9375-66cde29b64ff', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'negligence-and-liability'),
+       'How does gross negligence differ from ordinary negligence?', '**Gross negligence is a difference in the defendant''s state of mind, not in the size of the loss.** Ordinary negligence is failing to act as a reasonable person would; gross negligence is a reckless disregard for whether anyone gets hurt. **The consequence is what makes it examinable.** Gross negligence can support an award of **punitive damages**, which most liability policies exclude or which public policy makes uninsurable — so a finding of gross negligence can leave a defendant personally exposed for a sum their policy will not touch. The second option is the trap: **a huge loss caused by ordinary carelessness is still ordinary negligence.**', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.V'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '99d50272-72a4-5802-8934-c1728838b0ed', '3cb42c20-444d-53ad-9375-66cde29b64ff', c.id, 'It is reckless indifference to the safety of others, beyond mere carelessness', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'e8933868-f6a3-5863-bee3-0f9310a10d3c', '3cb42c20-444d-53ad-9375-66cde29b64ff', c.id, 'It is negligence causing unusually large damages', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '9569fa6a-03e0-569b-a230-24c04f8c88b0', '3cb42c20-444d-53ad-9375-66cde29b64ff', c.id, 'It is negligence by a professional rather than a layperson', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '9d2661e0-c691-5fb6-a67a-20cbd9bd744b', '3cb42c20-444d-53ad-9375-66cde29b64ff', c.id, 'It is negligence the defendant admits', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '3cb42c20-444d-53ad-9375-66cde29b64ff', c.id, '99d50272-72a4-5802-8934-c1728838b0ed'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select '6d22c0fa-63ac-59ed-9693-dd716e13e1eb', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'negligence-and-liability'),
        'What is a tort?', '**A tort is a civil wrong other than a breach of contract**, and it is the category all liability insurance exists to respond to. Negligence is the commonest kind; intentional torts and strict liability are the others. **The exclusion of contract is the point.** If the duty came from an agreement, breaking it is a breach of contract, not a tort — which is why liability policies exclude liability assumed under contract unless it falls within an **insured contract**. A tort may also be a crime — an assault is both — but it is the *civil* wrong that liability insurance concerns itself with. The state prosecutes the crime; the claimant sues for the tort.', 'draft'
