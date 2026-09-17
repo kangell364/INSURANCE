@@ -5,6 +5,57 @@ lesson: insuring-agreement-conditions-and-exclusions
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### Mid-term, an insurer broadens its homeowners form and charges nothing extra. What do existing policyholders get?
+
+- [x] The broader coverage automatically, under the liberalization condition
+- [ ] Nothing until renewal, when the new form is issued
+- [ ] The broader coverage on request and payment of a pro-rata premium
+- [ ] Nothing; the form in force at inception governs the whole term
+
+**Liberalization gives existing insureds a broadening automatically**, with no
+endorsement and no extra premium, when the insurer widens the form during the
+policy period without charging for it.
+
+**The condition runs one way only.** An insurer that *narrows* a form cannot
+impose that mid-term — the insured keeps what they bought. So liberalization
+can only ever help the policyholder, which is why it is easy to forget it
+exists.
+
+### A fire damages a building and the insured leaves it open to the weather for a fortnight, letting rain ruin what survived. What defeats the claim for the rain damage?
+
+- [x] The neglect exclusion — failing to save and preserve property at and after a loss
+- [ ] The water damage exclusion, which removes rain
+- [ ] Nothing; the rain damage flows from the covered fire
+- [ ] The vacancy provision
+
+**Neglect excludes loss caused by the insured's failure to use all reasonable
+means to save and preserve the property at and after a loss.** The fire damage
+is still covered; the avoidable rain damage is not.
+
+**This is the mirror of a duty after a loss.** The conditions require the
+insured to protect the property from further damage; the neglect exclusion is
+what happens when they do not. One says do it, the other prices not doing it.
+
+The second option misreads the water exclusion, which concerns surface water,
+flood and sewer backup — not rain falling through a hole the insured should
+have covered.
+
+### A commercial policy's premium depends on the insured's payroll. Which condition lets the insurer verify it?
+
+- [x] Inspection and audit
+- [ ] Appraisal
+- [ ] Subrogation
+- [ ] Assignment
+
+**Inspection and audit lets the insurer inspect the property and examine the
+books**, which matters wherever premium is based on a variable the insured
+reports — payroll for workers' compensation, sales for some general liability.
+
+**Appraisal is the near miss and answers a different dispute.** Appraisal
+resolves disagreement over the **amount of a loss**; inspection and audit is
+about verifying the **exposure the premium was based on**. One is about a
+claim, the other about a premium.
+
 ### Under a NAMED peril policy, a loss occurs from a cause not on the list. Who has failed to prove what?
 
 - [x] The insured has failed to prove the loss was caused by a covered peril

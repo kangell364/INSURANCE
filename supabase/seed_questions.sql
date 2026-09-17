@@ -4034,6 +4034,120 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '0733a104-0142-545a-8260-6db5517133b0', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'insuring-agreement-conditions-and-exclusions'),
+       'Mid-term, an insurer broadens its homeowners form and charges nothing extra. What do existing policyholders get?', '**Liberalization gives existing insureds a broadening automatically**, with no endorsement and no extra premium, when the insurer widens the form during the policy period without charging for it. **The condition runs one way only.** An insurer that *narrows* a form cannot impose that mid-term — the insured keeps what they bought. So liberalization can only ever help the policyholder, which is why it is easy to forget it exists.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.III'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'a384e4b5-eb1a-5e31-91a0-01b1ef3a3bba', '0733a104-0142-545a-8260-6db5517133b0', c.id, 'The broader coverage automatically, under the liberalization condition', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'fc0a2e20-3ae1-55b5-85b2-dc1adf97fafe', '0733a104-0142-545a-8260-6db5517133b0', c.id, 'Nothing until renewal, when the new form is issued', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'd416e2c0-5fc0-5bf8-bd1d-3d45bd1affc9', '0733a104-0142-545a-8260-6db5517133b0', c.id, 'The broader coverage on request and payment of a pro-rata premium', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'cf3477c3-20a9-5e73-ab7e-9b02d96674d3', '0733a104-0142-545a-8260-6db5517133b0', c.id, 'Nothing; the form in force at inception governs the whole term', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '0733a104-0142-545a-8260-6db5517133b0', c.id, 'a384e4b5-eb1a-5e31-91a0-01b1ef3a3bba'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '0da50450-8cb1-5201-b25b-e5cd36649be1', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'insuring-agreement-conditions-and-exclusions'),
+       'A fire damages a building and the insured leaves it open to the weather for a fortnight, letting rain ruin what survived. What defeats the claim for the rain damage?', '**Neglect excludes loss caused by the insured''s failure to use all reasonable means to save and preserve the property at and after a loss.** The fire damage is still covered; the avoidable rain damage is not. **This is the mirror of a duty after a loss.** The conditions require the insured to protect the property from further damage; the neglect exclusion is what happens when they do not. One says do it, the other prices not doing it. The second option misreads the water exclusion, which concerns surface water, flood and sewer backup — not rain falling through a hole the insured should have covered.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.III'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '14bfe770-f5da-5be5-971e-e559aabd6429', '0da50450-8cb1-5201-b25b-e5cd36649be1', c.id, 'The neglect exclusion — failing to save and preserve property at and after a loss', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '5b7e8841-24e4-5f1d-b4be-679fc6b94b2c', '0da50450-8cb1-5201-b25b-e5cd36649be1', c.id, 'The water damage exclusion, which removes rain', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'ac036f83-5e07-56eb-83bc-6ed1b7f7c50d', '0da50450-8cb1-5201-b25b-e5cd36649be1', c.id, 'Nothing; the rain damage flows from the covered fire', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'f7e43686-e36c-518c-965f-0949a8c0b6bc', '0da50450-8cb1-5201-b25b-e5cd36649be1', c.id, 'The vacancy provision', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '0da50450-8cb1-5201-b25b-e5cd36649be1', c.id, '14bfe770-f5da-5be5-971e-e559aabd6429'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '63e89893-c548-56c1-bb95-26e34e5d2237', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'insuring-agreement-conditions-and-exclusions'),
+       'A commercial policy''s premium depends on the insured''s payroll. Which condition lets the insurer verify it?', '**Inspection and audit lets the insurer inspect the property and examine the books**, which matters wherever premium is based on a variable the insured reports — payroll for workers'' compensation, sales for some general liability. **Appraisal is the near miss and answers a different dispute.** Appraisal resolves disagreement over the **amount of a loss**; inspection and audit is about verifying the **exposure the premium was based on**. One is about a claim, the other about a premium.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.III'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '61d321cd-06e9-5951-8d4e-c567c81806a0', '63e89893-c548-56c1-bb95-26e34e5d2237', c.id, 'Inspection and audit', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '7cdb4717-4bf1-5333-90f5-c63fa484e836', '63e89893-c548-56c1-bb95-26e34e5d2237', c.id, 'Appraisal', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'c01297a0-3502-5865-aad2-51bf9f55f08c', '63e89893-c548-56c1-bb95-26e34e5d2237', c.id, 'Subrogation', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '422ddd5d-1818-57c8-81ac-afbea728184f', '63e89893-c548-56c1-bb95-26e34e5d2237', c.id, 'Assignment', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '63e89893-c548-56c1-bb95-26e34e5d2237', c.id, '61d321cd-06e9-5951-8d4e-c567c81806a0'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select 'efae1569-fd5d-5d48-a3a1-48aa046b6c47', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'insuring-agreement-conditions-and-exclusions'),
        'Under a NAMED peril policy, a loss occurs from a cause not on the list. Who has failed to prove what?', '**Under a named peril form the burden is the insured''s.** That shift of burden is worth more to an insured than the peril list itself, and it is why an open peril form costs more.', 'draft'
