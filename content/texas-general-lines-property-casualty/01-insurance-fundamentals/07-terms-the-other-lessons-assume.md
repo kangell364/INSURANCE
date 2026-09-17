@@ -3,8 +3,8 @@ module: Insurance Fundamentals
 title: Terms the Other Lessons Assume
 slug: terms-the-other-lessons-assume
 blueprint: GK.II
-summary: Ten terms the blueprint names that do not belong to any one topic — including the party numbering that four later modules assume you already know.
-estimated_minutes: 17
+summary: Eleven terms that do not belong to any one topic — including the party numbering and the reinsurance that four later modules assume you already know.
+estimated_minutes: 19
 status: draft
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
@@ -70,6 +70,34 @@ makes sense without it:
 One more contrast, met later: **a surety bond has three parties**, not two —
 principal, obligee and surety. That difference is the usual way bonds are
 tested, and it only reads as a difference if you know insurance has two.
+
+## Reinsurance
+
+**Reinsurance is insurance bought by an insurer.** One company transfers part
+of a risk it has written to another, called the **reinsurer**, in exchange for
+part of the premium.
+
+Nothing about it reaches the policyholder. **The insured has no contract with
+the reinsurer and no claim against it**; their policy is still with the company
+that issued it, which still owes the whole loss.
+
+Why it exists is the law of large numbers again, one level up: it lets an
+insurer write a risk larger than its own surplus could absorb, and smooths
+years when losses cluster.
+
+**The blueprint does not name reinsurance as a topic.** It earns its place
+here because three things that *are* examined make no sense without it:
+
+- **Cancellation.** *Loss of reinsurance* is a permitted ground for cancelling
+  mid-term. In Texas, **§551.052(c)(4)** lets an insurer cancel a liability or
+  commercial property policy at any time on "loss of the insurer's reinsurance
+  covering all or part of the risk" — alongside fraud, non-payment, and an
+  increase in hazard within the insured's control.
+- **TRIA.** The Terrorism Risk Insurance Act is **a reinsurance programme, not
+  an insurance policy** — the federal government backstopping insurers, not
+  selling cover. Nobody buys a TRIA policy.
+- **Residual markets.** TWIA and the FAIR Plan exist because reinsurance for
+  coastal wind became unaffordable, not because nobody wanted the premium.
 
 ## Direct and indirect loss
 

@@ -2400,6 +2400,44 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'daf219e2-5630-5e54-9e70-775f98279a67', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'terms-the-other-lessons-assume'),
+       'An insurer cedes part of a risk to a reinsurer. The insured suffers a covered loss. Who owes the insured?', '**The insured has no contract with the reinsurer**, so no claim against it. Reinsurance is an agreement between two insurers about how they share a risk between themselves; it does not divide the promise made to the policyholder. This is why **TRIA is described as a reinsurance programme rather than an insurance policy** — nobody buys a TRIA policy, and no insured claims under one.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.II'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '33a1aa9d-960e-5ca7-bbc7-f8dbd91983fd', 'daf219e2-5630-5e54-9e70-775f98279a67', c.id, 'The insurer that issued the policy, for the whole loss', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '4bfccd4f-43e9-5c06-a1d2-c3a68ebbdd6c', 'daf219e2-5630-5e54-9e70-775f98279a67', c.id, 'The reinsurer, for the portion it accepted', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'a3a4f9f0-de74-567f-aa59-d0efa58e8362', 'daf219e2-5630-5e54-9e70-775f98279a67', c.id, 'Both, in proportion to the share each carries', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'd82fab06-2745-5638-afde-4762e04cd751', 'daf219e2-5630-5e54-9e70-775f98279a67', c.id, 'Whichever is named in the declarations', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'daf219e2-5630-5e54-9e70-775f98279a67', c.id, '33a1aa9d-960e-5ca7-bbc7-f8dbd91983fd'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select '29f8cc85-0acc-5018-af72-f79e04b06c0d', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'terms-the-other-lessons-assume'),
        'An insured''s car is damaged in a collision they caused. Under their own collision coverage, this is what kind of claim?', '**First party.** The insured is claiming against their own insurer for their own loss. That the collision was their fault changes nothing — collision coverage is first-party coverage regardless of blame. The driver they hit claiming against that same policy''s **liability** coverage would be the **third-party** claim. "Second-party claim" is not a term; the second party *is* the insurer. This matters in Texas beyond vocabulary: the prompt-payment deadlines of **§542.055–.058** run on first-party claims only.', 'draft'

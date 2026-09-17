@@ -5,6 +5,21 @@ lesson: terms-the-other-lessons-assume
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### An insurer cedes part of a risk to a reinsurer. The insured suffers a covered loss. Who owes the insured?
+
+- [x] The insurer that issued the policy, for the whole loss
+- [ ] The reinsurer, for the portion it accepted
+- [ ] Both, in proportion to the share each carries
+- [ ] Whichever is named in the declarations
+
+**The insured has no contract with the reinsurer**, so no claim against it.
+Reinsurance is an agreement between two insurers about how they share a risk
+between themselves; it does not divide the promise made to the policyholder.
+
+This is why **TRIA is described as a reinsurance programme rather than an
+insurance policy** — nobody buys a TRIA policy, and no insured claims under
+one.
+
 ### An insured's car is damaged in a collision they caused. Under their own collision coverage, this is what kind of claim?
 
 - [x] A first-party claim
