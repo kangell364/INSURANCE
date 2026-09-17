@@ -14,6 +14,333 @@ begin;
 insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
+select '2c031b02-af62-5980-b6b9-fbeeece995c1', 'd6bff6c2-390e-518f-a728-b2a8ee99e87c', c.id, 'Who Is an Insured',
+       'who-is-an-insured', 'Named insured, first named insured, additional insured, mortgagee — four different things the exam refuses to let you blur.', 3,
+       'draft', 14
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select '2c031b02-af62-5980-b6b9-fbeeece995c1', c.id, $lesson$# Four kinds of people with rights under one policy
+
+"The insured" is not one category. The exam separates them, and each has a
+different set of rights.
+
+## The named insured
+
+**The named insured is the person or entity listed on the declarations.**
+They own the policy. They have the full set of rights: to receive the
+proceeds, to make changes, to cancel, to receive notices, to pay the premium.
+
+Under most personal forms the definition reaches further than the name
+printed. A homeowners policy typically extends "insured" to **residents of
+the household who are relatives**, and to **other residents under 21 in the
+care of an insured**. A student living away from home who is still a resident
+of the household usually stays covered.
+
+A personal auto policy typically extends to the named insured and **spouse if
+a resident of the same household**, to **family members**, and to **anyone
+using a covered auto with permission** — permissive use being the reason
+lending the car lends the insurance with it.
+
+## The first named insured
+
+Where several names appear, **the first one has duties and rights the others
+do not**. The exam tests this directly, especially in commercial lines.
+
+The first named insured:
+
+- **receives cancellation and non-renewal notices** on behalf of all,
+- **is responsible for the premium**,
+- **may cancel the policy**,
+- **may request changes** to it,
+- **receives any return premium**, and
+- **is responsible for premium audits** where the policy is auditable.
+
+So a notice of cancellation sent to the first named insured is effective
+against every insured on the policy.
+
+## Additional insureds
+
+**An additional insured is somebody added to the policy by endorsement who
+gains coverage for their liability arising out of the named insured's work or
+premises.**
+
+Typical: a general contractor added to a subcontractor's CGL; a landlord
+added to a tenant's policy; a lender added to a commercial policy.
+
+Three points:
+
+- **It takes an endorsement.** A certificate of insurance does not create
+  additional insured status, however often somebody treats it as if it does.
+- **The coverage is limited in scope.** The additional insured is covered for
+  liability connected to the named insured's operations — not for everything
+  they do.
+- **They do not own the policy.** They cannot cancel it or change it, and in
+  most forms they are not entitled to notice of cancellation unless the
+  endorsement says so.
+
+## Mortgagee rights
+
+Where property secures a loan, the lender has an **insurable interest** and
+is named on the declarations as **mortgagee** (in auto and personal property,
+the equivalent is a **loss payee**).
+
+**The standard mortgage clause gives the mortgagee rights independent of the
+insured's conduct.** This is the part that gets examined:
+
+- **Loss payment.** Payment for damage to the building is made to the insured
+  and mortgagee **jointly**, as their interests appear.
+- **The mortgagee is protected from the insured's acts.** If the insured
+  commits an act that voids their own coverage — concealment,
+  misrepresentation, an increase in hazard, even arson — **the mortgagee is
+  still paid**, provided the mortgagee had no part in it. This is the
+  distinguishing feature of a *standard* (or union) mortgage clause.
+- **The mortgagee gets its own notice.** The insurer must notify the
+  mortgagee of cancellation or non-renewal, typically with its own notice
+  period, separate from the insured's.
+- **The mortgagee may pay the premium** and submit its own proof of loss if
+  the insured fails to.
+- **The insurer gains subrogation against the insured.** Where the insurer
+  pays the mortgagee on a claim it would have denied to the insured, it
+  receives the mortgagee's rights against the insured to that extent.
+
+Contrast the **open mortgage clause** (or loss payable clause), which merely
+directs payment to the lender and gives it **no rights beyond the insured's**.
+If the insured's coverage is void, so is the lender's. "Standard protects the
+mortgagee from the insured's acts; open does not" is the whole distinction.
+
+## Loss payees and additional interests
+
+A **loss payee** is named to receive payment for damage to specific property
+in which it has an interest — a finance company on a vehicle, a lessor on
+equipment. Payment rights, not the broader protections of a standard mortgage
+clause.
+
+An **additional interest** or **interested party** is merely notified of
+policy changes; it receives no payment rights at all.
+
+## How this is examined
+
+**First named insured duties** — who gets notice, who pays, who can cancel.
+
+**Standard versus open mortgage clause**, nearly always through a fact
+pattern where the insured did something that voids their coverage and the
+question is whether the lender is paid.
+
+**Additional insured versus certificate holder** — the certificate confers
+nothing.
+
+**Permissive use** in auto: the friend who borrows the car is an insured.
+
+**Resident relatives and students away at school** in homeowners.
+
+## Check yourself
+
+1. A commercial policy names three entities. To whom must the insurer send
+   notice of cancellation?
+2. An insured deliberately burns down a mortgaged building. There is a
+   standard mortgage clause. Is the mortgagee paid?
+3. Same facts, but an open loss payable clause. Is the lender paid?
+4. A subcontractor's certificate of insurance names the general contractor as
+   certificate holder. A claim arises from the sub's work. Is the general
+   contractor an insured?
+5. A neighbour borrows the insured's car with permission and causes an
+   accident. Whose policy responds first?
+
+## Answers
+
+1. The **first named insured** — notice to them is effective for all.
+2. **Yes**, provided the mortgagee had no part in the arson. The insurer then
+   acquires the mortgagee's rights against the insured.
+3. **No.** An open clause gives the lender no rights greater than the
+   insured's, and the insured has none.
+4. **No.** Certificate holder status confers no coverage; an additional
+   insured endorsement was needed.
+5. **The car owner's.** Auto liability follows the car, and a permissive user
+   is an insured under the owner's policy.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select '2c031b02-af62-5980-b6b9-fbeeece995c1', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.III'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select '50ab4b8b-d265-58a3-b2b7-3c9c700dc9f8', 'd6bff6c2-390e-518f-a728-b2a8ee99e87c', c.id, 'Duties After a Loss',
+       'duties-after-a-loss', 'What the insured must do, what the insurer must do, and the difference between notice of claim and proof of loss.', 4,
+       'draft', 14
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select '50ab4b8b-d265-58a3-b2b7-3c9c700dc9f8', c.id, $lesson$# The obligations that survive the loss
+
+A covered loss is not the same as a paid claim. Between the two sits a list of
+duties, and failing one can cost the insured the payment.
+
+## The insured's duties
+
+The list is close to identical across property forms:
+
+1. **Give prompt notice** to the insurer or its agent. In theft, also notify
+   the **police**. In credit card forgery, also notify the **card issuer**.
+2. **Protect the property from further damage.** Make reasonable emergency
+   repairs and keep the receipts — reasonable costs of protecting the property
+   are usually payable.
+3. **Prepare an inventory** of damaged personal property, showing quantity,
+   description, cost and the amount of loss claimed.
+4. **Exhibit the damaged property** as often as reasonably required, and allow
+   the insurer to inspect it.
+5. **Submit a signed, sworn proof of loss**, usually within 60 days of the
+   insurer's request.
+6. **Cooperate** — produce records, answer questions, and **submit to
+   examination under oath** if asked, separately from other insureds.
+7. **Do not admit liability or make voluntary payments** (liability forms).
+   Forward every demand, notice and legal paper to the insurer at once.
+
+**Numbers 2 and 7 are the ones candidates get wrong.** Protecting the property
+is a duty, not a courtesy — the "neglect" exclusion removes coverage for
+damage the insured let happen by failing to act. And admitting fault at the
+scene interferes with the insurer's right to defend.
+
+## Notice of claim versus proof of loss
+
+Two different things, tested as though they are one.
+
+| | Notice of claim | Proof of loss |
+| --- | --- | --- |
+| What | Tells the insurer a loss occurred | States the amount and circumstances |
+| Form | Usually may be oral; written is better | **Signed and sworn**, in writing |
+| When | **Promptly** / as soon as practicable | Usually **within 60 days of the insurer's request** |
+| Purpose | Lets the insurer investigate while evidence is fresh | Lets the insurer verify and quantify |
+
+A proof of loss states the time and cause of loss, the interests of everybody
+in the property, other insurance, changes in title or occupancy, and the
+amount claimed.
+
+## The insurer's obligations
+
+The duties run both ways. An insurer must:
+
+- **Investigate** the claim promptly and reasonably.
+- **Defend** the insured against covered liability claims — including suits
+  that are groundless, false or fraudulent. **The duty to defend is broader
+  than the duty to pay**, and defence costs are generally paid *in addition
+  to* the limit of liability.
+- **Pay covered claims** within the time the policy and state law require.
+- **Give notice** of cancellation or non-renewal as required.
+- **Act in good faith.** An insurer that denies a claim without a reasonable
+  basis exposes itself to more than the policy limit.
+
+The duty to defend **ends when the limit of liability is exhausted** by
+payment of judgments or settlements. That is the practical reason a liability
+limit is worth more than it looks.
+
+## Loss settlement and consent to settle
+
+**Loss settlement provisions say how much is paid** — actual cash value,
+replacement cost, or something else. Where a form pays replacement cost, it
+normally pays **actual cash value first** and the **holdback** (the
+depreciation) only once the repair or replacement is actually complete.
+An insured who never rebuilds gets ACV.
+
+**Consent to settle** is a liability provision. Two versions:
+
+- **The insurer may settle at its discretion.** Standard in most commercial
+  and personal liability forms. The insured has no veto, which can be
+  uncomfortable when a settlement implies fault.
+- **Consent to settle required** — the insurer may not settle without the
+  insured's agreement. Usual in professional liability, where a settlement
+  damages a reputation and may be reportable.
+
+Where consent is required, forms often include a **"hammer clause"**: if the
+insured refuses a settlement the insurer recommends, the insurer's liability
+is capped at what the settlement would have cost, and the insured funds
+anything above it.
+
+## Appraisal
+
+Where the insured and insurer agree the loss is covered but disagree on
+**how much**, the **appraisal** condition resolves it.
+
+Either party may demand it. Each selects a competent, independent appraiser;
+the two appraisers select an **umpire**. An agreement between **any two of
+the three** sets the amount. Each party pays its own appraiser and they share
+the umpire's cost equally.
+
+**Appraisal settles amount, not coverage.** A dispute about whether the peril
+is covered is not an appraisal question, and demanding appraisal does not
+waive the insurer's right to deny the claim on coverage grounds.
+
+## How this is examined
+
+**"What must the insured do after a theft?"** — notify the insurer *and* the
+police.
+
+**Notice versus proof of loss**, usually by asking which must be sworn, or
+which has a 60-day clock.
+
+**Voluntary payments** — the insured who pays the claimant out of pocket and
+asks to be reimbursed.
+
+**Duty to defend is broader than the duty to pay**, and defence costs sit
+outside the limit until the limit is exhausted.
+
+**Appraisal**, testing that it decides amount and not coverage, and that two
+of three agreeing is enough.
+
+**Replacement cost holdback** — the insured who takes the ACV cheque and does
+not rebuild.
+
+## Check yourself
+
+1. An insured's car is stolen. What two notifications are required?
+2. A storm breaks a window. The insured leaves it open for three weeks and
+   rain ruins the floor. Is the floor damage covered?
+3. Is a proof of loss required to be in writing?
+4. A policy has a $500,000 limit. A covered suit costs $120,000 to defend and
+   settles for $500,000. What has the insurer paid in total?
+5. The insured says a fire loss is $90,000; the insurer says $60,000. Both
+   agree fire is covered. What provision applies, and who decides?
+6. A homeowner with replacement cost coverage suffers a $40,000 loss on
+   property with an ACV of $28,000, and does not rebuild. What is paid?
+
+## Answers
+
+1. The **insurer** and the **police**.
+2. **No.** The insured breached the duty to protect the property from further
+   damage; the neglect exclusion applies.
+3. **Yes** — it must be written, signed and sworn.
+4. **$620,000.** Defence costs are paid in addition to the limit.
+5. **Appraisal.** Each side appoints an appraiser, the appraisers choose an
+   umpire, and agreement by any two of the three sets the amount.
+6. **$28,000**, the actual cash value. The replacement cost holdback is
+   payable only once the property is actually repaired or replaced.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select '50ab4b8b-d265-58a3-b2b7-3c9c700dc9f8', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.III'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
 select '89857f27-1358-579a-b69e-dbca1ba1bf2a', 'd6bff6c2-390e-518f-a728-b2a8ee99e87c', c.id, 'Cancellation and Non-renewal',
        'cancellation-and-nonrenewal', 'Who may end a policy, how much warning is owed, and how the return premium is worked out.', 5,
        'draft', 13
@@ -181,191 +508,6 @@ on conflict (lesson_id) do update set body = excluded.body;
 
 insert into public.lesson_topics (lesson_id, topic_id, course_id)
 select '89857f27-1358-579a-b69e-dbca1ba1bf2a', t.id, t.course_id
-  from public.topics t
-  join public.courses c on c.id = t.course_id
- where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.VI'
-on conflict (lesson_id, topic_id) do nothing;
-
-insert into public.lessons
-  (id, module_id, course_id, title, slug, summary, position, status,
-   estimated_minutes)
-select '52333f53-7203-52c7-90e1-39181aad19a7', 'd6bff6c2-390e-518f-a728-b2a8ee99e87c', c.id, 'Other Insurance, Subrogation and Supplementary Payments',
-       'other-insurance-subrogation-and-supplementary-payments', 'How two policies covering one loss divide it, how the insurer recovers from whoever caused it, and what a liability policy pays on top of the limit.', 6,
-       'draft', 15
-  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
-on conflict (id) do update set
-  title = excluded.title, summary = excluded.summary,
-  position = excluded.position, status = excluded.status,
-  estimated_minutes = excluded.estimated_minutes;
-
-insert into public.lesson_contents (lesson_id, course_id, body)
-select '52333f53-7203-52c7-90e1-39181aad19a7', c.id, $lesson$# Three conditions that all protect the same principle
-
-Indemnity says an insured is restored, not enriched. Two of these conditions
-enforce it. The third is the exception that proves the rule.
-
-## Other insurance
-
-**When more than one policy covers the same loss, the insured still collects
-only once.** The other insurance condition decides how the insurers divide
-it.
-
-### Pro rata
-
-**Each insurer pays the share its limit bears to the total of all limits.**
-The standard method for property insurance.
-
-> Insurer's share = (its limit ÷ total of all limits) × the loss
-
-Two policies, $300,000 and $100,000, covering a $40,000 loss:
-
-- Total limits = $400,000
-- The $300,000 policy pays 300/400 × $40,000 = **$30,000**
-- The $100,000 policy pays 100/400 × $40,000 = **$10,000**
-
-The insured collects **$40,000** — the loss, not $80,000.
-
-### Contribution by equal shares
-
-**Each insurer pays equal amounts until the loss is paid or its limit is
-exhausted**, after which the rest continue. Common in liability insurance.
-
-A $90,000 loss against limits of $100,000 and $50,000: each pays $45,000.
-Had the loss been $120,000, the smaller policy would stop at $50,000 and the
-larger would pay $70,000.
-
-### Primary and excess
-
-**One policy pays first and the other only after the first is exhausted.**
-Not sharing — a queue.
-
-The exam's standard illustrations:
-
-- **Auto liability follows the car.** The owner's policy is **primary**; the
-  driver's own policy is **excess**.
-- A **homeowners** policy is primary for premises liability; a **personal
-  umbrella** sits excess above it.
-- **Non-owned** auto coverage in a business auto policy is typically excess
-  over the vehicle owner's insurance.
-
-### Excess and escape clauses
-
-An **excess clause** says this policy pays only above other collectible
-insurance. An **escape clause** says it pays nothing at all where other
-insurance exists. Where two policies both claim to be excess, courts usually
-make them share; where an escape clause would leave the insured with nothing,
-it is often disregarded.
-
-## Subrogation
-
-**Subrogation is the insurer's right, after paying a claim, to step into the
-insured's position and pursue whoever caused the loss.**
-
-Three reasons it exists, all worth knowing:
-
-1. **It preserves indemnity.** Without it, an insured could collect from the
-   insurer and then sue the wrongdoer and end up ahead.
-2. **It puts the cost on the party at fault**, not on the insurer's pool of
-   policyholders.
-3. **It holds premiums down**, since recoveries return to the pool.
-
-### The rules
-
-- **The insurer's rights are no better than the insured's.** If the insured
-  had no claim against the third party, neither has the insurer.
-- **The insured must not prejudice the right.** Signing a waiver of recovery
-  *after* a loss can void coverage. Signing one *before* a loss — a hold
-  harmless in a lease or construction contract — is usually permitted, and
-  the exam likes this before-and-after distinction.
-- **The insured must cooperate** in the recovery action.
-- **Recovery order.** The insured is generally made whole first: money
-  recovered goes to the insured's uninsured loss (including the deductible)
-  before the insurer recoups.
-- **No subrogation against your own insured.** An insurer cannot subrogate
-  against a party insured under the same policy.
-
-Subrogation applies to **property and liability** insurance, which are
-contracts of indemnity. It does **not** apply to life insurance or to most
-personal accident coverage, which are valued contracts — there is no
-"wrongdoer to recover from" in the indemnity sense, and no over-recovery to
-prevent.
-
-## Supplementary payments
-
-**Supplementary payments are amounts a liability policy pays in addition to
-its limit of liability.** This is the exception to indemnity's tidiness: the
-insurer pays these because defending the claim is in its own interest.
-
-The list is stable across liability forms:
-
-- **Defence costs** — attorney's fees and the expense of investigating and
-  defending, including claims the insurer believes to be groundless.
-- **The cost of bonds to release attachments**, up to the policy limit.
-- **The premium on appeal bonds** — the insurer pays the premium, not the
-  face amount of the bond.
-- **The premium on bail bonds** arising from a covered accident, subject to a
-  stated maximum (commonly $250 in auto forms).
-- **Reasonable expenses incurred by the insured at the insurer's request**,
-  including lost earnings up to a stated daily amount (commonly $250).
-- **Post-judgment interest** on the entire judgment, and **pre-judgment
-  interest** where awarded.
-- **Court costs** taxed against the insured.
-
-Two things to keep straight:
-
-- **The insurer pays the premium for a bond, not the bond itself.** A
-  question offering "the insurer posts a $100,000 appeal bond" is testing
-  exactly this.
-- **Supplementary payments stop when the limit is exhausted.** Once the
-  insurer has paid its limit in judgments or settlements, the duty to defend
-  ends and so do these.
-
-## How this is examined
-
-**Pro rata calculations** with two limits and one loss — the arithmetic is
-easy; the trap is answering with the total of both payments as though the
-insured collected twice.
-
-**Primary versus excess in auto**, through the borrowed-car fact pattern.
-
-**Waiver of subrogation before versus after a loss.**
-
-**Defence costs outside the limit**, and the moment they stop.
-
-**Bond premium versus bond amount** in supplementary payments.
-
-## Check yourself
-
-1. A $60,000 loss is covered by policies with limits of $200,000 and
-   $100,000, both pro rata. What does each pay, and what does the insured
-   receive?
-2. After a fire caused by a contractor's negligence, the insured signs a
-   release of the contractor and then claims on the policy. What is the
-   likely result?
-3. A friend borrows the insured's car and causes an accident. Which policy is
-   primary?
-4. A liability policy has a $300,000 limit. The insurer spends $75,000
-   defending a suit that settles for $300,000. What is the total outlay, and
-   what happens to a second suit arriving the next week?
-5. An insurer pays a $10,000 claim on which the insured bore a $1,000
-   deductible, then recovers $6,000 from the party at fault. Who gets what?
-
-## Answers
-
-1. The $200,000 policy pays 200/300 × $60,000 = **$40,000**; the $100,000
-   policy pays **$20,000**. The insured receives **$60,000** — the loss.
-2. Coverage is likely **void** for that loss. The insured destroyed the
-   insurer's subrogation right after the loss occurred.
-3. **The car owner's policy** is primary; the driver's own policy is excess.
-4. **$375,000** — defence costs are in addition to the limit. The limit is
-   now exhausted, so the insurer has **no duty to defend** the second suit.
-5. The insured is generally made whole first, so the **$1,000 deductible**
-   comes back to the insured and the insurer keeps **$5,000**.$lesson$
-  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
-on conflict (lesson_id) do update set body = excluded.body;
-
-insert into public.lesson_topics (lesson_id, topic_id, course_id)
-select '52333f53-7203-52c7-90e1-39181aad19a7', t.id, t.course_id
   from public.topics t
   join public.courses c on c.id = t.course_id
  where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.VI'

@@ -14,6 +14,185 @@ begin;
 insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
+select '81867de3-86a9-5968-bbae-bc683f8aa8b6', 'd6bff6c2-390e-518f-a728-b2a8ee99e87c', c.id, 'The Declarations Page',
+       'the-declarations-page', 'What a policy is made of, and why the first page is the one that answers most questions.', 1,
+       'draft', 14
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select '81867de3-86a9-5968-bbae-bc683f8aa8b6', c.id, $lesson$# The page that identifies this policy from every other one
+
+Every policy in property and casualty is assembled from the same four parts.
+Learn the four, and a question about an unfamiliar form becomes a question
+about which part you are being shown.
+
+## The four parts
+
+Remembered as **DICE**:
+
+- **D**eclarations — who, what, where, when, how much
+- **I**nsuring agreement — what the insurer promises
+- **C**onditions — the rules both sides must follow
+- **E**xclusions — what is not covered
+
+Plus **endorsements**, which amend any of the four.
+
+The order matters logically as well as mnemonically. The insuring agreement
+makes a broad promise; the exclusions carve pieces out of it; the conditions
+say what each side must do to keep the promise alive; and the declarations
+attach all of it to one named insured, one property, one period and one set
+of numbers.
+
+## What is on the declarations
+
+**The declarations page is the only part of the policy unique to this
+insured.** Everything else is printed the same for everybody who buys the
+form. The declarations are typed.
+
+They carry:
+
+- **The named insured** and mailing address.
+- **The policy period** — inclusive dates *and times*. Most policies begin
+  and end at 12:01 a.m. standard time at the insured's address, which is why
+  a policy running to "1 June" does not cover a fire at noon on 1 June.
+- **The description of the property or operation** insured — address,
+  construction, occupancy, or for auto, the year, make and vehicle
+  identification number.
+- **The coverages purchased and their limits.**
+- **The deductibles.**
+- **The premium.**
+- **The forms and endorsements attached**, by number. This list is how you
+  prove what the policy actually consists of.
+- **The mortgagee or loss payee**, where one has an interest.
+- **The producer** and the insurer.
+
+A useful way to hold it: **the declarations answer "who, what, where, when
+and how much." The rest of the policy answers "under what circumstances."**
+
+## Where the declarations come from: the application
+
+The declarations are the insurer's restatement of the **application**. The
+application is the insured's request for coverage and the insurer's primary
+source of underwriting information, and the answers in it are
+**representations** — statements believed true when made. Sign it, and it is
+usually made part of the policy by reference.
+
+Two consequences the exam likes:
+
+- **Read the declarations when the policy arrives.** They are the insured's
+  chance to catch an error before a claim does. An address, a limit or a
+  deductible that does not match what was asked for is fixed by endorsement,
+  not by argument at claim time.
+- **A wrong answer on the application follows you onto the declarations.**
+  If the application understated the square footage, the declarations show
+  the wrong value and the coinsurance clause will be measured against the
+  wrong number.
+
+## Endorsements
+
+**An endorsement is a written amendment that adds to, deletes from or
+otherwise changes the policy.** Also called a rider, mostly in life
+insurance. It must be in writing and attached; a producer's promise does not
+amend a policy.
+
+What the exam wants:
+
+- An endorsement **takes precedence over conflicting printed policy
+  language**. It is the more specific and more recent statement of what the
+  parties agreed.
+- Endorsements can **broaden** coverage (adding a peril, scheduling an item),
+  **restrict** it (excluding a hazard the underwriter will not accept), or
+  merely **clarify** it.
+- They usually carry a premium change, and appear on the declarations by
+  form number.
+
+## Binders
+
+**A binder is temporary evidence that coverage is in force**, issued while
+the policy is prepared.
+
+- It may be **oral or written**, though a written one is what anybody sensible
+  uses. Many states, and most insurers' own rules, require written
+  confirmation within a set period.
+- It carries the **same terms as the policy it anticipates** — it is not a
+  separate, thinner contract.
+- It is **temporary**. It ends when the policy is issued, or when the insurer
+  declines and gives notice, or at its own expiry.
+- An agent with **binding authority** can bind the insurer on the spot. A
+  broker generally cannot; a broker represents the buyer.
+
+That last point is the one that gets tested: **a binder issued by an agent
+with binding authority creates coverage even if the insurer would later have
+declined the risk.**
+
+## Certificates of insurance
+
+**A certificate of insurance is evidence that a policy exists** — issued to
+somebody who is *not* the insured and who needs proof: a landlord, a general
+contractor, a lender, a client.
+
+It is not a policy and it is not a binder. **It creates no coverage.** It
+summarises coverages, limits and dates as of the day it was issued, and it
+becomes stale the moment anything changes. A certificate holder who wants
+actual rights under the policy needs to be added as an **additional insured**
+by endorsement — a certificate alone does not do it.
+
+## How this is examined
+
+**"Which part of the policy contains X?"** Limits, dates, named insured,
+deductible, mortgagee → declarations. The promise to pay → insuring
+agreement. Duties after a loss, cancellation, appraisal, other insurance →
+conditions. What is not covered → exclusions.
+
+**Binder questions**, testing that it is temporary, may be oral, and binds
+the insurer to the same terms as the policy.
+
+**Certificate questions**, testing that it confers no coverage on the holder.
+
+**Endorsement precedence** — where an endorsement conflicts with the printed
+form, the endorsement governs.
+
+## Check yourself
+
+1. Which part of the policy names the mortgagee?
+2. A policy period reads "1 March 2026 to 1 March 2027". Is a loss at 3 p.m.
+   on 1 March 2027 covered?
+3. An agent with binding authority binds coverage by phone. The insurer's
+   underwriter would have declined the risk. Is there coverage?
+4. A contractor gives a property owner a certificate of insurance. The
+   contractor's policy is cancelled a week later and a loss occurs. Does the
+   owner have coverage under the certificate?
+5. An endorsement says "windstorm excluded"; the printed form lists windstorm
+   as a covered peril. Which governs?
+
+## Answers
+
+1. The **declarations**.
+2. **No.** Coverage ended at 12:01 a.m. on 1 March 2027. The policy period is
+   inclusive of its start and exclusive of anything after its stated end time.
+3. **Yes.** Binding authority is the authority to obligate the insurer;
+   whether the underwriter would have chosen the risk is a matter between
+   agent and insurer.
+4. **No.** A certificate is evidence of coverage as of its issue date and
+   creates none of its own. The owner needed additional insured status.
+5. The **endorsement**.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select '81867de3-86a9-5968-bbae-bc683f8aa8b6', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.III'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
 select '2da74bbd-1d0b-54d0-8416-3d7bdc7a7cea', 'd6bff6c2-390e-518f-a728-b2a8ee99e87c', c.id, 'Insuring Agreement, Conditions and Exclusions',
        'insuring-agreement-conditions-and-exclusions', 'The promise, the rules attached to it, and the reasons an insurer says no.', 2,
        'draft', 16
@@ -200,333 +379,6 @@ on conflict (lesson_id) do update set body = excluded.body;
 
 insert into public.lesson_topics (lesson_id, topic_id, course_id)
 select '2da74bbd-1d0b-54d0-8416-3d7bdc7a7cea', t.id, t.course_id
-  from public.topics t
-  join public.courses c on c.id = t.course_id
- where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.III'
-on conflict (lesson_id, topic_id) do nothing;
-
-insert into public.lessons
-  (id, module_id, course_id, title, slug, summary, position, status,
-   estimated_minutes)
-select '2c031b02-af62-5980-b6b9-fbeeece995c1', 'd6bff6c2-390e-518f-a728-b2a8ee99e87c', c.id, 'Who Is an Insured',
-       'who-is-an-insured', 'Named insured, first named insured, additional insured, mortgagee — four different things the exam refuses to let you blur.', 3,
-       'draft', 14
-  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
-on conflict (id) do update set
-  title = excluded.title, summary = excluded.summary,
-  position = excluded.position, status = excluded.status,
-  estimated_minutes = excluded.estimated_minutes;
-
-insert into public.lesson_contents (lesson_id, course_id, body)
-select '2c031b02-af62-5980-b6b9-fbeeece995c1', c.id, $lesson$# Four kinds of people with rights under one policy
-
-"The insured" is not one category. The exam separates them, and each has a
-different set of rights.
-
-## The named insured
-
-**The named insured is the person or entity listed on the declarations.**
-They own the policy. They have the full set of rights: to receive the
-proceeds, to make changes, to cancel, to receive notices, to pay the premium.
-
-Under most personal forms the definition reaches further than the name
-printed. A homeowners policy typically extends "insured" to **residents of
-the household who are relatives**, and to **other residents under 21 in the
-care of an insured**. A student living away from home who is still a resident
-of the household usually stays covered.
-
-A personal auto policy typically extends to the named insured and **spouse if
-a resident of the same household**, to **family members**, and to **anyone
-using a covered auto with permission** — permissive use being the reason
-lending the car lends the insurance with it.
-
-## The first named insured
-
-Where several names appear, **the first one has duties and rights the others
-do not**. The exam tests this directly, especially in commercial lines.
-
-The first named insured:
-
-- **receives cancellation and non-renewal notices** on behalf of all,
-- **is responsible for the premium**,
-- **may cancel the policy**,
-- **may request changes** to it,
-- **receives any return premium**, and
-- **is responsible for premium audits** where the policy is auditable.
-
-So a notice of cancellation sent to the first named insured is effective
-against every insured on the policy.
-
-## Additional insureds
-
-**An additional insured is somebody added to the policy by endorsement who
-gains coverage for their liability arising out of the named insured's work or
-premises.**
-
-Typical: a general contractor added to a subcontractor's CGL; a landlord
-added to a tenant's policy; a lender added to a commercial policy.
-
-Three points:
-
-- **It takes an endorsement.** A certificate of insurance does not create
-  additional insured status, however often somebody treats it as if it does.
-- **The coverage is limited in scope.** The additional insured is covered for
-  liability connected to the named insured's operations — not for everything
-  they do.
-- **They do not own the policy.** They cannot cancel it or change it, and in
-  most forms they are not entitled to notice of cancellation unless the
-  endorsement says so.
-
-## Mortgagee rights
-
-Where property secures a loan, the lender has an **insurable interest** and
-is named on the declarations as **mortgagee** (in auto and personal property,
-the equivalent is a **loss payee**).
-
-**The standard mortgage clause gives the mortgagee rights independent of the
-insured's conduct.** This is the part that gets examined:
-
-- **Loss payment.** Payment for damage to the building is made to the insured
-  and mortgagee **jointly**, as their interests appear.
-- **The mortgagee is protected from the insured's acts.** If the insured
-  commits an act that voids their own coverage — concealment,
-  misrepresentation, an increase in hazard, even arson — **the mortgagee is
-  still paid**, provided the mortgagee had no part in it. This is the
-  distinguishing feature of a *standard* (or union) mortgage clause.
-- **The mortgagee gets its own notice.** The insurer must notify the
-  mortgagee of cancellation or non-renewal, typically with its own notice
-  period, separate from the insured's.
-- **The mortgagee may pay the premium** and submit its own proof of loss if
-  the insured fails to.
-- **The insurer gains subrogation against the insured.** Where the insurer
-  pays the mortgagee on a claim it would have denied to the insured, it
-  receives the mortgagee's rights against the insured to that extent.
-
-Contrast the **open mortgage clause** (or loss payable clause), which merely
-directs payment to the lender and gives it **no rights beyond the insured's**.
-If the insured's coverage is void, so is the lender's. "Standard protects the
-mortgagee from the insured's acts; open does not" is the whole distinction.
-
-## Loss payees and additional interests
-
-A **loss payee** is named to receive payment for damage to specific property
-in which it has an interest — a finance company on a vehicle, a lessor on
-equipment. Payment rights, not the broader protections of a standard mortgage
-clause.
-
-An **additional interest** or **interested party** is merely notified of
-policy changes; it receives no payment rights at all.
-
-## How this is examined
-
-**First named insured duties** — who gets notice, who pays, who can cancel.
-
-**Standard versus open mortgage clause**, nearly always through a fact
-pattern where the insured did something that voids their coverage and the
-question is whether the lender is paid.
-
-**Additional insured versus certificate holder** — the certificate confers
-nothing.
-
-**Permissive use** in auto: the friend who borrows the car is an insured.
-
-**Resident relatives and students away at school** in homeowners.
-
-## Check yourself
-
-1. A commercial policy names three entities. To whom must the insurer send
-   notice of cancellation?
-2. An insured deliberately burns down a mortgaged building. There is a
-   standard mortgage clause. Is the mortgagee paid?
-3. Same facts, but an open loss payable clause. Is the lender paid?
-4. A subcontractor's certificate of insurance names the general contractor as
-   certificate holder. A claim arises from the sub's work. Is the general
-   contractor an insured?
-5. A neighbour borrows the insured's car with permission and causes an
-   accident. Whose policy responds first?
-
-## Answers
-
-1. The **first named insured** — notice to them is effective for all.
-2. **Yes**, provided the mortgagee had no part in the arson. The insurer then
-   acquires the mortgagee's rights against the insured.
-3. **No.** An open clause gives the lender no rights greater than the
-   insured's, and the insured has none.
-4. **No.** Certificate holder status confers no coverage; an additional
-   insured endorsement was needed.
-5. **The car owner's.** Auto liability follows the car, and a permissive user
-   is an insured under the owner's policy.$lesson$
-  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
-on conflict (lesson_id) do update set body = excluded.body;
-
-insert into public.lesson_topics (lesson_id, topic_id, course_id)
-select '2c031b02-af62-5980-b6b9-fbeeece995c1', t.id, t.course_id
-  from public.topics t
-  join public.courses c on c.id = t.course_id
- where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.III'
-on conflict (lesson_id, topic_id) do nothing;
-
-insert into public.lessons
-  (id, module_id, course_id, title, slug, summary, position, status,
-   estimated_minutes)
-select '50ab4b8b-d265-58a3-b2b7-3c9c700dc9f8', 'd6bff6c2-390e-518f-a728-b2a8ee99e87c', c.id, 'Duties After a Loss',
-       'duties-after-a-loss', 'What the insured must do, what the insurer must do, and the difference between notice of claim and proof of loss.', 4,
-       'draft', 14
-  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
-on conflict (id) do update set
-  title = excluded.title, summary = excluded.summary,
-  position = excluded.position, status = excluded.status,
-  estimated_minutes = excluded.estimated_minutes;
-
-insert into public.lesson_contents (lesson_id, course_id, body)
-select '50ab4b8b-d265-58a3-b2b7-3c9c700dc9f8', c.id, $lesson$# The obligations that survive the loss
-
-A covered loss is not the same as a paid claim. Between the two sits a list of
-duties, and failing one can cost the insured the payment.
-
-## The insured's duties
-
-The list is close to identical across property forms:
-
-1. **Give prompt notice** to the insurer or its agent. In theft, also notify
-   the **police**. In credit card forgery, also notify the **card issuer**.
-2. **Protect the property from further damage.** Make reasonable emergency
-   repairs and keep the receipts — reasonable costs of protecting the property
-   are usually payable.
-3. **Prepare an inventory** of damaged personal property, showing quantity,
-   description, cost and the amount of loss claimed.
-4. **Exhibit the damaged property** as often as reasonably required, and allow
-   the insurer to inspect it.
-5. **Submit a signed, sworn proof of loss**, usually within 60 days of the
-   insurer's request.
-6. **Cooperate** — produce records, answer questions, and **submit to
-   examination under oath** if asked, separately from other insureds.
-7. **Do not admit liability or make voluntary payments** (liability forms).
-   Forward every demand, notice and legal paper to the insurer at once.
-
-**Numbers 2 and 7 are the ones candidates get wrong.** Protecting the property
-is a duty, not a courtesy — the "neglect" exclusion removes coverage for
-damage the insured let happen by failing to act. And admitting fault at the
-scene interferes with the insurer's right to defend.
-
-## Notice of claim versus proof of loss
-
-Two different things, tested as though they are one.
-
-| | Notice of claim | Proof of loss |
-| --- | --- | --- |
-| What | Tells the insurer a loss occurred | States the amount and circumstances |
-| Form | Usually may be oral; written is better | **Signed and sworn**, in writing |
-| When | **Promptly** / as soon as practicable | Usually **within 60 days of the insurer's request** |
-| Purpose | Lets the insurer investigate while evidence is fresh | Lets the insurer verify and quantify |
-
-A proof of loss states the time and cause of loss, the interests of everybody
-in the property, other insurance, changes in title or occupancy, and the
-amount claimed.
-
-## The insurer's obligations
-
-The duties run both ways. An insurer must:
-
-- **Investigate** the claim promptly and reasonably.
-- **Defend** the insured against covered liability claims — including suits
-  that are groundless, false or fraudulent. **The duty to defend is broader
-  than the duty to pay**, and defence costs are generally paid *in addition
-  to* the limit of liability.
-- **Pay covered claims** within the time the policy and state law require.
-- **Give notice** of cancellation or non-renewal as required.
-- **Act in good faith.** An insurer that denies a claim without a reasonable
-  basis exposes itself to more than the policy limit.
-
-The duty to defend **ends when the limit of liability is exhausted** by
-payment of judgments or settlements. That is the practical reason a liability
-limit is worth more than it looks.
-
-## Loss settlement and consent to settle
-
-**Loss settlement provisions say how much is paid** — actual cash value,
-replacement cost, or something else. Where a form pays replacement cost, it
-normally pays **actual cash value first** and the **holdback** (the
-depreciation) only once the repair or replacement is actually complete.
-An insured who never rebuilds gets ACV.
-
-**Consent to settle** is a liability provision. Two versions:
-
-- **The insurer may settle at its discretion.** Standard in most commercial
-  and personal liability forms. The insured has no veto, which can be
-  uncomfortable when a settlement implies fault.
-- **Consent to settle required** — the insurer may not settle without the
-  insured's agreement. Usual in professional liability, where a settlement
-  damages a reputation and may be reportable.
-
-Where consent is required, forms often include a **"hammer clause"**: if the
-insured refuses a settlement the insurer recommends, the insurer's liability
-is capped at what the settlement would have cost, and the insured funds
-anything above it.
-
-## Appraisal
-
-Where the insured and insurer agree the loss is covered but disagree on
-**how much**, the **appraisal** condition resolves it.
-
-Either party may demand it. Each selects a competent, independent appraiser;
-the two appraisers select an **umpire**. An agreement between **any two of
-the three** sets the amount. Each party pays its own appraiser and they share
-the umpire's cost equally.
-
-**Appraisal settles amount, not coverage.** A dispute about whether the peril
-is covered is not an appraisal question, and demanding appraisal does not
-waive the insurer's right to deny the claim on coverage grounds.
-
-## How this is examined
-
-**"What must the insured do after a theft?"** — notify the insurer *and* the
-police.
-
-**Notice versus proof of loss**, usually by asking which must be sworn, or
-which has a 60-day clock.
-
-**Voluntary payments** — the insured who pays the claimant out of pocket and
-asks to be reimbursed.
-
-**Duty to defend is broader than the duty to pay**, and defence costs sit
-outside the limit until the limit is exhausted.
-
-**Appraisal**, testing that it decides amount and not coverage, and that two
-of three agreeing is enough.
-
-**Replacement cost holdback** — the insured who takes the ACV cheque and does
-not rebuild.
-
-## Check yourself
-
-1. An insured's car is stolen. What two notifications are required?
-2. A storm breaks a window. The insured leaves it open for three weeks and
-   rain ruins the floor. Is the floor damage covered?
-3. Is a proof of loss required to be in writing?
-4. A policy has a $500,000 limit. A covered suit costs $120,000 to defend and
-   settles for $500,000. What has the insurer paid in total?
-5. The insured says a fire loss is $90,000; the insurer says $60,000. Both
-   agree fire is covered. What provision applies, and who decides?
-6. A homeowner with replacement cost coverage suffers a $40,000 loss on
-   property with an ACV of $28,000, and does not rebuild. What is paid?
-
-## Answers
-
-1. The **insurer** and the **police**.
-2. **No.** The insured breached the duty to protect the property from further
-   damage; the neglect exclusion applies.
-3. **Yes** — it must be written, signed and sworn.
-4. **$620,000.** Defence costs are paid in addition to the limit.
-5. **Appraisal.** Each side appoints an appraiser, the appraisers choose an
-   umpire, and agreement by any two of the three sets the amount.
-6. **$28,000**, the actual cash value. The replacement cost holdback is
-   payable only once the property is actually repaired or replaced.$lesson$
-  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
-on conflict (lesson_id) do update set body = excluded.body;
-
-insert into public.lesson_topics (lesson_id, topic_id, course_id)
-select '50ab4b8b-d265-58a3-b2b7-3c9c700dc9f8', t.id, t.course_id
   from public.topics t
   join public.courses c on c.id = t.course_id
  where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.III'

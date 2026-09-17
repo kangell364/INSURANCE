@@ -14,6 +14,180 @@ begin;
 insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
+select '6cb03304-a5e0-5bd8-95dc-ce7cc45d0458', '34b6c5a1-202f-5d9f-b12a-d98a335b2916', c.id, 'Negligence and Liability',
+       'negligence-and-liability', 'The four elements a claimant must prove, the defences against them, and the kinds of damages a court can award.', 6,
+       'draft', 15
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select '6cb03304-a5e0-5bd8-95dc-ce7cc45d0458', c.id, $lesson$# Being at fault, precisely
+
+Property insurance asks what something was worth. Liability insurance asks a
+harder question: **were you legally responsible?**
+
+Almost all of casualty insurance rests on negligence, and the exam tests it as
+a checklist. Learn the checklist.
+
+## The four elements
+
+**A claimant must prove all four. Miss one and there is no negligence.**
+
+**1. A duty owed.** The defendant owed the claimant a duty of care. Drivers owe
+it to other road users; shopkeepers to customers; property owners to lawful
+visitors.
+
+**2. A breach of that duty.** They failed to act as a reasonable person would
+in the circumstances. The standard is not perfection — it is reasonableness.
+
+**3. Proximate cause.** The breach actually caused the harm, in an unbroken
+chain. If something else intervened and caused it, the chain is broken.
+
+**4. Damages.** The claimant actually suffered a loss. Carelessness that
+injures nobody is not actionable.
+
+A shop leaves a spill unmopped. A customer slips, breaks a wrist, and incurs
+medical bills. Duty: the shop owes customers reasonable care. Breach: it left a
+known hazard. Proximate cause: the spill caused the fall. Damages: the bills
+and the injury. All four — negligence.
+
+Change one fact. The customer sees the spill, walks round it, and goes home
+unharmed. There is a duty and a breach, but no damages, and therefore no claim.
+
+## Degrees and special forms of liability
+
+**Gross negligence** — reckless indifference to others' safety, beyond ordinary
+carelessness. It matters because it can expose a defendant to punitive damages.
+
+**Strict liability** — liability **without proof of fault**. The claimant need
+not show the defendant was careless, only that the thing caused the harm.
+Product liability is the standard example; keeping a wild animal is another.
+
+**Absolute liability** — liability **that no defence will escape**. Workers'
+compensation is the clearest case: the employer pays for a workplace injury
+regardless of fault, and regardless of the employee's own carelessness.
+Blasting is the classic tort example.
+
+> The blueprint lists **absolute**, **strict** and **vicarious** as three
+> separate items, so this course keeps them apart even though many texts treat
+> the first two as synonyms. The distinction, and why it matters, is in lesson
+> 7.
+
+**Vicarious liability** — responsibility for somebody else's negligence
+because of a relationship. An employer for an employee acting within the scope
+of employment; a parent for a child in some circumstances. The employer was not
+careless; it is liable because the employee was.
+
+## Defences
+
+These come up as often as the elements.
+
+**Comparative negligence** — the claimant's own share of fault reduces their
+recovery. Most states use some version, and the details vary by state, so treat
+the general principle as the examinable point here.
+
+**Contributory negligence** — the older and harsher rule, under which any fault
+by the claimant bars recovery entirely. Very few states still apply it, but it
+appears in exam questions as a contrast to comparative negligence.
+
+**Assumption of risk** — the claimant knowingly and voluntarily accepted a
+known danger. Spectators at a baseball game and foul balls.
+
+**Intervening cause** — something unforeseeable broke the chain between the
+breach and the harm.
+
+**Statute of limitations** — the claimant waited too long to bring the claim.
+
+## Damages
+
+Getting these labels straight is worth easy marks.
+
+**Compensatory damages** make the claimant whole, and split in two:
+
+- **Special damages** — specific, provable, economic losses. Medical bills,
+  lost wages, the cost of repairs. You can put a receipt to them.
+- **General damages** — real but not itemisable. Pain and suffering,
+  disfigurement, loss of consortium.
+
+**Punitive (exemplary) damages** punish the defendant and deter others, awarded
+for gross negligence or deliberate wrongdoing rather than ordinary
+carelessness. They are not compensation, and many liability policies do not
+cover them.
+
+The memory hook that survives exam pressure: **special is specific**.
+
+## Occurrence and claims-made
+
+Liability policies come in two triggers, and the distinction decides which
+policy answers a claim.
+
+**Occurrence** — responds to injury or damage that *happened* during the policy
+period, whenever the claim is made. A 2020 policy answers a 2026 claim for a
+2020 injury.
+
+**Claims-made** — responds to claims *first made* during the policy period,
+usually subject to a **retroactive date** before which injuries are not
+covered. Common in professional liability, where harm may surface years later.
+
+Because a claims-made policy stops responding when it ends, **extended
+reporting periods** — "tail" coverage — exist to cover claims made after it
+expires for acts committed while it was in force.
+
+## How this is examined
+
+**"Which element is missing?"** — a fact pattern that fails on one of the four.
+Most often damages, or proximate cause.
+
+**Special versus general damages** — sort by whether a receipt exists.
+
+**Vicarious liability** — a stem where the person sued was not the person who
+was careless.
+
+**Occurrence versus claims-made** — ask whether the question emphasises when
+the injury *happened* or when the claim was *made*.
+
+**Strict liability** — look for inherently dangerous activity, and for the
+absence of any allegation of carelessness.
+
+## Check yourself
+
+1. A driver runs a red light. Nobody is nearby and nothing happens. Has any
+   element of negligence been satisfied, and is there a claim?
+2. A delivery driver rear-ends a car while working. The employer is sued
+   although it did nothing careless. What is this called?
+3. A claimant is awarded $40,000 for medical bills and lost wages, and $60,000
+   for pain and suffering. Label each.
+4. A surgeon's 2023 operation causes harm discovered in 2026. Which policy
+   responds under an occurrence form, and which under claims-made?
+
+## Answers
+
+1. Duty and breach are present. **Proximate cause and damages are not**, so
+   there is no negligence claim. Carelessness that harms nobody is not
+   actionable.
+2. **Vicarious liability** — responsibility for an employee's negligence
+   committed within the scope of employment.
+3. $40,000 is **special damages** (specific, provable, economic). $60,000 is
+   **general damages** (real but not itemisable). Both are compensatory.
+4. **Occurrence:** the 2023 policy, because the injury happened then.
+   **Claims-made:** the 2026 policy, because that is when the claim was first
+   made — provided the retroactive date precedes 2023.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select '6cb03304-a5e0-5bd8-95dc-ce7cc45d0458', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.V'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
 select 'a5bd1b75-770f-55a0-b5b3-a6ca2cf5cea1', '34b6c5a1-202f-5d9f-b12a-d98a335b2916', c.id, 'Terms the Other Lessons Assume',
        'terms-the-other-lessons-assume', 'Nine terms the blueprint names that do not belong to any one topic — and the three distinctions inside them that get tested.', 7,
        'draft', 15
@@ -300,185 +474,6 @@ select 'a5bd1b75-770f-55a0-b5b3-a6ca2cf5cea1', t.id, t.course_id
   from public.topics t
   join public.courses c on c.id = t.course_id
  where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.II'
-on conflict (lesson_id, topic_id) do nothing;
-
-insert into public.lessons
-  (id, module_id, course_id, title, slug, summary, position, status,
-   estimated_minutes)
-select '81867de3-86a9-5968-bbae-bc683f8aa8b6', 'd6bff6c2-390e-518f-a728-b2a8ee99e87c', c.id, 'The Declarations Page',
-       'the-declarations-page', 'What a policy is made of, and why the first page is the one that answers most questions.', 1,
-       'draft', 14
-  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
-on conflict (id) do update set
-  title = excluded.title, summary = excluded.summary,
-  position = excluded.position, status = excluded.status,
-  estimated_minutes = excluded.estimated_minutes;
-
-insert into public.lesson_contents (lesson_id, course_id, body)
-select '81867de3-86a9-5968-bbae-bc683f8aa8b6', c.id, $lesson$# The page that identifies this policy from every other one
-
-Every policy in property and casualty is assembled from the same four parts.
-Learn the four, and a question about an unfamiliar form becomes a question
-about which part you are being shown.
-
-## The four parts
-
-Remembered as **DICE**:
-
-- **D**eclarations — who, what, where, when, how much
-- **I**nsuring agreement — what the insurer promises
-- **C**onditions — the rules both sides must follow
-- **E**xclusions — what is not covered
-
-Plus **endorsements**, which amend any of the four.
-
-The order matters logically as well as mnemonically. The insuring agreement
-makes a broad promise; the exclusions carve pieces out of it; the conditions
-say what each side must do to keep the promise alive; and the declarations
-attach all of it to one named insured, one property, one period and one set
-of numbers.
-
-## What is on the declarations
-
-**The declarations page is the only part of the policy unique to this
-insured.** Everything else is printed the same for everybody who buys the
-form. The declarations are typed.
-
-They carry:
-
-- **The named insured** and mailing address.
-- **The policy period** — inclusive dates *and times*. Most policies begin
-  and end at 12:01 a.m. standard time at the insured's address, which is why
-  a policy running to "1 June" does not cover a fire at noon on 1 June.
-- **The description of the property or operation** insured — address,
-  construction, occupancy, or for auto, the year, make and vehicle
-  identification number.
-- **The coverages purchased and their limits.**
-- **The deductibles.**
-- **The premium.**
-- **The forms and endorsements attached**, by number. This list is how you
-  prove what the policy actually consists of.
-- **The mortgagee or loss payee**, where one has an interest.
-- **The producer** and the insurer.
-
-A useful way to hold it: **the declarations answer "who, what, where, when
-and how much." The rest of the policy answers "under what circumstances."**
-
-## Where the declarations come from: the application
-
-The declarations are the insurer's restatement of the **application**. The
-application is the insured's request for coverage and the insurer's primary
-source of underwriting information, and the answers in it are
-**representations** — statements believed true when made. Sign it, and it is
-usually made part of the policy by reference.
-
-Two consequences the exam likes:
-
-- **Read the declarations when the policy arrives.** They are the insured's
-  chance to catch an error before a claim does. An address, a limit or a
-  deductible that does not match what was asked for is fixed by endorsement,
-  not by argument at claim time.
-- **A wrong answer on the application follows you onto the declarations.**
-  If the application understated the square footage, the declarations show
-  the wrong value and the coinsurance clause will be measured against the
-  wrong number.
-
-## Endorsements
-
-**An endorsement is a written amendment that adds to, deletes from or
-otherwise changes the policy.** Also called a rider, mostly in life
-insurance. It must be in writing and attached; a producer's promise does not
-amend a policy.
-
-What the exam wants:
-
-- An endorsement **takes precedence over conflicting printed policy
-  language**. It is the more specific and more recent statement of what the
-  parties agreed.
-- Endorsements can **broaden** coverage (adding a peril, scheduling an item),
-  **restrict** it (excluding a hazard the underwriter will not accept), or
-  merely **clarify** it.
-- They usually carry a premium change, and appear on the declarations by
-  form number.
-
-## Binders
-
-**A binder is temporary evidence that coverage is in force**, issued while
-the policy is prepared.
-
-- It may be **oral or written**, though a written one is what anybody sensible
-  uses. Many states, and most insurers' own rules, require written
-  confirmation within a set period.
-- It carries the **same terms as the policy it anticipates** — it is not a
-  separate, thinner contract.
-- It is **temporary**. It ends when the policy is issued, or when the insurer
-  declines and gives notice, or at its own expiry.
-- An agent with **binding authority** can bind the insurer on the spot. A
-  broker generally cannot; a broker represents the buyer.
-
-That last point is the one that gets tested: **a binder issued by an agent
-with binding authority creates coverage even if the insurer would later have
-declined the risk.**
-
-## Certificates of insurance
-
-**A certificate of insurance is evidence that a policy exists** — issued to
-somebody who is *not* the insured and who needs proof: a landlord, a general
-contractor, a lender, a client.
-
-It is not a policy and it is not a binder. **It creates no coverage.** It
-summarises coverages, limits and dates as of the day it was issued, and it
-becomes stale the moment anything changes. A certificate holder who wants
-actual rights under the policy needs to be added as an **additional insured**
-by endorsement — a certificate alone does not do it.
-
-## How this is examined
-
-**"Which part of the policy contains X?"** Limits, dates, named insured,
-deductible, mortgagee → declarations. The promise to pay → insuring
-agreement. Duties after a loss, cancellation, appraisal, other insurance →
-conditions. What is not covered → exclusions.
-
-**Binder questions**, testing that it is temporary, may be oral, and binds
-the insurer to the same terms as the policy.
-
-**Certificate questions**, testing that it confers no coverage on the holder.
-
-**Endorsement precedence** — where an endorsement conflicts with the printed
-form, the endorsement governs.
-
-## Check yourself
-
-1. Which part of the policy names the mortgagee?
-2. A policy period reads "1 March 2026 to 1 March 2027". Is a loss at 3 p.m.
-   on 1 March 2027 covered?
-3. An agent with binding authority binds coverage by phone. The insurer's
-   underwriter would have declined the risk. Is there coverage?
-4. A contractor gives a property owner a certificate of insurance. The
-   contractor's policy is cancelled a week later and a loss occurs. Does the
-   owner have coverage under the certificate?
-5. An endorsement says "windstorm excluded"; the printed form lists windstorm
-   as a covered peril. Which governs?
-
-## Answers
-
-1. The **declarations**.
-2. **No.** Coverage ended at 12:01 a.m. on 1 March 2027. The policy period is
-   inclusive of its start and exclusive of anything after its stated end time.
-3. **Yes.** Binding authority is the authority to obligate the insurer;
-   whether the underwriter would have chosen the risk is a matter between
-   agent and insurer.
-4. **No.** A certificate is evidence of coverage as of its issue date and
-   creates none of its own. The owner needed additional insured status.
-5. The **endorsement**.$lesson$
-  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
-on conflict (lesson_id) do update set body = excluded.body;
-
-insert into public.lesson_topics (lesson_id, topic_id, course_id)
-select '81867de3-86a9-5968-bbae-bc683f8aa8b6', t.id, t.course_id
-  from public.topics t
-  join public.courses c on c.id = t.course_id
- where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.III'
 on conflict (lesson_id, topic_id) do nothing;
 
 commit;

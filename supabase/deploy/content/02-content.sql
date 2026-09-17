@@ -14,6 +14,162 @@ begin;
 insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
+select '707e2d75-4394-5463-9f46-d9cedf43df3f', '34b6c5a1-202f-5d9f-b12a-d98a335b2916', c.id, 'Insurable Interest and Indemnity',
+       'insurable-interest-and-indemnity', 'Who is allowed to insure what, and the rule that you may be made whole but never better off.', 3,
+       'draft', 13
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select '707e2d75-4394-5463-9f46-d9cedf43df3f', c.id, $lesson$# Two rules that stop insurance becoming gambling
+
+Insurance moves money to people after bad things happen. Two principles keep
+that from becoming a betting shop, and between them they decide a great many
+exam questions.
+
+**Insurable interest** decides *who may buy*.
+**Indemnity** decides *how much they may collect*.
+
+## Insurable interest
+
+**You may only insure something you would genuinely lose by.**
+
+That is the whole rule. Everything else follows from it.
+
+### Why it exists
+
+Without the rule, anyone could take out a fire policy on a stranger's
+warehouse and then hope for a fire. That gives a stranger a financial reason
+to want the warehouse to burn — and gives the insurer no way to distinguish a
+customer from an arsonist. Requiring an interest removes the motive.
+
+It is also what separates insurance from a wager in law. A bet creates a risk
+that did not exist before. Insurance transfers one that already did.
+
+### When it must exist — the detail that is tested
+
+Property and life insurance answer this differently, and the difference is
+examined constantly.
+
+**Property and casualty: at the time of the loss.**
+
+You can insure a building and later sell it. If it burns after the sale, the
+claim fails — not because you never had an interest, but because you no longer
+had one when the loss happened.
+
+**Life: when the policy is taken out, and not necessarily after.**
+
+A woman insures her husband's life. They divorce. She remains the beneficiary
+and the policy pays. The interest existed at inception, which is all life
+insurance requires.
+
+A neat way to hold it: **property asks "do you lose by this now?"; life asks
+"did you have reason to buy this then?"**
+
+### Who has one
+
+- An **owner**, in their own property.
+- A **lender or mortgagee**, up to the amount still owed. A bank holding a
+  $200,000 mortgage has an interest of $200,000, not the value of the house.
+- A **business**, in a key employee, or in property it holds for others.
+- A **spouse**, in the other spouse's life; a parent in a dependent child's.
+- A **tenant**, in improvements they have paid for.
+- A **bailee** — a garage, a dry cleaner — in customers' property in their
+  care.
+
+### How much interest
+
+Your interest is limited to what you stand to lose. A part-owner of a building
+cannot insure the whole of it for their own benefit, and a lender cannot
+recover more than the outstanding balance. This flows straight into the second
+principle.
+
+## Indemnity
+
+**Indemnity means restoring the insured to the financial position they were in
+immediately before the loss — no worse, and no better.**
+
+The second half is the part that gets tested. If a loss could leave you better
+off, somebody eventually arranges a loss.
+
+Several familiar policy mechanisms are indemnity doing its work:
+
+- **Actual cash value** settlements, which deduct depreciation so a
+  twenty-year-old roof is not replaced with a new one at the insurer's expense.
+- **Policy limits**, capping recovery at the amount insured.
+- **Deductibles**, leaving part of every loss with the insured.
+- **Other insurance clauses**, so two policies covering the same loss share it
+  rather than each paying in full.
+- **Subrogation**, letting the insurer step into the insured's shoes and
+  recover from whoever caused the loss — which stops the insured collecting
+  twice, once from the insurer and again from the wrongdoer.
+
+### Where indemnity is deliberately set aside
+
+The exam likes exceptions, and there are three worth knowing.
+
+**Valued policies** pay an agreed amount regardless of actual value, used where
+value is hard to establish after the fact — fine art, antiques.
+
+**Replacement cost** coverage pays to replace without deducting depreciation,
+which technically leaves the insured better off. It is sold anyway because
+underinsurance after a total loss is a worse problem than the one it creates.
+
+**Life insurance** is not a contract of indemnity at all. A life has no
+measurable value, so the policy pays a stated sum. This is why insurable
+interest is only required at inception.
+
+## How this is examined
+
+**"When must insurable interest exist?"** — the single most common question in
+this area. Property: at the time of loss. Life: at inception.
+
+**Fact patterns about lenders.** A mortgagee's interest is the balance
+outstanding, not the property's value.
+
+**"Which of these is not a contract of indemnity?"** — the answer is life
+insurance, or a valued policy.
+
+**Questions about collecting twice.** Subrogation and other-insurance clauses
+both exist to prevent it; recognise them as indemnity in action.
+
+## Check yourself
+
+1. A man insures his house, then sells it. Two months later it burns. Does his
+   policy respond? Why?
+2. A bank holds a $150,000 mortgage on a $400,000 home. What is the extent of
+   its insurable interest?
+3. A woman insures her husband's life. They divorce, and she keeps paying the
+   premiums. He dies. Does the policy pay?
+4. An insurer pays a claim, then sues the driver who caused it. What is that
+   called, and which principle does it serve?
+
+## Answers
+
+1. **No.** Property insurance requires an insurable interest **at the time of
+   the loss**, and he no longer had one.
+2. **$150,000** — the amount outstanding. A lender's interest is what it stands
+   to lose, not what the property is worth.
+3. **Yes.** Life insurance requires the interest only **when the policy is
+   taken out**. It does not have to survive the marriage.
+4. **Subrogation**, and it serves **indemnity** — without it the insured could
+   recover twice for the same loss.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select '707e2d75-4394-5463-9f46-d9cedf43df3f', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.II'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
 select 'e1d24da3-2f83-5484-8008-27456a1c9f05', '34b6c5a1-202f-5d9f-b12a-d98a335b2916', c.id, 'Valuing a Loss',
        'valuing-a-loss', 'Actual cash value, replacement cost and agreed value — and why the difference decides what a claim pays.', 4,
        'draft', 14
@@ -319,180 +475,6 @@ select '2f93978e-6aca-5ed1-99ea-e672f8e06e7f', t.id, t.course_id
   from public.topics t
   join public.courses c on c.id = t.course_id
  where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.II'
-on conflict (lesson_id, topic_id) do nothing;
-
-insert into public.lessons
-  (id, module_id, course_id, title, slug, summary, position, status,
-   estimated_minutes)
-select '6cb03304-a5e0-5bd8-95dc-ce7cc45d0458', '34b6c5a1-202f-5d9f-b12a-d98a335b2916', c.id, 'Negligence and Liability',
-       'negligence-and-liability', 'The four elements a claimant must prove, the defences against them, and the kinds of damages a court can award.', 6,
-       'draft', 15
-  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
-on conflict (id) do update set
-  title = excluded.title, summary = excluded.summary,
-  position = excluded.position, status = excluded.status,
-  estimated_minutes = excluded.estimated_minutes;
-
-insert into public.lesson_contents (lesson_id, course_id, body)
-select '6cb03304-a5e0-5bd8-95dc-ce7cc45d0458', c.id, $lesson$# Being at fault, precisely
-
-Property insurance asks what something was worth. Liability insurance asks a
-harder question: **were you legally responsible?**
-
-Almost all of casualty insurance rests on negligence, and the exam tests it as
-a checklist. Learn the checklist.
-
-## The four elements
-
-**A claimant must prove all four. Miss one and there is no negligence.**
-
-**1. A duty owed.** The defendant owed the claimant a duty of care. Drivers owe
-it to other road users; shopkeepers to customers; property owners to lawful
-visitors.
-
-**2. A breach of that duty.** They failed to act as a reasonable person would
-in the circumstances. The standard is not perfection — it is reasonableness.
-
-**3. Proximate cause.** The breach actually caused the harm, in an unbroken
-chain. If something else intervened and caused it, the chain is broken.
-
-**4. Damages.** The claimant actually suffered a loss. Carelessness that
-injures nobody is not actionable.
-
-A shop leaves a spill unmopped. A customer slips, breaks a wrist, and incurs
-medical bills. Duty: the shop owes customers reasonable care. Breach: it left a
-known hazard. Proximate cause: the spill caused the fall. Damages: the bills
-and the injury. All four — negligence.
-
-Change one fact. The customer sees the spill, walks round it, and goes home
-unharmed. There is a duty and a breach, but no damages, and therefore no claim.
-
-## Degrees and special forms of liability
-
-**Gross negligence** — reckless indifference to others' safety, beyond ordinary
-carelessness. It matters because it can expose a defendant to punitive damages.
-
-**Strict liability** — liability **without proof of fault**. The claimant need
-not show the defendant was careless, only that the thing caused the harm.
-Product liability is the standard example; keeping a wild animal is another.
-
-**Absolute liability** — liability **that no defence will escape**. Workers'
-compensation is the clearest case: the employer pays for a workplace injury
-regardless of fault, and regardless of the employee's own carelessness.
-Blasting is the classic tort example.
-
-> The blueprint lists **absolute**, **strict** and **vicarious** as three
-> separate items, so this course keeps them apart even though many texts treat
-> the first two as synonyms. The distinction, and why it matters, is in lesson
-> 7.
-
-**Vicarious liability** — responsibility for somebody else's negligence
-because of a relationship. An employer for an employee acting within the scope
-of employment; a parent for a child in some circumstances. The employer was not
-careless; it is liable because the employee was.
-
-## Defences
-
-These come up as often as the elements.
-
-**Comparative negligence** — the claimant's own share of fault reduces their
-recovery. Most states use some version, and the details vary by state, so treat
-the general principle as the examinable point here.
-
-**Contributory negligence** — the older and harsher rule, under which any fault
-by the claimant bars recovery entirely. Very few states still apply it, but it
-appears in exam questions as a contrast to comparative negligence.
-
-**Assumption of risk** — the claimant knowingly and voluntarily accepted a
-known danger. Spectators at a baseball game and foul balls.
-
-**Intervening cause** — something unforeseeable broke the chain between the
-breach and the harm.
-
-**Statute of limitations** — the claimant waited too long to bring the claim.
-
-## Damages
-
-Getting these labels straight is worth easy marks.
-
-**Compensatory damages** make the claimant whole, and split in two:
-
-- **Special damages** — specific, provable, economic losses. Medical bills,
-  lost wages, the cost of repairs. You can put a receipt to them.
-- **General damages** — real but not itemisable. Pain and suffering,
-  disfigurement, loss of consortium.
-
-**Punitive (exemplary) damages** punish the defendant and deter others, awarded
-for gross negligence or deliberate wrongdoing rather than ordinary
-carelessness. They are not compensation, and many liability policies do not
-cover them.
-
-The memory hook that survives exam pressure: **special is specific**.
-
-## Occurrence and claims-made
-
-Liability policies come in two triggers, and the distinction decides which
-policy answers a claim.
-
-**Occurrence** — responds to injury or damage that *happened* during the policy
-period, whenever the claim is made. A 2020 policy answers a 2026 claim for a
-2020 injury.
-
-**Claims-made** — responds to claims *first made* during the policy period,
-usually subject to a **retroactive date** before which injuries are not
-covered. Common in professional liability, where harm may surface years later.
-
-Because a claims-made policy stops responding when it ends, **extended
-reporting periods** — "tail" coverage — exist to cover claims made after it
-expires for acts committed while it was in force.
-
-## How this is examined
-
-**"Which element is missing?"** — a fact pattern that fails on one of the four.
-Most often damages, or proximate cause.
-
-**Special versus general damages** — sort by whether a receipt exists.
-
-**Vicarious liability** — a stem where the person sued was not the person who
-was careless.
-
-**Occurrence versus claims-made** — ask whether the question emphasises when
-the injury *happened* or when the claim was *made*.
-
-**Strict liability** — look for inherently dangerous activity, and for the
-absence of any allegation of carelessness.
-
-## Check yourself
-
-1. A driver runs a red light. Nobody is nearby and nothing happens. Has any
-   element of negligence been satisfied, and is there a claim?
-2. A delivery driver rear-ends a car while working. The employer is sued
-   although it did nothing careless. What is this called?
-3. A claimant is awarded $40,000 for medical bills and lost wages, and $60,000
-   for pain and suffering. Label each.
-4. A surgeon's 2023 operation causes harm discovered in 2026. Which policy
-   responds under an occurrence form, and which under claims-made?
-
-## Answers
-
-1. Duty and breach are present. **Proximate cause and damages are not**, so
-   there is no negligence claim. Carelessness that harms nobody is not
-   actionable.
-2. **Vicarious liability** — responsibility for an employee's negligence
-   committed within the scope of employment.
-3. $40,000 is **special damages** (specific, provable, economic). $60,000 is
-   **general damages** (real but not itemisable). Both are compensatory.
-4. **Occurrence:** the 2023 policy, because the injury happened then.
-   **Claims-made:** the 2026 policy, because that is when the claim was first
-   made — provided the retroactive date precedes 2023.$lesson$
-  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
-on conflict (lesson_id) do update set body = excluded.body;
-
-insert into public.lesson_topics (lesson_id, topic_id, course_id)
-select '6cb03304-a5e0-5bd8-95dc-ce7cc45d0458', t.id, t.course_id
-  from public.topics t
-  join public.courses c on c.id = t.course_id
- where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.V'
 on conflict (lesson_id, topic_id) do nothing;
 
 commit;

@@ -120,6 +120,82 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'df8ba7e8-40ce-5863-8b37-9dcdd42d910b', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'risk-peril-and-hazard'),
+       'A driver leaves their car unlocked overnight, hoping it will be stolen so they can claim on the policy. Which hazard is this?', '**Moral hazard — the motive is dishonesty.** Compare it with the same action done carelessly: a driver who simply stops locking up because the policy will pay has a **morale** hazard, with no intent to bring the loss about. The facts are identical. Only what the driver intends differs, and that is what the exam is testing. A stem describing a hazard of the person will always tell you the motive somewhere.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.II'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'd79cb6b3-b8d4-59a6-b7b0-7fe31b8172fb', 'df8ba7e8-40ce-5863-8b37-9dcdd42d910b', c.id, 'Moral hazard', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '7f2a248c-fdc4-5c4c-8701-feb2c9d35fbb', 'df8ba7e8-40ce-5863-8b37-9dcdd42d910b', c.id, 'Morale hazard', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '57d44757-c3bb-59d9-9843-e5cffc0c96cf', 'df8ba7e8-40ce-5863-8b37-9dcdd42d910b', c.id, 'Physical hazard', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '0149408b-87e4-5980-9901-1602b641ba22', 'df8ba7e8-40ce-5863-8b37-9dcdd42d910b', c.id, 'Legal hazard', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'df8ba7e8-40ce-5863-8b37-9dcdd42d910b', c.id, 'd79cb6b3-b8d4-59a6-b7b0-7fe31b8172fb'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '158c67bb-8a98-519a-a2ec-dba1503d9631', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'risk-peril-and-hazard'),
+       'A shop stores fireworks beside its electrical panel. Which hazard is this?', '**Physical hazard — a condition of the property you could photograph.** The test that separates it from the other two: physical hazard is about the *thing*, moral and morale are about the *person*. The fireworks are not the peril either. **Fire is the peril**; the fireworks are what make it more likely and more severe.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.II'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'ffb6990e-afce-5933-9de8-7e726535afdf', '158c67bb-8a98-519a-a2ec-dba1503d9631', c.id, 'Physical hazard', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '51bd9ead-7baa-539d-a1de-8f94702c88ad', '158c67bb-8a98-519a-a2ec-dba1503d9631', c.id, 'Moral hazard', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '5e90e753-c089-5867-80a6-faa95004c8d1', '158c67bb-8a98-519a-a2ec-dba1503d9631', c.id, 'Morale hazard', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '84d5bc30-ea23-5097-b5af-e9c8c9cde0a3', '158c67bb-8a98-519a-a2ec-dba1503d9631', c.id, 'Peril', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '158c67bb-8a98-519a-a2ec-dba1503d9631', c.id, 'ffb6990e-afce-5933-9de8-7e726535afdf'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select 'ae4aa78e-8e6d-5531-9dcf-b44a747d1013', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'risk-peril-and-hazard'),
        'Which of these is a speculative risk?', 'A **speculative risk carries the chance of gain as well as loss**, which is why it is uninsurable — insurance restores, it does not fund upside. The other three are pure risks: loss or no loss, never gain.', 'draft'

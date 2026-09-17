@@ -37,6 +37,35 @@ morale hazard concerns their carelessness *because* they are insured.
 **Morale hazard is indifference caused by having insurance** — not dishonesty,
 just reduced care. Moral hazard would be deliberately arranging the loss.
 
+### A driver leaves their car unlocked overnight, hoping it will be stolen so they can claim on the policy. Which hazard is this?
+
+- [x] Moral hazard
+- [ ] Morale hazard
+- [ ] Physical hazard
+- [ ] Legal hazard
+
+**Moral hazard — the motive is dishonesty.** Compare it with the same action
+done carelessly: a driver who simply stops locking up because the policy will
+pay has a **morale** hazard, with no intent to bring the loss about.
+
+The facts are identical. Only what the driver intends differs, and that is
+what the exam is testing. A stem describing a hazard of the person will always
+tell you the motive somewhere.
+
+### A shop stores fireworks beside its electrical panel. Which hazard is this?
+
+- [x] Physical hazard
+- [ ] Moral hazard
+- [ ] Morale hazard
+- [ ] Peril
+
+**Physical hazard — a condition of the property you could photograph.** The
+test that separates it from the other two: physical hazard is about the
+*thing*, moral and morale are about the *person*.
+
+The fireworks are not the peril either. **Fire is the peril**; the fireworks
+are what make it more likely and more severe.
+
 ### Which of these is a speculative risk?
 
 - [x] Opening a restaurant

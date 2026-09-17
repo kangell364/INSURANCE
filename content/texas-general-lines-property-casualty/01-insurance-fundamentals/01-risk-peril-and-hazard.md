@@ -105,6 +105,36 @@ a loss; they have simply stopped trying hard to prevent one.
 
 The distinction in one line: **moral is dishonesty, morale is carelessness.**
 
+### Deciding between them
+
+Recognising the three definitions is easy. Choosing between them under a stem
+you have never seen is the part that costs marks, so use a procedure rather
+than a feeling. Two questions, in order:
+
+1. **Could you photograph it?** A condition of the property or its use —
+   rags, ice, fireworks, a flat roof — is a **physical hazard**. Physical
+   hazard is about the *thing*.
+2. **If not, is the person dishonest or merely careless?** Dishonest is
+   **moral**. Careless is **morale**. Both are about the *person*, and the
+   only thing separating them is intent.
+
+The reason this works is that the same facts can be any of the three. Watch
+one situation move:
+
+| The situation | Hazard | Why |
+| ------------- | ------ | --- |
+| A car is parked overnight on a street with frequent thefts | **Physical** | A condition you could point at. Nothing about the driver. |
+| The driver stops locking it once comprehensive coverage starts | **Morale** | No intent to lose the car — just less care, and only since the policy |
+| The driver leaves it unlocked hoping it is taken, to claim | **Moral** | Dishonesty. The exposure rises because of who this person is |
+
+**Nothing in that table changed except what was going on in the driver's
+head.** That is the whole distinction, and it is why the exam gives you the
+person's motive somewhere in the stem. Find the motive and the answer follows.
+
+A useful check on your reasoning: **moral hazard makes an insurer not want
+this applicant at all.** Morale hazard makes them want a deductible. If your
+answer would get somebody declined, it is moral.
+
 Some texts add a fourth, **legal hazard** — conditions in the legal
 environment, such as a jurisdiction whose courts award unusually large
 verdicts, that increase the size of losses independently of anything the

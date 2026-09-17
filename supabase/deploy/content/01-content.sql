@@ -145,6 +145,36 @@ a loss; they have simply stopped trying hard to prevent one.
 
 The distinction in one line: **moral is dishonesty, morale is carelessness.**
 
+### Deciding between them
+
+Recognising the three definitions is easy. Choosing between them under a stem
+you have never seen is the part that costs marks, so use a procedure rather
+than a feeling. Two questions, in order:
+
+1. **Could you photograph it?** A condition of the property or its use —
+   rags, ice, fireworks, a flat roof — is a **physical hazard**. Physical
+   hazard is about the *thing*.
+2. **If not, is the person dishonest or merely careless?** Dishonest is
+   **moral**. Careless is **morale**. Both are about the *person*, and the
+   only thing separating them is intent.
+
+The reason this works is that the same facts can be any of the three. Watch
+one situation move:
+
+| The situation | Hazard | Why |
+| ------------- | ------ | --- |
+| A car is parked overnight on a street with frequent thefts | **Physical** | A condition you could point at. Nothing about the driver. |
+| The driver stops locking it once comprehensive coverage starts | **Morale** | No intent to lose the car — just less care, and only since the policy |
+| The driver leaves it unlocked hoping it is taken, to claim | **Moral** | Dishonesty. The exposure rises because of who this person is |
+
+**Nothing in that table changed except what was going on in the driver's
+head.** That is the whole distinction, and it is why the exam gives you the
+person's motive somewhere in the stem. Find the motive and the answer follows.
+
+A useful check on your reasoning: **moral hazard makes an insurer not want
+this applicant at all.** Morale hazard makes them want a deductible. If your
+answer would get somebody declined, it is moral.
+
 Some texts add a fourth, **legal hazard** — conditions in the legal
 environment, such as a jurisdiction whose courts award unusually large
 verdicts, that increase the size of losses independently of anything the
@@ -366,162 +396,6 @@ on conflict (lesson_id) do update set body = excluded.body;
 
 insert into public.lesson_topics (lesson_id, topic_id, course_id)
 select '42eb61d9-af5e-55d2-91a8-1bcce382c4ed', t.id, t.course_id
-  from public.topics t
-  join public.courses c on c.id = t.course_id
- where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.II'
-on conflict (lesson_id, topic_id) do nothing;
-
-insert into public.lessons
-  (id, module_id, course_id, title, slug, summary, position, status,
-   estimated_minutes)
-select '707e2d75-4394-5463-9f46-d9cedf43df3f', '34b6c5a1-202f-5d9f-b12a-d98a335b2916', c.id, 'Insurable Interest and Indemnity',
-       'insurable-interest-and-indemnity', 'Who is allowed to insure what, and the rule that you may be made whole but never better off.', 3,
-       'draft', 13
-  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
-on conflict (id) do update set
-  title = excluded.title, summary = excluded.summary,
-  position = excluded.position, status = excluded.status,
-  estimated_minutes = excluded.estimated_minutes;
-
-insert into public.lesson_contents (lesson_id, course_id, body)
-select '707e2d75-4394-5463-9f46-d9cedf43df3f', c.id, $lesson$# Two rules that stop insurance becoming gambling
-
-Insurance moves money to people after bad things happen. Two principles keep
-that from becoming a betting shop, and between them they decide a great many
-exam questions.
-
-**Insurable interest** decides *who may buy*.
-**Indemnity** decides *how much they may collect*.
-
-## Insurable interest
-
-**You may only insure something you would genuinely lose by.**
-
-That is the whole rule. Everything else follows from it.
-
-### Why it exists
-
-Without the rule, anyone could take out a fire policy on a stranger's
-warehouse and then hope for a fire. That gives a stranger a financial reason
-to want the warehouse to burn — and gives the insurer no way to distinguish a
-customer from an arsonist. Requiring an interest removes the motive.
-
-It is also what separates insurance from a wager in law. A bet creates a risk
-that did not exist before. Insurance transfers one that already did.
-
-### When it must exist — the detail that is tested
-
-Property and life insurance answer this differently, and the difference is
-examined constantly.
-
-**Property and casualty: at the time of the loss.**
-
-You can insure a building and later sell it. If it burns after the sale, the
-claim fails — not because you never had an interest, but because you no longer
-had one when the loss happened.
-
-**Life: when the policy is taken out, and not necessarily after.**
-
-A woman insures her husband's life. They divorce. She remains the beneficiary
-and the policy pays. The interest existed at inception, which is all life
-insurance requires.
-
-A neat way to hold it: **property asks "do you lose by this now?"; life asks
-"did you have reason to buy this then?"**
-
-### Who has one
-
-- An **owner**, in their own property.
-- A **lender or mortgagee**, up to the amount still owed. A bank holding a
-  $200,000 mortgage has an interest of $200,000, not the value of the house.
-- A **business**, in a key employee, or in property it holds for others.
-- A **spouse**, in the other spouse's life; a parent in a dependent child's.
-- A **tenant**, in improvements they have paid for.
-- A **bailee** — a garage, a dry cleaner — in customers' property in their
-  care.
-
-### How much interest
-
-Your interest is limited to what you stand to lose. A part-owner of a building
-cannot insure the whole of it for their own benefit, and a lender cannot
-recover more than the outstanding balance. This flows straight into the second
-principle.
-
-## Indemnity
-
-**Indemnity means restoring the insured to the financial position they were in
-immediately before the loss — no worse, and no better.**
-
-The second half is the part that gets tested. If a loss could leave you better
-off, somebody eventually arranges a loss.
-
-Several familiar policy mechanisms are indemnity doing its work:
-
-- **Actual cash value** settlements, which deduct depreciation so a
-  twenty-year-old roof is not replaced with a new one at the insurer's expense.
-- **Policy limits**, capping recovery at the amount insured.
-- **Deductibles**, leaving part of every loss with the insured.
-- **Other insurance clauses**, so two policies covering the same loss share it
-  rather than each paying in full.
-- **Subrogation**, letting the insurer step into the insured's shoes and
-  recover from whoever caused the loss — which stops the insured collecting
-  twice, once from the insurer and again from the wrongdoer.
-
-### Where indemnity is deliberately set aside
-
-The exam likes exceptions, and there are three worth knowing.
-
-**Valued policies** pay an agreed amount regardless of actual value, used where
-value is hard to establish after the fact — fine art, antiques.
-
-**Replacement cost** coverage pays to replace without deducting depreciation,
-which technically leaves the insured better off. It is sold anyway because
-underinsurance after a total loss is a worse problem than the one it creates.
-
-**Life insurance** is not a contract of indemnity at all. A life has no
-measurable value, so the policy pays a stated sum. This is why insurable
-interest is only required at inception.
-
-## How this is examined
-
-**"When must insurable interest exist?"** — the single most common question in
-this area. Property: at the time of loss. Life: at inception.
-
-**Fact patterns about lenders.** A mortgagee's interest is the balance
-outstanding, not the property's value.
-
-**"Which of these is not a contract of indemnity?"** — the answer is life
-insurance, or a valued policy.
-
-**Questions about collecting twice.** Subrogation and other-insurance clauses
-both exist to prevent it; recognise them as indemnity in action.
-
-## Check yourself
-
-1. A man insures his house, then sells it. Two months later it burns. Does his
-   policy respond? Why?
-2. A bank holds a $150,000 mortgage on a $400,000 home. What is the extent of
-   its insurable interest?
-3. A woman insures her husband's life. They divorce, and she keeps paying the
-   premiums. He dies. Does the policy pay?
-4. An insurer pays a claim, then sues the driver who caused it. What is that
-   called, and which principle does it serve?
-
-## Answers
-
-1. **No.** Property insurance requires an insurable interest **at the time of
-   the loss**, and he no longer had one.
-2. **$150,000** — the amount outstanding. A lender's interest is what it stands
-   to lose, not what the property is worth.
-3. **Yes.** Life insurance requires the interest only **when the policy is
-   taken out**. It does not have to survive the marriage.
-4. **Subrogation**, and it serves **indemnity** — without it the insured could
-   recover twice for the same loss.$lesson$
-  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
-on conflict (lesson_id) do update set body = excluded.body;
-
-insert into public.lesson_topics (lesson_id, topic_id, course_id)
-select '707e2d75-4394-5463-9f46-d9cedf43df3f', t.id, t.course_id
   from public.topics t
   join public.courses c on c.id = t.course_id
  where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.II'
