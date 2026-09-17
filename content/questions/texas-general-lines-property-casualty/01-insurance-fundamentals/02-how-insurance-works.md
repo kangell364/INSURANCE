@@ -5,6 +5,41 @@ lesson: how-insurance-works
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### An independent agent differs from a captive agent principally in what way?
+
+- [x] The independent agent places business with several insurers and owns the renewals
+- [ ] The independent agent is an employee; the captive agent is a contractor
+- [ ] The independent agent may not bind coverage
+- [ ] The captive agent represents the insured rather than the insurer
+
+**Ownership of the renewals is the real difference**, because the renewal
+right is the right to keep the customer. An independent agent holds it and can
+move a client between carriers as terms change; a captive agent's book stays
+with the insurer.
+
+The employment option is wrong in both halves: **both are usually independent
+contractors, not employees.** The producer who *is* an employee works for a
+**direct writer** — and there the insurer owns the renewals too.
+
+The last option inverts agency law: both are agents, and **an agent represents
+the insurer.** A **broker** represents the insured.
+
+### An insurer sells policies by television advertisement and a website, with no producer involved. What is this called?
+
+- [x] Direct response
+- [ ] Direct writing
+- [ ] Captive agency
+- [ ] Independent agency
+
+**Direct response marketing — no producer at all.** The insurer reaches the
+public through post, telephone, print, broadcast or internet, so there is
+nobody to appoint, nobody to pay commission, and nobody to advise the buyer.
+
+**The trap is "direct writing", which is a different thing.** A direct writer
+does use producers — they are simply **employees** of the insurer rather than
+independent contractors. The word "direct" describes the employment in one
+case and the absence of any producer in the other.
+
 ### All of the following are requirements of an insurable pure risk EXCEPT
 
 - [ ] The premium must be affordable

@@ -4,7 +4,7 @@ title: How Insurance Works
 slug: how-insurance-works
 blueprint: GK.II
 summary: Why insurers can predict losses they cannot predict individually, and which risks they will not touch.
-estimated_minutes: 14
+estimated_minutes: 18
 status: draft
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
@@ -127,6 +127,56 @@ set, usually by asking which one a described action represents.
 A common stem describes a business installing a sprinkler system and asks
 which technique that is. It is *reduction*, not transfer — the sprinklers do
 not move the risk to anybody, they make the loss smaller.
+
+## How the policy reaches the buyer
+
+An insurer still has to get its product in front of somebody. The
+arrangements have names, and one question separates them more cleanly than
+any definition: **who owns the renewals?**
+
+That is not bookkeeping. The renewal right is the right to keep the customer —
+so whoever holds it holds the relationship, and the whole structure of each
+arrangement follows from it.
+
+### Through producers
+
+**Independent agent.** Contracts with several insurers and is not an employee
+of any of them. **Owns the renewals**, so a client can be moved from one
+carrier to another as terms change. The client belongs to the agency.
+
+**Exclusive or captive agent.** Represents **one** insurer. Usually an
+independent contractor rather than an employee, but **the insurer owns the
+renewals** — leave, and the book stays.
+
+**General agent or managing general agent.** Appointed to recruit, train and
+supervise other producers across a territory, and paid an **override** on what
+those producers write rather than only on personal production.
+
+> **This is the one Texas licenses separately.** The blueprint names the
+> **managing general agent** licence at TX.I.C.1.e, referring to 28 TAC
+> §19.1201–.1206. Those rules are not among our sources, so the licence's
+> requirements are not taught — see the licensing lesson in Module 5 and
+> `docs/module-5-source-gaps.md`.
+
+**Direct writer.** The producer is an **employee** of the insurer, paid salary,
+commission, or both. **The insurer owns the renewals.**
+
+### Without producers
+
+**Direct response.** No producer at all. The insurer sells straight to the
+public — post, telephone, print, broadcast, internet. There is nobody to
+appoint, nobody to pay commission, and nobody to advise the buyer.
+
+### The distinction that matters most
+
+Cutting across all of these: **an agent represents the insurer; a broker
+represents the insured.** That decides whose knowledge binds whom, and it is
+treated fully in Module 2 alongside express, implied and apparent authority.
+
+> **Marketing systems are not named on the Texas outline** — only the managing
+> general agent licence is, as a licence type. They are here because a
+> producer works inside one of these arrangements and should know which, not
+> because the exam demands the taxonomy.
 
 ## How this is examined
 

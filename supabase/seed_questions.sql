@@ -500,6 +500,82 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '1ac2dc98-2b39-54e6-aca0-587c4ddd6521', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'how-insurance-works'),
+       'An independent agent differs from a captive agent principally in what way?', '**Ownership of the renewals is the real difference**, because the renewal right is the right to keep the customer. An independent agent holds it and can move a client between carriers as terms change; a captive agent''s book stays with the insurer. The employment option is wrong in both halves: **both are usually independent contractors, not employees.** The producer who *is* an employee works for a **direct writer** — and there the insurer owns the renewals too. The last option inverts agency law: both are agents, and **an agent represents the insurer.** A **broker** represents the insured.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.II'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '433d6fa6-686d-5b7a-9568-cf200968c6fc', '1ac2dc98-2b39-54e6-aca0-587c4ddd6521', c.id, 'The independent agent places business with several insurers and owns the renewals', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'd35da1f4-504e-5d4e-af6a-18fbe1f3a59e', '1ac2dc98-2b39-54e6-aca0-587c4ddd6521', c.id, 'The independent agent is an employee; the captive agent is a contractor', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '37e8798b-8eda-513c-933a-5b24227f036e', '1ac2dc98-2b39-54e6-aca0-587c4ddd6521', c.id, 'The independent agent may not bind coverage', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'abeaed82-2832-5bbd-85eb-574317fb7eb6', '1ac2dc98-2b39-54e6-aca0-587c4ddd6521', c.id, 'The captive agent represents the insured rather than the insurer', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '1ac2dc98-2b39-54e6-aca0-587c4ddd6521', c.id, '433d6fa6-686d-5b7a-9568-cf200968c6fc'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '22f8be76-2fbd-56b0-b07c-d3f13b45e8f3', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'how-insurance-works'),
+       'An insurer sells policies by television advertisement and a website, with no producer involved. What is this called?', '**Direct response marketing — no producer at all.** The insurer reaches the public through post, telephone, print, broadcast or internet, so there is nobody to appoint, nobody to pay commission, and nobody to advise the buyer. **The trap is "direct writing", which is a different thing.** A direct writer does use producers — they are simply **employees** of the insurer rather than independent contractors. The word "direct" describes the employment in one case and the absence of any producer in the other.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.II'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '4c8d8ede-5009-5ac3-b88d-1d2d04bbaf7b', '22f8be76-2fbd-56b0-b07c-d3f13b45e8f3', c.id, 'Direct response', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'cdcb07e0-e9ad-502b-997a-3167ab045c6a', '22f8be76-2fbd-56b0-b07c-d3f13b45e8f3', c.id, 'Direct writing', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '45ae92ca-f7c0-5d79-9fd4-5646b9f9457c', '22f8be76-2fbd-56b0-b07c-d3f13b45e8f3', c.id, 'Captive agency', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '86dab514-f88a-50f1-8be3-5fa40118967e', '22f8be76-2fbd-56b0-b07c-d3f13b45e8f3', c.id, 'Independent agency', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '22f8be76-2fbd-56b0-b07c-d3f13b45e8f3', c.id, '4c8d8ede-5009-5ac3-b88d-1d2d04bbaf7b'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select '8ead0a4e-f66e-5999-a362-bf50fd2433b4', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'how-insurance-works'),
        'All of the following are requirements of an insurable pure risk EXCEPT', '**Every requirement protects the pooling; this one destroys it.** A risk is insurable when a single event *cannot* wipe out many exposures at once — which is why flood and earthquake sit outside standard property forms, and why Texas handles coastal windstorm through TWIA. **Non-catastrophic** is the requirement. "Catastrophic" is its inversion, and inversion is how this stem is almost always built: the wrong option will be a requirement turned inside out — the loss must be *intentional*, the insured must be *able to cause* it, the risk must be *catastrophic*. **So you do not need the list memorised in order.** Ask what each option would do to the law of large numbers. Anything that breaks the pool is the answer to an EXCEPT question.', 'draft'
