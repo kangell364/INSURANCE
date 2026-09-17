@@ -8053,7 +8053,7 @@ insert into public.lessons
    estimated_minutes)
 select 'd2d75fa2-1270-52a0-ae05-a23ebb7d15c9', '62edc60d-a12f-5d1f-80b7-2adce32c4394', c.id, 'Surplus Lines',
        'surplus-lines', 'Placing business with an insurer Texas has not authorised — the diligent effort, the separate licence, and the warning that must appear on the document.', 8,
-       'draft', 14
+       'draft', 16
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
 on conflict (id) do update set
   title = excluded.title, summary = excluded.summary,
@@ -8150,6 +8150,36 @@ International Insurers Department.
 **§981.210** — an agent may not place coverage with an insurer unless it meets
 the chapter's requirements, and **§981.211** obliges the agent to attend to
 the insurer's financial condition.
+
+### Financial ratings, and why they are your problem
+
+**§981.211(a)** — a surplus lines agent **"must make a reasonable effort to
+determine the financial condition of an eligible surplus lines insurer before
+placing insurance with that insurer."**
+
+**§981.211(b)** — and **"may not knowingly place surplus lines insurance with
+a financially unsound insurer."**
+
+This is where financial ratings earn their place. Independent rating agencies
+— **A.M. Best** is the one most used in insurance, alongside Standard &
+Poor's, Moody's and Fitch — publish opinions on an insurer's ability to pay
+claims. A letter grade is not a guarantee and the scales differ between
+agencies, so the rating is evidence rather than an answer.
+
+**Texas does not tell you to check a particular rating.** It tells you to make
+a reasonable effort and not to place knowingly with an unsound insurer, and a
+current rating is the ordinary way an agent discharges that.
+
+**Why the duty sits here and not on ordinary business:** with an admitted
+insurer, the Department reviews solvency and the guaranty association stands
+behind the policy if it fails anyway. **With a surplus lines insurer, neither
+is true** — §981.101(b) makes the agent tell the insured exactly that in
+11-point type. The supervision that protects an insured elsewhere has been
+replaced by a warning and by your judgement.
+
+> Rating scales are not named on the Texas outline, and no line of it asks for
+> one. What is examinable is the **duty** in §981.211 and the absence of
+> guaranty protection behind the policy.
 
 ## What must appear on the document
 

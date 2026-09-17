@@ -17752,6 +17752,44 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'e8e46a24-eb1f-53ec-be59-cea6eae56ab5', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'surplus-lines'),
+       'What does Texas require of a surplus lines agent regarding an insurer''s finances?', '**§981.211** states the duty in exactly those terms: subsection (a) requires a **reasonable effort to determine the financial condition** before placing, and subsection (b) forbids **knowingly placing with a financially unsound insurer.** No particular rating or grade is prescribed. A current rating from A.M. Best or a similar agency is the ordinary way an agent discharges the duty — it is evidence, not the standard itself. The third option is precisely backwards, and the surplus lines document must say so in 11-point type: **the Department does not audit the finances or review the solvency** of a surplus lines insurer, and the policy has **no guaranty association** behind it. That is why the duty falls on the agent.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'TX.II'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'ee1d04b0-7131-5be8-9152-d9c1b2379f0b', 'e8e46a24-eb1f-53ec-be59-cea6eae56ab5', c.id, 'A reasonable effort to determine its financial condition, and no knowing placement with a financially unsound insurer', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '8b9cb8df-adc1-5d87-b921-f5f9b8506114', 'e8e46a24-eb1f-53ec-be59-cea6eae56ab5', c.id, 'Confirmation that it holds an A.M. Best rating of A- or better', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'e4134d40-b6a5-5c80-92ac-7535d71c7cd7', 'e8e46a24-eb1f-53ec-be59-cea6eae56ab5', c.id, 'Nothing — the Department reviews solvency before granting eligibility', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'f83144c4-c80e-5122-b4c4-49c699fbc593', 'e8e46a24-eb1f-53ec-be59-cea6eae56ab5', c.id, 'Written consent from the insured acknowledging the insurer''s rating', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'e8e46a24-eb1f-53ec-be59-cea6eae56ab5', c.id, 'ee1d04b0-7131-5be8-9152-d9c1b2379f0b'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select '6f30da2f-9690-5bea-a18a-78b512dca6b4', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'surplus-lines'),
        'A general lines agent finds an admitted market will write only $2m of a $5m exposure. What may they place in surplus lines?', '**§981.004(b) — it tops up; it does not replace.** Surplus lines may provide coverage only in the amount exceeding what is obtainable from authorized insurers.', 'draft'

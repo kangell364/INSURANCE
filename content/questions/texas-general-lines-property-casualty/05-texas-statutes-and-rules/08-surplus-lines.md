@@ -5,6 +5,27 @@ lesson: surplus-lines
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### What does Texas require of a surplus lines agent regarding an insurer's finances?
+
+- [x] A reasonable effort to determine its financial condition, and no knowing placement with a financially unsound insurer
+- [ ] Confirmation that it holds an A.M. Best rating of A- or better
+- [ ] Nothing — the Department reviews solvency before granting eligibility
+- [ ] Written consent from the insured acknowledging the insurer's rating
+
+**§981.211** states the duty in exactly those terms: subsection (a) requires a
+**reasonable effort to determine the financial condition** before placing, and
+subsection (b) forbids **knowingly placing with a financially unsound
+insurer.**
+
+No particular rating or grade is prescribed. A current rating from A.M. Best
+or a similar agency is the ordinary way an agent discharges the duty — it is
+evidence, not the standard itself.
+
+The third option is precisely backwards, and the surplus lines document must
+say so in 11-point type: **the Department does not audit the finances or
+review the solvency** of a surplus lines insurer, and the policy has **no
+guaranty association** behind it. That is why the duty falls on the agent.
+
 ### A general lines agent finds an admitted market will write only $2m of a $5m exposure. What may they place in surplus lines?
 
 - [x] Only the $3m that exceeds what the admitted market will write
