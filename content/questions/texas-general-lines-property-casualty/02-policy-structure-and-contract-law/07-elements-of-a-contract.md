@@ -5,6 +5,34 @@ lesson: elements-of-a-contract
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### An insurer accepts a premium eleven days late without objection and issues a receipt. What has it done?
+
+- [x] Waived the timeliness of payment for that occasion
+- [ ] Become estopped from ever enforcing the due date
+- [ ] Nothing — acceptance of late premium has no legal effect
+- [ ] Ratified a breach, extending the grace period permanently
+
+**Waiver is the voluntary surrender of a known right.** The insurer knew the
+premium was late, knew it could refuse, and took the money anyway. That right
+is given up for this occasion.
+
+**For this occasion is the whole answer.** A waiver does not rewrite the
+policy or surrender the right for the future — the insurer may insist on
+timely payment next time, as long as it has not built a pattern the insured
+reasonably relies on.
+
+**Waiver or estoppel?** Ask what the party *did*:
+
+- **Waiver** — they gave up a right **they held**, knowingly. The act is the
+  insurer's own.
+- **Estoppel** — they are **barred** from asserting a right because the other
+  side **relied** on their earlier conduct to their detriment. Reliance by
+  somebody else is what makes it estoppel.
+
+The adjuster who says "don't bother with the proof of loss" creates estoppel,
+because the insured *relied* and stopped. The insurer taking a late premium
+waives, because nobody needed to rely on anything for the right to be gone.
+
 ### An insurance contract and a wager are both aleatory. What distinguishes them?
 
 - [x] The insured has an insurable interest, so the payment restores a loss rather than creating a gain

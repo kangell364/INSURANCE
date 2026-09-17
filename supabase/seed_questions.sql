@@ -5554,6 +5554,44 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '4595c375-089f-51a3-95ad-922a7eddc875', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'elements-of-a-contract'),
+       'An insurer accepts a premium eleven days late without objection and issues a receipt. What has it done?', '**Waiver is the voluntary surrender of a known right.** The insurer knew the premium was late, knew it could refuse, and took the money anyway. That right is given up for this occasion. **For this occasion is the whole answer.** A waiver does not rewrite the policy or surrender the right for the future — the insurer may insist on timely payment next time, as long as it has not built a pattern the insured reasonably relies on. **Waiver or estoppel?** Ask what the party *did*: - **Waiver** — they gave up a right **they held**, knowingly. The act is the insurer''s own. - **Estoppel** — they are **barred** from asserting a right because the other side **relied** on their earlier conduct to their detriment. Reliance by somebody else is what makes it estoppel. The adjuster who says "don''t bother with the proof of loss" creates estoppel, because the insured *relied* and stopped. The insurer taking a late premium waives, because nobody needed to rely on anything for the right to be gone.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.III'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'c4c743fb-7c14-54d7-a80b-e5bcfa27d93e', '4595c375-089f-51a3-95ad-922a7eddc875', c.id, 'Waived the timeliness of payment for that occasion', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '426aae30-004a-59a8-b6a8-3231efd1abe4', '4595c375-089f-51a3-95ad-922a7eddc875', c.id, 'Become estopped from ever enforcing the due date', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'aef8a005-cb49-5c07-868d-b158fd8fda58', '4595c375-089f-51a3-95ad-922a7eddc875', c.id, 'Nothing — acceptance of late premium has no legal effect', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'dea367c2-6c45-5af8-96a3-c14d32f90992', '4595c375-089f-51a3-95ad-922a7eddc875', c.id, 'Ratified a breach, extending the grace period permanently', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '4595c375-089f-51a3-95ad-922a7eddc875', c.id, 'c4c743fb-7c14-54d7-a80b-e5bcfa27d93e'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select 'a9cf5b80-36de-5075-aa4e-9aeabdb0793b', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'elements-of-a-contract'),
        'An insurance contract and a wager are both aleatory. What distinguishes them?', '**Both are aleatory** — unequal exchange turning on chance is exactly what a bet is, and saying insurance is aleatory does not by itself distinguish it from gambling. **Insurable interest does.** The insured already stands to lose if the event happens, so the payment puts them back where they were. **The gambler has no exposure until they place the bet** — they create the risk in order to profit from it, which is the gain indemnity exists to prevent. The second option is wrong about insurance: an aleatory exchange is by definition unequal. Regulation is a consequence of the distinction, not the distinction. And a wager is not unilateral — both bettors promise.', 'draft'
