@@ -5,6 +5,30 @@ lesson: insurable-interest-and-indemnity
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### A homeowner sells their house but leaves the policy in force. Two months later the house burns. Can the seller collect?
+
+- [x] No — they had no insurable interest at the time of the loss
+- [ ] Yes, because the policy was in force and the premium paid
+- [ ] Yes, but only for the amount of premium unearned
+- [ ] Yes, and the insurer must then pay the buyer instead
+
+**Property insurance requires an insurable interest at the time of the loss**,
+and a seller has none. They suffer no financial detriment when a house they no
+longer own burns down — which is the whole test.
+
+**A policy in force is not the same as a claim payable.** The premium being
+paid and the policy unexpired change nothing: without the interest the
+arrangement is a wager on somebody else's property, and paying it would create
+exactly the gain indemnity exists to prevent.
+
+Nor does the buyer have a claim on it. **A property policy is a personal
+contract** — it follows the person, not the building — so it does not transfer
+with the sale without the insurer's consent.
+
+**This is the timing rule doing real work.** Life insurance asks only whether
+the interest existed at inception; property asks whether it exists *now*, at
+the moment of loss.
+
 ### When must insurable interest exist in a property policy?
 
 - [ ] At the time the policy is written only

@@ -1184,6 +1184,44 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '259b57f4-f532-575d-bc68-69e2fcaa8dd4', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'insurable-interest-and-indemnity'),
+       'A homeowner sells their house but leaves the policy in force. Two months later the house burns. Can the seller collect?', '**Property insurance requires an insurable interest at the time of the loss**, and a seller has none. They suffer no financial detriment when a house they no longer own burns down — which is the whole test. **A policy in force is not the same as a claim payable.** The premium being paid and the policy unexpired change nothing: without the interest the arrangement is a wager on somebody else''s property, and paying it would create exactly the gain indemnity exists to prevent. Nor does the buyer have a claim on it. **A property policy is a personal contract** — it follows the person, not the building — so it does not transfer with the sale without the insurer''s consent. **This is the timing rule doing real work.** Life insurance asks only whether the interest existed at inception; property asks whether it exists *now*, at the moment of loss.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.II'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '4ca19c77-1766-58bf-be7e-5b65a7e538e1', '259b57f4-f532-575d-bc68-69e2fcaa8dd4', c.id, 'No — they had no insurable interest at the time of the loss', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '71fd45eb-eaa5-5f59-bcac-fc4e104af925', '259b57f4-f532-575d-bc68-69e2fcaa8dd4', c.id, 'Yes, because the policy was in force and the premium paid', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '0150fbf1-5052-5620-9b71-d0d0b64fb42f', '259b57f4-f532-575d-bc68-69e2fcaa8dd4', c.id, 'Yes, but only for the amount of premium unearned', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'ecc7f215-5d13-5860-b29d-1300dfb16248', '259b57f4-f532-575d-bc68-69e2fcaa8dd4', c.id, 'Yes, and the insurer must then pay the buyer instead', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '259b57f4-f532-575d-bc68-69e2fcaa8dd4', c.id, '4ca19c77-1766-58bf-be7e-5b65a7e538e1'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select '466927ae-e1e8-504a-9b02-cb2e7d8a5a85', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'insurable-interest-and-indemnity'),
        'When must insurable interest exist in a property policy?', '**Property insurance requires insurable interest at the time of loss.** Life insurance is the opposite — interest must exist at inception and need not continue. Mixing the two up is the most common error on this topic.', 'draft'
