@@ -207,24 +207,35 @@ function asksFor(stem, term) {
   return subject.some((form) => s.includes(form))
 }
 
+// Every correct answer and every stem in the course, read once.
+const allBankText = readdirSync(QUESTIONS)
+  .filter((d) => !d.startsWith('.'))
+  .flatMap((mod) =>
+    readdirSync(join(QUESTIONS, mod))
+      .filter((f) => f.endsWith('.md'))
+      .map((f) => readFileSync(join(QUESTIONS, mod, f), 'utf8')),
+  )
+const answers = allBankText.flatMap(correctAnswers)
+const stems = allBankText.flatMap(definitionStems)
+
 let checked = 0
 let missing = []
 let allowed = 0
 
 for (const { module, file } of lessonFiles()) {
   const lessonBody = readFileSync(join(LESSONS, module, file), 'utf8')
-  // Search the whole MODULE's banks, not only the matching file. A term
-  // defined in one lesson is often tested in a sibling's bank where the
-  // fact pattern fits better -- "avoidance" is defined in How Insurance
-  // Works and asked in Risk, Peril and Hazard. Pairing the files one to one
-  // reported that as missing, which it is not.
-  const qDir = join(QUESTIONS, module)
-  if (!existsSync(qDir)) continue
-  const bankText = readdirSync(qDir)
-    .filter((f) => f.endsWith('.md'))
-    .map((f) => readFileSync(join(qDir, f), 'utf8'))
-  const answers = bankText.flatMap(correctAnswers)
-  const stems = bankText.flatMap(definitionStems)
+  // Search the WHOLE COURSE's banks, not one file and not one module.
+  //
+  // The question is "is this term examined anywhere a student will meet it",
+  // and modules are an authoring convenience rather than a wall. Pairing file
+  // to file reported "avoidance" missing because it is defined in How
+  // Insurance Works and asked in Risk, Peril and Hazard. Scoping to the
+  // module then reported "other insurance" missing from Module 2, while
+  // Module 1 asks which provision prevents an insured profiting from a loss
+  // and answers "the other insurance clause".
+  //
+  // Both were the check being wrong in the direction that wastes a person's
+  // evening, which is the direction that gets a check deleted.
 
   for (const term of termsIn(lessonBody)) {
     checked += 1
