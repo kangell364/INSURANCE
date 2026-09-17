@@ -5,6 +5,7 @@ import {
   judgeClaim,
   normalise,
   numbersIn,
+  rangeAfter,
   sectionsOf,
   statuteHasNumber,
 } from '../scripts/check-citation-claims.mjs'
@@ -130,5 +131,41 @@ describe('claim boundaries', () => {
     const text = '- First, §541.051 forbids misrepresentation.\n- Second, §541.052 forbids defamation.\n'
     const claims = claimsOf(text).map(([a, b]) => text.slice(a, b))
     expect(claims.some((c) => c.includes('541.051') && c.includes('541.052'))).toBe(false)
+  })
+})
+
+describe('citation ranges', () => {
+  // A chapter stub standing in for reference/statutes/, so the test does not
+  // depend on which chapters happen to be downloaded.
+  const chapter = new Map([
+    ['4004.051', ''], ['4004.052', ''], ['4004.053', ''],
+    ['4004.054', ''], ['4004.055', ''], ['4004.101', ''],
+  ])
+  const lookup = () => chapter
+
+  it('reads §4004.051-.055 as covering every section between', () => {
+    const text = 'a 90-day window to cure a shortfall (§4004.051–.055).'
+    const m = /§\s?(\d{2,4}[A-Z]?)\.(\d+)/.exec(text) as RegExpExecArray
+    expect(rangeAfter(text, m, lookup).sort()).toEqual([
+      '4004.051', '4004.052', '4004.053', '4004.054', '4004.055',
+    ])
+  })
+
+  it('does not drag in a section past the end of the range', () => {
+    const text = '(§4004.051–.055)'
+    const m = /§\s?(\d{2,4}[A-Z]?)\.(\d+)/.exec(text) as RegExpExecArray
+    expect(rangeAfter(text, m, lookup)).not.toContain('4004.101')
+  })
+
+  it('leaves a lone citation alone', () => {
+    const text = 'under §4004.051 the hours must be complete.'
+    const m = /§\s?(\d{2,4}[A-Z]?)\.(\d+)/.exec(text) as RegExpExecArray
+    expect(rangeAfter(text, m, lookup)).toEqual([])
+  })
+
+  it('is not fooled by a subsection reference that follows', () => {
+    const text = '§4004.051(c) requires half in a classroom.'
+    const m = /§\s?(\d{2,4}[A-Z]?)\.(\d+)/.exec(text) as RegExpExecArray
+    expect(rangeAfter(text, m, lookup)).toEqual([])
   })
 })

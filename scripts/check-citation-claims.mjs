@@ -115,8 +115,14 @@ const SUBJECTS = [
  * somebody having actually opened the chapter.
  */
 const ACCEPTED = new Map([
-  // e.g. ['05-texas-statutes-and-rules/03-x.md|1952.153|$2,500',
-  //       'statute writes the figure as "2,500"; the dollar sign is ours'],
+  [
+    'texas-general-lines-property-casualty/05-texas-statutes-and-rules/11-continuing-education.md|4004.051|24 hours',
+    'the lesson applies §4004.051(c) -- half of all required hours in a ' +
+      'classroom -- to the 24 hours set by §4004.053(a), and says "on 24 ' +
+      'hours that is 12". The 24 is the arithmetic, not a claim about what ' +
+      '§4004.051 contains; §4004.053(a) is cited correctly where the figure ' +
+      'is taught.',
+  ],
 ])
 
 /**
@@ -274,6 +280,35 @@ export function statuteHasNumber(token, body) {
 }
 
 /**
+ * Sections covered by a range written as "§4004.051-.055".
+ *
+ * A lesson summarising a whole subchapter cites the range, not each section:
+ * "24 hours per licence period, three of them ethics, at least half in a
+ * classroom (§4004.051-.055)" is correct, and the figures in it come from
+ * §4004.053 and §4004.054. Reading only the first section of the range, this
+ * check called that sentence unsupported -- a false positive it then reported
+ * with exactly the confidence of a real one, which is the failure mode that
+ * makes a checker worse than nothing.
+ *
+ * Only sections the chapter actually has are returned, so a range can never
+ * invent one.
+ */
+export function rangeAfter(text, match, lookup = sectionsForChapter) {
+  const tail = text.slice(match.index + match[0].length)
+  const dash = /^\s*[-\u2013\u2014]\s*(?:§\s?\d{2,4}[A-Z]?)?\.?(\d+)/.exec(tail)
+  if (!dash) return []
+  const from = Number(match[2])
+  const to = Number(dash[1])
+  if (!(to > from)) return []
+  const out = []
+  for (const cite of lookup(match[1]).keys()) {
+    const n = Number(cite.slice(cite.indexOf('.') + 1))
+    if (n >= from && n <= to) out.push(cite)
+  }
+  return out
+}
+
+/**
  * Judge one claim against the text of every section it cites.
  *
  * Exported so the case this check exists for can be tested directly rather
@@ -314,6 +349,7 @@ function main() {
         const abs = from + m.index
         if (TAC_BEFORE.test(text.slice(Math.max(0, abs - 12), abs))) continue
         cites.add(`${m[1]}.${m[2]}`)
+        for (const c of rangeAfter(slice, m)) cites.add(c)
       }
       if (cites.size > 0) claims.set(slice.trim(), cites)
     }

@@ -93,7 +93,7 @@ jobs:
       # question for a human, so it runs against a ceiling rather than failing
       # on any flag; the ceiling only ever comes down.
       - name: Statute claims match the cited section
-        run: node scripts/check-citation-claims.mjs --max 33
+        run: node scripts/check-citation-claims.mjs --max 30
 
       # The statute extractor's text cleanup, tested directly. The PDFs from
       # statutes.capitol.texas.gov render non-breaking spaces as a literal

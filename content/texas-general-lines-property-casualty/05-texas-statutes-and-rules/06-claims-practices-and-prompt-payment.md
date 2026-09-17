@@ -243,7 +243,8 @@ the first is calendar, the second and third are business.
 
 **The 45-day extension requires notice within the original period.**
 
-**60 days is the outer limit** before §542.060 damages attach.
+**60 days is the outer limit** under §542.058(a) before §542.060 damages
+attach.
 
 **18% plus attorney's fees**, with the 2017 qualification above.
 
