@@ -2318,6 +2318,30 @@ the umpire's cost equally.
 is covered is not an appraisal question, and demanding appraisal does not
 waive the insurer's right to deny the claim on coverage grounds.
 
+### Appraisal is not arbitration
+
+The two get confused because both resolve a disagreement outside a courtroom
+with somebody neutral deciding. **What they decide is different, and that is
+the whole distinction.**
+
+| | Decides | Used when |
+| --- | --- | --- |
+| **Appraisal** | The **amount** of the loss, and nothing else | Both sides agree it is covered and disagree on how much |
+| **Arbitration** | The **whole dispute**, coverage and liability included | The disagreement is about more than the figure |
+
+**So appraisal cannot answer "is this covered?" and arbitration can.** An
+insurer that denies a claim outright has not created an appraisal question; it
+has created a coverage dispute, and appraisal has nothing to work on.
+
+Two places arbitration surfaces in Texas, both in Module 5:
+
+- **§981.101(d)** — a surplus lines contract covering a risk **wholly in
+  Texas** must arbitrate **in Texas under Texas law**, unless both agree
+  otherwise after written notice *and* the insurer gives a premium credit for
+  the policyholder's added costs.
+- **§542.058(b)** — the prompt-payment damages do not apply where arbitration
+  or litigation finds the claim **invalid and not payable**.
+
 ## How this is examined
 
 **"What must the insured do after a theft?"** — notify the insurer *and* the

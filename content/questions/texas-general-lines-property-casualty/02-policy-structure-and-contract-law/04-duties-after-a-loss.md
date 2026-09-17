@@ -5,6 +5,26 @@ lesson: duties-after-a-loss
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### An insurer denies a claim, saying the peril is excluded. The insured demands appraisal. What happens?
+
+- [x] Nothing — appraisal decides the amount of a loss, not whether it is covered
+- [ ] The appraisers decide whether the exclusion applies
+- [ ] The umpire rules on coverage and the appraisers on amount
+- [ ] The insurer must withdraw the denial and appraise
+
+**Appraisal has nothing to work on here.** It exists for the case where both
+sides agree the loss is covered and disagree about **how much**. A denial is a
+coverage dispute, and that is not an appraisal question.
+
+**Arbitration is the process that can decide coverage**, along with the rest
+of the dispute — which is the distinction between the two and the reason they
+are taught together.
+
+Note the mirror of this, which is also examined: **an insurer demanding
+appraisal does not waive its right to deny on coverage grounds later.**
+Appraisal answers one question and leaves every other question open, whichever
+side asked for it.
+
 ### An insured's car is stolen. What two notifications are required?
 
 - [x] The insurer and the police

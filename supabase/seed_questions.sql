@@ -5212,6 +5212,44 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'c4cf9773-1b31-5de0-b11a-33238b344ea9', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'duties-after-a-loss'),
+       'An insurer denies a claim, saying the peril is excluded. The insured demands appraisal. What happens?', '**Appraisal has nothing to work on here.** It exists for the case where both sides agree the loss is covered and disagree about **how much**. A denial is a coverage dispute, and that is not an appraisal question. **Arbitration is the process that can decide coverage**, along with the rest of the dispute — which is the distinction between the two and the reason they are taught together. Note the mirror of this, which is also examined: **an insurer demanding appraisal does not waive its right to deny on coverage grounds later.** Appraisal answers one question and leaves every other question open, whichever side asked for it.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.III'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '233ff338-1d5d-5337-b038-cfa09f128d8d', 'c4cf9773-1b31-5de0-b11a-33238b344ea9', c.id, 'Nothing — appraisal decides the amount of a loss, not whether it is covered', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '22b7dc23-47a4-5737-905a-0f8aa9ad1310', 'c4cf9773-1b31-5de0-b11a-33238b344ea9', c.id, 'The appraisers decide whether the exclusion applies', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'ce1c3bdf-5a89-5c27-8315-bddbd6cb5e49', 'c4cf9773-1b31-5de0-b11a-33238b344ea9', c.id, 'The umpire rules on coverage and the appraisers on amount', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '441367ec-90a7-54d3-a58c-c78f2abd4774', 'c4cf9773-1b31-5de0-b11a-33238b344ea9', c.id, 'The insurer must withdraw the denial and appraise', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'c4cf9773-1b31-5de0-b11a-33238b344ea9', c.id, '233ff338-1d5d-5337-b038-cfa09f128d8d'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select 'a7f29aa7-e01f-564a-b778-fc0ccc0a3bbd', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'duties-after-a-loss'),
        'An insured''s car is stolen. What two notifications are required?', 'Theft carries a **second notice duty to the police**. The parallel is credit card forgery, where the insured must also notify the **card issuer**.', 'draft'
