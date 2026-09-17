@@ -42,6 +42,13 @@ Forms you should recognise:
 **A limit is the most the policy will pay.** The exam tests which limit applies
 to what.
 
+**The same idea travels under several names.** A policy's maximum is called the
+**limit**, the **limit of liability**, the **limit of insurance** or the
+**limit of coverage**, and they all mean the one thing: the most the insurer
+will pay. A stem listing synonyms and asking for the odd one out is testing
+whether you know they are the same — **"limit of responsibility" is not a
+term**, and neither is "limit of indemnity".
+
 - **Per occurrence** — the most for any one event.
 - **Aggregate** — the most for all events in the policy period. Once
   exhausted, the policy is finished even though the period has not ended.

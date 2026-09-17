@@ -5,6 +5,23 @@ lesson: deductibles-coinsurance-and-limits
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### The policy limit is known by all of the following names EXCEPT
+
+- [ ] Limit of coverage
+- [ ] Limit of insurance
+- [x] Limit of responsibility
+- [ ] Limit of liability
+
+**Limit, limit of liability, limit of insurance and limit of coverage all mean
+the same thing** — the most the insurer will pay. Property forms tend to say
+*limit of insurance*, liability forms *limit of liability*, and nothing turns
+on which a particular form chose.
+
+**"Limit of responsibility" is not an insurance term.** Neither is "limit of
+indemnity". A stem built this way is testing whether the synonyms are familiar
+enough that the invented one stands out — which is a different skill from
+knowing what a limit does, and worth a moment's practice.
+
 ### A $400,000 dwelling carries a 2% windstorm deductible. A storm causes $25,000 of damage. What does the insurer pay?
 
 - [x] $17,000

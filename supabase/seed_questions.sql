@@ -2096,6 +2096,44 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'e63c537e-0e8d-543a-a6bb-b2c8259ac729', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'deductibles-coinsurance-and-limits'),
+       'The policy limit is known by all of the following names EXCEPT', '**Limit, limit of liability, limit of insurance and limit of coverage all mean the same thing** — the most the insurer will pay. Property forms tend to say *limit of insurance*, liability forms *limit of liability*, and nothing turns on which a particular form chose. **"Limit of responsibility" is not an insurance term.** Neither is "limit of indemnity". A stem built this way is testing whether the synonyms are familiar enough that the invented one stands out — which is a different skill from knowing what a limit does, and worth a moment''s practice.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.II'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'c578ecdd-ff15-5441-960a-5f107ca3a0a1', 'e63c537e-0e8d-543a-a6bb-b2c8259ac729', c.id, 'Limit of coverage', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'f2222675-dfe4-527c-8004-765ce87e0406', 'e63c537e-0e8d-543a-a6bb-b2c8259ac729', c.id, 'Limit of insurance', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'e51e73fa-334b-5f6d-bda6-0d01ec0b4dd6', 'e63c537e-0e8d-543a-a6bb-b2c8259ac729', c.id, 'Limit of responsibility', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'ff41010d-fe91-5b09-8def-21a43a2a7af6', 'e63c537e-0e8d-543a-a6bb-b2c8259ac729', c.id, 'Limit of liability', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'e63c537e-0e8d-543a-a6bb-b2c8259ac729', c.id, 'e51e73fa-334b-5f6d-bda6-0d01ec0b4dd6'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select 'd9dfd1c1-0f53-59ea-b142-14044ec2a22c', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'deductibles-coinsurance-and-limits'),
        'A $400,000 dwelling carries a 2% windstorm deductible. A storm causes $25,000 of damage. What does the insurer pay?', '**A percentage deductible is a proportion of the INSURED VALUE, not of the loss.** 2% of $400,000 is **$8,000**, whatever the damage came to. The insured absorbs $8,000 and the insurer pays **$17,000**. **$24,500 is the trap** — 2% of the $25,000 loss. It is the intuitive reading and it is wrong, and on a large dwelling with modest damage the difference is the whole claim. This is why a coastal Texas policyholder with a 2% wind deductible on a $400,000 home is effectively uninsured for anything under $8,000.', 'draft'
