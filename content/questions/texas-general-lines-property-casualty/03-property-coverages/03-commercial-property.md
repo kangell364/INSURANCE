@@ -5,6 +5,28 @@ lesson: commercial-property-and-the-package-policy
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### A pipe in a sprinkler-less office bursts and water ruins stock stored below. What is the minimum causes of loss form that responds?
+
+- [x] Broad
+- [ ] Basic
+- [ ] Special only
+- [ ] None; water damage is always excluded
+
+**Broad adds water damage from the accidental discharge of a system** — along
+with falling objects and the weight of snow, ice or sleet. Basic has none of
+the three.
+
+**Special would also respond**, being open peril, but the stem asks for the
+minimum: **Broad is the cheapest form that reaches this loss**, and that is
+the practical question a producer answers when a client asks what they need.
+
+Note what Basic *does* include that looks similar: **sprinkler leakage**. A
+building with sprinklers has that one peril on the Basic list; this office has
+no sprinklers, so the burst pipe needs Broad's accidental discharge instead.
+
+**Flood is a different thing entirely** — water arriving from outside, excluded
+from all three forms and covered only by the NFIP or a separate policy.
+
 ### A warehouse floor is ruined when a forklift battery leaks acid overnight. No exclusion applies. Which causes of loss form responds?
 
 - [x] Special only

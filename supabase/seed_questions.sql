@@ -9126,6 +9126,44 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '4aa1e71a-9a22-513b-9ce5-880af34a4655', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'commercial-property-and-the-package-policy'),
+       'A pipe in a sprinkler-less office bursts and water ruins stock stored below. What is the minimum causes of loss form that responds?', '**Broad adds water damage from the accidental discharge of a system** — along with falling objects and the weight of snow, ice or sleet. Basic has none of the three. **Special would also respond**, being open peril, but the stem asks for the minimum: **Broad is the cheapest form that reaches this loss**, and that is the practical question a producer answers when a client asks what they need. Note what Basic *does* include that looks similar: **sprinkler leakage**. A building with sprinklers has that one peril on the Basic list; this office has no sprinklers, so the burst pipe needs Broad''s accidental discharge instead. **Flood is a different thing entirely** — water arriving from outside, excluded from all three forms and covered only by the NFIP or a separate policy.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.I'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '1f6ce7ca-6670-5154-be77-2f05ada5d47c', '4aa1e71a-9a22-513b-9ce5-880af34a4655', c.id, 'Broad', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'bb518472-959d-5f0e-bec2-fe27aa1f37c9', '4aa1e71a-9a22-513b-9ce5-880af34a4655', c.id, 'Basic', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '399cfd3b-7bab-5b23-a190-cd30437bcad5', '4aa1e71a-9a22-513b-9ce5-880af34a4655', c.id, 'Special only', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '9b2ca71d-e018-596c-a24f-81879eee430d', '4aa1e71a-9a22-513b-9ce5-880af34a4655', c.id, 'None; water damage is always excluded', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '4aa1e71a-9a22-513b-9ce5-880af34a4655', c.id, '1f6ce7ca-6670-5154-be77-2f05ada5d47c'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select 'd6c90eb6-856a-51f4-a4d8-44490b8367fb', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'commercial-property-and-the-package-policy'),
        'A warehouse floor is ruined when a forklift battery leaks acid overnight. No exclusion applies. Which causes of loss form responds?', '**Special is open peril: every cause of loss except those excluded.** Basic and Broad are **named peril** — if the cause is not on their list, there is no cover, however ordinary the accident. A leaking battery is nobody''s named peril. It is covered under Special not because anyone anticipated it but because **nothing had to be**: the question under an open peril form is whether the cause is *excluded*, and the burden of showing that sits with the insurer. **"Special" means open peril, not "extra".** That is the whole reason a stem describes an unusual, unexcluded accident.', 'draft'
