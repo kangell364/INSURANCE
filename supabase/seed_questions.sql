@@ -9354,6 +9354,44 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '3dea124e-1762-5592-812d-1e5e4f61b677', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'dwelling-policies'),
+       'Which of the following is an extended coverage peril?', '**Extended coverage is the second tier, not the third.** It adds **windstorm, hail, explosion, riot or civil commotion, aircraft, vehicles, smoke and volcanic eruption** to a DP-1''s three basic perils. **All three wrong answers are BROAD perils** — they arrive with the DP-2, not with extended coverage, and that is the whole point of the question. The tiers, which are worth holding as a sequence rather than three lists: 1. **DP-1 unendorsed** — fire, lightning, internal explosion. Three perils. 2. **Plus extended coverage** — the eight above. Still DP-1. 3. **DP-2 broad** — everything above plus falling objects; weight of ice, snow or sleet; accidental discharge of water or steam; tearing apart of a heating system; freezing; accidental damage from artificially generated electrical current; and damage by burglars. **A stem naming freezing, falling objects or the weight of snow is describing broad coverage**, whatever else it says.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.I'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'ca1ef648-e167-5f5f-b1a6-1216dcdac430', '3dea124e-1762-5592-812d-1e5e4f61b677', c.id, 'Windstorm', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '10606a87-c9c6-5f5b-8eda-6ea5175d9c40', '3dea124e-1762-5592-812d-1e5e4f61b677', c.id, 'Falling objects', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '921206fa-2397-5572-83c6-e4c9a58e4bf4', '3dea124e-1762-5592-812d-1e5e4f61b677', c.id, 'Freezing of plumbing', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '9d90cb74-e3fa-56ba-9bef-08d9c23dc82e', '3dea124e-1762-5592-812d-1e5e4f61b677', c.id, 'Weight of ice, snow or sleet', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '3dea124e-1762-5592-812d-1e5e4f61b677', c.id, 'ca1ef648-e167-5f5f-b1a6-1216dcdac430'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select '0912776b-1067-5da0-a981-5806f0709940', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'dwelling-policies'),
        'A DP-2 insured is burgled: the front door is forced and a television is taken. What does the broad form pay for?', '**Damage by burglars pays for what burglars BREAK, not what they TAKE.** The forced door is covered; the stolen television is not. **Theft of contents needs theft coverage**, which a dwelling form adds by endorsement rather than including in the broad peril list. It is the same boundary as commercial property, where Basic and Broad reach vandalism and **only Special adds theft** — the forms are consistent about this, which makes it worth learning once.', 'draft'

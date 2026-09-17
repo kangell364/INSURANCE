@@ -5,6 +5,32 @@ lesson: dwelling-policies
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### Which of the following is an extended coverage peril?
+
+- [x] Windstorm
+- [ ] Falling objects
+- [ ] Freezing of plumbing
+- [ ] Weight of ice, snow or sleet
+
+**Extended coverage is the second tier, not the third.** It adds
+**windstorm, hail, explosion, riot or civil commotion, aircraft, vehicles,
+smoke and volcanic eruption** to a DP-1's three basic perils.
+
+**All three wrong answers are BROAD perils** — they arrive with the DP-2, not
+with extended coverage, and that is the whole point of the question.
+
+The tiers, which are worth holding as a sequence rather than three lists:
+
+1. **DP-1 unendorsed** — fire, lightning, internal explosion. Three perils.
+2. **Plus extended coverage** — the eight above. Still DP-1.
+3. **DP-2 broad** — everything above plus falling objects; weight of ice, snow
+   or sleet; accidental discharge of water or steam; tearing apart of a
+   heating system; freezing; accidental damage from artificially generated
+   electrical current; and damage by burglars.
+
+**A stem naming freezing, falling objects or the weight of snow is describing
+broad coverage**, whatever else it says.
+
 ### A DP-2 insured is burgled: the front door is forced and a television is taken. What does the broad form pay for?
 
 - [x] The door, under damage by burglars — not the television
