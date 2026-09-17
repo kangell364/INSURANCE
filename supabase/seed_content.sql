@@ -2665,6 +2665,19 @@ insured does not negotiate clause by clause.
 > words. This principle, *contra proferentem*, is the single most useful
 > thing to take from this lesson.
 
+> **Reasonable expectations.** Adhesion has a further consequence some texts
+> treat as a doctrine of its own: **an insured's objectively reasonable
+> expectations about what a policy covers may be honoured even where close
+> reading of the wording would have defeated them.** The reasoning is the same
+> — the insured did not write it, could not negotiate it, and is not expected
+> to parse it like a lawyer.
+>
+> It is **not a line on the Texas outline**, and no question here depends on
+> it. It is recorded because it explains why insurers write in plain language,
+> highlight exclusions, and require signed rejections for coverages a buyer
+> might assume they had — such as the written rejection of uninsured motorist
+> coverage in Module 5.
+
 **Aleatory.** The exchange of value is **unequal and depends on chance**. An
 insured pays $1,200 and may collect nothing, or may collect $400,000. A
 non-aleatory contract — buying a car — exchanges roughly equal value both
