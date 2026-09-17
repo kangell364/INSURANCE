@@ -5,6 +5,58 @@ lesson: valuing-a-loss
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### A roof costs $18,000 to replace. It has a 15-year life and is 9 years old. The policy is ACV with a $1,000 deductible. What does the insurer pay?
+
+- [x] $6,200
+- [ ] $7,200
+- [ ] $11,000
+- [ ] $10,800
+
+**Work it in this order, every time:**
+
+1. **Annual depreciation** — $18,000 ÷ 15 years = **$1,200 a year**
+2. **Accumulated depreciation** — $1,200 × 9 years = **$10,800**
+3. **Actual cash value** — $18,000 − $10,800 = **$7,200**
+4. **Less the deductible** — $7,200 − $1,000 = **$6,200**
+
+**The deductible comes off LAST, after depreciation.** $7,200 is the answer
+you get by stopping at step 3 and forgetting the deductible; $11,000 comes
+from taking the deductible off the replacement cost first and then trying to
+depreciate. Both are the same mistake — doing the steps out of order.
+
+### A five-year-old commercial refrigerator costs $9,600 to replace new and has a twelve-year expected life. What is its actual cash value?
+
+- [x] $5,600
+- [ ] $4,000
+- [ ] $9,600
+- [ ] $4,800
+
+**$9,600 ÷ 12 = $800 a year. Five years used = $4,000 depreciation. $9,600 −
+$4,000 = $5,600.**
+
+**$4,000 is the depreciation, not the value** — the commonest slip on these,
+because the number is right there in your working. Always ask which of the two
+figures the question wanted.
+
+**$4,800 is half**, which would be right only if the unit were six years old.
+A stem that gives a life and an age is asking you to use both.
+
+### In an actual cash value settlement, in what order are depreciation and the deductible applied?
+
+- [x] Depreciate first to reach ACV, then subtract the deductible
+- [ ] Subtract the deductible first, then depreciate the remainder
+- [ ] Apply whichever produces the larger payment to the insured
+- [ ] They are applied simultaneously as a combined percentage
+
+**Depreciation establishes what the property was worth; the deductible is the
+insured's share of that loss.** You cannot take a share of a figure you have
+not worked out yet.
+
+Doing it the other way round always pays the insured less, because the
+deductible then gets depreciated along with everything else. **A stem that
+gives you a life, an age and a deductible is testing this order** and nothing
+more.
+
 ### An older home is insured on an HO-8. A damaged section of ornate plaster cornice is destroyed. On what basis is it settled?
 
 - [x] Repair cost, using common modern construction materials

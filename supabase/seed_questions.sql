@@ -1678,6 +1678,120 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '9c2dfde9-e8c6-5695-be51-be51bbd6cf41', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'valuing-a-loss'),
+       'A roof costs $18,000 to replace. It has a 15-year life and is 9 years old. The policy is ACV with a $1,000 deductible. What does the insurer pay?', '**Work it in this order, every time:** 1. **Annual depreciation** — $18,000 ÷ 15 years = **$1,200 a year** 2. **Accumulated depreciation** — $1,200 × 9 years = **$10,800** 3. **Actual cash value** — $18,000 − $10,800 = **$7,200** 4. **Less the deductible** — $7,200 − $1,000 = **$6,200** **The deductible comes off LAST, after depreciation.** $7,200 is the answer you get by stopping at step 3 and forgetting the deductible; $11,000 comes from taking the deductible off the replacement cost first and then trying to depreciate. Both are the same mistake — doing the steps out of order.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.II'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'c9e6489d-c383-5891-a2a7-9632f95bf675', '9c2dfde9-e8c6-5695-be51-be51bbd6cf41', c.id, '$6,200', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'e9207303-4a82-5a9a-b94b-33627c3fd0e9', '9c2dfde9-e8c6-5695-be51-be51bbd6cf41', c.id, '$7,200', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'ff058074-3106-503d-8261-ddaef1e8a588', '9c2dfde9-e8c6-5695-be51-be51bbd6cf41', c.id, '$11,000', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '965866e6-a2dc-5e71-8a46-5b346f94adae', '9c2dfde9-e8c6-5695-be51-be51bbd6cf41', c.id, '$10,800', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '9c2dfde9-e8c6-5695-be51-be51bbd6cf41', c.id, 'c9e6489d-c383-5891-a2a7-9632f95bf675'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'f8be0ed9-acd8-530d-898e-6f667a394118', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'valuing-a-loss'),
+       'A five-year-old commercial refrigerator costs $9,600 to replace new and has a twelve-year expected life. What is its actual cash value?', '**$9,600 ÷ 12 = $800 a year. Five years used = $4,000 depreciation. $9,600 − $4,000 = $5,600.** **$4,000 is the depreciation, not the value** — the commonest slip on these, because the number is right there in your working. Always ask which of the two figures the question wanted. **$4,800 is half**, which would be right only if the unit were six years old. A stem that gives a life and an age is asking you to use both.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.II'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '88c77a22-c0bf-5356-95e3-e845f5bd7d00', 'f8be0ed9-acd8-530d-898e-6f667a394118', c.id, '$5,600', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '6485b896-9d38-55cd-ae34-a8ec18041313', 'f8be0ed9-acd8-530d-898e-6f667a394118', c.id, '$4,000', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '5fe52235-2c03-53ef-ba7b-4aa19149730e', 'f8be0ed9-acd8-530d-898e-6f667a394118', c.id, '$9,600', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '67dbfc80-2cd3-5427-b6ce-19ca0b9bb509', 'f8be0ed9-acd8-530d-898e-6f667a394118', c.id, '$4,800', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'f8be0ed9-acd8-530d-898e-6f667a394118', c.id, '88c77a22-c0bf-5356-95e3-e845f5bd7d00'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '9b3bf821-2205-50de-9dbe-a88c2ab00ea3', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'valuing-a-loss'),
+       'In an actual cash value settlement, in what order are depreciation and the deductible applied?', '**Depreciation establishes what the property was worth; the deductible is the insured''s share of that loss.** You cannot take a share of a figure you have not worked out yet. Doing it the other way round always pays the insured less, because the deductible then gets depreciated along with everything else. **A stem that gives you a life, an age and a deductible is testing this order** and nothing more.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.II'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '570b118f-66a4-5d34-8373-149ac7c191e6', '9b3bf821-2205-50de-9dbe-a88c2ab00ea3', c.id, 'Depreciate first to reach ACV, then subtract the deductible', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'ebae66d0-cb1e-58a6-93d1-cb96265c3176', '9b3bf821-2205-50de-9dbe-a88c2ab00ea3', c.id, 'Subtract the deductible first, then depreciate the remainder', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '458b7b03-5adb-5985-bfd3-e783e7e7bb46', '9b3bf821-2205-50de-9dbe-a88c2ab00ea3', c.id, 'Apply whichever produces the larger payment to the insured', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'c929bc97-de42-5dd6-9ced-1a840f83c97e', '9b3bf821-2205-50de-9dbe-a88c2ab00ea3', c.id, 'They are applied simultaneously as a combined percentage', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '9b3bf821-2205-50de-9dbe-a88c2ab00ea3', c.id, '570b118f-66a4-5d34-8373-149ac7c191e6'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select '0010af76-9da3-5d15-8658-148adbe24934', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'valuing-a-loss'),
        'An older home is insured on an HO-8. A damaged section of ornate plaster cornice is destroyed. On what basis is it settled?', '**The HO-8 settles on a modified basis — repair cost with common construction materials**, not a reproduction of what was there. The cornice is made good with modern materials; nobody hand-casts new plaster. **This exists to make an older home insurable at all.** For some houses the cost of reproducing the original craftsmanship far exceeds what the property is worth, and insuring it for that sum would create a **moral hazard** — the building would be worth more burnt than standing. **Functional replacement cost is the same idea one step up**: replacing with modern materials that serve the same function, rather than repairing what is damaged. Both settle below true replacement cost and for the same reason.', 'draft'
