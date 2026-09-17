@@ -5,6 +5,27 @@ lesson: commercial-property-and-the-package-policy
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### Underwriters recognise six classes of construction. What determines a building's class?
+
+- [x] The materials of the structure — its frame, walls, floors and roof
+- [ ] The roof of the insured structure
+- [ ] The location of the insured structure
+- [ ] The replacement cost of the insured structure
+
+**Construction class is about the structure itself**, running from **frame**
+(combustible walls and floors) through **joisted masonry**,
+**non-combustible**, **masonry non-combustible** and **modified fire
+resistive** to **fire resistive** (concrete or protected steel).
+
+The question underneath all six is the same: **how much of this building will
+burn, and how long will it stand while it does?**
+
+**Location and value matter enormously to the premium — just not to this
+classification.** Distance to a fire hydrant, the protection class of the fire
+district and the sum insured are all separate rating factors. Construction
+class answers one question only, and mixing it with the others is what the
+distractors here are built on.
+
 ### A pipe in a sprinkler-less office bursts and water ruins stock stored below. What is the minimum causes of loss form that responds?
 
 - [x] Broad

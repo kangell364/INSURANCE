@@ -9582,6 +9582,44 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '63bc78c1-dafa-5589-aa9a-1256a4ecf114', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'commercial-property-and-the-package-policy'),
+       'Underwriters recognise six classes of construction. What determines a building''s class?', '**Construction class is about the structure itself**, running from **frame** (combustible walls and floors) through **joisted masonry**, **non-combustible**, **masonry non-combustible** and **modified fire resistive** to **fire resistive** (concrete or protected steel). The question underneath all six is the same: **how much of this building will burn, and how long will it stand while it does?** **Location and value matter enormously to the premium — just not to this classification.** Distance to a fire hydrant, the protection class of the fire district and the sum insured are all separate rating factors. Construction class answers one question only, and mixing it with the others is what the distractors here are built on.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.I'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'ce7097aa-dbce-5c60-8ceb-7712dcd5f74d', '63bc78c1-dafa-5589-aa9a-1256a4ecf114', c.id, 'The materials of the structure — its frame, walls, floors and roof', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'b371af16-78f1-52da-9576-fab380a733d6', '63bc78c1-dafa-5589-aa9a-1256a4ecf114', c.id, 'The roof of the insured structure', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'e328d432-c61b-5146-aad9-ef6be82fae98', '63bc78c1-dafa-5589-aa9a-1256a4ecf114', c.id, 'The location of the insured structure', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '11f9c704-9e88-5aab-bcb0-e54e77b4fe26', '63bc78c1-dafa-5589-aa9a-1256a4ecf114', c.id, 'The replacement cost of the insured structure', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '63bc78c1-dafa-5589-aa9a-1256a4ecf114', c.id, 'ce7097aa-dbce-5c60-8ceb-7712dcd5f74d'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select '4aa1e71a-9a22-513b-9ce5-880af34a4655', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'commercial-property-and-the-package-policy'),
        'A pipe in a sprinkler-less office bursts and water ruins stock stored below. What is the minimum causes of loss form that responds?', '**Broad adds water damage from the accidental discharge of a system** — along with falling objects and the weight of snow, ice or sleet. Basic has none of the three. **Special would also respond**, being open peril, but the stem asks for the minimum: **Broad is the cheapest form that reaches this loss**, and that is the practical question a producer answers when a client asks what they need. Note what Basic *does* include that looks similar: **sprinkler leakage**. A building with sprinklers has that one peril on the Basic list; this office has no sprinklers, so the burst pipe needs Broad''s accidental discharge instead. **Flood is a different thing entirely** — water arriving from outside, excluded from all three forms and covered only by the NFIP or a separate policy.', 'draft'

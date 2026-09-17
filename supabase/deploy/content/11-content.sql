@@ -302,6 +302,13 @@ statement of values.
 
 Before any of the coverage choices, an underwriter classifies the building
 itself, because construction drives the rate more than almost anything else.
+
+**The class is decided by the materials of the structure itself — the frame,
+walls, floors and roof.** Not by the building's location, not by its value,
+and not by the roof alone. The question underneath every class is the same:
+**how much of this building will burn, and how long will it stand while it
+does?**
+
 **Six classes, from most combustible to least:**
 
 1. **Frame** — combustible walls and floors. Wood.
