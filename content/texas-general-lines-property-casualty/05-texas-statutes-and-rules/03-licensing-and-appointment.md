@@ -194,6 +194,13 @@ applicant is expected to:
   that plainly should not be written. The agent is the only person who stands
   in front of the risk, and an application is only as good as the questions
   behind it.
+- **Assess what the client actually needs** — what they own, what could go
+  wrong, what they can spend, and what would pay for a loss if no policy did.
+  Some texts call this a **needs analysis**, and it is the mirror of field
+  underwriting: **field underwriting sizes up the risk for the insurer; a
+  needs analysis sizes up the exposure for the client.** Both happen in the
+  same conversation, and a producer doing only the first is an order-taker.
+  *(Not named on either Texas outline.)*
 - **Review the coverage periodically**, because limits that were adequate when
   written stop being adequate. A building insured to value in 2019 is not
   insured to value now, and coinsurance turns that into the insured's problem.
