@@ -5326,6 +5326,82 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'ae4f53cd-4890-5d56-b932-fd3cc2e9cc5b', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'elements-of-a-contract'),
+       'An agent hands out business cards carrying the insurer''s logo to prospects at a golf outing. Which authority is that?', '**Implied authority is what is reasonably necessary to carry out the express authority, though the agreement never says it.** An agent authorised to solicit must be able to advertise, rent premises and introduce themselves — nobody writes "may hand out business cards" into an agency agreement, and nobody needs to. **Express** would be a power the agreement actually states. **Apparent** is what a member of the public reasonably believes from the *insurer''s* conduct, which is what makes a terminated agent still holding the insurer''s signs dangerous. Here the agent genuinely holds the authority — the question is only where it came from.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.III'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '5ae53efc-5218-529e-95df-f4677b608def', 'ae4f53cd-4890-5d56-b932-fd3cc2e9cc5b', c.id, 'Implied authority', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '11174be0-b182-5c5d-8356-e657c41e0252', 'ae4f53cd-4890-5d56-b932-fd3cc2e9cc5b', c.id, 'Express authority', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '4718b10d-cd50-56c3-85cf-56a432a78967', 'ae4f53cd-4890-5d56-b932-fd3cc2e9cc5b', c.id, 'Apparent authority', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'ca683a1f-a78e-550b-a94a-a9506fc8352c', 'ae4f53cd-4890-5d56-b932-fd3cc2e9cc5b', c.id, 'Binding authority', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'ae4f53cd-4890-5d56-b932-fd3cc2e9cc5b', c.id, '5ae53efc-5218-529e-95df-f4677b608def'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '8926ae0b-9bc8-5641-ab2b-71df47217db9', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'elements-of-a-contract'),
+       'An agency agreement authorises an agent to bind property risks up to $500,000. The agent binds a $300,000 risk. Which authority is that?', '**Express authority is what the agreement actually says** — the powers written down: solicit, bind within stated limits, issue certain policies, collect premium. A $300,000 binding sits inside a stated $500,000 power, so it is express and nothing more. Had the agent bound **$800,000**, the insurer could still be held to it against a member of the public who reasonably believed the agent could — but that would be **apparent** authority, and the agent would answer to the insurer for exceeding the express grant. "Ostensible" is simply another name for apparent, which is why it appears here as a distractor rather than a fifth kind.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.III'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '668d9580-30e6-51a0-af4e-d324cf5201fd', '8926ae0b-9bc8-5641-ab2b-71df47217db9', c.id, 'Express authority', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '8444eaf6-2796-5156-8e43-da56c6b315a7', '8926ae0b-9bc8-5641-ab2b-71df47217db9', c.id, 'Implied authority', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '19c98651-7fad-5bdb-8912-46ab361721cd', '8926ae0b-9bc8-5641-ab2b-71df47217db9', c.id, 'Apparent authority', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'ca64fce0-f366-5a67-98ab-3dcde0441d7c', '8926ae0b-9bc8-5641-ab2b-71df47217db9', c.id, 'Ostensible authority', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '8926ae0b-9bc8-5641-ab2b-71df47217db9', c.id, '668d9580-30e6-51a0-af4e-d324cf5201fd'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select '229a029f-b300-5da4-a492-bb0109c1faa6', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'elements-of-a-contract'),
        'In an insurance agency relationship, who is the principal?', '**The principal is the party the agent acts for**, and in insurance that is the **insurer**. The producer is the agent; a **broker** represents the insured instead. **Do not import the word from bonds.** In suretyship the *principal* is the party whose performance is guaranteed — a different relationship using the same word, and a stem will not tell you which sense is meant. Ask who is acting for whom.', 'draft'

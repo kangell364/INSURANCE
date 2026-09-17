@@ -5,6 +5,45 @@ lesson: elements-of-a-contract
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### An agent hands out business cards carrying the insurer's logo to prospects at a golf outing. Which authority is that?
+
+- [x] Implied authority
+- [ ] Express authority
+- [ ] Apparent authority
+- [ ] Binding authority
+
+**Implied authority is what is reasonably necessary to carry out the express
+authority, though the agreement never says it.** An agent authorised to
+solicit must be able to advertise, rent premises and introduce themselves —
+nobody writes "may hand out business cards" into an agency agreement, and
+nobody needs to.
+
+**Express** would be a power the agreement actually states. **Apparent** is
+what a member of the public reasonably believes from the *insurer's* conduct,
+which is what makes a terminated agent still holding the insurer's signs
+dangerous. Here the agent genuinely holds the authority — the question is only
+where it came from.
+
+### An agency agreement authorises an agent to bind property risks up to $500,000. The agent binds a $300,000 risk. Which authority is that?
+
+- [x] Express authority
+- [ ] Implied authority
+- [ ] Apparent authority
+- [ ] Ostensible authority
+
+**Express authority is what the agreement actually says** — the powers written
+down: solicit, bind within stated limits, issue certain policies, collect
+premium. A $300,000 binding sits inside a stated $500,000 power, so it is
+express and nothing more.
+
+Had the agent bound **$800,000**, the insurer could still be held to it
+against a member of the public who reasonably believed the agent could — but
+that would be **apparent** authority, and the agent would answer to the
+insurer for exceeding the express grant.
+
+"Ostensible" is simply another name for apparent, which is why it appears here
+as a distractor rather than a fifth kind.
+
 ### In an insurance agency relationship, who is the principal?
 
 - [x] The insurer
