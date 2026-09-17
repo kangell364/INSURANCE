@@ -2468,6 +2468,44 @@ the principle beneath representations, warranties and concealment.
 A useful check: **A**dhesion, **A**leatory, **U**nilateral, **C**onditional,
 **P**ersonal, **U**tmost good faith.
 
+## The application, and signing it
+
+The application is where the contract starts, and the blueprint names it in its
+own right. Three things about it are examined.
+
+**The signature is what adopts the statements.** Everything written on the
+application becomes the applicant's **representation** the moment they sign —
+which is what makes Module 2's misrepresentation and concealment rules bite.
+An applicant who lets somebody else fill the form in and signs without reading
+it has still made every statement on it.
+
+**The agent signs as the producer, never as the applicant.** An agent who signs
+an applicant's name — however convenient, however clearly the applicant agreed
+on the phone — has **signed another's name without authority**, which is the
+definition of **forgery** from the crime lesson. It is also a **fraudulent or
+dishonest act or practice** under **§4005.101(b)(5)**, an independent ground to
+deny, suspend or revoke a licence. There is no version of this that is
+harmless, and "the client asked me to" is not a defence.
+
+**The signed application is usually attached to and made part of the policy.**
+That is why the declarations restate it, and why a discrepancy between what was
+applied for and what was issued matters: the insured can see both.
+
+Texas puts the signature to work in several places already met:
+
+- **§4005.004(a)(5)** defines a **"customer"**, for compensation disclosure, as
+  **the person signing the application** for insurance, or the authorised
+  representative of the insured actually negotiating the placement.
+- **§2151.102(b)** requires **the applicant and the servicing agent** to
+  certify, **as part of the application**, that the applicant was rejected by at
+  least two insurers, before TAIPA will assign the risk.
+- **§1952.101(c)** and **§1952.152** let a named insured remove uninsured
+  motorist or personal injury protection coverage **only by rejecting it in
+  writing** — a signature is what makes the rejection exist at all.
+
+The pattern: **where Texas wants certainty about what somebody agreed to, it
+asks for a signature.**
+
 ## Agency: why the agent's knowledge is the insurer's
 
 An agent represents the **insurer**. A broker represents the **insured**.
@@ -2516,6 +2554,9 @@ the policy is a contract of adhesion.
 
 **Waiver versus estoppel** — voluntarily giving up a right versus being
 barred from asserting one.
+
+**The applicant signs the application; the agent never signs for them.** Doing
+so is forgery, and a ground for discipline under §4005.101(b)(5).
 
 ## Check yourself
 
@@ -6894,10 +6935,11 @@ a fee equal to the licence application fee.
 Continuing education is a condition of renewal — **§4003.006(2)** refers to a
 licence not being renewed under **§4004.055**.
 
-**Chapter 4004 sets the requirement, and this course does not yet teach its
-figures**, because the chapter has not been obtained. See
-`docs/module-5-source-gaps.md`. Do not learn CE hours from this course; get
-them from the statute or from TDI.
+**Chapter 4004 sets the requirement**, and it has its own lesson —
+**Continuing Education** — later in this module. The short version: **24 hours
+per licence period, three of them ethics, at least half in a classroom**, with
+a **20-year** licensure exemption and a **90-day** window after the period
+ends to cure a shortfall (§4004.051–.055).
 
 ## Grounds for denial or discipline
 
@@ -7067,6 +7109,37 @@ newspaper or magazine, notice or circular or pamphlet or letter or poster,
 radio or television, **through the Internet**, or **"in any other manner."**
 A social media post is covered.
 
+### The advertising rules beneath §541.052
+
+**Chapter 541 says what an advertisement may not do; 28 TAC Chapter 21,
+Subchapter B says it in detail.** The rules run 28 TAC §21.101–.120 and cover the form
+and content of advertisements, identification of the policy and insurer,
+description of benefits, premiums, testimonials, use of statistics,
+disparagement, comparisons and a general prohibition.
+
+**28 TAC §21.115 is the one written for property and casualty**, and it is
+short enough to know outright. It is about a single word.
+
+**28 TAC §21.115(a)** — **no advertisement may use the word "dividends", or similar
+words or illustrations, in a manner that states or implies that future
+dividends are guaranteed or certain to occur.**
+
+**28 TAC §21.115(b)** defines the word broadly and then carves out the case that
+matters: **"dividends" includes every return of premium and payment to
+policyholders on a particular policy that is predicated on the insurer's
+financial performance or earnings** — but it **does not include** a return of
+premium under a **nondiscretionary provision or endorsement** clearly providing
+for payment under a **rating plan approved or promulgated by the Department.**
+
+So the line is between the **discretionary** and the **contractual**. A payment
+that depends on how the insurer performs is a dividend and may never be
+promised. A return of premium the policy already obliges the insurer to make,
+under an approved rating plan, is not a dividend at all and may be described as
+what it is.
+
+**28 TAC §21.111** covers **comparisons**, which is the advertising face of the
+twisting problem at §541.051(5).
+
 ### §541.053 Defamation of an insurer
 
 A statement that is **false, maliciously critical of, or derogatory to the
@@ -7178,6 +7251,13 @@ against another person for damages caused by a practice defined in Subchapter
 B, or enumerated as a deceptive trade practice under §17.46(b) of the Business
 & Commerce Code where the plaintiff relied on it to their detriment.
 
+> **§17.46(b), Business & Commerce Code**, is the DTPA's own list of deceptive
+> trade practices, and §541.151 imports it: a practice enumerated there is
+> actionable under Chapter 541 **where the plaintiff relied on it to their
+> detriment**. The DTPA also runs its own remedies in **Subchapter E of Chapter
+> 17**, which is one of the four bodies of law §4004.105 requires an adjuster's
+> continuing education to cover.
+
 **§541.152(a)** — a prevailing plaintiff may obtain **actual damages, court
 costs and reasonable and necessary attorney's fees**, an **injunction**, or
 any other relief the court thinks proper.
@@ -7225,6 +7305,10 @@ TWIA**.
 **Defamation needs both falsity/derogation and intent to injure.**
 
 **Boycott requires concerted action.**
+
+**An advertisement may never state or imply that future dividends are
+guaranteed** — 28 TAC §21.115(a) — and a non-discretionary return of premium
+under an approved rating plan is not a "dividend" for that purpose.
 
 **Tax returns may be demanded only on a court order, a fire loss, or a lost
 profits claim.**
@@ -7393,11 +7477,80 @@ costs**.
 > and that interest **accrues from the date the claim was required to be
 > paid**.
 >
-> **This course does not yet teach which claims Chapter 542A covers**, because
-> that chapter has not been obtained. See `docs/module-5-source-gaps.md`.
-> What you should take from this: **18% is the §542.060(a) answer and the one
-> an exam is most likely to want — but it is no longer the rate in every
-> case**, and material written before 2017 does not know that.
+> **18% remains the §542.060(a) answer and the one an exam is most likely to
+> want. Chapter 542A is when it is not 18%**, and material written before 2017
+> does not know that chapter exists.
+
+**§304.003(c), Finance Code** is the judgment interest rate §542.060(c) builds
+on. The **postjudgment interest rate** is:
+
+1. **the prime rate** published by the Board of Governors of the Federal
+   Reserve System on the date of computation;
+2. **five percent a year** if that prime rate is **less than five percent**; or
+3. **fifteen percent a year** if that prime rate is **more than fifteen
+   percent.**
+
+So it floats with prime between a **5 percent floor and a 15 percent ceiling**.
+**Add five percent to it** and you have the Chapter 542A rate — which therefore
+runs between **10 and 20 percent**, and lands near 18 percent only by
+coincidence.
+
+Because it moves, it is a rate you look up rather than memorise. **18 percent
+stays the answer to give unless the question puts you inside Chapter 542A.**
+
+### Which claims Chapter 542A covers
+
+**§542A.001(2)** defines the **claim** narrowly, and all three limbs must hold.
+It is a **first-party claim** that:
+
+- is made by an insured under a policy **covering real property or
+  improvements to real property**;
+- **must be paid by the insurer directly to the insured**; and
+- **arises from damage to or loss of covered property caused, wholly or partly,
+  by forces of nature** — the statute lists **earthquake or earth tremor,
+  wildfire, flood, tornado, lightning, hurricane, hail, wind, snowstorm** and
+  **rainstorm**.
+
+So the alternative interest rate is a **weather and forces-of-nature, real
+property** rule. A stolen car, a liability claim or a business interruption
+loss is outside it, and stays at 18 percent.
+
+**§542A.002(a)** — the chapter applies to an action on a claim **against an
+insurer or agent**, including breach of contract, negligence,
+misrepresentation, fraud or breach of a common law duty, and actions brought
+under **Subchapter D of Chapter 541**, **Subchapter B of Chapter 542**, or
+**Subchapter E of Chapter 17, Business & Commerce Code**.
+
+**§542A.002(b)** — it **does not apply to an action against TWIA**, which
+matches §2210.014 and §2210.572 from the windstorm lesson: TWIA sits outside
+these remedies altogether.
+
+**§542A.001(4)** defines **insurer** to exclude TWIA but to include an
+**eligible surplus lines insurer** and the **FAIR Plan Association**, unless a
+claim-related dispute resolution procedure is available under Chapter 2211.
+
+### What else Chapter 542A requires
+
+**§542A.003(a)** — **presuit notice not later than the 61st day before filing**
+an action to which the chapter applies. **§542A.003(b)** — the notice must
+state the acts or omissions giving rise to the claim, **the specific amount
+alleged to be owed**, and the reasonable attorney's fees incurred.
+
+Compare **§541.154**, which also requires 61 days' notice. Where both apply,
+one notice can serve both — **§542A.003(f)** says notice under this chapter
+may be combined with notice required by other law.
+
+**§542A.003(d)** — notice is not required where it is **impracticable**,
+because the limitations period is about to run or the claim is asserted as a
+counterclaim.
+
+**§542A.004** — the insurer may demand an **inspection** of the property.
+**§542A.005** — failure to give the required notice supports **abatement** of
+the action. **§542A.006** — an insurer may **elect to accept legal
+responsibility** for its agent, which then removes the agent from the case.
+**§542A.007** — sets how **attorney's fees** are awarded, on a formula keyed
+to how the amount recovered compares with the amount stated in the presuit
+notice.
 
 **§542.061** — the remedies here are **in addition to** any other remedy at
 law or common law. A prompt-payment violation and a Chapter 541 unfair
@@ -8136,22 +8289,23 @@ financial responsibility as required by Chapter 601, Transportation Code.**
 **An uninsured driver gets no protection from the no-subrogation rule.** That
 is the clearest single contrast in the subchapter, and a likely question.
 
+## Where the limits come from
+
+**§1952.105(c)** forbids offering UM or PIP below the amounts prescribed by
+**Chapter 601, Transportation Code** — and those are **30/60/25**: $30,000 for
+bodily injury to one person, $60,000 for two or more in one collision, and
+$25,000 for property damage (§601.072(a-1)). **Financial Responsibility and
+TAIPA**, later in this module, covers that chapter and the auto residual
+market that writes drivers the voluntary market rejects.
+
 ## What is not taught here
 
 The blueprint also cites, under TX.II.E:
 
-- **Transportation Code Chapter 601** — financial responsibility and the
-  **required minimum liability limits**. Chapters 1952.101 and 1952.105 both
-  defer to it for the floor, and **this course does not state those figures**
-  because the Transportation Code has not been obtained.
-- **TIC Chapter 2151** — the Texas Automobile Insurance Plan Association, the
-  auto residual market.
-- **TIC Chapter 1954** — transportation network companies (rideshare).
 - **28 TAC §5.204** and **§5.7002** — auto coverage, and renewal, non-renewal
   and cancellation rules.
 
-See `docs/module-5-source-gaps.md`. **Do not learn the Texas minimum liability
-limits from this course** — get them from Chapter 601.
+See `docs/module-5-source-gaps.md`.
 
 ## How this is examined
 
@@ -8501,6 +8655,1925 @@ on conflict (lesson_id) do update set body = excluded.body;
 
 insert into public.lesson_topics (lesson_id, topic_id, course_id)
 select 'f2f83e58-1313-5d36-b18f-242354a7ab5c', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'TX.II'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select '18f35c36-92f6-5338-901e-2f125a4954df', '62edc60d-a12f-5d1f-80b7-2adce32c4394', c.id, 'Continuing Education',
+       'continuing-education', 'Twenty-four hours, three of them ethics, half of them in a classroom — and the 90-day cliff that ends a licence.', 11,
+       'draft', 12
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select '18f35c36-92f6-5338-901e-2f125a4954df', c.id, $lesson$# Keeping the licence current
+
+Module 5's renewal lesson gave the two-year term and the cliffs after expiry.
+**Chapter 4004 is the other half of renewal: the education that has to happen
+inside that term**, and its figures are examined directly.
+
+**§4004.001** — the Department has **exclusive jurisdiction** of all matters
+relating to the continuing education of agents licensed under the code. No
+other body sets, waives or enforces it.
+
+## The core numbers
+
+**§4004.053(a)** — an individual holding a **general property and casualty
+licence** — or a general life, accident and health licence, a life agent
+licence, an adjuster licence, a managing general agent licence, or a personal
+lines property and casualty licence — must complete **24 hours of continuing
+education during the licence period.**
+
+The same subsection settles the question candidates ask next: **holding more
+than one licence does not multiply the requirement.** If an individual holds
+several licences for which continuing education is required, they are **not
+required to complete more than 24 hours for all of them** in the period.
+
+**§4004.054** — of those hours, **three hours must be ethics**, in each
+licence renewal period.
+
+**§4004.051(c)** — **at least 50 percent of all required hours must be
+completed in a classroom setting or a classroom-equivalent setting approved by
+the Department.** On 24 hours that is 12.
+
+**§4004.051(b)** — **all required hours must be completed before the
+expiration date** of the licence.
+
+**§4004.053(b)** — a **limited** life, accident and health licence or a
+**limited** property and casualty licence carries a different rule: **five
+hours annually**, not 24 per period.
+
+> **The shape to hold: 24 hours per two-year period, 3 of them ethics, at
+> least 12 in a classroom, all of it before the licence expires.** A limited
+> licence is 5 hours a year.
+
+## Exemptions and extensions
+
+**§4004.052(a)** — on the agent's **timely written request**, the Department
+may **extend** the time to comply, or **exempt** the agent from some or all of
+the requirements for a licensing period, where it determines the agent cannot
+comply because of **illness, medical disability, or another extenuating
+circumstance beyond the agent's control.** The Commissioner prescribes the
+criteria by rule.
+
+**§4004.052(b)** is the one most likely to be asked: **an individual who has
+continuously held an agent licence under the code for at least 20 years is
+exempt** from the continuing education requirements of the chapter.
+
+**§4004.052(c)** — the Commissioner may provide other reasonable exemptions
+by rule.
+
+## Credit for association membership
+
+**§4004.0535** — the Commissioner may by rule authorise the Department to
+grant **not more than four hours** of continuing education credit to an agent
+who is an **active member of a state or national insurance association.**
+
+Two limits make this narrower than it first looks, and both are examinable.
+**§4004.0535(c)** — credit granted under this section may **not** be used to
+satisfy:
+
+1. the hours required to be completed **in a classroom** or classroom
+   equivalent under §4004.051; or
+2. the **ethics** requirement under §4004.054.
+
+So the four hours come off the general balance only. **§4004.0535(d)** — the
+agent must give the Department a **sworn affirmation** that they are an active
+member and have either reviewed the association's educational materials or
+attended its educational presentations, for the hours claimed.
+
+**§4004.051(d)** — separately, the Department **may** accept hours completed
+in other professions or in connection with professional designations in an
+insurance-related field.
+
+## Failing to complete it
+
+**§4004.055** is short and unforgiving.
+
+**§4004.055(a)** — the Department **may not renew** a licence if the holder
+fails to:
+
+1. **complete the applicable requirement not later than the 90th day after
+   the last day of the licensing period**; or
+2. **pay an applicable fine** related to the failure to complete it on time.
+
+So there is a **90-day window after the period ends** in which the deficiency
+can still be cured. Miss that and the licence cannot be renewed at all — which
+lands the agent in §4003.007's bands from the renewal lesson.
+
+**§4004.055(b)** — the Department **may not issue a new licence** to somebody
+previously licensed who fails to provide evidence of completion for the
+expired, non-renewed, cancelled or revoked licence, or to pay the related
+fine. **The deficiency follows the person**, not the licence: starting again
+does not wash it off.
+
+**§4004.055(c)** — **completing the education after the licence expires is
+not a defence** in a disciplinary action under §4005.101, §4005.109 or any
+other provision. Catching up cures the renewal obstacle; it does not undo the
+violation.
+
+## Programme and provider requirements
+
+**§4004.101–.104** cover certification of programmes, the certification fee,
+provider registration, and independent contractors.
+
+**§4004.105** is worth recognising because it names chapters taught elsewhere
+in this module: a continuing education programme **for adjusters** licensed
+under Chapter 4101 must include education relating to **Chapter 541**,
+**Chapter 547**, **Subchapter A of Chapter 542**, and **Subchapter E of
+Chapter 17, Business & Commerce Code**.
+
+**§4004.151–.152** — the Department administers the continuing education and
+precertification training programmes required by rules under **Chapter 4008**,
+the product-line certificate chapter referenced in the discipline lesson.
+
+Later subchapters impose additional education for those selling **annuities**
+(§4004.201–.203) and **Medicare-related products** (§4004.251–.252). Neither
+is within a general lines property and casualty producer's ordinary work, but
+both exist.
+
+## How this is examined
+
+**24 hours**, and that **several licences do not mean more than 24**.
+
+**Three hours of ethics.**
+
+**At least 50 percent in a classroom** or approved equivalent.
+
+**20 years of continuous licensure is an exemption.**
+
+**Four hours maximum** for association membership, and that it counts toward
+**neither** the classroom portion **nor** the ethics requirement.
+
+**90 days after the period ends** to cure, or the licence cannot be renewed.
+
+**Completing late is not a defence** to discipline.
+
+## Check yourself
+
+1. An agent holds both a general property and casualty licence and a general
+   life, accident and health licence. How many hours must they complete?
+2. How many of those must be ethics, and how many must be in a classroom?
+3. An agent has held a licence continuously for 22 years. What do they owe?
+4. An agent claims four hours for active membership of a state insurance
+   association. May those hours satisfy the ethics requirement?
+5. An agent's licence period ended on 31 March and they are three hours
+   short. Until when can they fix it?
+6. An agent completes the missing hours four months after expiry and argues
+   there is now no violation. Is that right?
+
+## Answers
+
+1. **24** — §4004.053(a) caps the total at 24 for all licences held, not 24
+   each.
+2. **Three** hours of ethics (§4004.054), and **at least 12** — 50 percent of
+   24 — in a classroom or approved classroom-equivalent setting
+   (§4004.051(c)).
+3. **Nothing.** §4004.052(b) exempts an individual who has continuously held
+   an agent licence for at least 20 years.
+4. **No.** §4004.0535(c) bars association credit from satisfying either the
+   classroom hours or the ethics requirement.
+5. **The 90th day after the last day of the licensing period** — §4004.055(a).
+   After that the Department may not renew.
+6. **No.** §4004.055(c) — completion after expiry is **not a defence** in a
+   disciplinary action. It removes the obstacle to a new licence; it does not
+   undo the failure.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select '18f35c36-92f6-5338-901e-2f125a4954df', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'TX.I'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select '70750c55-c337-5ecd-bc9a-4dac927476a3', '62edc60d-a12f-5d1f-80b7-2adce32c4394', c.id, 'The Property and Casualty Guaranty Association',
+       'the-guaranty-association', 'What happens to a claim when the insurer fails — the $300,000 cap, the workers'' compensation exception, and the insured too big to be protected.', 12,
+       'draft', 14
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select '70750c55-c337-5ecd-bc9a-4dac927476a3', c.id, $lesson$# When the insurer cannot pay
+
+Every other chapter in this module regulates an insurer that exists.
+**Chapter 462 answers the question of what happens when one stops existing.**
+
+The Texas Property and Casualty Insurance Guaranty Association pays claims
+against an **impaired insurer** — one placed in receivership or otherwise
+determined unable to meet its obligations. It is the reason the surplus lines
+lesson's warning matters: a surplus lines insurer is **not** a member, so
+nothing here stands behind that policy.
+
+## The covered claim
+
+**§462.201** — a claim is a **covered claim** if all five are true:
+
+1. it is an **unpaid** claim;
+2. it is made under a policy to which the chapter applies, **issued by an
+   insurer authorized to engage in business in this state** (or assumed by
+   one under an assumption certificate);
+3. it **arises out of the policy and is within the coverage and applicable
+   limits** of the policy;
+4. the issuing or assuming insurer **is an impaired insurer**; and
+5. it is made by a **liability claimant or insured who is a resident of this
+   state at the time of the insured event**, or is a **first-party claim for
+   damage to property permanently located in this state.**
+
+Two consequences follow from (3) and (5). **The association never pays more
+than the policy would have** — it steps into the insurer's shoes, not above
+them. And **residency or Texas-located property is the hook**: an out-of-state
+claimant on an out-of-state risk is another state's association's problem.
+
+**§462.205** — a corporation or other non-individual entity is a resident of
+**the state where its principal place of business is located.**
+
+**§462.204** — **an affiliate of the impaired insurer may not be a claimant.**
+
+## The limits
+
+This is the examined part of the chapter.
+
+**§462.213(a)** — except as provided by subsection (b) and §462.252, **an
+individual covered claim may not exceed $300,000.**
+
+**§462.213(b)** is the exception that matters: **the association shall pay the
+full amount of a covered claim arising out of a workers' compensation claim
+made under a workers' compensation insurance policy.** No $300,000 cap on
+workers' compensation.
+
+That pairing is the reliable question. **Everything else is capped at
+$300,000; workers' compensation is paid in full.**
+
+**§462.213(c)** closes the obvious route around the cap: **derivative claims
+by more than one person arising from the same occurrence are considered
+collectively as a single claim.** Three family members claiming from one
+accident share one $300,000 limit, not three.
+
+**§462.202(a)** — **a claim for unearned premium is a covered claim, and may
+not exceed $25,000.** So a policyholder whose insurer fails mid-term recovers
+the unused premium, within its own much smaller cap.
+
+**§462.214** — the association's liability for **shareholder derivative
+actions**, or other claims for economic loss incurred in the claimant's
+capacity as a shareholder, under a policy in force on or after 1 January 1992,
+is limited to **$300,000 for each policy, including defence costs, regardless
+of the number of claimants.**
+
+## The insured too large to be protected
+
+**§462.212** — **except for a workers' compensation claim governed by Title 5,
+Labor Code**, a covered claim **does not include** any claim arising from the
+policy of an insured **whose net worth exceeded $50 million** on 31 December
+of the year preceding the date the insurer became impaired.
+
+The reasoning is that the association exists to protect people who cannot
+absorb an insurer's failure, and a company of that size can. Two details:
+
+- **Net worth is measured on a consolidated basis**, including the insured's
+  **parent, subsidiary and affiliated companies**.
+- If the insured **refuses to provide** the financial information the
+  association requests, the association **may deem the net worth to exceed
+  $50 million** — and in any lawsuit contesting the point, **the insured bears
+  the burden of proof** and pays the association's costs and reasonable
+  attorney's fees incurred in trying to get the information.
+
+**Workers' compensation is carved out of this too.** It is carved out of the
+cap in §462.213(b) and out of the net worth exclusion in §462.212. An injured
+worker's statutory benefits do not depend on how large their employer is.
+
+## Funding
+
+**§462.151 onwards** — the association is funded by **assessments on member
+insurers**, in the manner provided by §§462.159–462.168. Membership is not
+optional; it is the industry insuring itself against its own failures, the
+same structure as TWIA and the FAIR Plan.
+
+**§462.160 and §462.168** — **the total assessment of a member insurer in a
+year may not exceed two percent of that insurer's net direct written premiums
+for the preceding calendar year**, in the lines for which the assessment is
+made.
+
+**§462.157(c)** — an assessment for administrative expenses incurred by a
+supervisor, conservator or court-appointed receiver for a **nonmember or
+unauthorized insurer** operating in Texas **may not exceed $1 million in each
+calendar year.**
+
+**§462.109** — where a member insurer fails to pay an assessment when due, the
+Commissioner may as an alternative **assess a fine**, not exceeding the
+**lesser of five percent of the unpaid assessment per month or $100 per
+month.**
+
+## Related provisions
+
+**§462.203** — an **administration expense** incurred in processing or paying
+a claim against the receivership or conservatorship estate is itself a covered
+claim where the impaired insurer has insufficient assets to pay the costs of
+administering the estate.
+
+**§462.254** — where a claim could be recovered from more than one state's
+guaranty association, the claimant seeks recovery **first from the association
+of the insured's residence**; a **first-party property** claim goes first to
+the association **where the property is located**, and a **workers'
+compensation** claim first to the association of **the claimant's residence**.
+That allocates between states rather than letting a claimant choose.
+
+**§462.308** — the association may **recover** what it paid from an
+**affiliate of the impaired insurer** whose liabilities were satisfied by its
+payments, and from certain insureds on workers' compensation claims — but
+**not** from an insured exempt from federal income tax under §501(c)(3).
+
+## How this is examined
+
+**$300,000** as the individual covered claim cap.
+
+**Workers' compensation is paid in full**, with no cap — and is also outside
+the net worth exclusion.
+
+**$25,000** for unearned premium.
+
+**$50 million net worth** excludes an insured, measured on a consolidated
+basis.
+
+**Derivative claims from one occurrence are one claim.**
+
+**Two percent** of net direct written premiums as the annual assessment cap.
+
+**Surplus lines insurers are not members**, so nothing stands behind a surplus
+lines policy — the link back to Chapter 981.
+
+## Check yourself
+
+1. An insurer fails. A homeowner has a $450,000 covered fire claim within the
+   policy limit. What does the association pay?
+2. The same insurer wrote a workers' compensation policy, and an injured
+   worker's benefits will exceed $300,000 over their lifetime. What is paid?
+3. Three members of one family are injured in a single accident and each
+   claims $200,000 against an impaired insurer's liability policy. What is
+   available in total?
+4. A company with a consolidated net worth of $80 million has a covered
+   property claim against an impaired insurer. What does the association pay?
+5. Same company, but the claim is under its workers' compensation policy.
+   Does the answer change?
+6. A policyholder paid a year's premium and the insurer fails after two
+   months. Can they recover the unused portion, and up to how much?
+7. A business insured through a surplus lines insurer that becomes insolvent
+   asks the association to pay. Will it?
+
+## Answers
+
+1. **$300,000** — §462.213(a) caps an individual covered claim, even though
+   the policy would have paid more.
+2. **The full amount.** §462.213(b) — workers' compensation covered claims are
+   paid in full, with no $300,000 cap.
+3. **$300,000 in total.** §462.213(c) treats derivative claims arising from
+   the same occurrence collectively as a single claim.
+4. **Nothing.** §462.212 excludes claims arising from the policy of an insured
+   whose net worth exceeded **$50 million**, measured on a consolidated basis
+   including parent, subsidiary and affiliates.
+5. **Yes.** Workers' compensation is expressly carved out of the net worth
+   exclusion, so those benefits are still covered — and uncapped.
+6. **Yes** — a claim for unearned premium is a covered claim, up to
+   **$25,000** (§462.202(a)).
+7. **No.** A surplus lines insurer is not a member of the association, and
+   §981.101(b) requires the surplus lines document to say so in 11-point type.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select '70750c55-c337-5ecd-bc9a-4dac927476a3', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'TX.II'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select '8c0f54c3-56b6-5422-8ecc-b77835ded5f3', '62edc60d-a12f-5d1f-80b7-2adce32c4394', c.id, 'Texas Workers'' Compensation',
+       'texas-workers-compensation', 'The one state where coverage is optional — what a non-subscriber gives up, what it keeps, and the benefit formulas.', 13,
+       'draft', 16
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select '8c0f54c3-56b6-5422-8ecc-b77835ded5f3', c.id, $lesson$# The state that made it elective
+
+Module 4 described the workers' compensation bargain: the employee gives up
+the right to sue, the employer gives up the three common law defences, and
+benefits are paid without regard to fault. It also noted that **Texas is the
+exception**. This lesson is that exception, from the Labor Code.
+
+Note the code. **Texas workers' compensation is in Title 5 of the Labor Code,
+not the Insurance Code** — which is why §31.002(2) makes administering it a
+duty of the Department, and why the exam reaches outside the Insurance Code
+for it.
+
+## Coverage is elective
+
+**§406.002(a)** — **"Except for public employers and as otherwise provided by
+law, an employer may elect to obtain workers' compensation insurance
+coverage."**
+
+That single sentence is the most distinctively Texan provision in the module.
+**Public employers are outside the election**; a private employer chooses.
+
+**§406.002(b)** — an employer who **elects** to obtain coverage is subject to
+the subtitle. So the whole apparatus of exclusive remedy and statutory
+benefits follows the election, and an employer that does not elect is outside
+it.
+
+**§406.003** — an employer may obtain coverage **through a licensed insurance
+company or through self-insurance** as provided by the subtitle.
+
+**§406.004** — an employer who obtains coverage must **notify the division**.
+**§406.005** — the employer must **notify its employees**, and failing to do
+so is an **administrative violation**. An employee is entitled to know which
+system they are in.
+
+## The non-subscriber
+
+An employer that does not elect coverage is a **non-subscriber**. It is
+outside the compensation system, so exclusive remedy does not protect it — and
+**§406.033** sets the terms on which it can be sued.
+
+### What the non-subscriber loses
+
+**§406.033(a)** — in an action by an employee not covered by workers'
+compensation, for injury or death sustained in the course and scope of
+employment, **it is not a defence that:**
+
+1. **the employee was guilty of contributory negligence**;
+2. **the employee assumed the risk** of injury or death; or
+3. **the injury or death was caused by the negligence of a fellow employee.**
+
+These are the same three defences Module 4 described the employer as
+surrendering in the ordinary bargain. **The Texas non-subscriber surrenders
+them without getting exclusive remedy in return** — which is the whole point,
+and the reason most employers subscribe.
+
+### What the non-subscriber keeps
+
+This is the nuance the exam separates, and it is easy to overstate the
+non-subscriber's exposure.
+
+**§406.033(d)** — **the plaintiff must prove negligence** of the employer, or
+of an agent or servant acting within the general scope of their employment.
+**A non-subscriber is not strictly liable.** No negligence, no recovery — which
+is very different from the no-fault system it opted out of.
+
+**§406.033(c)** — the employer **may** defend on the ground that the injury
+was caused:
+
+1. **by an act of the employee intended to bring about the injury**; or
+2. **while the employee was in a state of intoxication.**
+
+So two defences survive: **intentional self-injury and intoxication.**
+
+**§406.033(b)** — the section does not reinstate or otherwise affect the
+availability of common law defences generally, including the three it removes.
+
+### What cannot be waived
+
+**§406.033(e)** — **a cause of action under this section may not be waived by
+an employee before the employee's injury or death.** Any pre-injury agreement
+to waive it is **void and unenforceable.**
+
+A non-subscriber cannot hand new hires a waiver at induction and be done with
+it. The examinable shape: **pre-injury waiver void; post-injury settlement is
+a different matter.**
+
+## The benefits
+
+Where coverage exists, **Chapter 408** sets what is paid. **§408.081(b)** —
+income benefits are paid **weekly as and when they accrue**, without an order
+from the commissioner, with interest on accrued but unpaid benefits.
+
+Four kinds of income benefit, and the order runs from the injury to its
+permanent consequences.
+
+### Temporary income benefits
+
+**§408.101(a)** — payable where the employee **has a disability and has not
+reached maximum medical improvement**.
+
+**§408.102(a)** — TIBs **continue until the employee reaches maximum medical
+improvement**. MMI is the hinge the rest of the chapter turns on.
+
+**§408.103(a)** — the amount is:
+
+- **70 percent** of the employee's average weekly wage **less** their weekly
+  earnings after the injury; or
+- **75 percent** of that difference **for the first 26 weeks**, if the
+  employee **earns less than $10 an hour.**
+
+**§408.105** allows **salary continuation** in lieu of TIBs.
+
+### Impairment income benefits
+
+**§408.121(a)** — entitlement begins **the day after the employee reaches
+maximum medical improvement**, and ends at the earlier of the employee's death
+or the expiry of a period computed at **three weeks for each percentage point
+of impairment.**
+
+**§408.126** — the amount is **70 percent of the average weekly wage.**
+
+So a 15 percent impairment rating buys **45 weeks** of IIBs. That arithmetic
+is the likely question.
+
+**§408.122** — a claimant may not recover IIBs unless an impairment rating has
+been certified. **§408.124** — the rating follows the guidelines that section
+adopts.
+
+### Supplemental income benefits
+
+**§408.142(a)** — payable on the expiry of the IIB period where the employee:
+
+1. has an **impairment rating of 15 percent or more**;
+2. **has not returned to work, or has returned earning less than 80 percent**
+   of their average weekly wage, **as a direct result of the impairment**;
+3. **has not elected to commute** a portion of the impairment income benefit;
+   and
+4. has complied with the requirements adopted under §408.1415.
+
+**§408.142(b)** — an employee not entitled at the time of the final IIB
+payment because they were earning at least 80 percent may **become** entitled
+within **one year** after the IIB period ends, if they then earn less than 80
+percent for at least **90 days** as a direct result of the impairment.
+
+**The 15 percent threshold and the 80 percent earnings test are the two
+figures here.**
+
+### Lifetime income benefits
+
+**§408.161(a)** — paid **until the death of the employee** for a closed list
+of catastrophic injuries:
+
+- **total and permanent loss of sight in both eyes**;
+- **loss of both feet** at or above the ankle;
+- **loss of both hands** at or above the wrist;
+- **loss of one foot at or above the ankle and one hand at or above the
+  wrist**;
+- **an injury to the spine resulting in permanent and complete paralysis of
+  both arms, both legs, or one arm and one leg**;
+- **a physically traumatic brain injury** resulting in a permanent major
+  neurocognitive disorder requiring occasional supervision in routine daily
+  self-care and rendering the employee permanently unemployable; and
+- **third degree burns covering at least 40 percent of the body** and
+  requiring grafting, or covering the majority of the relevant areas that
+  subsection describes.
+
+**§408.161(b)** — **total and permanent loss of use of a body part is the loss
+of that body part.** An unusable hand counts as a lost hand.
+
+**§408.161(c)** — the amount is **75 percent of the average weekly wage**,
+**increased at three percent a year.** LIBs are the only income benefit with a
+built-in escalator.
+
+### Death and burial
+
+**§408.181(b)** — a death benefit is **75 percent of the average weekly wage**,
+paid to the legal beneficiary. It may be paid **monthly** only on the
+beneficiary's request, with the carrier's agreement, under rules the
+commissioner adopts (§408.181(c)).
+
+**§408.186(a)** — burial benefits are the **lesser of the actual reasonable
+burial expenses incurred or $10,000**, paid to whoever incurred the liability.
+**§408.186(b)** — where the employee died away from their usual place of
+employment, the carrier pays the reasonable cost of **transporting the body**,
+not exceeding the cost of transporting it to that usual place.
+
+## The percentages, side by side
+
+| Benefit | Rate | Measured against |
+| --- | --- | --- |
+| **Temporary income** | **70%** (75% for the first 26 weeks under $10/hr) | AWW **less post-injury earnings** |
+| **Impairment income** | **70%** | AWW |
+| **Lifetime income** | **75%**, **+3% a year** | AWW |
+| **Death** | **75%** | AWW |
+| **Burial** | lesser of actual cost or **$10,000** | — |
+
+**70 for the two that are about recovering; 75 for the two that are about not
+recovering.** That is the memory hook worth carrying.
+
+## How this is examined
+
+**Coverage is elective in Texas, except for public employers.**
+
+**A non-subscriber loses contributory negligence, assumption of risk and the
+fellow servant rule** — but **the employee must still prove the employer was
+negligent**, and **intentional self-injury and intoxication remain defences.**
+
+**A pre-injury waiver is void.**
+
+**Three weeks of impairment income per percentage point.**
+
+**15 percent impairment and 80 percent of wages** for supplemental income
+benefits.
+
+**Lifetime income benefits are 75 percent with a 3 percent annual increase**,
+for the listed catastrophic injuries.
+
+**$10,000** burial cap.
+
+## Check yourself
+
+1. A private Texas employer decides not to carry workers' compensation. Is
+   that lawful?
+2. An employee of that non-subscriber is injured partly through their own
+   carelessness and partly through a supervisor's. What defences are gone, and
+   what must the employee still prove?
+3. The same non-subscriber shows the employee was drunk at the time. Does that
+   help?
+4. The employer asks every new hire to sign away the right to sue for
+   workplace injury. Is that effective?
+5. An employee with a $1,000 average weekly wage reaches MMI with a 20 percent
+   impairment rating. How long do impairment income benefits run, and at what
+   weekly amount?
+6. What two conditions of earnings and impairment open supplemental income
+   benefits?
+7. An employee loses the total and permanent use of both hands. Which benefit,
+   at what rate?
+8. A covered employee dies. What is paid for burial?
+
+## Answers
+
+1. **Yes.** §406.002(a) — coverage is elective except for public employers and
+   as otherwise provided by law.
+2. Gone: **contributory negligence, assumption of risk and the fellow servant
+   rule** (§406.033(a)). The employee must still **prove the employer's
+   negligence**, or that of an agent or servant acting within the scope of
+   employment (§406.033(d)).
+3. **Yes.** §406.033(c) preserves two defences — that the employee **intended**
+   the injury, or was **intoxicated**.
+4. **No.** §406.033(e) — a pre-injury waiver is **void and unenforceable**.
+5. **60 weeks** — three weeks per percentage point — at **70 percent** of the
+   average weekly wage, so **$700 a week** (§408.121(a), §408.126).
+6. An **impairment rating of 15 percent or more**, and **not having returned
+   to work or earning less than 80 percent** of the average weekly wage as a
+   direct result of the impairment (§408.142(a)).
+7. **Lifetime income benefits**, at **75 percent** of the average weekly wage
+   with a **three percent annual increase** — §408.161(b) treats total and
+   permanent loss of use as loss of the body part.
+8. The **lesser of the actual reasonable burial expenses or $10,000**
+   (§408.186(a)), plus reasonable transport of the body where the employee
+   died away from their usual place of employment.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select '8c0f54c3-56b6-5422-8ecc-b77835ded5f3', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'TX.II'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select '84731348-30ac-50e6-a05e-f47cae272f2f', '62edc60d-a12f-5d1f-80b7-2adce32c4394', c.id, 'Financial Responsibility and TAIPA',
+       'financial-responsibility-and-taipa', '30/60/25, how a driver proves it, and the association that writes the drivers nobody else will.', 14,
+       'draft', 14
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select '84731348-30ac-50e6-a05e-f47cae272f2f', c.id, $lesson$# The floor under every Texas auto policy
+
+The uninsured motorist lesson kept deferring to "the limits prescribed by
+Chapter 601, Transportation Code" — because **§1952.101 and §1952.105 both
+defer to it**, and UM limits cannot be offered below that floor. This is that
+chapter, and the residual market that exists for drivers who cannot meet it.
+
+## The minimum limits
+
+**§601.072(a-1)** — effective 1 January 2011, the minimum amounts of motor
+vehicle liability coverage required to establish financial responsibility
+are:
+
+1. **$30,000** for bodily injury to or death of **one person** in one
+   collision;
+2. **$60,000** for bodily injury to or death of **two or more persons** in one
+   collision, subject to the $30,000 per-person amount for any one of them;
+   and
+3. **$25,000** for damage to or destruction of **property of others** in one
+   collision.
+
+**30/60/25.** Read as the split limits of Module 4: per person, per accident,
+property damage. This is the number the whole Texas auto section rests on, and
+it is the most likely single figure to be asked.
+
+Two things follow directly:
+
+- **UM and PIP limits may not be offered below it** — §1952.105(c).
+- Every Texas auto question about "minimum required coverage" means these
+  three numbers, not the general-pattern figures from Module 2.
+
+**§601.076** — an owner's motor vehicle liability policy must cover each
+vehicle for which coverage is granted, and must pay on behalf of the **named
+insured or a permissive user** the amounts the insured becomes obligated to
+pay arising out of the ownership, maintenance or use of the vehicle **in the
+United States or Canada**, subject to §601.072's amounts and exclusions.
+
+Note the territory: **United States or Canada**, which matches the personal
+auto territory from Module 2 — and again, **not Mexico**.
+
+**§601.073(e)** — where the insurer settles a claim in **good faith**, the
+amount of the settlement is **deductible from the amounts specified in
+§601.072**.
+
+## Proving it
+
+**§601.053** — a driver must provide evidence of financial responsibility on
+request, and the standard proof form prescribed by the Department of Insurance
+must include: **the insurer's name, the policy number, the policy period, the
+name and address of each insured, the policy limits (or a statement that the
+coverage complies with the minimum amounts required), and the make and model
+of each covered vehicle.**
+
+**§601.051** — financial responsibility may be established by a motor vehicle
+liability insurance policy, and the chapter also recognises other methods:
+**a surety bond**, **a deposit** with the comptroller or county judge, and
+**self-insurance** for a person with the requisite number of vehicles.
+
+**§601.052** lists the exemptions from the requirement.
+
+## Security after an accident
+
+Subchapter D requires **security** from a driver involved in an accident who
+cannot show financial responsibility, on pain of suspension.
+
+**§601.154(b)** — the Department **may not require security in an amount**:
+
+1. **less than $1,000**; or
+2. **more than the limits prescribed by §601.072.**
+
+So the security demanded sits between a floor of $1,000 and a ceiling of the
+minimum limits.
+
+**§601.003** — a judgment is treated as satisfied, for the relevant part, once
+the amounts credited reach the §601.072(a-1) figures: $30,000 for one person's
+bodily injury, $60,000 for two or more, $25,000 for property damage. **A
+judgment larger than the limits is not wiped out** — but it stops being a bar
+to reinstating a licence once those amounts are paid.
+
+## The Texas Automobile Insurance Plan Association
+
+A driver who cannot buy auto liability insurance in the voluntary market still
+needs it to drive legally. **TAIPA is the residual market that answers that**,
+and it completes the set: TWIA for coastal wind, the FAIR Plan for residential
+property, TAIPA for auto.
+
+### What it is
+
+**§2151.051(a)** — TAIPA is a **nonprofit corporate body composed of all
+authorized insurers.**
+
+**§2151.051(b)** — **membership is a condition of the insurer's authority to
+write automobile liability insurance in this state.** The same compulsory
+structure as the other two residual markets: the insurers that decline the
+risk collectively carry it.
+
+**§2151.052** — the association is administered by a **governing committee**
+under a **plan of operation**.
+
+### The governing committee
+
+**§2151.053** — **15 members**:
+
+- **eight** who represent the interests of **insurers**, elected by the
+  association's members;
+- **five public members**, **nominated by the Office of Public Insurance
+  Counsel** and **selected by the commissioner**; and
+- **two** who are **general or personal lines property and casualty agents**,
+  as the plan of operation requires.
+
+**§2151.054** — to serve as an insurer representative, an individual must be a
+**full-time employee of an authorized insurer.**
+
+Compare the FAIR Plan's committee from the windstorm lesson: **11 members —
+five insurer, four public, two agents.** TAIPA is **15 — eight, five, two**.
+Both end in two agents; the exam may ask for either count.
+
+### Getting a policy
+
+**§2151.102(a)** — the association provides for the **assignment of insurance
+to an authorized insurer** for a person **required by Chapter 601,
+Transportation Code, to show proof of financial responsibility for the
+future.**
+
+**§2151.102(b)** — **an applicant is not eligible unless the applicant and the
+servicing agent certify, as part of the application, that the applicant has
+been rejected for insurance by at least two insurers** that are authorized to
+engage in business in Texas and that are **writing automobile insurance** in
+Texas.
+
+**Two rejections**, and note the familiar qualifier — **authorized and
+actually writing**, the same test met in surplus lines and in the FAIR Plan.
+
+The three residual markets, side by side:
+
+| | Declinations needed |
+| --- | --- |
+| **TWIA** (wind and hail, seacoast) | **One** |
+| **FAIR Plan** (residential property, underserved areas) | **Two** |
+| **TAIPA** (auto liability) | **Two** |
+
+### Funding and rates
+
+**§2151.103** — the association may **assess authorized insurers** to fund its
+operation, **in proportion to each insurer's writing of automobile liability
+insurance in this state**. An insurer that does not pay within a reasonable
+time can be sued by the association and reported to the commissioner, who may
+bring a **Chapter 82** disciplinary action.
+
+**§2151.201** — rates must be **just, reasonable, adequate, not excessive, not
+confiscatory** and not unfairly discriminatory for the risks to which they
+apply.
+
+**§2151.2021** — **file and use**: the association may use a rate on the later
+of the date specified in the filing or the date the filing is made, except for
+a rate described by §2151.2041.
+
+**§2151.2041** — **a filing that exceeds 105 percent of the current average
+rate triggers a hearing.** That threshold is the examinable number.
+
+## Rideshare — Chapter 1954
+
+Module 2's personal auto lesson met the **public or livery conveyance**
+exclusion and called it the ride-hailing exclusion. **Chapter 1954 is what
+Texas requires instead**, and its structure is two-tier.
+
+**§1954.052 — logged on, but not on a ride.** While the driver is logged on to
+the network and available to receive requests but **not engaged in a
+prearranged ride**, the policy must provide:
+
+- **$50,000** bodily injury per person;
+- **$100,000** bodily injury per incident;
+- **$25,000** property damage per incident;
+- **UM/UIM** where §1952.101 requires it; and **PIP** where §1952.152 requires
+  it.
+
+**§1954.053 — engaged in a prearranged ride.** The policy must provide **a
+total aggregate limit of liability of $1 million** for death, bodily injury and
+property damage per incident, plus the same UM/UIM and PIP.
+
+**50/100/25 while waiting; $1 million once the ride begins.** That step up is
+the examinable fact, and both tiers sit far above the 30/60/25 ordinary
+minimum.
+
+Four further provisions:
+
+- **§1954.055** — the transportation network company's coverage **is not
+  contingent on the driver's personal insurer first denying the claim.** The
+  TNC policy cannot hide behind the personal policy.
+- **§1954.056(a)** — insurance satisfying this subchapter **satisfies the
+  Chapter 601 financial responsibility requirement**. **§1954.056(b)** — the
+  driver must **carry proof** of the §1954.052 and §1954.053 coverage.
+- **§1954.152(a)** — this subchapter **does not require a personal automobile
+  policy to cover** a driver while logged on, engaged in a prearranged ride, or
+  otherwise transporting passengers for compensation. That is the statutory
+  form of the livery exclusion. **§1954.152(b)** — an insurer **may** provide
+  that coverage anyway, by policy or endorsement, which is the buy-back a
+  rideshare driver should be asked about.
+- **§1954.151** sets out the **authorized exclusions from coverage**, and
+  **§1954.153–.155** the defence and indemnification of claims, assistance in
+  investigation, and payment of certain claims.
+
+## How this is examined
+
+**30/60/25** — the single most likely figure in the Texas auto material.
+
+**UM and PIP cannot be offered below the Chapter 601 minimums.**
+
+**Security after an accident is at least $1,000 and no more than the §601.072
+limits.**
+
+**TAIPA needs two rejections**, from insurers **authorized and actually
+writing** auto in Texas.
+
+**TAIPA's committee is 15: eight insurer, five public, two agents** — against
+the FAIR Plan's 11.
+
+**Membership is a condition of an insurer's authority** to write auto
+liability.
+
+**A rate filing above 105 percent of the current average** triggers a hearing.
+
+**Rideshare: 50/100/25 while logged on and waiting, $1 million once engaged in
+a prearranged ride** — and the personal auto policy is not required to cover
+either.
+
+## Check yourself
+
+1. What are the Texas minimum auto liability limits, and what do the three
+   numbers mean?
+2. An insured wants $50,000 of UM bodily injury coverage on a policy with
+   $30,000 of liability. May the insurer write it?
+3. A driver is in an accident and cannot show financial responsibility. What
+   is the most security the Department may require?
+4. A driver has been turned down by one insurer and applies to TAIPA. Eligible?
+5. Who nominates TAIPA's public members, and who selects them?
+6. An insurer authorised to write auto liability in Texas declines to join
+   TAIPA. What is the consequence?
+7. A product liability judgment of $90,000 is entered against a driver for one
+   person's injuries. How much must be credited before that judgment stops
+   barring reinstatement?
+
+## Answers
+
+1. **30/60/25** — **$30,000** for bodily injury to or death of one person,
+   **$60,000** for two or more persons in one collision, and **$25,000** for
+   damage to the property of others (§601.072(a-1)).
+2. **No.** §1952.105(a) caps UM bodily injury at the policy's own bodily
+   injury liability limits, so $30,000 is the ceiling here. The floor is
+   Chapter 601's minimums.
+3. **No more than the limits prescribed by §601.072**, and no less than
+   **$1,000** (§601.154(b)).
+4. **No.** §2151.102(b) requires certification of rejection by **at least two**
+   insurers authorized and actually writing auto insurance in Texas.
+5. Nominated by the **Office of Public Insurance Counsel**, selected by the
+   **commissioner** (§2151.053(2)).
+6. It cannot write auto liability in Texas. **§2151.051(b)** makes membership
+   a condition of the insurer's authority.
+7. **$30,000** — §601.003 treats the judgment as satisfied for this purpose
+   once the amount required by §601.072(a-1)(1) for one person's bodily injury
+   is credited. The rest of the judgment survives as a debt.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select '84731348-30ac-50e6-a05e-f47cae272f2f', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'TX.II'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select '01297aa9-1126-55ad-bfca-785bed5fa3f6', '62edc60d-a12f-5d1f-80b7-2adce32c4394', c.id, 'Prohibited Discrimination',
+       'prohibited-discrimination', 'The characteristics an insurer may never price on, the underwriting distinctions it may still make, and where the line sits.', 15,
+       'draft', 14
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select '01297aa9-1126-55ad-bfca-785bed5fa3f6', c.id, $lesson$# Underwriting distinguishes. Discrimination is the distinction the law forbids.
+
+Module 1 said that insurance works by **classifying risks and charging each
+class according to its hazard**. That is discrimination in the neutral sense,
+and it is the whole business. **Chapter 544 draws the line between the
+classification the law requires and the classification it forbids.**
+
+The distinction the exam tests is **not** "did the insurer treat people
+differently" — it always does. It is **whether the difference rests on sound
+underwriting grounds or on a prohibited characteristic.**
+
+## The general prohibition
+
+**§544.002(a)** — a person **may not** refuse to insure, refuse to continue to
+insure, **limit the amount, extent or kind of coverage**, or **charge a rate
+different from the rate charged to other individuals for the same coverage**,
+because of the individual's:
+
+1. **race, colour, religion, or national origin**;
+2. **age, gender, marital status, or geographic location**; or
+3. **disability or partial disability.**
+
+Note the second group. **Age, gender, marital status and geographic location
+are listed** — and those are things insurers plainly do use. The exceptions
+below are what reconcile that.
+
+**§544.052** states it a second way, and this is the phrasing to memorise:
+a person **may not engage in unfair discrimination between individuals of the
+same class and of essentially the same hazard**, including in:
+
+1. **the amount of premium, policy fees or rates** charged;
+2. **the benefits payable**; or
+3. **any of the terms or conditions** of the policy.
+
+**"Same class and essentially the same hazard"** is the operative phrase.
+Charging two identical risks different premiums is unfair discrimination.
+Charging two different risks different premiums is underwriting.
+
+## The exceptions that make underwriting possible
+
+**§544.003(b)** — a person **does not violate §544.002(a)(2) or (3)** if the
+refusal, limitation or charge is **based on sound underwriting or actuarial
+principles reasonably related to actual or anticipated loss experience.**
+
+Read what that covers and what it does not. **The actuarial defence is
+available for group (2) — age, gender, marital status, geographic location —
+and group (3), disability.** It is **not** available for **group (1): race,
+colour, religion or national origin.** Those are prohibited outright, and no
+loss experience justifies them.
+
+That asymmetry is the most examinable thing in the chapter. **A rate
+difference by age or territory, supported by loss data, is lawful. A rate
+difference by race is not, whatever the data is said to show.**
+
+**§544.053(a)** gives §544.052 the same shape: no violation where the
+distinction is **based on sound actuarial principles.**
+
+**§544.003(a)** — an insurer does not violate §544.002 by providing coverage
+only to those required to obtain or maintain **membership in a club, group or
+organisation**, provided the requirements are **uniform** conditions applied
+**uniformly throughout the state** and the insurer does not otherwise
+discriminate against a qualified member.
+
+**§544.002(b)** — considering **marital status in defining who is eligible for
+dependent benefits** is not prohibited. **§544.002(c)** — the section does not
+prevent title insurance requirements relating to community, homestead or other
+marital rights in land.
+
+## The private action
+
+**§544.054(a)** — a person who has sustained **economic damages** as a result
+of a violation of **§544.052** may bring an action **only in a Travis County
+district court**.
+
+That venue restriction is unusual and therefore examinable: **not the
+claimant's home county, not where the policy was issued — Travis County**,
+where the Department sits.
+
+**§544.054(b)** — the action must be commenced **on or before the second
+anniversary** of the date the plaintiff was denied insurance or the unfair act
+occurred, **or** the date the plaintiff **should have discovered** it with
+reasonable diligence. The same two-year, discovery-extended shape as Chapter
+541.
+
+**§544.054(c)** — a prevailing plaintiff may obtain **economic damages, court
+costs and attorney's fees**, and an **order enjoining the violation**.
+**§544.054(d)** — court costs may include **reasonable and necessary expert
+witness fees**.
+
+**§544.004** and **§544.604** provide for **enforcement actions** by the
+Department, separately from the private action.
+
+## The property-specific subchapters
+
+Several subchapters address particular underwriting practices, and these are
+the ones a general lines property and casualty producer meets.
+
+### Mold
+
+**§544.303** — an insurer **may not make an underwriting decision** on a
+**residential property** policy **based on previous mold damage or a mold
+claim** where: the applicant's property is eligible for coverage; the property
+has had mold damage; **remediation has been performed**; and the property was
+remediated as evidenced by a **certificate of mold remediation** issued under
+§1958.154, Occupations Code, establishing with reasonable certainty that the
+underlying cause was remediated.
+
+The logic: **a remediated problem is not a live hazard**, and penalising the
+owner for fixing it discourages fixing it. **§544.305** provides a penalty.
+
+### Water damage claims history
+
+**§544.353(a)** — underwriting guidelines relating to a **water damage claim**
+are governed by **rules the commissioner adopts**, and an insurer **may not
+use a guideline that is not in accordance with those rules.**
+
+**§544.353(b)** — an insurer **shall file its water damage underwriting
+guidelines with the Department.**
+
+**§544.353(c)** — subject to stated exceptions, an insurer **may not use a
+prior appliance-related claim** in the way that subsection describes.
+
+### Consumer inquiries
+
+**§544.553** — an insurer may **not**:
+
+1. use an underwriting guideline **based solely on whether a consumer inquiry
+   has been made** by or for the applicant or insured; or
+2. **charge a different rate, or increase a rate, based solely on whether a
+   consumer inquiry has been made.**
+
+This is the provision that lets a policyholder **ask a question without it
+counting against them.** A call asking whether something would be covered is
+not a claim, and cannot be treated as one.
+
+### Other subchapters
+
+Chapter 544 runs to twelve subchapters. Beyond those above it reaches
+**genetic testing information** (§544.101–.103), **abuse victims**
+(§544.151–.158), **certain diseases** (§544.201–.204), **political affiliation
+and expression** (§544.601–.604) and others, most of them aimed at health and
+life rather than property and casualty. **§544.401** creates an **offence**.
+
+Where a subchapter's conduct is also an unfair or deceptive act, the statute
+says so expressly — **§544.158, §544.203, §544.254** — which routes it back
+into **Chapter 541** and its remedies.
+
+## How this is examined
+
+**Race, colour, religion and national origin are absolute** — the actuarial
+defence does not reach them.
+
+**Age, gender, marital status and geographic location are listed, but a sound
+actuarial basis is a defence** to using them.
+
+**"Individuals of the same class and essentially the same hazard"** — the
+§544.052 phrase.
+
+**Travis County** is the only venue for a §544.054 action.
+
+**Two years**, from the act or from reasonable discovery.
+
+**A remediated mold claim may not drive an underwriting decision.**
+
+**A consumer inquiry is not a claim** and cannot alone affect underwriting or
+rate.
+
+## Check yourself
+
+1. An insurer charges 19-year-old drivers more than 40-year-old drivers, on
+   loss data. Lawful?
+2. An insurer declines an applicant because of their national origin, and
+   produces loss statistics it says support the decision. Lawful?
+3. Two houses on the same street, same construction, same protection class and
+   same claims history are charged different homeowners premiums. Which
+   section is in play?
+4. Where must a private action for unfair discrimination be brought, and
+   within what period?
+5. A homeowner had mold damage, had it professionally remediated and holds the
+   certificate. A new insurer declines them because of the prior mold claim.
+   Lawful?
+6. A policyholder telephones to ask whether a cracked window would be covered,
+   decides not to claim, and finds their renewal premium increased for that
+   reason. Lawful?
+
+## Answers
+
+1. **Yes.** Age is in §544.002(a)(2), and §544.003(b) allows a distinction
+   **based on sound underwriting or actuarial principles reasonably related to
+   actual or anticipated loss experience.**
+2. **No.** National origin is in **group (1)**, and the actuarial defence in
+   §544.003(b) reaches only groups (2) and (3). Those characteristics are
+   prohibited outright.
+3. **§544.052** — unfair discrimination between individuals **of the same
+   class and essentially the same hazard**, in the premium charged.
+4. **A Travis County district court**, within **two years** of the denial or
+   unfair act, or of the date it should reasonably have been discovered
+   (§544.054(a)–(b)).
+5. **No.** §544.303 bars an underwriting decision on a residential property
+   policy based on previous mold damage or a mold claim where remediation was
+   performed and is evidenced by the §1958.154 certificate.
+6. **No.** §544.553 bars an underwriting guideline or a rate difference **based
+   solely on whether a consumer inquiry has been made.**$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select '01297aa9-1126-55ad-bfca-785bed5fa3f6', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'TX.I'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select '3de21720-971c-500c-a78f-355ca91d23ef', '62edc60d-a12f-5d1f-80b7-2adce32c4394', c.id, 'Company Types and Certificates of Authority',
+       'company-types-and-authority', 'Admitted and non-admitted, domestic foreign and alien, and the Lloyd''s plan that is not Lloyd''s of London.', 16,
+       'draft', 13
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select '3de21720-971c-500c-a78f-355ca91d23ef', c.id, $lesson$# Which insurers Texas lets you place business with
+
+Two independent questions, and candidates blur them constantly.
+
+**Where is the insurer organised?** Domestic, foreign or alien.
+
+**Has Texas authorised it?** Admitted or non-admitted.
+
+**They do not track each other.** A foreign insurer can be admitted; a
+domestic one can lose its authority. The first question is about origin, the
+second about permission.
+
+## Domestic, foreign and alien
+
+**Domestic** — organised under the laws of **this state**. Texas is its home.
+
+**Foreign** — organised under the laws of **another state** of the United
+States.
+
+**Alien** — **§982.001(2)**: an insurance company **organised under the laws of
+a foreign country.**
+
+The trap is that "foreign" sounds like it should mean overseas. **In insurance
+it means another state; overseas is alien.** An insurer from Oklahoma is
+foreign in Texas; an insurer from Ontario is alien.
+
+**§982.002** — Chapter 982 applies to **any insurance company organised under
+the laws of another state or country** that wants to engage in, or is engaging
+in, the business of insurance in Texas. So the chapter covers foreign and
+alien together — everything that is not domestic.
+
+**§982.004** — each **foreign** company must file an annual statement with the
+Department **not later than 1 March** each year, and each **authorized alien**
+company must file a financial statement by the same date.
+
+## What "insurer" covers — the company types
+
+**§801.001(2)** gives the taxonomy the blueprint asks for at TX.I.B.4, and it
+is wider than most candidates expect. **"Insurer"** means the issuer of a
+policy issued for a premium, insuring against a loss that may be insured
+against under the law — and the term **includes**:
+
+- a **fraternal benefit society**;
+- a **Lloyd's plan**;
+- a **mutual company of any kind**, including a **statewide mutual assessment
+  association**, a **local mutual aid or burial association**, and a **county
+  or farm mutual** insurance company;
+- a **reciprocal or interinsurance exchange**;
+- a **group hospital service corporation**; and
+- a **health maintenance organization**, among the others that subsection
+  lists.
+
+Two things follow. **A "mutual company of any kind"** sweeps in the county and
+farm mutuals that Chapter 542's and Chapter 2203's lists name separately — so
+when a statute carves out county and farm mutuals, it is carving out a subset
+of this definition. And the **capital stock company**, the ordinary
+shareholder-owned insurer, is the implicit contrast: **a stock company is owned
+by shareholders and earns profit for them; a mutual is owned by its
+policyholders**, who are its members.
+
+**§547.001** adds the other half of the vocabulary, defining **"alien or
+foreign insurer"** as one organised under the laws of a country other than the
+United States **or** a state other than this one — which is the same
+distinction §982.001 draws, from the other direction.
+
+## Transacting insurance
+
+**§101.051(b)** — the acts that **constitute the business of insurance in this
+state**, which is what makes an unauthorised insurer's conduct unlawful. They
+include:
+
+1. **making or proposing to make, as an insurer, an insurance contract**;
+2. **making or proposing to make, as guarantor or surety, a guaranty or
+   suretyship contract** as a vocation rather than incidentally;
+3. **taking or receiving an insurance application**;
+4. **receiving** premium or consideration, and the further acts that
+   subsection lists.
+
+The point for a producer: **"transacting insurance" starts long before a policy
+issues.** Taking an application is enough.
+
+## Admitted and non-admitted
+
+**An admitted (authorized) insurer holds a certificate of authority from the
+Department. A non-admitted (unauthorized) insurer does not.**
+
+**§801.052** — a certificate of authority **authorizes the insurer to engage in
+the business of insurance**, and **must state the specific kinds of insurance
+authorized under it.** An insurer authorised for property is not thereby
+authorised for life.
+
+**§801.051(a)–(b)** — the Department **shall approve, deny or disapprove** an
+application, and **shall** approve and issue the certificate under its seal
+where the applicant has complied with the law.
+
+**§801.053** — **a certificate of authority is effective until it is suspended
+or revoked.** It does not expire and is not renewed annually, which is the
+opposite of an agent's licence and is therefore examinable.
+
+**§801.054** — in issuing a certificate, the Department **shall give preference
+to an application submitted by a domestic company.**
+
+**§801.057** — failure to file the annual statement has consequences under that
+section; **§801.056** deals with failure to provide a complete set of
+fingerprints. **§801.102** covers **denial of an application or revocation of a
+certificate**, and **§801.151–.154** the circumstances in which issuance is
+prohibited, a certificate is revoked, and a petition for issuance or
+reinstatement may be made and granted.
+
+### Why it matters to a producer
+
+Three consequences run through the rest of this module:
+
+- **The guaranty association covers only authorized insurers.** §462.201(2)
+  requires the policy to have been issued by an insurer **authorized to engage
+  in business in this state**. Place business with a non-admitted insurer and
+  **nothing stands behind it** if the insurer fails.
+- **Surplus lines is the regulated route to a non-admitted insurer** —
+  Chapter 981 — and it exists precisely because unauthorised insurers are
+  otherwise off limits.
+- **Chapter 101** governs unauthorised insurers generally, and the emergency
+  cease and desist power in **§83.051** reaches an unauthorized person engaging
+  in the business of insurance in violation of it.
+
+## False advertising by unauthorized insurers
+
+**Chapter 547** sits alongside this and is short.
+
+**§547.051** — **acts prohibited**: it governs what an unauthorized insurer
+may not do by way of advertising in this state.
+
+**§547.052** — the Department gives **notice of a violation to the insurer's
+domiciliary state**, which is how a regulator reaches an insurer it does not
+license.
+
+**§547.053** — **enforcement action.**
+
+It is also one of the chapters **§4004.105** requires an **adjuster's**
+continuing education programme to cover.
+
+## The Lloyd's plan
+
+**§941.003** and the definitions in **§941.001** describe a form of insurer
+unfamiliar outside Texas, and one the exam likes because its structure is
+unusual.
+
+**§941.001(3)** — a **"Lloyd's plan"** is an entity **engaged in the business
+of writing insurance on the Lloyd's plan.**
+
+**§941.001(4)** — an **"underwriter"** is an **individual, partnership, or
+association of individuals** that writes insurance on the Lloyd's plan.
+
+**§941.001(2)** — an **"attorney in fact"** is an attorney in fact **authorized
+under a power of attorney to act for the underwriters** of a Lloyd's plan.
+
+So the shape is: **individual underwriters, each liable for their own share,
+acting through an attorney in fact.** That is the same idea as Lloyd's of
+London — but **a Texas Lloyd's plan is a Texas entity under Chapter 941, not a
+branch of Lloyd's of London.** Confusing the two is the standard error.
+
+**§941.002** — Lloyd's plan insurance is **authorized**, with a **life
+insurance prohibition** as that section describes. **§941.003** gives a
+**limited exemption from the insurance laws** and states which chapters still
+apply. **§941.004** covers **withdrawal from the business of insurance**.
+**§941.051–.054** cover **formation**, the **attorney in fact**, a **deputy or
+substitute attorney in fact**, and the **name** of the plan.
+
+A Lloyd's plan is a **member of the guaranty association's covered insurer
+list** — §462 and §542.052 both name Lloyd's plans among the insurers they
+reach — and **§542A.001(4)** names a Lloyd's plan among the insurers that
+chapter applies to.
+
+## Reciprocals and exchanges
+
+Not a downloaded chapter, but named repeatedly by chapters that are.
+**§541.002(2)**, **§542.052** and **§542A.001(4)** all list a **reciprocal or
+interinsurance exchange** alongside stock and mutual companies, county
+mutuals, farm mutuals and Lloyd's plans. Recognise the term: **subscribers
+insuring each other through an attorney in fact**, which is why it sits next
+to the Lloyd's plan in every list.
+
+## How this is examined
+
+**Foreign means another state; alien means another country** — §982.001(2) and
+§547.001 both.
+
+**"Insurer" in §801.001(2) includes a mutual company of any kind**, a Lloyd's
+plan, a reciprocal and a fraternal benefit society. **A stock company is owned
+by shareholders; a mutual by its policyholders.**
+
+**Taking an application is already transacting insurance** — §101.051(b).
+
+**Admitted means holding a certificate of authority** — independent of where
+the insurer was organised.
+
+**A certificate of authority runs until suspended or revoked**, and **states
+the specific kinds of insurance** authorised.
+
+**The Department gives preference to a domestic applicant.**
+
+**Only authorized insurers are behind the guaranty association** — which is
+why a surplus lines policy has nothing behind it.
+
+**A Texas Lloyd's plan is not Lloyd's of London**: individual underwriters
+acting through an **attorney in fact**, under Chapter 941.
+
+## Check yourself
+
+1. An insurer organised in Louisiana writes in Texas. Domestic, foreign or
+   alien?
+2. An insurer organised in Bermuda writes in Texas. Which of the three?
+3. Does holding a certificate of authority tell you where an insurer was
+   organised?
+4. When does a certificate of authority expire?
+5. Two applications are equal on the merits, one from a domestic company and
+   one from a foreign company. What does §801.054 require?
+6. A client's insurer is non-admitted and becomes insolvent. Is the guaranty
+   association available?
+7. What is an attorney in fact, and which two kinds of insurer use one?
+
+## Answers
+
+1. **Foreign** — organised under the laws of **another state**.
+2. **Alien** — organised under the laws of a **foreign country**
+   (§982.001(2)).
+3. **No.** The certificate is about **permission to do business in Texas**;
+   domestic, foreign and alien is about **where it was organised**. A foreign
+   insurer can be admitted and a domestic one can lose its authority.
+4. **It does not.** §801.053 — it is effective **until suspended or revoked**.
+5. **Preference to the domestic company's application.**
+6. **No.** §462.201(2) requires a policy issued by an insurer **authorized to
+   engage in business in this state**. Surplus lines is the regulated route to
+   a non-admitted insurer, and §981.101(b) requires the document to warn that
+   there is no guaranty association behind it.
+7. Someone **authorized under a power of attorney to act for the
+   underwriters** (§941.001(2)). A **Lloyd's plan** uses one, and so does a
+   **reciprocal or interinsurance exchange**.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select '3de21720-971c-500c-a78f-355ca91d23ef', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'TX.I'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select '61d28933-4b75-5c15-9822-d6531ba94a4a', '62edc60d-a12f-5d1f-80b7-2adce32c4394', c.id, 'Adjusters, Non-residents, Examination and Fraud',
+       'adjusters-nonresidents-and-fraud', 'Four licensing and enforcement chapters the blueprint names — who must be licensed, who is exempt from the exam, and the 30-day duty to report fraud.', 17,
+       'draft', 14
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select '61d28933-4b75-5c15-9822-d6531ba94a4a', c.id, $lesson$# Four chapters the licensing lesson pointed at
+
+The licensing lesson named these and said their specifics were not yet taught.
+They are now.
+
+## Adjusters — Chapter 4101
+
+**§4101.001(a)(1)** — an **"adjuster"** is a person who **investigates or
+adjusts losses on behalf of an insurer**, as an independent contractor or as
+an employee of an **adjustment bureau**, an **association**, a **general
+property and casualty agent or personal lines property and casualty agent**,
+an **independent contractor**, an **insurer**, or a **managing general agent**.
+
+Note what anchors the definition: **on behalf of an insurer.** A public
+adjuster — who acts for the insured — is a different licence under a different
+chapter, and a fact pattern turning on whose side the adjuster is on is
+testing exactly that.
+
+**§4101.051** — **a person may not act as, or represent that the person is, an
+adjuster in this state unless licensed** under the chapter, except as the
+chapter otherwise provides.
+
+**§4101.053(a)** — to qualify, an individual must comply with the chapter and
+show that they:
+
+- are **at least 18 years of age**;
+- **reside in this state**, or in a state or country that **permits a Texas
+  resident to act as an adjuster there** — a reciprocity test; and
+- have complied with the applicable federal requirements that section lists.
+
+**§4101.052** — the application is on the Department's form and must include
+the information the Department reasonably requires, including the applicant's
+**identity, personal history, experience** and **business record**.
+
+Two links outward: **§4004.105** requires an adjuster's continuing education
+programme to cover **Chapter 541**, **Chapter 547**, **Subchapter A of Chapter
+542** and **Subchapter E of Chapter 17, Business & Commerce Code**; and
+**§4004.053(a)** puts adjusters on the **24-hour** continuing education
+requirement with everybody else.
+
+## Non-resident agents — Chapter 4056
+
+**§4056.002** — an individual who is **not a resident** of this state and who
+holds a licence under the chapter has **the same rights and privileges** as a
+resident licence holder, except as the code specifically provides.
+
+**§4056.052(a)** — the Department **shall issue** a licence to a non-resident
+applicant if:
+
+1. **the applicant holds a licence in good standing as an agent in their state
+   of residence**; and
+2. **that state will grant a non-resident licence on a reciprocal basis to a
+   Texas resident agent.**
+
+**Reciprocity is the whole mechanism.** Texas gives what it gets: if the
+applicant's home state would not license a Texan, Texas need not license
+them.
+
+**§4056.051** — the application is on the Department's form with the
+**non-refundable licence application fee**, and subsection (b) addresses an
+applicant who does **not** hold a licence in their own state.
+
+**§4056.001** — the rest of the title's licensing provisions apply to a
+non-resident licence, so the duties met in the licensing lesson — appointment,
+monthly notification, separate records — are not escaped by being out of
+state.
+
+## Examination of applicants — Chapter 4002
+
+**§4002.001(a)** — except as the code otherwise provides, an applicant for an
+agent's licence **must take a personal written examination prescribed by the
+commissioner** and **pass it to the satisfaction of the Department.**
+
+**§4002.001(b)** — the examination must determine the applicant's competence
+with respect to the **types of insurance contracts** they propose to write and
+the matters that subsection lists.
+
+**§4002.002** — the commissioner prescribes a **limited written examination**
+for an applicant for a **limited** agent's licence under Chapter 4051 or 4054,
+testing **the basic principles of insurance contracts**, **the basic laws of
+this state regulating the business of insurance**, and the further matters
+named there.
+
+### Who does not sit the exam
+
+**§4002.003(a)** — the Department **may not require** an examination of a
+person who is:
+
+1. an applicant for the **renewal of an unexpired licence**;
+2. an applicant whose licence **expired less than one year** before the
+   application, **if the previous licence was not denied, revoked or
+   suspended**; and the further categories that subsection lists.
+
+**Cross-check this against the renewal lesson.** §4003.007's middle band — more
+than 90 days but less than one year after expiry — produces a **new licence
+without re-examination**, and §4002.003(a)(2) is the provision that actually
+delivers it. The two fit together, and the **"not denied, revoked or
+suspended"** qualifier is easy to miss.
+
+**§4001.152** separately provides that **no written examination is required for
+a temporary licence**, which is the point of a temporary licence.
+
+## Risk managers — Chapter 4153
+
+**§4153.001** — a **"risk manager"** is a person who **represents to the public
+that they are a risk manager** and who, **for compensation, examines or
+evaluates risks for and advises on reducing risks** to a person seeking to
+obtain or renew **property and casualty insurance coverage in this state.**
+
+Both limbs matter: **holding out**, and **compensation**. An employee advising
+their own employer is not doing this for a client, and **§4153.002** exempts
+the categories that section names.
+
+**§4153.051** — a person **may not act as or represent that they are a risk
+manager** unless they meet the chapter's requirements and **hold a licence**
+issued by the Department.
+
+**§4153.053** — to qualify, an applicant must:
+
+1. be **at least 18 years of age**;
+2. **maintain a place of business in this state**;
+3. meet the application requirements;
+4. **take and pass the examination** required by the chapter; and
+5. **pay the examination and licence fees.**
+
+Note the contrast with the adjuster licence. **An adjuster may live out of
+state if their state reciprocates. A risk manager must maintain a place of
+business in Texas.** **§4153.054** governs the examination, **§4153.055**
+exemptions from examination and continuing education, **§4153.058** a
+**reciprocal licence**, and **§4153.059–.060** expiration and renewal.
+
+## The emergency licence — §4051.054
+
+The licensing lesson named this without its detail.
+
+**§4051.054(a)** — where a property and casualty agent **dies, becomes
+disabled, or is found insolvent and unable to pay premiums as they fall due**,
+the Department may issue an **emergency licence** to an applicant for a
+property and casualty agent licence **without examination**, on proof
+satisfactory to the Department that the licence is **necessary to preserve the
+agency assets** of the deceased, disabled or insolvent agent.
+
+**§4051.054(b)** — **an emergency licence is valid for 90 days in any 12-month
+period.**
+
+The distinction from a temporary licence is the purpose. **A temporary licence
+lets a new person start while they prepare for the exam. An emergency licence
+keeps an existing agency's book alive when its agent cannot.** Both are issued
+without examination; only the emergency licence is tied to somebody else's
+death, disability or insolvency, and only it carries the 90-day-in-12-months
+limit.
+
+## Insurance fraud — Chapter 701
+
+**§701.001(2)** defines a **"fraudulent insurance act"**, and
+**§701.001(1)** defines an **"authorized governmental agency"** to include
+**municipal, county, state and federal law enforcement agencies** and
+**prosecuting attorneys** of a municipality, county or judicial district, of
+this state or another state or of the United States.
+
+### The duty to report
+
+**§701.051(a)** — this is the provision a producer is most likely to be asked
+about.
+
+**Not later than the 30th day after** the person makes the determination, or
+**reasonably suspects**, that a fraudulent insurance act **has been or is about
+to be committed** in this state, the person **shall report the information in
+writing to the Department's insurance fraud unit**, in the format the fraud
+unit or the **NAIC** prescribes.
+
+Three things to hold. The trigger is **reasonable suspicion**, not proof. The
+clock is **30 days**. And the report goes to the **insurance fraud unit**, in
+**writing**.
+
+### The fraud unit
+
+**§701.101(a)** — the purpose of the Department's **insurance fraud unit** is
+to **enforce laws relating to fraudulent insurance acts.**
+
+**§701.101(b)** — it may **receive, review and investigate** insurer antifraud
+reports submitted under **Chapter 704**.
+
+**§701.101(c)** — it reports **annually to the commissioner in writing** on the
+matters that subsection lists, beginning with the number of cases.
+
+Chapter 701 sits alongside the criminal provisions met in the enforcement
+lesson — **§85.052**, under which an offence under the code may be prosecuted
+under the code **or any other law of this state**, so the Penal Code's theft
+and fraud offences remain available.
+
+## How this is examined
+
+**An adjuster acts on behalf of the insurer** — that is the definitional
+anchor.
+
+**Adjuster licence: 18 years old, and resident here or in a reciprocating
+state.**
+
+**A non-resident agent licence turns on reciprocity** and a licence in good
+standing at home.
+
+**No examination for a renewal of an unexpired licence, or where the licence
+expired less than a year ago and was not denied, revoked or suspended.**
+
+**No examination for a temporary licence** (§4001.152) **or for an emergency
+licence** (§4051.054(a)) — and an emergency licence runs **90 days in any 12
+months**.
+
+**A risk manager must maintain a place of business in Texas** and must pass an
+examination; an adjuster may be out of state if their state reciprocates.
+
+**Fraud: 30 days, in writing, to the Department's insurance fraud unit, on
+reasonable suspicion.**
+
+## Check yourself
+
+1. A person investigates losses for an insurer as an independent contractor.
+   Do they need an adjuster's licence?
+2. An applicant for an adjuster's licence lives in another state. Can they be
+   licensed in Texas?
+3. An agent licensed and in good standing in New Mexico applies for a Texas
+   non-resident licence. What decides the outcome?
+4. An agent's Texas licence expired eight months ago and was never suspended
+   or revoked. Must they re-sit the examination?
+5. Same facts, except the licence had been revoked. Does the answer change?
+6. A producer reviewing a file on 1 June forms a reasonable suspicion that a
+   claim is fraudulent. What must they do, and by when?
+7. Does the producer need to be sure the fraud occurred before reporting?
+
+## Answers
+
+1. **Yes** — §4101.051 requires a licence to act as an adjuster, and
+   §4101.001(a)(1) expressly includes a person acting **as an independent
+   contractor** on behalf of an insurer.
+2. **Yes, if** they reside in a state or country that **permits a Texas
+   resident to act as an adjuster there** — §4101.053(a)(2)(B). Reciprocity
+   again.
+3. Whether New Mexico **grants a non-resident licence on a reciprocal basis to
+   a Texas resident agent**, and whether the applicant's home licence is **in
+   good standing** — §4056.052(a).
+4. **No.** §4002.003(a)(2) — the licence expired **less than one year** before
+   the application and was not denied, revoked or suspended. This is what makes
+   §4003.007's middle band work.
+5. **Yes.** The exemption is conditioned on the previous licence **not** having
+   been denied, revoked or suspended, so the examination is required.
+6. **Report it in writing to the Department's insurance fraud unit** — in the
+   format prescribed by the fraud unit or the NAIC — **not later than the 30th
+   day** after forming the suspicion, so by **1 July**.
+7. **No.** §701.051(a) is triggered by a determination **or reasonable
+   suspicion**, and reaches an act that **has been or is about to be**
+   committed.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select '61d28933-4b75-5c15-9822-d6531ba94a4a', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'TX.I'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select '8a6afeb1-a7f5-5877-b0c6-541db765853a', '62edc60d-a12f-5d1f-80b7-2adce32c4394', c.id, 'Fire Policy Provisions and the Medical Liability JUA',
+       'fire-policy-provisions-and-the-jua', 'The rule that turns a total fire loss into the full policy limit, and the fourth Texas residual market.', 18,
+       'draft', 12
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select '8a6afeb1-a7f5-5877-b0c6-541db765853a', c.id, $lesson$# Two provisions the blueprint names that fit nowhere else
+
+One is a property policy rule that overrides ordinary loss settlement. The
+other is a residual market for a line a general lines producer will rarely
+write but is expected to recognise.
+
+## The valued policy rule — §862.053
+
+Module 1 taught that property insurance is a contract of **indemnity**: it
+restores, it does not enrich, and a loss is settled at actual cash value or
+replacement cost. **Texas makes an exception for a total fire loss of real
+property, and it is the most counter-intuitive rule in the Texas material.**
+
+**§862.053(a)** — **"A fire insurance policy, in case of a total loss by fire
+of property insured, shall be held and considered to be a liquidated demand
+against the company for the full amount of such policy."**
+
+Read what that does. On a **total loss by fire**, the insurer owes **the full
+face amount of the policy** — not the actual cash value, not the cost to
+rebuild, not what an adjuster calculates. **The limit becomes the
+measure of the loss.** This is what a *valued policy* means, and it reverses
+the ordinary indemnity position.
+
+Three limits on it, each examinable:
+
+- **§862.053(a) — "This subsection does not apply to personal property."**
+  Contents are settled the ordinary way. The rule reaches **real property
+  only**.
+- **It requires a total loss.** A partial fire loss is settled normally.
+- **It requires fire.** A total loss by another peril is settled normally.
+
+**§862.053(b)** — an insurer **shall incorporate the provisions of subsection
+(a) verbatim in each fire insurance policy issued as coverage on real property
+in this state.** The insured must be able to read the rule in their own policy.
+
+**§862.053(c)** — **the commissioner shall require compliance.**
+
+The practical consequence for a producer: **over-insuring a building is not
+harmless in Texas.** If a building worth $200,000 is insured for $400,000 and
+burns to the ground, the statute makes the demand liquidated at the policy
+amount. That is also why an insurer underwrites the amount of insurance on a
+fire policy rather than accepting whatever the applicant asks for.
+
+## Breach by the insured — §862.054
+
+A companion rule, and a causation rule of the kind met in Module 2.
+
+**§862.054** — **unless the breach or violation contributed to cause the
+destruction of the property**, a breach or violation by the insured of a
+**warranty, condition or provision** of a fire insurance policy on **personal
+property**, or of the application for it, does not have the effect that section
+otherwise describes.
+
+The principle: **a breach that had nothing to do with the loss does not defeat
+the claim.** Compare Module 2's strict warranty doctrine, under which breach
+voided the policy without any causal connection — this is Texas softening
+exactly that, in the way that lesson said many states have.
+
+## The Medical Liability Insurance Joint Underwriting Association
+
+**§2203.051** — the association **provides medical liability insurance on a
+self-supporting basis.**
+
+This is the **fourth Texas residual market**, alongside TWIA, the FAIR Plan
+and TAIPA, and it works on the same principle: where the voluntary market will
+not write a risk the public needs written, the industry writes it collectively.
+
+### Membership
+
+**§2203.055(a)** — the association is composed of **each insurer, including a
+Lloyd's plan and a reciprocal or interinsurance exchange, authorized to write
+and writing liability insurance — including automobile liability insurance —
+on a direct basis in this state**, other than:
+
+1. a **farm mutual** insurance company under Chapter 911; and
+2. a **county mutual** insurance company under Chapter 912.
+
+Note how wide that is. **Writing any liability insurance, including auto,
+makes an insurer a member** — it does not have to write medical liability at
+all. **§2203.055(b)** makes remaining a member a **condition** of the insurer's
+authority, the same compulsory structure as the other three markets.
+
+### Governance and eligibility
+
+**§2203.052(a)** — a board of **nine members**: **five representatives of
+member insurers** elected by the members, **one physician** appointed by the
+Texas Medical Association or its successor, and the further members that
+subsection names.
+
+**§2203.101(a)** — **the commissioner establishes by order which categories of
+physicians and health care providers are eligible** for coverage, and may
+revise the order to include or exclude particular categories. Eligibility is
+therefore set by order, not fixed in the statute.
+
+**§2203.102** makes the association the **insurer of last resort for certain
+nursing homes and assisted living facilities**, and **§2203.1021** addresses
+**volunteer health care providers**.
+
+### The surplus lines point
+
+**§2203.005** — **"The association is not an authorized insurer for purposes of
+Chapter 981 with respect to medical liability insurance for physicians."**
+
+That is a deliberate and slightly odd provision. Chapter 981 requires a
+**diligent effort** — a declination from an insurer **authorized to write and
+actually writing** the class — before surplus lines may be used. Because the
+JUA is **not** an authorized insurer for this purpose, **its existence does not
+by itself block a surplus lines placement** for a physician's medical liability
+cover. The residual market and the surplus lines route stay independent.
+
+**§2203.003** provides **immunity**, and **§2203.004** the applicability of
+other law.
+
+## How this is examined
+
+**A total fire loss of real property is a liquidated demand for the full
+policy amount** — the valued policy rule.
+
+**It does not apply to personal property**, to a partial loss, or to a peril
+other than fire.
+
+**The provision must appear verbatim in the policy.**
+
+**A breach unconnected to the loss does not defeat a personal property fire
+claim.**
+
+**The JUA's members are insurers writing any liability insurance**, farm and
+county mutuals excepted — and membership is a condition of authority.
+
+**The JUA is not an authorized insurer for Chapter 981 purposes**, so it does
+not block surplus lines for a physician.
+
+## Check yourself
+
+1. A building insured for $300,000 is a total loss by fire. Its actual cash
+   value was $220,000. What is owed?
+2. Same policy, but the fire causes $60,000 of damage and the building stands.
+   What is owed?
+3. Same building, total loss, but caused by a tornado rather than fire. Does
+   §862.053 apply?
+4. A total fire loss destroys $40,000 of business contents insured for
+   $75,000. What does the valued policy rule give?
+5. An insured breached a condition of a fire policy on personal property, and
+   the breach had nothing to do with the fire. What is the effect?
+6. Which insurers must belong to the Medical Liability JUA?
+7. Does the JUA's existence prevent a physician buying medical liability
+   cover from a surplus lines insurer?
+
+## Answers
+
+1. **$300,000** — the full policy amount. §862.053(a) makes a total fire loss
+   of real property a **liquidated demand** for the policy amount, not the
+   actual cash value.
+2. Settled the **ordinary way**. The rule requires a **total** loss.
+3. **No.** The rule requires a loss **by fire**.
+4. **Nothing extra.** §862.053(a) expressly **does not apply to personal
+   property**, so the contents are settled normally.
+5. **The breach does not have the effect it otherwise would** — §862.054
+   applies unless the breach **contributed to cause the destruction**.
+6. Every insurer **authorized to write and writing liability insurance,
+   including automobile liability, on a direct basis in Texas** — including
+   Lloyd's plans and reciprocals — **except farm mutuals (Ch. 911) and county
+   mutuals (Ch. 912)**. Membership is a condition of the insurer's authority.
+7. **No.** §2203.005 says the association is **not an authorized insurer for
+   Chapter 981 purposes** as to medical liability for physicians, so it does
+   not satisfy or obstruct the diligent effort requirement.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select '8a6afeb1-a7f5-5877-b0c6-541db765853a', t.id, t.course_id
   from public.topics t
   join public.courses c on c.id = t.course_id
  where c.slug = 'texas-general-lines-property-casualty' and t.code = 'TX.II'
