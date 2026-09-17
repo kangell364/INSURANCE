@@ -5,6 +5,36 @@ lesson: company-types-and-authority
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### What is the difference between a risk retention group and a risk purchasing group?
+
+- [x] A retention group carries its members' risk; a purchasing group buys coverage from an insurer that carries it
+- [ ] A retention group buys coverage for its members; a purchasing group writes it
+- [ ] Both are insurers, differing only in the lines they may write
+- [ ] Neither is an insurer; both are buying arrangements
+
+**The names are the answer.** A retention group **retains** risk — it is an
+insurer owned by its members, taking premium and funding their losses. A
+purchasing group **purchases** — it is a buying club whose members obtain
+coverage on group terms from a real insurer, which carries the risk.
+
+That a risk retention group is genuinely an insurer is why **§542.052** lists
+it among the carriers bound by the Texas prompt-payment deadlines.
+
+### A risk retention group may write which coverage for its members?
+
+- [x] Liability coverage only
+- [ ] Any property and casualty line
+- [ ] Liability and workers' compensation
+- [ ] Any line, but only for members in this state
+
+**Liability only** — never property, never personal lines, never workers'
+compensation. The federal act that permits a group chartered in one state to
+cover members in others is limited to liability.
+
+The other limit worth holding: **it may cover only its own members**, who must
+be in a similar business facing similar exposures. It cannot sell to the
+public.
+
 ### A policyholder of a mutual insurance company is best described as what?
 
 - [x] An owner of the company, with a vote and a share of surplus

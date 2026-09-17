@@ -21932,6 +21932,82 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '79a7fb6f-6bd4-56f7-959a-8fe53fc40f97', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'company-types-and-authority'),
+       'What is the difference between a risk retention group and a risk purchasing group?', '**The names are the answer.** A retention group **retains** risk — it is an insurer owned by its members, taking premium and funding their losses. A purchasing group **purchases** — it is a buying club whose members obtain coverage on group terms from a real insurer, which carries the risk. That a risk retention group is genuinely an insurer is why **§542.052** lists it among the carriers bound by the Texas prompt-payment deadlines.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'TX.I'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '33dfd4d0-473d-51c1-89d8-96ce1af9b78e', '79a7fb6f-6bd4-56f7-959a-8fe53fc40f97', c.id, 'A retention group carries its members'' risk; a purchasing group buys coverage from an insurer that carries it', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'e8105645-405b-5a6b-b888-baddbbcb8aff', '79a7fb6f-6bd4-56f7-959a-8fe53fc40f97', c.id, 'A retention group buys coverage for its members; a purchasing group writes it', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '814bcd92-6584-58df-9efb-49b38378d018', '79a7fb6f-6bd4-56f7-959a-8fe53fc40f97', c.id, 'Both are insurers, differing only in the lines they may write', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '5c6cdf72-9882-5896-b9b9-c30c7179e288', '79a7fb6f-6bd4-56f7-959a-8fe53fc40f97', c.id, 'Neither is an insurer; both are buying arrangements', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '79a7fb6f-6bd4-56f7-959a-8fe53fc40f97', c.id, '33dfd4d0-473d-51c1-89d8-96ce1af9b78e'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '9749c9d4-4110-57ef-aae1-52b7304da0fb', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'company-types-and-authority'),
+       'A risk retention group may write which coverage for its members?', '**Liability only** — never property, never personal lines, never workers'' compensation. The federal act that permits a group chartered in one state to cover members in others is limited to liability. The other limit worth holding: **it may cover only its own members**, who must be in a similar business facing similar exposures. It cannot sell to the public.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'TX.I'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'e27277db-785a-5a21-8208-ca9b41596243', '9749c9d4-4110-57ef-aae1-52b7304da0fb', c.id, 'Liability coverage only', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '2ee44c71-7641-5241-8c78-a84a1507b0d0', '9749c9d4-4110-57ef-aae1-52b7304da0fb', c.id, 'Any property and casualty line', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '6dd89dd9-88d9-5359-936a-2bc3cdf5ea5f', '9749c9d4-4110-57ef-aae1-52b7304da0fb', c.id, 'Liability and workers'' compensation', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'badb0485-1673-578e-824f-54b9367aff21', '9749c9d4-4110-57ef-aae1-52b7304da0fb', c.id, 'Any line, but only for members in this state', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '9749c9d4-4110-57ef-aae1-52b7304da0fb', c.id, 'e27277db-785a-5a21-8208-ca9b41596243'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select '3b58a3c8-0845-5ac5-9ef5-3f95d173d473', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'company-types-and-authority'),
        'A policyholder of a mutual insurance company is best described as what?', '**A mutual is owned by its policyholders**, who are its members. Holding the policy is what makes them an owner — that is the whole distinction from a stock company, where a policyholder is only a customer and the owners are shareholders who may hold no policy at all. "Shareholder" is wrong because a mutual has no shares, and its **policy dividend is a return of surplus to people who overpaid**, not a distribution of profit. The last option describes a **reciprocal**, where subscribers insure each other through an attorney in fact.', 'draft'

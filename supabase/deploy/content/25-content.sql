@@ -16,7 +16,7 @@ insert into public.lessons
    estimated_minutes)
 select '3de21720-971c-500c-a78f-355ca91d23ef', '62edc60d-a12f-5d1f-80b7-2adce32c4394', c.id, 'Company Types and Certificates of Authority',
        'company-types-and-authority', 'Who owns an insurer, where it was organised, and whether Texas has authorised it — three independent questions the exam likes to blur.', 16,
-       'draft', 17
+       'draft', 20
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
 on conflict (id) do update set
   title = excluded.title, summary = excluded.summary,
@@ -162,6 +162,64 @@ else on that list is owned by the people it covers, which is the pattern worth
 carrying into the exam. The Lloyd's plan is the odd one: its **underwriters**
 are individuals backing the risk with their own liability, not shareholders in
 a company and not members buying at cost — see the Lloyd's section below.
+
+## Carrying risk without a traditional insurer
+
+Three arrangements sit outside the list above. They are not on the Texas
+outline as topics of their own, but a producer meets all three, and **§542.052
+puts a risk retention group among the insurers bound by the prompt-payment
+deadlines** — so the term arrives in an examined lesson either way.
+
+### Self-insurance
+
+**An organisation pays its own losses instead of transferring them.** This is
+the **retention** technique from Module 1, at organisational scale — not a
+kind of insurer at all. There is no policy, no premium and no certificate of
+authority.
+
+Texas permits **qualified self-insurance for workers' compensation**, for
+employers with the financial capacity and the regulator's approval. And the
+**self-insured retention** under an umbrella is the same idea inside a policy:
+the amount the insured carries where no underlying coverage responds.
+
+### Risk retention groups
+
+**A liability insurer owned by its members**, who must be in a similar
+business facing similar liability. Created under **federal** law — the
+Liability Risk Retention Act — which lets a group chartered in one state write
+liability coverage for its members in other states without a full licence in
+each.
+
+Two limits do the examining work:
+
+- **Liability only.** Never property, never personal lines, never workers'
+  compensation.
+- **Members only.** It cannot sell to the public.
+
+**A risk retention group is an insurer.** It takes premium and carries risk,
+which is why **§542.052** lists it among the carriers the prompt-payment
+deadlines bind.
+
+### Risk purchasing groups
+
+**A buying club, not an insurer.** Members with similar liability exposures
+join to *purchase* coverage together on group terms — from a real insurer,
+which carries the risk.
+
+**That is the whole distinction, and it is the examined one:**
+
+| | Carries the risk? | Is it an insurer? |
+| --- | --- | --- |
+| **Risk retention group** | **Yes** — members fund losses | **Yes** |
+| **Risk purchasing group** | **No** — an insurer does | **No** |
+
+A retention group **retains**. A purchasing group **purchases**. The names say
+it, and the exam relies on candidates not noticing.
+
+> The federal act is not among the sources in `reference/`, so the structure
+> of both groups above is general industry knowledge. The Texas classification
+> of a risk retention group as an insurer under §542.052 is cited from the
+> chapter we hold.
 
 ## Transacting insurance
 
