@@ -5,6 +5,29 @@ lesson: who-is-an-insured
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### A warehouse negligently destroys goods it is storing. The owner's property policy pays the owner. What does the "no benefit to bailee" clause achieve?
+
+- [x] It preserves the insurer's subrogation against the warehouse
+- [ ] It lets the insurer refuse the owner's claim
+- [ ] It requires the warehouse to reimburse the owner directly
+- [ ] It extends the owner's coverage to the warehouse's liability
+
+**The owner is paid as normal — the clause is not aimed at them.** It stops the
+**bailee** taking any benefit from the owner's policy.
+
+**Without it the insurer would have nobody to pursue.** A negligent warehouse
+could shelter behind the very policy that paid for its negligence, and the
+insurer's subrogation right would be worth nothing.
+
+**This is why bailees buy their own coverage.** A dry cleaner or warehouse
+cannot rely on its customers' policies, so it buys **bailee's customers**
+coverage on its own account.
+
+Compare the **standard mortgage clause**, which does the opposite for a
+different third party: it gives the mortgagee rights **beyond** the insured's.
+One provision lets a third party in, the other keeps one out, and both exist
+to put the loss where it belongs.
+
 ### A commercial policy names three entities. To whom must the insurer send notice of cancellation?
 
 - [x] The first named insured, which is effective against all of them

@@ -4870,6 +4870,44 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '021d504a-f583-5c0c-9582-4a2250c7c14e', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'who-is-an-insured'),
+       'A warehouse negligently destroys goods it is storing. The owner''s property policy pays the owner. What does the "no benefit to bailee" clause achieve?', '**The owner is paid as normal — the clause is not aimed at them.** It stops the **bailee** taking any benefit from the owner''s policy. **Without it the insurer would have nobody to pursue.** A negligent warehouse could shelter behind the very policy that paid for its negligence, and the insurer''s subrogation right would be worth nothing. **This is why bailees buy their own coverage.** A dry cleaner or warehouse cannot rely on its customers'' policies, so it buys **bailee''s customers** coverage on its own account. Compare the **standard mortgage clause**, which does the opposite for a different third party: it gives the mortgagee rights **beyond** the insured''s. One provision lets a third party in, the other keeps one out, and both exist to put the loss where it belongs.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.III'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '7b70ff04-6093-5e93-ad63-fd8fb8c7bde7', '021d504a-f583-5c0c-9582-4a2250c7c14e', c.id, 'It preserves the insurer''s subrogation against the warehouse', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '99b3dcd2-b8ca-5f10-b0f3-9700b0a6d150', '021d504a-f583-5c0c-9582-4a2250c7c14e', c.id, 'It lets the insurer refuse the owner''s claim', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'c5eec655-9ff0-5cbf-8be8-f516d5ad261f', '021d504a-f583-5c0c-9582-4a2250c7c14e', c.id, 'It requires the warehouse to reimburse the owner directly', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '514d0e7c-4f4f-5121-8cd9-ea8c14c5dc84', '021d504a-f583-5c0c-9582-4a2250c7c14e', c.id, 'It extends the owner''s coverage to the warehouse''s liability', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '021d504a-f583-5c0c-9582-4a2250c7c14e', c.id, '7b70ff04-6093-5e93-ad63-fd8fb8c7bde7'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select '037f26b6-16c4-5dd2-a467-0933334672a6', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'who-is-an-insured'),
        'A commercial policy names three entities. To whom must the insurer send notice of cancellation?', 'The **first named insured** receives notices on behalf of every insured on the policy. The same position carries the premium obligation, the right to cancel, the right to request changes and responsibility for any audit.', 'draft'

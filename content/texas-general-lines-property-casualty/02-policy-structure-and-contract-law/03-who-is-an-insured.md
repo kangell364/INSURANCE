@@ -98,6 +98,26 @@ directs payment to the lender and gives it **no rights beyond the insured's**.
 If the insured's coverage is void, so is the lender's. "Standard protects the
 mortgagee from the insured's acts; open does not" is the whole distinction.
 
+### No benefit to bailee
+
+A third-party provision that runs the other way — it exists to keep somebody
+*out*.
+
+**A bailee is anyone holding the insured's property for a purpose**: a
+carrier, a warehouse, a dry cleaner, a repair shop. **The "no benefit to
+bailee" clause says the insured's policy does not extend to them.** The
+insured is paid as normal; the bailee gets nothing from it.
+
+**The reason is subrogation.** If the bailee could claim the benefit of the
+owner's insurance, an insurer that paid for goods a careless warehouse
+destroyed would have nobody left to pursue — the negligent party would be
+sheltering behind the very policy that paid for its negligence. The clause
+keeps the insurer's right to recover intact.
+
+**Which is exactly why bailees buy their own cover.** A dry cleaner cannot
+rely on customers' policies, so it buys **bailee's customers** coverage on its
+own account — see *Inland Marine* in Module 3.
+
 ## Loss payees and additional interests
 
 A **loss payee** is named to receive payment for damage to specific property
