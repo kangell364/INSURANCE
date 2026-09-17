@@ -215,3 +215,52 @@ describe('sign out', () => {
     expect('GET' in routeModule).toBe(false)
   })
 })
+
+/* ==========================================================================
+   A broken configuration must not take the site down.
+
+   updateSession runs on every matched request, so anything it throws is an
+   outage rather than a degraded page -- the marketing pages that need no
+   session at all go down with the rest. isSupabaseConfigured() only proves the
+   variables are PRESENT; a present-but-malformed value (a stray character in a
+   dashboard field) still reaches createServerClient, and that throws.
+
+   These pin the fallback: log, pass through, carry on. Protected routes lose
+   the convenience redirect, which is why lib/auth.ts re-validates every page
+   server-side and RLS sits behind that.
+   ========================================================================== */
+
+describe('proxy resilience', () => {
+  beforeEach(() => {
+    configuredMock.mockReturnValue(true)
+  })
+
+  it('does not throw when the Supabase client cannot be constructed', async () => {
+    const consoleError = vi.spyOn(console, 'error').mockImplementation(() => {})
+    getUserMock.mockImplementation(() => {
+      throw new TypeError('Invalid URL')
+    })
+
+    const response = await updateSession(
+      new NextRequest('https://example.com/'),
+    )
+
+    expect(response.status).toBe(200)
+    expect(consoleError).toHaveBeenCalled()
+    consoleError.mockRestore()
+  })
+
+  it('passes through rather than 500ing a protected route', async () => {
+    const consoleError = vi.spyOn(console, 'error').mockImplementation(() => {})
+    getUserMock.mockRejectedValue(new Error('fetch failed'))
+
+    // The page itself still refuses an anonymous visitor -- that check lives in
+    // lib/auth.ts, not here -- so passing through is safe. What matters is that
+    // the request is answered at all.
+    await expect(
+      updateSession(new NextRequest('https://example.com/dashboard')),
+    ).resolves.toBeDefined()
+
+    consoleError.mockRestore()
+  })
+})

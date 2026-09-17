@@ -69,6 +69,32 @@ function passThrough(request: NextRequest): NextResponse {
  * the database.
  */
 export async function updateSession(request: NextRequest) {
+  try {
+    return await refreshSession(request)
+  } catch (error) {
+    // THE WHOLE SITE 500s IF THIS THROWS.
+    //
+    // This runs on every matched request, so an exception here is not a
+    // degraded page -- it is an outage, including the marketing pages that
+    // need no session at all. It happened: a malformed NEXT_PUBLIC_SUPABASE_URL
+    // (a stray character is enough) makes createServerClient throw `Invalid
+    // URL`, and every route returned 500 with nothing to say why.
+    //
+    // isSupabaseConfigured() only proves the variables are PRESENT. It cannot
+    // prove they are well-formed, and a value that is present but wrong is the
+    // more likely mistake -- somebody pasting into a dashboard field.
+    //
+    // So: log it where the operator will find it, and fall through to an
+    // unauthenticated pass. The session is not refreshed and protected routes
+    // lose this convenience redirect, but lib/auth.ts re-validates every
+    // protected page server-side and RLS enforces the rest. The security
+    // boundary is unaffected; only the convenience is.
+    console.error('[proxy] session refresh failed, passing through:', error)
+    return passThrough(request)
+  }
+}
+
+async function refreshSession(request: NextRequest) {
   let supabaseResponse = passThrough(request)
 
   // Without configuration there is no session to refresh. Let the request
