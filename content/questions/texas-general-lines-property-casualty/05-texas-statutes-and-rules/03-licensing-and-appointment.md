@@ -321,3 +321,27 @@ is no disclosure at all, so it fails whichever way the fee is characterised.
 **Rebating is the mirror image and a different offence.** Rebating gives the
 client back part of the premium or commission to win the business; this takes
 an extra payment from the client for work the commission already paid for.
+
+### An agent also runs a property management company from the same office. Under §4001.255, what must she do with her insurance records?
+
+- [ ] Keep them for at least five years, then destroy them securely
+- [x] Keep them separate from the records of the other business
+- [ ] File a copy with the Department each year
+- [ ] Nothing, provided the two businesses share a single licensed owner
+
+**§4001.255** — an agent shall maintain **all insurance records, including all
+records relating to customer complaints, separate from the records of any
+other business** in which the agent is engaged.
+
+The duty is **separation**, not retention or filing. The statute sets no
+period, requires no copy to be sent anywhere, and the fact that one person
+owns both businesses is the reason the rule exists rather than an excuse from
+it.
+
+Note what is named explicitly: **customer complaint records**. Those are the
+ones an examiner will ask for, and the ones most likely to end up filed with
+the other business.
+
+This is the same instinct as the fiduciary duty and §4005.053 — premium and
+the records of it belong to the insurance business, and must be capable of
+being accounted for separately from everything else the agent does.

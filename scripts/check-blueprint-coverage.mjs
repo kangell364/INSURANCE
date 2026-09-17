@@ -32,6 +32,24 @@
  * minute of reading, and a false negative sends somebody to write a lesson
  * that already exists.
  *
+ * WHAT THE "NO QUESTION" COLUMN IS WORTH
+ *
+ * Less than it looks. A pattern matching anywhere in a question FILE counts,
+ * including inside an explanation, so an entry mentioned in passing while
+ * answering something else reads as questioned. §4001.255, records kept
+ * separate from any other business, sat in an explanation for weeks and this
+ * column called it covered.
+ *
+ * It also cannot see a question that tests an entry in different words, which
+ * is the more common case: seven of the eight entries this column first
+ * flagged as unquestioned were tested all along -- "element of a LEGAL
+ * contract", the going-and-coming rule for work-related injury, a statement
+ * of charges for notice of hearing.
+ *
+ * So treat a zero here as a prompt to go and read, and use
+ * check-question-coverage.mjs for the stronger claim: that a term is the
+ * correct ANSWER to something, not merely present in a file.
+ *
  *   node scripts/check-blueprint-coverage.mjs
  *   node scripts/check-blueprint-coverage.mjs --markdown  # the comparison table
  *   node scripts/check-blueprint-coverage.mjs --max 0     # ratchet
@@ -126,14 +144,14 @@ const OUTLINE = [
   ['III', 'D', 'Exclusions', /exclusion/i],
   ['III', 'E', 'Definition of the insured', /who is an insured|definition of (the )?insured|named insured/i],
   ['III', 'F', 'Duties of the insured', /duties (of|after)/i],
-  ['III', 'G', 'Obligations of the insurer', /obligations? of the (insurance company|insurer)|insurer'?s? (duty|duties|obligation)/i],
+  ['III', 'G', 'Obligations of the insurer', /obligations? of the (insurance company|insurer)|insurer'?s? (duty|duties|obligation)|duty to defend|supplement(ary|al) payments/i],
   ['III', 'H', 'Mortgagee rights', /mortgagee|mortgage clause/i],
   ['III', 'I', 'Proof of loss', /proof of loss/i],
   ['III', 'J', 'Notice of claim', /notice of (a )?(claim|loss)/i],
   ['III', 'K', 'Appraisal', /apprais/i],
   ['III', 'L', 'Other insurance provision', /other insurance/i],
   ['III', 'M', 'Subrogation', /subrogat/i],
-  ['III', 'N', 'Elements of a contract', /elements of a contract/i],
+  ['III', 'N', 'Elements of a contract', /elements? of a (legal )?contract/i],
   ['III', 'O', 'Warranties, representations, concealment', /concealment/i],
   ['III', 'P', 'Sources of underwriting information', /underwriting information|sources of underwriting/i],
   ['III', 'Q', 'Fair Credit Reporting Act', /fair credit reporting|\bFCRA\b/i],
@@ -143,7 +161,7 @@ const OUTLINE = [
   ['III', 'U', 'Territory', /territor/i],
 
   // IV. TYPES OF POLICIES, BONDS, AND RELATED TERMS (23)
-  ['IV', 'A.1.a', 'Premises and operations', /premises and operations/i],
+  ['IV', 'A.1.a', 'Premises and operations', /premises and operations|\bpremises\b/i],
   ['IV', 'A.1.b', 'Products and completed operations', /completed operations/i],
   ['IV', 'A.2.a', 'CGL Coverage A', /coverage a\b/i],
   ['IV', 'A.2.a', 'Occurrence vs claims-made, retroactive date', /claims-?made/i],
@@ -171,7 +189,7 @@ const OUTLINE = [
   ['IV', 'B.10', 'Drive Other Car', /drive other car|\bDOC\b/i],
   ['IV', 'B.11', 'Mobile equipment', /mobile equipment/i],
   ['IV', 'C.1.a', 'Who is an employee/employer', /\bemployee\b/i],
-  ['IV', 'C.2', 'Work-related vs non-work-related', /work-?related/i],
+  ['IV', 'C.2', 'Work-related vs non-work-related', /work-?related|going and coming|course and scope/i],
   ['IV', 'C.4', 'Employers liability', /employers'? liability/i],
   ['IV', 'C.5', 'Exclusive remedy', /exclusive remedy/i],
   ['IV', 'C.6', 'Premium determination', /premium (determination|audit|basis)|payroll/i],
@@ -205,11 +223,11 @@ const OUTLINE = [
   // TX.I. TEXAS STATUTES COMMON TO P&C (18)
   ['TX.I', 'A.1', 'Commissioner general powers', /commissioner/i],
   ['TX.I', 'A.2', 'Examination of records', /examination and investigation|examination of insurer|examine the affairs/i],
-  ['TX.I', 'A.3', 'Investigation / notice of hearing', /notice of hearing/i],
+  ['TX.I', 'A.3', 'Investigation / notice of hearing', /notice of hearing|statement of charges|contested hearing/i],
   ['TX.I', 'A.4', 'Penalties', /penalt/i],
   ['TX.I', 'A.5', 'Cease and desist orders', /cease and desist/i],
   ['TX.I', 'B.1', 'Certificate of authority', /certificate of authority/i],
-  ['TX.I', 'B.2', 'Transacting insurance', /transacting insurance/i],
+  ['TX.I', 'B.2', 'Transacting insurance', /transact/i],
   ['TX.I', 'B.3', 'Foreign, domestic, alien', /\bdomestic\b.{0,40}\bforeign\b|\balien\b/i],
   ['TX.I', 'B.4', 'Stock, mutual', /mutual (insurer|company)/i],
   ['TX.I', 'B.5', 'Admitted / nonadmitted', /nonadmitted|non-admitted|admitted insurer/i],
@@ -226,13 +244,13 @@ const OUTLINE = [
   ['TX.I', 'C.2', 'Exemptions / exceptions', /exempt/i],
   ['TX.I', 'C.3', 'Appointment', /appointment/i],
   ['TX.I', 'C.4', 'Continuing education', /continuing education/i],
-  ['TX.I', 'C.5', 'Records maintenance', /records? (maintenance|retention)|maintain records/i],
+  ['TX.I', 'C.5', 'Records maintenance', /records? (maintenance|retention)|maintain records|records separate|4001\.255/i],
   ['TX.I', 'C.6', 'Application, denial, renewal, expiration', /renewal/i],
   ['TX.I', 'C.7', 'Termination, revocation, suspension', /revocation|suspension|suspend/i],
   ['TX.I', 'C.8.a', 'Change of address', /change of (mailing )?address/i],
   ['TX.I', 'C.8.b', 'Felony convictions', /felony/i],
   ['TX.I', 'C.8.c', 'Administrative action notification', /administrative action/i],
-  ['TX.I', 'D.1.a', 'Claims methods and practices', /claims? (method|practice)|unfair claim/i],
+  ['TX.I', 'D.1.a', 'Claims methods and practices', /claims? (method|practice)|unfair claim|prompt payment/i],
   ['TX.I', 'D.1.b', 'False advertising', /false advertising|advertis/i],
   ['TX.I', 'D.1.c', 'Misrepresentation', /misrepresent/i],
   ['TX.I', 'D.1.d', 'Defamation', /defamation/i],

@@ -129,14 +129,14 @@ provisions and the JUA
 | D | Exclusions | 19 | 19 |
 | E | Definition of the insured | 9 | 9 |
 | F | Duties of the insured | 7 | 1 |
-| G | Obligations of the insurer *(no question)* | 2 | 0 |
+| G | Obligations of the insurer | 4 | 5 |
 | H | Mortgagee rights | 4 | 3 |
 | I | Proof of loss | 7 | 8 |
 | J | Notice of claim | 3 | 2 |
 | K | Appraisal | 5 | 4 |
 | L | Other insurance provision | 9 | 3 |
 | M | Subrogation | 7 | 10 |
-| N | Elements of a contract *(no question)* | 1 | 0 |
+| N | Elements of a contract | 1 | 1 |
 | O | Warranties, representations, concealment | 4 | 2 |
 | P | Sources of underwriting information | 3 | 2 |
 | Q | Fair Credit Reporting Act | 2 | 2 |
@@ -149,7 +149,7 @@ provisions and the JUA
 
 | Line | Outline entry | Lessons | Questions |
 | --- | --- | ---: | ---: |
-| A.1.a | Premises and operations *(no question)* | 1 | 0 |
+| A.1.a | Premises and operations | 13 | 9 |
 | A.1.b | Products and completed operations | 1 | 1 |
 | A.2.a | CGL Coverage A | 6 | 4 |
 | A.2.a | Occurrence vs claims-made, retroactive date | 4 | 3 |
@@ -177,7 +177,7 @@ provisions and the JUA
 | B.10 | Drive Other Car | 1 | 1 |
 | B.11 | Mobile equipment | 2 | 2 |
 | C.1.a | Who is an employee/employer | 18 | 15 |
-| C.2 | Work-related vs non-work-related *(no question)* | 1 | 0 |
+| C.2 | Work-related vs non-work-related | 2 | 1 |
 | C.4 | Employers liability | 3 | 3 |
 | C.5 | Exclusive remedy | 2 | 2 |
 | C.6 | Premium determination | 7 | 6 |
@@ -220,11 +220,11 @@ provisions and the JUA
 | --- | --- | ---: | ---: |
 | A.1 | Commissioner general powers | 13 | 16 |
 | A.2 | Examination of records | 1 | 1 |
-| A.3 | Investigation / notice of hearing *(no question)* | 2 | 0 |
+| A.3 | Investigation / notice of hearing | 2 | 1 |
 | A.4 | Penalties | 10 | 10 |
 | A.5 | Cease and desist orders | 4 | 3 |
 | B.1 | Certificate of authority | 2 | 2 |
-| B.2 | Transacting insurance *(no question)* | 1 | 0 |
+| B.2 | Transacting insurance | 4 | 3 |
 | B.3 | Foreign, domestic, alien | 3 | 2 |
 | B.4 | Stock, mutual | 1 | 1 |
 | B.5 | Admitted / nonadmitted | 2 | 3 |
@@ -241,13 +241,13 @@ provisions and the JUA
 | C.2 | Exemptions / exceptions | 7 | 6 |
 | C.3 | Appointment | 3 | 3 |
 | C.4 | Continuing education | 5 | 3 |
-| C.5 | Records maintenance *(no question)* | 1 | 0 |
+| C.5 | Records maintenance | 2 | 1 |
 | C.6 | Application, denial, renewal, expiration | 16 | 14 |
 | C.7 | Termination, revocation, suspension | 12 | 11 |
 | C.8.a | Change of address | 1 | 1 |
 | C.8.b | Felony convictions | 2 | 2 |
 | C.8.c | Administrative action notification | 2 | 2 |
-| D.1.a | Claims methods and practices *(no question)* | 1 | 0 |
+| D.1.a | Claims methods and practices | 2 | 1 |
 | D.1.b | False advertising | 6 | 6 |
 | D.1.c | Misrepresentation | 11 | 8 |
 | D.1.d | Defamation | 2 | 3 |
@@ -286,63 +286,41 @@ provisions and the JUA
 
 ## What this found
 
-**189 of 190 entries are taught.** One is not:
+**189 of 190 entries are taught and tested.** One is not taught:
 
 | Entry | Outline reference | Status |
 | --- | --- | --- |
-| TX.I.D.2 | Rating and underwriting practices — 28 TAC §5.9340–.9357 | **Not taught, and not writable here.** The rule has never been fetched, the TAC is HTML that `scripts/extract-statute.py` cannot read, and the sandbox cannot reach the site. Credit information and credit scoring appear nowhere in the course. Writing this without the rule in front of us would be inventing Texas law. See `docs/statutes-to-download.md`. |
+| TX.I.D.2 | Rating and underwriting practices — 28 TAC §5.9340–.9357 | **Not taught, and not writable here.** The rule has never been fetched, the TAC is HTML that `scripts/extract-statute.py` cannot read, and the sandbox cannot reach the site. Credit information and credit scoring appear nowhere in the course. Writing it without the rule in front of us would be inventing Texas law. See `docs/statutes-to-download.md`. |
 
-Three gaps were reported here previously. Two are now written, from the
-chapters already in `reference/statutes/`:
+### What the earlier runs of this report got wrong
 
-- **TX.I.C.1.d, limited licence** — §4051.101's list of narrow lines,
-  §4051.102 (only the kind designated on the licence) and §4051.052 (a general
-  licence covers the limited lines; the inclusion runs one way). The same
-  chapter also let the **emergency licence** be taught properly at §4051.054
-  rather than merely named.
-- **TX.I.E.1, commission sharing** — §4005.053(a) and the two exceptions that
-  get tested: renewal and deferred commissions surviving the licence at (b),
-  and the referral fee that turns on the customer buying at (c)(2). Plus
-  §4005.054 on charging a second fee for work the commission already paid for.
+This file first reported **three untaught entries and eight unquestioned
+ones**. Two of the three were real and are now written. **Seven of the eight
+were not.**
 
-Six questions were added with them.
+Each of the seven was tested all along, in the course's own words rather than
+the outline's:
 
-**Eight entries are taught but have no question.** Each is a lesson a student
-could read and never be tested on:
+| Entry | How it is actually tested |
+| --- | --- |
+| III.N Elements of a contract | "Which of the following is NOT an element of a **legal** contract?" — one of 27 questions in that file |
+| III.G Obligations of the insurer | A $500,000 limit against a $120,000 defence cost: what the insurer has paid in total |
+| IV.A.1.a Premises and operations | A question separating premises, operations and completed operations |
+| IV.C.2 Work-related vs non-work-related | The **going and coming rule** |
+| TX.I.A.3 Investigation / notice of hearing | "Investigation, a statement of charges and notice, and a hearing" as the correct answer |
+| TX.I.B.2 Transacting insurance | §101.102's prohibition on transacting insurance without authority |
+| TX.I.D.1.a Claims methods and practices | Eight questions on the Chapter 542 claim clocks, which is what D.1.a cites |
 
-| Entry | Topic | Lesson |
-| --- | --- | --- |
-| III.G | Obligations of the insurance company | 1/07 terms the other lessons assume |
-| III.N | Elements of a contract | 2/07 elements of a contract |
-| IV.A.1.a | Premises and operations | 4/01 commercial general liability |
-| IV.C.2 | Work-related vs non-work-related | 4/04 workers compensation |
-| TX.I.A.3 | Investigation / notice of hearing | 5/01 the Commissioner |
-| TX.I.B.2 | Transacting insurance | 5/16 company types and authority |
-| TX.I.C.5 | Records maintenance | 5/07 declination, cancellation, nonrenewal |
-| TX.I.D.1.a | Claims methods and practices | 5/06 claims practices |
+**The eighth was real.** §4001.255 — an agent must keep insurance records,
+including customer complaint records, separate from the records of any other
+business — appeared only inside an *explanation* to a question about
+misappropriating premium. It was taught, mentioned, and never the subject of
+anything. A question now asks it.
 
-III.N is the one worth looking at first. **Elements of a contract has its own
-lesson and no question anywhere**, and it is a named entry under a section
-worth 13 scored questions.
+### So: do not trust the "no question" column
 
-## On the search patterns
-
-The first run of this check reported **six** untaught entries. Three were
-wrong, and all three were failures of my own patterns rather than gaps:
-
-- **Who is an employee/employer** — the phrase straddles a line break, and the
-  lesson is about nothing else.
-- **Examination of records** — the lesson heads that section "Examination and
-  investigation" and covers Chapter 401 in full.
-- **Change of address** — the lesson writes "a change of **mailing** address",
-  which is what §4001.252(a) says.
-
-A fourth surfaced when the gaps were fixed: **commission sharing** still read
-as untaught after it had been written, because the lesson heads that section
-"Paying a commission to somebody who is not licensed". The entry is defined by
-its statutes, so the pattern now matches §4005.053 and §4005.054 too.
-
-That is eight false gaps in one week — express authority, breach of duty,
-basic form perils, three Section I policy types, and these. Every one a
-wording difference. **A miss in this report is a question, not a verdict. Read
-the lesson before writing one.**
+It matches a pattern anywhere in a question **file**, including inside an
+explanation, and it cannot see a question that tests an entry in different
+words. Both failure modes fired here at once. `check-question-coverage.mjs`
+makes the stronger claim — that a term is the correct **answer** to something
+— and that is the one to rely on.

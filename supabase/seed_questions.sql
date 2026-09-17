@@ -18360,6 +18360,44 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'a9cb72d2-9571-5e69-a5cc-591cde8c0337', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'licensing-and-appointment'),
+       'An agent also runs a property management company from the same office. Under §4001.255, what must she do with her insurance records?', '**§4001.255** — an agent shall maintain **all insurance records, including all records relating to customer complaints, separate from the records of any other business** in which the agent is engaged. The duty is **separation**, not retention or filing. The statute sets no period, requires no copy to be sent anywhere, and the fact that one person owns both businesses is the reason the rule exists rather than an excuse from it. Note what is named explicitly: **customer complaint records**. Those are the ones an examiner will ask for, and the ones most likely to end up filed with the other business. This is the same instinct as the fiduciary duty and §4005.053 — premium and the records of it belong to the insurance business, and must be capable of being accounted for separately from everything else the agent does.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'TX.I'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '50e7b62c-1b2a-5d34-a9da-35969c9d4dc6', 'a9cb72d2-9571-5e69-a5cc-591cde8c0337', c.id, 'Keep them for at least five years, then destroy them securely', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '546a4f84-bfcf-5581-bcb7-8ad6e92526f2', 'a9cb72d2-9571-5e69-a5cc-591cde8c0337', c.id, 'Keep them separate from the records of the other business', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '37db5a97-4962-58b7-be56-24fa8c816cbd', 'a9cb72d2-9571-5e69-a5cc-591cde8c0337', c.id, 'File a copy with the Department each year', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '4ca26071-c885-5b8c-8e81-ebbec3c16c5c', 'a9cb72d2-9571-5e69-a5cc-591cde8c0337', c.id, 'Nothing, provided the two businesses share a single licensed owner', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'a9cb72d2-9571-5e69-a5cc-591cde8c0337', c.id, '546a4f84-bfcf-5581-bcb7-8ad6e92526f2'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select 'dc47db63-8b65-5056-977e-9be97d823010', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'licence-renewal-and-discipline'),
        'How long does an agent licence run?', '**§4003.001(a)** — expiry falls on the **second anniversary** of issue or renewal for a non-individual, and on a birthday cycle in an even- or odd-numbered year for an individual. Either way the period is two years.', 'draft'
