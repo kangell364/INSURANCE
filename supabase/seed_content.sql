@@ -1038,8 +1038,8 @@ insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
 select 'a5bd1b75-770f-55a0-b5b3-a6ca2cf5cea1', '34b6c5a1-202f-5d9f-b12a-d98a335b2916', c.id, 'Terms the Other Lessons Assume',
-       'terms-the-other-lessons-assume', 'Nine terms the blueprint names that do not belong to any one topic — and the three distinctions inside them that get tested.', 7,
-       'draft', 15
+       'terms-the-other-lessons-assume', 'Ten terms the blueprint names that do not belong to any one topic — including the party numbering that four later modules assume you already know.', 7,
+       'draft', 17
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
 on conflict (id) do update set
   title = excluded.title, summary = excluded.summary,
@@ -1056,6 +1056,58 @@ definition question that you either know or do not.
 
 Several are treated at more length later, where they do real work. This lesson
 is where you find them under the name the blueprint uses.
+
+## The parties, and the numbering
+
+**An insurance policy has exactly two parties.**
+
+- **The insured — the first party.** The person or business buying the
+  protection.
+- **The insurer — the second party.** The company promising to pay.
+
+**Everybody else in the world is a third party.** The driver you hit. The
+guest who falls on your step. The neighbour whose fence your tree landed on.
+
+That numbering is not trivia. It decides which half of the policy responds:
+
+| | Pays whom | Examples |
+| --- | --- | --- |
+| **First-party coverage** | The insured, for their own loss | Dwelling, personal property, collision, medical payments, uninsured motorist |
+| **Third-party coverage** | Somebody else, because the insured is liable | All liability coverage — personal, commercial, auto |
+
+**"Second-party coverage" is not a term.** If it appears as an option, it is a
+distractor.
+
+### What each party owes
+
+The blueprint asks about these separately, as *duties of the insured* and
+*obligations of the insurance company*.
+
+**The insured owes:** the premium, truthful statements in the application,
+prompt notice of a loss, a proof of loss when required, cooperation with the
+investigation, protection of the property from further damage, and no
+settlement of a claim without the insurer's consent.
+
+**The insurer owes:** payment of covered claims, and — under liability
+coverage — **the duty to defend**, which is broader than the duty to pay. An
+insurer must defend a suit that merely *alleges* something the policy might
+cover, even if the allegation turns out to be groundless.
+
+### Why Texas cares
+
+Two rules already in Module 5 turn entirely on this numbering, and neither
+makes sense without it:
+
+- **Prompt payment** — the deadlines of §542.055–.058 apply to **first-party**
+  claims. A liability claimant waiting on a settlement is not protected by
+  them.
+- **§541.060(b)** expressly denies a **third party** a cause of action for
+  unfair settlement practices against the insurer of the person who harmed
+  them. They sue the insured, not the insurer.
+
+One more contrast, met later: **a surety bond has three parties**, not two —
+principal, obligee and surety. That difference is the usual way bonds are
+tested, and it only reads as a difference if you know insurance has two.
 
 ## Direct and indirect loss
 

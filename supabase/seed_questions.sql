@@ -2400,6 +2400,82 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '29f8cc85-0acc-5018-af72-f79e04b06c0d', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'terms-the-other-lessons-assume'),
+       'An insured''s car is damaged in a collision they caused. Under their own collision coverage, this is what kind of claim?', '**First party.** The insured is claiming against their own insurer for their own loss. That the collision was their fault changes nothing — collision coverage is first-party coverage regardless of blame. The driver they hit claiming against that same policy''s **liability** coverage would be the **third-party** claim. "Second-party claim" is not a term; the second party *is* the insurer. This matters in Texas beyond vocabulary: the prompt-payment deadlines of **§542.055–.058** run on first-party claims only.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.II'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'ff2084af-7e9d-5d06-a648-8540fc44d70b', '29f8cc85-0acc-5018-af72-f79e04b06c0d', c.id, 'A first-party claim', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '543b5d39-fbc6-57a8-9f44-ab3620e5bd2f', '29f8cc85-0acc-5018-af72-f79e04b06c0d', c.id, 'A second-party claim', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '899b1a0c-f635-5ae0-98c5-08337464d0a4', '29f8cc85-0acc-5018-af72-f79e04b06c0d', c.id, 'A third-party claim', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'd6e9d3b6-1cb1-5835-90c0-7b3974b39301', '29f8cc85-0acc-5018-af72-f79e04b06c0d', c.id, 'A subrogated claim', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '29f8cc85-0acc-5018-af72-f79e04b06c0d', c.id, 'ff2084af-7e9d-5d06-a648-8540fc44d70b'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'ad6abf67-02c0-53b6-94da-af09d6a5d20a', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'terms-the-other-lessons-assume'),
+       'A liability policy is served with a lawsuit alleging something that later proves groundless. What must the insurer do?', '**The duty to defend is triggered by the allegation, not the outcome.** If a suit alleges something the policy might cover, the insurer defends — and a defence that ends with the insured owing nothing is the duty being performed, not avoided. That is why defence costs are usually paid **in addition to** the limit rather than out of it.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.II'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'b9f2eaa0-2ab1-525c-b8e0-42e485ab33f6', 'ad6abf67-02c0-53b6-94da-af09d6a5d20a', c.id, 'Defend the suit, because the duty to defend is broader than the duty to pay', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'e6929657-9ad7-54f8-a146-1f242134e28a', 'ad6abf67-02c0-53b6-94da-af09d6a5d20a', c.id, 'Nothing, because a groundless allegation is not a covered loss', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '12b9752c-49b5-595e-b3cc-a2765d0ac7f3', 'ad6abf67-02c0-53b6-94da-af09d6a5d20a', c.id, 'Pay the claimant to end the suit', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'cebc6338-6613-5431-9b16-becf47402836', 'ad6abf67-02c0-53b6-94da-af09d6a5d20a', c.id, 'Defend only after the allegation is proven', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'ad6abf67-02c0-53b6-94da-af09d6a5d20a', c.id, 'b9f2eaa0-2ab1-525c-b8e0-42e485ab33f6'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select '577362a3-1c94-517e-99c7-05b24f65a66b', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'terms-the-other-lessons-assume'),
        'A fire closes a restaurant for four months. Which is the indirect loss?', '**Direct loss is physical damage; indirect loss is its financial consequence.** The distinction matters because they are paid by different coverages — the property form and business income respectively.', 'draft'

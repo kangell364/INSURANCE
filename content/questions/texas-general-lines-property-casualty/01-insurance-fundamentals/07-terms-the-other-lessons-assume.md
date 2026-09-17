@@ -5,6 +5,39 @@ lesson: terms-the-other-lessons-assume
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### An insured's car is damaged in a collision they caused. Under their own collision coverage, this is what kind of claim?
+
+- [x] A first-party claim
+- [ ] A second-party claim
+- [ ] A third-party claim
+- [ ] A subrogated claim
+
+**First party.** The insured is claiming against their own insurer for their
+own loss. That the collision was their fault changes nothing — collision
+coverage is first-party coverage regardless of blame.
+
+The driver they hit claiming against that same policy's **liability** coverage
+would be the **third-party** claim. "Second-party claim" is not a term; the
+second party *is* the insurer.
+
+This matters in Texas beyond vocabulary: the prompt-payment deadlines of
+**§542.055–.058** run on first-party claims only.
+
+### A liability policy is served with a lawsuit alleging something that later proves groundless. What must the insurer do?
+
+- [x] Defend the suit, because the duty to defend is broader than the duty to pay
+- [ ] Nothing, because a groundless allegation is not a covered loss
+- [ ] Pay the claimant to end the suit
+- [ ] Defend only after the allegation is proven
+
+**The duty to defend is triggered by the allegation, not the outcome.** If a
+suit alleges something the policy might cover, the insurer defends — and a
+defence that ends with the insured owing nothing is the duty being performed,
+not avoided.
+
+That is why defence costs are usually paid **in addition to** the limit rather
+than out of it.
+
 ### A fire closes a restaurant for four months. Which is the indirect loss?
 
 - [ ] The fire damage to the kitchen
