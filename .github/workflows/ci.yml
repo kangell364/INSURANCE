@@ -95,6 +95,14 @@ jobs:
       - name: Statute claims match the cited section
         run: node scripts/check-citation-claims.mjs --max 29
 
+      # Every leaf entry of the examination content outline, against the
+      # course. The audit it replaces said "every sub-line sampled has lesson
+      # coverage" -- sampled, which was doing a lot of work in that sentence.
+      # Three entries are untaught and named in docs/course-vs-blueprint.md;
+      # the ceiling only comes down.
+      - name: Every outline entry has a lesson
+        run: node scripts/check-blueprint-coverage.mjs --max 3
+
       # The statute extractor's text cleanup, tested directly. The PDFs from
       # statutes.capitol.texas.gov render non-breaking spaces as a literal
       # capital "A", which collides with the article "A" that opens most
