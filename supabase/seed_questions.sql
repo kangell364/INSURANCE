@@ -1678,6 +1678,44 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '0010af76-9da3-5d15-8658-148adbe24934', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'valuing-a-loss'),
+       'An older home is insured on an HO-8. A damaged section of ornate plaster cornice is destroyed. On what basis is it settled?', '**The HO-8 settles on a modified basis — repair cost with common construction materials**, not a reproduction of what was there. The cornice is made good with modern materials; nobody hand-casts new plaster. **This exists to make an older home insurable at all.** For some houses the cost of reproducing the original craftsmanship far exceeds what the property is worth, and insuring it for that sum would create a **moral hazard** — the building would be worth more burnt than standing. **Functional replacement cost is the same idea one step up**: replacing with modern materials that serve the same function, rather than repairing what is damaged. Both settle below true replacement cost and for the same reason.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.II'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'cce4d4ee-2ad0-5980-b38c-b01bd31818f2', '0010af76-9da3-5d15-8658-148adbe24934', c.id, 'Repair cost, using common modern construction materials', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '1d96d301-0ee4-58d6-8571-66c484add1fb', '0010af76-9da3-5d15-8658-148adbe24934', c.id, 'Replacement cost, matching the original plasterwork', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '9a04e675-60b2-59de-80cf-700b76301a88', '0010af76-9da3-5d15-8658-148adbe24934', c.id, 'Market value of the whole dwelling', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '57f07536-ad8f-571f-b966-fb80de4d575d', '0010af76-9da3-5d15-8658-148adbe24934', c.id, 'Agreed value fixed when the policy was written', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '0010af76-9da3-5d15-8658-148adbe24934', c.id, 'cce4d4ee-2ad0-5980-b38c-b01bd31818f2'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select 'c43040d8-e9bf-5e9d-8abc-c550746acf08', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'valuing-a-loss'),
        'Under a replacement-cost policy the insurer first pays actual cash value. What is the withheld amount called, and when is it released?', '**Recoverable depreciation is the gap between the ACV payment and the replacement cost**, and it is released when the insured actually repairs or replaces. **Under an ACV policy that same gap is non-recoverable** — never paid, because actual cash value is all the policy promised. The word that changes is the policy''s valuation basis, not the arithmetic. This is why a replacement-cost policyholder who takes the first cheque and never rebuilds ends up with ACV: **the second payment is conditional on the work, and doing nothing satisfies no condition.**', 'draft'

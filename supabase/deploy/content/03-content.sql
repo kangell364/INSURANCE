@@ -106,6 +106,30 @@ plaster mouldings and hand-cut joinery could be rebuilt to modern equivalent
 standards for far less. **Functional replacement cost** pays to replace with
 modern materials serving the same function.
 
+### Repair cost
+
+A close relative, and the basis the **HO-8** uses. **Repair cost pays to put
+the damaged part back using common modern construction materials**, rather
+than to replace the whole item or to match what was there.
+
+**Functional replacement cost and repair cost answer the same problem** — a
+building worth far less than it would cost to reproduce — and they differ in
+scale rather than principle. Functional replacement replaces; repair repairs.
+Both settle below true replacement cost and both exist so that a policy on an
+older building is affordable and does not create a **moral hazard** by
+insuring it for more than it is worth.
+
+**Where these sit, cheapest settlement to dearest:**
+
+| | Pays |
+| --- | --- |
+| **Market value** | What it would sell for, land included. Rarely the basis. |
+| **Repair cost** | Putting the damaged part back with common materials |
+| **Functional replacement** | Modern materials serving the same function |
+| **Actual cash value** | Replacement cost minus depreciation |
+| **Replacement cost** | Like kind and quality, no deduction |
+| **Agreed value** | A figure fixed when the policy was written |
+
 ## Depreciation, recoverable and not
 
 Two terms turn up in claims and occasionally on exams.

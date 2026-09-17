@@ -5,6 +5,26 @@ lesson: valuing-a-loss
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### An older home is insured on an HO-8. A damaged section of ornate plaster cornice is destroyed. On what basis is it settled?
+
+- [x] Repair cost, using common modern construction materials
+- [ ] Replacement cost, matching the original plasterwork
+- [ ] Market value of the whole dwelling
+- [ ] Agreed value fixed when the policy was written
+
+**The HO-8 settles on a modified basis — repair cost with common
+construction materials**, not a reproduction of what was there. The cornice is
+made good with modern materials; nobody hand-casts new plaster.
+
+**This exists to make an older home insurable at all.** For some houses the
+cost of reproducing the original craftsmanship far exceeds what the property is
+worth, and insuring it for that sum would create a **moral hazard** — the
+building would be worth more burnt than standing.
+
+**Functional replacement cost is the same idea one step up**: replacing with
+modern materials that serve the same function, rather than repairing what is
+damaged. Both settle below true replacement cost and for the same reason.
+
 ### Under a replacement-cost policy the insurer first pays actual cash value. What is the withheld amount called, and when is it released?
 
 - [x] Recoverable depreciation, released once the work is actually done
