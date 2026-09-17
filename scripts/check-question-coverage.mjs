@@ -70,6 +70,12 @@ const MAX = MAX_ARG === -1 ? null : Number(process.argv[MAX_ARG + 1])
  */
 const UNTESTED = new Map([
   [
+    '03-licensing-and-appointment.md::explain the coverage',
+    'An item in a list of producer duties, not a term. The list is examined ' +
+      'collectively -- which of these is NOT a duty -- so the answer is the ' +
+      'odd one out, and no question can have "explain the coverage" as its answer.',
+  ],
+  [
     '07-elements-of-a-contract.md::reasonable expectations',
     'Not on either Texas outline. Recorded beside adhesion because it explains ' +
       'the signed rejection of UM coverage in Module 5; testing it would be padding.',
