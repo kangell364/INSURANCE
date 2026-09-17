@@ -94,6 +94,12 @@ const PATTERNS = [
   /^\*\*([^*]{2,40})\.\*\*\s/,              // **Adhesion.** One party writes it
   /^-\s+\*\*([^*]{2,40})\*\*\s+[—-]\s/,     // - **Retention** — accept it
   /^\*\*([^*]{2,40})\*\*\s+(?:is|means)\s/, // **A peril** is the cause of loss
+  // A whole sentence in bold, which is how several definitions are written:
+  // "**A direct loss is physical damage to property caused by a peril.**"
+  // Without this the term is the entire sentence, rejected as too long, and
+  // the definition is invisible. Direct and indirect loss -- a blueprint term
+  // at GK II.F -- went unexamined and unreported because of exactly that.
+  /^\*\*(?:A|An|The)\s+([a-z][^*]{2,28}?)\s+(?:is|are|means)\s[^*]*\*\*/,
 ]
 
 /**
@@ -109,6 +115,19 @@ const SENTENCE_START = new Set([
   'learn', 'do', 'it', 'they', 'you', 'we', 'his', 'her', 'their', 'no',
   'not', 'only', 'any', 'all', 'some', 'most', 'more', 'less', 'never',
   'always', 'again', 'still', 'then', 'now',
+])
+
+/**
+ * Generic nouns that open an explanatory sentence rather than name a term.
+ * "**The test is attachment, not size.**" defines nothing; it applies
+ * something already defined. Without this the bolded-sentence pattern
+ * extracts "test" from half the lessons.
+ */
+const GENERIC = new Set([
+  'test', 'point', 'answer', 'rule', 'reason', 'question', 'difference',
+  'distinction', 'result', 'effect', 'consequence', 'trap', 'catch', 'idea',
+  'shape', 'whole', 'key', 'thing', 'part', 'half', 'order', 'exam', 'stem',
+  'insured', 'insurer', 'policy', 'student', 'producer', 'agent',
 ])
 
 /** Structural references, not defined terms. */
@@ -162,6 +181,7 @@ function termsIn(body) {
       if (term.split(/\s+/).length > 3) continue     // a sentence, not a term
       if (/[§\d]/.test(term)) continue               // a citation, not a term
       if (SENTENCE_START.has(normalise(term).split(' ')[0])) continue
+      if (GENERIC.has(normalise(term))) continue
       if (STRUCTURAL.test(term)) continue            // "Subchapter C", "Side B"
       if (!found.has(normalise(term))) found.set(normalise(term), term)
       break

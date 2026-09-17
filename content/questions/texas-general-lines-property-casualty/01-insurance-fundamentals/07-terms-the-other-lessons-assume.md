@@ -5,6 +5,44 @@ lesson: terms-the-other-lessons-assume
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### A fire closes a restaurant, which then earns nothing for five months while it is rebuilt. The lost earnings are what kind of loss?
+
+- [x] An indirect loss
+- [ ] A direct loss
+- [ ] A direct loss, because the fire caused it
+- [ ] Neither; lost earnings are not an insured loss
+
+**A direct loss is physical damage to property caused by a peril** — the fire
+burning the building. **An indirect loss is the financial consequence of that
+damage** — the five months of earning nothing.
+
+Indirect loss is also called **consequential loss**, and the two words are
+interchangeable.
+
+**The distinction decides which coverage pays.** A standard property form pays
+the direct loss and nothing more. The lost earnings need **business income**
+coverage, bought separately — which is why an insured can rebuild perfectly and
+still receive nothing for the five months.
+
+Other indirect losses: extra expense, loss of rents, additional living
+expense, spoilage after a power failure, loss of use.
+
+### A homeowner's kitchen is gutted by fire and they rent a flat for three months while it is repaired. The rent is what kind of loss?
+
+- [x] Indirect — additional living expense, a separate coverage
+- [ ] Direct, because the fire caused the displacement
+- [ ] Direct, since the rent is a measurable out-of-pocket cost
+- [ ] Not a loss at all; the insured would have paid housing costs anyway
+
+**Additional living expense is the homeowners form's indirect loss coverage**,
+the residential equivalent of business income. The fire damaged the kitchen —
+that is the direct loss. Being unable to live there is the consequence.
+
+**"The fire caused it" does not make a loss direct.** A direct loss is
+physical damage to property; everything flowing from that damage is indirect,
+however clearly the peril caused it. That is the trap both wrong "direct"
+options are built on.
+
 ### A chandelier is wired into a dining room ceiling. Is it real or personal property?
 
 - [x] Real property, because it is permanently attached

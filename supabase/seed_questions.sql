@@ -3008,6 +3008,82 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '3caed88a-0175-5b08-8785-cb564472df30', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'terms-the-other-lessons-assume'),
+       'A fire closes a restaurant, which then earns nothing for five months while it is rebuilt. The lost earnings are what kind of loss?', '**A direct loss is physical damage to property caused by a peril** — the fire burning the building. **An indirect loss is the financial consequence of that damage** — the five months of earning nothing. Indirect loss is also called **consequential loss**, and the two words are interchangeable. **The distinction decides which coverage pays.** A standard property form pays the direct loss and nothing more. The lost earnings need **business income** coverage, bought separately — which is why an insured can rebuild perfectly and still receive nothing for the five months. Other indirect losses: extra expense, loss of rents, additional living expense, spoilage after a power failure, loss of use.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.II'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '2eb81273-9ec1-5240-be00-94d379166043', '3caed88a-0175-5b08-8785-cb564472df30', c.id, 'An indirect loss', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'f6c5a9fe-4fe7-5a52-8127-59398f0c8296', '3caed88a-0175-5b08-8785-cb564472df30', c.id, 'A direct loss', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '9a8dfa4f-62ff-5acb-b104-53568767151c', '3caed88a-0175-5b08-8785-cb564472df30', c.id, 'A direct loss, because the fire caused it', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'c1d050c2-f023-57b5-8b7d-50990926ea82', '3caed88a-0175-5b08-8785-cb564472df30', c.id, 'Neither; lost earnings are not an insured loss', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '3caed88a-0175-5b08-8785-cb564472df30', c.id, '2eb81273-9ec1-5240-be00-94d379166043'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'dea4e3f4-baaa-5428-83c5-a58fdcf89155', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'terms-the-other-lessons-assume'),
+       'A homeowner''s kitchen is gutted by fire and they rent a flat for three months while it is repaired. The rent is what kind of loss?', '**Additional living expense is the homeowners form''s indirect loss coverage**, the residential equivalent of business income. The fire damaged the kitchen — that is the direct loss. Being unable to live there is the consequence. **"The fire caused it" does not make a loss direct.** A direct loss is physical damage to property; everything flowing from that damage is indirect, however clearly the peril caused it. That is the trap both wrong "direct" options are built on.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.II'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '00a78e86-81a1-555c-96e0-9d535a4b18e1', 'dea4e3f4-baaa-5428-83c5-a58fdcf89155', c.id, 'Indirect — additional living expense, a separate coverage', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'df0112a5-1cbb-5e80-b018-8855469b2bf6', 'dea4e3f4-baaa-5428-83c5-a58fdcf89155', c.id, 'Direct, because the fire caused the displacement', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '664ab519-3454-5aa2-8902-e086b780e196', 'dea4e3f4-baaa-5428-83c5-a58fdcf89155', c.id, 'Direct, since the rent is a measurable out-of-pocket cost', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '92ae94a9-32d7-58d4-8933-f09157e01de0', 'dea4e3f4-baaa-5428-83c5-a58fdcf89155', c.id, 'Not a loss at all; the insured would have paid housing costs anyway', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'dea4e3f4-baaa-5428-83c5-a58fdcf89155', c.id, '00a78e86-81a1-555c-96e0-9d535a4b18e1'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select 'fecde7b7-0c70-55a5-8a0d-93cd499e5a4b', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'terms-the-other-lessons-assume'),
        'A chandelier is wired into a dining room ceiling. Is it real or personal property?', '**The test is attachment, not size or value.** A chandelier wired in is real property; the identical lamp standing on the floor is personal. Something that changes from one to the other by being installed is a **fixture** — which is why it stops being the seller''s when a building is sold, and why an insured who takes the built-in cabinets with them has removed part of what the dwelling coverage insured.', 'draft'
@@ -8854,6 +8930,44 @@ on conflict (id) do update set body = excluded.body;
 
 insert into public.question_answers (question_id, course_id, correct_option_id)
 select '3ee5858f-9063-5971-a630-0e9617eb656f', c.id, '391b095a-0233-5e24-b2af-7b14e09c245e'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '0912776b-1067-5da0-a981-5806f0709940', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'dwelling-policies'),
+       'A DP-2 insured is burgled: the front door is forced and a television is taken. What does the broad form pay for?', '**Damage by burglars pays for what burglars BREAK, not what they TAKE.** The forced door is covered; the stolen television is not. **Theft of contents needs theft coverage**, which a dwelling form adds by endorsement rather than including in the broad peril list. It is the same boundary as commercial property, where Basic and Broad reach vandalism and **only Special adds theft** — the forms are consistent about this, which makes it worth learning once.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.I'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '7b3b2bbe-3fc7-575b-ac29-1fd06c3f957f', '0912776b-1067-5da0-a981-5806f0709940', c.id, 'The door, under damage by burglars — not the television', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '902b40b2-7303-5ce4-8bae-2f898cf51752', '0912776b-1067-5da0-a981-5806f0709940', c.id, 'Both, since damage by burglars covers the whole incident', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '6b73462a-e3ce-59a4-b2a0-3e40ff463d8d', '0912776b-1067-5da0-a981-5806f0709940', c.id, 'The television only; the door is wear and tear', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'f4093fa4-12fa-5f3b-9e10-8bdd0aa311a8', '0912776b-1067-5da0-a981-5806f0709940', c.id, 'Neither; burglary is excluded from all dwelling forms', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '0912776b-1067-5da0-a981-5806f0709940', c.id, '7b3b2bbe-3fc7-575b-ac29-1fd06c3f957f'
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
 on conflict (question_id) do update set
   correct_option_id = excluded.correct_option_id;

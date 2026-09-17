@@ -83,8 +83,17 @@ Two distinguishing features:
 
 **Named peril**, with the broad list — everything in DP-1's extended coverage
 plus falling objects; weight of ice, snow or sleet; accidental discharge of
-water or steam; tearing apart of a heating system; freezing; and accidental
-damage from artificially generated electrical current.
+water or steam; tearing apart of a heating system; freezing; accidental damage
+from artificially generated electrical current; and **damage by burglars**.
+
+> **"Damage by burglars" is not theft cover**, and the difference is examined.
+> It pays for what burglars *break* — a forced door, a smashed frame, a
+> ransacked room — and not for what they **take**. A DP-2 insured whose house
+> is burgled is paid for the door and not for the television.
+>
+> Theft of the contents needs theft coverage, which a dwelling form adds by
+> endorsement. This is the same boundary as commercial property, where Basic
+> and Broad reach vandalism but **only Special adds theft**.
 
 **Loss settlement is replacement cost** on the dwelling, subject to the
 usual insurance-to-value requirement.

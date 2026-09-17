@@ -5,6 +5,23 @@ lesson: dwelling-policies
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### A DP-2 insured is burgled: the front door is forced and a television is taken. What does the broad form pay for?
+
+- [x] The door, under damage by burglars — not the television
+- [ ] Both, since damage by burglars covers the whole incident
+- [ ] The television only; the door is wear and tear
+- [ ] Neither; burglary is excluded from all dwelling forms
+
+**Damage by burglars pays for what burglars BREAK, not what they TAKE.** The
+forced door is covered; the stolen television is not.
+
+**Theft of contents needs theft coverage**, which a dwelling form adds by
+endorsement rather than including in the broad peril list.
+
+It is the same boundary as commercial property, where Basic and Broad reach
+vandalism and **only Special adds theft** — the forms are consistent about
+this, which makes it worth learning once.
+
 ### A landlord owns a rented house and wants building coverage plus protection against a tenant's injury claim. What is needed?
 
 - [x] A dwelling policy with a personal liability endorsement
