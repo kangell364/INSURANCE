@@ -18474,9 +18474,9 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
-select '1722a107-5b25-5820-9e20-c7b4bc728dd3', c.id, t.id,
+select '7cfdab79-16d3-588f-8eec-926a13880d70', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'texas-auto-um-uim-and-pip'),
-       'What are the Texas minimum auto liability limits?', '**30/60/25**, set by **§601.072(a-1) of the Transportation Code** effective 1 January 2011. Both §1952.101 and §1952.105 defer to that chapter for the floor, so UM and PIP may not be offered below it.', 'draft'
+       'Chapter 601 of the Transportation Code sets a floor of 30/60/25. Which coverage may not be written below it?', '**§1952.105(c)** is a **Subchapter C** section, and Subchapter C is uninsured and underinsured motorist coverage. That is what the Chapter 601 floor reaches. **PIP is the trap.** It sits in **Subchapter D**, where §1952.153 caps the amount an insurer must offer at **$2,500** per person — a ceiling on the requirement, not a floor tied to Chapter 601. Collision and medical payments are optional coverages with no statutory minimum at all.', 'draft'
   from public.courses c
   join public.topics t on t.course_id = c.id and t.code = 'TX.II'
  where c.slug = 'texas-general-lines-property-casualty'
@@ -18485,27 +18485,27 @@ on conflict (id) do update set
   status = excluded.status, topic_id = excluded.topic_id;
 
 insert into public.question_options (id, question_id, course_id, body, position)
-select 'c76866be-fcf6-5665-baf2-34a65fe36a4e', '1722a107-5b25-5820-9e20-c7b4bc728dd3', c.id, '$30,000 per person, $60,000 per accident for bodily injury, and $25,000 for property damage', 1
+select '2cb082f4-d59d-5567-83fb-32bf43d6ca73', '7cfdab79-16d3-588f-8eec-926a13880d70', c.id, 'Uninsured and underinsured motorist coverage', 1
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
 on conflict (id) do update set body = excluded.body;
 
 insert into public.question_options (id, question_id, course_id, body, position)
-select 'adef6ae8-3a21-5e4a-9330-3fdc22d3c180', '1722a107-5b25-5820-9e20-c7b4bc728dd3', c.id, '$25,000 per person, $50,000 per accident, and $25,000 for property damage', 2
+select '8db4c55d-7246-59dd-b4ee-2224700bcd84', '7cfdab79-16d3-588f-8eec-926a13880d70', c.id, 'Personal injury protection', 2
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
 on conflict (id) do update set body = excluded.body;
 
 insert into public.question_options (id, question_id, course_id, body, position)
-select '492fc227-f91c-5fe8-9aa9-92aa8ace8e7e', '1722a107-5b25-5820-9e20-c7b4bc728dd3', c.id, '$30,000 per person, $60,000 per accident, and $30,000 for property damage', 3
+select '9fbef1fc-2922-5ca8-af06-b13df795ccf7', '7cfdab79-16d3-588f-8eec-926a13880d70', c.id, 'Collision coverage', 3
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
 on conflict (id) do update set body = excluded.body;
 
 insert into public.question_options (id, question_id, course_id, body, position)
-select '5f3812da-97a2-5bc7-8a1b-bf01405ae67b', '1722a107-5b25-5820-9e20-c7b4bc728dd3', c.id, '$50,000 per person, $100,000 per accident, and $25,000 for property damage', 4
+select '009b8275-f98d-5421-b8c5-8462f1f91138', '7cfdab79-16d3-588f-8eec-926a13880d70', c.id, 'Medical payments coverage', 4
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
 on conflict (id) do update set body = excluded.body;
 
 insert into public.question_answers (question_id, course_id, correct_option_id)
-select '1722a107-5b25-5820-9e20-c7b4bc728dd3', c.id, 'c76866be-fcf6-5665-baf2-34a65fe36a4e'
+select '7cfdab79-16d3-588f-8eec-926a13880d70', c.id, '2cb082f4-d59d-5567-83fb-32bf43d6ca73'
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
 on conflict (question_id) do update set
   correct_option_id = excluded.correct_option_id;

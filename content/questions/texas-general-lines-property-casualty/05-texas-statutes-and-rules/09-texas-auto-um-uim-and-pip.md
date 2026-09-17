@@ -139,13 +139,18 @@ replacement of lost income**.
 Whatever the number of insureds, policies, vehicles or claims, the total to one
 person for one occurrence is capped at the policy's stated limit.
 
-### What are the Texas minimum auto liability limits?
+### Chapter 601 of the Transportation Code sets a floor of 30/60/25. Which coverage may not be written below it?
 
-- [x] $30,000 per person, $60,000 per accident for bodily injury, and $25,000 for property damage
-- [ ] $25,000 per person, $50,000 per accident, and $25,000 for property damage
-- [ ] $30,000 per person, $60,000 per accident, and $30,000 for property damage
-- [ ] $50,000 per person, $100,000 per accident, and $25,000 for property damage
+- [x] Uninsured and underinsured motorist coverage
+- [ ] Personal injury protection
+- [ ] Collision coverage
+- [ ] Medical payments coverage
 
-**30/60/25**, set by **§601.072(a-1) of the Transportation Code** effective
-1 January 2011. Both §1952.101 and §1952.105 defer to that chapter for the
-floor, so UM and PIP may not be offered below it.
+**§1952.105(c)** is a **Subchapter C** section, and Subchapter C is uninsured
+and underinsured motorist coverage. That is what the Chapter 601 floor
+reaches.
+
+**PIP is the trap.** It sits in **Subchapter D**, where §1952.153 caps the
+amount an insurer must offer at **$2,500** per person — a ceiling on the
+requirement, not a floor tied to Chapter 601. Collision and medical payments
+are optional coverages with no statutory minimum at all.

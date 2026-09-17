@@ -28,7 +28,8 @@ select '84731348-30ac-50e6-a05e-f47cae272f2f', c.id, $lesson$# The floor under e
 
 The uninsured motorist lesson kept deferring to "the limits prescribed by
 Chapter 601, Transportation Code" — because **§1952.101 and §1952.105 both
-defer to it**, and UM limits cannot be offered below that floor. This is that
+defer to it**, and UM limits cannot be offered below that floor. Both of those
+sections are in Subchapter C, so what they floor is UM, not PIP. This is that
 chapter, and the residual market that exists for drivers who cannot meet it.
 
 ## The minimum limits
@@ -51,7 +52,12 @@ it is the most likely single figure to be asked.
 
 Two things follow directly:
 
-- **UM and PIP limits may not be offered below it** — §1952.105(c).
+- **UM limits may not be offered below it** — §1952.105(c).
+  **PIP is not floored by this chapter.** §1952.105 sits in Subchapter C,
+  which governs uninsured and underinsured motorist coverage. PIP is
+  Subchapter D, and §1952.153 caps the amount an insurer is *required* to
+  offer at **$2,500** per person. Treating the 30/60/25 floor as reaching
+  PIP is a natural mistake and a good distractor.
 - Every Texas auto question about "minimum required coverage" means these
   three numbers, not the general-pattern figures from Module 2.
 

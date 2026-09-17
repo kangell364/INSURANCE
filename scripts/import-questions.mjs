@@ -208,6 +208,46 @@ if (problems.length) {
 }
 
 const total = files.reduce((sum, f) => sum + f.questions.length, 0)
+// Two questions with the same stem get the same id, and every insert carries
+// `on conflict (id) do update`, so the second silently overwrites the first.
+// The script then reports the number it counted while the database holds one
+// row fewer, and nothing anywhere says so.
+//
+// Found the only way it could be: production reported 611 questions after a
+// seed this script had called 612. The duplicate was the same auto-limits
+// question written into two Module 5 lessons months apart.
+//
+// A deterministic id is the right choice -- it makes a re-import update a
+// question rather than duplicate it -- but it means duplicate STEMS have to
+// be caught here, because the database cannot tell them apart.
+// The key must match uuidFor('question', ...) below EXACTLY. Deriving it a
+// second way here would let the two disagree, and a duplicate check that
+// disagrees with the id it is checking is worse than none.
+const byId = new Map()
+const collisions = []
+for (const f of files) {
+  for (const q of f.questions) {
+    const id = uuidFor('question', `${f.courseSlug}/${q.stem}`)
+    const seen = byId.get(id)
+    if (seen) {
+      collisions.push(
+        `  - ${q.stem.slice(0, 70)}${q.stem.length > 70 ? '…' : ''}\n` +
+          `      ${seen}\n      ${f.relative}`,
+      )
+    } else {
+      byId.set(id, f.relative)
+    }
+  }
+}
+if (collisions.length > 0) {
+  console.error(
+    `Duplicate question(s) -- identical text, so only one would survive ` +
+      `the seed:\n${collisions.join('\n')}\n\n` +
+      `Reword or remove one of each pair.`,
+  )
+  process.exit(1)
+}
+
 const unreviewed = files.filter((f) => !f.reviewed)
 console.log(`${total} question(s) across ${files.length} file(s)`)
 console.log(`  reviewed and publishable: ${total - unreviewed.reduce((s, f) => s + f.questions.length, 0)}`)

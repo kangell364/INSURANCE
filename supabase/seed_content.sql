@@ -8291,12 +8291,17 @@ is the clearest single contrast in the subchapter, and a likely question.
 
 ## Where the limits come from
 
-**§1952.105(c)** forbids offering UM or PIP below the amounts prescribed by
+**§1952.105(c)** forbids offering **UM** below the amounts prescribed by
 **Chapter 601, Transportation Code** — and those are **30/60/25**: $30,000 for
 bodily injury to one person, $60,000 for two or more in one collision, and
 $25,000 for property damage (§601.072(a-1)). **Financial Responsibility and
 TAIPA**, later in this module, covers that chapter and the auto residual
 market that writes drivers the voluntary market rejects.
+
+**The floor does not reach PIP.** §1952.105 is a Subchapter C section, and
+Subchapter C is uninsured and underinsured motorist coverage. PIP lives in
+Subchapter D, where §1952.153 caps the *required* amount at **$2,500** per
+person rather than setting any minimum tied to Chapter 601.
 
 ## What is not taught here
 
@@ -9362,7 +9367,8 @@ select '84731348-30ac-50e6-a05e-f47cae272f2f', c.id, $lesson$# The floor under e
 
 The uninsured motorist lesson kept deferring to "the limits prescribed by
 Chapter 601, Transportation Code" — because **§1952.101 and §1952.105 both
-defer to it**, and UM limits cannot be offered below that floor. This is that
+defer to it**, and UM limits cannot be offered below that floor. Both of those
+sections are in Subchapter C, so what they floor is UM, not PIP. This is that
 chapter, and the residual market that exists for drivers who cannot meet it.
 
 ## The minimum limits
@@ -9385,7 +9391,12 @@ it is the most likely single figure to be asked.
 
 Two things follow directly:
 
-- **UM and PIP limits may not be offered below it** — §1952.105(c).
+- **UM limits may not be offered below it** — §1952.105(c).
+  **PIP is not floored by this chapter.** §1952.105 sits in Subchapter C,
+  which governs uninsured and underinsured motorist coverage. PIP is
+  Subchapter D, and §1952.153 caps the amount an insurer is *required* to
+  offer at **$2,500** per person. Treating the 30/60/25 floor as reaching
+  PIP is a natural mistake and a good distractor.
 - Every Texas auto question about "minimum required coverage" means these
   three numbers, not the general-pattern figures from Module 2.
 

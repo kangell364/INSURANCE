@@ -172,12 +172,17 @@ is the clearest single contrast in the subchapter, and a likely question.
 
 ## Where the limits come from
 
-**§1952.105(c)** forbids offering UM or PIP below the amounts prescribed by
+**§1952.105(c)** forbids offering **UM** below the amounts prescribed by
 **Chapter 601, Transportation Code** — and those are **30/60/25**: $30,000 for
 bodily injury to one person, $60,000 for two or more in one collision, and
 $25,000 for property damage (§601.072(a-1)). **Financial Responsibility and
 TAIPA**, later in this module, covers that chapter and the auto residual
 market that writes drivers the voluntary market rejects.
+
+**The floor does not reach PIP.** §1952.105 is a Subchapter C section, and
+Subchapter C is uninsured and underinsured motorist coverage. PIP lives in
+Subchapter D, where §1952.153 caps the *required* amount at **$2,500** per
+person rather than setting any minimum tied to Chapter 601.
 
 ## What is not taught here
 
