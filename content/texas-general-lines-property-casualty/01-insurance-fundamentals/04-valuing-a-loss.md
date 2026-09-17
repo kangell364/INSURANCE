@@ -95,6 +95,25 @@ modern materials serving the same function.
 
 Two terms turn up in claims and occasionally on exams.
 
+### Pair and set
+
+Some property is worth more together than apart: a pair of earrings, a set of
+dining chairs, a matched suite. **The pair and set clause says the insurer
+pays the difference in value between the set before the loss and the set
+after** — not the value of the missing piece alone, and not the whole set.
+
+Two consequences follow, and they run in opposite directions:
+
+- **The insured gets more than the lost item's own value**, because losing one
+  earring devalues the other.
+- **The insurer need not treat it as a total loss** of the set, and **need not
+  take the remaining pieces** unless it chooses to pay for the whole and
+  claim them.
+
+> **Not named on either Texas outline.** Recorded because it is a real
+> settlement clause a producer will have to explain to an insured who expects
+> either too much or too little.
+
 **Recoverable depreciation** is the gap between the ACV payment and the
 replacement cost, released to the insured once the work is done under a
 replacement-cost policy.

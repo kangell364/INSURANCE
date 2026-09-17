@@ -4,7 +4,7 @@ title: Terms the Other Lessons Assume
 slug: terms-the-other-lessons-assume
 blueprint: GK.II
 summary: Eleven terms that do not belong to any one topic — including the party numbering and the reinsurance that four later modules assume you already know.
-estimated_minutes: 19
+estimated_minutes: 22
 status: draft
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
@@ -18,6 +18,49 @@ definition question that you either know or do not.
 
 Several are treated at more length later, where they do real work. This lesson
 is where you find them under the name the blueprint uses.
+
+## Property and casualty: the two halves of the licence
+
+The licence is called **General Lines — Property and Casualty**, and Modules 3
+and 4 are one each. Here is what the two words mean.
+
+**Property insurance covers loss of or damage to the insured's own property.**
+The house, the building, the stock, the car's own bodywork.
+
+**Casualty insurance covers the insured's legal liability to others** — what
+they owe somebody else — together with a group of lines that grew up beside
+liability: workers' compensation, crime, surety, and the liability half of
+auto.
+
+**The test in one line:**
+
+| | The question it answers |
+| --- | --- |
+| **Property** | *What did I lose?* |
+| **Casualty** | *What do I owe?* |
+
+**That maps exactly onto the party numbering above.** Property insurance is
+**first-party** — the insurer pays the insured for the insured's own loss.
+Casualty is largely **third-party** — the insurer pays somebody else because
+the insured is liable to them.
+
+### Where the line blurs, and why that is fine
+
+**A personal auto policy is both.** Collision and comprehensive are property
+coverage on your own car; the liability section is casualty. One policy,
+both halves, which is why auto sits in Module 4 but keeps being compared with
+property forms.
+
+**Crime insurance is traditionally a casualty line** even though it pays for
+the insured's own stolen property — a historical classification rather than a
+logical one.
+
+**Do not over-invest in the boundary.** Texas licenses both together for
+exactly this reason: a producer needs the whole of it, and no exam question
+turns on whether crime is "really" casualty. The distinction earns its keep by
+telling you **which question a coverage answers** — your loss, or your
+liability — and that one is worth having in front of every form you meet from
+here on.
 
 ## The parties, and the numbering
 

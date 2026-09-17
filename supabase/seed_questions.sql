@@ -2970,6 +2970,82 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '22da93f4-e917-5da1-bf6f-d777605873a0', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'terms-the-other-lessons-assume'),
+       'What does property insurance cover?', '**Property insurance answers "what did I lose?"** — the house, the building, the stock, the car''s own bodywork. It is **first-party** coverage: the insurer pays the insured for the insured''s own loss. **Casualty answers "what do I owe?"** Legal liability to others, largely **third-party**, plus the lines that grew up beside it — workers'' compensation, crime, surety, and the liability half of auto. Every wrong option here describes casualty from a different angle, which is the distinction the licence is named after.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.II'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '2ab85995-0cea-5da5-b841-22d745c24034', '22da93f4-e917-5da1-bf6f-d777605873a0', c.id, 'Loss of or damage to the insured''s own property', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'ab4f8dde-569e-5824-9ad9-3ad2c4491630', '22da93f4-e917-5da1-bf6f-d777605873a0', c.id, 'The insured''s legal liability to others', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'f765896d-9d84-5e09-8c74-921e016c3a32', '22da93f4-e917-5da1-bf6f-d777605873a0', c.id, 'Injury to the insured''s employees', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '22ce419e-b635-5fb0-80cd-66d2bfb76c8c', '22da93f4-e917-5da1-bf6f-d777605873a0', c.id, 'Losses caused by the insured''s negligence', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '22da93f4-e917-5da1-bf6f-d777605873a0', c.id, '2ab85995-0cea-5da5-b841-22d745c24034'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'aa91c078-89b1-5276-acef-bf05dc2a1d63', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'terms-the-other-lessons-assume'),
+       'A personal auto policy''s collision coverage is which kind of insurance?', '**Collision is property coverage.** It pays the insured for damage to their own car, which is the property question — *what did I lose?* **An auto policy contains both halves.** Collision and comprehensive are property; the liability section is casualty. That is why auto sits in the casualty module but keeps being compared with property forms. **The boundary is not worth over-investing in.** Crime insurance is traditionally classed as casualty though it pays for the insured''s own stolen property — history, not logic. Texas licenses both halves together precisely because a producer needs all of it.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.II'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'c5f6853f-6869-55a3-b77e-0e86735fbc79', 'aa91c078-89b1-5276-acef-bf05dc2a1d63', c.id, 'Property — it pays for damage to the insured''s own vehicle', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'a9e125fb-3970-55ee-99f1-78d1b19a9b55', 'aa91c078-89b1-5276-acef-bf05dc2a1d63', c.id, 'Casualty — all auto coverage is casualty', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '4a094fd7-5901-5d27-b510-15b6add9a417', 'aa91c078-89b1-5276-acef-bf05dc2a1d63', c.id, 'Neither; auto is a separate category entirely', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '3a35580f-6e1e-59e5-9450-ed93d415975a', 'aa91c078-89b1-5276-acef-bf05dc2a1d63', c.id, 'Both, since collision and liability are inseparable', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'aa91c078-89b1-5276-acef-bf05dc2a1d63', c.id, 'c5f6853f-6869-55a3-b77e-0e86735fbc79'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select 'daf219e2-5630-5e54-9e70-775f98279a67', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'terms-the-other-lessons-assume'),
        'An insurer cedes part of a risk to a reinsurer. The insured suffers a covered loss. Who owes the insured?', '**The insured has no contract with the reinsurer**, so no claim against it. Reinsurance is an agreement between two insurers about how they share a risk between themselves; it does not divide the promise made to the policyholder. This is why **TRIA is described as a reinsurance programme rather than an insurance policy** — nobody buys a TRIA policy, and no insured claims under one.', 'draft'

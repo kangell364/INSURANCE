@@ -5,6 +5,43 @@ lesson: terms-the-other-lessons-assume
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### What does property insurance cover?
+
+- [x] Loss of or damage to the insured's own property
+- [ ] The insured's legal liability to others
+- [ ] Injury to the insured's employees
+- [ ] Losses caused by the insured's negligence
+
+**Property insurance answers "what did I lose?"** — the house, the building,
+the stock, the car's own bodywork. It is **first-party** coverage: the insurer
+pays the insured for the insured's own loss.
+
+**Casualty answers "what do I owe?"** Legal liability to others, largely
+**third-party**, plus the lines that grew up beside it — workers'
+compensation, crime, surety, and the liability half of auto.
+
+Every wrong option here describes casualty from a different angle, which is
+the distinction the licence is named after.
+
+### A personal auto policy's collision coverage is which kind of insurance?
+
+- [x] Property — it pays for damage to the insured's own vehicle
+- [ ] Casualty — all auto coverage is casualty
+- [ ] Neither; auto is a separate category entirely
+- [ ] Both, since collision and liability are inseparable
+
+**Collision is property coverage.** It pays the insured for damage to their own
+car, which is the property question — *what did I lose?*
+
+**An auto policy contains both halves.** Collision and comprehensive are
+property; the liability section is casualty. That is why auto sits in the
+casualty module but keeps being compared with property forms.
+
+**The boundary is not worth over-investing in.** Crime insurance is
+traditionally classed as casualty though it pays for the insured's own stolen
+property — history, not logic. Texas licenses both halves together precisely
+because a producer needs all of it.
+
 ### An insurer cedes part of a risk to a reinsurer. The insured suffers a covered loss. Who owes the insured?
 
 - [x] The insurer that issued the policy, for the whole loss

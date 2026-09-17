@@ -90,6 +90,28 @@ claim time in proportion to the shortfall.
 **Agreed value** suspends coinsurance where the insurer has accepted a
 statement of values.
 
+## How the building is classified
+
+Before any of the coverage choices, an underwriter classifies the building
+itself, because construction drives the rate more than almost anything else.
+**Six classes, from most combustible to least:**
+
+1. **Frame** — combustible walls and floors. Wood.
+2. **Joisted masonry** — masonry walls, combustible floor and roof.
+3. **Non-combustible** — metal walls and roof on a metal or concrete frame.
+4. **Masonry non-combustible** — masonry walls with a non-combustible floor
+   and roof.
+5. **Modified fire resistive** — rated materials, roughly one hour.
+6. **Fire resistive** — concrete or protected steel, roughly two hours.
+
+**The order is the point.** Each step buys a lower fire rate, and the first two
+are where most small commercial risks sit.
+
+> **Not named on either Texas outline.** Included because a producer quoting
+> commercial property is asked the construction class on every submission, and
+> because it explains why two identical-looking buildings on the same street
+> price differently.
+
 ## The three causes of loss forms
 
 This is the most-tested part of commercial property.
