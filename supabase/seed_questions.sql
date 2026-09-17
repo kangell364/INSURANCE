@@ -2286,6 +2286,44 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'c999c29e-e2fb-56c7-a16b-e3f4a39254ae', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'deductibles-coinsurance-and-limits'),
+       'A $200,000 home is insured for $100,000 under a policy requiring 80% coverage. Fire destroys it completely. What does the insurer pay?', '**On a total loss the limit governs.** Coinsurance is a penalty on *partial* losses; where the property is destroyed outright the insured simply receives the limit they bought — $100,000 and no more. **Run the formula anyway and it agrees**, which is the useful check: - **Should** = 80% × $200,000 = $160,000 - **Did** = $100,000, so the fraction is **0.625** - 0.625 × $200,000 loss = **$125,000** - Capped at the **$100,000 limit** **$62,500 is the trap**, and it is the formula applied to the *limit* instead of to the *loss*. The fraction multiplies what was lost, never what was carried. **$80,000** confuses the coinsurance percentage with a payout percentage — 80% is how much you must insure, not how much you get. **The lesson to carry: a total loss is a limit question, not a coinsurance question.** Coinsurance never makes the policy pay more than its limit, and never reduces a total loss below it.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.II'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'd1f07437-7aee-577c-81ec-db22e711324a', 'c999c29e-e2fb-56c7-a16b-e3f4a39254ae', c.id, '$100,000', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '8291f0fc-bec3-54ce-ae72-f5f0e65d30b6', 'c999c29e-e2fb-56c7-a16b-e3f4a39254ae', c.id, '$80,000', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'aaa48c72-adec-520e-bb97-83b73c57279f', 'c999c29e-e2fb-56c7-a16b-e3f4a39254ae', c.id, '$62,500', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'ccafd3b5-d5e0-5c16-8a34-476220a21661', 'c999c29e-e2fb-56c7-a16b-e3f4a39254ae', c.id, '$50,000', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'c999c29e-e2fb-56c7-a16b-e3f4a39254ae', c.id, 'd1f07437-7aee-577c-81ec-db22e711324a'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select 'fdb51f63-0120-5541-babe-f094bff47bde', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'deductibles-coinsurance-and-limits'),
        'A standard coinsurance clause requires the property to be insured for a stated percentage — usually 80% — of what?', '**Of the value measured on the basis the policy settles on**, which for the commercial property written with a coinsurance clause is normally **replacement cost**. Hence the usual phrasing: *80% of replacement cost*. Actual cash value is the answer only where the policy itself settles on ACV — possible, but not what "the standard coinsurance clause" means. **The other two are numbers the owner knows and the policy ignores.** Market value includes the land and the location, neither of which burns. The outstanding loan is what is owed, which has no relationship to what rebuilding costs — an owner halfway through a mortgage on an appreciating building could be enormously underinsured while feeling well covered. **And it is measured at the time of the loss**, not when the policy was written, which is how a once-compliant insured drifts into a penalty as construction costs rise.', 'draft'

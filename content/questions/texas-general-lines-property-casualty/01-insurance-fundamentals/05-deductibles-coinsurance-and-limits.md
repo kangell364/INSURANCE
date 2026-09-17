@@ -5,6 +5,33 @@ lesson: deductibles-coinsurance-and-limits
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### A $200,000 home is insured for $100,000 under a policy requiring 80% coverage. Fire destroys it completely. What does the insurer pay?
+
+- [x] $100,000
+- [ ] $80,000
+- [ ] $62,500
+- [ ] $50,000
+
+**On a total loss the limit governs.** Coinsurance is a penalty on *partial*
+losses; where the property is destroyed outright the insured simply receives
+the limit they bought — $100,000 and no more.
+
+**Run the formula anyway and it agrees**, which is the useful check:
+
+- **Should** = 80% × $200,000 = $160,000
+- **Did** = $100,000, so the fraction is **0.625**
+- 0.625 × $200,000 loss = **$125,000**
+- Capped at the **$100,000 limit**
+
+**$62,500 is the trap**, and it is the formula applied to the *limit* instead
+of to the *loss*. The fraction multiplies what was lost, never what was
+carried. **$80,000** confuses the coinsurance percentage with a payout
+percentage — 80% is how much you must insure, not how much you get.
+
+**The lesson to carry: a total loss is a limit question, not a coinsurance
+question.** Coinsurance never makes the policy pay more than its limit, and
+never reduces a total loss below it.
+
 ### A standard coinsurance clause requires the property to be insured for a stated percentage — usually 80% — of what?
 
 - [x] Its replacement cost
