@@ -103,6 +103,27 @@ The insured is $26,000 short on a loss well inside the limit. That is
 coinsurance working exactly as intended and feeling exactly as unfair as it
 always does.
 
+### The same fire, with the requirement met
+
+Change one thing — the insured carried **$400,000** instead of $300,000.
+
+- **Should** = 80% × $500,000 = **$400,000**
+- **Did** = **$400,000**
+- $400,000 ÷ $400,000 = **1**
+- 1 × $100,000 = $100,000
+- Less the deductible: **$99,000**
+
+**Same building, same fire, $25,000 more paid — for carrying $100,000 more
+limit.** That is the trade the clause exists to make, and it is the comparison
+worth remembering: the penalty is not a fine, it is the coverage they did not
+buy.
+
+**Do step 2 before the arithmetic.** Work out what they should carry, ask
+whether they carry at least that, and only reach for the fraction if the
+answer is no. When the answer is yes the fraction is 1 and there is nothing to
+calculate — and a student who starts multiplying without checking will
+sometimes produce a penalty where none exists.
+
 ### The details that get tested
 
 - Value is measured **at the time of the loss**, not when the policy was

@@ -5,6 +5,28 @@ lesson: deductibles-coinsurance-and-limits
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### A $600,000 building carries 80% coinsurance, a $480,000 limit and a $2,500 deductible. Fire causes $150,000 of damage. What is paid?
+
+- [x] $147,500
+- [ ] $120,000
+- [ ] $150,000
+- [ ] $117,500
+
+**Check the requirement before doing any arithmetic.**
+
+- **Should** = 80% × $600,000 = **$480,000**
+- **Did** = **$480,000** — the requirement is met exactly
+- The fraction is **1**, so there is no penalty
+- $150,000 − $2,500 deductible = **$147,500**
+
+**When the insured carries enough, there is nothing to calculate.** $120,000
+comes from applying a fraction that does not apply — 480 ÷ 600 — which is the
+mistake of dividing by the building's *value* instead of by the *required
+amount*. $150,000 forgets the deductible.
+
+The habit worth building: **work out Should, compare it with Did, and only
+reach for the fraction if Did is smaller.**
+
 ### The policy limit is known by all of the following names EXCEPT
 
 - [ ] Limit of coverage

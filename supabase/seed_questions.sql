@@ -2286,6 +2286,44 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'b188400d-27d1-5ad1-9110-4007a2f47e34', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'deductibles-coinsurance-and-limits'),
+       'A $600,000 building carries 80% coinsurance, a $480,000 limit and a $2,500 deductible. Fire causes $150,000 of damage. What is paid?', '**Check the requirement before doing any arithmetic.** - **Should** = 80% × $600,000 = **$480,000** - **Did** = **$480,000** — the requirement is met exactly - The fraction is **1**, so there is no penalty - $150,000 − $2,500 deductible = **$147,500** **When the insured carries enough, there is nothing to calculate.** $120,000 comes from applying a fraction that does not apply — 480 ÷ 600 — which is the mistake of dividing by the building''s *value* instead of by the *required amount*. $150,000 forgets the deductible. The habit worth building: **work out Should, compare it with Did, and only reach for the fraction if Did is smaller.**', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.II'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'bc8d22fd-2de1-5d5c-85f7-5c6b76481e95', 'b188400d-27d1-5ad1-9110-4007a2f47e34', c.id, '$147,500', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'a06454a8-f721-57c6-b94e-6b53f764c3c3', 'b188400d-27d1-5ad1-9110-4007a2f47e34', c.id, '$120,000', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '3612a292-f027-5913-b96c-f389a5ed80ea', 'b188400d-27d1-5ad1-9110-4007a2f47e34', c.id, '$150,000', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '7eb134f9-1708-5032-980a-bbc21ed30ce0', 'b188400d-27d1-5ad1-9110-4007a2f47e34', c.id, '$117,500', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'b188400d-27d1-5ad1-9110-4007a2f47e34', c.id, 'bc8d22fd-2de1-5d5c-85f7-5c6b76481e95'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select 'e63c537e-0e8d-543a-a6bb-b2c8259ac729', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'deductibles-coinsurance-and-limits'),
        'The policy limit is known by all of the following names EXCEPT', '**Limit, limit of liability, limit of insurance and limit of coverage all mean the same thing** — the most the insurer will pay. Property forms tend to say *limit of insurance*, liability forms *limit of liability*, and nothing turns on which a particular form chose. **"Limit of responsibility" is not an insurance term.** Neither is "limit of indemnity". A stem built this way is testing whether the synonyms are familiar enough that the invented one stands out — which is a different skill from knowing what a limit does, and worth a moment''s practice.', 'draft'
