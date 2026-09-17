@@ -52,6 +52,7 @@
  *
  *   node scripts/check-blueprint-coverage.mjs
  *   node scripts/check-blueprint-coverage.mjs --markdown  # the comparison table
+ *   node scripts/check-blueprint-coverage.mjs --lessons 01 # a module, lesson by lesson
  *   node scripts/check-blueprint-coverage.mjs --max 0     # ratchet
  */
 
@@ -304,6 +305,86 @@ const rows = OUTLINE.map(([section, line, label, pattern]) => {
 
 const untaught = rows.filter((r) => r.lessons === 0)
 const unasked = rows.filter((r) => r.lessons > 0 && r.questions === 0)
+
+/**
+ * --lessons <NN>: the outline entries each lesson of a module carries.
+ *
+ * The comparison table is organised by the outline, which is right for
+ * auditing and wrong for reviewing: somebody reading module 01 wants to know
+ * what THIS lesson is answerable for, not to scan 190 rows for the ones that
+ * land in it. An entry taught in more than one lesson is listed under each,
+ * because both have to be right.
+ */
+const LESSONS_FOR = (() => {
+  const i = process.argv.indexOf('--lessons')
+  return i === -1 ? null : process.argv[i + 1]
+})()
+
+/**
+ * Which outline sections each module is answerable for. A lesson naming
+ * windstorm as an example of a peril is not teaching I.F.5, and listing it as
+ * though it were buries the twenty entries the lesson really does carry.
+ */
+const MODULE_SECTIONS = new Map([
+  ['01', ['II', 'V']],
+  ['02', ['III', 'VI']],
+  ['03', ['I']],
+  ['04', ['IV']],
+  ['05', ['TX.I', 'TX.II']],
+])
+
+if (LESSONS_FOR) {
+  const prefix = `${LESSONS_FOR}-`
+  const owned = MODULE_SECTIONS.get(LESSONS_FOR) ?? []
+  const byLesson = new Map()
+  const borrowed = []
+
+  for (const r of rows) {
+    const here = r.where.filter((w) => w.startsWith(prefix))
+    if (here.length === 0) continue
+    if (!owned.includes(r.section)) {
+      borrowed.push(r)
+      continue
+    }
+    for (const w of here) {
+      if (!byLesson.has(w)) byLesson.set(w, [])
+      byLesson.get(w).push(r)
+    }
+  }
+
+  const covered = new Set()
+  for (const [lesson, entries] of [...byLesson].sort()) {
+    const title = readFileSync(join(LESSONS, lesson), 'utf8').match(/^# (.+)$/m)?.[1] ?? ''
+    console.log(`\n### ${lesson.split('/').pop()} — ${title}\n`)
+    console.log('| Outline | Entry | Questions |')
+    console.log('| --- | --- | ---: |')
+    for (const e of entries.sort((a, b) => `${a.section}${a.line}`.localeCompare(`${b.section}${b.line}`))) {
+      console.log(`| ${e.section}.${e.line} | ${e.label} | ${e.questions} |`)
+      covered.add(`${e.section}.${e.line}`)
+    }
+  }
+
+  // An entry this module owns that no lesson in it matches. Taught somewhere
+  // else, or not taught -- either way the reviewer should know before starting.
+  const missing = rows.filter(
+    (r) => owned.includes(r.section) && !covered.has(`${r.section}.${r.line}`),
+  )
+  if (missing.length > 0) {
+    console.log(`\n### Owned by this module, but no lesson in it matches\n`)
+    for (const r of missing) {
+      const where = r.where.length > 0 ? r.where.join(', ') : '**NOT TAUGHT ANYWHERE**'
+      console.log(`  ${r.section}.${r.line.padEnd(6)} ${r.label.padEnd(34)} ${where}`)
+    }
+  }
+
+  console.log(
+    `\n${covered.size} of ${rows.filter((r) => owned.includes(r.section)).length} ` +
+      `entries in section(s) ${owned.join(', ')} land in module ${LESSONS_FOR}. ` +
+      `${borrowed.length} entr(ies) from other sections are mentioned in passing ` +
+      `and are another module's to get right.`,
+  )
+  process.exit(0)
+}
 
 if (MARKDOWN) {
   let current = null
