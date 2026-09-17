@@ -5,6 +5,43 @@ lesson: risk-peril-and-hazard
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### Which of the following represents a pure risk?
+
+- [x] The chance a house may burn down
+- [ ] Investing in a new business
+- [ ] A poker game
+- [ ] Buying shares in the hope they rise
+
+**A pure risk offers only loss or no loss.** The house burns or it does not;
+there is no version where the owner comes out ahead. That is what makes it
+insurable.
+
+Each wrong option carries **the chance of gain** as well as loss, which makes
+it speculative and uninsurable. **Apply the profit test**: if the person could
+profit from the event, no insurer will cover it.
+
+### Suzanne habitually leaves her side door unlocked. A thief enters and steals her jewellery. What was the hazard?
+
+- [x] The door being left unlocked
+- [ ] The thief
+- [ ] The theft
+- [ ] The jewellery
+
+**The hazard is the condition that made the loss more likely** — here, an
+unlocked door. A physical hazard: you could photograph it.
+
+The other three are the rest of the sequence, and the exam builds these stems
+by offering all of them at once:
+
+- **The theft is the peril** — the cause of loss.
+- **The jewellery is the subject of insurance**, and losing it is the
+  **loss**.
+- **The thief** is who caused it, which is not one of the four terms at all.
+
+**Work the chain in order: hazard made it likelier, peril caused it, loss is
+what resulted.** Then answer the one actually asked — these stems usually
+reward reading the question twice rather than knowing more.
+
 ### A flood is an example of what?
 
 - [x] A peril

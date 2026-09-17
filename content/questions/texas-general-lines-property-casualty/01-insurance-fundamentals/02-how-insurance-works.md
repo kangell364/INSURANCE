@@ -5,6 +5,57 @@ lesson: how-insurance-works
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### What is the contract or device for transferring risk from a person or business to an insurance company?
+
+- [x] Insurance
+- [ ] Adhesion
+- [ ] The law of large numbers
+- [ ] Agency
+
+**Insurance is the transfer technique.** The insured hands the financial
+consequence of a loss to the insurer and pays a small certain amount instead
+of facing a large uncertain one.
+
+The distractors are all real terms from nearby: **adhesion** describes the
+*kind* of contract insurance is — drafted by one side, taken or left by the
+other. **The law of large numbers** is what lets the insurer accept the
+transfer, not the transfer itself. **Agency** is the relationship between the
+insurer and its producer.
+
+### A homeowner decides their house is unlikely to burn and cancels their fire policy. Which risk-management technique is this?
+
+- [x] Retention
+- [ ] Avoidance
+- [ ] Transfer
+- [ ] Reduction
+
+**Retention — they have decided to carry the loss themselves.** Retention is
+not only a deductible: **choosing not to buy cover at all is retention**, and
+it can be perfectly deliberate.
+
+**Avoidance is the trap**, and the test is whether the exposure still exists.
+Avoidance means not taking the risk — selling the house, or never buying it.
+This homeowner still owns a house that can still burn; all they have given up
+is the insurance. **The exposure is unchanged; only who pays for it moved.**
+
+Transfer is the opposite of what happened — that would be *buying* the policy.
+Reduction would be a sprinkler system.
+
+### A contractor's agreement requires the subcontractor to hold the contractor harmless for injuries on site. Which technique is this?
+
+- [x] Transfer
+- [ ] Retention
+- [ ] Sharing
+- [ ] Avoidance
+
+**Transfer — the risk has been moved to somebody else by contract.** Insurance
+is the usual way of doing this, but it is not the only one: a hold harmless
+agreement transfers the financial consequence just as a policy does.
+
+**Sharing** would be spreading it across a group who each carry part — as
+partners do, or the subscribers of a reciprocal. Here it has been moved
+entirely, not divided.
+
 ### An independent agent differs from a captive agent principally in what way?
 
 - [x] The independent agent places business with several insurers and owns the renewals

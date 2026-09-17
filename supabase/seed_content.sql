@@ -266,6 +266,28 @@ thousand similar houses will burn, and price your policy accordingly.
 
 That is not a paradox, and the exam wants you to be able to say why.
 
+## What insurance is
+
+**Insurance is a contract — a device — by which one party agrees, for a
+premium, to indemnify another against loss from specified perils.**
+
+Two halves of that are worth separating, because the exam asks about each.
+
+**As a contract, it transfers risk.** The insured hands the financial
+consequence of a loss to the insurer and pays a known, small, certain amount
+instead of facing an unknown, large, uncertain one. **Insurance is the
+*transfer* technique** in the risk-management list below — that is its place
+among the five, and a stem asking what "transfers risk from a person or
+business to an insurance company" is asking for the word *insurance*.
+
+**As a business, it works by pooling.** Transfer alone would just move the
+problem. What makes the insurer able to accept it is that it has accepted
+thousands of similar transfers, and the aggregate is predictable even though
+no single one is.
+
+So **transfer is what it does for the insured; pooling is what makes it
+possible for the insurer.** The rest of this lesson is the second half.
+
 ## The law of large numbers
 
 **The more similar exposures you observe, the closer actual losses come to
@@ -366,11 +388,13 @@ Insurance is one response to risk, not the only one. The exam tests the full
 set, usually by asking which one a described action represents.
 
 - **Avoidance** — do not take the risk at all. Do not buy the building.
-- **Retention** — accept it and pay losses yourself. A deductible is retention.
+- **Retention** — accept it and pay losses yourself. A deductible is
+  retention, and so is **choosing not to buy the cover at all** — a decision
+  that the exposure is small enough to carry. Retention can be deliberate.
 - **Reduction** (or control) — lower the frequency or severity. Sprinklers,
   training, locks.
-- **Transfer** — move it to someone else. Insurance is transfer; so is a hold
-  harmless agreement in a contract.
+- **Transfer** — move it to someone else. **Insurance is the transfer
+  technique**; so is a hold harmless agreement in a contract.
 - **Sharing** — spread it across a group, as partners or a pool do.
 
 A common stem describes a business installing a sprinkler system and asks

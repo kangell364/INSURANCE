@@ -6,6 +6,82 @@
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '3450f652-be49-5c49-ac66-2da94049458f', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'risk-peril-and-hazard'),
+       'Which of the following represents a pure risk?', '**A pure risk offers only loss or no loss.** The house burns or it does not; there is no version where the owner comes out ahead. That is what makes it insurable. Each wrong option carries **the chance of gain** as well as loss, which makes it speculative and uninsurable. **Apply the profit test**: if the person could profit from the event, no insurer will cover it.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.II'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'ff8358ca-a656-52b0-a7c5-063a90f0e32f', '3450f652-be49-5c49-ac66-2da94049458f', c.id, 'The chance a house may burn down', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'b2ff5329-0924-5b62-8910-0e0313ef9bc3', '3450f652-be49-5c49-ac66-2da94049458f', c.id, 'Investing in a new business', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '106cee6d-780b-57c4-9f2a-72968b1b1813', '3450f652-be49-5c49-ac66-2da94049458f', c.id, 'A poker game', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'ca2e6db9-6fc9-5f0a-b80d-66a854150e3d', '3450f652-be49-5c49-ac66-2da94049458f', c.id, 'Buying shares in the hope they rise', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '3450f652-be49-5c49-ac66-2da94049458f', c.id, 'ff8358ca-a656-52b0-a7c5-063a90f0e32f'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '36932b96-cd74-5e17-aa71-a0d92ff5eccd', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'risk-peril-and-hazard'),
+       'Suzanne habitually leaves her side door unlocked. A thief enters and steals her jewellery. What was the hazard?', '**The hazard is the condition that made the loss more likely** — here, an unlocked door. A physical hazard: you could photograph it. The other three are the rest of the sequence, and the exam builds these stems by offering all of them at once: - **The theft is the peril** — the cause of loss. - **The jewellery is the subject of insurance**, and losing it is the **loss**. - **The thief** is who caused it, which is not one of the four terms at all. **Work the chain in order: hazard made it likelier, peril caused it, loss is what resulted.** Then answer the one actually asked — these stems usually reward reading the question twice rather than knowing more.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.II'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '6c916729-aa42-5bb7-8a36-1f0d9c89a6f5', '36932b96-cd74-5e17-aa71-a0d92ff5eccd', c.id, 'The door being left unlocked', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'f5a223ae-6f12-5d00-9e8c-39db182f7b43', '36932b96-cd74-5e17-aa71-a0d92ff5eccd', c.id, 'The thief', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'f9c03c7a-de46-53fc-b6ec-7acde0775ff2', '36932b96-cd74-5e17-aa71-a0d92ff5eccd', c.id, 'The theft', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'fb75d25e-66eb-50ce-9c55-f748afbde792', '36932b96-cd74-5e17-aa71-a0d92ff5eccd', c.id, 'The jewellery', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '36932b96-cd74-5e17-aa71-a0d92ff5eccd', c.id, '6c916729-aa42-5bb7-8a36-1f0d9c89a6f5'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select '45a0a5ca-e2b8-5e6b-9ea1-bed2b23f4eed', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'risk-peril-and-hazard'),
        'A flood is an example of what?', '**A flood is a peril — a cause of loss.** That a standard property form excludes it does not change what it is; exclusion is a statement about the policy, not about the cause. Flood is usually first met as "the thing that is hard to insure", which makes the exclusion option tempting. Resist it. The exclusion is why flood cover is bought through the **NFIP** rather than a reason to reclassify the peril. A *hazard* would be something increasing the chance of flood loss — building on a floodplain, or a failed levee.', 'draft'
@@ -494,6 +570,120 @@ on conflict (id) do update set body = excluded.body;
 
 insert into public.question_answers (question_id, course_id, correct_option_id)
 select '21e7a7e7-6952-5b2a-ac49-efd5c5f99348', c.id, 'e6e4022c-bb3c-5b54-9ae3-cc673691dc8b'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '4d35478a-a649-5bbe-b88b-0e7becef2a0e', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'how-insurance-works'),
+       'What is the contract or device for transferring risk from a person or business to an insurance company?', '**Insurance is the transfer technique.** The insured hands the financial consequence of a loss to the insurer and pays a small certain amount instead of facing a large uncertain one. The distractors are all real terms from nearby: **adhesion** describes the *kind* of contract insurance is — drafted by one side, taken or left by the other. **The law of large numbers** is what lets the insurer accept the transfer, not the transfer itself. **Agency** is the relationship between the insurer and its producer.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.II'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '6923a46f-f071-5f1f-80de-01b6488374da', '4d35478a-a649-5bbe-b88b-0e7becef2a0e', c.id, 'Insurance', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'c699f9b1-9525-5093-98ba-76b74b07e9f9', '4d35478a-a649-5bbe-b88b-0e7becef2a0e', c.id, 'Adhesion', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '9a77537a-ffbe-552e-bed4-fee5ae4b71a3', '4d35478a-a649-5bbe-b88b-0e7becef2a0e', c.id, 'The law of large numbers', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '3f1ea2fc-622e-54d2-9ef2-3dc16b1709fe', '4d35478a-a649-5bbe-b88b-0e7becef2a0e', c.id, 'Agency', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '4d35478a-a649-5bbe-b88b-0e7becef2a0e', c.id, '6923a46f-f071-5f1f-80de-01b6488374da'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'a0b18e8d-e227-5e7c-8c55-e88d5a2d8ccb', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'how-insurance-works'),
+       'A homeowner decides their house is unlikely to burn and cancels their fire policy. Which risk-management technique is this?', '**Retention — they have decided to carry the loss themselves.** Retention is not only a deductible: **choosing not to buy cover at all is retention**, and it can be perfectly deliberate. **Avoidance is the trap**, and the test is whether the exposure still exists. Avoidance means not taking the risk — selling the house, or never buying it. This homeowner still owns a house that can still burn; all they have given up is the insurance. **The exposure is unchanged; only who pays for it moved.** Transfer is the opposite of what happened — that would be *buying* the policy. Reduction would be a sprinkler system.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.II'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '38336318-bfcb-593c-b26b-0c10239789f6', 'a0b18e8d-e227-5e7c-8c55-e88d5a2d8ccb', c.id, 'Retention', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '88a5a140-16d4-5df7-bba8-b285eeb13cd9', 'a0b18e8d-e227-5e7c-8c55-e88d5a2d8ccb', c.id, 'Avoidance', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '476b7379-04fd-54dd-ab54-5e2a6cc707e9', 'a0b18e8d-e227-5e7c-8c55-e88d5a2d8ccb', c.id, 'Transfer', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '5235a3d9-a869-5f9f-96bc-0b4ebb204f5c', 'a0b18e8d-e227-5e7c-8c55-e88d5a2d8ccb', c.id, 'Reduction', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'a0b18e8d-e227-5e7c-8c55-e88d5a2d8ccb', c.id, '38336318-bfcb-593c-b26b-0c10239789f6'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '6ac4396f-ddc5-545b-a8f1-d70691f31f1d', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'how-insurance-works'),
+       'A contractor''s agreement requires the subcontractor to hold the contractor harmless for injuries on site. Which technique is this?', '**Transfer — the risk has been moved to somebody else by contract.** Insurance is the usual way of doing this, but it is not the only one: a hold harmless agreement transfers the financial consequence just as a policy does. **Sharing** would be spreading it across a group who each carry part — as partners do, or the subscribers of a reciprocal. Here it has been moved entirely, not divided.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.II'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'e3bd5cc1-ee7f-5915-990a-049a90846f59', '6ac4396f-ddc5-545b-a8f1-d70691f31f1d', c.id, 'Transfer', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '33496fd3-988d-5ff2-a747-a5935a2a3cc5', '6ac4396f-ddc5-545b-a8f1-d70691f31f1d', c.id, 'Retention', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '5acdd216-5953-589c-89e2-fd5d8fada5a3', '6ac4396f-ddc5-545b-a8f1-d70691f31f1d', c.id, 'Sharing', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '52d128d4-50d2-557d-9735-2749a55b32f2', '6ac4396f-ddc5-545b-a8f1-d70691f31f1d', c.id, 'Avoidance', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '6ac4396f-ddc5-545b-a8f1-d70691f31f1d', c.id, 'e3bd5cc1-ee7f-5915-990a-049a90846f59'
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
 on conflict (question_id) do update set
   correct_option_id = excluded.correct_option_id;
