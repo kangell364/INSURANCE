@@ -85,6 +85,16 @@ jobs:
       - name: Defined terms are examined
         run: node scripts/check-question-coverage.mjs --max 58
 
+      # What a lesson SAYS about a statute, against what the statute says.
+      # check-citations.mjs proves a cited section exists; it passed the claim
+      # that the 30/60/25 floor reaches PIP, because the cited section was
+      # real -- just the wrong one. This checks the numbers and subjects in a
+      # sentence against the text of the sections it cites. A flag is a
+      # question for a human, so it runs against a ceiling rather than failing
+      # on any flag; the ceiling only ever comes down.
+      - name: Statute claims match the cited section
+        run: node scripts/check-citation-claims.mjs --max 33
+
       # The statute extractor's text cleanup, tested directly. The PDFs from
       # statutes.capitol.texas.gov render non-breaking spaces as a literal
       # capital "A", which collides with the article "A" that opens most
