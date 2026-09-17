@@ -1,23 +1,56 @@
 # Blueprint coverage audit
 
 Checked 16 September 2026 against `reference/blueprint/`, which holds both
-halves of Pearson VUE #124401 as extracted from the PDF.
+halves of Pearson VUE #124401 as extracted from the PDF. **Counts refreshed
+17 September 2026**; the coverage findings below were not re-audited on that
+date and still carry their original date.
 
 **The exam is 130 scored questions**: 100 general knowledge and 30 Texas.
-The course is **50 lessons and 608 questions**.
+The course is **50 lessons and 699 questions**, up from 608 at the original
+audit. Every one of those 91 additions came from a topic list the owner
+supplied, not from an audit of my own.
 
-| Blueprint section | Scored | Module |
-| --- | --- | --- |
-| I. Types of Policies | 22 | 3 — Property Coverages |
-| II. Insurance Terms and Related Concepts | 15 | 1 — Insurance Fundamentals |
-| III. Policy Provisions and Contract Law | 13 | 2 — Policy Structure and Contract Law |
-| IV. Types of Policies, Bonds, and Related Terms | 23 | 4 — Casualty Coverages |
-| V. Insurance Terms (casualty) | 15 | 1 and 4 |
-| VI. Policy Provisions (casualty) | 12 | 2 and 4 |
-| TX.I. Texas Statutes Common to P&C | 18 | 5 — Texas Statutes and Rules |
-| TX.II. Texas Statutes Pertinent to P&C | 12 | 5 |
+**Nothing is published.** All 50 lessons are held as drafts; no module has
+been signed off. Coverage is what a student *could* be taught, not what a
+student can see.
+
+| Blueprint section | Scored | Module | Questions |
+| --- | --- | --- | --- |
+| I. Types of Policies | 22 | 3 — Property Coverages | 82 |
+| II. Insurance Terms and Related Concepts | 15 | 1 — Insurance Fundamentals | 114 |
+| III. Policy Provisions and Contract Law | 13 | 2 — Policy Structure and Contract Law | 124 |
+| IV. Types of Policies, Bonds, and Related Terms | 23 | 4 — Casualty Coverages | 118 |
+| V. Insurance Terms (casualty) | 15 | 1 and 4 | — |
+| VI. Policy Provisions (casualty) | 12 | 2 and 4 | — |
+| TX.I. Texas Statutes Common to P&C | 18 | 5 — Texas Statutes and Rules | 261 |
+| TX.II. Texas Statutes Pertinent to P&C | 12 | 5 | — |
 
 **Every section has a module. Every sub-line sampled has lesson coverage.**
+
+## The bank is not shaped like the exam
+
+Sections V and VI split across modules, so only two mappings are exact. Those
+two are the ones worth looking at.
+
+| | Share of the exam | Share of the bank |
+| --- | --- | --- |
+| Module 3 — Property Coverages (section I) | 16.9% | **11.7%** |
+| Modules 1, 2 and 4 (sections II–VI) | 60.0% | 50.9% |
+| Module 5 — Texas (TX.I, TX.II) | 23.1% | **37.3%** |
+
+**Section I is the largest single general-knowledge section on the exam — 22
+scored questions — and it has the thinnest bank in the course.** Module 5 has
+more than half again its share.
+
+Module 5 being heavy is defensible: statutes are specific, numerous, and
+carry figures a candidate has to recall exactly, so more questions per scored
+point is the right shape. Module 3 being light is not defensible on the same
+grounds, and it is the clearest gap the numbers show. **~90 questions would
+bring Module 3 to the exam's own weighting.**
+
+This is a statement about counts, not about quality. A thin bank on a
+well-taught topic is a different problem from a gap in the teaching, and only
+the first of those is visible here.
 
 ## What the audit actually found
 
@@ -34,22 +67,56 @@ blueprint's exact wording is not the same as checking coverage.
 
 ## What is genuinely not taught
 
-**Five Texas Administrative Code rules.** All sit beneath statutes the course
-already teaches from the statutory side, and the TAC is on a separate site in
-HTML that `scripts/extract-statute.py` cannot read.
+**Texas Administrative Code rules.** The TAC is on a separate site in HTML
+that `scripts/extract-statute.py` cannot read, so rules are fetched by hand.
 
-| Line | Rule | Status |
+Since the original audit the lessons have come to cite **seven** TAC rules.
+**One has been fetched.** The other six are taught from the statute they sit
+beneath rather than from the rule's own text, which is sound as far as it goes
+and is not the same as having read the rule.
+
+| Rule | Subject | Source text held |
 | --- | --- | --- |
-| TX.I.D.1.b | 28 TAC §21.115 | **Taught** — P&C advertising |
-| TX.I.D.1.b | 28 TAC §21.111 | Not fetched — comparisons |
-| TX.I.D.1.a | 28 TAC §21.201–.205 | Not fetched — claims practices |
-| TX.I.D.1.c | 28 TAC §21.4 | Not fetched — misrepresentation |
-| TX.I.D.2 | 28 TAC §5.9340–.9357 | Not fetched — rating and underwriting |
-| TX.I.C.1.a, C.8.b | 28 TAC §1.502 | Not fetched — felony notification |
-| **TX.II.A** | ~~28 TAC §5.5002~~ | **The blueprint's citation is wrong.** That rule is "Inland Marine Insurance — Imports". Where the P&C definitions live is unknown. |
+| 28 TAC §21.115 | P&C advertising | **Yes** — `reference/tac/` |
+| 28 TAC §21.101 | Unfair competition, general | No |
+| 28 TAC §21.111 | Comparisons | No |
+| 28 TAC §21.113 | Misleading statements | No |
+| 28 TAC §21.114 | Advertising of benefits | No |
+| 28 TAC §19.1201 | Adjuster licensing | No |
+| 28 TAC §5.204 | Automobile insurance | No |
+
+Still cited by the blueprint and neither fetched nor taught: 28 TAC
+§21.201–.205 (claims practices), §21.4 (misrepresentation), §5.9340–.9357
+(rating and underwriting), §1.502 (felony notification).
+
+**TX.II.A** — ~~28 TAC §5.5002~~. **The blueprint's citation is wrong.** That
+rule is "Inland Marine Insurance — Imports". Where the P&C definitions live is
+unknown.
 
 **TX.II.C "Approval of Rates and Forms" cites "TIC 5.35"**, which is not a
 valid Insurance Code section.
+
+## What checks this, and what it cannot see
+
+Three checks run in CI against the content:
+
+- `check-citations.mjs` — every `§N.N` resolves to a real section.
+- `check-citation-claims.mjs` — the numbers and subjects in a sentence appear
+  in the sections that sentence cites. This is what catches a citation to the
+  wrong *real* section, which is how the course once had the 30/60/25 floor
+  reaching PIP.
+- `check-question-coverage.mjs` — a term a lesson defines is the correct
+  answer somewhere.
+
+**None of them reads a TAC rule.** TAC citations are skipped by both citation
+checks, because 28 TAC §21.115 and Insurance Code Chapter 21 are unrelated and
+resolving one against the other would be worse than not checking. So the six
+unfetched rules above are unverified by anything except a human reading them.
+
+**None of them checks whether a lesson is *right*.** They check that it is
+consistent with a source that is present. A lesson can state a rule correctly
+in words no statute uses, and can state it wrongly in words that match. The
+review gate is what stands between either and a student.
 
 ## Where the two unresolved lines probably live
 
