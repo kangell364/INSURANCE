@@ -150,7 +150,13 @@ export function sectionsOf(text) {
     }
     return heading
   }
-  const marks = [...text.matchAll(/^Sec\. (\d{2,4}[A-Z]?\.\d+(?:-\d+)?)\./gm)]
+  // Not anchored to the line start: the Chapter 542A extraction runs its
+  // sections inline -- "... eff. September 1, 2017. Sec. 542A.003. NOTICE
+  // REQUIRED." -- so an anchored pattern found zero sections in a chapter
+  // that is present, and the run then reported 542A as never downloaded.
+  // Cross-references spell the word out ("Section 542.060"), and the enacting
+  // clauses read "Sec. 3, eff.", whose single digit cannot satisfy \d{2,4}.
+  const marks = [...text.matchAll(/(?:^|\s)Sec\. (\d{2,4}[A-Z]?\.\d+(?:-\d+)?)\./g)]
   marks.forEach((m, i) => {
     // A section ends at the next section OR at the next subchapter heading,
     // whichever comes first. Running to the next section alone swallowed the
@@ -332,7 +338,8 @@ export function judgeClaim(claim, sectionText) {
 /** Walk the course and report. Skipped when this file is imported by a test. */
 function main() {
   const flags = []
-  const skipped = new Set()
+  const missingChapters = new Set()
+  const missingSections = new Set()
   let claimsChecked = 0
 
   for (const file of TREES.filter(existsSync).flatMap(walk).sort()) {
@@ -361,7 +368,12 @@ function main() {
         const chapter = cite.slice(0, cite.indexOf('.'))
         const section = sectionsForChapter(chapter).get(cite)
         if (section === undefined) {
-          skipped.add(chapter)
+          // Two different things, and conflating them told Duane that Chapter
+          // 541 needed downloading when it has been here all along with 86
+          // sections: the only cite it could not resolve was §541.056, which
+          // the trade-practices lesson cites BECAUSE it was repealed.
+          if (sectionsForChapter(chapter).size === 0) missingChapters.add(chapter)
+          else missingSections.add(cite)
           continue
         }
         resolved += 1
@@ -381,8 +393,18 @@ function main() {
   }
 
   console.log(`${claimsChecked} claim(s) checked against the cited statute text.`)
-  if (skipped.size > 0) {
-    console.log(`chapter(s) not downloaded, so not checkable here: ${[...skipped].sort().join(', ')}`)
+  if (missingChapters.size > 0) {
+    console.log(
+      `chapter(s) not downloaded, so not checkable here: ${[...missingChapters].sort().join(', ')}`,
+    )
+  }
+  if (missingSections.size > 0) {
+    console.log(
+      `section(s) absent from a chapter that IS downloaded: ` +
+        `${[...missingSections].sort().join(', ')}\n` +
+        `  (check-citations.mjs is the check that judges those; a repealed ` +
+        `section cited on purpose is not an error)`,
+    )
   }
 
   if (flags.length > 0) {

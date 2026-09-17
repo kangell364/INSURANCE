@@ -67,6 +67,21 @@ describe('the statute text as it actually comes out of the PDFs', () => {
     expect(judgeClaim(claim, statute)).toEqual([])
   })
 
+  it('finds sections the extractor ran inline, not just at a line start', () => {
+    // Verbatim shape of reference/statutes/IN.542A.txt, where the PDF gave no
+    // line break before "Sec.". An anchored pattern found zero sections in it,
+    // and the run then reported a downloaded chapter as never downloaded --
+    // which is how I came to tell Duane to go and fetch a file he already had.
+    const chapter = 'CHAPTER 542A. CERTAIN CONSUMER ACTIONS Sec. 542A.001. ' +
+      'DEFINITIONS. In this chapter: (1) "Agent" means an employee. Added by ' +
+      'Acts 2017, 85th Leg., Ch. 151, Sec. 3, eff. September 1, 2017. ' +
+      'Sec. 542A.003. NOTICE REQUIRED. Not later than the 61st day before.'
+    const sections = sectionsOf(chapter)
+    expect([...sections.keys()]).toEqual(['542A.001', '542A.003'])
+    // "Sec. 3, eff." is an enacting clause, not a section.
+    expect([...sections.keys()]).not.toContain('3')
+  })
+
   it('carries the subchapter heading into each section it extracts', () => {
     // sectionsOf is what actually attaches the heading. Asserting only via
     // judgeClaim with the heading pasted in by hand let a mutant that dropped
