@@ -70,6 +70,21 @@ jobs:
       - name: Statute citations resolve
         run: node scripts/check-citations.mjs
 
+      # Every term a lesson DEFINES should be answerable, not just readable.
+      #
+      # One review found this defect in six files: the lesson taught a set of
+      # terms and the bank examined only some of them, so a student could
+      # learn the two that get asked and answer everything while half the
+      # distinction went untested. Invisible in a lesson, invisible in one
+      # question, obvious across every answer in a file at once.
+      #
+      # A RATCHET, NOT A GATE. There are dozens outstanding, and failing the
+      # build on all of them today would mean the check is deleted by Tuesday.
+      # --max is what CI currently tolerates: the number may fall, never rise.
+      # When it falls, lower the number here.
+      - name: Defined terms are examined
+        run: node scripts/check-question-coverage.mjs --max 67
+
       # The statute extractor's text cleanup, tested directly. The PDFs from
       # statutes.capitol.texas.gov render non-breaking spaces as a literal
       # capital "A", which collides with the article "A" that opens most
