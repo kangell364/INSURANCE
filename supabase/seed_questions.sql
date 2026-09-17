@@ -6,6 +6,44 @@
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '6f8d067d-3345-5b1c-a050-790e58235af3', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'risk-peril-and-hazard'),
+       'Smoke from a fireplace burning normally all winter blackens the wall above it. Is this a fire loss?', '**Only a hostile fire is the covered peril** — one burning where it is not meant to, or one that has escaped the place meant for it. A fireplace doing exactly its job is a **friendly fire**, and the damage it causes is not a fire loss however real it is. **The test is where the fire is, not how much harm it did.** The last option overstates it: smoke *is* a named peril in its own right on the Basic causes of loss list. What defeats this claim is not smoke — it is that the fire never left its proper place. Compare a log rolling out of the grate onto the carpet: same fireplace, and now hostile.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.II'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '8356267b-87ff-597b-9d5b-fd184649941e', '6f8d067d-3345-5b1c-a050-790e58235af3', c.id, 'No — a friendly fire burns where it is meant to, and is not the covered peril', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '79707e96-b434-5fa6-8776-054271f8da4b', '6f8d067d-3345-5b1c-a050-790e58235af3', c.id, 'Yes, because smoke damage is physical damage from fire', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '5d2e698e-77c4-5c73-b35b-038ee7126d5b', '6f8d067d-3345-5b1c-a050-790e58235af3', c.id, 'Yes, but only up to a smoke sub-limit', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '988883a9-fe6b-51c8-9dfa-80b238ec5a8c', '6f8d067d-3345-5b1c-a050-790e58235af3', c.id, 'No, because smoke is never a covered cause of loss', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '6f8d067d-3345-5b1c-a050-790e58235af3', c.id, '8356267b-87ff-597b-9d5b-fd184649941e'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select '3450f652-be49-5c49-ac66-2da94049458f', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'risk-peril-and-hazard'),
        'Which of the following represents a pure risk?', '**A pure risk offers only loss or no loss.** The house burns or it does not; there is no version where the owner comes out ahead. That is what makes it insurable. Each wrong option carries **the chance of gain** as well as loss, which makes it speculative and uninsurable. **Apply the profit test**: if the person could profit from the event, no insurer will cover it.', 'draft'

@@ -14,6 +14,335 @@ begin;
 insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
+select 'e1d24da3-2f83-5484-8008-27456a1c9f05', '34b6c5a1-202f-5d9f-b12a-d98a335b2916', c.id, 'Valuing a Loss',
+       'valuing-a-loss', 'Actual cash value, replacement cost and agreed value — and why the difference decides what a claim pays.', 4,
+       'draft', 14
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select 'e1d24da3-2f83-5484-8008-27456a1c9f05', c.id, $lesson$# What was it worth?
+
+Two houses burn on the same street, insured for the same amount, by the same
+company. One owner is paid enough to rebuild. The other is paid considerably
+less and cannot.
+
+The difference is usually not the limit. It is the **valuation method** printed
+on the declarations page, and it is the single most practical thing in this
+module.
+
+## Actual cash value
+
+**Actual cash value is replacement cost minus depreciation.**
+
+Depreciation is the loss in value from age, wear and obsolescence. A roof with
+a twenty-year expected life, destroyed in year fifteen, has used up most of
+its life. Under ACV the insurer pays for what was lost — a fifteen-year-old
+roof — not a new one.
+
+This is indemnity being strict. The insured is restored to where they were,
+which is to say owning a worn roof, not upgraded to where they would like to
+be.
+
+The arithmetic is usually straightforward:
+
+> A roof costs $20,000 to replace new. Expected life 20 years, current age 15.
+> Depreciation is 15/20 = 75%, so $15,000. **ACV = $20,000 − $15,000 =
+> $5,000.**
+
+Some jurisdictions also recognise the **broad evidence rule**, under which a
+court may consider anything relevant to value — market value, replacement cost
+less depreciation, the property's use and remaining life — rather than
+mechanically applying one formula.
+
+## Replacement cost
+
+**Replacement cost pays to replace with property of like kind and quality,
+with no deduction for depreciation.**
+
+The same roof is paid at $20,000.
+
+This is a deliberate departure from indemnity, and insurers manage the
+exposure in two ways you should recognise:
+
+- **A coinsurance or insurance-to-value requirement**, obliging the insured to
+  carry a limit close to full replacement cost.
+- **Paying ACV first, then the difference once repairs are actually made.**
+  The insured cannot simply pocket the replacement value and not rebuild —
+  that would be the profit motive the whole system avoids.
+
+## Market value
+
+**Market value is what the property would sell for** — and it is neither of the
+above.
+
+It includes the land, location and demand. A house may cost $300,000 to
+rebuild and sell for $180,000 in a declining area, or sell for $900,000 in a
+desirable one on the same construction cost. Property policies insure the
+building, not the neighbourhood, so market value rarely governs a property
+claim.
+
+The exam uses this as a distractor. If a stem mentions what a house "would sell
+for", be suspicious.
+
+## Agreed value and stated value
+
+**Agreed value** (a *valued policy*) fixes the amount payable when the policy
+is written, and pays it on a total loss without argument about depreciation.
+It is used where value is genuinely contentious after the fact: fine art,
+antiques, collectibles, some commercial property.
+
+**Stated amount** is a related idea, common on specialised equipment: the
+insured declares a value, and the policy pays the lesser of that amount, ACV,
+or the cost to repair.
+
+## Functional replacement cost
+
+Sometimes replacing like with like is absurd. A Victorian building with
+plaster mouldings and hand-cut joinery could be rebuilt to modern equivalent
+standards for far less. **Functional replacement cost** pays to replace with
+modern materials serving the same function.
+
+## Depreciation, recoverable and not
+
+Two terms turn up in claims and occasionally on exams.
+
+### Pair and set
+
+Some property is worth more together than apart: a pair of earrings, a set of
+dining chairs, a matched suite. **The pair and set clause says the insurer
+pays the difference in value between the set before the loss and the set
+after** — not the value of the missing piece alone, and not the whole set.
+
+Two consequences follow, and they run in opposite directions:
+
+- **The insured gets more than the lost item's own value**, because losing one
+  earring devalues the other.
+- **The insurer need not treat it as a total loss** of the set, and **need not
+  take the remaining pieces** unless it chooses to pay for the whole and
+  claim them.
+
+> **Not named on either Texas outline.** Recorded because it is a real
+> settlement clause a producer will have to explain to an insured who expects
+> either too much or too little.
+
+**Recoverable depreciation** is the gap between the ACV payment and the
+replacement cost, released to the insured once the work is done under a
+replacement-cost policy.
+
+**Non-recoverable depreciation** is the gap under an ACV policy, which is never
+paid because ACV is all the policy promised.
+
+## How this is examined
+
+**Calculation questions.** Straightforward, and worth practising until they are
+automatic: find the depreciation percentage from age over expected life, apply
+it to replacement cost, subtract.
+
+**"Which valuation method pays the most?"** Replacement cost, because nothing
+is deducted for age.
+
+**Market value as a distractor.** A stem that tells you the sale price is
+usually testing whether you know that property claims are not settled on it.
+
+**Why an insurer would pay ACV first.** To ensure the property is actually
+repaired, so the insured is indemnified rather than enriched.
+
+## Check yourself
+
+1. A five-year-old air-conditioning unit with a ten-year life is destroyed. A
+   new one costs $8,000. What is the ACV?
+2. The same unit, insured on a replacement cost basis. What does the policy
+   pay, and when?
+3. A house would cost $250,000 to rebuild but would sell for $175,000. On which
+   figure is a property claim normally based, and why?
+4. Why might a collector prefer an agreed value policy for a painting?
+
+## Answers
+
+1. Depreciation is 5/10 = 50%, so $4,000. **ACV = $8,000 − $4,000 = $4,000.**
+2. **$8,000**, though typically as $4,000 (the ACV) now and the remaining
+   $4,000 once the unit has actually been replaced.
+3. **$250,000, the replacement cost.** The policy insures the building, not the
+   land or the state of the local market. Market value is a distractor.
+4. Because the value of a painting is contentious and hard to establish after
+   it has been destroyed. An agreed value settles the argument in advance,
+   while it can still be appraised.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select 'e1d24da3-2f83-5484-8008-27456a1c9f05', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.II'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select '2f93978e-6aca-5ed1-99ea-e672f8e06e7f', '34b6c5a1-202f-5d9f-b12a-d98a335b2916', c.id, 'Deductibles, Coinsurance and Limits',
+       'deductibles-coinsurance-and-limits', 'The arithmetic questions — and the coinsurance formula that catches people who insure for too little.', 5,
+       'draft', 16
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select '2f93978e-6aca-5ed1-99ea-e672f8e06e7f', c.id, $lesson$# The three numbers that decide what a claim pays
+
+A limit, a deductible and a coinsurance percentage look like fine print. They
+are the arithmetic of almost every calculation question on the exam, and
+coinsurance in particular catches people who have not practised it.
+
+## Deductibles
+
+**A deductible is the portion of each loss the insured keeps.**
+
+It is risk retention, chosen deliberately. It exists for three reasons: it
+removes small claims whose handling cost exceeds their value, it reduces the
+premium, and it leaves the insured with a stake in preventing losses — a
+direct answer to morale hazard.
+
+Forms you should recognise:
+
+- **Flat** (or straight) — a fixed sum subtracted from each loss. $1,000.
+- **Percentage** — a proportion of the insured value rather than of the loss.
+  Common for wind and hail, and this is the one that surprises people: 2% of a
+  $400,000 dwelling is $8,000 whatever the damage came to.
+- **Aggregate** — the insured absorbs losses until a total is reached, after
+  which the policy pays in full.
+- **Disappearing** (vanishing) — reduces as the loss grows and disappears
+  above a threshold.
+- **Waiting period** — a deductible measured in time rather than money, used
+  in business interruption and disability.
+
+## Limits of liability
+
+**A limit is the most the policy will pay.** The exam tests which limit applies
+to what.
+
+- **Per occurrence** — the most for any one event.
+- **Aggregate** — the most for all events in the policy period. Once
+  exhausted, the policy is finished even though the period has not ended.
+- **Split limits**, written as three numbers such as 100/300/50 (in
+  thousands): **$100,000 bodily injury per person**, **$300,000 bodily injury
+  per accident**, **$50,000 property damage per accident**.
+- **Combined single limit** — one figure covering bodily injury and property
+  damage together, in any proportion.
+- **Per person / per occurrence** — the first caps what any one claimant
+  receives, the second what the whole event can produce.
+
+A classic stem: under 100/300/50, four people are injured, each with $90,000 of
+bodily injury. Each claim is under the $100,000 per-person limit, so each is
+paid in full — but the total, $360,000, exceeds the $300,000 per-accident
+limit. The policy pays **$300,000**.
+
+## Coinsurance
+
+This is the one to practise.
+
+**A coinsurance clause requires the insured to carry a limit equal to at least
+a stated percentage of the property's value.** Carry less, and the policy pays
+less than the loss — even when the loss is far below the limit.
+
+The reason is that most property losses are partial. Somebody insuring a
+$1,000,000 building for $200,000 is not buying a fifth of the protection; they
+are buying most of it, because a total loss is rare. Coinsurance makes the
+premium correspond to the exposure.
+
+### The formula
+
+> **(Did ÷ Should) × Loss − Deductible = Payment**
+
+- **Did** — the limit actually carried.
+- **Should** — the coinsurance percentage × the property's value at the time
+  of loss.
+- The result is capped at the policy limit, and never exceeds the loss.
+
+### Worked example
+
+A building is worth **$500,000**. The policy carries an **80% coinsurance**
+clause, a limit of **$300,000** and a **$1,000 deductible**. A fire causes
+**$100,000** of damage.
+
+- **Should** = 80% × $500,000 = **$400,000**
+- **Did** = **$300,000**
+- $300,000 ÷ $400,000 = **0.75**
+- 0.75 × $100,000 = $75,000
+- Less the deductible: **$74,000**
+
+The insured is $26,000 short on a loss well inside the limit. That is
+coinsurance working exactly as intended and feeling exactly as unfair as it
+always does.
+
+### The details that get tested
+
+- Value is measured **at the time of the loss**, not when the policy was
+  written. A building that appreciates can leave a once-compliant insured
+  underinsured.
+- Meet or exceed the requirement and the fraction is 1 or more; the loss is
+  paid in full, less the deductible, up to the limit. **Over-insuring does not
+  pay more than the loss.**
+- Coinsurance applies to **partial** losses. On a total loss the limit governs.
+- An **agreed value** endorsement suspends the clause, the insurer having
+  already accepted the value.
+
+## How this is examined
+
+**Coinsurance calculations**, most often with the insured underinsured. Write
+down Did, Should, Loss and the deductible before touching the arithmetic.
+
+**Split limit questions** with several claimants, testing whether you apply the
+per-person limit to each and then the per-accident limit to the total.
+
+**Percentage deductible questions**, testing whether you take the percentage of
+the *insured value* rather than of the loss.
+
+**"Why does coinsurance exist?"** Because most losses are partial, so a low
+limit buys nearly full protection at a fraction of the premium.
+
+## Check yourself
+
+1. A building worth $800,000 carries 80% coinsurance and a $500,000 limit. A
+   $200,000 loss occurs, deductible $2,500. What is paid?
+2. A homeowner has a 2% wind deductible on a dwelling insured for $350,000.
+   Hail causes $12,000 of damage. What is paid?
+3. Under split limits of 250/500/100, three people are injured with bodily
+   injury claims of $200,000, $200,000 and $150,000. What does the policy pay
+   for bodily injury?
+4. Does carrying a limit above the coinsurance requirement increase what a
+   partial loss pays?
+
+## Answers
+
+1. Should = 80% × $800,000 = $640,000. Did = $500,000. 500/640 = 0.78125.
+   × $200,000 = $156,250. Less $2,500 = **$153,750**.
+2. The deductible is 2% of the **insured value**: 2% × $350,000 = $7,000.
+   $12,000 − $7,000 = **$5,000**.
+3. Each claim is within the $250,000 per-person limit, so each is payable in
+   full — but they total $550,000 against a $500,000 per-accident limit. The
+   policy pays **$500,000** for bodily injury.
+4. **No.** Once the fraction reaches 1 the loss is paid in full less the
+   deductible. Insurance never pays more than the loss.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select '2f93978e-6aca-5ed1-99ea-e672f8e06e7f', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.II'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
 select '6cb03304-a5e0-5bd8-95dc-ce7cc45d0458', '34b6c5a1-202f-5d9f-b12a-d98a335b2916', c.id, 'Negligence and Liability',
        'negligence-and-liability', 'The four elements a claimant must prove, the defences against them, and the kinds of damages a court can award.', 6,
        'draft', 15

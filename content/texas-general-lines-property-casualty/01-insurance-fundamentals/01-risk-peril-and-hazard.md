@@ -70,6 +70,36 @@ structures recur:
   cause is covered *except* those the policy excludes. The burden flips: the
   insurer must show the loss came from an excluded cause.
 
+### Not every fire is a fire
+
+**Fire** is the peril every policy names first, and it does not mean what the
+word means in ordinary speech.
+
+**A hostile fire is one burning where it is not meant to burn**, or one that
+has escaped the place meant for it. That is the covered peril.
+
+**A friendly fire is one burning exactly where it is supposed to** — in the
+fireplace, the furnace, the incinerator, the oven. **It is not a covered
+peril, even when it causes damage.**
+
+So:
+
+- A log rolls out of the grate and sets the carpet alight — **hostile**, and
+  covered.
+- The fireplace burns normally all winter and smoke blackens the wall above
+  it — **friendly**, and not covered by the fire peril, however real the
+  damage.
+- A roast is ruined in the oven — friendly, and not a claim.
+
+**The test is where the fire is, not how much harm it did.** A stem describing
+damage from a fire that never left its proper place is testing this and
+nothing else.
+
+One more limit on the peril, from the other direction: **a loss the insured
+caused deliberately is never covered.** Arson is not an insured peril; it is
+the moral hazard the whole underwriting apparatus exists to keep out, and in
+Texas it is a fraudulent insurance act besides.
+
 **A cause of loss does not stop being a peril because a policy excludes it.**
 Flood and earthquake are perils. Standard homeowners and commercial property
 forms exclude them, and that is a statement about the *policy*, not about what

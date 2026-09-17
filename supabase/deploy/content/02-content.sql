@@ -14,6 +14,259 @@ begin;
 insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
+select '42eb61d9-af5e-55d2-91a8-1bcce382c4ed', '34b6c5a1-202f-5d9f-b12a-d98a335b2916', c.id, 'How Insurance Works',
+       'how-insurance-works', 'Why insurers can predict losses they cannot predict individually, and which risks they will not touch.', 2,
+       'draft', 18
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select '42eb61d9-af5e-55d2-91a8-1bcce382c4ed', c.id, $lesson$# The trick at the centre of insurance
+
+An insurer cannot tell you whether *your* house will burn down this year.
+Nobody can. Yet it will quite confidently tell you how many of one hundred
+thousand similar houses will burn, and price your policy accordingly.
+
+That is not a paradox, and the exam wants you to be able to say why.
+
+## What insurance is
+
+**Insurance is a contract — a device — by which one party agrees, for a
+premium, to indemnify another against loss from specified perils.**
+
+Two halves of that are worth separating, because the exam asks about each.
+
+**As a contract, it transfers risk.** The insured hands the financial
+consequence of a loss to the insurer and pays a known, small, certain amount
+instead of facing an unknown, large, uncertain one. **Insurance is the
+*transfer* technique** in the risk-management list below — that is its place
+among the five, and a stem asking what "transfers risk from a person or
+business to an insurance company" is asking for the word *insurance*.
+
+**As a business, it works by pooling.** Transfer alone would just move the
+problem. What makes the insurer able to accept it is that it has accepted
+thousands of similar transfers, and the aggregate is predictable even though
+no single one is.
+
+So **transfer is what it does for the insured; pooling is what makes it
+possible for the insurer.** The rest of this lesson is the second half.
+
+## The law of large numbers
+
+**The more similar exposures you observe, the closer actual losses come to
+expected losses.**
+
+Toss a coin four times and you might get four heads. Toss it four thousand
+times and you will get close to half. Nothing about any individual toss became
+more predictable; the *aggregate* did.
+
+Insurance runs on exactly this. One house is unpredictable. A hundred thousand
+similar houses are not. The insurer does not need to know which ones will
+burn — only how many, near enough to set a price that covers the losses, the
+expenses and a margin.
+
+Two words in that sentence are doing heavy lifting. **Similar**: houses, not a
+mixture of houses and oil refineries. **Many**: a handful of exposures gives
+you no more certainty than one.
+
+## What makes a risk insurable
+
+The exam expects a list. Different textbooks phrase it differently, but the
+substance is consistent, and each item is really a way of protecting the law
+of large numbers.
+
+**A large number of similar exposure units** — *homogeneous*. Without them the
+mathematics does not work.
+
+**The loss must be definite and measurable** — *measurable*, or *definite*.
+You must be able to say when it happened, where, from what cause, and what it
+cost. "My business felt less successful this year" is none of those things.
+
+**The loss must be accidental** from the insured's standpoint — *accidental*,
+also called *fortuitous* or *unintentional*. Outside their control. This is
+the same principle that makes speculative risk uninsurable, seen from another
+angle.
+
+**The loss must not be catastrophic to the insurer** — *non-catastrophic*. If
+a single event could wipe out every exposure at once, pooling has not spread
+anything. This is why flood and earthquake sit outside standard property
+policies, and why Texas handles windstorm on the coast through a separate
+association.
+
+**The chance of loss must be calculable** — *calculable*, or *predictable*.
+You need data, or the price is a guess.
+
+**The premium must be economically feasible** — *affordable*. If the honest
+premium approaches the value of the thing insured, nobody sensible buys it. A
+policy costing $90,000 a year to insure a $100,000 building has no market.
+
+### Learn the substance, not the count
+
+Some texts list six of these, some five, some seven. An option may appear as
+one word — **calculable, affordable, non-catastrophic, homogeneous,
+accidental, measurable** — or as a whole phrase, and the same idea travels
+under several names: *homogeneous* and *a large number of similar exposure
+units* are one item, not two.
+
+So a question is never really asking you to count. It is asking whether a
+described characteristic belongs, and **the wrong options are usually the
+inversions**: that a loss must be catastrophic, or intentional, or that the
+insured must be able to cause it. Each of those breaks the pooling the whole
+list exists to protect. Test a candidate by asking what it would do to the law
+of large numbers.
+
+## Adverse selection
+
+**Adverse selection is the tendency of those most likely to suffer a loss to
+be the most eager to buy insurance.**
+
+People who live on a floodplain want flood cover more than people on a hill.
+Someone who has just felt a lump wants health cover more urgently than someone
+who has not. Left alone, an insurer's pool fills up with exactly the exposures
+it can least afford, and the pool stops resembling the population the price
+was based on.
+
+Nearly every piece of underwriting machinery exists to resist this:
+applications, inspections, waiting periods, exclusions, pre-existing condition
+clauses, and the underwriter's right to decline.
+
+Do not confuse it with **moral hazard**, which the exam likes to place
+nearby. Adverse selection happens *before* the policy, in who chooses to buy.
+Moral hazard happens *after*, in how the insured behaves once covered.
+
+## Where the premium goes
+
+A premium has to cover three things: expected losses, the insurer's expenses
+(commissions, salaries, taxes), and a margin for profit and contingencies. The
+loss portion is often called the **pure premium**, and the amount added for
+expenses and profit the **loading**.
+
+This is worth knowing because it explains an answer that otherwise looks
+strange: an insurer can be paying out less than it collects and still be
+losing money, once expenses are counted.
+
+## Risk management before insurance
+
+Insurance is one response to risk, not the only one. The exam tests the full
+set, usually by asking which one a described action represents.
+
+- **Avoidance** — do not take the risk at all. Do not buy the building.
+- **Retention** — accept it and pay losses yourself. A deductible is
+  retention, and so is **choosing not to buy the cover at all** — a decision
+  that the exposure is small enough to carry. Retention can be deliberate.
+- **Reduction** (or control) — lower the frequency or severity. Sprinklers,
+  training, locks.
+- **Transfer** — move it to someone else. **Insurance is the transfer
+  technique**; so is a hold harmless agreement in a contract.
+- **Sharing** — spread it across a group, as partners or a pool do.
+
+A common stem describes a business installing a sprinkler system and asks
+which technique that is. It is *reduction*, not transfer — the sprinklers do
+not move the risk to anybody, they make the loss smaller.
+
+## How the policy reaches the buyer
+
+An insurer still has to get its product in front of somebody. The
+arrangements have names, and one question separates them more cleanly than
+any definition: **who owns the renewals?**
+
+That is not bookkeeping. The renewal right is the right to keep the customer —
+so whoever holds it holds the relationship, and the whole structure of each
+arrangement follows from it.
+
+### Through producers
+
+**Independent agent.** Contracts with several insurers and is not an employee
+of any of them. **Owns the renewals**, so a client can be moved from one
+carrier to another as terms change. The client belongs to the agency.
+
+**Exclusive or captive agent.** Represents **one** insurer. Usually an
+independent contractor rather than an employee, but **the insurer owns the
+renewals** — leave, and the book stays.
+
+**General agent or managing general agent.** Appointed to recruit, train and
+supervise other producers across a territory, and paid an **override** on what
+those producers write rather than only on personal production.
+
+> **This is the one Texas licenses separately.** The blueprint names the
+> **managing general agent** licence at TX.I.C.1.e, referring to 28 TAC
+> §19.1201–.1206. Those rules are not among our sources, so the licence's
+> requirements are not taught — see the licensing lesson in Module 5 and
+> `docs/module-5-source-gaps.md`.
+
+**Direct writer.** The producer is an **employee** of the insurer, paid salary,
+commission, or both. **The insurer owns the renewals.**
+
+### Without producers
+
+**Direct response.** No producer at all. The insurer sells straight to the
+public — post, telephone, print, broadcast, internet. There is nobody to
+appoint, nobody to pay commission, and nobody to advise the buyer.
+
+### The distinction that matters most
+
+Cutting across all of these: **an agent represents the insurer; a broker
+represents the insured.** That decides whose knowledge binds whom, and it is
+treated fully in Module 2 alongside express, implied and apparent authority.
+
+> **Marketing systems are not named on the Texas outline** — only the managing
+> general agent licence is, as a licence type. They are here because a
+> producer works inside one of these arrangements and should know which, not
+> because the exam demands the taxonomy.
+
+## How this is examined
+
+**"Which of the following is not a characteristic of an insurable risk?"** —
+usually with "the loss must be catastrophic" or "the insured must be able to
+cause the loss" among the options. Work down the list.
+
+**Law of large numbers questions** turn on the word *similar* or the word
+*more*. The prediction improves with more exposures, and only if they resemble
+one another.
+
+**Adverse selection versus moral hazard** — ask when it happens. Before the
+policy is written, it is adverse selection.
+
+**Risk-management technique questions** describe an action and want the label.
+Deductible → retention. Sprinklers → reduction. Buying a policy → transfer.
+Not opening the business → avoidance.
+
+## Check yourself
+
+1. An insurer writes one hundred thousand homeowners policies instead of one
+   hundred. What has improved, and what has not?
+2. Why are floods difficult to insure through an ordinary property policy?
+3. A contractor adds a clause making the client responsible for certain
+   losses. Which risk-management technique is that?
+4. A homeowner chooses a $2,500 deductible instead of $500. Which technique?
+
+## Answers
+
+1. The *predictability of the total* has improved. The predictability of any
+   single house has not changed at all — that is the whole point of the law of
+   large numbers.
+2. One event damages an enormous number of exposures simultaneously, so the
+   losses are not independent and the pool does not spread them. It is the
+   "not catastrophic to the insurer" condition failing.
+3. **Transfer** — the risk is moved to another party by contract. Insurance is
+   not the only form of transfer.
+4. **Retention** — they have chosen to carry more of each loss themselves.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select '42eb61d9-af5e-55d2-91a8-1bcce382c4ed', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.II'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
 select '707e2d75-4394-5463-9f46-d9cedf43df3f', '34b6c5a1-202f-5d9f-b12a-d98a335b2916', c.id, 'Insurable Interest and Indemnity',
        'insurable-interest-and-indemnity', 'Who is allowed to insure what, and the rule that you may be made whole but never better off.', 3,
        'draft', 13
@@ -162,335 +415,6 @@ on conflict (lesson_id) do update set body = excluded.body;
 
 insert into public.lesson_topics (lesson_id, topic_id, course_id)
 select '707e2d75-4394-5463-9f46-d9cedf43df3f', t.id, t.course_id
-  from public.topics t
-  join public.courses c on c.id = t.course_id
- where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.II'
-on conflict (lesson_id, topic_id) do nothing;
-
-insert into public.lessons
-  (id, module_id, course_id, title, slug, summary, position, status,
-   estimated_minutes)
-select 'e1d24da3-2f83-5484-8008-27456a1c9f05', '34b6c5a1-202f-5d9f-b12a-d98a335b2916', c.id, 'Valuing a Loss',
-       'valuing-a-loss', 'Actual cash value, replacement cost and agreed value — and why the difference decides what a claim pays.', 4,
-       'draft', 14
-  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
-on conflict (id) do update set
-  title = excluded.title, summary = excluded.summary,
-  position = excluded.position, status = excluded.status,
-  estimated_minutes = excluded.estimated_minutes;
-
-insert into public.lesson_contents (lesson_id, course_id, body)
-select 'e1d24da3-2f83-5484-8008-27456a1c9f05', c.id, $lesson$# What was it worth?
-
-Two houses burn on the same street, insured for the same amount, by the same
-company. One owner is paid enough to rebuild. The other is paid considerably
-less and cannot.
-
-The difference is usually not the limit. It is the **valuation method** printed
-on the declarations page, and it is the single most practical thing in this
-module.
-
-## Actual cash value
-
-**Actual cash value is replacement cost minus depreciation.**
-
-Depreciation is the loss in value from age, wear and obsolescence. A roof with
-a twenty-year expected life, destroyed in year fifteen, has used up most of
-its life. Under ACV the insurer pays for what was lost — a fifteen-year-old
-roof — not a new one.
-
-This is indemnity being strict. The insured is restored to where they were,
-which is to say owning a worn roof, not upgraded to where they would like to
-be.
-
-The arithmetic is usually straightforward:
-
-> A roof costs $20,000 to replace new. Expected life 20 years, current age 15.
-> Depreciation is 15/20 = 75%, so $15,000. **ACV = $20,000 − $15,000 =
-> $5,000.**
-
-Some jurisdictions also recognise the **broad evidence rule**, under which a
-court may consider anything relevant to value — market value, replacement cost
-less depreciation, the property's use and remaining life — rather than
-mechanically applying one formula.
-
-## Replacement cost
-
-**Replacement cost pays to replace with property of like kind and quality,
-with no deduction for depreciation.**
-
-The same roof is paid at $20,000.
-
-This is a deliberate departure from indemnity, and insurers manage the
-exposure in two ways you should recognise:
-
-- **A coinsurance or insurance-to-value requirement**, obliging the insured to
-  carry a limit close to full replacement cost.
-- **Paying ACV first, then the difference once repairs are actually made.**
-  The insured cannot simply pocket the replacement value and not rebuild —
-  that would be the profit motive the whole system avoids.
-
-## Market value
-
-**Market value is what the property would sell for** — and it is neither of the
-above.
-
-It includes the land, location and demand. A house may cost $300,000 to
-rebuild and sell for $180,000 in a declining area, or sell for $900,000 in a
-desirable one on the same construction cost. Property policies insure the
-building, not the neighbourhood, so market value rarely governs a property
-claim.
-
-The exam uses this as a distractor. If a stem mentions what a house "would sell
-for", be suspicious.
-
-## Agreed value and stated value
-
-**Agreed value** (a *valued policy*) fixes the amount payable when the policy
-is written, and pays it on a total loss without argument about depreciation.
-It is used where value is genuinely contentious after the fact: fine art,
-antiques, collectibles, some commercial property.
-
-**Stated amount** is a related idea, common on specialised equipment: the
-insured declares a value, and the policy pays the lesser of that amount, ACV,
-or the cost to repair.
-
-## Functional replacement cost
-
-Sometimes replacing like with like is absurd. A Victorian building with
-plaster mouldings and hand-cut joinery could be rebuilt to modern equivalent
-standards for far less. **Functional replacement cost** pays to replace with
-modern materials serving the same function.
-
-## Depreciation, recoverable and not
-
-Two terms turn up in claims and occasionally on exams.
-
-### Pair and set
-
-Some property is worth more together than apart: a pair of earrings, a set of
-dining chairs, a matched suite. **The pair and set clause says the insurer
-pays the difference in value between the set before the loss and the set
-after** — not the value of the missing piece alone, and not the whole set.
-
-Two consequences follow, and they run in opposite directions:
-
-- **The insured gets more than the lost item's own value**, because losing one
-  earring devalues the other.
-- **The insurer need not treat it as a total loss** of the set, and **need not
-  take the remaining pieces** unless it chooses to pay for the whole and
-  claim them.
-
-> **Not named on either Texas outline.** Recorded because it is a real
-> settlement clause a producer will have to explain to an insured who expects
-> either too much or too little.
-
-**Recoverable depreciation** is the gap between the ACV payment and the
-replacement cost, released to the insured once the work is done under a
-replacement-cost policy.
-
-**Non-recoverable depreciation** is the gap under an ACV policy, which is never
-paid because ACV is all the policy promised.
-
-## How this is examined
-
-**Calculation questions.** Straightforward, and worth practising until they are
-automatic: find the depreciation percentage from age over expected life, apply
-it to replacement cost, subtract.
-
-**"Which valuation method pays the most?"** Replacement cost, because nothing
-is deducted for age.
-
-**Market value as a distractor.** A stem that tells you the sale price is
-usually testing whether you know that property claims are not settled on it.
-
-**Why an insurer would pay ACV first.** To ensure the property is actually
-repaired, so the insured is indemnified rather than enriched.
-
-## Check yourself
-
-1. A five-year-old air-conditioning unit with a ten-year life is destroyed. A
-   new one costs $8,000. What is the ACV?
-2. The same unit, insured on a replacement cost basis. What does the policy
-   pay, and when?
-3. A house would cost $250,000 to rebuild but would sell for $175,000. On which
-   figure is a property claim normally based, and why?
-4. Why might a collector prefer an agreed value policy for a painting?
-
-## Answers
-
-1. Depreciation is 5/10 = 50%, so $4,000. **ACV = $8,000 − $4,000 = $4,000.**
-2. **$8,000**, though typically as $4,000 (the ACV) now and the remaining
-   $4,000 once the unit has actually been replaced.
-3. **$250,000, the replacement cost.** The policy insures the building, not the
-   land or the state of the local market. Market value is a distractor.
-4. Because the value of a painting is contentious and hard to establish after
-   it has been destroyed. An agreed value settles the argument in advance,
-   while it can still be appraised.$lesson$
-  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
-on conflict (lesson_id) do update set body = excluded.body;
-
-insert into public.lesson_topics (lesson_id, topic_id, course_id)
-select 'e1d24da3-2f83-5484-8008-27456a1c9f05', t.id, t.course_id
-  from public.topics t
-  join public.courses c on c.id = t.course_id
- where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.II'
-on conflict (lesson_id, topic_id) do nothing;
-
-insert into public.lessons
-  (id, module_id, course_id, title, slug, summary, position, status,
-   estimated_minutes)
-select '2f93978e-6aca-5ed1-99ea-e672f8e06e7f', '34b6c5a1-202f-5d9f-b12a-d98a335b2916', c.id, 'Deductibles, Coinsurance and Limits',
-       'deductibles-coinsurance-and-limits', 'The arithmetic questions — and the coinsurance formula that catches people who insure for too little.', 5,
-       'draft', 16
-  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
-on conflict (id) do update set
-  title = excluded.title, summary = excluded.summary,
-  position = excluded.position, status = excluded.status,
-  estimated_minutes = excluded.estimated_minutes;
-
-insert into public.lesson_contents (lesson_id, course_id, body)
-select '2f93978e-6aca-5ed1-99ea-e672f8e06e7f', c.id, $lesson$# The three numbers that decide what a claim pays
-
-A limit, a deductible and a coinsurance percentage look like fine print. They
-are the arithmetic of almost every calculation question on the exam, and
-coinsurance in particular catches people who have not practised it.
-
-## Deductibles
-
-**A deductible is the portion of each loss the insured keeps.**
-
-It is risk retention, chosen deliberately. It exists for three reasons: it
-removes small claims whose handling cost exceeds their value, it reduces the
-premium, and it leaves the insured with a stake in preventing losses — a
-direct answer to morale hazard.
-
-Forms you should recognise:
-
-- **Flat** (or straight) — a fixed sum subtracted from each loss. $1,000.
-- **Percentage** — a proportion of the insured value rather than of the loss.
-  Common for wind and hail, and this is the one that surprises people: 2% of a
-  $400,000 dwelling is $8,000 whatever the damage came to.
-- **Aggregate** — the insured absorbs losses until a total is reached, after
-  which the policy pays in full.
-- **Disappearing** (vanishing) — reduces as the loss grows and disappears
-  above a threshold.
-- **Waiting period** — a deductible measured in time rather than money, used
-  in business interruption and disability.
-
-## Limits of liability
-
-**A limit is the most the policy will pay.** The exam tests which limit applies
-to what.
-
-- **Per occurrence** — the most for any one event.
-- **Aggregate** — the most for all events in the policy period. Once
-  exhausted, the policy is finished even though the period has not ended.
-- **Split limits**, written as three numbers such as 100/300/50 (in
-  thousands): **$100,000 bodily injury per person**, **$300,000 bodily injury
-  per accident**, **$50,000 property damage per accident**.
-- **Combined single limit** — one figure covering bodily injury and property
-  damage together, in any proportion.
-- **Per person / per occurrence** — the first caps what any one claimant
-  receives, the second what the whole event can produce.
-
-A classic stem: under 100/300/50, four people are injured, each with $90,000 of
-bodily injury. Each claim is under the $100,000 per-person limit, so each is
-paid in full — but the total, $360,000, exceeds the $300,000 per-accident
-limit. The policy pays **$300,000**.
-
-## Coinsurance
-
-This is the one to practise.
-
-**A coinsurance clause requires the insured to carry a limit equal to at least
-a stated percentage of the property's value.** Carry less, and the policy pays
-less than the loss — even when the loss is far below the limit.
-
-The reason is that most property losses are partial. Somebody insuring a
-$1,000,000 building for $200,000 is not buying a fifth of the protection; they
-are buying most of it, because a total loss is rare. Coinsurance makes the
-premium correspond to the exposure.
-
-### The formula
-
-> **(Did ÷ Should) × Loss − Deductible = Payment**
-
-- **Did** — the limit actually carried.
-- **Should** — the coinsurance percentage × the property's value at the time
-  of loss.
-- The result is capped at the policy limit, and never exceeds the loss.
-
-### Worked example
-
-A building is worth **$500,000**. The policy carries an **80% coinsurance**
-clause, a limit of **$300,000** and a **$1,000 deductible**. A fire causes
-**$100,000** of damage.
-
-- **Should** = 80% × $500,000 = **$400,000**
-- **Did** = **$300,000**
-- $300,000 ÷ $400,000 = **0.75**
-- 0.75 × $100,000 = $75,000
-- Less the deductible: **$74,000**
-
-The insured is $26,000 short on a loss well inside the limit. That is
-coinsurance working exactly as intended and feeling exactly as unfair as it
-always does.
-
-### The details that get tested
-
-- Value is measured **at the time of the loss**, not when the policy was
-  written. A building that appreciates can leave a once-compliant insured
-  underinsured.
-- Meet or exceed the requirement and the fraction is 1 or more; the loss is
-  paid in full, less the deductible, up to the limit. **Over-insuring does not
-  pay more than the loss.**
-- Coinsurance applies to **partial** losses. On a total loss the limit governs.
-- An **agreed value** endorsement suspends the clause, the insurer having
-  already accepted the value.
-
-## How this is examined
-
-**Coinsurance calculations**, most often with the insured underinsured. Write
-down Did, Should, Loss and the deductible before touching the arithmetic.
-
-**Split limit questions** with several claimants, testing whether you apply the
-per-person limit to each and then the per-accident limit to the total.
-
-**Percentage deductible questions**, testing whether you take the percentage of
-the *insured value* rather than of the loss.
-
-**"Why does coinsurance exist?"** Because most losses are partial, so a low
-limit buys nearly full protection at a fraction of the premium.
-
-## Check yourself
-
-1. A building worth $800,000 carries 80% coinsurance and a $500,000 limit. A
-   $200,000 loss occurs, deductible $2,500. What is paid?
-2. A homeowner has a 2% wind deductible on a dwelling insured for $350,000.
-   Hail causes $12,000 of damage. What is paid?
-3. Under split limits of 250/500/100, three people are injured with bodily
-   injury claims of $200,000, $200,000 and $150,000. What does the policy pay
-   for bodily injury?
-4. Does carrying a limit above the coinsurance requirement increase what a
-   partial loss pays?
-
-## Answers
-
-1. Should = 80% × $800,000 = $640,000. Did = $500,000. 500/640 = 0.78125.
-   × $200,000 = $156,250. Less $2,500 = **$153,750**.
-2. The deductible is 2% of the **insured value**: 2% × $350,000 = $7,000.
-   $12,000 − $7,000 = **$5,000**.
-3. Each claim is within the $250,000 per-person limit, so each is payable in
-   full — but they total $550,000 against a $500,000 per-accident limit. The
-   policy pays **$500,000** for bodily injury.
-4. **No.** Once the fraction reaches 1 the loss is paid in full less the
-   deductible. Insurance never pays more than the loss.$lesson$
-  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
-on conflict (lesson_id) do update set body = excluded.body;
-
-insert into public.lesson_topics (lesson_id, topic_id, course_id)
-select '2f93978e-6aca-5ed1-99ea-e672f8e06e7f', t.id, t.course_id
   from public.topics t
   join public.courses c on c.id = t.course_id
  where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.II'

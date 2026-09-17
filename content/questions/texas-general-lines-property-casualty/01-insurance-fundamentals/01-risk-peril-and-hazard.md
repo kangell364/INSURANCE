@@ -5,6 +5,27 @@ lesson: risk-peril-and-hazard
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### Smoke from a fireplace burning normally all winter blackens the wall above it. Is this a fire loss?
+
+- [x] No — a friendly fire burns where it is meant to, and is not the covered peril
+- [ ] Yes, because smoke damage is physical damage from fire
+- [ ] Yes, but only up to a smoke sub-limit
+- [ ] No, because smoke is never a covered cause of loss
+
+**Only a hostile fire is the covered peril** — one burning where it is not
+meant to, or one that has escaped the place meant for it. A fireplace doing
+exactly its job is a **friendly fire**, and the damage it causes is not a fire
+loss however real it is.
+
+**The test is where the fire is, not how much harm it did.**
+
+The last option overstates it: smoke *is* a named peril in its own right on
+the Basic causes of loss list. What defeats this claim is not smoke — it is
+that the fire never left its proper place.
+
+Compare a log rolling out of the grate onto the carpet: same fireplace, and
+now hostile.
+
 ### Which of the following represents a pure risk?
 
 - [x] The chance a house may burn down
