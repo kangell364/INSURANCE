@@ -966,7 +966,16 @@ premium correspond to the exposure.
 
 - **Did** — the limit actually carried.
 - **Should** — the coinsurance percentage × the property's value at the time
-  of loss.
+  of loss, **measured on the basis the policy settles on**. Under a
+  replacement cost policy that means **replacement cost**, which is the usual
+  case and the usual phrasing: *80% of replacement cost*. Under an ACV policy
+  it means actual cash value.
+
+  **It is never measured against the market value or the mortgage balance.**
+  What the building would sell for includes land and location; what is owed on
+  it has nothing to do with what it costs to rebuild. Both appear as
+  distractors because both are numbers an owner knows off the top of their
+  head.
 - The result is capped at the policy limit, and never exceeds the loss.
 
 ### Worked example

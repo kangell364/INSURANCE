@@ -5,6 +5,30 @@ lesson: deductibles-coinsurance-and-limits
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+### A standard coinsurance clause requires the property to be insured for a stated percentage — usually 80% — of what?
+
+- [x] Its replacement cost
+- [ ] Its actual cash value
+- [ ] Its market value
+- [ ] The outstanding loan amount
+
+**Of the value measured on the basis the policy settles on**, which for the
+commercial property written with a coinsurance clause is normally
+**replacement cost**. Hence the usual phrasing: *80% of replacement cost*.
+
+Actual cash value is the answer only where the policy itself settles on ACV —
+possible, but not what "the standard coinsurance clause" means.
+
+**The other two are numbers the owner knows and the policy ignores.** Market
+value includes the land and the location, neither of which burns. The
+outstanding loan is what is owed, which has no relationship to what rebuilding
+costs — an owner halfway through a mortgage on an appreciating building could
+be enormously underinsured while feeling well covered.
+
+**And it is measured at the time of the loss**, not when the policy was
+written, which is how a once-compliant insured drifts into a penalty as
+construction costs rise.
+
 ### A $600,000 building carries 80% coinsurance, a $480,000 limit and a $2,500 deductible. Fire causes $150,000 of damage. What is paid?
 
 - [x] $147,500

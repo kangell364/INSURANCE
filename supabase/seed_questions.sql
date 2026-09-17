@@ -2286,6 +2286,44 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'fdb51f63-0120-5541-babe-f094bff47bde', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'deductibles-coinsurance-and-limits'),
+       'A standard coinsurance clause requires the property to be insured for a stated percentage — usually 80% — of what?', '**Of the value measured on the basis the policy settles on**, which for the commercial property written with a coinsurance clause is normally **replacement cost**. Hence the usual phrasing: *80% of replacement cost*. Actual cash value is the answer only where the policy itself settles on ACV — possible, but not what "the standard coinsurance clause" means. **The other two are numbers the owner knows and the policy ignores.** Market value includes the land and the location, neither of which burns. The outstanding loan is what is owed, which has no relationship to what rebuilding costs — an owner halfway through a mortgage on an appreciating building could be enormously underinsured while feeling well covered. **And it is measured at the time of the loss**, not when the policy was written, which is how a once-compliant insured drifts into a penalty as construction costs rise.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.II'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '3b30f9ef-64ff-536b-b1ae-8b4df4045b95', 'fdb51f63-0120-5541-babe-f094bff47bde', c.id, 'Its replacement cost', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'f8463992-a42a-5e32-a570-c41de4b26116', 'fdb51f63-0120-5541-babe-f094bff47bde', c.id, 'Its actual cash value', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '019a4d7a-1094-5f1d-b284-cff93e83290d', 'fdb51f63-0120-5541-babe-f094bff47bde', c.id, 'Its market value', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'da1fc633-162b-55a3-b6ed-fa19f59af81e', 'fdb51f63-0120-5541-babe-f094bff47bde', c.id, 'The outstanding loan amount', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'fdb51f63-0120-5541-babe-f094bff47bde', c.id, '3b30f9ef-64ff-536b-b1ae-8b4df4045b95'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select 'b188400d-27d1-5ad1-9110-4007a2f47e34', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'deductibles-coinsurance-and-limits'),
        'A $600,000 building carries 80% coinsurance, a $480,000 limit and a $2,500 deductible. Fire causes $150,000 of damage. What is paid?', '**Check the requirement before doing any arithmetic.** - **Should** = 80% × $600,000 = **$480,000** - **Did** = **$480,000** — the requirement is met exactly - The fraction is **1**, so there is no penalty - $150,000 − $2,500 deductible = **$147,500** **When the insured carries enough, there is nothing to calculate.** $120,000 comes from applying a fraction that does not apply — 480 ÷ 600 — which is the mistake of dividing by the building''s *value* instead of by the *required amount*. $150,000 forgets the deductible. The habit worth building: **work out Should, compare it with Did, and only reach for the fraction if Did is smaller.**', 'draft'
