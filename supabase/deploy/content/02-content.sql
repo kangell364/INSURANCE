@@ -24,7 +24,16 @@ on conflict (id) do update set
   estimated_minutes = excluded.estimated_minutes;
 
 insert into public.lesson_contents (lesson_id, course_id, body)
-select '2aa5db82-0689-5f02-8850-03dec995ef82', c.id, $lesson$A homeowners policy is a **package**: property and liability in one contract.
+select '2aa5db82-0689-5f02-8850-03dec995ef82', c.id, $lesson$**What this lesson covers.** The homeowners policy: how it is built, what
+each of its six coverages pays for, and how the six forms differ from one
+another.
+
+**By the end you should be able to** say what Coverages A to F each cover and
+how their limits relate; pick the right form for an owner, a renter or a
+condominium owner; and state, for any of the six forms, whether it insures the
+dwelling and the contents on a named peril or an open peril basis.
+
+A homeowners policy is a **package**: property and liability in one contract.
 That is its defining feature, and it is why it replaced the older practice of
 buying a fire policy and a separate liability policy.
 
@@ -273,7 +282,16 @@ on conflict (id) do update set
   estimated_minutes = excluded.estimated_minutes;
 
 insert into public.lesson_contents (lesson_id, course_id, body)
-select 'dda2d47b-e8ee-5b9b-bffb-df02bb0b8812', c.id, $lesson$The dwelling policy is the older, narrower form. Where a homeowners policy is
+select 'dda2d47b-e8ee-5b9b-bffb-df02bb0b8812', c.id, $lesson$**What this lesson covers.** The dwelling policy — the older, property-only
+form used where a homeowners policy will not fit — and the three forms it
+comes in.
+
+**By the end you should be able to** say when a dwelling policy is written
+instead of a homeowners policy, name what DP-1, DP-2 and DP-3 each cover and
+on what peril basis, and say what a dwelling policy leaves out that a
+homeowners policy includes.
+
+The dwelling policy is the older, narrower form. Where a homeowners policy is
 a package, **a dwelling policy is property insurance alone** — liability is
 optional and added by endorsement.
 

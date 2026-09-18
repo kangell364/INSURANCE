@@ -24,7 +24,17 @@ on conflict (id) do update set
   estimated_minutes = excluded.estimated_minutes;
 
 insert into public.lesson_contents (lesson_id, course_id, body)
-select 'fdcf9975-9bd5-5b6a-8eec-66bbd30eddd0', c.id, $lesson$Personal lines sells finished packages. Commercial lines sells components,
+select 'fdcf9975-9bd5-5b6a-8eec-66bbd30eddd0', c.id, $lesson$**What this lesson covers.** How commercial property insurance is assembled:
+the package policy and the parts that go into it, the form that insures the
+building and its contents, the three causes of loss forms, and the coverages
+that pay when the building survives but the business stops.
+
+**By the end you should be able to** say what a commercial package policy is
+and what it must contain; explain what the building and personal property form
+covers; tell the basic, broad and special causes of loss forms apart; and
+distinguish business income from extra expense.
+
+Personal lines sells finished packages. Commercial lines sells components,
 and the producer assembles them.
 
 ## C. Commercial Lines
@@ -315,7 +325,16 @@ on conflict (id) do update set
   estimated_minutes = excluded.estimated_minutes;
 
 insert into public.lesson_contents (lesson_id, course_id, body)
-select 'fb29d783-0b17-5cac-abd6-ab8e2df510b8', c.id, $lesson$The name is historical and misleading. **Inland marine has almost nothing to
+select 'fb29d783-0b17-5cac-abd6-ab8e2df510b8', c.id, $lesson$**What this lesson covers.** Inland marine insurance: what it is, why a line
+named after the sea covers property on land, and the floaters you will meet in
+both personal and commercial lines.
+
+**By the end you should be able to** say what kinds of property qualify for
+inland marine, explain why somebody buys a floater rather than relying on a
+homeowners or commercial form, and name the common personal and commercial
+floaters and what each is for.
+
+The name is historical and misleading. **Inland marine has almost nothing to
 do with water.**
 
 ## Where the name comes from

@@ -9,6 +9,15 @@ status: draft
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+**What this lesson covers.** The dwelling policy — the older, property-only
+form used where a homeowners policy will not fit — and the three forms it
+comes in.
+
+**By the end you should be able to** say when a dwelling policy is written
+instead of a homeowners policy, name what DP-1, DP-2 and DP-3 each cover and
+on what peril basis, and say what a dwelling policy leaves out that a
+homeowners policy includes.
+
 The dwelling policy is the older, narrower form. Where a homeowners policy is
 a package, **a dwelling policy is property insurance alone** — liability is
 optional and added by endorsement.

@@ -9,6 +9,15 @@ status: draft
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+**What this lesson covers.** Inland marine insurance: what it is, why a line
+named after the sea covers property on land, and the floaters you will meet in
+both personal and commercial lines.
+
+**By the end you should be able to** say what kinds of property qualify for
+inland marine, explain why somebody buys a floater rather than relying on a
+homeowners or commercial form, and name the common personal and commercial
+floaters and what each is for.
+
 The name is historical and misleading. **Inland marine has almost nothing to
 do with water.**
 

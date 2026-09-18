@@ -397,7 +397,16 @@ on conflict (id) do update set
   estimated_minutes = excluded.estimated_minutes;
 
 insert into public.lesson_contents (lesson_id, course_id, body)
-select '2aa5db82-0689-5f02-8850-03dec995ef82', c.id, $lesson$A homeowners policy is a **package**: property and liability in one contract.
+select '2aa5db82-0689-5f02-8850-03dec995ef82', c.id, $lesson$**What this lesson covers.** The homeowners policy: how it is built, what
+each of its six coverages pays for, and how the six forms differ from one
+another.
+
+**By the end you should be able to** say what Coverages A to F each cover and
+how their limits relate; pick the right form for an owner, a renter or a
+condominium owner; and state, for any of the six forms, whether it insures the
+dwelling and the contents on a named peril or an open peril basis.
+
+A homeowners policy is a **package**: property and liability in one contract.
 That is its defining feature, and it is why it replaced the older practice of
 buying a fire policy and a separate liability policy.
 
@@ -646,7 +655,16 @@ on conflict (id) do update set
   estimated_minutes = excluded.estimated_minutes;
 
 insert into public.lesson_contents (lesson_id, course_id, body)
-select 'dda2d47b-e8ee-5b9b-bffb-df02bb0b8812', c.id, $lesson$The dwelling policy is the older, narrower form. Where a homeowners policy is
+select 'dda2d47b-e8ee-5b9b-bffb-df02bb0b8812', c.id, $lesson$**What this lesson covers.** The dwelling policy — the older, property-only
+form used where a homeowners policy will not fit — and the three forms it
+comes in.
+
+**By the end you should be able to** say when a dwelling policy is written
+instead of a homeowners policy, name what DP-1, DP-2 and DP-3 each cover and
+on what peril basis, and say what a dwelling policy leaves out that a
+homeowners policy includes.
+
+The dwelling policy is the older, narrower form. Where a homeowners policy is
 a package, **a dwelling policy is property insurance alone** — liability is
 optional and added by endorsement.
 
@@ -837,7 +855,17 @@ on conflict (id) do update set
   estimated_minutes = excluded.estimated_minutes;
 
 insert into public.lesson_contents (lesson_id, course_id, body)
-select 'fdcf9975-9bd5-5b6a-8eec-66bbd30eddd0', c.id, $lesson$Personal lines sells finished packages. Commercial lines sells components,
+select 'fdcf9975-9bd5-5b6a-8eec-66bbd30eddd0', c.id, $lesson$**What this lesson covers.** How commercial property insurance is assembled:
+the package policy and the parts that go into it, the form that insures the
+building and its contents, the three causes of loss forms, and the coverages
+that pay when the building survives but the business stops.
+
+**By the end you should be able to** say what a commercial package policy is
+and what it must contain; explain what the building and personal property form
+covers; tell the basic, broad and special causes of loss forms apart; and
+distinguish business income from extra expense.
+
+Personal lines sells finished packages. Commercial lines sells components,
 and the producer assembles them.
 
 ## C. Commercial Lines
@@ -1128,7 +1156,16 @@ on conflict (id) do update set
   estimated_minutes = excluded.estimated_minutes;
 
 insert into public.lesson_contents (lesson_id, course_id, body)
-select 'fb29d783-0b17-5cac-abd6-ab8e2df510b8', c.id, $lesson$The name is historical and misleading. **Inland marine has almost nothing to
+select 'fb29d783-0b17-5cac-abd6-ab8e2df510b8', c.id, $lesson$**What this lesson covers.** Inland marine insurance: what it is, why a line
+named after the sea covers property on land, and the floaters you will meet in
+both personal and commercial lines.
+
+**By the end you should be able to** say what kinds of property qualify for
+inland marine, explain why somebody buys a floater rather than relying on a
+homeowners or commercial form, and name the common personal and commercial
+floaters and what each is for.
+
+The name is historical and misleading. **Inland marine has almost nothing to
 do with water.**
 
 ## Where the name comes from
@@ -1331,7 +1368,16 @@ on conflict (id) do update set
   estimated_minutes = excluded.estimated_minutes;
 
 insert into public.lesson_contents (lesson_id, course_id, body)
-select '6d2171b2-6a44-5f41-b8c4-52bd93262d4a', c.id, $lesson$Flood is excluded from homeowners, dwelling and commercial property forms
+select '6d2171b2-6a44-5f41-b8c4-52bd93262d4a', c.id, $lesson$**What this lesson covers.** Flood: why every standard property policy
+excludes it, how the National Flood Insurance Program covers it instead, and
+the rules a flood policy runs on.
+
+**By the end you should be able to** explain why the private market will not
+write flood, say how a community and its property owners come to be covered,
+state the waiting period and the limits, and say what the programme counts as
+a flood — and what it does not cover.
+
+Flood is excluded from homeowners, dwelling and commercial property forms
 alike. The exclusion is not arbitrary, and understanding why explains
 everything else about the programme.
 
@@ -1541,7 +1587,14 @@ on conflict (id) do update set
   estimated_minutes = excluded.estimated_minutes;
 
 insert into public.lesson_contents (lesson_id, course_id, body)
-select 'f2a692e9-7a38-5c5c-938c-371af3cfcd0f', c.id, $lesson$Each of these exists because a standard homeowners or commercial form either
+select 'f2a692e9-7a38-5c5c-938c-371af3cfcd0f', c.id, $lesson$**What this lesson covers.** Five forms for risks the standard policies will
+not take: earthquake, mobile homes, watercraft, farmowners and windstorm.
+
+**By the end you should be able to** say why each of these needs its own form
+or endorsement, and name what each one covers. These are examined by name, so
+knowing which form answers which risk is most of the work.
+
+Each of these exists because a standard homeowners or commercial form either
 excludes the peril or cannot handle the property. You are expected to know
 them by name.
 

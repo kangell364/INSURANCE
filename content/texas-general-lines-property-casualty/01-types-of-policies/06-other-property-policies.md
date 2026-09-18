@@ -9,6 +9,13 @@ status: draft
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+**What this lesson covers.** Five forms for risks the standard policies will
+not take: earthquake, mobile homes, watercraft, farmowners and windstorm.
+
+**By the end you should be able to** say why each of these needs its own form
+or endorsement, and name what each one covers. These are examined by name, so
+knowing which form answers which risk is most of the work.
+
 Each of these exists because a standard homeowners or commercial form either
 excludes the peril or cannot handle the property. You are expected to know
 them by name.

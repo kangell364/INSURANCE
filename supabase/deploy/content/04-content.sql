@@ -24,7 +24,16 @@ on conflict (id) do update set
   estimated_minutes = excluded.estimated_minutes;
 
 insert into public.lesson_contents (lesson_id, course_id, body)
-select '6d2171b2-6a44-5f41-b8c4-52bd93262d4a', c.id, $lesson$Flood is excluded from homeowners, dwelling and commercial property forms
+select '6d2171b2-6a44-5f41-b8c4-52bd93262d4a', c.id, $lesson$**What this lesson covers.** Flood: why every standard property policy
+excludes it, how the National Flood Insurance Program covers it instead, and
+the rules a flood policy runs on.
+
+**By the end you should be able to** explain why the private market will not
+write flood, say how a community and its property owners come to be covered,
+state the waiting period and the limits, and say what the programme counts as
+a flood — and what it does not cover.
+
+Flood is excluded from homeowners, dwelling and commercial property forms
 alike. The exclusion is not arbitrary, and understanding why explains
 everything else about the programme.
 
@@ -234,7 +243,14 @@ on conflict (id) do update set
   estimated_minutes = excluded.estimated_minutes;
 
 insert into public.lesson_contents (lesson_id, course_id, body)
-select 'f2a692e9-7a38-5c5c-938c-371af3cfcd0f', c.id, $lesson$Each of these exists because a standard homeowners or commercial form either
+select 'f2a692e9-7a38-5c5c-938c-371af3cfcd0f', c.id, $lesson$**What this lesson covers.** Five forms for risks the standard policies will
+not take: earthquake, mobile homes, watercraft, farmowners and windstorm.
+
+**By the end you should be able to** say why each of these needs its own form
+or endorsement, and name what each one covers. These are examined by name, so
+knowing which form answers which risk is most of the work.
+
+Each of these exists because a standard homeowners or commercial form either
 excludes the peril or cannot handle the property. You are expected to know
 them by name.
 

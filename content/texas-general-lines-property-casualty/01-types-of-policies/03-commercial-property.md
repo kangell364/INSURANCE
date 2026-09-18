@@ -9,6 +9,16 @@ status: draft
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+**What this lesson covers.** How commercial property insurance is assembled:
+the package policy and the parts that go into it, the form that insures the
+building and its contents, the three causes of loss forms, and the coverages
+that pay when the building survives but the business stops.
+
+**By the end you should be able to** say what a commercial package policy is
+and what it must contain; explain what the building and personal property form
+covers; tell the basic, broad and special causes of loss forms apart; and
+distinguish business income from extra expense.
+
 Personal lines sells finished packages. Commercial lines sells components,
 and the producer assembles them.
 

@@ -9,6 +9,15 @@ status: draft
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+**What this lesson covers.** The homeowners policy: how it is built, what
+each of its six coverages pays for, and how the six forms differ from one
+another.
+
+**By the end you should be able to** say what Coverages A to F each cover and
+how their limits relate; pick the right form for an owner, a renter or a
+condominium owner; and state, for any of the six forms, whether it insures the
+dwelling and the contents on a named peril or an open peril basis.
+
 A homeowners policy is a **package**: property and liability in one contract.
 That is its defining feature, and it is why it replaced the older practice of
 buying a fire policy and a separate liability policy.

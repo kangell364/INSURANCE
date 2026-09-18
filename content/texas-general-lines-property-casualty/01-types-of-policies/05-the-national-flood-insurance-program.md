@@ -9,6 +9,15 @@ status: draft
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
+**What this lesson covers.** Flood: why every standard property policy
+excludes it, how the National Flood Insurance Program covers it instead, and
+the rules a flood policy runs on.
+
+**By the end you should be able to** explain why the private market will not
+write flood, say how a community and its property owners come to be covered,
+state the waiting period and the limits, and say what the programme counts as
+a flood — and what it does not cover.
+
 Flood is excluded from homeowners, dwelling and commercial property forms
 alike. The exclusion is not arbitrary, and understanding why explains
 everything else about the programme.
