@@ -118,7 +118,7 @@ mean teaching the same nine things twice.
 1. **Homeowners Forms** — HO-2, 3, 4, 5, 6, 8; Coverages A–F; the percentage
    relationships; special limits
 2. **Dwelling Policies** — DP-1, 2, 3; vacancy and unoccupancy
-3. **Commercial Property and the Package Policy** — the CPP, the building and
+3. **Commercial Lines** — the CPP, the building and
    business personal property form, the three causes of loss forms, business
    income and extra expense, equipment breakdown, builders risk, first-party
    cyber

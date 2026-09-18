@@ -14,7 +14,7 @@ begin;
 insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
-select 'fdcf9975-9bd5-5b6a-8eec-66bbd30eddd0', 'ec98aec4-aec6-5d3e-93ae-dbb68098f16a', c.id, 'Commercial Property and the Package Policy',
+select 'fdcf9975-9bd5-5b6a-8eec-66bbd30eddd0', 'ec98aec4-aec6-5d3e-93ae-dbb68098f16a', c.id, 'Commercial Lines',
        'commercial-property-and-the-package-policy', 'How a commercial package is assembled, the three causes of loss forms, and the income coverages that pay when the building is standing but the business is not.', 3,
        'draft', 18
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'

@@ -1,6 +1,6 @@
 ---
 module: Types of Policies
-title: Commercial Property and the Package Policy
+title: Commercial Lines
 slug: commercial-property-and-the-package-policy
 blueprint: GK.I
 summary: How a commercial package is assembled, the three causes of loss forms, and the income coverages that pay when the building is standing but the business is not.

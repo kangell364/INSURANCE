@@ -217,7 +217,7 @@ of lost trading has bought one and not the other.
 Examples of indirect loss: lost business income, extra expense, loss of rents,
 additional living expense, spoilage following a power failure, loss of use.
 
-> Fuller treatment: Module 1, *Commercial Property and the Package Policy*.
+> Fuller treatment: Module 1, *Commercial Lines*.
 
 ## Salvage value
 
@@ -292,7 +292,7 @@ a **high coinsurance percentage** — often 90% or 100% — because the insurer 
 exposed at every location at once and needs the insurance-to-value discipline
 that a specific limit would have provided.
 
-> Fuller treatment: Module 1, *Commercial Property and the Package Policy*.
+> Fuller treatment: Module 1, *Commercial Lines*.
 
 ## Absolute, strict and vicarious liability
 
