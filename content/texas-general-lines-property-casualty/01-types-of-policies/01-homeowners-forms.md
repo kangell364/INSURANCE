@@ -55,9 +55,8 @@ own family's injuries are a health insurance matter.
 
 ## A. Homeowners
 
-The outline lists six forms under **I.A**, and the exam tests the differences
-between them rather than any one in isolation. Read the table first, then each
-form in the outline's own order.
+There are six forms, and what is tested is the differences between them
+rather than any one in isolation. Read the table first, then each form.
 
 | Form | Who | Dwelling (A) | Contents (C) |
 | --- | --- | --- | --- |

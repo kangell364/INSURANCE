@@ -11,9 +11,9 @@ review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 
 # Five risks the standard forms send elsewhere
 
-The blueprint lists these by name, so they are examined by name. Each exists
-because a standard homeowners or commercial form either excludes the peril or
-cannot handle the property.
+Each of these exists because a standard homeowners or commercial form either
+excludes the peril or cannot handle the property. You are expected to know
+them by name.
 
 ## F. Others
 

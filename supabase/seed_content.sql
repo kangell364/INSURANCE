@@ -443,9 +443,8 @@ own family's injuries are a health insurance matter.
 
 ## A. Homeowners
 
-The outline lists six forms under **I.A**, and the exam tests the differences
-between them rather than any one in isolation. Read the table first, then each
-form in the outline's own order.
+There are six forms, and what is tested is the differences between them
+rather than any one in isolation. Read the table first, then each form.
 
 | Form | Who | Dwelling (A) | Contents (C) |
 | --- | --- | --- | --- |
@@ -1028,12 +1027,12 @@ what the premium buys.
 
 ### 3. Business Owners Policy (BOP)
 
-The outline lists the BOP here **and again at IV.H**. It is taught in
-**Module 4, Types of Policies, Bonds and Related Terms**, beside the other
-packaged commercial policies, because that is where the second listing puts
-it. In one line: a **BOP packages property and liability for a small or
-medium business**, in the way a homeowners policy does for a household, and
-it is offered only to eligible classes.
+A **BOP packages property and liability for a small or medium business**, in
+the way a homeowners policy does for a household, and it is offered only to
+eligible classes.
+
+It is taught in full in **Module 4, Types of Policies, Bonds and Related
+Terms**, beside the other packaged commercial policies.
 
 ### 4. Builders Risk
 
@@ -1554,9 +1553,9 @@ on conflict (id) do update set
 insert into public.lesson_contents (lesson_id, course_id, body)
 select 'f2a692e9-7a38-5c5c-938c-371af3cfcd0f', c.id, $lesson$# Five risks the standard forms send elsewhere
 
-The blueprint lists these by name, so they are examined by name. Each exists
-because a standard homeowners or commercial form either excludes the peril or
-cannot handle the property.
+Each of these exists because a standard homeowners or commercial form either
+excludes the peril or cannot handle the property. You are expected to know
+them by name.
 
 ## F. Others
 

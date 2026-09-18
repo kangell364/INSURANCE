@@ -238,9 +238,9 @@ on conflict (id) do update set
 insert into public.lesson_contents (lesson_id, course_id, body)
 select 'f2a692e9-7a38-5c5c-938c-371af3cfcd0f', c.id, $lesson$# Five risks the standard forms send elsewhere
 
-The blueprint lists these by name, so they are examined by name. Each exists
-because a standard homeowners or commercial form either excludes the peril or
-cannot handle the property.
+Each of these exists because a standard homeowners or commercial form either
+excludes the peril or cannot handle the property. You are expected to know
+them by name.
 
 ## F. Others
 
