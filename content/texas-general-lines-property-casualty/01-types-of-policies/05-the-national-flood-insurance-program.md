@@ -19,7 +19,7 @@ everything else about the programme.
 
 ### Why flood is uninsurable privately
 
-Flood fails the tests of an insurable risk from Module 1:
+Flood fails the tests of an insurable risk from Module 2:
 
 - **The losses are not independent.** A flood does not damage one house; it
   damages every house on the flood plain at once. The law of large numbers

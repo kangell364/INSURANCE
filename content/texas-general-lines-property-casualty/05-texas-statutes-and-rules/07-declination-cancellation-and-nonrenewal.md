@@ -11,7 +11,7 @@ review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 
 # When a Texas insurer may walk away
 
-Module 2 gave the general pattern — 10 days for non-payment, 30 for other
+Module 3 gave the general pattern — 10 days for non-payment, 30 for other
 reasons, 30 for non-renewal. **Texas sets its own numbers, and they are not
 those.** Chapter 551 is what a Texas question is testing.
 
@@ -183,7 +183,7 @@ ineffective.** The policy stays in force.
 
 **§551.113** — declination, non-renewal or cancellation is **prohibited** on
 certain grounds relating to the **consideration of consumer information** —
-the Texas counterpart to the FCRA material in Module 2.
+the Texas counterpart to the FCRA material in Module 3.
 
 **§551.152** — an insurer **may not cancel or refuse to renew** a policy
 because the insured is an **elected official**.

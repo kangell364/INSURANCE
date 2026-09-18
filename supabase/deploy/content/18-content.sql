@@ -26,7 +26,7 @@ on conflict (id) do update set
 insert into public.lesson_contents (lesson_id, course_id, body)
 select 'c7b0a9e9-5837-5a19-a830-e1c77b9bda93', c.id, $lesson$# The homeowners policy of commercial insurance
 
-The commercial package policy in Module 3 is assembled part by part. That
+The commercial package policy in Module 1 is assembled part by part. That
 suits a large or unusual risk and is wasted effort on a dry cleaner.
 
 **A BOP is a pre-packaged policy combining commercial property and general

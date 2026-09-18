@@ -896,7 +896,7 @@ betterments** made to a leased building.
 control. **Payment goes to the owner**, not to the insured.
 
 The **coinsurance** clause applies, usually at 80%, 90% or 100%, and the
-calculation is the one from Module 1.
+calculation is the one from Module 2.
 
 ##### Extensions and additional coverages
 
@@ -1350,7 +1350,7 @@ everything else about the programme.
 
 ### Why flood is uninsurable privately
 
-Flood fails the tests of an insurable risk from Module 1:
+Flood fails the tests of an insurable risk from Module 2:
 
 - **The losses are not independent.** A flood does not damage one house; it
   damages every house on the flood plain at once. The law of large numbers
@@ -2206,7 +2206,7 @@ appoint, nobody to pay commission, and nobody to advise the buyer.
 
 Cutting across all of these: **an agent represents the insurer; a broker
 represents the insured.** That decides whose knowledge binds whom, and it is
-treated fully in Module 2 alongside express, implied and apparent authority.
+treated fully in Module 3 alongside express, implied and apparent authority.
 
 > **Marketing systems are not named on the Texas outline** — only the managing
 > general agent licence is, as a licence type. They are here because a
@@ -3219,7 +3219,7 @@ of lost trading has bought one and not the other.
 Examples of indirect loss: lost business income, extra expense, loss of rents,
 additional living expense, spoilage following a power failure, loss of use.
 
-> Fuller treatment: Module 3, *Commercial Property and the Package Policy*.
+> Fuller treatment: Module 1, *Commercial Property and the Package Policy*.
 
 ## Salvage value
 
@@ -3273,7 +3273,7 @@ before anybody notices. The exposure genuinely changes.
 
 The insured's fix is to tell the insurer and buy a **vacancy permit**.
 
-> Fuller treatment: Module 3, *Dwelling Policies*.
+> Fuller treatment: Module 1, *Dwelling Policies*.
 
 ## Blanket and specific insurance
 
@@ -3294,7 +3294,7 @@ a **high coinsurance percentage** — often 90% or 100% — because the insurer 
 exposed at every location at once and needs the insurance-to-value discipline
 that a specific limit would have provided.
 
-> Fuller treatment: Module 3, *Commercial Property and the Package Policy*.
+> Fuller treatment: Module 1, *Commercial Property and the Package Policy*.
 
 ## Absolute, strict and vicarious liability
 
@@ -3344,7 +3344,7 @@ policy is prepared.
   underwriter would have declined the risk. A broker generally cannot; a
   broker represents the buyer.
 
-> Fuller treatment: Module 2, *The Declarations Page*.
+> Fuller treatment: Module 3, *The Declarations Page*.
 
 ## Certificates of insurance
 
@@ -3960,7 +3960,7 @@ keeps the insurer's right to recover intact.
 
 **Which is exactly why bailees buy their own cover.** A dry cleaner cannot
 rely on customers' policies, so it buys **bailee's customers** coverage on its
-own account — see *Inland Marine* in Module 3.
+own account — see *Inland Marine* in Module 1.
 
 ## Loss payees and additional interests
 
@@ -4696,7 +4696,7 @@ ways.
 > **Insurance and a wager share the characteristic and differ on the
 > element.** That is why a policy without insurable interest is not merely
 > unenforceable but is *called* a wager — see *Insurable Interest and
-> Indemnity* in Module 1.
+> Indemnity* in Module 2.
 
 **Unilateral.** **Only one party makes a legally enforceable promise.** Once
 the premium is paid, the insured has promised nothing further; the insurer
@@ -4726,7 +4726,7 @@ A useful check: **A**dhesion, **A**leatory, **U**nilateral, **C**onditional,
 > their pre-loss position and no better, which is as much a description of
 > what kind of contract insurance is as *aleatory* or *conditional* — it is
 > simply important enough to get its own treatment, in *Insurable Interest and
-> Indemnity* in Module 1, where the exceptions live too.
+> Indemnity* in Module 2, where the exceptions live too.
 >
 > The blueprint names it as a term in its own right at **GK II.J** and
 > **V.C**, not as an item on a characteristics list. **Learn what it means and
@@ -4740,7 +4740,7 @@ own right. Three things about it are examined.
 
 **The signature is what adopts the statements.** Everything written on the
 application becomes the applicant's **representation** the moment they sign —
-which is what makes Module 2's misrepresentation and concealment rules bite.
+which is what makes Module 3's misrepresentation and concealment rules bite.
 An applicant who lets somebody else fill the form in and signs without reading
 it has still made every statement on it.
 
@@ -5592,7 +5592,7 @@ The form defines it by the insured's structure:
 - **Newly acquired organisations**, automatically, for a limited period —
   commonly **90 days** or until the policy ends, whichever is first.
 
-**The first named insured** has the distinct duties met in Module 2: it
+**The first named insured** has the distinct duties met in Module 3: it
 receives notices, pays premium, may cancel, and handles the **premium audit**.
 
 **Additional insureds** are added by endorsement, for liability arising out of
@@ -7145,7 +7145,7 @@ on conflict (id) do update set
 insert into public.lesson_contents (lesson_id, course_id, body)
 select 'c7b0a9e9-5837-5a19-a830-e1c77b9bda93', c.id, $lesson$# The homeowners policy of commercial insurance
 
-The commercial package policy in Module 3 is assembled part by part. That
+The commercial package policy in Module 1 is assembled part by part. That
 suits a large or unusual risk and is wasted effort on a dry cleaner.
 
 **A BOP is a pre-packaged policy combining commercial property and general
@@ -7850,7 +7850,7 @@ generally, and **§4001.255** — the separate-records rule above — is what ma
 the duty auditable: if insurance money is mixed into another business's books,
 nobody can show it was handled properly.
 
-**The flip side is in Module 2.** Premium paid to an agent within their
+**The flip side is in Module 3.** Premium paid to an agent within their
 authority is paid to the insurer, whether or not the agent forwards it. The
 insured is protected either way; **the exposure is entirely the agent's**, and
 that asymmetry is the whole reason the duty is enforced by licence.
@@ -7896,7 +7896,7 @@ The duty is not only about premium. A producer owes an applicant **honest
 representations about coverage** (§4005.101(b)(6) makes materially
 misrepresenting a policy's terms a ground), and owes the confidentiality of
 what an applicant discloses — underwriting information is covered by the
-privacy rules in Module 2, not by discretion.
+privacy rules in Module 3, not by discretion.
 
 ## Licence types named by the blueprint
 
@@ -8433,7 +8433,7 @@ citing §541.056 and §544.002 respectively.
 **§541.056 does not exist.** Chapter 541 runs .051 to .055 and then jumps to
 .059; sections .056, .057 and .058 were repealed. **Rebating is now at
 §1806.104** (casualty), **§1806.053** (automobile) and **§1806.153** (fire),
-and it is taught in Module 2 and in `reference/statutes/IN.1806-key-provisions.md`.
+and it is taught in Module 3 and in `reference/statutes/IN.1806-key-provisions.md`.
 
 **Chapter 544 has not been obtained**, so the Texas discrimination provisions
 are not taught here. The general prohibition on discriminating among insureds
@@ -8869,7 +8869,7 @@ on conflict (id) do update set
 insert into public.lesson_contents (lesson_id, course_id, body)
 select '6aea89e0-bdfe-572e-9221-7381c152533c', c.id, $lesson$# When a Texas insurer may walk away
 
-Module 2 gave the general pattern — 10 days for non-payment, 30 for other
+Module 3 gave the general pattern — 10 days for non-payment, 30 for other
 reasons, 30 for non-renewal. **Texas sets its own numbers, and they are not
 those.** Chapter 551 is what a Texas question is testing.
 
@@ -9041,7 +9041,7 @@ ineffective.** The policy stays in force.
 
 **§551.113** — declination, non-renewal or cancellation is **prohibited** on
 certain grounds relating to the **consideration of consumer information** —
-the Texas counterpart to the FCRA material in Module 2.
+the Texas counterpart to the FCRA material in Module 3.
 
 **§551.152** — an insurer **may not cancel or refuse to renew** a policy
 because the insured is an **elected official**.
@@ -9638,7 +9638,7 @@ on conflict (id) do update set
 insert into public.lesson_contents (lesson_id, course_id, body)
 select 'f2f83e58-1313-5d36-b18f-242354a7ab5c', c.id, $lesson$# Two markets of last resort, and the line between them
 
-Module 3 gave the general idea: where a catastrophe exposure is concentrated,
+Module 1 gave the general idea: where a catastrophe exposure is concentrated,
 the private market withdraws and a state-created residual market fills the
 gap. Texas has **two**, and the exam's favourite question is which one applies.
 
@@ -9706,7 +9706,7 @@ of the damaged part.
 
 **§2210.207(d)** — **below 80%**, liability is limited as the section
 provides. This is the insurance-to-value rule familiar from coinsurance in
-Module 1, written into statute.
+Module 2, written into statute.
 
 **§2210.208(a)** — a dwelling policy must cover **wind-driven rain "regardless
 of whether an opening is made by the wind."** That is a deliberate departure
@@ -10643,7 +10643,7 @@ Two things follow directly:
   offer at **$2,500** per person. Treating the 30/60/25 floor as reaching
   PIP is a natural mistake and a good distractor.
 - Every Texas auto question about "minimum required coverage" means these
-  three numbers, not the general-pattern figures from Module 2.
+  three numbers, not the general-pattern figures from Module 3.
 
 **§601.076** — an owner's motor vehicle liability policy must cover each
 vehicle for which coverage is granted, and must pay on behalf of the **named
@@ -10652,7 +10652,7 @@ pay arising out of the ownership, maintenance or use of the vehicle **in the
 United States or Canada**, subject to §601.072's amounts and exclusions.
 
 Note the territory: **United States or Canada**, which matches the personal
-auto territory from Module 2 — and again, **not Mexico**.
+auto territory from Module 3 — and again, **not Mexico**.
 
 **§601.073(e)** — where the insurer settles a claim in **good faith**, the
 amount of the settlement is **deductible from the amounts specified in
@@ -10776,7 +10776,7 @@ rate triggers a hearing.** That threshold is the examinable number.
 
 ## Rideshare — Chapter 1954
 
-Module 2's personal auto lesson met the **public or livery conveyance**
+Module 3's personal auto lesson met the **public or livery conveyance**
 exclusion and called it the ride-hailing exclusion. **Chapter 1954 is what
 Texas requires instead**, and its structure is two-tier.
 
@@ -10900,7 +10900,7 @@ on conflict (id) do update set
 insert into public.lesson_contents (lesson_id, course_id, body)
 select '01297aa9-1126-55ad-bfca-785bed5fa3f6', c.id, $lesson$# Underwriting distinguishes. Discrimination is the distinction the law forbids.
 
-Module 1 said that insurance works by **classifying risks and charging each
+Module 2 said that insurance works by **classifying risks and charging each
 class according to its hazard**. That is discrimination in the neutral sense,
 and it is the whole business. **Chapter 544 draws the line between the
 classification the law requires and the classification it forbids.**
@@ -11200,8 +11200,8 @@ all of them; this is the category they share.
 
 | | What it is | Where |
 | --- | --- | --- |
-| **NFIP** | Federal flood insurance, because standard forms exclude flood | Module 3 |
-| **TRIA** | Federal *reinsurance* backstop for terrorism — not a policy | Module 2 |
+| **NFIP** | Federal flood insurance, because standard forms exclude flood | Module 1 |
+| **TRIA** | Federal *reinsurance* backstop for terrorism — not a policy | Module 3 |
 | **TWIA** | Coastal windstorm, **§2210** | Module 5 |
 | **Texas FAIR Plan** | Property for those declined in the voluntary market, **§2211** | Module 5 |
 | **TAIPA** | Auto for drivers the voluntary market rejects, **§2151** | Module 5 |
@@ -11341,7 +11341,7 @@ deadlines** — so the term arrives in an examined lesson either way.
 ### Self-insurance
 
 **An organisation pays its own losses instead of transferring them.** This is
-the **retention** technique from Module 1, at organisational scale — not a
+the **retention** technique from Module 2, at organisational scale — not a
 kind of insurer at all. There is no policy, no premium and no certificate of
 authority.
 
@@ -11897,7 +11897,7 @@ write but is expected to recognise.
 
 ## The valued policy rule — §862.053
 
-Module 1 taught that property insurance is a contract of **indemnity**: it
+Module 2 taught that property insurance is a contract of **indemnity**: it
 restores, it does not enrich, and a loss is settled at actual cash value or
 replacement cost. **Texas makes an exception for a total fire loss of real
 property, and it is the most counter-intuitive rule in the Texas material.**
@@ -11934,7 +11934,7 @@ fire policy rather than accepting whatever the applicant asks for.
 
 ## Breach by the insured — §862.054
 
-A companion rule, and a causation rule of the kind met in Module 2.
+A companion rule, and a causation rule of the kind met in Module 3.
 
 **§862.054** — **unless the breach or violation contributed to cause the
 destruction of the property**, a breach or violation by the insured of a
@@ -11943,7 +11943,7 @@ property**, or of the application for it, does not have the effect that section
 otherwise describes.
 
 The principle: **a breach that had nothing to do with the loss does not defeat
-the claim.** Compare Module 2's strict warranty doctrine, under which breach
+the claim.** Compare Module 3's strict warranty doctrine, under which breach
 voided the policy without any causal connection — this is Texas softening
 exactly that, in the way that lesson said many states have.
 

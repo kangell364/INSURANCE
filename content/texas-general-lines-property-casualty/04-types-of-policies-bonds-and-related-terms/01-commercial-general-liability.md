@@ -134,7 +134,7 @@ The form defines it by the insured's structure:
 - **Newly acquired organisations**, automatically, for a limited period —
   commonly **90 days** or until the policy ends, whichever is first.
 
-**The first named insured** has the distinct duties met in Module 2: it
+**The first named insured** has the distinct duties met in Module 3: it
 receives notices, pays premium, may cancel, and handles the **premium audit**.
 
 **Additional insureds** are added by endorsement, for liability arising out of

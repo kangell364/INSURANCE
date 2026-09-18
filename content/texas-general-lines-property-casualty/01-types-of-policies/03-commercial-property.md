@@ -63,7 +63,7 @@ betterments** made to a leased building.
 control. **Payment goes to the owner**, not to the insured.
 
 The **coinsurance** clause applies, usually at 80%, 90% or 100%, and the
-calculation is the one from Module 1.
+calculation is the one from Module 2.
 
 ##### Extensions and additional coverages
 

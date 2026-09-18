@@ -200,7 +200,7 @@ appoint, nobody to pay commission, and nobody to advise the buyer.
 
 Cutting across all of these: **an agent represents the insurer; a broker
 represents the insured.** That decides whose knowledge binds whom, and it is
-treated fully in Module 2 alongside express, implied and apparent authority.
+treated fully in Module 3 alongside express, implied and apparent authority.
 
 > **Marketing systems are not named on the Texas outline** — only the managing
 > general agent licence is, as a licence type. They are here because a

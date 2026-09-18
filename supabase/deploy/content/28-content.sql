@@ -307,7 +307,7 @@ write but is expected to recognise.
 
 ## The valued policy rule — §862.053
 
-Module 1 taught that property insurance is a contract of **indemnity**: it
+Module 2 taught that property insurance is a contract of **indemnity**: it
 restores, it does not enrich, and a loss is settled at actual cash value or
 replacement cost. **Texas makes an exception for a total fire loss of real
 property, and it is the most counter-intuitive rule in the Texas material.**
@@ -344,7 +344,7 @@ fire policy rather than accepting whatever the applicant asks for.
 
 ## Breach by the insured — §862.054
 
-A companion rule, and a causation rule of the kind met in Module 2.
+A companion rule, and a causation rule of the kind met in Module 3.
 
 **§862.054** — **unless the breach or violation contributed to cause the
 destruction of the property**, a breach or violation by the insured of a
@@ -353,7 +353,7 @@ property**, or of the application for it, does not have the effect that section
 otherwise describes.
 
 The principle: **a breach that had nothing to do with the loss does not defeat
-the claim.** Compare Module 2's strict warranty doctrine, under which breach
+the claim.** Compare Module 3's strict warranty doctrine, under which breach
 voided the policy without any causal connection — this is Texas softening
 exactly that, in the way that lesson said many states have.
 

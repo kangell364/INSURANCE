@@ -131,7 +131,7 @@ keeps the insurer's right to recover intact.
 
 **Which is exactly why bailees buy their own cover.** A dry cleaner cannot
 rely on customers' policies, so it buys **bailee's customers** coverage on its
-own account — see *Inland Marine* in Module 3.
+own account — see *Inland Marine* in Module 1.
 
 ## Loss payees and additional interests
 

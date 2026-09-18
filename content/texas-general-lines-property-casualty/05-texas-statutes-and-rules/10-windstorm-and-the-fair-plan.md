@@ -11,7 +11,7 @@ review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 
 # Two markets of last resort, and the line between them
 
-Module 3 gave the general idea: where a catastrophe exposure is concentrated,
+Module 1 gave the general idea: where a catastrophe exposure is concentrated,
 the private market withdraws and a state-created residual market fills the
 gap. Texas has **two**, and the exam's favourite question is which one applies.
 
@@ -79,7 +79,7 @@ of the damaged part.
 
 **§2210.207(d)** — **below 80%**, liability is limited as the section
 provides. This is the insurance-to-value rule familiar from coinsurance in
-Module 1, written into statute.
+Module 2, written into statute.
 
 **§2210.208(a)** — a dwelling policy must cover **wind-driven rain "regardless
 of whether an opening is made by the wind."** That is a deliberate departure

@@ -190,7 +190,7 @@ generally, and **§4001.255** — the separate-records rule above — is what ma
 the duty auditable: if insurance money is mixed into another business's books,
 nobody can show it was handled properly.
 
-**The flip side is in Module 2.** Premium paid to an agent within their
+**The flip side is in Module 3.** Premium paid to an agent within their
 authority is paid to the insurer, whether or not the agent forwards it. The
 insured is protected either way; **the exposure is entirely the agent's**, and
 that asymmetry is the whole reason the duty is enforced by licence.
@@ -236,7 +236,7 @@ The duty is not only about premium. A producer owes an applicant **honest
 representations about coverage** (§4005.101(b)(6) makes materially
 misrepresenting a policy's terms a ground), and owes the confidentiality of
 what an applicant discloses — underwriting information is covered by the
-privacy rules in Module 2, not by discretion.
+privacy rules in Module 3, not by discretion.
 
 ## Licence types named by the blueprint
 

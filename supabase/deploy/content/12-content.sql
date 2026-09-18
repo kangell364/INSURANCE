@@ -136,7 +136,7 @@ ways.
 > **Insurance and a wager share the characteristic and differ on the
 > element.** That is why a policy without insurable interest is not merely
 > unenforceable but is *called* a wager — see *Insurable Interest and
-> Indemnity* in Module 1.
+> Indemnity* in Module 2.
 
 **Unilateral.** **Only one party makes a legally enforceable promise.** Once
 the premium is paid, the insured has promised nothing further; the insurer
@@ -166,7 +166,7 @@ A useful check: **A**dhesion, **A**leatory, **U**nilateral, **C**onditional,
 > their pre-loss position and no better, which is as much a description of
 > what kind of contract insurance is as *aleatory* or *conditional* — it is
 > simply important enough to get its own treatment, in *Insurable Interest and
-> Indemnity* in Module 1, where the exceptions live too.
+> Indemnity* in Module 2, where the exceptions live too.
 >
 > The blueprint names it as a term in its own right at **GK II.J** and
 > **V.C**, not as an item on a characteristics list. **Learn what it means and
@@ -180,7 +180,7 @@ own right. Three things about it are examined.
 
 **The signature is what adopts the statements.** Everything written on the
 application becomes the applicant's **representation** the moment they sign —
-which is what makes Module 2's misrepresentation and concealment rules bite.
+which is what makes Module 3's misrepresentation and concealment rules bite.
 An applicant who lets somebody else fill the form in and signs without reading
 it has still made every statement on it.
 

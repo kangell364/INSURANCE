@@ -11,7 +11,7 @@ review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 
 # Underwriting distinguishes. Discrimination is the distinction the law forbids.
 
-Module 1 said that insurance works by **classifying risks and charging each
+Module 2 said that insurance works by **classifying risks and charging each
 class according to its hazard**. That is discrimination in the neutral sense,
 and it is the whole business. **Chapter 544 draws the line between the
 classification the law requires and the classification it forbids.**

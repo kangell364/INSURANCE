@@ -59,7 +59,7 @@ Two things follow directly:
   offer at **$2,500** per person. Treating the 30/60/25 floor as reaching
   PIP is a natural mistake and a good distractor.
 - Every Texas auto question about "minimum required coverage" means these
-  three numbers, not the general-pattern figures from Module 2.
+  three numbers, not the general-pattern figures from Module 3.
 
 **§601.076** — an owner's motor vehicle liability policy must cover each
 vehicle for which coverage is granted, and must pay on behalf of the **named
@@ -68,7 +68,7 @@ pay arising out of the ownership, maintenance or use of the vehicle **in the
 United States or Canada**, subject to §601.072's amounts and exclusions.
 
 Note the territory: **United States or Canada**, which matches the personal
-auto territory from Module 2 — and again, **not Mexico**.
+auto territory from Module 3 — and again, **not Mexico**.
 
 **§601.073(e)** — where the insurer settles a claim in **good faith**, the
 amount of the settlement is **deductible from the amounts specified in
@@ -192,7 +192,7 @@ rate triggers a hearing.** That threshold is the examinable number.
 
 ## Rideshare — Chapter 1954
 
-Module 2's personal auto lesson met the **public or livery conveyance**
+Module 3's personal auto lesson met the **public or livery conveyance**
 exclusion and called it the ride-hailing exclusion. **Chapter 1954 is what
 Texas requires instead**, and its structure is two-tier.
 
@@ -316,7 +316,7 @@ on conflict (id) do update set
 insert into public.lesson_contents (lesson_id, course_id, body)
 select '01297aa9-1126-55ad-bfca-785bed5fa3f6', c.id, $lesson$# Underwriting distinguishes. Discrimination is the distinction the law forbids.
 
-Module 1 said that insurance works by **classifying risks and charging each
+Module 2 said that insurance works by **classifying risks and charging each
 class according to its hazard**. That is discrimination in the neutral sense,
 and it is the whole business. **Chapter 544 draws the line between the
 classification the law requires and the classification it forbids.**

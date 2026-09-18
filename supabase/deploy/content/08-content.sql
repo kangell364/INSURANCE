@@ -217,7 +217,7 @@ of lost trading has bought one and not the other.
 Examples of indirect loss: lost business income, extra expense, loss of rents,
 additional living expense, spoilage following a power failure, loss of use.
 
-> Fuller treatment: Module 3, *Commercial Property and the Package Policy*.
+> Fuller treatment: Module 1, *Commercial Property and the Package Policy*.
 
 ## Salvage value
 
@@ -271,7 +271,7 @@ before anybody notices. The exposure genuinely changes.
 
 The insured's fix is to tell the insurer and buy a **vacancy permit**.
 
-> Fuller treatment: Module 3, *Dwelling Policies*.
+> Fuller treatment: Module 1, *Dwelling Policies*.
 
 ## Blanket and specific insurance
 
@@ -292,7 +292,7 @@ a **high coinsurance percentage** — often 90% or 100% — because the insurer 
 exposed at every location at once and needs the insurance-to-value discipline
 that a specific limit would have provided.
 
-> Fuller treatment: Module 3, *Commercial Property and the Package Policy*.
+> Fuller treatment: Module 1, *Commercial Property and the Package Policy*.
 
 ## Absolute, strict and vicarious liability
 
@@ -342,7 +342,7 @@ policy is prepared.
   underwriter would have declined the risk. A broker generally cannot; a
   broker represents the buyer.
 
-> Fuller treatment: Module 2, *The Declarations Page*.
+> Fuller treatment: Module 3, *The Declarations Page*.
 
 ## Certificates of insurance
 

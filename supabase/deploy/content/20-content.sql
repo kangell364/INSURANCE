@@ -371,7 +371,7 @@ citing §541.056 and §544.002 respectively.
 **§541.056 does not exist.** Chapter 541 runs .051 to .055 and then jumps to
 .059; sections .056, .057 and .058 were repealed. **Rebating is now at
 §1806.104** (casualty), **§1806.053** (automobile) and **§1806.153** (fire),
-and it is taught in Module 2 and in `reference/statutes/IN.1806-key-provisions.md`.
+and it is taught in Module 3 and in `reference/statutes/IN.1806-key-provisions.md`.
 
 **Chapter 544 has not been obtained**, so the Texas discrimination provisions
 are not taught here. The general prohibition on discriminating among insureds

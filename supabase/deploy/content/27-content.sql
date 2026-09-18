@@ -100,8 +100,8 @@ all of them; this is the category they share.
 
 | | What it is | Where |
 | --- | --- | --- |
-| **NFIP** | Federal flood insurance, because standard forms exclude flood | Module 3 |
-| **TRIA** | Federal *reinsurance* backstop for terrorism — not a policy | Module 2 |
+| **NFIP** | Federal flood insurance, because standard forms exclude flood | Module 1 |
+| **TRIA** | Federal *reinsurance* backstop for terrorism — not a policy | Module 3 |
 | **TWIA** | Coastal windstorm, **§2210** | Module 5 |
 | **Texas FAIR Plan** | Property for those declined in the voluntary market, **§2211** | Module 5 |
 | **TAIPA** | Auto for drivers the voluntary market rejects, **§2151** | Module 5 |
@@ -241,7 +241,7 @@ deadlines** — so the term arrives in an examined lesson either way.
 ### Self-insurance
 
 **An organisation pays its own losses instead of transferring them.** This is
-the **retention** technique from Module 1, at organisational scale — not a
+the **retention** technique from Module 2, at organisational scale — not a
 kind of insurer at all. There is no policy, no premium and no certificate of
 authority.
 

@@ -11,7 +11,7 @@ review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 
 # The homeowners policy of commercial insurance
 
-The commercial package policy in Module 3 is assembled part by part. That
+The commercial package policy in Module 1 is assembled part by part. That
 suits a large or unusual risk and is wasted effort on a dry cleaner.
 
 **A BOP is a pre-packaged policy combining commercial property and general
