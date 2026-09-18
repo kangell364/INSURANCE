@@ -6,6 +6,386 @@
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '594e82c1-a894-58a6-8008-fab7fd65fec9', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'what-insurance-is'),
+       'Which best describes what an insurance contract does for the insured?', '**Transfer is what the contract does for the insured.** Something uncertain, large and unknown becomes something certain, small and known — the premium. The other three are the three things insurance is routinely mistaken for. It does not **prevent** losses; that is a different risk-management technique and insurance answers for the loss afterwards. It is not a **savings account**; most policyholders collect nothing and that is the system working. And it never pays a **profit** — restoring the insured and no more is the principle of indemnity.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'intro'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '15cd5a30-0420-5cad-a415-28d371d0d4a8', '594e82c1-a894-58a6-8008-fab7fd65fec9', c.id, 'It prevents the loss from occurring', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '95d26129-f610-5987-8dc6-06dfbb6fb987', '594e82c1-a894-58a6-8008-fab7fd65fec9', c.id, 'It transfers the financial consequence of a loss to the insurer', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'e90a85a3-ac6a-530c-b9e7-c544f6131591', '594e82c1-a894-58a6-8008-fab7fd65fec9', c.id, 'It saves the premium so the insured can meet the loss themselves', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '2483c6f2-5c97-5554-bf39-e55aeab45bd2', '594e82c1-a894-58a6-8008-fab7fd65fec9', c.id, 'It guarantees the insured a profit if a loss occurs', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '594e82c1-a894-58a6-8008-fab7fd65fec9', c.id, '95d26129-f610-5987-8dc6-06dfbb6fb987'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'fa421428-202f-5daf-a76e-14b67e853752', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'what-insurance-is'),
+       'An insurer cannot say whether one particular house will burn, yet prices the policy confidently. Why?', '**Pooling.** One house is unpredictable; a hundred thousand similar houses are not. The insurer never needs to know *which* will burn — only roughly how many. Keep the pair straight: **transfer** is what the contract does for the insured, **pooling** is what makes the insurer able to accept it.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'intro'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'df264b0f-1d9e-5763-82b1-54d124edc5c3', 'fa421428-202f-5daf-a76e-14b67e853752', c.id, 'Because the premium is set high enough to cover any single loss', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'd287a5a2-034a-5e89-95db-66961224a875', 'fa421428-202f-5daf-a76e-14b67e853752', c.id, 'Because it insures many similar exposures, and the aggregate is predictable even though no single one is', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'fa777585-82f8-5c1a-a13f-033fe63ef3d0', 'fa421428-202f-5daf-a76e-14b67e853752', c.id, 'Because it can cancel the policy if a loss looks likely', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '15d0eda7-9f5e-5417-b457-d52a3c0c9e62', 'fa421428-202f-5daf-a76e-14b67e853752', c.id, 'Because the state sets the rate', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'fa421428-202f-5daf-a76e-14b67e853752', c.id, 'd287a5a2-034a-5e89-95db-66961224a875'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '9fad169f-6941-50cd-abda-3efb50d81d2c', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'what-insurance-is'),
+       'A guest is injured at the insured''s home and claims against them. What is the guest, in insurance terms?', '**First party is the insured; second party is the insurer; a third party is somebody outside the contract with a claim against the insured.** The numbering carries all the way through the course: property insurance mostly answers to the first party, liability insurance answers to the third. An **additional insured** is a different thing — a person brought *inside* the contract by its terms or an endorsement, not someone claiming against it.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'intro'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '47688135-09ef-5b37-8b81-b30091186fd7', '9fad169f-6941-50cd-abda-3efb50d81d2c', c.id, 'The first party', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '4c3d731d-dcef-5ac5-af62-56e4db9f22c8', '9fad169f-6941-50cd-abda-3efb50d81d2c', c.id, 'The second party', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '1700b80f-179a-52b7-b9f6-01aa34f618a6', '9fad169f-6941-50cd-abda-3efb50d81d2c', c.id, 'A third party', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '1c6013c8-5a14-510c-874c-195a6ba63f22', '9fad169f-6941-50cd-abda-3efb50d81d2c', c.id, 'An additional insured', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '9fad169f-6941-50cd-abda-3efb50d81d2c', c.id, '1700b80f-179a-52b7-b9f6-01aa34f618a6'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'dbc5e9e8-a962-5185-99b6-45f304e703db', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'what-insurance-is'),
+       'An insurer accepts thousands of similar risks so that the premiums of the many meet the losses of the few. What is that arrangement called?', '**Pooling** — the mechanism that makes an insurer able to accept risks no individual could carry. Many similar exposures, many premiums, out of which the few actual losses are paid. **Transfer** is the other half of the pair and the more commonly chosen wrong answer. Transfer is what the *contract* does for the insured: it moves the financial consequence. Pooling is what the *insurer* does with thousands of those transfers so that it can honour them. **Indemnity** is the principle that a claim restores and does not enrich. **Reinsurance** is an insurer transferring risk onward to another insurer — pooling one level up, but not the word for this.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'intro'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'f5427d71-9a82-529f-bc4b-80522684c4c1', 'dbc5e9e8-a962-5185-99b6-45f304e703db', c.id, 'Transfer', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '53c268c1-d599-5893-801d-d31f34cb553d', 'dbc5e9e8-a962-5185-99b6-45f304e703db', c.id, 'Pooling', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'b669de79-3e2c-55a4-824e-6ac550b704fc', 'dbc5e9e8-a962-5185-99b6-45f304e703db', c.id, 'Indemnity', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '8d56b9a9-1429-53a3-8a28-f831372ebf3b', 'dbc5e9e8-a962-5185-99b6-45f304e703db', c.id, 'Reinsurance', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'dbc5e9e8-a962-5185-99b6-45f304e703db', c.id, '53c268c1-d599-5893-801d-d31f34cb553d'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'd8514fc1-80c3-5a05-a529-4c34c990c39c', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'what-an-agent-does'),
+       'An insurance agent legally represents whom?', '**The insurer is the principal; the agent acts for it.** Within the authority granted, the agent''s acts are the company''s acts — which is why the agent''s knowledge is imputed to the company and why a misstatement about coverage can bind it. Note the exception the exam likes: a **broker** represents the **buyer**, not the insurer. That is what makes a broker a broker.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'intro'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '496c7c86-5282-5110-9d25-06883c62459c', 'd8514fc1-80c3-5a05-a529-4c34c990c39c', c.id, 'The applicant, who pays the premium', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '77a1436b-977b-5267-b385-f6733828ca13', 'd8514fc1-80c3-5a05-a529-4c34c990c39c', c.id, 'The insurer, as its agent under the law of agency', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '09b53de0-68a1-524f-8d77-704223422b6e', 'd8514fc1-80c3-5a05-a529-4c34c990c39c', c.id, 'Both equally', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '3a850e6f-e650-57d8-a7d0-7170d6f2bd83', 'd8514fc1-80c3-5a05-a529-4c34c990c39c', c.id, 'The Texas Department of Insurance', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'd8514fc1-80c3-5a05-a529-4c34c990c39c', c.id, '77a1436b-977b-5267-b385-f6733828ca13'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '55b9de6c-63ad-5aa4-b0b1-b547ec504b77', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'what-an-agent-does'),
+       'An applicant mentions in passing that they heat with a wood stove. The producer does not record it. Whose view of the risk is now wrong?', '**The company''s** — and that is what field underwriting means. The producer is the only person in the transaction who stands in front of the risk. The underwriter sees the application and nothing else, so what the producer asks, observes and writes down *becomes* the company''s view of the risk. That is why an omission on an application is not a clerical matter. An application that leaves out the wood stove has misdescribed the risk the company agreed to take.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'intro'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '2d4f4b6b-c16e-53eb-a7b5-84083799658d', '55b9de6c-63ad-5aa4-b0b1-b547ec504b77', c.id, 'Nobody''s — an unrecorded remark has no effect', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'd09664a0-6544-5f98-bfb4-2fcaf24012ca', '55b9de6c-63ad-5aa4-b0b1-b547ec504b77', c.id, 'The insurer''s, because the application is all the underwriter sees', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'b543fd6e-6bdf-5bc5-8741-ac346cfbe356', '55b9de6c-63ad-5aa4-b0b1-b547ec504b77', c.id, 'The applicant''s, for failing to insist it be written down', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '2c46dc39-1e60-57d2-bd4c-cd15f471296a', '55b9de6c-63ad-5aa4-b0b1-b547ec504b77', c.id, 'The adjuster''s, but only once a claim is made', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '55b9de6c-63ad-5aa4-b0b1-b547ec504b77', c.id, 'd09664a0-6544-5f98-bfb4-2fcaf24012ca'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'e5f40cb8-b47b-5ba8-a7fc-009172c60e86', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'what-an-agent-does'),
+       'A licensed agent has no appointment from a particular insurer. What may they do for that insurer?', '**Two separate permissions.** The **licence** is the state''s, permitting you to transact insurance at all. The **appointment** is the company''s, authorising you to act for that company. You need both, and the exam tests the distinction directly.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'intro'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '251b6341-5e63-57f4-a9cc-effd21083c27', 'e5f40cb8-b47b-5ba8-a7fc-009172c60e86', c.id, 'Anything, because the licence is what the state issues', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'aad1a5d3-374f-5fa2-8500-b1033bfe2920', 'e5f40cb8-b47b-5ba8-a7fc-009172c60e86', c.id, 'Nothing — a licence permits transacting insurance, but an appointment is the company''s authority to act for it', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '8cc3a4f6-24d8-516c-b847-c1280b9d2611', 'e5f40cb8-b47b-5ba8-a7fc-009172c60e86', c.id, 'Only service existing policies', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '9e7877a5-15e7-51f3-9afd-b0ecd05fd5d3', 'e5f40cb8-b47b-5ba8-a7fc-009172c60e86', c.id, 'Only sell personal lines', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'e5f40cb8-b47b-5ba8-a7fc-009172c60e86', c.id, 'aad1a5d3-374f-5fa2-8500-b1033bfe2920'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '5496d13e-cc1a-5148-a448-d1f10e24ceea', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'the-words-module-1-assumes'),
+       'A policy covers every cause of loss except those it excludes. What basis is that?', '**Open peril** — also called **special form**, and in older usage *all risk*. Coverage is everything the policy does not take away, so the **exclusions** decide how broad it really is. Under **named peril**, the policy lists what it covers and anything unlisted is uncovered. **Basic** and **broad** are named-peril lists of different lengths, which is why they are wrong here rather than merely narrower.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'intro'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '529de67c-cc98-5c5b-9494-92d0e57753f2', '5496d13e-cc1a-5148-a448-d1f10e24ceea', c.id, 'Named peril', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '7997c334-4bf1-5c8f-be52-359da14e3ba5', '5496d13e-cc1a-5148-a448-d1f10e24ceea', c.id, 'Open peril', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '38b5d117-66f7-5087-9b5a-10288998155f', '5496d13e-cc1a-5148-a448-d1f10e24ceea', c.id, 'Broad form', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '466f729b-2b90-5eaa-815c-d77c08e7d4f1', '5496d13e-cc1a-5148-a448-d1f10e24ceea', c.id, 'Basic form', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '5496d13e-cc1a-5148-a448-d1f10e24ceea', c.id, '7997c334-4bf1-5c8f-be52-359da14e3ba5'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'b57052f6-834e-5df6-bf90-8aa68e9fbd11', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'the-words-module-1-assumes'),
+       'Under a named peril policy, who must show what caused the loss?', '**Named peril puts the burden on the insured.** The list is the coverage, so a claim means showing the loss came from something on it. **Open peril flips it.** Coverage is presumed, and the insurer must bring the loss within an exclusion to deny it. That shift in who has to prove what is the practical difference between the two bases.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'intro'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '17d039d9-0f94-59f6-a4ed-386815e97364', 'b57052f6-834e-5df6-bf90-8aa68e9fbd11', c.id, 'The insured, who must show the cause is a listed peril', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '482004fa-d8d9-5748-a9dd-36bc2f8782a0', 'b57052f6-834e-5df6-bf90-8aa68e9fbd11', c.id, 'The insurer, which must show the cause is excluded', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'bb443014-fa6a-5af3-879e-bc05a451ba9e', 'b57052f6-834e-5df6-bf90-8aa68e9fbd11', c.id, 'Neither; the adjuster decides', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '06f6c076-d2a6-5c5a-9412-16320fdf6bbe', 'b57052f6-834e-5df6-bf90-8aa68e9fbd11', c.id, 'Whichever party requests appraisal', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'b57052f6-834e-5df6-bf90-8aa68e9fbd11', c.id, '17d039d9-0f94-59f6-a4ed-386815e97364'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '4bd5264c-4fd2-52ee-9292-8ff846e972be', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'the-words-module-1-assumes'),
+       'A ten-year-old roof is destroyed. It would cost $20,000 to replace new, and it was half way through its life. What does actual cash value pay?', '**Actual cash value is replacement cost less depreciation.** Half the life used, half the value gone: $20,000 less $10,000. **Replacement cost** would pay the full $20,000, ignoring age. Which basis a form uses is worth a great deal of money and is a recurring fact in Module 1. Market value is a different measure again — what the property would sell for, which for a roof considered alone is not a meaningful figure.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'intro'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '8132414f-e1e3-532f-abea-d57cd9bb0a06', '4bd5264c-4fd2-52ee-9292-8ff846e972be', c.id, '$20,000', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '9aff2fc4-3443-5bb5-93c3-d97cd5da7646', '4bd5264c-4fd2-52ee-9292-8ff846e972be', c.id, '$10,000 — replacement cost less depreciation', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'b9adfdff-b746-5efb-bfac-4c928e34b3cf', '4bd5264c-4fd2-52ee-9292-8ff846e972be', c.id, '$20,000 less the deductible only', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'da9c2b9c-5b06-5afc-bffa-eb4f142ddf92', '4bd5264c-4fd2-52ee-9292-8ff846e972be', c.id, 'Whatever the roof would have sold for', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '4bd5264c-4fd2-52ee-9292-8ff846e972be', c.id, '9aff2fc4-3443-5bb5-93c3-d97cd5da7646'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select 'f3818f0d-38ba-50df-b5ec-8d05c3d76e00', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'homeowners-forms'),
        'Under an HO-3, lightning damages the house and a mysterious unexplained cause damages the contents. Which loss is easier to establish?', '**HO-3''s asymmetry is the most-tested fact in this lesson: the dwelling is open peril, the contents are named peril.** On Coverage A the insured need only show a loss occurred and the insurer must prove an exclusion. On Coverage C the insured must prove a listed peril — and "mysterious cause" will not do it.', 'draft'

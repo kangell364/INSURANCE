@@ -5,6 +5,11 @@
 -- drafts, which RLS hides from students entirely, body included.
 
 insert into public.modules (id, course_id, title, position, status)
+select '1c039480-bd38-58d5-9753-843b5b3da56e', c.id, 'Introduction', 0, 'active'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set title = excluded.title;
+
+insert into public.modules (id, course_id, title, position, status)
 select 'ec98aec4-aec6-5d3e-93ae-dbb68098f16a', c.id, 'Types of Policies', 1, 'active'
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
 on conflict (id) do update set title = excluded.title;
@@ -28,6 +33,356 @@ insert into public.modules (id, course_id, title, position, status)
 select '62edc60d-a12f-5d1f-80b7-2adce32c4394', c.id, 'Texas Statutes and Rules', 5, 'active'
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
 on conflict (id) do update set title = excluded.title;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select 'd2a6f8f8-1933-5d7e-965c-5a7eff1bd408', '1c039480-bd38-58d5-9753-843b5b3da56e', c.id, 'What Insurance Is',
+       'what-insurance-is', 'The problem insurance solves, the two parties to it, and why an insurer can price a risk it cannot predict.', 1,
+       'draft', 10
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select 'd2a6f8f8-1933-5d7e-965c-5a7eff1bd408', c.id, $lesson$# What Insurance Is
+
+Before any of the forms, the statutes or the exam vocabulary, there is one
+idea, and everything else in this course is built on it.
+
+## The problem
+
+Most of what can go wrong in a life or a business is survivable. A broken
+window, a dented bumper, a week of lost work — unwelcome, affordable.
+
+A few things are not. A house fire. A jury verdict. A warehouse that floods
+the week before the season's stock ships. These are rare enough that no
+sensible person plans their life around them, and large enough that they end
+the person they land on.
+
+**Insurance exists for the second kind.** Not for the losses you can absorb,
+but for the ones you cannot.
+
+## What insurance is
+
+**Insurance is a contract by which one party agrees, for a payment called a
+premium, to make good another party's loss from stated causes.**
+
+Three things are worth pulling out of that sentence, because the exam tests
+each of them separately.
+
+**It is a contract.** Not a favour, not a promise of goodwill. It is
+enforceable, it is written, and what it does and does not cover is decided by
+its words. Module 3 is entirely about those words.
+
+**There is a premium.** The insured pays something certain, small and known
+now, in exchange for the insurer carrying something uncertain, large and
+unknown later. That trade is the whole transaction.
+
+**It covers stated causes.** No policy covers "anything bad". Every policy
+names what it covers, or names what it does not — and Module 1 turns on that
+distinction.
+
+## The two parties
+
+| | Who | Also called |
+| --- | --- | --- |
+| **The insured** | The person or business buying protection | the **first party** |
+| **The insurer** | The company accepting the risk | the **second party** |
+
+A **third party** is somebody outside the contract who has a claim against the
+insured — the driver you hit, the guest who fell on your step. Property
+insurance mostly answers to the first party. Liability insurance answers to
+the third.
+
+Hold on to the numbering. It comes back constantly.
+
+## Why an insurer will take a risk you will not
+
+Here is the part that looks like a trick and is not.
+
+An insurer cannot tell you whether *your* house will burn this year. Nobody
+can. Yet it will confidently tell you how many out of a hundred thousand
+similar houses will burn, and price your policy accordingly.
+
+Both statements are true at once, and the reason is that **the insurer is not
+in your position.** You face one house. The insurer faces a hundred thousand.
+One is unpredictable; a hundred thousand is not.
+
+So two different things are happening, and the exam expects you to name both:
+
+- **Transfer** — what the contract does for the insured. The financial
+  consequence of the loss moves from you to the insurer.
+- **Pooling** — what makes the insurer able to accept it. Many similar
+  exposures, paid for by many premiums, out of which the few actual losses are
+  met.
+
+**Transfer is what it does for you; pooling is what makes it possible for
+them.** Module 2 takes both apart properly, along with the law of large
+numbers that underlies the second.
+
+## What insurance is not
+
+**It is not a savings account.** Most policyholders pay premiums for years and
+collect nothing, and that is the system working, not failing.
+
+**It is not a way to profit from a loss.** A claim restores you to where you
+were. No better — that principle is called **indemnity**, and Module 2 gives
+it a lesson of its own.
+
+**It does not stop losses happening.** It answers for them afterwards.
+Preventing them is a different technique, and insurance is only one of five
+ways of handling risk.
+
+## Where this goes next
+
+**Module 1, Types of Policies**, is the catalogue: homeowners, dwelling,
+commercial, marine, flood. It is first because the exam weights it heaviest.
+
+**Module 2, Insurance Terms and Related Concepts**, is where the ideas in this
+lesson are taught properly.
+
+**Module 3, Policy Provisions and Contract Law**, is the anatomy of the
+contract itself.
+
+The next two lessons cover what you will be doing with all of it, and the
+handful of words Module 1 assumes you already have.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select '10f9ce9e-3e7c-527b-a26d-f6f3881e6361', '1c039480-bd38-58d5-9753-843b5b3da56e', c.id, 'What an Insurance Agent Does',
+       'what-an-agent-does', 'Who you represent, what you owe the person across the desk, and why those are two different questions.', 2,
+       'draft', 12
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select '10f9ce9e-3e7c-527b-a26d-f6f3881e6361', c.id, $lesson$# What an Insurance Agent Does
+
+You are studying for a licence, so it is worth being clear about what the
+licence permits and what it obliges — not least because the exam asks.
+
+## Who you represent
+
+Start with the answer candidates get wrong.
+
+**You represent the insurer.** Not the applicant, not the policyholder. The
+legal relationship is **agency**: the insurance company is the **principal**,
+you are the **agent**, and within the authority the company gives you, **your
+acts are the company's acts.**
+
+That has consequences a beginner does not expect:
+
+- Knowledge you have is treated as knowledge the **company** has.
+- A statement you make about coverage can **bind the company**, even where the
+  policy says otherwise.
+- An error you make is, as far as the customer is concerned, the **company's**
+  error.
+
+This is the **law of agency**, and it is taught properly in Module 3. What it
+means in practice is that the person who most needs you to be careful is not
+the customer. It is the insurer whose name is on the policy.
+
+## What you nevertheless owe the applicant
+
+Representing the insurer does not make the applicant a stranger.
+
+**You explain the coverage.** They are buying a contract they will not read
+and could not easily parse if they did. The exam treats explanation as a duty,
+not a courtesy.
+
+**You field underwrite.** You are the only person in the transaction who
+stands in front of the risk. The underwriter sees the application and nothing
+else — so what you observe, ask and write down *is* the company's view of the
+risk. An application that omits the wood stove is not a small omission.
+
+**You handle their money as theirs.** Premium in your hands belongs to the
+company or the client, never to you. That duty is **fiduciary**, it is
+enforced by statute in Texas, and it is where producers most often lose a
+licence.
+
+**You review the coverage periodically.** A policy correct at issue can be
+badly wrong three years later.
+
+## What you may not do
+
+Two prohibitions come up constantly on the exam, and both are about paying
+someone to buy.
+
+**Rebating** — giving the applicant any part of the premium or commission, or
+anything else of value not stated in the policy, to win the business. It is
+prohibited whether or not the customer benefits.
+
+**Paying an unlicensed person** for work that requires a licence, including a
+referral fee that turns on whether the customer buys.
+
+Both are Module 5, with the Texas sections that prohibit them.
+
+## Licence and appointment
+
+Two separate things, and the exam separates them.
+
+- A **licence** is the state's permission for *you* to transact insurance.
+- An **appointment** is a *company's* authorisation for you to act for it.
+
+You need both. A licensed agent with no appointment from an insurer has no
+authority to place business with that insurer.
+
+## The kinds of producer
+
+| | Represents | Notes |
+| --- | --- | --- |
+| **Captive agent** | One insurer | Exclusive; the book usually belongs to the company |
+| **Independent agent** | Several insurers | Places business where it fits; typically owns the expirations |
+| **Broker** | The **buyer** | The exception to everything above — a broker's principal is the client |
+| **Direct response** | The insurer, with no producer | Sold by advertisement, web or telephone |
+
+**The broker is the one to remember**, precisely because it breaks the rule
+this lesson opened with.
+
+## What this course will not make you
+
+It will get you through the General Lines Property and Casualty examination.
+It will not, on its own, make you good at the job — that comes from doing it,
+and from the habit of reading the policy before answering the question.
+
+The next lesson gives you the handful of words Module 1 assumes you already
+have.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select 'f2090603-ff4a-5900-8b60-c3edcf62aa4f', '1c039480-bd38-58d5-9753-843b5b3da56e', c.id, 'The Words Module 1 Assumes',
+       'the-words-module-1-assumes', 'Eight terms Types of Policies uses from its first page, each taught properly later — enough to read Module 1 without being ambushed.', 3,
+       'draft', 9
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select 'f2090603-ff4a-5900-8b60-c3edcf62aa4f', c.id, $lesson$# The Words Module 1 Assumes
+
+This course follows the examination content outline, and the outline puts
+**Types of Policies** first because the exam weights it heaviest — 22 of 100
+general-knowledge questions.
+
+That ordering has one cost. Module 1 describes policies using vocabulary the
+outline files under Module 2, so a reader starting at page one meets words the
+course has not yet given them.
+
+This lesson closes that gap. It is deliberately shallow: each term gets enough
+to read Module 1 safely, and a pointer to where it is taught properly. **Do
+not study from this page.** Study from the lesson it points to.
+
+## Peril
+
+**A peril is a cause of loss.** Fire. Hail. Theft. Collision.
+
+Not to be confused with a **hazard**, which is a condition that makes a peril
+more likely or a loss worse — the oily rags in the corner are the hazard, the
+fire is the peril. Module 2 separates risk, peril and hazard properly, and the
+exam tests the difference directly.
+
+## Named peril and open peril
+
+**The single most useful distinction in Module 1.**
+
+- **Named peril** — the policy lists the causes it covers. If the cause is not
+  on the list, there is no coverage. The burden is on the **insured** to show
+  the loss was caused by a listed peril.
+- **Open peril** — the policy covers every cause *except* those it excludes.
+  The burden flips: the **insurer** must show the cause was excluded.
+
+Open peril is broader. It is not unlimited — the exclusions decide how much
+broader. You will also see open peril called **special form** or, in older
+usage, **all risk**.
+
+Nearly every form in Module 1 is described by which basis it uses, and often
+by using **different bases for the building and the contents**. Taught fully
+in Module 3, Exclusions.
+
+## The coverage letters
+
+Property and liability policies label their coverages with letters, and the
+letters are consistent enough to be worth learning once.
+
+In a **homeowners** policy:
+
+| | |
+| --- | --- |
+| **A** | Dwelling |
+| **B** | Other structures |
+| **C** | Personal property (contents) |
+| **D** | Loss of use |
+| **E** | Personal liability |
+| **F** | Medical payments to others |
+
+**A–D are property; E and F are liability.** Other policies use their own
+letters — a commercial general liability policy's A, B and C mean something
+else entirely — so read the letters as belonging to the form you are in.
+
+## Limit
+
+**The most the insurer will pay.** Stated in the policy, chosen when the
+policy is bought. A loss larger than the limit is paid up to the limit and no
+further; the rest stays with the insured. Module 2 treats limits of liability.
+
+## Deductible
+
+**The part of each loss the insured keeps.** A $1,000 deductible on a $9,000
+loss pays $8,000.
+
+It exists to keep small claims out of the system and to give the insured a
+reason to care. Module 2.
+
+## Actual cash value and replacement cost
+
+Two ways of answering "what was it worth?", and the difference is money.
+
+- **Replacement cost** — what it costs to replace the item new today.
+- **Actual cash value** — replacement cost **less depreciation**.
+
+A ten-year-old roof settled at actual cash value pays considerably less than
+one settled at replacement cost. Which basis a form uses is a recurring
+Module 1 fact. Module 2 teaches the valuation methods and the arithmetic.
+
+## Endorsement
+
+**A document that changes the policy.** Adds coverage, removes it, or alters a
+term. The policy plus its endorsements is the contract; an endorsement
+overrides the form it amends. Module 2.
+
+## Insured, insurer, premium
+
+- **Insured** — the party protected, the **first party**.
+- **Insurer** — the company carrying the risk, the **second party**.
+- **Premium** — what the insured pays for that.
+
+A **third party** is someone outside the contract with a claim against the
+insured. Module 3 handles who counts as an insured, which is less obvious than
+it sounds.
+
+## That is enough
+
+Eight ideas. With them, Module 1 reads cleanly from its first page.
+
+Every one is taught again, in full, where the outline puts it — so if any of
+this felt thin, that is because it is. Its job is to stop you being ambushed,
+not to teach you the exam.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
 
 insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
