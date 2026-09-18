@@ -3,13 +3,11 @@ module: Types of Policies
 title: Other Property Policies
 slug: other-property-policies
 blueprint: GK.I
-summary: Earthquake, mobile homes, watercraft, farmowners and windstorm — five smaller forms the blueprint names explicitly.
+summary: Earthquake, mobile homes, watercraft, farmowners and windstorm — five forms for risks the standard policies exclude or cannot handle.
 estimated_minutes: 14
 status: draft
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
-
-# Five risks the standard forms send elsewhere
 
 Each of these exists because a standard homeowners or commercial form either
 excludes the peril or cannot handle the property. You are expected to know

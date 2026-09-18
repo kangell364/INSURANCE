@@ -24,9 +24,7 @@ on conflict (id) do update set
   estimated_minutes = excluded.estimated_minutes;
 
 insert into public.lesson_contents (lesson_id, course_id, body)
-select 'fdcf9975-9bd5-5b6a-8eec-66bbd30eddd0', c.id, $lesson$# Building a commercial policy out of parts
-
-Personal lines sells finished packages. Commercial lines sells components,
+select 'fdcf9975-9bd5-5b6a-8eec-66bbd30eddd0', c.id, $lesson$Personal lines sells finished packages. Commercial lines sells components,
 and the producer assembles them.
 
 ## C. Commercial Lines
@@ -317,9 +315,7 @@ on conflict (id) do update set
   estimated_minutes = excluded.estimated_minutes;
 
 insert into public.lesson_contents (lesson_id, course_id, body)
-select 'fb29d783-0b17-5cac-abd6-ab8e2df510b8', c.id, $lesson$# Insurance for things that will not stay still
-
-The name is historical and misleading. **Inland marine has almost nothing to
+select 'fb29d783-0b17-5cac-abd6-ab8e2df510b8', c.id, $lesson$The name is historical and misleading. **Inland marine has almost nothing to
 do with water.**
 
 ## Where the name comes from

@@ -3,13 +3,11 @@ module: Types of Policies
 title: Dwelling Policies
 slug: dwelling-policies
 blueprint: GK.I
-summary: The property-only forms for houses that do not qualify for a homeowners policy.
+summary: DP-1, DP-2 and DP-3 — the property-only forms for houses that do not qualify for a homeowners policy, and what each one covers.
 estimated_minutes: 13
 status: draft
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
-
-# When a homeowners policy will not do
 
 The dwelling policy is the older, narrower form. Where a homeowners policy is
 a package, **a dwelling policy is property insurance alone** — liability is

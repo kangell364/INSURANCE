@@ -3,13 +3,11 @@ module: Types of Policies
 title: Homeowners Forms
 slug: homeowners-forms
 blueprint: GK.I
-summary: Six forms, six coverages and two sections — and the handful of differences the exam actually tests.
+summary: The six homeowners forms, the coverages A to F they carry, and the differences between the forms that decide which one a household needs.
 estimated_minutes: 18
 status: draft
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
-
-# One package, six variations
 
 A homeowners policy is a **package**: property and liability in one contract.
 That is its defining feature, and it is why it replaced the older practice of

@@ -9,8 +9,6 @@ status: draft
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
-# Insurance for things that will not stay still
-
 The name is historical and misleading. **Inland marine has almost nothing to
 do with water.**
 

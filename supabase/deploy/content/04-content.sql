@@ -15,7 +15,7 @@ insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
 select '6d2171b2-6a44-5f41-b8c4-52bd93262d4a', 'ec98aec4-aec6-5d3e-93ae-dbb68098f16a', c.id, 'The National Flood Insurance Program',
-       'the-national-flood-insurance-program', 'Why flood is excluded everywhere else, and how the federal programme fills the gap.', 5,
+       'the-national-flood-insurance-program', 'Why flood is excluded from every standard policy, how the federal programme covers it, and the limits and waiting period that apply.', 5,
        'draft', 13
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
 on conflict (id) do update set
@@ -24,9 +24,7 @@ on conflict (id) do update set
   estimated_minutes = excluded.estimated_minutes;
 
 insert into public.lesson_contents (lesson_id, course_id, body)
-select '6d2171b2-6a44-5f41-b8c4-52bd93262d4a', c.id, $lesson$# The peril the private market would not write
-
-Flood is excluded from homeowners, dwelling and commercial property forms
+select '6d2171b2-6a44-5f41-b8c4-52bd93262d4a', c.id, $lesson$Flood is excluded from homeowners, dwelling and commercial property forms
 alike. The exclusion is not arbitrary, and understanding why explains
 everything else about the programme.
 
@@ -227,7 +225,7 @@ insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
 select 'f2a692e9-7a38-5c5c-938c-371af3cfcd0f', 'ec98aec4-aec6-5d3e-93ae-dbb68098f16a', c.id, 'Other Property Policies',
-       'other-property-policies', 'Earthquake, mobile homes, watercraft, farmowners and windstorm — five smaller forms the blueprint names explicitly.', 6,
+       'other-property-policies', 'Earthquake, mobile homes, watercraft, farmowners and windstorm — five forms for risks the standard policies exclude or cannot handle.', 6,
        'draft', 14
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
 on conflict (id) do update set
@@ -236,9 +234,7 @@ on conflict (id) do update set
   estimated_minutes = excluded.estimated_minutes;
 
 insert into public.lesson_contents (lesson_id, course_id, body)
-select 'f2a692e9-7a38-5c5c-938c-371af3cfcd0f', c.id, $lesson$# Five risks the standard forms send elsewhere
-
-Each of these exists because a standard homeowners or commercial form either
+select 'f2a692e9-7a38-5c5c-938c-371af3cfcd0f', c.id, $lesson$Each of these exists because a standard homeowners or commercial form either
 excludes the peril or cannot handle the property. You are expected to know
 them by name.
 

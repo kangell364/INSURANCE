@@ -388,7 +388,7 @@ insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
 select '2aa5db82-0689-5f02-8850-03dec995ef82', 'ec98aec4-aec6-5d3e-93ae-dbb68098f16a', c.id, 'Homeowners Forms',
-       'homeowners-forms', 'Six forms, six coverages and two sections — and the handful of differences the exam actually tests.', 1,
+       'homeowners-forms', 'The six homeowners forms, the coverages A to F they carry, and the differences between the forms that decide which one a household needs.', 1,
        'draft', 18
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
 on conflict (id) do update set
@@ -397,9 +397,7 @@ on conflict (id) do update set
   estimated_minutes = excluded.estimated_minutes;
 
 insert into public.lesson_contents (lesson_id, course_id, body)
-select '2aa5db82-0689-5f02-8850-03dec995ef82', c.id, $lesson$# One package, six variations
-
-A homeowners policy is a **package**: property and liability in one contract.
+select '2aa5db82-0689-5f02-8850-03dec995ef82', c.id, $lesson$A homeowners policy is a **package**: property and liability in one contract.
 That is its defining feature, and it is why it replaced the older practice of
 buying a fire policy and a separate liability policy.
 
@@ -639,7 +637,7 @@ insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
 select 'dda2d47b-e8ee-5b9b-bffb-df02bb0b8812', 'ec98aec4-aec6-5d3e-93ae-dbb68098f16a', c.id, 'Dwelling Policies',
-       'dwelling-policies', 'The property-only forms for houses that do not qualify for a homeowners policy.', 2,
+       'dwelling-policies', 'DP-1, DP-2 and DP-3 — the property-only forms for houses that do not qualify for a homeowners policy, and what each one covers.', 2,
        'draft', 13
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
 on conflict (id) do update set
@@ -648,9 +646,7 @@ on conflict (id) do update set
   estimated_minutes = excluded.estimated_minutes;
 
 insert into public.lesson_contents (lesson_id, course_id, body)
-select 'dda2d47b-e8ee-5b9b-bffb-df02bb0b8812', c.id, $lesson$# When a homeowners policy will not do
-
-The dwelling policy is the older, narrower form. Where a homeowners policy is
+select 'dda2d47b-e8ee-5b9b-bffb-df02bb0b8812', c.id, $lesson$The dwelling policy is the older, narrower form. Where a homeowners policy is
 a package, **a dwelling policy is property insurance alone** — liability is
 optional and added by endorsement.
 
@@ -841,9 +837,7 @@ on conflict (id) do update set
   estimated_minutes = excluded.estimated_minutes;
 
 insert into public.lesson_contents (lesson_id, course_id, body)
-select 'fdcf9975-9bd5-5b6a-8eec-66bbd30eddd0', c.id, $lesson$# Building a commercial policy out of parts
-
-Personal lines sells finished packages. Commercial lines sells components,
+select 'fdcf9975-9bd5-5b6a-8eec-66bbd30eddd0', c.id, $lesson$Personal lines sells finished packages. Commercial lines sells components,
 and the producer assembles them.
 
 ## C. Commercial Lines
@@ -1134,9 +1128,7 @@ on conflict (id) do update set
   estimated_minutes = excluded.estimated_minutes;
 
 insert into public.lesson_contents (lesson_id, course_id, body)
-select 'fb29d783-0b17-5cac-abd6-ab8e2df510b8', c.id, $lesson$# Insurance for things that will not stay still
-
-The name is historical and misleading. **Inland marine has almost nothing to
+select 'fb29d783-0b17-5cac-abd6-ab8e2df510b8', c.id, $lesson$The name is historical and misleading. **Inland marine has almost nothing to
 do with water.**
 
 ## Where the name comes from
@@ -1330,7 +1322,7 @@ insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
 select '6d2171b2-6a44-5f41-b8c4-52bd93262d4a', 'ec98aec4-aec6-5d3e-93ae-dbb68098f16a', c.id, 'The National Flood Insurance Program',
-       'the-national-flood-insurance-program', 'Why flood is excluded everywhere else, and how the federal programme fills the gap.', 5,
+       'the-national-flood-insurance-program', 'Why flood is excluded from every standard policy, how the federal programme covers it, and the limits and waiting period that apply.', 5,
        'draft', 13
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
 on conflict (id) do update set
@@ -1339,9 +1331,7 @@ on conflict (id) do update set
   estimated_minutes = excluded.estimated_minutes;
 
 insert into public.lesson_contents (lesson_id, course_id, body)
-select '6d2171b2-6a44-5f41-b8c4-52bd93262d4a', c.id, $lesson$# The peril the private market would not write
-
-Flood is excluded from homeowners, dwelling and commercial property forms
+select '6d2171b2-6a44-5f41-b8c4-52bd93262d4a', c.id, $lesson$Flood is excluded from homeowners, dwelling and commercial property forms
 alike. The exclusion is not arbitrary, and understanding why explains
 everything else about the programme.
 
@@ -1542,7 +1532,7 @@ insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
 select 'f2a692e9-7a38-5c5c-938c-371af3cfcd0f', 'ec98aec4-aec6-5d3e-93ae-dbb68098f16a', c.id, 'Other Property Policies',
-       'other-property-policies', 'Earthquake, mobile homes, watercraft, farmowners and windstorm — five smaller forms the blueprint names explicitly.', 6,
+       'other-property-policies', 'Earthquake, mobile homes, watercraft, farmowners and windstorm — five forms for risks the standard policies exclude or cannot handle.', 6,
        'draft', 14
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
 on conflict (id) do update set
@@ -1551,9 +1541,7 @@ on conflict (id) do update set
   estimated_minutes = excluded.estimated_minutes;
 
 insert into public.lesson_contents (lesson_id, course_id, body)
-select 'f2a692e9-7a38-5c5c-938c-371af3cfcd0f', c.id, $lesson$# Five risks the standard forms send elsewhere
-
-Each of these exists because a standard homeowners or commercial form either
+select 'f2a692e9-7a38-5c5c-938c-371af3cfcd0f', c.id, $lesson$Each of these exists because a standard homeowners or commercial form either
 excludes the peril or cannot handle the property. You are expected to know
 them by name.
 

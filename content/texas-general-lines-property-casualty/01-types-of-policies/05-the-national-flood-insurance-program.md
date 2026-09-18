@@ -3,13 +3,11 @@ module: Types of Policies
 title: The National Flood Insurance Program
 slug: the-national-flood-insurance-program
 blueprint: GK.I
-summary: Why flood is excluded everywhere else, and how the federal programme fills the gap.
+summary: Why flood is excluded from every standard policy, how the federal programme covers it, and the limits and waiting period that apply.
 estimated_minutes: 13
 status: draft
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
-
-# The peril the private market would not write
 
 Flood is excluded from homeowners, dwelling and commercial property forms
 alike. The exclusion is not arbitrary, and understanding why explains

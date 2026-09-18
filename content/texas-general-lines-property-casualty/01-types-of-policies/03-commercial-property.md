@@ -9,8 +9,6 @@ status: draft
 review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 ---
 
-# Building a commercial policy out of parts
-
 Personal lines sells finished packages. Commercial lines sells components,
 and the producer assembles them.
 
