@@ -234,7 +234,11 @@ typically three years from the accident. It does **not** cover the insured or
 regular residents of the household, which is the point candidates miss: your
 own family's injuries are a health insurance matter.
 
-## The six forms
+## A. Homeowners
+
+The outline lists six forms under **I.A**, and the exam tests the differences
+between them rather than any one in isolation. Read the table first, then each
+form in the outline's own order.
 
 | Form | Who | Dwelling (A) | Contents (C) |
 | --- | --- | --- | --- |
@@ -245,14 +249,30 @@ own family's injuries are a health insurance matter.
 | **HO-6** Unit-owners | **Condominium owner** | limited (see below) | **Named peril** |
 | **HO-8** Modified | Owner of an older home | **Named peril** | **Named peril** |
 
+### 1. HO-2 — Broad Form
+
+**Named peril on both sides.** The dwelling and the contents are each covered
+against the perils on the broad list and nothing else. It is the plainest of
+the owner-occupant forms, and it is the baseline the others are measured
+against: every form below it either widens the peril basis or changes who the
+policy is for.
+
+### 2. HO-3 — Special Form
+
 **HO-3 is the one most people own**, and its asymmetry is the most-tested fact
 in this lesson: **the dwelling is open peril, the contents are named peril.**
+
+### 3. HO-4 — Contents Form (tenants)
+
+**HO-4 is the renter's policy** — no Coverage A at all, because the tenant
+does not own the building. It does carry Coverage C, D, E and F.
+
+### 4. HO-5 — Comprehensive Form
 
 **HO-5 upgrades the contents to open peril** as well. That is the whole
 difference between HO-3 and HO-5.
 
-**HO-4 is the renter's policy** — no Coverage A at all, because the tenant
-does not own the building. It does carry Coverage C, D, E and F.
+### 5. HO-6 — Unit-Owners Form
 
 **HO-6 is the condominium owner's policy.** Coverage A is limited — commonly
 a small default such as $5,000, increasable — because the association's
@@ -260,6 +280,8 @@ master policy covers the building. The unit owner's Coverage A answers for
 what is inside the walls: fixtures, cabinetry, improvements and betterments,
 and whatever the master policy leaves to the unit owner. Read the master
 policy to know which.
+
+### 6. HO-8 — Modified Coverage Form
 
 **HO-8 exists for older homes whose replacement cost far exceeds their market
 value** — a large Victorian in a low-value neighbourhood, where rebuilding
