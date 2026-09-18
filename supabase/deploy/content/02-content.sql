@@ -37,6 +37,11 @@ That is not a paradox, and the exam wants you to be able to say why.
 **Insurance is a contract — a device — by which one party agrees, for a
 premium, to indemnify another against loss from specified perils.**
 
+**Indemnify** means to restore the insured to the financial position they were
+in immediately before the loss — no worse, and deliberately no better. It is
+the principle the next lesson is built on; take it here as "make good, and no
+more than good".
+
 Two halves of that are worth separating, because the exam asks about each.
 
 **As a contract, it transfers risk.** The insured hands the financial
