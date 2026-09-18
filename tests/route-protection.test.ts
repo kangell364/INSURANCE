@@ -71,6 +71,10 @@ describe('protected routes', () => {
     '/dashboard/exams',
     '/dashboard/profile',
     '/admin',
+    // The draft preview renders unreleased lesson bodies. It is an /admin
+    // route so that it inherits this redirect, the layout's requireAdmin, and
+    // the RLS policy underneath both -- rather than being a new door.
+    '/admin/content/texas-general-lines-property-casualty/lessons/abc/preview',
   ])('redirects an anonymous visitor away from %s', async (path) => {
     signedOut()
 

@@ -347,6 +347,17 @@ function LessonRow({
         )}
       </div>
       <div className="flex flex-wrap items-center gap-2">
+        {/* Reading a draft in the edit form's textarea is not reading what a
+            student reads. This opens the same body through the student's own
+            renderer, without releasing anything. */}
+        {lesson.hasBody && (
+          <Link
+            href={`/admin/content/${courseSlug}/lessons/${lesson.id}/preview`}
+            className="text-xs font-medium text-navy-700 hover:underline"
+          >
+            Preview
+          </Link>
+        )}
         <StatusBadge status={lesson.status} />
         <ActionButton
           action={moveContentAction}
