@@ -333,6 +333,19 @@ const MODULE_SECTIONS = new Map([
   ['05', ['TX.I', 'TX.II']],
 ])
 
+/**
+ * --json: the whole mapping as data, for anything that needs to render it
+ * somewhere else -- the Word review copy prints outline codes beside each
+ * lesson and an index in the back from this.
+ */
+if (process.argv.includes('--json')) {
+  console.log(JSON.stringify(rows.map((r) => ({
+    section: r.section, line: r.line, label: r.label,
+    questions: r.questions, lessons: r.where,
+  }))))
+  process.exit(0)
+}
+
 if (LESSONS_FOR) {
   const prefix = `${LESSONS_FOR}-`
   const owned = MODULE_SECTIONS.get(LESSONS_FOR) ?? []
