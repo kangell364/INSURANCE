@@ -47,9 +47,9 @@ Two differences from homeowners worth holding:
 **DP-1 does not include Coverage E at all.** Additional living expense is a
 DP-2 and DP-3 feature.
 
-## The three forms
+## B. Dwelling Policies
 
-### DP-1 — Basic
+### 1. DP-1 — Basic
 
 **Named peril**, and the narrowest of the three.
 
@@ -64,7 +64,7 @@ Two distinguishing features:
   cost on the dwelling.
 - **Theft is not covered** and generally is not available.
 
-### DP-2 — Broad
+### 2. DP-2 — Broad
 
 **Named peril**, with the broad list — everything in DP-1's extended coverage
 plus falling objects; weight of ice, snow or sleet; accidental discharge of
@@ -85,7 +85,7 @@ usual insurance-to-value requirement.
 
 Additional living expense and fair rental value are both included.
 
-### DP-3 — Special
+### 3. DP-3 — Special
 
 **Open peril on the dwelling and other structures; named peril on personal
 property.**

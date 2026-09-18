@@ -687,9 +687,9 @@ Two differences from homeowners worth holding:
 **DP-1 does not include Coverage E at all.** Additional living expense is a
 DP-2 and DP-3 feature.
 
-## The three forms
+## B. Dwelling Policies
 
-### DP-1 — Basic
+### 1. DP-1 — Basic
 
 **Named peril**, and the narrowest of the three.
 
@@ -704,7 +704,7 @@ Two distinguishing features:
   cost on the dwelling.
 - **Theft is not covered** and generally is not available.
 
-### DP-2 — Broad
+### 2. DP-2 — Broad
 
 **Named peril**, with the broad list — everything in DP-1's extended coverage
 plus falling objects; weight of ice, snow or sleet; accidental discharge of
@@ -725,7 +725,7 @@ usual insurance-to-value requirement.
 
 Additional living expense and fair rental value are both included.
 
-### DP-3 — Special
+### 3. DP-3 — Special
 
 **Open peril on the dwelling and other structures; named peril on personal
 property.**
@@ -847,7 +847,9 @@ select 'fdcf9975-9bd5-5b6a-8eec-66bbd30eddd0', c.id, $lesson$# Building a commer
 Personal lines sells finished packages. Commercial lines sells components,
 and the producer assembles them.
 
-## The Commercial Package Policy
+## C. Commercial Lines
+
+### 1. Commercial Package Policy (CPP)
 
 **A CPP is two or more commercial coverage parts issued under one policy.**
 Its architecture:
@@ -868,7 +870,7 @@ policies produce.
 
 **Workers' compensation is written separately**, not as a CPP part.
 
-## The commercial property coverage part
+### 2. Commercial Property
 
 Three things must be assembled:
 
@@ -876,7 +878,7 @@ Three things must be assembled:
 2. **A causes of loss form** — what perils.
 3. **Conditions and any endorsements.**
 
-### The building and personal property coverage form
+#### a. Commercial building and business personal property form
 
 The workhorse. It insures three categories, each separately scheduled on the
 declarations:
@@ -896,7 +898,7 @@ control. **Payment goes to the owner**, not to the insured.
 The **coinsurance** clause applies, usually at 80%, 90% or 100%, and the
 calculation is the one from Module 1.
 
-### Extensions and additional coverages
+##### Extensions and additional coverages
 
 Typically included: **debris removal** (a percentage of the loss plus the
 deductible, with an additional amount available); **preservation of
@@ -906,7 +908,7 @@ limited period and amount; **personal effects**; **property off premises**;
 **outdoor property**; and **valuable papers and records** at a limited
 amount.
 
-### Reporting forms and blanket insurance
+##### Reporting forms and blanket insurance
 
 **Specific insurance** names an amount for one item at one location.
 
@@ -923,7 +925,7 @@ claim time in proportion to the shortfall.
 **Agreed value** suspends coinsurance where the insurer has accepted a
 statement of values.
 
-## How the building is classified
+##### How the building is classified
 
 Before any of the coverage choices, an underwriter classifies the building
 itself, because construction drives the rate more than almost anything else.
@@ -952,7 +954,7 @@ are where most small commercial risks sit.
 > because it explains why two identical-looking buildings on the same street
 > price differently.
 
-## The three causes of loss forms
+#### b. Causes of loss forms
 
 This is the most-tested part of commercial property.
 
@@ -975,7 +977,7 @@ Basic and Broad do not include.
 An **earthquake** form and a **flood** form exist separately, because neither
 is included in any of the three.
 
-## Business income and extra expense
+#### c. Business income
 
 These are **indirect** or **consequential** loss coverages. Direct damage
 coverage rebuilds the building; these pay for the trading that could not
@@ -995,6 +997,8 @@ The **period of restoration** begins **72 hours after the physical loss**
 been repaired with reasonable speed — not when it actually was. An insured
 who takes eight months over a four-month rebuild is paid for four.
 
+#### d. Extra expense
+
 **Extra expense** pays the additional costs of **continuing** operations —
 renting temporary premises, hiring equipment, expedited shipping. A business
 that cannot afford to stop, such as a dairy or a newspaper, buys extra
@@ -1005,7 +1009,7 @@ Related: **contingent business income** covers loss caused by damage to
 **Civil authority** coverage pays where access to the premises is prohibited
 by an authority because of damage to nearby property.
 
-## Equipment breakdown
+#### e. Equipment breakdown
 
 Formerly boiler and machinery. **It covers the sudden and accidental
 breakdown of pressure, mechanical and electrical equipment** — and the
@@ -1022,7 +1026,16 @@ boilers and pressure vessels, often satisfying the jurisdiction's statutory
 inspection requirement, and the loss-prevention value is a substantial part of
 what the premium buys.
 
-## Builders risk
+### 3. Business Owners Policy (BOP)
+
+The outline lists the BOP here **and again at IV.H**. It is taught in
+**Module 4, Types of Policies, Bonds and Related Terms**, beside the other
+packaged commercial policies, because that is where the second listing puts
+it. In one line: a **BOP packages property and liability for a small or
+medium business**, in the way a homeowners policy does for a household, and
+it is offered only to eligible classes.
+
+### 4. Builders Risk
 
 **Covers a structure under construction**, against loss during the build.
 
@@ -1036,7 +1049,7 @@ what the premium buys.
   purpose, or the policy expires — whichever comes first. At that point a
   standard property policy takes over.
 
-## Cyber first-party coverage
+### 5. Cyber First-Party Coverage
 
 **First-party cyber coverage pays the insured's own losses from a cyber
 event**, as distinct from cyber *liability*, which pays what the insured owes
@@ -1169,9 +1182,11 @@ Four advantages over a standard property form:
 **"Floater"** is the common name, because the coverage floats with the
 property.
 
-## Personal inland marine
+## D. Inland Marine
 
-### The personal articles floater
+### 1. Personal Articles Floaters
+
+#### The personal articles floater
 
 **Schedules high-value personal items individually**, each with a stated
 value. The standard categories:
@@ -1201,14 +1216,14 @@ Two details that get tested:
   automatically for a limited period — commonly 30 days — provided the
   insurer is notified and premium paid.
 
-### The personal property floater
+#### The personal property floater
 
 Covers **all** the insured's personal property on an open peril, worldwide
 basis, rather than a schedule of named items. Less common, and expensive.
 
-## Commercial inland marine
+### 2. Commercial Property Floaters
 
-### Nationwide marine definition
+#### Nationwide marine definition
 
 Regulators publish a **nationwide marine definition** setting out what may be
 written as inland marine. It exists to stop insurers writing ordinary fire
@@ -1216,7 +1231,7 @@ business on inland marine forms to escape rate regulation. **Controlled**
 lines are filed classes; **uncontrolled** lines may be written on
 individually negotiated terms.
 
-### The common commercial floaters
+#### The common commercial floaters
 
 **Contractor's equipment floater** — mobile tools, machinery and equipment,
 on site and in transit.
@@ -1253,7 +1268,7 @@ equipment**, and **theatrical property** are further named classes.
 **Instrumentalities of transportation and communication** — bridges, tunnels,
 pipelines, power transmission lines, radio and television towers.
 
-### Bailee terminology
+#### Bailee terminology
 
 - A **bailee** holds another's property. A **bailor** owns it.
 - A **bailee's customers form** covers the customers' goods regardless of
@@ -1331,7 +1346,9 @@ Flood is excluded from homeowners, dwelling and commercial property forms
 alike. The exclusion is not arbitrary, and understanding why explains
 everything else about the programme.
 
-## Why flood is uninsurable privately
+## E. National Flood Insurance Program
+
+### Why flood is uninsurable privately
 
 Flood fails the tests of an insurable risk from Module 1:
 
@@ -1348,7 +1365,7 @@ So in **1968 Congress created the National Flood Insurance Program**,
 administered by **FEMA**. The federal government takes the risk the private
 market would not.
 
-## How a community participates
+### How a community participates
 
 **The NFIP is a bargain between the federal government and the community, not
 just with the individual.**
@@ -1368,7 +1385,7 @@ Two phases:
 - **The regular programme** — full limits, once the community has a flood
   insurance rate map and has adopted the required ordinances.
 
-## The waiting period
+### The waiting period
 
 **There is normally a 30-day waiting period** between application and the
 policy taking effect. It is the programme's defence against somebody buying
@@ -1382,7 +1399,7 @@ The exceptions are worth knowing:
   map.
 - A shortened wait for property **affected by wildfire on federal land**.
 
-## What a flood is
+### What a flood is
 
 The programme's definition is specific, and questions are built on it. A
 flood is a **general and temporary condition of partial or complete
@@ -1403,7 +1420,7 @@ Two consequences:
 - **Mudflow counts; landslide generally does not.** Mudflow is liquid mud
   flowing; a landslide is earth movement, excluded.
 
-## What is covered
+### What is covered
 
 Two separate coverages, bought separately:
 
@@ -1438,7 +1455,7 @@ buys **excess flood** from the private market.
 - **Everything else is actual cash value** — contents always, and buildings
   that are secondary homes, rentals or commercial.
 
-## What is not covered
+### What is not covered
 
 - **Contents in a basement**, beyond a very short list of building items.
   Finished basements are largely uninsurable under the programme.
@@ -1451,7 +1468,7 @@ buys **excess flood** from the private market.
   coverage.
 - **Business interruption.**
 
-## Zones, maps and requirements
+### Zones, maps and requirements
 
 FEMA publishes a **Flood Insurance Rate Map** for each participating
 community, dividing it into **flood zones**.
@@ -1541,7 +1558,9 @@ The blueprint lists these by name, so they are examined by name. Each exists
 because a standard homeowners or commercial form either excludes the peril or
 cannot handle the property.
 
-## Earthquake
+## F. Others
+
+### 1. Earthquake
 
 **Earth movement is excluded from every standard property form**, for the same
 reason as flood: the losses are correlated. One earthquake damages every
@@ -1566,7 +1585,7 @@ What to know:
 - **Multiple shocks within a stated period** — commonly 72 hours — count as
   **one occurrence**, so one deductible applies rather than several.
 
-## Mobile homes
+### 2. Mobile Homes
 
 A mobile or manufactured home cannot be written on a standard homeowners
 policy: it is built to different standards, depreciates like a vehicle rather
@@ -1586,7 +1605,7 @@ policy with property and liability sections, but with changes:
 - **Skirting, awnings, carports and attached structures** may need to be
   listed to be covered.
 
-## Watercraft
+### 3. Watercraft
 
 Homeowners policies cover **small, low-powered boats** and very little else.
 The typical arrangement covers a boat only up to a modest length and
@@ -1613,7 +1632,7 @@ Points that are examined:
 - **Ocean marine perils** — the traditional list includes perils of the sea,
   fire, jettison, piracy and barratry (wrongful acts by the master or crew).
 
-## Farmowners
+### 4. Farm Owners (farmowners)
 
 **A farmowners policy is a package covering both the farm residence and the
 farming operation** — the agricultural equivalent of a homeowners policy, and
@@ -1643,7 +1662,7 @@ Specific features:
   farmowners policy.
 - **Mobile agricultural equipment in transit** may need inland marine.
 
-## Windstorm
+### 5. Windstorm
 
 Wind is a **covered peril** on standard property forms in most of the country.
 In coastal areas it is frequently **excluded or heavily deductible**, because

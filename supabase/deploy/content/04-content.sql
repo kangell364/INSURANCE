@@ -30,7 +30,9 @@ Flood is excluded from homeowners, dwelling and commercial property forms
 alike. The exclusion is not arbitrary, and understanding why explains
 everything else about the programme.
 
-## Why flood is uninsurable privately
+## E. National Flood Insurance Program
+
+### Why flood is uninsurable privately
 
 Flood fails the tests of an insurable risk from Module 1:
 
@@ -47,7 +49,7 @@ So in **1968 Congress created the National Flood Insurance Program**,
 administered by **FEMA**. The federal government takes the risk the private
 market would not.
 
-## How a community participates
+### How a community participates
 
 **The NFIP is a bargain between the federal government and the community, not
 just with the individual.**
@@ -67,7 +69,7 @@ Two phases:
 - **The regular programme** — full limits, once the community has a flood
   insurance rate map and has adopted the required ordinances.
 
-## The waiting period
+### The waiting period
 
 **There is normally a 30-day waiting period** between application and the
 policy taking effect. It is the programme's defence against somebody buying
@@ -81,7 +83,7 @@ The exceptions are worth knowing:
   map.
 - A shortened wait for property **affected by wildfire on federal land**.
 
-## What a flood is
+### What a flood is
 
 The programme's definition is specific, and questions are built on it. A
 flood is a **general and temporary condition of partial or complete
@@ -102,7 +104,7 @@ Two consequences:
 - **Mudflow counts; landslide generally does not.** Mudflow is liquid mud
   flowing; a landslide is earth movement, excluded.
 
-## What is covered
+### What is covered
 
 Two separate coverages, bought separately:
 
@@ -137,7 +139,7 @@ buys **excess flood** from the private market.
 - **Everything else is actual cash value** — contents always, and buildings
   that are secondary homes, rentals or commercial.
 
-## What is not covered
+### What is not covered
 
 - **Contents in a basement**, beyond a very short list of building items.
   Finished basements are largely uninsurable under the programme.
@@ -150,7 +152,7 @@ buys **excess flood** from the private market.
   coverage.
 - **Business interruption.**
 
-## Zones, maps and requirements
+### Zones, maps and requirements
 
 FEMA publishes a **Flood Insurance Rate Map** for each participating
 community, dividing it into **flood zones**.
@@ -240,7 +242,9 @@ The blueprint lists these by name, so they are examined by name. Each exists
 because a standard homeowners or commercial form either excludes the peril or
 cannot handle the property.
 
-## Earthquake
+## F. Others
+
+### 1. Earthquake
 
 **Earth movement is excluded from every standard property form**, for the same
 reason as flood: the losses are correlated. One earthquake damages every
@@ -265,7 +269,7 @@ What to know:
 - **Multiple shocks within a stated period** — commonly 72 hours — count as
   **one occurrence**, so one deductible applies rather than several.
 
-## Mobile homes
+### 2. Mobile Homes
 
 A mobile or manufactured home cannot be written on a standard homeowners
 policy: it is built to different standards, depreciates like a vehicle rather
@@ -285,7 +289,7 @@ policy with property and liability sections, but with changes:
 - **Skirting, awnings, carports and attached structures** may need to be
   listed to be covered.
 
-## Watercraft
+### 3. Watercraft
 
 Homeowners policies cover **small, low-powered boats** and very little else.
 The typical arrangement covers a boat only up to a modest length and
@@ -312,7 +316,7 @@ Points that are examined:
 - **Ocean marine perils** — the traditional list includes perils of the sea,
   fire, jettison, piracy and barratry (wrongful acts by the master or crew).
 
-## Farmowners
+### 4. Farm Owners (farmowners)
 
 **A farmowners policy is a package covering both the farm residence and the
 farming operation** — the agricultural equivalent of a homeowners policy, and
@@ -342,7 +346,7 @@ Specific features:
   farmowners policy.
 - **Mobile agricultural equipment in transit** may need inland marine.
 
-## Windstorm
+### 5. Windstorm
 
 Wind is a **covered peril** on standard property forms in most of the country.
 In coastal areas it is frequently **excluded or heavily deductible**, because

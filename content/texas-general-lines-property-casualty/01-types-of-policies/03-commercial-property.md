@@ -14,7 +14,9 @@ review: UNREVIEWED — drafted by Claude, not yet checked by a licensed producer
 Personal lines sells finished packages. Commercial lines sells components,
 and the producer assembles them.
 
-## The Commercial Package Policy
+## C. Commercial Lines
+
+### 1. Commercial Package Policy (CPP)
 
 **A CPP is two or more commercial coverage parts issued under one policy.**
 Its architecture:
@@ -35,7 +37,7 @@ policies produce.
 
 **Workers' compensation is written separately**, not as a CPP part.
 
-## The commercial property coverage part
+### 2. Commercial Property
 
 Three things must be assembled:
 
@@ -43,7 +45,7 @@ Three things must be assembled:
 2. **A causes of loss form** — what perils.
 3. **Conditions and any endorsements.**
 
-### The building and personal property coverage form
+#### a. Commercial building and business personal property form
 
 The workhorse. It insures three categories, each separately scheduled on the
 declarations:
@@ -63,7 +65,7 @@ control. **Payment goes to the owner**, not to the insured.
 The **coinsurance** clause applies, usually at 80%, 90% or 100%, and the
 calculation is the one from Module 1.
 
-### Extensions and additional coverages
+##### Extensions and additional coverages
 
 Typically included: **debris removal** (a percentage of the loss plus the
 deductible, with an additional amount available); **preservation of
@@ -73,7 +75,7 @@ limited period and amount; **personal effects**; **property off premises**;
 **outdoor property**; and **valuable papers and records** at a limited
 amount.
 
-### Reporting forms and blanket insurance
+##### Reporting forms and blanket insurance
 
 **Specific insurance** names an amount for one item at one location.
 
@@ -90,7 +92,7 @@ claim time in proportion to the shortfall.
 **Agreed value** suspends coinsurance where the insurer has accepted a
 statement of values.
 
-## How the building is classified
+##### How the building is classified
 
 Before any of the coverage choices, an underwriter classifies the building
 itself, because construction drives the rate more than almost anything else.
@@ -119,7 +121,7 @@ are where most small commercial risks sit.
 > because it explains why two identical-looking buildings on the same street
 > price differently.
 
-## The three causes of loss forms
+#### b. Causes of loss forms
 
 This is the most-tested part of commercial property.
 
@@ -142,7 +144,7 @@ Basic and Broad do not include.
 An **earthquake** form and a **flood** form exist separately, because neither
 is included in any of the three.
 
-## Business income and extra expense
+#### c. Business income
 
 These are **indirect** or **consequential** loss coverages. Direct damage
 coverage rebuilds the building; these pay for the trading that could not
@@ -162,6 +164,8 @@ The **period of restoration** begins **72 hours after the physical loss**
 been repaired with reasonable speed — not when it actually was. An insured
 who takes eight months over a four-month rebuild is paid for four.
 
+#### d. Extra expense
+
 **Extra expense** pays the additional costs of **continuing** operations —
 renting temporary premises, hiring equipment, expedited shipping. A business
 that cannot afford to stop, such as a dairy or a newspaper, buys extra
@@ -172,7 +176,7 @@ Related: **contingent business income** covers loss caused by damage to
 **Civil authority** coverage pays where access to the premises is prohibited
 by an authority because of damage to nearby property.
 
-## Equipment breakdown
+#### e. Equipment breakdown
 
 Formerly boiler and machinery. **It covers the sudden and accidental
 breakdown of pressure, mechanical and electrical equipment** — and the
@@ -189,7 +193,16 @@ boilers and pressure vessels, often satisfying the jurisdiction's statutory
 inspection requirement, and the loss-prevention value is a substantial part of
 what the premium buys.
 
-## Builders risk
+### 3. Business Owners Policy (BOP)
+
+The outline lists the BOP here **and again at IV.H**. It is taught in
+**Module 4, Types of Policies, Bonds and Related Terms**, beside the other
+packaged commercial policies, because that is where the second listing puts
+it. In one line: a **BOP packages property and liability for a small or
+medium business**, in the way a homeowners policy does for a household, and
+it is offered only to eligible classes.
+
+### 4. Builders Risk
 
 **Covers a structure under construction**, against loss during the build.
 
@@ -203,7 +216,7 @@ what the premium buys.
   purpose, or the policy expires — whichever comes first. At that point a
   standard property policy takes over.
 
-## Cyber first-party coverage
+### 5. Cyber First-Party Coverage
 
 **First-party cyber coverage pays the insured's own losses from a cyber
 event**, as distinct from cyber *liability*, which pays what the insured owes

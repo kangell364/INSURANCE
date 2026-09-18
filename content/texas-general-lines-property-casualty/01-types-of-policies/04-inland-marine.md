@@ -56,9 +56,11 @@ Four advantages over a standard property form:
 **"Floater"** is the common name, because the coverage floats with the
 property.
 
-## Personal inland marine
+## D. Inland Marine
 
-### The personal articles floater
+### 1. Personal Articles Floaters
+
+#### The personal articles floater
 
 **Schedules high-value personal items individually**, each with a stated
 value. The standard categories:
@@ -88,14 +90,14 @@ Two details that get tested:
   automatically for a limited period — commonly 30 days — provided the
   insurer is notified and premium paid.
 
-### The personal property floater
+#### The personal property floater
 
 Covers **all** the insured's personal property on an open peril, worldwide
 basis, rather than a schedule of named items. Less common, and expensive.
 
-## Commercial inland marine
+### 2. Commercial Property Floaters
 
-### Nationwide marine definition
+#### Nationwide marine definition
 
 Regulators publish a **nationwide marine definition** setting out what may be
 written as inland marine. It exists to stop insurers writing ordinary fire
@@ -103,7 +105,7 @@ business on inland marine forms to escape rate regulation. **Controlled**
 lines are filed classes; **uncontrolled** lines may be written on
 individually negotiated terms.
 
-### The common commercial floaters
+#### The common commercial floaters
 
 **Contractor's equipment floater** — mobile tools, machinery and equipment,
 on site and in transit.
@@ -140,7 +142,7 @@ equipment**, and **theatrical property** are further named classes.
 **Instrumentalities of transportation and communication** — bridges, tunnels,
 pipelines, power transmission lines, radio and television towers.
 
-### Bailee terminology
+#### Bailee terminology
 
 - A **bailee** holds another's property. A **bailor** owns it.
 - A **bailee's customers form** covers the customers' goods regardless of

@@ -15,7 +15,9 @@ Flood is excluded from homeowners, dwelling and commercial property forms
 alike. The exclusion is not arbitrary, and understanding why explains
 everything else about the programme.
 
-## Why flood is uninsurable privately
+## E. National Flood Insurance Program
+
+### Why flood is uninsurable privately
 
 Flood fails the tests of an insurable risk from Module 1:
 
@@ -32,7 +34,7 @@ So in **1968 Congress created the National Flood Insurance Program**,
 administered by **FEMA**. The federal government takes the risk the private
 market would not.
 
-## How a community participates
+### How a community participates
 
 **The NFIP is a bargain between the federal government and the community, not
 just with the individual.**
@@ -52,7 +54,7 @@ Two phases:
 - **The regular programme** — full limits, once the community has a flood
   insurance rate map and has adopted the required ordinances.
 
-## The waiting period
+### The waiting period
 
 **There is normally a 30-day waiting period** between application and the
 policy taking effect. It is the programme's defence against somebody buying
@@ -66,7 +68,7 @@ The exceptions are worth knowing:
   map.
 - A shortened wait for property **affected by wildfire on federal land**.
 
-## What a flood is
+### What a flood is
 
 The programme's definition is specific, and questions are built on it. A
 flood is a **general and temporary condition of partial or complete
@@ -87,7 +89,7 @@ Two consequences:
 - **Mudflow counts; landslide generally does not.** Mudflow is liquid mud
   flowing; a landslide is earth movement, excluded.
 
-## What is covered
+### What is covered
 
 Two separate coverages, bought separately:
 
@@ -122,7 +124,7 @@ buys **excess flood** from the private market.
 - **Everything else is actual cash value** — contents always, and buildings
   that are secondary homes, rentals or commercial.
 
-## What is not covered
+### What is not covered
 
 - **Contents in a basement**, beyond a very short list of building items.
   Finished basements are largely uninsurable under the programme.
@@ -135,7 +137,7 @@ buys **excess flood** from the private market.
   coverage.
 - **Business interruption.**
 
-## Zones, maps and requirements
+### Zones, maps and requirements
 
 FEMA publishes a **Flood Insurance Rate Map** for each participating
 community, dividing it into **flood zones**.

@@ -15,7 +15,9 @@ The blueprint lists these by name, so they are examined by name. Each exists
 because a standard homeowners or commercial form either excludes the peril or
 cannot handle the property.
 
-## Earthquake
+## F. Others
+
+### 1. Earthquake
 
 **Earth movement is excluded from every standard property form**, for the same
 reason as flood: the losses are correlated. One earthquake damages every
@@ -40,7 +42,7 @@ What to know:
 - **Multiple shocks within a stated period** — commonly 72 hours — count as
   **one occurrence**, so one deductible applies rather than several.
 
-## Mobile homes
+### 2. Mobile Homes
 
 A mobile or manufactured home cannot be written on a standard homeowners
 policy: it is built to different standards, depreciates like a vehicle rather
@@ -60,7 +62,7 @@ policy with property and liability sections, but with changes:
 - **Skirting, awnings, carports and attached structures** may need to be
   listed to be covered.
 
-## Watercraft
+### 3. Watercraft
 
 Homeowners policies cover **small, low-powered boats** and very little else.
 The typical arrangement covers a boat only up to a modest length and
@@ -87,7 +89,7 @@ Points that are examined:
 - **Ocean marine perils** — the traditional list includes perils of the sea,
   fire, jettison, piracy and barratry (wrongful acts by the master or crew).
 
-## Farmowners
+### 4. Farm Owners (farmowners)
 
 **A farmowners policy is a package covering both the farm residence and the
 farming operation** — the agricultural equivalent of a homeowners policy, and
@@ -117,7 +119,7 @@ Specific features:
   farmowners policy.
 - **Mobile agricultural equipment in transit** may need inland marine.
 
-## Windstorm
+### 5. Windstorm
 
 Wind is a **covered peril** on standard property forms in most of the country.
 In coastal areas it is frequently **excluded or heavily deductible**, because
