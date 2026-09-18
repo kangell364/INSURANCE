@@ -326,9 +326,9 @@ const LESSONS_FOR = (() => {
  * though it were buries the twenty entries the lesson really does carry.
  */
 const MODULE_SECTIONS = new Map([
-  ['01', ['II', 'V']],
-  ['02', ['III', 'VI']],
-  ['03', ['I']],
+  ['01', ['I']],
+  ['02', ['II', 'V']],
+  ['03', ['III', 'VI']],
   ['04', ['IV']],
   ['05', ['TX.I', 'TX.II']],
 ])

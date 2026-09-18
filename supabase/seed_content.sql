@@ -5,22 +5,22 @@
 -- drafts, which RLS hides from students entirely, body included.
 
 insert into public.modules (id, course_id, title, position, status)
-select '34b6c5a1-202f-5d9f-b12a-d98a335b2916', c.id, 'Insurance Fundamentals', 1, 'active'
+select 'ec98aec4-aec6-5d3e-93ae-dbb68098f16a', c.id, 'Types of Policies', 1, 'active'
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
 on conflict (id) do update set title = excluded.title;
 
 insert into public.modules (id, course_id, title, position, status)
-select 'd6bff6c2-390e-518f-a728-b2a8ee99e87c', c.id, 'Policy Structure and Contract Law', 2, 'active'
+select '451fbb06-6eb2-585a-b90b-44707f124d0f', c.id, 'Insurance Terms and Related Concepts', 2, 'active'
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
 on conflict (id) do update set title = excluded.title;
 
 insert into public.modules (id, course_id, title, position, status)
-select '4d5887f6-82b0-535b-bfd5-541974214ccd', c.id, 'Property Coverages', 3, 'active'
+select '9f729b3f-d119-5250-beea-518a3bc8de3e', c.id, 'Policy Provisions and Contract Law', 3, 'active'
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
 on conflict (id) do update set title = excluded.title;
 
 insert into public.modules (id, course_id, title, position, status)
-select '2071512a-2630-55ae-b69b-68d3232b7633', c.id, 'Casualty Coverages', 4, 'active'
+select '1549f9c3-59b6-59d8-aac7-8a6f00a174d6', c.id, 'Types of Policies, Bonds, and Related Terms', 4, 'active'
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
 on conflict (id) do update set title = excluded.title;
 
@@ -32,7 +32,1360 @@ on conflict (id) do update set title = excluded.title;
 insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
-select '8a2bf024-c5e6-543b-8512-a8ae2dea372b', '34b6c5a1-202f-5d9f-b12a-d98a335b2916', c.id, 'Risk, Peril and Hazard',
+select '2aa5db82-0689-5f02-8850-03dec995ef82', 'ec98aec4-aec6-5d3e-93ae-dbb68098f16a', c.id, 'Homeowners Forms',
+       'homeowners-forms', 'Six forms, six coverages and two sections — and the handful of differences the exam actually tests.', 1,
+       'draft', 18
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select '2aa5db82-0689-5f02-8850-03dec995ef82', c.id, $lesson$# One package, six variations
+
+A homeowners policy is a **package**: property and liability in one contract.
+That is its defining feature, and it is why it replaced the older practice of
+buying a fire policy and a separate liability policy.
+
+Learn the structure once; the six forms are then just differences in who is
+covered and on what peril basis.
+
+## The structure
+
+**Section I — Property**
+
+| | Covers |
+| --- | --- |
+| **Coverage A — Dwelling** | The house, and structures attached to it |
+| **Coverage B — Other Structures** | Detached: garage, shed, fence |
+| **Coverage C — Personal Property** | Contents, anywhere in the world |
+| **Coverage D — Loss of Use** | Additional living expense and fair rental value |
+
+**Section II — Liability**
+
+| | Covers |
+| --- | --- |
+| **Coverage E — Personal Liability** | Bodily injury and property damage the insured is legally liable for |
+| **Coverage F — Medical Payments to Others** | Medical costs for others injured on the premises, **regardless of fault** |
+
+### The relationships between the limits
+
+These are reliably examined, because they are derived rather than chosen:
+
+- **Coverage B is typically 10% of Coverage A.**
+- **Coverage C is typically 50% of Coverage A** (often 40% in some forms).
+- **Coverage D is typically 20–30% of Coverage A**, depending on the form.
+
+Set Coverage A and the rest follow, though each can be increased for extra
+premium.
+
+**Coverage F is a no-fault coverage.** It pays medical expenses of an injured
+guest without any finding of negligence, with a short reporting window —
+typically three years from the accident. It does **not** cover the insured or
+regular residents of the household, which is the point candidates miss: your
+own family's injuries are a health insurance matter.
+
+## A. Homeowners
+
+The outline lists six forms under **I.A**, and the exam tests the differences
+between them rather than any one in isolation. Read the table first, then each
+form in the outline's own order.
+
+| Form | Who | Dwelling (A) | Contents (C) |
+| --- | --- | --- | --- |
+| **HO-2** Broad | Owner-occupant | **Named peril** (broad) | **Named peril** |
+| **HO-3** Special | Owner-occupant | **Open peril** | **Named peril** |
+| **HO-4** Contents / tenants | **Renter** | none | **Named peril** |
+| **HO-5** Comprehensive | Owner-occupant | **Open peril** | **Open peril** |
+| **HO-6** Unit-owners | **Condominium owner** | limited (see below) | **Named peril** |
+| **HO-8** Modified | Owner of an older home | **Named peril** | **Named peril** |
+
+### 1. HO-2 — Broad Form
+
+**Named peril on both sides.** The dwelling and the contents are each covered
+against the perils on the broad list and nothing else. It is the plainest of
+the owner-occupant forms, and it is the baseline the others are measured
+against: every form below it either widens the peril basis or changes who the
+policy is for.
+
+### 2. HO-3 — Special Form
+
+**HO-3 is the one most people own**, and its asymmetry is the most-tested fact
+in this lesson: **the dwelling is open peril, the contents are named peril.**
+
+### 3. HO-4 — Contents Form (tenants)
+
+**HO-4 is the renter's policy** — no Coverage A at all, because the tenant
+does not own the building. It does carry Coverage C, D, E and F.
+
+### 4. HO-5 — Comprehensive Form
+
+**HO-5 upgrades the contents to open peril** as well. That is the whole
+difference between HO-3 and HO-5.
+
+### 5. HO-6 — Unit-Owners Form
+
+**HO-6 is the condominium owner's policy.** Coverage A is limited — commonly
+a small default such as $5,000, increasable — because the association's
+master policy covers the building. The unit owner's Coverage A answers for
+what is inside the walls: fixtures, cabinetry, improvements and betterments,
+and whatever the master policy leaves to the unit owner. Read the master
+policy to know which.
+
+### 6. HO-8 — Modified Coverage Form
+
+**HO-8 exists for older homes whose replacement cost far exceeds their market
+value** — a large Victorian in a low-value neighbourhood, where rebuilding
+would cost several times what the house could be sold for. Insuring it for
+full replacement cost would be unaffordable and would create a moral hazard.
+So **HO-8 settles losses on a modified basis** — repair cost using common
+construction materials and methods, rather than full replacement — and pairs
+that with a narrower named peril list.
+
+## Eligibility
+
+- The insured must be an **owner-occupant** (HO-2, 3, 5, 8), a **tenant**
+  (HO-4), or a **unit owner** (HO-6).
+- Dwellings of up to **four families** are eligible, with the insured
+  occupying one unit; no more than a stated number of roomers or boarders per
+  unit.
+- **Farms are not eligible** — a farmowners policy covers those.
+- **Incidental business occupancies** may be permitted by endorsement; a full
+  business needs a commercial policy.
+
+## Named perils worth knowing
+
+The **basic** group: fire or lightning, windstorm or hail, explosion, riot or
+civil commotion, aircraft, vehicles, smoke, vandalism or malicious mischief,
+theft, volcanic eruption.
+
+The **broad** group adds: falling objects; weight of ice, snow or sleet;
+accidental discharge or overflow of water or steam; sudden and accidental
+tearing apart, cracking, burning or bulging of a heating or
+air-conditioning system; freezing; sudden and accidental damage from
+artificially generated electrical current.
+
+**Open peril forms cover everything not excluded**, which shifts the burden of
+proof onto the insurer.
+
+## Additional coverages
+
+Included without extra premium, usually in modest amounts:
+
+- **Debris removal**, **reasonable repairs**, and **property removed** from
+  danger.
+- **Trees, shrubs and other plants** — a percentage of Coverage A, with a
+  per-item cap and a limited peril list. **Not** windstorm damage to a tree,
+  which is the standard trap.
+- **Fire department service charge.**
+- **Credit card, forgery and counterfeit money**, commonly $500.
+- **Loss assessment** — the unit owner's share of a condominium association
+  assessment.
+- **Collapse**, and **glass breakage**.
+- **Ordinance or law**, at a small percentage of Coverage A.
+
+## Special limits on Coverage C
+
+Certain categories of personal property carry **sub-limits** — not exclusions,
+limits. Typical categories: money and bullion; securities and manuscripts;
+watercraft and trailers; jewellery, watches and furs **for theft**; firearms
+**for theft**; silverware **for theft**.
+
+The fix is to **schedule the property** — list each item with a stated value —
+by endorsement, usually a **scheduled personal property** floater. Scheduling
+also broadens the covered perils and commonly removes the deductible.
+
+**Loss settlement on Coverage C is actual cash value** in most forms.
+**Replacement cost on contents is an endorsement**, and a commonly sold one.
+
+## Coverage D: loss of use
+
+Two distinct parts:
+
+- **Additional living expense** — the *increase* in ordinary living costs
+  while the home is uninhabitable. Not the whole hotel bill: the increase over
+  what the household would have spent anyway.
+- **Fair rental value** — lost rent where part of the home was rented out.
+
+Also payable where a **civil authority prohibits use** of the home because of
+damage to *neighbouring* property by a covered peril, typically for up to two
+weeks.
+
+## Exclusions
+
+Section I excludes, among others: **ordinance or law** (beyond the small
+additional coverage), **earth movement**, **water damage** (flood, surface
+water, sewer backup), **power failure** away from the premises, **neglect**,
+**war**, **nuclear hazard**, **intentional loss**, and **governmental
+action**. Wear and tear, mechanical breakdown, rot, mould, insects and vermin
+are excluded as maintenance rather than risk.
+
+Section II excludes **business pursuits**, **professional services**,
+**motor vehicles** (with narrow exceptions for vehicles not subject to
+registration, such as a ride-on mower on the premises), **aircraft**, larger
+**watercraft**, **intentional injury**, and **workers' compensation**
+obligations.
+
+## How this is examined
+
+**HO-3's asymmetry** — dwelling open peril, contents named peril.
+
+**Which form for which insured** — renter, condominium owner, older home.
+
+**The percentage relationships** between Coverages A, B, C and D.
+
+**Coverage F pays without fault, and not to residents of the household.**
+
+**Special limits** on jewellery, firearms and silverware, and that they are
+limits rather than exclusions.
+
+**Additional living expense is the increase**, not the total.
+
+## Check yourself
+
+1. Under an HO-3, lightning damages the house and a mysterious cause damages
+   the contents. Which loss is easier to establish, and why?
+2. A tenant wants coverage for belongings and liability but not the building.
+   Which form?
+3. Coverage A is $400,000. What are the usual limits for B and C?
+4. A guest slips on the insured's steps and is injured. The insured is not
+   negligent. Is anything payable?
+5. A homeowner's $12,000 diamond ring is stolen. The policy has a $1,500
+   special limit on theft of jewellery. What is the fix, and was the ring
+   excluded?
+6. Why does HO-8 exist?
+
+## Answers
+
+1. **The dwelling loss.** Coverage A is open peril, so the insured need only
+   show a loss occurred; the insurer must prove an exclusion. Coverage C is
+   named peril, so the insured must prove a listed peril caused the contents
+   loss — and "mysterious cause" will not do it.
+2. **HO-4.**
+3. **B = $40,000** (10%), **C = $200,000** (50%).
+4. **Yes** — Coverage F, medical payments to others, pays regardless of
+   fault.
+5. It was **limited**, not excluded — $1,500 is payable. The fix is to
+   **schedule** the ring by endorsement.
+6. Because for older homes replacement cost can far exceed market value,
+   making full replacement cost coverage unaffordable and creating a moral
+   hazard. HO-8 settles on a modified repair-cost basis instead.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select '2aa5db82-0689-5f02-8850-03dec995ef82', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.I'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select 'dda2d47b-e8ee-5b9b-bffb-df02bb0b8812', 'ec98aec4-aec6-5d3e-93ae-dbb68098f16a', c.id, 'Dwelling Policies',
+       'dwelling-policies', 'The property-only forms for houses that do not qualify for a homeowners policy.', 2,
+       'draft', 13
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select 'dda2d47b-e8ee-5b9b-bffb-df02bb0b8812', c.id, $lesson$# When a homeowners policy will not do
+
+The dwelling policy is the older, narrower form. Where a homeowners policy is
+a package, **a dwelling policy is property insurance alone** — liability is
+optional and added by endorsement.
+
+## When it is used
+
+- **The dwelling is not owner-occupied** — a rental house, where the owner
+  needs the building covered but not the tenant's belongings.
+- **The dwelling is seasonal or vacant.**
+- **The insured does not qualify** for a homeowners policy — value too low,
+  condition too poor, occupancy of the wrong kind.
+- **The owner wants building coverage only.**
+
+Eligible dwellings are generally one- to four-family, with limits on
+permitted incidental business.
+
+## The coverages
+
+| | Covers |
+| --- | --- |
+| **Coverage A — Dwelling** | The building |
+| **Coverage B — Other Structures** | Detached structures, commonly **10% of A** |
+| **Coverage C — Personal Property** | Contents |
+| **Coverage D — Fair Rental Value** | Lost rent while the dwelling is unfit |
+| **Coverage E — Additional Living Expense** | The increase in living costs |
+
+Two differences from homeowners worth holding:
+
+- **Loss of use is split into two lettered coverages here** (D and E), where
+  homeowners combines them into Coverage D.
+- **Coverage B and C may be used interchangeably in some forms** — a portion
+  of the Coverage C limit can be applied to other structures, and vice versa.
+
+**DP-1 does not include Coverage E at all.** Additional living expense is a
+DP-2 and DP-3 feature.
+
+## The three forms
+
+### DP-1 — Basic
+
+**Named peril**, and the narrowest of the three.
+
+The standard perils are **fire, lightning and internal explosion**, with
+**extended coverage** available — windstorm, hail, explosion, riot, aircraft,
+vehicles, smoke, volcanic eruption — and **vandalism and malicious mischief**
+available on top of that.
+
+Two distinguishing features:
+
+- **Loss settlement is actual cash value.** DP-1 does not offer replacement
+  cost on the dwelling.
+- **Theft is not covered** and generally is not available.
+
+### DP-2 — Broad
+
+**Named peril**, with the broad list — everything in DP-1's extended coverage
+plus falling objects; weight of ice, snow or sleet; accidental discharge of
+water or steam; tearing apart of a heating system; freezing; accidental damage
+from artificially generated electrical current; and **damage by burglars**.
+
+> **"Damage by burglars" is not theft cover**, and the difference is examined.
+> It pays for what burglars *break* — a forced door, a smashed frame, a
+> ransacked room — and not for what they **take**. A DP-2 insured whose house
+> is burgled is paid for the door and not for the television.
+>
+> Theft of the contents needs theft coverage, which a dwelling form adds by
+> endorsement. This is the same boundary as commercial property, where Basic
+> and Broad reach vandalism but **only Special adds theft**.
+
+**Loss settlement is replacement cost** on the dwelling, subject to the
+usual insurance-to-value requirement.
+
+Additional living expense and fair rental value are both included.
+
+### DP-3 — Special
+
+**Open peril on the dwelling and other structures; named peril on personal
+property.**
+
+This is the same asymmetry as the HO-3, and for the same reason — and it is
+tested the same way. **Loss settlement is replacement cost** on the building.
+
+| | Dwelling | Contents | Settlement | Theft |
+| --- | --- | --- | --- | --- |
+| **DP-1** | Named (basic) | Named (basic) | **ACV** | No |
+| **DP-2** | Named (broad) | Named (broad) | **Replacement cost** | By endorsement |
+| **DP-3** | **Open peril** | Named (broad) | **Replacement cost** | By endorsement |
+
+## What a dwelling policy does not include
+
+**No liability.** Personal liability and medical payments are added by
+endorsement — which is precisely what a landlord needs, since a tenant
+injured on the property will look to the owner.
+
+**No theft coverage as standard.** Available by endorsement on DP-2 and DP-3;
+not on DP-1.
+
+**No automatic additional coverages of the homeowners kind.** The lists of
+debris removal, trees and shrubs, credit card coverage and so on are thinner
+or absent.
+
+## Endorsements a landlord will want
+
+- **Personal liability** and **medical payments**.
+- **Theft**, where the dwelling is furnished.
+- **Vandalism and malicious mischief** — often excluded once a dwelling has
+  been **vacant beyond 60 days**, which is the vacancy trap below.
+- **Broad theft** or **building items** coverage.
+- **Rental income**, beyond the included fair rental value.
+- **Automatic increase in insurance**, to keep pace with construction costs.
+
+## Vacancy and unoccupancy
+
+The two words are not synonyms, and the exam separates them.
+
+- **Unoccupied** — nobody is living there, but the contents remain. A family
+  on a three-month trip.
+- **Vacant** — **both the people and the contents are gone.** An empty house
+  between tenants.
+
+**Vacancy is the one that restricts coverage.** After a dwelling has been
+vacant beyond a stated period — commonly **60 consecutive days** — several
+perils are typically suspended, including **vandalism and malicious mischief,
+glass breakage, theft, sprinkler leakage** and **water damage**, and some
+forms reduce payment on any remaining covered loss.
+
+The underwriting logic is straightforward: an empty building is a magnet for
+vandalism and a slow burn nobody notices. The insured's fix is to tell the
+insurer and buy a **vacancy permit**.
+
+## How this is examined
+
+**Which form for a rental house**, and that liability must be added.
+
+**DP-1's actual cash value settlement**, contrasted with DP-2 and DP-3's
+replacement cost.
+
+**DP-3's open peril dwelling / named peril contents split.**
+
+**Theft is not standard** on any dwelling form.
+
+**Vacancy versus unoccupancy**, and the 60-day suspension of vandalism and
+related perils.
+
+**Coverage D and E as separate coverages** here, combined in homeowners.
+
+## Check yourself
+
+1. A landlord owns a rented house and wants building coverage plus protection
+   against a tenant's injury claim. What policy and what addition?
+2. Under a DP-1, a covered fire destroys a 30-year-old roof. How is the loss
+   settled?
+3. Which dwelling form matches the HO-3's peril structure?
+4. A house stands empty with all furniture removed for 75 days. Vandals break
+   in and damage it. Likely outcome?
+5. Is theft included in a standard DP-2?
+
+## Answers
+
+1. A **dwelling policy** with a **personal liability** (and medical payments)
+   endorsement.
+2. **Actual cash value** — replacement cost less depreciation. DP-1 offers no
+   replacement cost option.
+3. **DP-3** — open peril on the dwelling, named peril on contents.
+4. **No coverage.** The dwelling is **vacant** (people and contents gone)
+   beyond 60 days, and vandalism is among the perils suspended.
+5. **No.** Theft is added by endorsement on DP-2 and DP-3, and is not
+   available on DP-1.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select 'dda2d47b-e8ee-5b9b-bffb-df02bb0b8812', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.I'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select 'fdcf9975-9bd5-5b6a-8eec-66bbd30eddd0', 'ec98aec4-aec6-5d3e-93ae-dbb68098f16a', c.id, 'Commercial Property and the Package Policy',
+       'commercial-property-and-the-package-policy', 'How a commercial package is assembled, the three causes of loss forms, and the income coverages that pay when the building is standing but the business is not.', 3,
+       'draft', 18
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select 'fdcf9975-9bd5-5b6a-8eec-66bbd30eddd0', c.id, $lesson$# Building a commercial policy out of parts
+
+Personal lines sells finished packages. Commercial lines sells components,
+and the producer assembles them.
+
+## The Commercial Package Policy
+
+**A CPP is two or more commercial coverage parts issued under one policy.**
+Its architecture:
+
+1. **Common policy declarations** — insured, term, premium, coverage parts.
+2. **Common policy conditions** — cancellation, changes, inspections,
+   examination of books, transfer of rights. These apply to every part.
+3. **Two or more coverage parts**, each with its own declarations, forms and
+   conditions.
+
+The available parts include **commercial property, general liability,
+commercial auto, crime, inland marine, boiler and machinery (equipment
+breakdown)** and **farm**.
+
+**A single coverage part is a monoline policy; two or more make a package.**
+The package earns a discount and removes the gaps and overlaps that separate
+policies produce.
+
+**Workers' compensation is written separately**, not as a CPP part.
+
+## The commercial property coverage part
+
+Three things must be assembled:
+
+1. **A coverage form** — what property is covered.
+2. **A causes of loss form** — what perils.
+3. **Conditions and any endorsements.**
+
+### The building and personal property coverage form
+
+The workhorse. It insures three categories, each separately scheduled on the
+declarations:
+
+**Building** — the structure, completed additions, fixtures (including
+outdoor fixtures), permanently installed machinery and equipment, and
+materials and supplies used to maintain it.
+
+**Your business personal property** — the insured's own contents at the
+described premises: furniture, stock, machinery, leased property the insured
+is responsible for, and **the insured's use interest in improvements and
+betterments** made to a leased building.
+
+**Personal property of others** — property in the insured's care, custody or
+control. **Payment goes to the owner**, not to the insured.
+
+The **coinsurance** clause applies, usually at 80%, 90% or 100%, and the
+calculation is the one from Module 1.
+
+### Extensions and additional coverages
+
+Typically included: **debris removal** (a percentage of the loss plus the
+deductible, with an additional amount available); **preservation of
+property**; **fire department service charge**; **pollutant clean-up and
+removal**, capped annually; **newly acquired or constructed property** for a
+limited period and amount; **personal effects**; **property off premises**;
+**outdoor property**; and **valuable papers and records** at a limited
+amount.
+
+### Reporting forms and blanket insurance
+
+**Specific insurance** names an amount for one item at one location.
+
+**Blanket insurance** covers **two or more items, or two or more locations,
+under a single limit**. The advantage is flexibility: a shifting inventory
+across three warehouses is fully covered wherever it sits, rather than being
+underinsured at one and over at another. Blanket cover normally requires a
+**statement of values** and a high coinsurance percentage.
+
+**Reporting forms** suit a fluctuating inventory: the insured reports values
+periodically and the premium is adjusted. Under-reporting is penalised at
+claim time in proportion to the shortfall.
+
+**Agreed value** suspends coinsurance where the insurer has accepted a
+statement of values.
+
+## How the building is classified
+
+Before any of the coverage choices, an underwriter classifies the building
+itself, because construction drives the rate more than almost anything else.
+
+**The class is decided by the materials of the structure itself — the frame,
+walls, floors and roof.** Not by the building's location, not by its value,
+and not by the roof alone. The question underneath every class is the same:
+**how much of this building will burn, and how long will it stand while it
+does?**
+
+**Six classes, from most combustible to least:**
+
+1. **Frame** — combustible walls and floors. Wood.
+2. **Joisted masonry** — masonry walls, combustible floor and roof.
+3. **Non-combustible** — metal walls and roof on a metal or concrete frame.
+4. **Masonry non-combustible** — masonry walls with a non-combustible floor
+   and roof.
+5. **Modified fire resistive** — rated materials, roughly one hour.
+6. **Fire resistive** — concrete or protected steel, roughly two hours.
+
+**The order is the point.** Each step buys a lower fire rate, and the first two
+are where most small commercial risks sit.
+
+> **Not named on either Texas outline.** Included because a producer quoting
+> commercial property is asked the construction class on every submission, and
+> because it explains why two identical-looking buildings on the same street
+> price differently.
+
+## The three causes of loss forms
+
+This is the most-tested part of commercial property.
+
+**Basic** — a named peril list: fire, lightning, explosion, windstorm or
+hail, smoke, aircraft or vehicles, riot or civil commotion, vandalism,
+sprinkler leakage, sinkhole collapse, volcanic action.
+
+**Broad** — everything in Basic **plus** falling objects; weight of snow, ice
+or sleet; and water damage from the accidental discharge of a system. It also
+adds **collapse** as an additional coverage.
+
+**Special** — **open peril**: every cause of loss except those excluded. The
+burden shifts to the insurer. Special also adds coverage for **theft**, which
+Basic and Broad do not include.
+
+> **"Special form" means open peril, not "extra".** A question describing a
+> loss from an unusual, unexcluded cause is testing whether you know Special
+> is the only one of the three that answers it.
+
+An **earthquake** form and a **flood** form exist separately, because neither
+is included in any of the three.
+
+## Business income and extra expense
+
+These are **indirect** or **consequential** loss coverages. Direct damage
+coverage rebuilds the building; these pay for the trading that could not
+happen while it was being rebuilt.
+
+**Business income** (formerly business interruption) pays:
+
+- **the net income the business would have earned**, plus
+- **continuing normal operating expenses**, including payroll where covered.
+
+Three conditions frame it: there must be **direct physical loss** to covered
+property, **by a covered cause of loss**, at the **described premises**,
+causing a **necessary suspension** of operations.
+
+The **period of restoration** begins **72 hours after the physical loss**
+(where a waiting period applies) and ends when the property **should** have
+been repaired with reasonable speed — not when it actually was. An insured
+who takes eight months over a four-month rebuild is paid for four.
+
+**Extra expense** pays the additional costs of **continuing** operations —
+renting temporary premises, hiring equipment, expedited shipping. A business
+that cannot afford to stop, such as a dairy or a newspaper, buys extra
+expense rather than business income; many buy both on a combined form.
+
+Related: **contingent business income** covers loss caused by damage to
+**somebody else's** property — a sole supplier or a dominant customer.
+**Civil authority** coverage pays where access to the premises is prohibited
+by an authority because of damage to nearby property.
+
+## Equipment breakdown
+
+Formerly boiler and machinery. **It covers the sudden and accidental
+breakdown of pressure, mechanical and electrical equipment** — and the
+resulting damage.
+
+It matters because **mechanical breakdown and electrical arcing are excluded
+from every standard property form**, so without this coverage a burst boiler
+or a failed transformer is uninsured. It typically covers the damaged
+equipment, other property damaged by the breakdown, spoilage, expediting
+expenses and business income.
+
+**Inspection is part of the product.** The insurer's engineers inspect
+boilers and pressure vessels, often satisfying the jurisdiction's statutory
+inspection requirement, and the loss-prevention value is a substantial part of
+what the premium buys.
+
+## Builders risk
+
+**Covers a structure under construction**, against loss during the build.
+
+- The limit should equal the **completed value** of the structure.
+- **Materials, supplies and equipment** intended to become part of the
+  building are covered on site, and often in transit and at temporary
+  storage.
+- Insurable interest may belong to the **owner, the contractor, or both**,
+  and the policy is usually written to name all interested parties.
+- **Coverage ends** when the building is accepted, occupied for its intended
+  purpose, or the policy expires — whichever comes first. At that point a
+  standard property policy takes over.
+
+## Cyber first-party coverage
+
+**First-party cyber coverage pays the insured's own losses from a cyber
+event**, as distinct from cyber *liability*, which pays what the insured owes
+others.
+
+What it typically covers: **data restoration** and system repair; **business
+interruption** from a network outage; **cyber extortion** and ransomware
+payments; **breach response costs** — forensics, notification of affected
+individuals, credit monitoring, public relations; and **funds transfer
+fraud**, where an employee is deceived into sending money.
+
+It exists because standard property forms were written around physical damage
+to tangible property, and **electronic data is generally not "tangible
+property"** under them. Many forms now exclude cyber events explicitly, so the
+coverage is bought deliberately or not at all.
+
+## How this is examined
+
+**Basic versus Broad versus Special**, and specifically that **only Special is
+open peril** and **only Special includes theft**.
+
+**Blanket versus specific insurance.**
+
+**Business income versus extra expense** — replacing lost earnings versus
+funding continued operation.
+
+**The period of restoration ends when repairs *should* have been completed.**
+
+**Equipment breakdown fills the mechanical breakdown exclusion.**
+
+**Builders risk is written at completed value** and ends at occupancy.
+
+## Check yourself
+
+1. A commercial policy carries the Broad causes of loss form. Stock is stolen
+   overnight. Covered?
+2. An insured stores inventory across four warehouses, with amounts shifting
+   weekly. Blanket or specific?
+3. A fire closes a restaurant for five months, though competent repairs would
+   have taken three. Business income is $40,000 a month. What is paid,
+   broadly?
+4. A transformer fails and burns out, damaging nearby equipment. Which
+   coverage responds, and why not the property form?
+5. A builders risk policy is written for $2m on a building whose completed
+   value is $2m. Construction finishes and the owner moves in. What happens to
+   the coverage?
+6. A ransomware attack encrypts a firm's records and halts trading for a
+   week. Which coverage responds?
+
+## Answers
+
+1. **No.** Theft is covered only under the **Special** form.
+2. **Blanket**, so the single limit follows the inventory wherever it sits.
+3. Roughly **three months** — about **$120,000**. The period of restoration
+   ends when repairs **should** have been completed with reasonable speed.
+4. **Equipment breakdown.** The standard property forms exclude mechanical
+   breakdown and electrical arcing.
+5. **It ends** on occupancy for the intended purpose; a standard commercial
+   property policy must take over.
+6. **First-party cyber coverage** — data restoration, cyber extortion and
+   network business interruption. Electronic data is generally not tangible
+   property under a standard form.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select 'fdcf9975-9bd5-5b6a-8eec-66bbd30eddd0', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.I'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select 'fb29d783-0b17-5cac-abd6-ab8e2df510b8', 'ec98aec4-aec6-5d3e-93ae-dbb68098f16a', c.id, 'Inland Marine',
+       'inland-marine', 'Coverage for property that moves, property that is unusually valuable, and property no standard form handles well.', 4,
+       'draft', 13
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select 'fb29d783-0b17-5cac-abd6-ab8e2df510b8', c.id, $lesson$# Insurance for things that will not stay still
+
+The name is historical and misleading. **Inland marine has almost nothing to
+do with water.**
+
+## Where the name comes from
+
+Marine insurance is the oldest form of insurance, covering cargo at sea. As
+goods moved inland by rail and road, marine underwriters followed the cargo
+off the ship — insuring it over land as well. That extension became **inland**
+marine, and over time it absorbed a much wider category: **property that
+moves, property that is held by somebody other than its owner, and property
+that a standard fire policy cannot value properly.**
+
+**Ocean marine** remains separate, covering hull, cargo, freight and
+protection and indemnity on the water.
+
+## What qualifies
+
+The distinguishing feature of an inland marine risk is one of:
+
+- **The property moves** — goods in transit, a contractor's tools, a
+  salesman's samples.
+- **The property is portable and high value** — jewellery, cameras, musical
+  instruments, fine art.
+- **The property is instrumental to transport or communication** — bridges,
+  tunnels, pipelines, radio towers. These do not move at all, and are insured
+  here because they were historically classed as "instrumentalities of
+  transportation."
+- **The property is in somebody else's care** — a bailee holding customers'
+  goods.
+
+## Why anybody buys it
+
+Four advantages over a standard property form:
+
+- **Coverage is usually open peril** rather than named peril.
+- **Coverage follows the property anywhere**, rather than attaching to
+  described premises.
+- **Valuation can be agreed in advance**, which matters enormously for a
+  painting or an antique whose actual cash value would be argued about for
+  months.
+- **There is normally no coinsurance clause** on scheduled items.
+
+**"Floater"** is the common name, because the coverage floats with the
+property.
+
+## Personal inland marine
+
+### The personal articles floater
+
+**Schedules high-value personal items individually**, each with a stated
+value. The standard categories:
+
+- jewellery
+- furs
+- cameras and photographic equipment
+- musical instruments
+- silverware
+- golfer's equipment
+- fine arts
+- stamp and coin collections
+
+Written as a **scheduled personal property** endorsement to a homeowners
+policy, or as a stand-alone floater.
+
+Why it is bought: the homeowners policy has **special limits** on exactly
+these categories, most of them applying **to theft**. Scheduling removes the
+sub-limit, broadens the perils to open peril, usually **removes the
+deductible**, and pins the value in advance.
+
+Two details that get tested:
+
+- **Fine arts are normally written on a valued basis**, and typically carry a
+  **breakage exclusion** unless it is bought back.
+- **Newly acquired property** of a scheduled class is usually covered
+  automatically for a limited period — commonly 30 days — provided the
+  insurer is notified and premium paid.
+
+### The personal property floater
+
+Covers **all** the insured's personal property on an open peril, worldwide
+basis, rather than a schedule of named items. Less common, and expensive.
+
+## Commercial inland marine
+
+### Nationwide marine definition
+
+Regulators publish a **nationwide marine definition** setting out what may be
+written as inland marine. It exists to stop insurers writing ordinary fire
+business on inland marine forms to escape rate regulation. **Controlled**
+lines are filed classes; **uncontrolled** lines may be written on
+individually negotiated terms.
+
+### The common commercial floaters
+
+**Contractor's equipment floater** — mobile tools, machinery and equipment,
+on site and in transit.
+
+**Installation floater** — materials and equipment from the time they leave
+the supplier until installed and accepted. The contractor's counterpart to
+builders risk.
+
+**Motor truck cargo** — the carrier's liability for goods it is hauling.
+
+**Transportation / trip transit** — goods in transit generally, or one
+specific shipment.
+
+**Bailee's customers** — a dry cleaner, a repair shop, a warehouse. **Covers
+the customers' property in the insured's care, and typically pays whether or
+not the bailee was negligent**, because arguing about fault with a customer
+whose suit you burned is bad business.
+
+**Accounts receivable** — the sums the insured cannot collect because the
+records were destroyed, plus the cost of reconstructing them and the extra
+collection expense.
+
+**Valuable papers and records** — the cost of reconstructing documents,
+manuscripts and records. It pays for **reconstruction**, not for the
+information's abstract worth.
+
+**Electronic data processing** — computer hardware, software and data, on an
+open peril basis, typically including **mechanical breakdown and electrical
+disturbance**, which standard property forms exclude.
+
+**Signs, jewellers block, furriers block, physicians and surgeons
+equipment**, and **theatrical property** are further named classes.
+
+**Instrumentalities of transportation and communication** — bridges, tunnels,
+pipelines, power transmission lines, radio and television towers.
+
+### Bailee terminology
+
+- A **bailee** holds another's property. A **bailor** owns it.
+- A **bailee's customers form** covers the customers' goods regardless of
+  fault.
+- **Legal liability** forms cover only what the bailee is legally responsible
+  for — cheaper, and much less useful when the customer is angry.
+
+## How this is examined
+
+**"Which of these is an inland marine risk?"** — look for movement,
+portability with high value, bailment, or an instrumentality of
+transportation.
+
+**Why schedule jewellery?** — to remove the homeowners special limit, broaden
+to open peril, agree the value and drop the deductible.
+
+**Bailee's customers pays regardless of negligence.**
+
+**Accounts receivable and valuable papers pay for reconstruction**, not for
+the debt or the information as an asset.
+
+**A bridge is inland marine**, which feels wrong until you know the history.
+
+## Check yourself
+
+1. A photographer owns $30,000 of camera equipment used at client sites. What
+   form, and why not the homeowners policy?
+2. A dry cleaner's premises burn, destroying customers' garments. The cleaner
+   was not negligent. Which form pays the customers?
+3. Why does a floater usually have no coinsurance clause?
+4. A contractor's excavator is damaged while being towed between sites. Which
+   floater?
+5. A fire destroys a firm's ledgers and it cannot collect $200,000 of debts.
+   Which coverage, and what does it pay?
+
+## Answers
+
+1. A **personal articles floater** or a commercial camera floater. The
+   homeowners policy limits cameras, covers them on a named peril basis away
+   from home, and would settle on actual cash value.
+2. A **bailee's customers form**, which pays regardless of the bailee's
+   negligence.
+3. Because scheduled items carry **agreed or stated values** — the insurer has
+   already accepted the value, so there is nothing for a coinsurance clause to
+   police.
+4. A **contractor's equipment floater**.
+5. **Accounts receivable** coverage — the uncollectible sums, the cost of
+   reconstructing the records, and the extra collection expense.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select 'fb29d783-0b17-5cac-abd6-ab8e2df510b8', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.I'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select '6d2171b2-6a44-5f41-b8c4-52bd93262d4a', 'ec98aec4-aec6-5d3e-93ae-dbb68098f16a', c.id, 'The National Flood Insurance Program',
+       'the-national-flood-insurance-program', 'Why flood is excluded everywhere else, and how the federal programme fills the gap.', 5,
+       'draft', 13
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select '6d2171b2-6a44-5f41-b8c4-52bd93262d4a', c.id, $lesson$# The peril the private market would not write
+
+Flood is excluded from homeowners, dwelling and commercial property forms
+alike. The exclusion is not arbitrary, and understanding why explains
+everything else about the programme.
+
+## Why flood is uninsurable privately
+
+Flood fails the tests of an insurable risk from Module 1:
+
+- **The losses are not independent.** A flood does not damage one house; it
+  damages every house on the flood plain at once. The law of large numbers
+  needs many unrelated exposures, and a flood plain is one exposure with many
+  addresses.
+- **Adverse selection is extreme.** Only people who expect to flood buy flood
+  insurance, so the pool consists almost entirely of bad risks.
+- **The loss is close to predictable** for the highest-risk properties — not
+  a risk so much as a schedule.
+
+So in **1968 Congress created the National Flood Insurance Program**,
+administered by **FEMA**. The federal government takes the risk the private
+market would not.
+
+## How a community participates
+
+**The NFIP is a bargain between the federal government and the community, not
+just with the individual.**
+
+A community must **adopt and enforce flood plain management ordinances** —
+building elevation requirements, construction standards, development
+restrictions — to reduce future flood losses. In exchange, **federally backed
+flood insurance becomes available to property owners in that community**.
+
+**No participating community, no NFIP policy.** An owner in a non-participating
+community must find private coverage or go without.
+
+Two phases:
+
+- **The emergency programme** — an interim phase with **limited amounts** of
+  coverage available while flood mapping is completed.
+- **The regular programme** — full limits, once the community has a flood
+  insurance rate map and has adopted the required ordinances.
+
+## The waiting period
+
+**There is normally a 30-day waiting period** between application and the
+policy taking effect. It is the programme's defence against somebody buying
+cover as the river rises.
+
+The exceptions are worth knowing:
+
+- **No waiting period where flood insurance is required by a lender** in
+  connection with making, increasing, extending or renewing a loan.
+- **A one-day wait** where coverage is bought following a change in the flood
+  map.
+- A shortened wait for property **affected by wildfire on federal land**.
+
+## What a flood is
+
+The programme's definition is specific, and questions are built on it. A
+flood is a **general and temporary condition of partial or complete
+inundation of two or more acres of normally dry land, or of two or more
+properties**, from:
+
+- overflow of inland or tidal waters,
+- unusual and rapid accumulation or runoff of surface water,
+- mudflow, or
+- collapse of land along a body of water from erosion or an unusually severe
+  storm.
+
+Two consequences:
+
+- **Water entering one building alone is generally not a flood** — a burst
+  pipe, a backed-up sewer, a leaking roof. Two acres or two properties is the
+  threshold.
+- **Mudflow counts; landslide generally does not.** Mudflow is liquid mud
+  flowing; a landslide is earth movement, excluded.
+
+## What is covered
+
+Two separate coverages, bought separately:
+
+**Building property** — the structure and its foundation, electrical and
+plumbing, furnaces and water heaters, built-in appliances, permanently
+installed carpet, and detached garages (within a portion of the limit).
+
+**Personal property (contents)** — furniture, clothing, portable appliances,
+washers and dryers, and a limited amount for valuables.
+
+**Contents are not automatically included.** An owner who buys building
+coverage only has no coverage for anything inside. That is a favourite
+question.
+
+### Limits
+
+Under the **regular programme**, the maximum amounts available are:
+
+| | Building | Contents |
+| --- | --- | --- |
+| **Residential** | **$250,000** | **$100,000** |
+| **Non-residential / commercial** | **$500,000** | **$500,000** |
+
+These are **programme maximums**, not appraised values. Anybody needing more
+buys **excess flood** from the private market.
+
+### Loss settlement
+
+- **Replacement cost** is available on a **single-family dwelling that is the
+  insured's principal residence**, insured to at least 80% of replacement
+  cost.
+- **Everything else is actual cash value** — contents always, and buildings
+  that are secondary homes, rentals or commercial.
+
+## What is not covered
+
+- **Contents in a basement**, beyond a very short list of building items.
+  Finished basements are largely uninsurable under the programme.
+- **Additional living expense and loss of use** — the NFIP pays for the
+  property, not for the disruption.
+- **Currency, precious metals and valuable papers.**
+- **Property outside the building** — landscaping, decks, patios, fences,
+  septic systems, swimming pools.
+- **Vehicles**, which belong on an auto policy's other-than-collision
+  coverage.
+- **Business interruption.**
+
+## Zones, maps and requirements
+
+FEMA publishes a **Flood Insurance Rate Map** for each participating
+community, dividing it into **flood zones**.
+
+- **Zones A and V** are **Special Flood Hazard Areas** — the 100-year flood
+  plain, meaning a 1% annual chance of flooding. **V zones are coastal**, with
+  additional wave action.
+- **Zones B, C and X** are moderate or minimal risk, where coverage is
+  cheaper and often bought voluntarily.
+
+**Mandatory purchase:** a building in a Special Flood Hazard Area with a
+**federally backed or federally regulated mortgage** must carry flood
+insurance. This is the single largest driver of NFIP sales.
+
+**Write Your Own.** Private insurers issue and service NFIP policies under
+their own names, with the **federal government carrying the risk**. The
+producer sells what looks like a private policy; the terms, limits and rates
+are the programme's.
+
+## How this is examined
+
+**The 30-day waiting period** and its exceptions.
+
+**The two-acre / two-property definition** of a flood.
+
+**Contents must be bought separately.**
+
+**The $250,000 / $100,000 residential limits.**
+
+**Replacement cost applies only to a principal residence**; everything else is
+ACV.
+
+**Community participation is a precondition.**
+
+**Basements, landscaping and living expense are not covered.**
+
+## Check yourself
+
+1. A homeowner buys an NFIP policy on 1 May. The river floods on 20 May. Is
+   there coverage?
+2. A burst water main floods only the insured's basement. Is this a "flood"
+   under the programme?
+3. An owner buys $250,000 of building coverage. A flood destroys $60,000 of
+   furniture. What is paid?
+4. A rental house owned as an investment suffers flood damage to a 15-year-old
+   roof. Replacement cost or actual cash value?
+5. A community declines to adopt flood plain management ordinances. Can its
+   residents buy NFIP coverage?
+6. What is the maximum building coverage on a commercial property?
+
+## Answers
+
+1. **No** — the 30-day waiting period has not run, and no exception applies.
+2. **No.** A flood requires inundation of **two or more acres or two or more
+   properties**; water in one building from a burst main is not one.
+3. **Nothing.** Contents coverage must be purchased separately.
+4. **Actual cash value.** Replacement cost is limited to a single-family
+   dwelling that is the insured's **principal residence**.
+5. **No.** Community participation is a precondition.
+6. **$500,000**, with a further $500,000 available for contents.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select '6d2171b2-6a44-5f41-b8c4-52bd93262d4a', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.I'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select 'f2a692e9-7a38-5c5c-938c-371af3cfcd0f', 'ec98aec4-aec6-5d3e-93ae-dbb68098f16a', c.id, 'Other Property Policies',
+       'other-property-policies', 'Earthquake, mobile homes, watercraft, farmowners and windstorm — five smaller forms the blueprint names explicitly.', 6,
+       'draft', 14
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  title = excluded.title, summary = excluded.summary,
+  position = excluded.position, status = excluded.status,
+  estimated_minutes = excluded.estimated_minutes;
+
+insert into public.lesson_contents (lesson_id, course_id, body)
+select 'f2a692e9-7a38-5c5c-938c-371af3cfcd0f', c.id, $lesson$# Five risks the standard forms send elsewhere
+
+The blueprint lists these by name, so they are examined by name. Each exists
+because a standard homeowners or commercial form either excludes the peril or
+cannot handle the property.
+
+## Earthquake
+
+**Earth movement is excluded from every standard property form**, for the same
+reason as flood: the losses are correlated. One earthquake damages every
+building in a region simultaneously.
+
+Coverage is bought back by **endorsement** to a homeowners or commercial
+policy, or written as a **separate policy**.
+
+What to know:
+
+- **The exclusion is broader than "earthquake".** Earth movement includes
+  **landslide, mudslide, subsidence, sinkhole collapse and earth sinking,
+  rising or shifting**. Buying earthquake coverage does not necessarily buy
+  all of these back.
+- **Fire following an earthquake is covered by the standard policy.** The
+  earth movement exclusion is generally written so that **ensuing fire** is
+  not excluded. This is a long-standing rule and a reliable exam point.
+- **The deductible is a percentage**, not a flat sum — commonly **2% to 20%
+  of the coverage limit**, and it is applied to the limit rather than to the
+  loss. On a $400,000 dwelling, a 10% deductible is $40,000 before anything is
+  paid.
+- **Multiple shocks within a stated period** — commonly 72 hours — count as
+  **one occurrence**, so one deductible applies rather than several.
+
+## Mobile homes
+
+A mobile or manufactured home cannot be written on a standard homeowners
+policy: it is built to different standards, depreciates like a vehicle rather
+than appreciating like a house, and can be moved.
+
+**A mobile homeowners policy is a package**, structured like a homeowners
+policy with property and liability sections, but with changes:
+
+- **Loss settlement is normally actual cash value**, reflecting that the unit
+  depreciates. Replacement cost may be available by endorsement on newer
+  units.
+- **Transportation and permission to move** must be arranged. Coverage while
+  the home is being moved is typically added by endorsement, often with a
+  limited amount and a requirement that the insurer be notified beforehand.
+- **Eligibility** usually requires the unit to be of a minimum size, designed
+  for year-round living, and at a fixed location.
+- **Skirting, awnings, carports and attached structures** may need to be
+  listed to be covered.
+
+## Watercraft
+
+Homeowners policies cover **small, low-powered boats** and very little else.
+The typical arrangement covers a boat only up to a modest length and
+horsepower, on a narrow peril basis, with liability excluded for larger or
+faster craft.
+
+Anything beyond that needs a **boatowners or yacht policy**:
+
+- **A boatowners policy** is a package for smaller pleasure craft, covering
+  the hull, motor, trailer and equipment, plus liability and medical payments.
+- **A yacht policy** covers larger vessels and is structured on ocean marine
+  principles: **hull** coverage on the vessel, **protection and indemnity**
+  for liability, plus medical payments and coverage for the boat's trailer
+  and equipment.
+
+Points that are examined:
+
+- **Navigational limits.** The policy specifies the waters in which the
+  vessel is covered, and often a **lay-up period** during which it must be out
+  of the water — coverage is reduced or restricted outside those terms.
+- **Protection and indemnity is the marine world's liability coverage**, and
+  is broader than a general liability form in respect of crew and other
+  maritime exposures.
+- **Ocean marine perils** — the traditional list includes perils of the sea,
+  fire, jettison, piracy and barratry (wrongful acts by the master or crew).
+
+## Farmowners
+
+**A farmowners policy is a package covering both the farm residence and the
+farming operation** — the agricultural equivalent of a homeowners policy, and
+the reason farms are ineligible for a homeowners policy.
+
+It combines, in one contract:
+
+- **The dwelling and its contents**, on much the same basis as a homeowners
+  policy.
+- **Farm structures** — barns, silos, outbuildings, fences, corrals.
+- **Farm personal property** — machinery, equipment, tools, harvested crops,
+  feed, seed, fertiliser, and **livestock**.
+- **Farm liability**, which is broader than personal liability because the
+  farm is a business. It covers the farming operation, and typically **farm
+  employees**, whose injuries would otherwise fall outside a personal policy.
+
+Specific features:
+
+- **Livestock coverage** is usually written on a **named peril** basis and
+  frequently includes perils peculiar to the exposure — **electrocution,
+  attack by dogs or wild animals, accidental shooting, drowning** and **loading
+  and unloading**.
+- **Scheduled versus blanket** treatment of farm personal property works as it
+  does in commercial property: blanket for a shifting inventory of feed and
+  grain, scheduled for named machines.
+- **Crop insurance is separate**, largely federal, and is not part of a
+  farmowners policy.
+- **Mobile agricultural equipment in transit** may need inland marine.
+
+## Windstorm
+
+Wind is a **covered peril** on standard property forms in most of the country.
+In coastal areas it is frequently **excluded or heavily deductible**, because
+the exposure is concentrated: one hurricane damages an entire coastline.
+
+Where the private market withdraws, coverage comes from a **residual market**
+— a state-created insurer of last resort. Two mechanisms appear:
+
+- **A windstorm pool or association**, writing wind and hail coverage in a
+  designated coastal area.
+- **A FAIR Plan** — Fair Access to Insurance Requirements — writing basic
+  property coverage for those unable to obtain it in the voluntary market,
+  usually because of location or property condition rather than the owner's
+  conduct.
+
+Both are funded by **compulsory membership of the insurers writing in the
+state**, which is why they are described as the market insuring itself.
+
+Recurring features:
+
+- **A separate, percentage windstorm or hurricane deductible**, applied to the
+  coverage limit.
+- **A named-storm trigger**, where the percentage deductible applies only to
+  storms the weather service has named.
+- **Insurance-to-value and building-code requirements** as conditions of
+  eligibility.
+- **A waiting period** and a suspension of new business once a storm is
+  approaching.
+
+> **Texas is one of the states where this matters most.** The Texas Windstorm
+> Insurance Association and the Texas FAIR Plan Association are creatures of
+> the Texas Insurance Code, with their own eligibility rules, limits,
+> deductibles and claim deadlines. Those specifics belong to the Texas
+> statutes module and are examined there. What belongs here is the general
+> shape: wind excluded on the coast, a residual market filling the gap, funded
+> by compulsory membership.
+
+## How this is examined
+
+**Fire following an earthquake is covered** by the standard policy.
+
+**Earthquake deductibles are a percentage of the limit**, and multiple shocks
+in 72 hours are one occurrence.
+
+**Mobile homes settle at actual cash value.**
+
+**A farm is ineligible for a homeowners policy**, and why.
+
+**Livestock perils** — electrocution, attack by animals, accidental shooting,
+drowning.
+
+**Residual markets** exist because of correlated catastrophe exposure, and are
+funded by the insurers writing in the state.
+
+## Check yourself
+
+1. An earthquake cracks a gas line and the resulting fire destroys the house.
+   What is covered under a standard homeowners policy without an earthquake
+   endorsement?
+2. A $500,000 dwelling carries earthquake coverage with a 10% deductible. A
+   quake causes $70,000 of damage. What is paid?
+3. Why is a mobile home not written on a homeowners policy?
+4. A farmer keeps a herd of cattle, farms 400 acres and lives in a house on
+   the property. What policy?
+5. Cattle are killed by lightning. Covered under a farmowners policy?
+6. Why is windstorm excluded on the coast when it is covered inland?
+
+## Answers
+
+1. **The fire damage.** Ensuing fire is not excluded by the earth movement
+   exclusion. The shake damage itself is not covered.
+2. **$20,000.** The deductible is 10% of the **limit** — $50,000 — not of the
+   loss.
+3. It is built to different standards, depreciates rather than appreciates,
+   and can be moved. A mobile homeowners policy settles on **actual cash
+   value** and addresses transportation.
+4. A **farmowners** policy — a package covering the residence and the farming
+   operation. A farm is ineligible for homeowners.
+5. **Yes.** Lightning is a standard peril and electrocution is among the
+   perils livestock coverage typically names.
+6. Because the exposure is **correlated** — a single hurricane damages an
+   entire coastline at once, which defeats the law of large numbers. A
+   residual market fills the gap.$lesson$
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (lesson_id) do update set body = excluded.body;
+
+insert into public.lesson_topics (lesson_id, topic_id, course_id)
+select 'f2a692e9-7a38-5c5c-938c-371af3cfcd0f', t.id, t.course_id
+  from public.topics t
+  join public.courses c on c.id = t.course_id
+ where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.I'
+on conflict (lesson_id, topic_id) do nothing;
+
+insert into public.lessons
+  (id, module_id, course_id, title, slug, summary, position, status,
+   estimated_minutes)
+select '8a2bf024-c5e6-543b-8512-a8ae2dea372b', '451fbb06-6eb2-585a-b90b-44707f124d0f', c.id, 'Risk, Peril and Hazard',
        'risk-peril-and-hazard', 'Three words the exam treats as distinct and everyday speech does not.', 1,
        'draft', 15
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
@@ -278,7 +1631,7 @@ on conflict (lesson_id, topic_id) do nothing;
 insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
-select '42eb61d9-af5e-55d2-91a8-1bcce382c4ed', '34b6c5a1-202f-5d9f-b12a-d98a335b2916', c.id, 'How Insurance Works',
+select '42eb61d9-af5e-55d2-91a8-1bcce382c4ed', '451fbb06-6eb2-585a-b90b-44707f124d0f', c.id, 'How Insurance Works',
        'how-insurance-works', 'Why insurers can predict losses they cannot predict individually, and which risks they will not touch.', 2,
        'draft', 18
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
@@ -536,7 +1889,7 @@ on conflict (lesson_id, topic_id) do nothing;
 insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
-select '707e2d75-4394-5463-9f46-d9cedf43df3f', '34b6c5a1-202f-5d9f-b12a-d98a335b2916', c.id, 'Insurable Interest and Indemnity',
+select '707e2d75-4394-5463-9f46-d9cedf43df3f', '451fbb06-6eb2-585a-b90b-44707f124d0f', c.id, 'Insurable Interest and Indemnity',
        'insurable-interest-and-indemnity', 'Who is allowed to insure what, and the rule that you may be made whole but never better off.', 3,
        'draft', 13
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
@@ -692,7 +2045,7 @@ on conflict (lesson_id, topic_id) do nothing;
 insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
-select 'e1d24da3-2f83-5484-8008-27456a1c9f05', '34b6c5a1-202f-5d9f-b12a-d98a335b2916', c.id, 'Valuing a Loss',
+select 'e1d24da3-2f83-5484-8008-27456a1c9f05', '451fbb06-6eb2-585a-b90b-44707f124d0f', c.id, 'Valuing a Loss',
        'valuing-a-loss', 'Actual cash value, replacement cost and agreed value — and why the difference decides what a claim pays.', 4,
        'draft', 14
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
@@ -886,7 +2239,7 @@ on conflict (lesson_id, topic_id) do nothing;
 insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
-select '2f93978e-6aca-5ed1-99ea-e672f8e06e7f', '34b6c5a1-202f-5d9f-b12a-d98a335b2916', c.id, 'Deductibles, Coinsurance and Limits',
+select '2f93978e-6aca-5ed1-99ea-e672f8e06e7f', '451fbb06-6eb2-585a-b90b-44707f124d0f', c.id, 'Deductibles, Coinsurance and Limits',
        'deductibles-coinsurance-and-limits', 'The arithmetic questions — and the coinsurance formula that catches people who insure for too little.', 5,
        'draft', 16
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
@@ -1082,7 +2435,7 @@ on conflict (lesson_id, topic_id) do nothing;
 insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
-select '6cb03304-a5e0-5bd8-95dc-ce7cc45d0458', '34b6c5a1-202f-5d9f-b12a-d98a335b2916', c.id, 'Negligence and Liability',
+select '6cb03304-a5e0-5bd8-95dc-ce7cc45d0458', '451fbb06-6eb2-585a-b90b-44707f124d0f', c.id, 'Negligence and Liability',
        'negligence-and-liability', 'The four elements a claimant must prove, the defences against them, and the kinds of damages a court can award.', 6,
        'draft', 15
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
@@ -1289,7 +2642,7 @@ on conflict (lesson_id, topic_id) do nothing;
 insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
-select 'a5bd1b75-770f-55a0-b5b3-a6ca2cf5cea1', '34b6c5a1-202f-5d9f-b12a-d98a335b2916', c.id, 'Terms the Other Lessons Assume',
+select 'a5bd1b75-770f-55a0-b5b3-a6ca2cf5cea1', '451fbb06-6eb2-585a-b90b-44707f124d0f', c.id, 'Terms the Other Lessons Assume',
        'terms-the-other-lessons-assume', 'Eleven terms that do not belong to any one topic — including the party numbering and the reinsurance that four later modules assume you already know.', 7,
        'draft', 25
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
@@ -1743,7 +3096,7 @@ on conflict (lesson_id, topic_id) do nothing;
 insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
-select '81867de3-86a9-5968-bbae-bc683f8aa8b6', 'd6bff6c2-390e-518f-a728-b2a8ee99e87c', c.id, 'The Declarations Page',
+select '81867de3-86a9-5968-bbae-bc683f8aa8b6', '9f729b3f-d119-5250-beea-518a3bc8de3e', c.id, 'The Declarations Page',
        'the-declarations-page', 'What a policy is made of, and why the first page is the one that answers most questions.', 1,
        'draft', 14
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
@@ -1922,7 +3275,7 @@ on conflict (lesson_id, topic_id) do nothing;
 insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
-select '2da74bbd-1d0b-54d0-8416-3d7bdc7a7cea', 'd6bff6c2-390e-518f-a728-b2a8ee99e87c', c.id, 'Insuring Agreement, Conditions and Exclusions',
+select '2da74bbd-1d0b-54d0-8416-3d7bdc7a7cea', '9f729b3f-d119-5250-beea-518a3bc8de3e', c.id, 'Insuring Agreement, Conditions and Exclusions',
        'insuring-agreement-conditions-and-exclusions', 'The promise, the rules attached to it, and the reasons an insurer says no.', 2,
        'draft', 16
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
@@ -2116,7 +3469,7 @@ on conflict (lesson_id, topic_id) do nothing;
 insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
-select '2c031b02-af62-5980-b6b9-fbeeece995c1', 'd6bff6c2-390e-518f-a728-b2a8ee99e87c', c.id, 'Who Is an Insured',
+select '2c031b02-af62-5980-b6b9-fbeeece995c1', '9f729b3f-d119-5250-beea-518a3bc8de3e', c.id, 'Who Is an Insured',
        'who-is-an-insured', 'Named insured, first named insured, additional insured, mortgagee — four different things the exam refuses to let you blur.', 3,
        'draft', 14
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
@@ -2297,7 +3650,7 @@ on conflict (lesson_id, topic_id) do nothing;
 insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
-select '50ab4b8b-d265-58a3-b2b7-3c9c700dc9f8', 'd6bff6c2-390e-518f-a728-b2a8ee99e87c', c.id, 'Duties After a Loss',
+select '50ab4b8b-d265-58a3-b2b7-3c9c700dc9f8', '9f729b3f-d119-5250-beea-518a3bc8de3e', c.id, 'Duties After a Loss',
        'duties-after-a-loss', 'What the insured must do, what the insurer must do, and the difference between notice of claim and proof of loss.', 4,
        'draft', 14
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
@@ -2487,7 +3840,7 @@ on conflict (lesson_id, topic_id) do nothing;
 insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
-select '89857f27-1358-579a-b69e-dbca1ba1bf2a', 'd6bff6c2-390e-518f-a728-b2a8ee99e87c', c.id, 'Cancellation and Non-renewal',
+select '89857f27-1358-579a-b69e-dbca1ba1bf2a', '9f729b3f-d119-5250-beea-518a3bc8de3e', c.id, 'Cancellation and Non-renewal',
        'cancellation-and-nonrenewal', 'Who may end a policy, how much warning is owed, and how the return premium is worked out.', 5,
        'draft', 13
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
@@ -2662,7 +4015,7 @@ on conflict (lesson_id, topic_id) do nothing;
 insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
-select '52333f53-7203-52c7-90e1-39181aad19a7', 'd6bff6c2-390e-518f-a728-b2a8ee99e87c', c.id, 'Other Insurance, Subrogation and Supplementary Payments',
+select '52333f53-7203-52c7-90e1-39181aad19a7', '9f729b3f-d119-5250-beea-518a3bc8de3e', c.id, 'Other Insurance, Subrogation and Supplementary Payments',
        'other-insurance-subrogation-and-supplementary-payments', 'How two policies covering one loss divide it, how the insurer recovers from whoever caused it, and what a liability policy pays on top of the limit.', 6,
        'draft', 15
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
@@ -2847,7 +4200,7 @@ on conflict (lesson_id, topic_id) do nothing;
 insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
-select 'a90c9574-8282-5029-ad55-ef10beb16b2c', 'd6bff6c2-390e-518f-a728-b2a8ee99e87c', c.id, 'Elements of a Contract',
+select 'a90c9574-8282-5029-ad55-ef10beb16b2c', '9f729b3f-d119-5250-beea-518a3bc8de3e', c.id, 'Elements of a Contract',
        'elements-of-a-contract', 'The four things every contract needs, and the six ways an insurance contract is unlike most others.', 7,
        'draft', 14
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
@@ -3179,7 +4532,7 @@ on conflict (lesson_id, topic_id) do nothing;
 insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
-select 'b31412b7-f995-5d58-b589-adb0290d6c73', 'd6bff6c2-390e-518f-a728-b2a8ee99e87c', c.id, 'Representations, Warranties and Concealment',
+select 'b31412b7-f995-5d58-b589-adb0290d6c73', '9f729b3f-d119-5250-beea-518a3bc8de3e', c.id, 'Representations, Warranties and Concealment',
        'representations-warranties-and-concealment', 'Four ways an insured can say something wrong, and only some of them cost the policy.', 8,
        'draft', 13
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
@@ -3374,7 +4727,7 @@ on conflict (lesson_id, topic_id) do nothing;
 insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
-select 'ef483d9c-5d98-5706-a47a-44f107b8b92b', 'd6bff6c2-390e-518f-a728-b2a8ee99e87c', c.id, 'Underwriting Information, the FCRA and Privacy',
+select 'ef483d9c-5d98-5706-a47a-44f107b8b92b', '9f729b3f-d119-5250-beea-518a3bc8de3e', c.id, 'Underwriting Information, the FCRA and Privacy',
        'underwriting-information-fcra-and-privacy', 'Where an underwriter''s information comes from, and the two federal laws that govern how it is used.', 9,
        'draft', 13
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
@@ -3564,7 +4917,7 @@ on conflict (lesson_id, topic_id) do nothing;
 insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
-select '65f6bec4-114d-558c-9035-89adbd274ada', 'd6bff6c2-390e-518f-a728-b2a8ee99e87c', c.id, 'Territory and the Terrorism Risk Insurance Act',
+select '65f6bec4-114d-558c-9035-89adbd274ada', '9f729b3f-d119-5250-beea-518a3bc8de3e', c.id, 'Territory and the Terrorism Risk Insurance Act',
        'territory-and-the-terrorism-risk-insurance-act', 'Where a policy works geographically, and the federal backstop that made terrorism insurable again.', 10,
        'draft', 11
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
@@ -3730,1360 +5083,7 @@ on conflict (lesson_id, topic_id) do nothing;
 insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
-select '2aa5db82-0689-5f02-8850-03dec995ef82', '4d5887f6-82b0-535b-bfd5-541974214ccd', c.id, 'Homeowners Forms',
-       'homeowners-forms', 'Six forms, six coverages and two sections — and the handful of differences the exam actually tests.', 1,
-       'draft', 18
-  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
-on conflict (id) do update set
-  title = excluded.title, summary = excluded.summary,
-  position = excluded.position, status = excluded.status,
-  estimated_minutes = excluded.estimated_minutes;
-
-insert into public.lesson_contents (lesson_id, course_id, body)
-select '2aa5db82-0689-5f02-8850-03dec995ef82', c.id, $lesson$# One package, six variations
-
-A homeowners policy is a **package**: property and liability in one contract.
-That is its defining feature, and it is why it replaced the older practice of
-buying a fire policy and a separate liability policy.
-
-Learn the structure once; the six forms are then just differences in who is
-covered and on what peril basis.
-
-## The structure
-
-**Section I — Property**
-
-| | Covers |
-| --- | --- |
-| **Coverage A — Dwelling** | The house, and structures attached to it |
-| **Coverage B — Other Structures** | Detached: garage, shed, fence |
-| **Coverage C — Personal Property** | Contents, anywhere in the world |
-| **Coverage D — Loss of Use** | Additional living expense and fair rental value |
-
-**Section II — Liability**
-
-| | Covers |
-| --- | --- |
-| **Coverage E — Personal Liability** | Bodily injury and property damage the insured is legally liable for |
-| **Coverage F — Medical Payments to Others** | Medical costs for others injured on the premises, **regardless of fault** |
-
-### The relationships between the limits
-
-These are reliably examined, because they are derived rather than chosen:
-
-- **Coverage B is typically 10% of Coverage A.**
-- **Coverage C is typically 50% of Coverage A** (often 40% in some forms).
-- **Coverage D is typically 20–30% of Coverage A**, depending on the form.
-
-Set Coverage A and the rest follow, though each can be increased for extra
-premium.
-
-**Coverage F is a no-fault coverage.** It pays medical expenses of an injured
-guest without any finding of negligence, with a short reporting window —
-typically three years from the accident. It does **not** cover the insured or
-regular residents of the household, which is the point candidates miss: your
-own family's injuries are a health insurance matter.
-
-## A. Homeowners
-
-The outline lists six forms under **I.A**, and the exam tests the differences
-between them rather than any one in isolation. Read the table first, then each
-form in the outline's own order.
-
-| Form | Who | Dwelling (A) | Contents (C) |
-| --- | --- | --- | --- |
-| **HO-2** Broad | Owner-occupant | **Named peril** (broad) | **Named peril** |
-| **HO-3** Special | Owner-occupant | **Open peril** | **Named peril** |
-| **HO-4** Contents / tenants | **Renter** | none | **Named peril** |
-| **HO-5** Comprehensive | Owner-occupant | **Open peril** | **Open peril** |
-| **HO-6** Unit-owners | **Condominium owner** | limited (see below) | **Named peril** |
-| **HO-8** Modified | Owner of an older home | **Named peril** | **Named peril** |
-
-### 1. HO-2 — Broad Form
-
-**Named peril on both sides.** The dwelling and the contents are each covered
-against the perils on the broad list and nothing else. It is the plainest of
-the owner-occupant forms, and it is the baseline the others are measured
-against: every form below it either widens the peril basis or changes who the
-policy is for.
-
-### 2. HO-3 — Special Form
-
-**HO-3 is the one most people own**, and its asymmetry is the most-tested fact
-in this lesson: **the dwelling is open peril, the contents are named peril.**
-
-### 3. HO-4 — Contents Form (tenants)
-
-**HO-4 is the renter's policy** — no Coverage A at all, because the tenant
-does not own the building. It does carry Coverage C, D, E and F.
-
-### 4. HO-5 — Comprehensive Form
-
-**HO-5 upgrades the contents to open peril** as well. That is the whole
-difference between HO-3 and HO-5.
-
-### 5. HO-6 — Unit-Owners Form
-
-**HO-6 is the condominium owner's policy.** Coverage A is limited — commonly
-a small default such as $5,000, increasable — because the association's
-master policy covers the building. The unit owner's Coverage A answers for
-what is inside the walls: fixtures, cabinetry, improvements and betterments,
-and whatever the master policy leaves to the unit owner. Read the master
-policy to know which.
-
-### 6. HO-8 — Modified Coverage Form
-
-**HO-8 exists for older homes whose replacement cost far exceeds their market
-value** — a large Victorian in a low-value neighbourhood, where rebuilding
-would cost several times what the house could be sold for. Insuring it for
-full replacement cost would be unaffordable and would create a moral hazard.
-So **HO-8 settles losses on a modified basis** — repair cost using common
-construction materials and methods, rather than full replacement — and pairs
-that with a narrower named peril list.
-
-## Eligibility
-
-- The insured must be an **owner-occupant** (HO-2, 3, 5, 8), a **tenant**
-  (HO-4), or a **unit owner** (HO-6).
-- Dwellings of up to **four families** are eligible, with the insured
-  occupying one unit; no more than a stated number of roomers or boarders per
-  unit.
-- **Farms are not eligible** — a farmowners policy covers those.
-- **Incidental business occupancies** may be permitted by endorsement; a full
-  business needs a commercial policy.
-
-## Named perils worth knowing
-
-The **basic** group: fire or lightning, windstorm or hail, explosion, riot or
-civil commotion, aircraft, vehicles, smoke, vandalism or malicious mischief,
-theft, volcanic eruption.
-
-The **broad** group adds: falling objects; weight of ice, snow or sleet;
-accidental discharge or overflow of water or steam; sudden and accidental
-tearing apart, cracking, burning or bulging of a heating or
-air-conditioning system; freezing; sudden and accidental damage from
-artificially generated electrical current.
-
-**Open peril forms cover everything not excluded**, which shifts the burden of
-proof onto the insurer.
-
-## Additional coverages
-
-Included without extra premium, usually in modest amounts:
-
-- **Debris removal**, **reasonable repairs**, and **property removed** from
-  danger.
-- **Trees, shrubs and other plants** — a percentage of Coverage A, with a
-  per-item cap and a limited peril list. **Not** windstorm damage to a tree,
-  which is the standard trap.
-- **Fire department service charge.**
-- **Credit card, forgery and counterfeit money**, commonly $500.
-- **Loss assessment** — the unit owner's share of a condominium association
-  assessment.
-- **Collapse**, and **glass breakage**.
-- **Ordinance or law**, at a small percentage of Coverage A.
-
-## Special limits on Coverage C
-
-Certain categories of personal property carry **sub-limits** — not exclusions,
-limits. Typical categories: money and bullion; securities and manuscripts;
-watercraft and trailers; jewellery, watches and furs **for theft**; firearms
-**for theft**; silverware **for theft**.
-
-The fix is to **schedule the property** — list each item with a stated value —
-by endorsement, usually a **scheduled personal property** floater. Scheduling
-also broadens the covered perils and commonly removes the deductible.
-
-**Loss settlement on Coverage C is actual cash value** in most forms.
-**Replacement cost on contents is an endorsement**, and a commonly sold one.
-
-## Coverage D: loss of use
-
-Two distinct parts:
-
-- **Additional living expense** — the *increase* in ordinary living costs
-  while the home is uninhabitable. Not the whole hotel bill: the increase over
-  what the household would have spent anyway.
-- **Fair rental value** — lost rent where part of the home was rented out.
-
-Also payable where a **civil authority prohibits use** of the home because of
-damage to *neighbouring* property by a covered peril, typically for up to two
-weeks.
-
-## Exclusions
-
-Section I excludes, among others: **ordinance or law** (beyond the small
-additional coverage), **earth movement**, **water damage** (flood, surface
-water, sewer backup), **power failure** away from the premises, **neglect**,
-**war**, **nuclear hazard**, **intentional loss**, and **governmental
-action**. Wear and tear, mechanical breakdown, rot, mould, insects and vermin
-are excluded as maintenance rather than risk.
-
-Section II excludes **business pursuits**, **professional services**,
-**motor vehicles** (with narrow exceptions for vehicles not subject to
-registration, such as a ride-on mower on the premises), **aircraft**, larger
-**watercraft**, **intentional injury**, and **workers' compensation**
-obligations.
-
-## How this is examined
-
-**HO-3's asymmetry** — dwelling open peril, contents named peril.
-
-**Which form for which insured** — renter, condominium owner, older home.
-
-**The percentage relationships** between Coverages A, B, C and D.
-
-**Coverage F pays without fault, and not to residents of the household.**
-
-**Special limits** on jewellery, firearms and silverware, and that they are
-limits rather than exclusions.
-
-**Additional living expense is the increase**, not the total.
-
-## Check yourself
-
-1. Under an HO-3, lightning damages the house and a mysterious cause damages
-   the contents. Which loss is easier to establish, and why?
-2. A tenant wants coverage for belongings and liability but not the building.
-   Which form?
-3. Coverage A is $400,000. What are the usual limits for B and C?
-4. A guest slips on the insured's steps and is injured. The insured is not
-   negligent. Is anything payable?
-5. A homeowner's $12,000 diamond ring is stolen. The policy has a $1,500
-   special limit on theft of jewellery. What is the fix, and was the ring
-   excluded?
-6. Why does HO-8 exist?
-
-## Answers
-
-1. **The dwelling loss.** Coverage A is open peril, so the insured need only
-   show a loss occurred; the insurer must prove an exclusion. Coverage C is
-   named peril, so the insured must prove a listed peril caused the contents
-   loss — and "mysterious cause" will not do it.
-2. **HO-4.**
-3. **B = $40,000** (10%), **C = $200,000** (50%).
-4. **Yes** — Coverage F, medical payments to others, pays regardless of
-   fault.
-5. It was **limited**, not excluded — $1,500 is payable. The fix is to
-   **schedule** the ring by endorsement.
-6. Because for older homes replacement cost can far exceed market value,
-   making full replacement cost coverage unaffordable and creating a moral
-   hazard. HO-8 settles on a modified repair-cost basis instead.$lesson$
-  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
-on conflict (lesson_id) do update set body = excluded.body;
-
-insert into public.lesson_topics (lesson_id, topic_id, course_id)
-select '2aa5db82-0689-5f02-8850-03dec995ef82', t.id, t.course_id
-  from public.topics t
-  join public.courses c on c.id = t.course_id
- where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.I'
-on conflict (lesson_id, topic_id) do nothing;
-
-insert into public.lessons
-  (id, module_id, course_id, title, slug, summary, position, status,
-   estimated_minutes)
-select 'dda2d47b-e8ee-5b9b-bffb-df02bb0b8812', '4d5887f6-82b0-535b-bfd5-541974214ccd', c.id, 'Dwelling Policies',
-       'dwelling-policies', 'The property-only forms for houses that do not qualify for a homeowners policy.', 2,
-       'draft', 13
-  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
-on conflict (id) do update set
-  title = excluded.title, summary = excluded.summary,
-  position = excluded.position, status = excluded.status,
-  estimated_minutes = excluded.estimated_minutes;
-
-insert into public.lesson_contents (lesson_id, course_id, body)
-select 'dda2d47b-e8ee-5b9b-bffb-df02bb0b8812', c.id, $lesson$# When a homeowners policy will not do
-
-The dwelling policy is the older, narrower form. Where a homeowners policy is
-a package, **a dwelling policy is property insurance alone** — liability is
-optional and added by endorsement.
-
-## When it is used
-
-- **The dwelling is not owner-occupied** — a rental house, where the owner
-  needs the building covered but not the tenant's belongings.
-- **The dwelling is seasonal or vacant.**
-- **The insured does not qualify** for a homeowners policy — value too low,
-  condition too poor, occupancy of the wrong kind.
-- **The owner wants building coverage only.**
-
-Eligible dwellings are generally one- to four-family, with limits on
-permitted incidental business.
-
-## The coverages
-
-| | Covers |
-| --- | --- |
-| **Coverage A — Dwelling** | The building |
-| **Coverage B — Other Structures** | Detached structures, commonly **10% of A** |
-| **Coverage C — Personal Property** | Contents |
-| **Coverage D — Fair Rental Value** | Lost rent while the dwelling is unfit |
-| **Coverage E — Additional Living Expense** | The increase in living costs |
-
-Two differences from homeowners worth holding:
-
-- **Loss of use is split into two lettered coverages here** (D and E), where
-  homeowners combines them into Coverage D.
-- **Coverage B and C may be used interchangeably in some forms** — a portion
-  of the Coverage C limit can be applied to other structures, and vice versa.
-
-**DP-1 does not include Coverage E at all.** Additional living expense is a
-DP-2 and DP-3 feature.
-
-## The three forms
-
-### DP-1 — Basic
-
-**Named peril**, and the narrowest of the three.
-
-The standard perils are **fire, lightning and internal explosion**, with
-**extended coverage** available — windstorm, hail, explosion, riot, aircraft,
-vehicles, smoke, volcanic eruption — and **vandalism and malicious mischief**
-available on top of that.
-
-Two distinguishing features:
-
-- **Loss settlement is actual cash value.** DP-1 does not offer replacement
-  cost on the dwelling.
-- **Theft is not covered** and generally is not available.
-
-### DP-2 — Broad
-
-**Named peril**, with the broad list — everything in DP-1's extended coverage
-plus falling objects; weight of ice, snow or sleet; accidental discharge of
-water or steam; tearing apart of a heating system; freezing; accidental damage
-from artificially generated electrical current; and **damage by burglars**.
-
-> **"Damage by burglars" is not theft cover**, and the difference is examined.
-> It pays for what burglars *break* — a forced door, a smashed frame, a
-> ransacked room — and not for what they **take**. A DP-2 insured whose house
-> is burgled is paid for the door and not for the television.
->
-> Theft of the contents needs theft coverage, which a dwelling form adds by
-> endorsement. This is the same boundary as commercial property, where Basic
-> and Broad reach vandalism but **only Special adds theft**.
-
-**Loss settlement is replacement cost** on the dwelling, subject to the
-usual insurance-to-value requirement.
-
-Additional living expense and fair rental value are both included.
-
-### DP-3 — Special
-
-**Open peril on the dwelling and other structures; named peril on personal
-property.**
-
-This is the same asymmetry as the HO-3, and for the same reason — and it is
-tested the same way. **Loss settlement is replacement cost** on the building.
-
-| | Dwelling | Contents | Settlement | Theft |
-| --- | --- | --- | --- | --- |
-| **DP-1** | Named (basic) | Named (basic) | **ACV** | No |
-| **DP-2** | Named (broad) | Named (broad) | **Replacement cost** | By endorsement |
-| **DP-3** | **Open peril** | Named (broad) | **Replacement cost** | By endorsement |
-
-## What a dwelling policy does not include
-
-**No liability.** Personal liability and medical payments are added by
-endorsement — which is precisely what a landlord needs, since a tenant
-injured on the property will look to the owner.
-
-**No theft coverage as standard.** Available by endorsement on DP-2 and DP-3;
-not on DP-1.
-
-**No automatic additional coverages of the homeowners kind.** The lists of
-debris removal, trees and shrubs, credit card coverage and so on are thinner
-or absent.
-
-## Endorsements a landlord will want
-
-- **Personal liability** and **medical payments**.
-- **Theft**, where the dwelling is furnished.
-- **Vandalism and malicious mischief** — often excluded once a dwelling has
-  been **vacant beyond 60 days**, which is the vacancy trap below.
-- **Broad theft** or **building items** coverage.
-- **Rental income**, beyond the included fair rental value.
-- **Automatic increase in insurance**, to keep pace with construction costs.
-
-## Vacancy and unoccupancy
-
-The two words are not synonyms, and the exam separates them.
-
-- **Unoccupied** — nobody is living there, but the contents remain. A family
-  on a three-month trip.
-- **Vacant** — **both the people and the contents are gone.** An empty house
-  between tenants.
-
-**Vacancy is the one that restricts coverage.** After a dwelling has been
-vacant beyond a stated period — commonly **60 consecutive days** — several
-perils are typically suspended, including **vandalism and malicious mischief,
-glass breakage, theft, sprinkler leakage** and **water damage**, and some
-forms reduce payment on any remaining covered loss.
-
-The underwriting logic is straightforward: an empty building is a magnet for
-vandalism and a slow burn nobody notices. The insured's fix is to tell the
-insurer and buy a **vacancy permit**.
-
-## How this is examined
-
-**Which form for a rental house**, and that liability must be added.
-
-**DP-1's actual cash value settlement**, contrasted with DP-2 and DP-3's
-replacement cost.
-
-**DP-3's open peril dwelling / named peril contents split.**
-
-**Theft is not standard** on any dwelling form.
-
-**Vacancy versus unoccupancy**, and the 60-day suspension of vandalism and
-related perils.
-
-**Coverage D and E as separate coverages** here, combined in homeowners.
-
-## Check yourself
-
-1. A landlord owns a rented house and wants building coverage plus protection
-   against a tenant's injury claim. What policy and what addition?
-2. Under a DP-1, a covered fire destroys a 30-year-old roof. How is the loss
-   settled?
-3. Which dwelling form matches the HO-3's peril structure?
-4. A house stands empty with all furniture removed for 75 days. Vandals break
-   in and damage it. Likely outcome?
-5. Is theft included in a standard DP-2?
-
-## Answers
-
-1. A **dwelling policy** with a **personal liability** (and medical payments)
-   endorsement.
-2. **Actual cash value** — replacement cost less depreciation. DP-1 offers no
-   replacement cost option.
-3. **DP-3** — open peril on the dwelling, named peril on contents.
-4. **No coverage.** The dwelling is **vacant** (people and contents gone)
-   beyond 60 days, and vandalism is among the perils suspended.
-5. **No.** Theft is added by endorsement on DP-2 and DP-3, and is not
-   available on DP-1.$lesson$
-  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
-on conflict (lesson_id) do update set body = excluded.body;
-
-insert into public.lesson_topics (lesson_id, topic_id, course_id)
-select 'dda2d47b-e8ee-5b9b-bffb-df02bb0b8812', t.id, t.course_id
-  from public.topics t
-  join public.courses c on c.id = t.course_id
- where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.I'
-on conflict (lesson_id, topic_id) do nothing;
-
-insert into public.lessons
-  (id, module_id, course_id, title, slug, summary, position, status,
-   estimated_minutes)
-select 'fdcf9975-9bd5-5b6a-8eec-66bbd30eddd0', '4d5887f6-82b0-535b-bfd5-541974214ccd', c.id, 'Commercial Property and the Package Policy',
-       'commercial-property-and-the-package-policy', 'How a commercial package is assembled, the three causes of loss forms, and the income coverages that pay when the building is standing but the business is not.', 3,
-       'draft', 18
-  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
-on conflict (id) do update set
-  title = excluded.title, summary = excluded.summary,
-  position = excluded.position, status = excluded.status,
-  estimated_minutes = excluded.estimated_minutes;
-
-insert into public.lesson_contents (lesson_id, course_id, body)
-select 'fdcf9975-9bd5-5b6a-8eec-66bbd30eddd0', c.id, $lesson$# Building a commercial policy out of parts
-
-Personal lines sells finished packages. Commercial lines sells components,
-and the producer assembles them.
-
-## The Commercial Package Policy
-
-**A CPP is two or more commercial coverage parts issued under one policy.**
-Its architecture:
-
-1. **Common policy declarations** — insured, term, premium, coverage parts.
-2. **Common policy conditions** — cancellation, changes, inspections,
-   examination of books, transfer of rights. These apply to every part.
-3. **Two or more coverage parts**, each with its own declarations, forms and
-   conditions.
-
-The available parts include **commercial property, general liability,
-commercial auto, crime, inland marine, boiler and machinery (equipment
-breakdown)** and **farm**.
-
-**A single coverage part is a monoline policy; two or more make a package.**
-The package earns a discount and removes the gaps and overlaps that separate
-policies produce.
-
-**Workers' compensation is written separately**, not as a CPP part.
-
-## The commercial property coverage part
-
-Three things must be assembled:
-
-1. **A coverage form** — what property is covered.
-2. **A causes of loss form** — what perils.
-3. **Conditions and any endorsements.**
-
-### The building and personal property coverage form
-
-The workhorse. It insures three categories, each separately scheduled on the
-declarations:
-
-**Building** — the structure, completed additions, fixtures (including
-outdoor fixtures), permanently installed machinery and equipment, and
-materials and supplies used to maintain it.
-
-**Your business personal property** — the insured's own contents at the
-described premises: furniture, stock, machinery, leased property the insured
-is responsible for, and **the insured's use interest in improvements and
-betterments** made to a leased building.
-
-**Personal property of others** — property in the insured's care, custody or
-control. **Payment goes to the owner**, not to the insured.
-
-The **coinsurance** clause applies, usually at 80%, 90% or 100%, and the
-calculation is the one from Module 1.
-
-### Extensions and additional coverages
-
-Typically included: **debris removal** (a percentage of the loss plus the
-deductible, with an additional amount available); **preservation of
-property**; **fire department service charge**; **pollutant clean-up and
-removal**, capped annually; **newly acquired or constructed property** for a
-limited period and amount; **personal effects**; **property off premises**;
-**outdoor property**; and **valuable papers and records** at a limited
-amount.
-
-### Reporting forms and blanket insurance
-
-**Specific insurance** names an amount for one item at one location.
-
-**Blanket insurance** covers **two or more items, or two or more locations,
-under a single limit**. The advantage is flexibility: a shifting inventory
-across three warehouses is fully covered wherever it sits, rather than being
-underinsured at one and over at another. Blanket cover normally requires a
-**statement of values** and a high coinsurance percentage.
-
-**Reporting forms** suit a fluctuating inventory: the insured reports values
-periodically and the premium is adjusted. Under-reporting is penalised at
-claim time in proportion to the shortfall.
-
-**Agreed value** suspends coinsurance where the insurer has accepted a
-statement of values.
-
-## How the building is classified
-
-Before any of the coverage choices, an underwriter classifies the building
-itself, because construction drives the rate more than almost anything else.
-
-**The class is decided by the materials of the structure itself — the frame,
-walls, floors and roof.** Not by the building's location, not by its value,
-and not by the roof alone. The question underneath every class is the same:
-**how much of this building will burn, and how long will it stand while it
-does?**
-
-**Six classes, from most combustible to least:**
-
-1. **Frame** — combustible walls and floors. Wood.
-2. **Joisted masonry** — masonry walls, combustible floor and roof.
-3. **Non-combustible** — metal walls and roof on a metal or concrete frame.
-4. **Masonry non-combustible** — masonry walls with a non-combustible floor
-   and roof.
-5. **Modified fire resistive** — rated materials, roughly one hour.
-6. **Fire resistive** — concrete or protected steel, roughly two hours.
-
-**The order is the point.** Each step buys a lower fire rate, and the first two
-are where most small commercial risks sit.
-
-> **Not named on either Texas outline.** Included because a producer quoting
-> commercial property is asked the construction class on every submission, and
-> because it explains why two identical-looking buildings on the same street
-> price differently.
-
-## The three causes of loss forms
-
-This is the most-tested part of commercial property.
-
-**Basic** — a named peril list: fire, lightning, explosion, windstorm or
-hail, smoke, aircraft or vehicles, riot or civil commotion, vandalism,
-sprinkler leakage, sinkhole collapse, volcanic action.
-
-**Broad** — everything in Basic **plus** falling objects; weight of snow, ice
-or sleet; and water damage from the accidental discharge of a system. It also
-adds **collapse** as an additional coverage.
-
-**Special** — **open peril**: every cause of loss except those excluded. The
-burden shifts to the insurer. Special also adds coverage for **theft**, which
-Basic and Broad do not include.
-
-> **"Special form" means open peril, not "extra".** A question describing a
-> loss from an unusual, unexcluded cause is testing whether you know Special
-> is the only one of the three that answers it.
-
-An **earthquake** form and a **flood** form exist separately, because neither
-is included in any of the three.
-
-## Business income and extra expense
-
-These are **indirect** or **consequential** loss coverages. Direct damage
-coverage rebuilds the building; these pay for the trading that could not
-happen while it was being rebuilt.
-
-**Business income** (formerly business interruption) pays:
-
-- **the net income the business would have earned**, plus
-- **continuing normal operating expenses**, including payroll where covered.
-
-Three conditions frame it: there must be **direct physical loss** to covered
-property, **by a covered cause of loss**, at the **described premises**,
-causing a **necessary suspension** of operations.
-
-The **period of restoration** begins **72 hours after the physical loss**
-(where a waiting period applies) and ends when the property **should** have
-been repaired with reasonable speed — not when it actually was. An insured
-who takes eight months over a four-month rebuild is paid for four.
-
-**Extra expense** pays the additional costs of **continuing** operations —
-renting temporary premises, hiring equipment, expedited shipping. A business
-that cannot afford to stop, such as a dairy or a newspaper, buys extra
-expense rather than business income; many buy both on a combined form.
-
-Related: **contingent business income** covers loss caused by damage to
-**somebody else's** property — a sole supplier or a dominant customer.
-**Civil authority** coverage pays where access to the premises is prohibited
-by an authority because of damage to nearby property.
-
-## Equipment breakdown
-
-Formerly boiler and machinery. **It covers the sudden and accidental
-breakdown of pressure, mechanical and electrical equipment** — and the
-resulting damage.
-
-It matters because **mechanical breakdown and electrical arcing are excluded
-from every standard property form**, so without this coverage a burst boiler
-or a failed transformer is uninsured. It typically covers the damaged
-equipment, other property damaged by the breakdown, spoilage, expediting
-expenses and business income.
-
-**Inspection is part of the product.** The insurer's engineers inspect
-boilers and pressure vessels, often satisfying the jurisdiction's statutory
-inspection requirement, and the loss-prevention value is a substantial part of
-what the premium buys.
-
-## Builders risk
-
-**Covers a structure under construction**, against loss during the build.
-
-- The limit should equal the **completed value** of the structure.
-- **Materials, supplies and equipment** intended to become part of the
-  building are covered on site, and often in transit and at temporary
-  storage.
-- Insurable interest may belong to the **owner, the contractor, or both**,
-  and the policy is usually written to name all interested parties.
-- **Coverage ends** when the building is accepted, occupied for its intended
-  purpose, or the policy expires — whichever comes first. At that point a
-  standard property policy takes over.
-
-## Cyber first-party coverage
-
-**First-party cyber coverage pays the insured's own losses from a cyber
-event**, as distinct from cyber *liability*, which pays what the insured owes
-others.
-
-What it typically covers: **data restoration** and system repair; **business
-interruption** from a network outage; **cyber extortion** and ransomware
-payments; **breach response costs** — forensics, notification of affected
-individuals, credit monitoring, public relations; and **funds transfer
-fraud**, where an employee is deceived into sending money.
-
-It exists because standard property forms were written around physical damage
-to tangible property, and **electronic data is generally not "tangible
-property"** under them. Many forms now exclude cyber events explicitly, so the
-coverage is bought deliberately or not at all.
-
-## How this is examined
-
-**Basic versus Broad versus Special**, and specifically that **only Special is
-open peril** and **only Special includes theft**.
-
-**Blanket versus specific insurance.**
-
-**Business income versus extra expense** — replacing lost earnings versus
-funding continued operation.
-
-**The period of restoration ends when repairs *should* have been completed.**
-
-**Equipment breakdown fills the mechanical breakdown exclusion.**
-
-**Builders risk is written at completed value** and ends at occupancy.
-
-## Check yourself
-
-1. A commercial policy carries the Broad causes of loss form. Stock is stolen
-   overnight. Covered?
-2. An insured stores inventory across four warehouses, with amounts shifting
-   weekly. Blanket or specific?
-3. A fire closes a restaurant for five months, though competent repairs would
-   have taken three. Business income is $40,000 a month. What is paid,
-   broadly?
-4. A transformer fails and burns out, damaging nearby equipment. Which
-   coverage responds, and why not the property form?
-5. A builders risk policy is written for $2m on a building whose completed
-   value is $2m. Construction finishes and the owner moves in. What happens to
-   the coverage?
-6. A ransomware attack encrypts a firm's records and halts trading for a
-   week. Which coverage responds?
-
-## Answers
-
-1. **No.** Theft is covered only under the **Special** form.
-2. **Blanket**, so the single limit follows the inventory wherever it sits.
-3. Roughly **three months** — about **$120,000**. The period of restoration
-   ends when repairs **should** have been completed with reasonable speed.
-4. **Equipment breakdown.** The standard property forms exclude mechanical
-   breakdown and electrical arcing.
-5. **It ends** on occupancy for the intended purpose; a standard commercial
-   property policy must take over.
-6. **First-party cyber coverage** — data restoration, cyber extortion and
-   network business interruption. Electronic data is generally not tangible
-   property under a standard form.$lesson$
-  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
-on conflict (lesson_id) do update set body = excluded.body;
-
-insert into public.lesson_topics (lesson_id, topic_id, course_id)
-select 'fdcf9975-9bd5-5b6a-8eec-66bbd30eddd0', t.id, t.course_id
-  from public.topics t
-  join public.courses c on c.id = t.course_id
- where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.I'
-on conflict (lesson_id, topic_id) do nothing;
-
-insert into public.lessons
-  (id, module_id, course_id, title, slug, summary, position, status,
-   estimated_minutes)
-select 'fb29d783-0b17-5cac-abd6-ab8e2df510b8', '4d5887f6-82b0-535b-bfd5-541974214ccd', c.id, 'Inland Marine',
-       'inland-marine', 'Coverage for property that moves, property that is unusually valuable, and property no standard form handles well.', 4,
-       'draft', 13
-  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
-on conflict (id) do update set
-  title = excluded.title, summary = excluded.summary,
-  position = excluded.position, status = excluded.status,
-  estimated_minutes = excluded.estimated_minutes;
-
-insert into public.lesson_contents (lesson_id, course_id, body)
-select 'fb29d783-0b17-5cac-abd6-ab8e2df510b8', c.id, $lesson$# Insurance for things that will not stay still
-
-The name is historical and misleading. **Inland marine has almost nothing to
-do with water.**
-
-## Where the name comes from
-
-Marine insurance is the oldest form of insurance, covering cargo at sea. As
-goods moved inland by rail and road, marine underwriters followed the cargo
-off the ship — insuring it over land as well. That extension became **inland**
-marine, and over time it absorbed a much wider category: **property that
-moves, property that is held by somebody other than its owner, and property
-that a standard fire policy cannot value properly.**
-
-**Ocean marine** remains separate, covering hull, cargo, freight and
-protection and indemnity on the water.
-
-## What qualifies
-
-The distinguishing feature of an inland marine risk is one of:
-
-- **The property moves** — goods in transit, a contractor's tools, a
-  salesman's samples.
-- **The property is portable and high value** — jewellery, cameras, musical
-  instruments, fine art.
-- **The property is instrumental to transport or communication** — bridges,
-  tunnels, pipelines, radio towers. These do not move at all, and are insured
-  here because they were historically classed as "instrumentalities of
-  transportation."
-- **The property is in somebody else's care** — a bailee holding customers'
-  goods.
-
-## Why anybody buys it
-
-Four advantages over a standard property form:
-
-- **Coverage is usually open peril** rather than named peril.
-- **Coverage follows the property anywhere**, rather than attaching to
-  described premises.
-- **Valuation can be agreed in advance**, which matters enormously for a
-  painting or an antique whose actual cash value would be argued about for
-  months.
-- **There is normally no coinsurance clause** on scheduled items.
-
-**"Floater"** is the common name, because the coverage floats with the
-property.
-
-## Personal inland marine
-
-### The personal articles floater
-
-**Schedules high-value personal items individually**, each with a stated
-value. The standard categories:
-
-- jewellery
-- furs
-- cameras and photographic equipment
-- musical instruments
-- silverware
-- golfer's equipment
-- fine arts
-- stamp and coin collections
-
-Written as a **scheduled personal property** endorsement to a homeowners
-policy, or as a stand-alone floater.
-
-Why it is bought: the homeowners policy has **special limits** on exactly
-these categories, most of them applying **to theft**. Scheduling removes the
-sub-limit, broadens the perils to open peril, usually **removes the
-deductible**, and pins the value in advance.
-
-Two details that get tested:
-
-- **Fine arts are normally written on a valued basis**, and typically carry a
-  **breakage exclusion** unless it is bought back.
-- **Newly acquired property** of a scheduled class is usually covered
-  automatically for a limited period — commonly 30 days — provided the
-  insurer is notified and premium paid.
-
-### The personal property floater
-
-Covers **all** the insured's personal property on an open peril, worldwide
-basis, rather than a schedule of named items. Less common, and expensive.
-
-## Commercial inland marine
-
-### Nationwide marine definition
-
-Regulators publish a **nationwide marine definition** setting out what may be
-written as inland marine. It exists to stop insurers writing ordinary fire
-business on inland marine forms to escape rate regulation. **Controlled**
-lines are filed classes; **uncontrolled** lines may be written on
-individually negotiated terms.
-
-### The common commercial floaters
-
-**Contractor's equipment floater** — mobile tools, machinery and equipment,
-on site and in transit.
-
-**Installation floater** — materials and equipment from the time they leave
-the supplier until installed and accepted. The contractor's counterpart to
-builders risk.
-
-**Motor truck cargo** — the carrier's liability for goods it is hauling.
-
-**Transportation / trip transit** — goods in transit generally, or one
-specific shipment.
-
-**Bailee's customers** — a dry cleaner, a repair shop, a warehouse. **Covers
-the customers' property in the insured's care, and typically pays whether or
-not the bailee was negligent**, because arguing about fault with a customer
-whose suit you burned is bad business.
-
-**Accounts receivable** — the sums the insured cannot collect because the
-records were destroyed, plus the cost of reconstructing them and the extra
-collection expense.
-
-**Valuable papers and records** — the cost of reconstructing documents,
-manuscripts and records. It pays for **reconstruction**, not for the
-information's abstract worth.
-
-**Electronic data processing** — computer hardware, software and data, on an
-open peril basis, typically including **mechanical breakdown and electrical
-disturbance**, which standard property forms exclude.
-
-**Signs, jewellers block, furriers block, physicians and surgeons
-equipment**, and **theatrical property** are further named classes.
-
-**Instrumentalities of transportation and communication** — bridges, tunnels,
-pipelines, power transmission lines, radio and television towers.
-
-### Bailee terminology
-
-- A **bailee** holds another's property. A **bailor** owns it.
-- A **bailee's customers form** covers the customers' goods regardless of
-  fault.
-- **Legal liability** forms cover only what the bailee is legally responsible
-  for — cheaper, and much less useful when the customer is angry.
-
-## How this is examined
-
-**"Which of these is an inland marine risk?"** — look for movement,
-portability with high value, bailment, or an instrumentality of
-transportation.
-
-**Why schedule jewellery?** — to remove the homeowners special limit, broaden
-to open peril, agree the value and drop the deductible.
-
-**Bailee's customers pays regardless of negligence.**
-
-**Accounts receivable and valuable papers pay for reconstruction**, not for
-the debt or the information as an asset.
-
-**A bridge is inland marine**, which feels wrong until you know the history.
-
-## Check yourself
-
-1. A photographer owns $30,000 of camera equipment used at client sites. What
-   form, and why not the homeowners policy?
-2. A dry cleaner's premises burn, destroying customers' garments. The cleaner
-   was not negligent. Which form pays the customers?
-3. Why does a floater usually have no coinsurance clause?
-4. A contractor's excavator is damaged while being towed between sites. Which
-   floater?
-5. A fire destroys a firm's ledgers and it cannot collect $200,000 of debts.
-   Which coverage, and what does it pay?
-
-## Answers
-
-1. A **personal articles floater** or a commercial camera floater. The
-   homeowners policy limits cameras, covers them on a named peril basis away
-   from home, and would settle on actual cash value.
-2. A **bailee's customers form**, which pays regardless of the bailee's
-   negligence.
-3. Because scheduled items carry **agreed or stated values** — the insurer has
-   already accepted the value, so there is nothing for a coinsurance clause to
-   police.
-4. A **contractor's equipment floater**.
-5. **Accounts receivable** coverage — the uncollectible sums, the cost of
-   reconstructing the records, and the extra collection expense.$lesson$
-  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
-on conflict (lesson_id) do update set body = excluded.body;
-
-insert into public.lesson_topics (lesson_id, topic_id, course_id)
-select 'fb29d783-0b17-5cac-abd6-ab8e2df510b8', t.id, t.course_id
-  from public.topics t
-  join public.courses c on c.id = t.course_id
- where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.I'
-on conflict (lesson_id, topic_id) do nothing;
-
-insert into public.lessons
-  (id, module_id, course_id, title, slug, summary, position, status,
-   estimated_minutes)
-select '6d2171b2-6a44-5f41-b8c4-52bd93262d4a', '4d5887f6-82b0-535b-bfd5-541974214ccd', c.id, 'The National Flood Insurance Program',
-       'the-national-flood-insurance-program', 'Why flood is excluded everywhere else, and how the federal programme fills the gap.', 5,
-       'draft', 13
-  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
-on conflict (id) do update set
-  title = excluded.title, summary = excluded.summary,
-  position = excluded.position, status = excluded.status,
-  estimated_minutes = excluded.estimated_minutes;
-
-insert into public.lesson_contents (lesson_id, course_id, body)
-select '6d2171b2-6a44-5f41-b8c4-52bd93262d4a', c.id, $lesson$# The peril the private market would not write
-
-Flood is excluded from homeowners, dwelling and commercial property forms
-alike. The exclusion is not arbitrary, and understanding why explains
-everything else about the programme.
-
-## Why flood is uninsurable privately
-
-Flood fails the tests of an insurable risk from Module 1:
-
-- **The losses are not independent.** A flood does not damage one house; it
-  damages every house on the flood plain at once. The law of large numbers
-  needs many unrelated exposures, and a flood plain is one exposure with many
-  addresses.
-- **Adverse selection is extreme.** Only people who expect to flood buy flood
-  insurance, so the pool consists almost entirely of bad risks.
-- **The loss is close to predictable** for the highest-risk properties — not
-  a risk so much as a schedule.
-
-So in **1968 Congress created the National Flood Insurance Program**,
-administered by **FEMA**. The federal government takes the risk the private
-market would not.
-
-## How a community participates
-
-**The NFIP is a bargain between the federal government and the community, not
-just with the individual.**
-
-A community must **adopt and enforce flood plain management ordinances** —
-building elevation requirements, construction standards, development
-restrictions — to reduce future flood losses. In exchange, **federally backed
-flood insurance becomes available to property owners in that community**.
-
-**No participating community, no NFIP policy.** An owner in a non-participating
-community must find private coverage or go without.
-
-Two phases:
-
-- **The emergency programme** — an interim phase with **limited amounts** of
-  coverage available while flood mapping is completed.
-- **The regular programme** — full limits, once the community has a flood
-  insurance rate map and has adopted the required ordinances.
-
-## The waiting period
-
-**There is normally a 30-day waiting period** between application and the
-policy taking effect. It is the programme's defence against somebody buying
-cover as the river rises.
-
-The exceptions are worth knowing:
-
-- **No waiting period where flood insurance is required by a lender** in
-  connection with making, increasing, extending or renewing a loan.
-- **A one-day wait** where coverage is bought following a change in the flood
-  map.
-- A shortened wait for property **affected by wildfire on federal land**.
-
-## What a flood is
-
-The programme's definition is specific, and questions are built on it. A
-flood is a **general and temporary condition of partial or complete
-inundation of two or more acres of normally dry land, or of two or more
-properties**, from:
-
-- overflow of inland or tidal waters,
-- unusual and rapid accumulation or runoff of surface water,
-- mudflow, or
-- collapse of land along a body of water from erosion or an unusually severe
-  storm.
-
-Two consequences:
-
-- **Water entering one building alone is generally not a flood** — a burst
-  pipe, a backed-up sewer, a leaking roof. Two acres or two properties is the
-  threshold.
-- **Mudflow counts; landslide generally does not.** Mudflow is liquid mud
-  flowing; a landslide is earth movement, excluded.
-
-## What is covered
-
-Two separate coverages, bought separately:
-
-**Building property** — the structure and its foundation, electrical and
-plumbing, furnaces and water heaters, built-in appliances, permanently
-installed carpet, and detached garages (within a portion of the limit).
-
-**Personal property (contents)** — furniture, clothing, portable appliances,
-washers and dryers, and a limited amount for valuables.
-
-**Contents are not automatically included.** An owner who buys building
-coverage only has no coverage for anything inside. That is a favourite
-question.
-
-### Limits
-
-Under the **regular programme**, the maximum amounts available are:
-
-| | Building | Contents |
-| --- | --- | --- |
-| **Residential** | **$250,000** | **$100,000** |
-| **Non-residential / commercial** | **$500,000** | **$500,000** |
-
-These are **programme maximums**, not appraised values. Anybody needing more
-buys **excess flood** from the private market.
-
-### Loss settlement
-
-- **Replacement cost** is available on a **single-family dwelling that is the
-  insured's principal residence**, insured to at least 80% of replacement
-  cost.
-- **Everything else is actual cash value** — contents always, and buildings
-  that are secondary homes, rentals or commercial.
-
-## What is not covered
-
-- **Contents in a basement**, beyond a very short list of building items.
-  Finished basements are largely uninsurable under the programme.
-- **Additional living expense and loss of use** — the NFIP pays for the
-  property, not for the disruption.
-- **Currency, precious metals and valuable papers.**
-- **Property outside the building** — landscaping, decks, patios, fences,
-  septic systems, swimming pools.
-- **Vehicles**, which belong on an auto policy's other-than-collision
-  coverage.
-- **Business interruption.**
-
-## Zones, maps and requirements
-
-FEMA publishes a **Flood Insurance Rate Map** for each participating
-community, dividing it into **flood zones**.
-
-- **Zones A and V** are **Special Flood Hazard Areas** — the 100-year flood
-  plain, meaning a 1% annual chance of flooding. **V zones are coastal**, with
-  additional wave action.
-- **Zones B, C and X** are moderate or minimal risk, where coverage is
-  cheaper and often bought voluntarily.
-
-**Mandatory purchase:** a building in a Special Flood Hazard Area with a
-**federally backed or federally regulated mortgage** must carry flood
-insurance. This is the single largest driver of NFIP sales.
-
-**Write Your Own.** Private insurers issue and service NFIP policies under
-their own names, with the **federal government carrying the risk**. The
-producer sells what looks like a private policy; the terms, limits and rates
-are the programme's.
-
-## How this is examined
-
-**The 30-day waiting period** and its exceptions.
-
-**The two-acre / two-property definition** of a flood.
-
-**Contents must be bought separately.**
-
-**The $250,000 / $100,000 residential limits.**
-
-**Replacement cost applies only to a principal residence**; everything else is
-ACV.
-
-**Community participation is a precondition.**
-
-**Basements, landscaping and living expense are not covered.**
-
-## Check yourself
-
-1. A homeowner buys an NFIP policy on 1 May. The river floods on 20 May. Is
-   there coverage?
-2. A burst water main floods only the insured's basement. Is this a "flood"
-   under the programme?
-3. An owner buys $250,000 of building coverage. A flood destroys $60,000 of
-   furniture. What is paid?
-4. A rental house owned as an investment suffers flood damage to a 15-year-old
-   roof. Replacement cost or actual cash value?
-5. A community declines to adopt flood plain management ordinances. Can its
-   residents buy NFIP coverage?
-6. What is the maximum building coverage on a commercial property?
-
-## Answers
-
-1. **No** — the 30-day waiting period has not run, and no exception applies.
-2. **No.** A flood requires inundation of **two or more acres or two or more
-   properties**; water in one building from a burst main is not one.
-3. **Nothing.** Contents coverage must be purchased separately.
-4. **Actual cash value.** Replacement cost is limited to a single-family
-   dwelling that is the insured's **principal residence**.
-5. **No.** Community participation is a precondition.
-6. **$500,000**, with a further $500,000 available for contents.$lesson$
-  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
-on conflict (lesson_id) do update set body = excluded.body;
-
-insert into public.lesson_topics (lesson_id, topic_id, course_id)
-select '6d2171b2-6a44-5f41-b8c4-52bd93262d4a', t.id, t.course_id
-  from public.topics t
-  join public.courses c on c.id = t.course_id
- where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.I'
-on conflict (lesson_id, topic_id) do nothing;
-
-insert into public.lessons
-  (id, module_id, course_id, title, slug, summary, position, status,
-   estimated_minutes)
-select 'f2a692e9-7a38-5c5c-938c-371af3cfcd0f', '4d5887f6-82b0-535b-bfd5-541974214ccd', c.id, 'Other Property Policies',
-       'other-property-policies', 'Earthquake, mobile homes, watercraft, farmowners and windstorm — five smaller forms the blueprint names explicitly.', 6,
-       'draft', 14
-  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
-on conflict (id) do update set
-  title = excluded.title, summary = excluded.summary,
-  position = excluded.position, status = excluded.status,
-  estimated_minutes = excluded.estimated_minutes;
-
-insert into public.lesson_contents (lesson_id, course_id, body)
-select 'f2a692e9-7a38-5c5c-938c-371af3cfcd0f', c.id, $lesson$# Five risks the standard forms send elsewhere
-
-The blueprint lists these by name, so they are examined by name. Each exists
-because a standard homeowners or commercial form either excludes the peril or
-cannot handle the property.
-
-## Earthquake
-
-**Earth movement is excluded from every standard property form**, for the same
-reason as flood: the losses are correlated. One earthquake damages every
-building in a region simultaneously.
-
-Coverage is bought back by **endorsement** to a homeowners or commercial
-policy, or written as a **separate policy**.
-
-What to know:
-
-- **The exclusion is broader than "earthquake".** Earth movement includes
-  **landslide, mudslide, subsidence, sinkhole collapse and earth sinking,
-  rising or shifting**. Buying earthquake coverage does not necessarily buy
-  all of these back.
-- **Fire following an earthquake is covered by the standard policy.** The
-  earth movement exclusion is generally written so that **ensuing fire** is
-  not excluded. This is a long-standing rule and a reliable exam point.
-- **The deductible is a percentage**, not a flat sum — commonly **2% to 20%
-  of the coverage limit**, and it is applied to the limit rather than to the
-  loss. On a $400,000 dwelling, a 10% deductible is $40,000 before anything is
-  paid.
-- **Multiple shocks within a stated period** — commonly 72 hours — count as
-  **one occurrence**, so one deductible applies rather than several.
-
-## Mobile homes
-
-A mobile or manufactured home cannot be written on a standard homeowners
-policy: it is built to different standards, depreciates like a vehicle rather
-than appreciating like a house, and can be moved.
-
-**A mobile homeowners policy is a package**, structured like a homeowners
-policy with property and liability sections, but with changes:
-
-- **Loss settlement is normally actual cash value**, reflecting that the unit
-  depreciates. Replacement cost may be available by endorsement on newer
-  units.
-- **Transportation and permission to move** must be arranged. Coverage while
-  the home is being moved is typically added by endorsement, often with a
-  limited amount and a requirement that the insurer be notified beforehand.
-- **Eligibility** usually requires the unit to be of a minimum size, designed
-  for year-round living, and at a fixed location.
-- **Skirting, awnings, carports and attached structures** may need to be
-  listed to be covered.
-
-## Watercraft
-
-Homeowners policies cover **small, low-powered boats** and very little else.
-The typical arrangement covers a boat only up to a modest length and
-horsepower, on a narrow peril basis, with liability excluded for larger or
-faster craft.
-
-Anything beyond that needs a **boatowners or yacht policy**:
-
-- **A boatowners policy** is a package for smaller pleasure craft, covering
-  the hull, motor, trailer and equipment, plus liability and medical payments.
-- **A yacht policy** covers larger vessels and is structured on ocean marine
-  principles: **hull** coverage on the vessel, **protection and indemnity**
-  for liability, plus medical payments and coverage for the boat's trailer
-  and equipment.
-
-Points that are examined:
-
-- **Navigational limits.** The policy specifies the waters in which the
-  vessel is covered, and often a **lay-up period** during which it must be out
-  of the water — coverage is reduced or restricted outside those terms.
-- **Protection and indemnity is the marine world's liability coverage**, and
-  is broader than a general liability form in respect of crew and other
-  maritime exposures.
-- **Ocean marine perils** — the traditional list includes perils of the sea,
-  fire, jettison, piracy and barratry (wrongful acts by the master or crew).
-
-## Farmowners
-
-**A farmowners policy is a package covering both the farm residence and the
-farming operation** — the agricultural equivalent of a homeowners policy, and
-the reason farms are ineligible for a homeowners policy.
-
-It combines, in one contract:
-
-- **The dwelling and its contents**, on much the same basis as a homeowners
-  policy.
-- **Farm structures** — barns, silos, outbuildings, fences, corrals.
-- **Farm personal property** — machinery, equipment, tools, harvested crops,
-  feed, seed, fertiliser, and **livestock**.
-- **Farm liability**, which is broader than personal liability because the
-  farm is a business. It covers the farming operation, and typically **farm
-  employees**, whose injuries would otherwise fall outside a personal policy.
-
-Specific features:
-
-- **Livestock coverage** is usually written on a **named peril** basis and
-  frequently includes perils peculiar to the exposure — **electrocution,
-  attack by dogs or wild animals, accidental shooting, drowning** and **loading
-  and unloading**.
-- **Scheduled versus blanket** treatment of farm personal property works as it
-  does in commercial property: blanket for a shifting inventory of feed and
-  grain, scheduled for named machines.
-- **Crop insurance is separate**, largely federal, and is not part of a
-  farmowners policy.
-- **Mobile agricultural equipment in transit** may need inland marine.
-
-## Windstorm
-
-Wind is a **covered peril** on standard property forms in most of the country.
-In coastal areas it is frequently **excluded or heavily deductible**, because
-the exposure is concentrated: one hurricane damages an entire coastline.
-
-Where the private market withdraws, coverage comes from a **residual market**
-— a state-created insurer of last resort. Two mechanisms appear:
-
-- **A windstorm pool or association**, writing wind and hail coverage in a
-  designated coastal area.
-- **A FAIR Plan** — Fair Access to Insurance Requirements — writing basic
-  property coverage for those unable to obtain it in the voluntary market,
-  usually because of location or property condition rather than the owner's
-  conduct.
-
-Both are funded by **compulsory membership of the insurers writing in the
-state**, which is why they are described as the market insuring itself.
-
-Recurring features:
-
-- **A separate, percentage windstorm or hurricane deductible**, applied to the
-  coverage limit.
-- **A named-storm trigger**, where the percentage deductible applies only to
-  storms the weather service has named.
-- **Insurance-to-value and building-code requirements** as conditions of
-  eligibility.
-- **A waiting period** and a suspension of new business once a storm is
-  approaching.
-
-> **Texas is one of the states where this matters most.** The Texas Windstorm
-> Insurance Association and the Texas FAIR Plan Association are creatures of
-> the Texas Insurance Code, with their own eligibility rules, limits,
-> deductibles and claim deadlines. Those specifics belong to the Texas
-> statutes module and are examined there. What belongs here is the general
-> shape: wind excluded on the coast, a residual market filling the gap, funded
-> by compulsory membership.
-
-## How this is examined
-
-**Fire following an earthquake is covered** by the standard policy.
-
-**Earthquake deductibles are a percentage of the limit**, and multiple shocks
-in 72 hours are one occurrence.
-
-**Mobile homes settle at actual cash value.**
-
-**A farm is ineligible for a homeowners policy**, and why.
-
-**Livestock perils** — electrocution, attack by animals, accidental shooting,
-drowning.
-
-**Residual markets** exist because of correlated catastrophe exposure, and are
-funded by the insurers writing in the state.
-
-## Check yourself
-
-1. An earthquake cracks a gas line and the resulting fire destroys the house.
-   What is covered under a standard homeowners policy without an earthquake
-   endorsement?
-2. A $500,000 dwelling carries earthquake coverage with a 10% deductible. A
-   quake causes $70,000 of damage. What is paid?
-3. Why is a mobile home not written on a homeowners policy?
-4. A farmer keeps a herd of cattle, farms 400 acres and lives in a house on
-   the property. What policy?
-5. Cattle are killed by lightning. Covered under a farmowners policy?
-6. Why is windstorm excluded on the coast when it is covered inland?
-
-## Answers
-
-1. **The fire damage.** Ensuing fire is not excluded by the earth movement
-   exclusion. The shake damage itself is not covered.
-2. **$20,000.** The deductible is 10% of the **limit** — $50,000 — not of the
-   loss.
-3. It is built to different standards, depreciates rather than appreciates,
-   and can be moved. A mobile homeowners policy settles on **actual cash
-   value** and addresses transportation.
-4. A **farmowners** policy — a package covering the residence and the farming
-   operation. A farm is ineligible for homeowners.
-5. **Yes.** Lightning is a standard peril and electrocution is among the
-   perils livestock coverage typically names.
-6. Because the exposure is **correlated** — a single hurricane damages an
-   entire coastline at once, which defeats the law of large numbers. A
-   residual market fills the gap.$lesson$
-  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
-on conflict (lesson_id) do update set body = excluded.body;
-
-insert into public.lesson_topics (lesson_id, topic_id, course_id)
-select 'f2a692e9-7a38-5c5c-938c-371af3cfcd0f', t.id, t.course_id
-  from public.topics t
-  join public.courses c on c.id = t.course_id
- where c.slug = 'texas-general-lines-property-casualty' and t.code = 'GK.I'
-on conflict (lesson_id, topic_id) do nothing;
-
-insert into public.lessons
-  (id, module_id, course_id, title, slug, summary, position, status,
-   estimated_minutes)
-select '28241cd6-2d64-5c0d-8297-9e242c3e931a', '2071512a-2630-55ae-b69b-68d3232b7633', c.id, 'Commercial General Liability',
+select '28241cd6-2d64-5c0d-8297-9e242c3e931a', '1549f9c3-59b6-59d8-aac7-8a6f00a174d6', c.id, 'Commercial General Liability',
        'commercial-general-liability', 'Three coverages, four exposures, six limits — the form most commercial liability questions are built on.', 1,
        'draft', 18
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
@@ -5343,7 +5343,7 @@ on conflict (lesson_id, topic_id) do nothing;
 insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
-select '05b35e14-99ac-5dac-89c9-c53c92c33fc5', '2071512a-2630-55ae-b69b-68d3232b7633', c.id, 'Personal Auto',
+select '05b35e14-99ac-5dac-89c9-c53c92c33fc5', '1549f9c3-59b6-59d8-aac7-8a6f00a174d6', c.id, 'Personal Auto',
        'personal-auto', 'Four parts, several definitions of "your covered auto", and the uninsured motorist coverage that catches everybody.', 2,
        'draft', 18
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
@@ -5585,7 +5585,7 @@ on conflict (lesson_id, topic_id) do nothing;
 insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
-select '540f7c2a-82b7-5fd5-bb6b-01c592cdc2dc', '2071512a-2630-55ae-b69b-68d3232b7633', c.id, 'Business Auto',
+select '540f7c2a-82b7-5fd5-bb6b-01c592cdc2dc', '1549f9c3-59b6-59d8-aac7-8a6f00a174d6', c.id, 'Business Auto',
        'business-auto', 'The numbered symbols that decide what is covered, plus garagekeepers and drive other car.', 3,
        'draft', 15
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
@@ -5791,7 +5791,7 @@ on conflict (lesson_id, topic_id) do nothing;
 insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
-select 'e6d0d8ef-84b7-5b74-9c0e-4273d4262777', '2071512a-2630-55ae-b69b-68d3232b7633', c.id, 'Workers'' Compensation and Employers'' Liability',
+select 'e6d0d8ef-84b7-5b74-9c0e-4273d4262777', '1549f9c3-59b6-59d8-aac7-8a6f00a174d6', c.id, 'Workers'' Compensation and Employers'' Liability',
        'workers-compensation-and-employers-liability', 'The no-fault bargain, the three parts of the policy, and how the premium is actually calculated.', 4,
        'draft', 16
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
@@ -6031,7 +6031,7 @@ on conflict (lesson_id, topic_id) do nothing;
 insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
-select '4760b3ca-72c7-5e8f-8c13-12aa4084dde5', '2071512a-2630-55ae-b69b-68d3232b7633', c.id, 'Crime',
+select '4760b3ca-72c7-5e8f-8c13-12aa4084dde5', '1549f9c3-59b6-59d8-aac7-8a6f00a174d6', c.id, 'Crime',
        'crime', 'Five crimes the exam insists you distinguish, and the coverage that answers the one that costs most.', 5,
        'draft', 13
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
@@ -6219,7 +6219,7 @@ on conflict (lesson_id, topic_id) do nothing;
 insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
-select '9de6577b-bb16-5031-9916-7726f5831b08', '2071512a-2630-55ae-b69b-68d3232b7633', c.id, 'Bonds',
+select '9de6577b-bb16-5031-9916-7726f5831b08', '1549f9c3-59b6-59d8-aac7-8a6f00a174d6', c.id, 'Bonds',
        'bonds', 'Why a bond has three parties and insurance has two, and what that changes.', 6,
        'draft', 13
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
@@ -6398,7 +6398,7 @@ on conflict (lesson_id, topic_id) do nothing;
 insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
-select '858d9378-6837-5721-8736-5adc0bb90504', '2071512a-2630-55ae-b69b-68d3232b7633', c.id, 'Professional Liability',
+select '858d9378-6837-5721-8736-5adc0bb90504', '1549f9c3-59b6-59d8-aac7-8a6f00a174d6', c.id, 'Professional Liability',
        'professional-liability', 'The coverages that answer for advice, expertise and decisions — all excluded from the CGL.', 7,
        'draft', 15
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
@@ -6615,7 +6615,7 @@ on conflict (lesson_id, topic_id) do nothing;
 insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
-select '88047c29-a279-5436-aa7a-24977ea5abb2', '2071512a-2630-55ae-b69b-68d3232b7633', c.id, 'Umbrella and Excess Liability',
+select '88047c29-a279-5436-aa7a-24977ea5abb2', '1549f9c3-59b6-59d8-aac7-8a6f00a174d6', c.id, 'Umbrella and Excess Liability',
        'umbrella-and-excess-liability', 'More limit on top of what you have — and, in an umbrella, some coverage the underlying policies never had.', 8,
        'draft', 12
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
@@ -6759,7 +6759,7 @@ on conflict (lesson_id, topic_id) do nothing;
 insert into public.lessons
   (id, module_id, course_id, title, slug, summary, position, status,
    estimated_minutes)
-select 'c7b0a9e9-5837-5a19-a830-e1c77b9bda93', '2071512a-2630-55ae-b69b-68d3232b7633', c.id, 'The Business Owners Policy',
+select 'c7b0a9e9-5837-5a19-a830-e1c77b9bda93', '1549f9c3-59b6-59d8-aac7-8a6f00a174d6', c.id, 'The Business Owners Policy',
        'the-business-owners-policy', 'A pre-packaged commercial policy for small businesses — and the eligibility rules that decide who gets one.', 9,
        'draft', 12
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
