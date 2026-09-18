@@ -18,50 +18,56 @@ inland marine, explain why somebody buys a floater rather than relying on a
 homeowners or commercial form, and name the common personal and commercial
 floaters and what each is for.
 
-The name is historical and misleading. **Inland marine has almost nothing to
-do with water.**
+Start with the name, because it will otherwise bother you all lesson.
+**Inland marine has almost nothing to do with water.**
 
-## Where the name comes from
+## Why it is called that
 
-Marine insurance is the oldest form of insurance, covering cargo at sea. As
-goods moved inland by rail and road, marine underwriters followed the cargo
-off the ship — insuring it over land as well. That extension became **inland**
-marine, and over time it absorbed a much wider category: **property that
-moves, property that is held by somebody other than its owner, and property
-that a standard fire policy cannot value properly.**
+Marine insurance is the oldest insurance there is: cover for cargo crossing the
+sea. When goods began moving on from the docks by rail and road, the same
+underwriters followed them off the ship and carried on insuring them overland.
+That extension got called **inland** marine, and the name stuck.
 
-**Ocean marine** remains separate, covering hull, cargo, freight and
-protection and indemnity on the water.
+Over time it grew to cover a much wider idea: **property that moves, property
+somebody else is looking after, and property a normal fire policy cannot value
+sensibly.**
 
-## What qualifies
+**Ocean marine** is still its own thing — ships, cargo at sea, and the
+liabilities that go with them.
 
-The distinguishing feature of an inland marine risk is one of:
+## What counts as inland marine
 
-- **The property moves** — goods in transit, a contractor's tools, a
-  salesman's samples.
-- **The property is portable and high value** — jewellery, cameras, musical
-  instruments, fine art.
-- **The property is instrumental to transport or communication** — bridges,
-  tunnels, pipelines, radio towers. These do not move at all, and are insured
-  here because they were historically classed as "instrumentalities of
-  transportation."
-- **The property is in somebody else's care** — a bailee holding customers'
-  goods.
+A risk belongs here if one of these is true:
 
-## Why anybody buys it
+- **The property moves about.** Goods in transit, a builder's tools, a sales
+  rep's samples.
+- **It is small, portable and valuable.** Jewellery, cameras, musical
+  instruments, paintings.
+- **It is part of how things move or communicate.** Bridges, tunnels,
+  pipelines, radio masts. These do not move at all — they are here for
+  historical reasons, because they were classed long ago as
+  "instrumentalities of transportation". If that seems arbitrary, it is; learn
+  it as a list.
+- **Somebody else is holding it.** A repairer with a customer's equipment, a
+  dry cleaner with a customer's coat.
 
-Four advantages over a standard property form:
+## Why anyone buys it
 
-- **Coverage is usually open peril** rather than named peril.
-- **Coverage follows the property anywhere**, rather than attaching to
-  described premises.
-- **Valuation can be agreed in advance**, which matters enormously for a
-  painting or an antique whose actual cash value would be argued about for
-  months.
-- **There is normally no coinsurance clause** on scheduled items.
+A standard property policy covers property **at a place**. Inland marine
+covers property **wherever it happens to be**. That is the main thing, and
+there are three more:
 
-**"Floater"** is the common name, because the coverage floats with the
-property.
+- **It is usually open peril** — covered against everything except the
+  exclusions — where a standard form is often named peril.
+- **The value can be agreed up front.** For a painting or an antique, that
+  matters enormously. Without it, the owner and the insurer would argue for
+  months about what a one-off object was worth on the morning it was
+  destroyed.
+- **There is usually no coinsurance** on scheduled items, so no penalty for
+  getting the amount slightly wrong.
+
+**These policies are called floaters**, because the cover floats along with
+the property instead of staying at an address.
 
 ## D. Inland Marine
 
@@ -69,85 +75,86 @@ property.
 
 #### The personal articles floater
 
-**Schedules high-value personal items individually**, each with a stated
-value. The standard categories:
+**This lists valuable personal items one by one, each with an agreed value.**
 
-- jewellery
-- furs
-- cameras and photographic equipment
-- musical instruments
-- silverware
-- golfer's equipment
-- fine arts
-- stamp and coin collections
+The standard categories are: **jewellery · furs · cameras · musical
+instruments · silverware · golf equipment · fine art · stamp and coin
+collections.**
 
-Written as a **scheduled personal property** endorsement to a homeowners
-policy, or as a stand-alone floater.
+It is sold either as an endorsement bolted on to a homeowners policy — called
+**scheduled personal property** — or as a policy in its own right.
 
-Why it is bought: the homeowners policy has **special limits** on exactly
-these categories, most of them applying **to theft**. Scheduling removes the
-sub-limit, broadens the perils to open peril, usually **removes the
-deductible**, and pins the value in advance.
+**Why bother?** Because a homeowners policy caps exactly these categories at
+small amounts, mostly for theft. Scheduling a $12,000 ring does four things:
 
-Two details that get tested:
-
-- **Fine arts are normally written on a valued basis**, and typically carry a
-  **breakage exclusion** unless it is bought back.
-- **Newly acquired property** of a scheduled class is usually covered
-  automatically for a limited period — commonly 30 days — provided the
-  insurer is notified and premium paid.
+1. The cap disappears — it is insured for the $12,000 you agreed.
+2. It is covered against **more causes of loss**, usually open peril.
+3. The **deductible usually goes away** for that item.
+4. The value is settled **now**, not argued about after it is gone.
 
 #### The personal property floater
 
-Covers **all** the insured's personal property on an open peril, worldwide
-basis, rather than a schedule of named items. Less common, and expensive.
+Instead of listing items one by one, this covers **everything the insured
+owns**, anywhere in the world, on an open peril basis. Thorough, uncommon, and
+expensive.
 
 ### 2. Commercial Property Floaters
 
-#### Nationwide marine definition
+#### A rule about what may be written here
 
-Regulators publish a **nationwide marine definition** setting out what may be
-written as inland marine. It exists to stop insurers writing ordinary fire
-business on inland marine forms to escape rate regulation. **Controlled**
-lines are filed classes; **uncontrolled** lines may be written on
-individually negotiated terms.
+Because inland marine forms are flexible and lightly regulated, insurers were
+once tempted to write ordinary fire business on them to escape the rules that
+govern fire rates.
 
-#### The common commercial floaters
+So regulators publish a **nationwide marine definition** — a list of what is
+allowed to be written as inland marine. **Controlled** classes have filed
+rates; **uncontrolled** classes can be negotiated case by case.
 
-**Contractor's equipment floater** — mobile tools, machinery and equipment,
-on site and in transit.
+#### The floaters a business buys
 
-**Installation floater** — materials and equipment from the time they leave
-the supplier until installed and accepted. The contractor's counterpart to
-builders risk.
+Do not try to memorise these as definitions. Read each as *"who has this
+problem?"*
 
-**Motor truck cargo** — the carrier's liability for goods it is hauling.
+**Contractor's equipment floater** — a builder's diggers, mixers and power
+tools, covered on site, between sites and in the van.
 
-**Transportation / trip transit** — goods in transit generally, or one
-specific shipment.
+**Installation floater** — materials from the moment they leave the supplier
+until they are installed and signed off. The contractor's version of builders
+risk.
 
-**Bailee's customers** — a dry cleaner, a repair shop, a warehouse. **Covers
-the customers' property in the insured's care, and typically pays whether or
-not the bailee was negligent**, because arguing about fault with a customer
-whose suit you burned is bad business.
+**Motor truck cargo** — a haulier's responsibility for the goods on its lorry.
 
-**Accounts receivable** — the sums the insured cannot collect because the
-records were destroyed, plus the cost of reconstructing them and the extra
-collection expense.
+**Transportation or trip transit** — goods on the move generally, or one
+particular shipment.
 
-**Valuable papers and records** — the cost of reconstructing documents,
-manuscripts and records. It pays for **reconstruction**, not for the
-information's abstract worth.
+**Bailee's customers** — for anybody holding customers' property: a dry
+cleaner, a repair shop, a storage warehouse.
 
-**Electronic data processing** — computer hardware, software and data, on an
-open peril basis, typically including **mechanical breakdown and electrical
-disturbance**, which standard property forms exclude.
+> This one has a feature worth noticing. **It usually pays whether or not the
+> business was at fault.**
+>
+> Strictly, a dry cleaner is only liable for a customer's burnt suit if it was
+> careless. But telling a customer "we burnt your suit and it was not our
+> fault, so no" is a good way to lose every customer they ever speak to. The
+> coverage is written to let the business simply pay.
 
-**Signs, jewellers block, furriers block, physicians and surgeons
-equipment**, and **theatrical property** are further named classes.
+**Accounts receivable** — money owed to the business that it cannot collect
+because the records burned, plus what it costs to rebuild the records and
+chase the money.
 
-**Instrumentalities of transportation and communication** — bridges, tunnels,
-pipelines, power transmission lines, radio and television towers.
+**Valuable papers and records** — the cost of **recreating** damaged documents
+and records. It pays for the work of reconstruction, not for what the
+information was worth in the abstract.
+
+**Electronic data processing** — computers, software and data, open peril,
+and usually including **mechanical breakdown and electrical disturbance**,
+which ordinary property forms leave out.
+
+Also named classes: **signs**, **jewellers block**, **furriers block**,
+**physicians and surgeons equipment**, **theatrical property**.
+
+**Instrumentalities of transportation and communication** — the bridges,
+tunnels, pipelines, power lines and masts from earlier.
 
 #### Bailee terminology
 

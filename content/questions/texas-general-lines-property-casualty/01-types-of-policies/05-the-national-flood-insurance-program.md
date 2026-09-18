@@ -133,3 +133,20 @@ rates are the programme's** and the risk is federal.
 
 **Mudflow counts; landslide generally does not.** Mudflow is liquid mud flowing;
 a landslide is earth movement, which is excluded.
+
+### A community has just joined the NFIP. Its flood maps are not yet finished, and only limited amounts of cover are available. Which phase is it in?
+
+- [x] The emergency programme
+- [ ] The regular programme
+- [ ] The provisional programme
+- [ ] The interim assistance programme
+
+**The emergency programme** is the starting phase. A community enters it on
+joining, and only **limited amounts** of insurance can be written while the
+flood mapping is done.
+
+**The regular programme** follows, once the community has its flood insurance
+rate map and has adopted the required building rules. Full limits become
+available then.
+
+The last two options do not exist. The two-phase structure is the whole of it.

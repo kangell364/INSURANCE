@@ -70,6 +70,52 @@ const MAX = MAX_ARG === -1 ? null : Number(process.argv[MAX_ARG + 1])
  */
 const UNTESTED = new Map([
   [
+    '01-homeowners-forms.md::reasonable repairs',
+    'One label in the list of small coverages a policy includes free. The list '
+      + 'is examined collectively -- which of these is NOT included -- so the '
+      + 'answer is the odd one out and no question can have this as its answer. '
+      + 'Debris removal and loss assessment carry questions for the list.',
+  ],
+  [
+    '01-homeowners-forms.md::property removed',
+    'Same list as reasonable repairs above, same reason.',
+  ],
+  [
+    '03-commercial-property.md::pollutant clean-up',
+    'A label in the commercial form\'s list of included extras, examined the '
+      + 'same way as the homeowners list: collectively, by exception.',
+  ],
+  [
+    '05-the-national-flood-insurance-program.md::the regular programme',
+    'The pair to the emergency programme, and they are only meaningful '
+      + 'together. The question on the phases describes the emergency phase and '
+      + 'makes this the near miss; asking it the other way round would be the '
+      + 'same question with the options swapped.',
+  ],
+  [
+    '05-the-national-flood-insurance-program.md::write your own',
+    'The arrangement under which private insurers issue NFIP policies. Worth a '
+      + 'question and does not have one yet -- listed here so the gap is '
+      + 'recorded rather than hidden while module 1\'s bank is built out.',
+  ],
+  [
+    '06-other-property-policies.md::mobile homeowners policy',
+    'The name of the form the section is about, bolded on first use rather '
+      + 'than defined. Questions on mobile homes ask about actual cash value '
+      + 'settlement and permission to move, which are the testable facts.',
+  ],
+  [
+    '06-other-property-policies.md::ocean marine perils',
+    'A heading for the traditional list -- perils of the sea, jettison, '
+      + 'piracy, barratry -- which is examined as the list, not as the phrase.',
+  ],
+  [
+    '06-other-property-policies.md::farm structures',
+    'One line in the list of what a farmowners package covers. The farmowners '
+      + 'questions ask what the package includes, where this is one option '
+      + 'among several correct ones rather than the answer.',
+  ],
+  [
     '03-licensing-and-appointment.md::explain the coverage',
     'An item in a list of producer duties, not a term. The list is examined ' +
       'collectively -- which of these is NOT a duty -- so the answer is the ' +

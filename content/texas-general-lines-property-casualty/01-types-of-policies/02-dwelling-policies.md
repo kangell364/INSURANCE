@@ -18,135 +18,173 @@ instead of a homeowners policy, name what DP-1, DP-2 and DP-3 each cover and
 on what peril basis, and say what a dwelling policy leaves out that a
 homeowners policy includes.
 
-The dwelling policy is the older, narrower form. Where a homeowners policy is
-a package, **a dwelling policy is property insurance alone** — liability is
-optional and added by endorsement.
+Not every house fits a homeowners policy. The owner might not live there. The
+house might be empty half the year. It might be too old, too cheap or in too
+poor a condition for an insurer to want to write a full package on it.
 
-## When it is used
+For those, there is the **dwelling policy** — an older, plainer kind of cover.
 
-- **The dwelling is not owner-occupied** — a rental house, where the owner
-  needs the building covered but not the tenant's belongings.
-- **The dwelling is seasonal or vacant.**
-- **The insured does not qualify** for a homeowners policy — value too low,
-  condition too poor, occupancy of the wrong kind.
-- **The owner wants building coverage only.**
+The important difference is what it leaves out. A homeowners policy is a
+package: your property *and* the harm you cause other people. **A dwelling
+policy covers property only.** If the owner wants liability cover too, it is
+added on separately by **endorsement** — an extra document attached to the
+policy.
 
-Eligible dwellings are generally one- to four-family, with limits on
-permitted incidental business.
+## When a dwelling policy is used instead
+
+- **The owner does not live there.** A rental house is the common case: the
+  landlord needs the building covered, and the tenant's belongings are the
+  tenant's own problem.
+- **The house is seasonal or empty** — a holiday cottage, a property between
+  tenants.
+- **The house does not qualify** for a homeowners policy — too low in value,
+  in poor condition, or occupied in a way homeowners rules do not allow.
+- **The owner only wants the building covered** and nothing else.
+
+Dwelling policies are written on buildings housing **one to four families**,
+with limits on how much business activity is allowed inside.
 
 ## The coverages
 
-| | Covers |
-| --- | --- |
-| **Coverage A — Dwelling** | The building |
-| **Coverage B — Other Structures** | Detached structures, commonly **10% of A** |
-| **Coverage C — Personal Property** | Contents |
-| **Coverage D — Fair Rental Value** | Lost rent while the dwelling is unfit |
-| **Coverage E — Additional Living Expense** | The increase in living costs |
+A dwelling policy uses letters like a homeowners policy does, but they are not
+the same letters. This catches people out, so compare them deliberately.
 
-Two differences from homeowners worth holding:
+| | Name | What it pays for |
+| --- | --- | --- |
+| **A** | Dwelling | The building itself |
+| **B** | Other Structures | Detached buildings — usually **10% of Coverage A** |
+| **C** | Personal Property | Belongings inside |
+| **D** | Fair Rental Value | Rent the owner stops collecting while the house is unfit to live in |
+| **E** | Additional Living Expense | The extra cost of living somewhere else |
 
-- **Loss of use is split into two lettered coverages here** (D and E), where
-  homeowners combines them into Coverage D.
-- **Coverage B and C may be used interchangeably in some forms** — a portion
-  of the Coverage C limit can be applied to other structures, and vice versa.
+Two things to hold on to:
 
-**DP-1 does not include Coverage E at all.** Additional living expense is a
-DP-2 and DP-3 feature.
+**Loss of use is split in two here.** A homeowners policy puts lost rent and
+extra living costs together in Coverage D. A dwelling policy separates them:
+**D is lost rent, E is extra living costs.**
+
+**DP-1 has no Coverage E at all.** The most basic form will pay a landlord for
+the rent they are not collecting, but it will not pay for anyone to live
+somewhere else. Coverage E starts at DP-2.
+
+**Coverages B and C can lend to each other** on some forms — a slice of the
+personal property limit can be moved to other structures, and the other way
+round.
 
 ## B. Dwelling Policies
 
+There are three forms. As with homeowners, they differ in how widely the
+perils are covered, and they get broader — and more expensive — as you go up.
+
 ### 1. DP-1 — Basic
 
-**Named peril**, and the narrowest of the three.
+**The narrowest of the three.** Named peril on both the building and the
+contents, with a short list.
 
-The standard perils are **fire, lightning and internal explosion**, with
-**extended coverage** available — windstorm, hail, explosion, riot, aircraft,
-vehicles, smoke, volcanic eruption — and **vandalism and malicious mischief**
-available on top of that.
+The list starts at **fire, lightning and internal explosion**. Most owners add
+two optional bundles on top:
 
-Two distinguishing features:
+- **Extended coverage** adds windstorm, hail, explosion, riot, aircraft,
+  vehicles, smoke and volcanic eruption. Remember it as **WHARVES** if the
+  letters help.
+- **Vandalism and malicious mischief** can then be added after that.
 
-- **Loss settlement is actual cash value.** DP-1 does not offer replacement
-  cost on the dwelling.
-- **Theft is not covered** and generally is not available.
+Two things make DP-1 different from the other two, and both are examined:
+
+**It pays actual cash value, not replacement cost.** If a twenty-year-old roof
+burns, DP-1 pays what a twenty-year-old roof was worth — not what a new one
+costs. The owner makes up the difference.
+
+**Theft is not covered, and generally cannot be added.** If the house is
+furnished and the owner wants theft cover, DP-1 is the wrong form.
 
 ### 2. DP-2 — Broad
 
-**Named peril**, with the broad list — everything in DP-1's extended coverage
-plus falling objects; weight of ice, snow or sleet; accidental discharge of
-water or steam; tearing apart of a heating system; freezing; accidental damage
-from artificially generated electrical current; and **damage by burglars**.
+**Named peril again, but a much longer list**, and it pays replacement cost.
 
-> **"Damage by burglars" is not theft cover**, and the difference is examined.
-> It pays for what burglars *break* — a forced door, a smashed frame, a
-> ransacked room — and not for what they **take**. A DP-2 insured whose house
-> is burgled is paid for the door and not for the television.
+DP-2 adds everything in DP-1's extended coverage, plus: falling objects; the
+weight of ice, snow or sleet; water or steam escaping inside the house; a
+heating system tearing apart, cracking, burning or bulging; freezing; sudden
+damage from electrical current the house generated; and **damage by
+burglars**.
+
+> **"Damage by burglars" is not theft cover**, and the exam likes the
+> difference.
 >
-> Theft of the contents needs theft coverage, which a dwelling form adds by
-> endorsement. This is the same boundary as commercial property, where Basic
-> and Broad reach vandalism but **only Special adds theft**.
+> It pays for what burglars **break** — the forced door, the smashed window,
+> the ransacked room. It does not pay for what they **take**.
+>
+> So a DP-2 owner who is burgled gets paid for the broken door and not for the
+> stolen television. Covering the television needs theft coverage, added by
+> endorsement.
 
-**Loss settlement is replacement cost** on the dwelling, subject to the
-usual insurance-to-value requirement.
-
-Additional living expense and fair rental value are both included.
+**Loss settlement is replacement cost** on the building, provided the owner
+insured it for enough.
 
 ### 3. DP-3 — Special
 
-**Open peril on the dwelling and other structures; named peril on personal
-property.**
+**The broadest, and the one most landlords buy.**
 
-This is the same asymmetry as the HO-3, and for the same reason — and it is
-tested the same way. **Loss settlement is replacement cost** on the building.
+- **The building is open peril** — covered against everything except what the
+  policy excludes.
+- **The contents stay named peril**, on the broad list.
 
-| | Dwelling | Contents | Settlement | Theft |
+If that sounds familiar, it should: **it is the same split as the HO-3**, for
+the same reason. The building is a fixed, inspectable thing. Contents move,
+change and are easier to claim for dishonestly.
+
+**Loss settlement is replacement cost** on the building.
+
+### The three forms side by side
+
+| | The building | The contents | How it pays | Theft |
 | --- | --- | --- | --- | --- |
-| **DP-1** | Named (basic) | Named (basic) | **ACV** | No |
+| **DP-1** | Named (basic) | Named (basic) | **Actual cash value** | No, and cannot be added |
 | **DP-2** | Named (broad) | Named (broad) | **Replacement cost** | By endorsement |
 | **DP-3** | **Open peril** | Named (broad) | **Replacement cost** | By endorsement |
 
-## What a dwelling policy does not include
+## What a dwelling policy leaves out
 
-**No liability.** Personal liability and medical payments are added by
-endorsement — which is precisely what a landlord needs, since a tenant
-injured on the property will look to the owner.
+**No liability cover.** If a tenant falls down the stairs and sues the
+landlord, a bare dwelling policy does nothing. Personal liability and medical
+payments are added by endorsement — and any sensible landlord adds them.
 
-**No theft coverage as standard.** Available by endorsement on DP-2 and DP-3;
-not on DP-1.
+**No theft cover as standard.** Added by endorsement on DP-2 and DP-3. Not
+available on DP-1.
 
-**No automatic additional coverages of the homeowners kind.** The lists of
-debris removal, trees and shrubs, credit card coverage and so on are thinner
-or absent.
+**Few of the extras a homeowners policy gives free.** Debris removal, trees
+and shrubs, credit card cover and the rest are thinner here or missing
+altogether.
 
-## Endorsements a landlord will want
+## What a landlord usually adds
 
-- **Personal liability** and **medical payments**.
-- **Theft**, where the dwelling is furnished.
-- **Vandalism and malicious mischief** — often excluded once a dwelling has
-  been **vacant beyond 60 days**, which is the vacancy trap below.
-- **Broad theft** or **building items** coverage.
-- **Rental income**, beyond the included fair rental value.
-- **Automatic increase in insurance**, to keep pace with construction costs.
+- **Personal liability** and **medical payments** — the important ones.
+- **Theft**, if the house is let furnished.
+- **Vandalism and malicious mischief** — worth noting that this is often taken
+  away again once a house has stood **empty beyond 60 days**.
+- **Rental income**, beyond the fair rental value already included.
+- **Automatic increase in insurance**, so the limit keeps up with building
+  costs.
 
-## Vacancy and unoccupancy
+## Empty houses: vacancy and unoccupancy
 
-The two words are not synonyms, and the exam separates them.
+These two words sound alike and mean different things. The exam separates
+them, so learn them apart.
 
-- **Unoccupied** — nobody is living there, but the contents remain. A family
-  on a three-month trip.
-- **Vacant** — **both the people and the contents are gone.** An empty house
+- **Unoccupied** — nobody is living there, but **the furniture is still in
+  it**. A family away for three months.
+- **Vacant** — **both the people and the furniture are gone.** An empty house
   between tenants.
 
-**Vacancy is the one that restricts coverage.** After a dwelling has been
-vacant beyond a stated period — commonly **60 consecutive days** — several
-perils are typically suspended, including **vandalism and malicious mischief,
-glass breakage, theft, sprinkler leakage** and **water damage**, and some
-forms reduce payment on any remaining covered loss.
+**Vacancy is the one that costs you coverage.** Once a house has been vacant
+beyond a stated period — usually **60 days in a row** — the policy typically
+stops covering **vandalism, glass breakage, theft, sprinkler leakage and water
+damage**, and some forms pay less on whatever is left.
 
-The underwriting logic is straightforward: an empty building is a magnet for
-vandalism and a slow burn nobody notices. The insured's fix is to tell the
-insurer and buy a **vacancy permit**.
+The reasoning is practical. An empty house attracts vandals, and a leak or a
+small fire can run for weeks before anyone notices.
+
+The owner's answer is to **tell the insurer and buy a vacancy permit**.
 
 ## How this is examined
 

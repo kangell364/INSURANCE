@@ -956,6 +956,82 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '67bf5fa4-d493-5ac0-8c1f-fd6bdffa3ebc', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'homeowners-forms'),
+       'A fire destroys a home. Clearing the burnt wreckage from the site before rebuilding can start costs $6,000. Which part of the homeowners policy pays it?', '**Debris removal** is one of the small coverages a homeowners policy includes without being separately bought. It pays to clear away what is left after a covered loss. It is worth knowing it exists, because the cost is real and beginners assume the dwelling limit absorbs it. The amounts are capped, and the cap is usually expressed as a percentage of the loss. **Coverage D** is wrong for a reason worth holding: it pays the extra cost of living somewhere else, not the cost of work on the house.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.I'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'c23c2bc0-a12e-5247-97a6-32cdfe8d812b', '67bf5fa4-d493-5ac0-8c1f-fd6bdffa3ebc', c.id, 'Coverage A, as part of the dwelling limit', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '825e5311-8180-5ff2-a482-5759da7793c3', '67bf5fa4-d493-5ac0-8c1f-fd6bdffa3ebc', c.id, 'Debris removal, one of the additional coverages included in the policy', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'd9c2c4c4-3dcf-5d5c-950f-aba280a6cbbc', '67bf5fa4-d493-5ac0-8c1f-fd6bdffa3ebc', c.id, 'Coverage D, loss of use', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '8e10e4f6-3731-5679-aa21-d4943a7e9159', '67bf5fa4-d493-5ac0-8c1f-fd6bdffa3ebc', c.id, 'Nothing — site clearance is the owner''s own cost', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '67bf5fa4-d493-5ac0-8c1f-fd6bdffa3ebc', c.id, '825e5311-8180-5ff2-a482-5759da7793c3'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select '04c01c7b-c888-552f-80da-c74b35d61568', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'homeowners-forms'),
+       'A condominium association is hit by a loss its master policy does not fully cover, and bills every unit owner $4,000 towards the shortfall. Which coverage responds?', '**Loss assessment** covers a unit owner''s share when the association charges all its owners for a loss the master policy did not meet. It is included in a homeowners policy at a modest amount, and it matters particularly on an **HO-6**, the condominium owner''s form, where the owner is exposed to exactly this. The other three options are all about the owner''s own property, and an assessment is not a loss to the owner''s own property.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.I'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '67c3bdd7-8130-5165-b55d-5f4ee0321856', '04c01c7b-c888-552f-80da-c74b35d61568', c.id, 'Coverage A, dwelling', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'efee822b-6b96-595f-ba7f-73b62d623257', '04c01c7b-c888-552f-80da-c74b35d61568', c.id, 'Coverage C, personal property', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '38bbf427-a34c-5c39-bf75-ef91d2949b3b', '04c01c7b-c888-552f-80da-c74b35d61568', c.id, 'Loss assessment', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '36cfb7a6-e876-5e46-b604-d6c4c1d377eb', '04c01c7b-c888-552f-80da-c74b35d61568', c.id, 'None — an association assessment is not insurable', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select '04c01c7b-c888-552f-80da-c74b35d61568', c.id, '38bbf427-a34c-5c39-bf75-ef91d2949b3b'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select '3dea124e-1762-5592-812d-1e5e4f61b677', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'dwelling-policies'),
        'Which of the following is an extended coverage peril?', '**Extended coverage is the second tier, not the third.** It adds **windstorm, hail, explosion, riot or civil commotion, aircraft, vehicles, smoke and volcanic eruption** to a DP-1''s three basic perils. **All three wrong answers are BROAD perils** — they arrive with the DP-2, not with extended coverage, and that is the whole point of the question. The tiers, which are worth holding as a sequence rather than three lists: 1. **DP-1 unendorsed** — fire, lightning, internal explosion. Three perils. 2. **Plus extended coverage** — the eight above. Still DP-1. 3. **DP-2 broad** — everything above plus falling objects; weight of ice, snow or sleet; accidental discharge of water or steam; tearing apart of a heating system; freezing; accidental damage from artificially generated electrical current; and damage by burglars. **A stem naming freezing, falling objects or the weight of snow is describing broad coverage**, whatever else it says.', 'draft'
@@ -2590,6 +2666,44 @@ on conflict (question_id) do update set
 
 insert into public.questions
   (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'bb039a25-2a2a-5c14-ad5d-4cb2fe2aebc3', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'inland-marine'),
+       'A shipping line insures the hull of a cargo vessel, the cargo aboard it, and its liability to crew. Which line of insurance is that?', '**Ocean marine** covers property and liability on the water: the **hull**, the **cargo**, the **freight** charges, and **protection and indemnity**, which is the marine world''s liability cover. **Inland marine** is the one that grew out of it — cover that followed the cargo off the ship and inland, and which now takes in property that moves, property held by somebody other than its owner, and property a standard form cannot value sensibly. Despite the name, it has almost nothing to do with water. **Motor truck cargo** is a genuine inland marine floater, but it covers a haulier''s responsibility for goods on a lorry, not a vessel at sea.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.I'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '49fc180a-719c-5445-88c9-994675790015', 'bb039a25-2a2a-5c14-ad5d-4cb2fe2aebc3', c.id, 'Ocean marine', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '695277d9-e379-5f94-82aa-422cfdf78ceb', 'bb039a25-2a2a-5c14-ad5d-4cb2fe2aebc3', c.id, 'Inland marine', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '8a9b016e-7dfa-5cbc-b536-0cec9b9424d3', 'bb039a25-2a2a-5c14-ad5d-4cb2fe2aebc3', c.id, 'Commercial property', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'd4e42f6c-6205-5c65-9dd6-86c249a49fed', 'bb039a25-2a2a-5c14-ad5d-4cb2fe2aebc3', c.id, 'Motor truck cargo', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'bb039a25-2a2a-5c14-ad5d-4cb2fe2aebc3', c.id, '49fc180a-719c-5445-88c9-994675790015'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
 select 'a9c76964-07ea-50f9-99dc-b54d35c7deac', c.id, t.id,
        (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'the-national-flood-insurance-program'),
        'A homeowner buys an NFIP policy on 1 May with no lender requirement. The river floods on 20 May. Is there coverage?', 'The waiting period is the programme''s defence against **buying cover as the river rises**. The exceptions: no wait where a lender requires the coverage in connection with a loan; a one-day wait after a flood map change; and a shortened wait for property affected by wildfire on federal land.', 'draft'
@@ -3040,6 +3154,44 @@ on conflict (id) do update set body = excluded.body;
 
 insert into public.question_answers (question_id, course_id, correct_option_id)
 select '948d3767-e046-549a-8b80-e3f62dffa7be', c.id, '102b34cd-644f-5f00-9041-d3e7dbca4280'
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (question_id) do update set
+  correct_option_id = excluded.correct_option_id;
+
+insert into public.questions
+  (id, course_id, topic_id, lesson_id, stem, explanation, status)
+select 'd3cde7b8-6fdf-5072-9648-007b79dafbdc', c.id, t.id,
+       (select l.id from public.lessons l where l.course_id = c.id and l.slug = 'the-national-flood-insurance-program'),
+       'A community has just joined the NFIP. Its flood maps are not yet finished, and only limited amounts of cover are available. Which phase is it in?', '**The emergency programme** is the starting phase. A community enters it on joining, and only **limited amounts** of insurance can be written while the flood mapping is done. **The regular programme** follows, once the community has its flood insurance rate map and has adopted the required building rules. Full limits become available then. The last two options do not exist. The two-phase structure is the whole of it.', 'draft'
+  from public.courses c
+  join public.topics t on t.course_id = c.id and t.code = 'GK.I'
+ where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set
+  stem = excluded.stem, explanation = excluded.explanation,
+  status = excluded.status, topic_id = excluded.topic_id;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '6ed66654-24bc-5074-86fc-fc08e3b92022', 'd3cde7b8-6fdf-5072-9648-007b79dafbdc', c.id, 'The emergency programme', 1
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '4c50fc64-7871-525a-ba58-ea12ff9e4e0e', 'd3cde7b8-6fdf-5072-9648-007b79dafbdc', c.id, 'The regular programme', 2
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select 'c6f7da34-67e4-5bb0-9b09-00f7036dddcc', 'd3cde7b8-6fdf-5072-9648-007b79dafbdc', c.id, 'The provisional programme', 3
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_options (id, question_id, course_id, body, position)
+select '7fbdbe4f-0c60-5c27-9511-e61bde0a7b46', 'd3cde7b8-6fdf-5072-9648-007b79dafbdc', c.id, 'The interim assistance programme', 4
+  from public.courses c where c.slug = 'texas-general-lines-property-casualty'
+on conflict (id) do update set body = excluded.body;
+
+insert into public.question_answers (question_id, course_id, correct_option_id)
+select 'd3cde7b8-6fdf-5072-9648-007b79dafbdc', c.id, '6ed66654-24bc-5074-86fc-fc08e3b92022'
   from public.courses c where c.slug = 'texas-general-lines-property-casualty'
 on conflict (question_id) do update set
   correct_option_id = excluded.correct_option_id;

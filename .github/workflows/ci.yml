@@ -83,7 +83,7 @@ jobs:
       # --max is what CI currently tolerates: the number may fall, never rise.
       # When it falls, lower the number here.
       - name: Defined terms are examined
-        run: node scripts/check-question-coverage.mjs --max 58
+        run: node scripts/check-question-coverage.mjs --max 50
 
       # What a lesson SAYS about a statute, against what the statute says.
       # check-citations.mjs proves a cited section exists; it passed the claim

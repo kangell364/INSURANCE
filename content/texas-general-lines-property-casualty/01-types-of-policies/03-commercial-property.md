@@ -19,86 +19,126 @@ and what it must contain; explain what the building and personal property form
 covers; tell the basic, broad and special causes of loss forms apart; and
 distinguish business income from extra expense.
 
-Personal lines sells finished packages. Commercial lines sells components,
-and the producer assembles them.
+Insuring a house is mostly a matter of picking a form. Insuring a business is
+not. A bakery, a warehouse and a dentist's surgery need different things, so
+commercial insurance is sold as **parts that the producer puts together**.
+
+That is the idea to hold on to through this lesson: **personal lines sells
+finished packages, commercial lines sells components.**
 
 ## C. Commercial Lines
 
 ### 1. Commercial Package Policy (CPP)
 
-**A CPP is two or more commercial coverage parts issued under one policy.**
-Its architecture:
+**A commercial package policy is simply two or more kinds of commercial
+cover, sold under one policy instead of several.**
 
-1. **Common policy declarations** — insured, term, premium, coverage parts.
-2. **Common policy conditions** — cancellation, changes, inspections,
-   examination of books, transfer of rights. These apply to every part.
-3. **Two or more coverage parts**, each with its own declarations, forms and
-   conditions.
+Think of it as a folder. At the front of the folder are the pages that apply
+to everything inside it:
 
-The available parts include **commercial property, general liability,
-commercial auto, crime, inland marine, boiler and machinery (equipment
-breakdown)** and **farm**.
+1. **Common policy declarations** — who is insured, for how long, for how
+   much, and which kinds of cover are in the folder.
+2. **Common policy conditions** — the rules that apply to all of it:
+   cancellation, how changes are made, the insurer's right to inspect, and so
+   on.
 
-**A single coverage part is a monoline policy; two or more make a package.**
-The package earns a discount and removes the gaps and overlaps that separate
-policies produce.
+Behind those go the **coverage parts** — one for each kind of insurance the
+business bought. Each part brings its own declarations, its own forms and its
+own conditions.
 
-**Workers' compensation is written separately**, not as a CPP part.
+The parts you can put in the folder include **commercial property**,
+**general liability**, **commercial auto**, **crime**, **inland marine**,
+**equipment breakdown** and **farm**.
+
+**One part on its own is called a monoline policy. Two or more make a
+package.** The distinction matters for two reasons: a package is usually
+cheaper than the same covers bought separately, and buying them together
+avoids the gaps that appear between policies written by different insurers.
+
+**Workers' compensation is not a package part.** It is always its own policy.
 
 ### 2. Commercial Property
 
-Three things must be assembled:
+To insure a commercial building and what is in it, three decisions are made,
+and they are made separately:
 
-1. **A coverage form** — what property is covered.
-2. **A causes of loss form** — what perils.
-3. **Conditions and any endorsements.**
+1. **Which coverage form** — *what property* is covered.
+2. **Which causes of loss form** — *what can happen to it*.
+3. **Which conditions and endorsements** — the fine print and the extras.
+
+A beginner's instinct is that one document does all three. It does not, and
+questions are written on exactly that point.
 
 #### a. Commercial building and business personal property form
 
-The workhorse. It insures three categories, each separately scheduled on the
-declarations:
+This is the workhorse form, and it covers three separate things. Each gets its
+own limit on the declarations, so a business can insure one and not another.
 
-**Building** — the structure, completed additions, fixtures (including
-outdoor fixtures), permanently installed machinery and equipment, and
-materials and supplies used to maintain it.
+**Building** — the structure itself, plus anything permanently part of it:
+completed additions, fixtures inside and out, machinery bolted in place, and
+the supplies kept to maintain it.
 
-**Your business personal property** — the insured's own contents at the
-described premises: furniture, stock, machinery, leased property the insured
-is responsible for, and **the insured's use interest in improvements and
-betterments** made to a leased building.
+**Your business personal property** — the things the business owns and keeps
+at the premises: furniture, stock, tools, machinery that is not bolted down.
 
-**Personal property of others** — property in the insured's care, custody or
-control. **Payment goes to the owner**, not to the insured.
+It also covers **improvements and betterments**. If a business rents its
+premises and spends its own money fitting them out — new shopfront, partition
+walls, a fitted kitchen — that work becomes part of the landlord's building,
+but the tenant paid for it. This is what covers the tenant's stake in it.
 
-The **coinsurance** clause applies, usually at 80%, 90% or 100%, and the
-calculation is the one from Module 2.
+**Personal property of others** — property belonging to somebody else that is
+in the business's care. A repair shop holds customers' machines; a dry cleaner
+holds customers' clothes.
 
-##### Extensions and additional coverages
+**When this pays out, the money goes to the owner of the property, not to the
+insured.** That is worth remembering: the business is insuring somebody else's
+belongings, so somebody else gets paid.
 
-Typically included: **debris removal** (a percentage of the loss plus the
-deductible, with an additional amount available); **preservation of
-property**; **fire department service charge**; **pollutant clean-up and
-removal**, capped annually; **newly acquired or constructed property** for a
-limited period and amount; **personal effects**; **property off premises**;
-**outdoor property**; and **valuable papers and records** at a limited
-amount.
+One more thing applies to all of it: a **coinsurance** clause, usually at 80%,
+90% or 100%. Coinsurance is a rule requiring the business to insure the
+property for close to its full value, and it cuts the claim payment if they
+did not. The arithmetic is taught in Module 2.
 
-##### Reporting forms and blanket insurance
+##### What comes with the form
+
+Some things are covered without being separately bought. The amounts are
+small, but they are the ones that come up:
+
+- **Debris removal** — clearing the wreckage after a loss.
+- **Preservation of property** — cover while property is being moved out of
+  harm's way.
+- **Fire department service charge.**
+- **Pollutant clean-up** — capped for the year.
+- **Newly acquired or constructed property** — a business that buys another
+  building gets it covered automatically, but only for a limited amount and a
+  limited number of days. Tell the insurer before the clock runs out.
+- **Personal effects**, **property off the premises**, **outdoor property**,
+  and **valuable papers and records**, each at a small limit.
+
+##### Insuring one thing, or everything
+
+There is more than one way to put a limit on commercial property.
 
 **Specific insurance** names an amount for one item at one location.
+$500,000 on the warehouse at Elm Street. Simple, and rigid.
 
-**Blanket insurance** covers **two or more items, or two or more locations,
-under a single limit**. The advantage is flexibility: a shifting inventory
-across three warehouses is fully covered wherever it sits, rather than being
-underinsured at one and over at another. Blanket cover normally requires a
-**statement of values** and a high coinsurance percentage.
+**Blanket insurance** puts **one limit over several items or several
+locations**. A business with stock moving between three warehouses does not
+have to guess how much will be sitting in each: the whole limit is available
+wherever the stock happens to be.
 
-**Reporting forms** suit a fluctuating inventory: the insured reports values
-periodically and the premium is adjusted. Under-reporting is penalised at
-claim time in proportion to the shortfall.
+That flexibility is the reason to buy it. Insure each warehouse separately and
+you will be over-insured at one and short at another on the day of the fire.
+Blanket cover normally requires a **statement of values** — a list telling the
+insurer what is where — and a high coinsurance percentage.
 
-**Agreed value** suspends coinsurance where the insurer has accepted a
-statement of values.
+**Reporting forms** go further, for a business whose stock swings wildly
+through the year. The insured reports the actual values periodically and the
+premium follows. The catch: **under-report, and the claim is cut in the same
+proportion.** Report half of what you hold and a loss is paid at half.
+
+**Agreed value** switches the coinsurance rule off, where the insurer has
+accepted a statement of values.
 
 ##### How the building is classified
 
@@ -154,52 +194,82 @@ is included in any of the three.
 
 #### c. Business income
 
-These are **indirect** or **consequential** loss coverages. Direct damage
-coverage rebuilds the building; these pay for the trading that could not
-happen while it was being rebuilt.
+Everything so far pays to repair or replace **things**. But a shop with a
+burnt-out roof has a second problem: while the roof is being rebuilt, it is
+not selling anything. The rent, the salaries and the loan repayments carry on
+regardless.
 
-**Business income** (formerly business interruption) pays:
+That second problem is called an **indirect** or **consequential** loss — a
+loss that follows on from the physical damage rather than being the damage
+itself. Two coverages answer it, and the exam wants them told apart.
 
-- **the net income the business would have earned**, plus
-- **continuing normal operating expenses**, including payroll where covered.
+**Business income** pays a business that **has to stop trading**. It covers:
 
-Three conditions frame it: there must be **direct physical loss** to covered
-property, **by a covered cause of loss**, at the **described premises**,
-causing a **necessary suspension** of operations.
+- **the profit the business would have made**, and
+- **the expenses that carry on anyway** — rent, salaries, loan payments.
 
-The **period of restoration** begins **72 hours after the physical loss**
-(where a waiting period applies) and ends when the property **should** have
-been repaired with reasonable speed — not when it actually was. An insured
-who takes eight months over a four-month rebuild is paid for four.
+Three conditions have to be met before it pays anything:
+
+1. There was **actual physical damage** to covered property,
+2. caused by **a peril the policy covers**,
+3. at **the premises named in the policy**, and it forced operations to stop.
+
+No physical damage, no payment. A business that loses its customers because a
+rival opened next door has suffered badly, but not in a way this covers.
+
+**How long does it pay for?** For the **period of restoration** — which begins
+**72 hours after the damage** on forms with a waiting period, and ends when the
+property **should have been repaired**, working at a reasonable pace.
+
+Read that last part again, because it is a favourite exam point. **It is not
+when the repair actually finished.** If a rebuild should have taken four months
+and the owner dawdled for eight, the policy pays four.
 
 #### d. Extra expense
 
-**Extra expense** pays the additional costs of **continuing** operations —
-renting temporary premises, hiring equipment, expedited shipping. A business
-that cannot afford to stop, such as a dairy or a newspaper, buys extra
-expense rather than business income; many buy both on a combined form.
+**Extra expense is the opposite case: a business that cannot afford to stop.**
 
-Related: **contingent business income** covers loss caused by damage to
-**somebody else's** property — a sole supplier or a dominant customer.
-**Civil authority** coverage pays where access to the premises is prohibited
-by an authority because of damage to nearby property.
+A dairy cannot tell its customers to come back in three months; the milk is
+being produced now. A daily newspaper that misses a fortnight may never get its
+readers back.
+
+So instead of paying for lost trading, extra expense pays **the additional cost
+of carrying on anyway** — renting temporary premises, hiring replacement
+equipment, paying for overnight delivery instead of ordinary post.
+
+**The distinction in one line:** business income pays for the trading you could
+not do; extra expense pays what it costs to keep trading. Many businesses buy
+both, on a combined form.
+
+Two related coverages come up:
+
+**Contingent business income** covers a business damaged by something that
+happened to **somebody else's** property — its only supplier burns down, or a
+neighbouring store that brought in all the passing trade closes.
+
+**Civil authority** covers the business when the authorities close off access
+to it because of damage nearby — a fire two doors down, and the street is
+sealed for a week.
 
 #### e. Equipment breakdown
 
-Formerly boiler and machinery. **It covers the sudden and accidental
-breakdown of pressure, mechanical and electrical equipment** — and the
-resulting damage.
+Once called boiler and machinery. **It covers machinery that breaks down
+suddenly** — boilers, pressure vessels, motors, electrical equipment — and the
+damage that breakdown causes to everything around it.
 
-It matters because **mechanical breakdown and electrical arcing are excluded
-from every standard property form**, so without this coverage a burst boiler
-or a failed transformer is uninsured. It typically covers the damaged
-equipment, other property damaged by the breakdown, spoilage, expediting
-expenses and business income.
+Here is why it exists. **Every standard property form excludes mechanical
+breakdown and electrical arcing.** A fire started by a failed transformer is a
+fire, and covered. The transformer failing is not, and without this coverage
+nobody pays for it.
 
-**Inspection is part of the product.** The insurer's engineers inspect
-boilers and pressure vessels, often satisfying the jurisdiction's statutory
-inspection requirement, and the loss-prevention value is a substantial part of
-what the premium buys.
+It typically covers the broken machine, other property the breakdown damaged,
+**spoilage** (a failed freezer and the stock inside it), the cost of rushing
+repairs through, and lost business income.
+
+**The inspections are part of what you are buying.** The insurer's engineers
+come and examine the boilers and pressure vessels, which often satisfies the
+inspection the law requires anyway. Preventing the breakdown is worth more to
+both sides than paying for it.
 
 ### 3. Business Owners Policy (BOP)
 

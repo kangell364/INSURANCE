@@ -18,62 +18,75 @@ write flood, say how a community and its property owners come to be covered,
 state the waiting period and the limits, and say what the programme counts as
 a flood — and what it does not cover.
 
-Flood is excluded from homeowners, dwelling and commercial property forms
-alike. The exclusion is not arbitrary, and understanding why explains
-everything else about the programme.
+Here is a fact worth getting used to early: **no ordinary property policy
+covers flood.** Not homeowners, not dwelling, not commercial property. If a
+river comes through the front door, none of the policies in this module pay.
+
+That is not an oversight, and once you see why, everything else about flood
+insurance follows.
 
 ## E. National Flood Insurance Program
 
-### Why flood is uninsurable privately
+### Why insurers will not cover flood
 
-Flood fails the tests of an insurable risk from Module 2:
+In Module 2 you will meet the conditions a risk has to satisfy before anyone
+can sensibly insure it. Flood fails several of them at once.
 
-- **The losses are not independent.** A flood does not damage one house; it
-  damages every house on the flood plain at once. The law of large numbers
-  needs many unrelated exposures, and a flood plain is one exposure with many
-  addresses.
-- **Adverse selection is extreme.** Only people who expect to flood buy flood
-  insurance, so the pool consists almost entirely of bad risks.
-- **The loss is close to predictable** for the highest-risk properties — not
-  a risk so much as a schedule.
+**The losses all arrive together.** Insurance works by pooling — thousands of
+customers pay, a few of them claim, and the premiums of the many cover the
+losses of the few. That only works if the losses are **unrelated**. A flood is
+the opposite: it does not damage one house on the flood plain, it damages
+every house on the flood plain, on the same afternoon. The insurer collects a
+thousand small premiums and then pays a thousand large claims at once.
 
-So in **1968 Congress created the National Flood Insurance Program**,
-administered by **FEMA**. The federal government takes the risk the private
-market would not.
+**Only the people who need it would buy it.** Nobody living on a hill buys
+flood insurance. Everybody living beside a river does. So the pool would be
+made up almost entirely of properties expected to flood — which is called
+**adverse selection**, and it is fatal to pricing.
 
-### How a community participates
+**For the worst properties it is not really a risk at all.** A house that
+floods every few years is not an uncertainty to be insured; it is a
+maintenance schedule with a bill attached.
 
-**The NFIP is a bargain between the federal government and the community, not
-just with the individual.**
+So in **1968 Congress created the National Flood Insurance Program**, run by
+**FEMA**. The federal government took on the risk the private market would
+not.
 
-A community must **adopt and enforce flood plain management ordinances** —
-building elevation requirements, construction standards, development
-restrictions — to reduce future flood losses. In exchange, **federally backed
-flood insurance becomes available to property owners in that community**.
+### How a town gets into the programme
 
-**No participating community, no NFIP policy.** An owner in a non-participating
-community must find private coverage or go without.
+This is the part people find surprising: **the deal is with the community, not
+with you.**
 
-Two phases:
+A town or county has to **adopt and enforce flood plain building rules** —
+how high new buildings must sit, how they must be built, where building is
+not allowed at all. In return, **federally backed flood insurance becomes
+available to property owners in that community.**
 
-- **The emergency programme** — an interim phase with **limited amounts** of
-  coverage available while flood mapping is completed.
-- **The regular programme** — full limits, once the community has a flood
-  insurance rate map and has adopted the required ordinances.
+**If the community is not in the programme, you cannot buy the policy.** An
+owner in a non-participating area has to find a private insurer or go without.
 
-### The waiting period
+There are two stages:
 
-**There is normally a 30-day waiting period** between application and the
-policy taking effect. It is the programme's defence against somebody buying
-cover as the river rises.
+- **The emergency programme** — a starting stage with **limited amounts** of
+  cover, while the flood maps are being drawn.
+- **The regular programme** — full limits, once the community has its flood
+  map and its building rules in place.
 
-The exceptions are worth knowing:
+### The 30-day wait
 
-- **No waiting period where flood insurance is required by a lender** in
-  connection with making, increasing, extending or renewing a loan.
-- **A one-day wait** where coverage is bought following a change in the flood
-  map.
-- A shortened wait for property **affected by wildfire on federal land**.
+**A flood policy does not start the day you buy it. Normally you wait 30
+days.**
+
+The reason is obvious once stated: without it, people would buy flood
+insurance when the forecast turned bad, and the programme would only ever be
+paying claims.
+
+Three exceptions are worth knowing:
+
+- **No wait when a lender requires the insurance** as part of making,
+  increasing, extending or renewing a loan.
+- **One day** when the cover is bought because the flood map changed.
+- **A shortened wait** for property affected by wildfire on federal land.
 
 ### What a flood is
 

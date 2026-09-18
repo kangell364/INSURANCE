@@ -166,3 +166,36 @@ needs a commercial policy.
 Homeowners eligibility runs to **up to four families with the insured occupying
 one unit**, with a limit on roomers or boarders. **Farms are not eligible** — a
 farmowners policy covers those.
+
+### A fire destroys a home. Clearing the burnt wreckage from the site before rebuilding can start costs $6,000. Which part of the homeowners policy pays it?
+
+- [ ] Coverage A, as part of the dwelling limit
+- [x] Debris removal, one of the additional coverages included in the policy
+- [ ] Coverage D, loss of use
+- [ ] Nothing — site clearance is the owner's own cost
+
+**Debris removal** is one of the small coverages a homeowners policy includes
+without being separately bought. It pays to clear away what is left after a
+covered loss.
+
+It is worth knowing it exists, because the cost is real and beginners assume
+the dwelling limit absorbs it. The amounts are capped, and the cap is usually
+expressed as a percentage of the loss.
+
+**Coverage D** is wrong for a reason worth holding: it pays the extra cost of
+living somewhere else, not the cost of work on the house.
+
+### A condominium association is hit by a loss its master policy does not fully cover, and bills every unit owner $4,000 towards the shortfall. Which coverage responds?
+
+- [ ] Coverage A, dwelling
+- [ ] Coverage C, personal property
+- [x] Loss assessment
+- [ ] None — an association assessment is not insurable
+
+**Loss assessment** covers a unit owner's share when the association charges
+all its owners for a loss the master policy did not meet.
+
+It is included in a homeowners policy at a modest amount, and it matters
+particularly on an **HO-6**, the condominium owner's form, where the owner is
+exposed to exactly this. The other three options are all about the owner's own
+property, and an assessment is not a loss to the owner's own property.

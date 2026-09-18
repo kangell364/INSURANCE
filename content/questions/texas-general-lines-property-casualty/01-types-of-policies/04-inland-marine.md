@@ -136,3 +136,23 @@ standard forms carve out.
 **Motor truck cargo** covers the carrier's liability for the goods it is hauling.
 **Ocean marine** — hull, cargo, freight, and protection and indemnity — remains a
 separate line on the water.
+
+### A shipping line insures the hull of a cargo vessel, the cargo aboard it, and its liability to crew. Which line of insurance is that?
+
+- [x] Ocean marine
+- [ ] Inland marine
+- [ ] Commercial property
+- [ ] Motor truck cargo
+
+**Ocean marine** covers property and liability on the water: the **hull**, the
+**cargo**, the **freight** charges, and **protection and indemnity**, which is
+the marine world's liability cover.
+
+**Inland marine** is the one that grew out of it — cover that followed the
+cargo off the ship and inland, and which now takes in property that moves,
+property held by somebody other than its owner, and property a standard form
+cannot value sensibly. Despite the name, it has almost nothing to do with
+water.
+
+**Motor truck cargo** is a genuine inland marine floater, but it covers a
+haulier's responsibility for goods on a lorry, not a vessel at sea.

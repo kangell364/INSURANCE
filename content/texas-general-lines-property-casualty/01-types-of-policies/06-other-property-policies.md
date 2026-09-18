@@ -16,36 +16,51 @@ not take: earthquake, mobile homes, watercraft, farmowners and windstorm.
 or endorsement, and name what each one covers. These are examined by name, so
 knowing which form answers which risk is most of the work.
 
-Each of these exists because a standard homeowners or commercial form either
-excludes the peril or cannot handle the property. You are expected to know
-them by name.
+The forms in this lesson exist for the same reason: **the standard policies
+will not take these risks.** Either the peril is excluded everywhere, or the
+property is the wrong shape for an ordinary form.
+
+You are expected to know them by name, and to know which one answers which
+problem.
 
 ## F. Others
 
 ### 1. Earthquake
 
-**Earth movement is excluded from every standard property form**, for the same
-reason as flood: the losses are correlated. One earthquake damages every
-building in a region simultaneously.
+**Every standard property form excludes earth movement** — for the same reason
+flood is excluded. One earthquake damages every building in the region at
+once, so the losses arrive together instead of spreading out.
 
-Coverage is bought back by **endorsement** to a homeowners or commercial
-policy, or written as a **separate policy**.
+Cover is bought back either by **endorsement** on a homeowners or commercial
+policy, or as a **separate policy**.
 
-What to know:
+Four things to know, and the last two are where questions live.
 
-- **The exclusion is broader than "earthquake".** Earth movement includes
-  **landslide, mudslide, subsidence, sinkhole collapse and earth sinking,
-  rising or shifting**. Buying earthquake coverage does not necessarily buy
-  all of these back.
-- **Fire following an earthquake is covered by the standard policy.** The
-  earth movement exclusion is generally written so that **ensuing fire** is
-  not excluded. This is a long-standing rule and a reliable exam point.
-- **The deductible is a percentage**, not a flat sum — commonly **2% to 20%
-  of the coverage limit**, and it is applied to the limit rather than to the
-  loss. On a $400,000 dwelling, a 10% deductible is $40,000 before anything is
-  paid.
-- **Multiple shocks within a stated period** — commonly 72 hours — count as
-  **one occurrence**, so one deductible applies rather than several.
+**The exclusion is wider than the word "earthquake".** *Earth movement* also
+takes in **landslide, mudslide, subsidence, sinkhole collapse**, and earth
+sinking, rising or shifting. Buying earthquake cover does not automatically
+buy all of those back.
+
+**Fire after an earthquake is covered by the ordinary policy.** The exclusion
+is written so that a fire which *follows* the quake is not excluded. So if the
+shaking cracks your house, that is the earthquake policy's problem; if the
+shaking ruptures a gas main and your house burns, that is the homeowners
+policy's. This is old, settled, and reliably examined.
+
+**The deductible is a percentage, and it is bigger than you expect.** Most
+deductibles are a flat amount — $1,000, say. An earthquake deductible is a
+percentage, commonly **2% to 20%**, and — this is the part people get wrong —
+**it is a percentage of the policy limit, not of the loss.**
+
+Work it through. A house insured for **$400,000** with a **10% deductible**:
+
+- The deductible is **$40,000** — ten per cent of the limit.
+- A **$30,000** crack in the foundations pays **nothing at all**.
+- A **$100,000** loss pays **$60,000**.
+
+**Several shocks close together count as one event.** Aftershocks within a
+stated period — commonly **72 hours** — are treated as a single occurrence, so
+the owner pays one deductible rather than one per tremor.
 
 ### 2. Mobile Homes
 
@@ -69,10 +84,13 @@ policy with property and liability sections, but with changes:
 
 ### 3. Watercraft
 
-Homeowners policies cover **small, low-powered boats** and very little else.
-The typical arrangement covers a boat only up to a modest length and
-horsepower, on a narrow peril basis, with liability excluded for larger or
-faster craft.
+A homeowners policy will cover a dinghy. It will not cover a speedboat.
+
+The usual arrangement covers a boat only up to a modest **length** and
+**engine power**, against a short list of causes, and it withdraws liability
+cover altogether once the boat is bigger or faster than the stated figures.
+So the owner of anything substantial is uninsured on the water without buying
+something else.
 
 Anything beyond that needs a **boatowners or yacht policy**:
 
